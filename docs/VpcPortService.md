@@ -1,0 +1,26 @@
+
+
+# VpcPortService
+
+Сервис, к которому привязан порт.
+
+## Properties
+
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**id** | **Integer** | Идентификатор сервиса. |  |
+|**type** | [**TypeEnum**](#TypeEnum) | Тип сервиса. |  |
+|**name** | **String** | Название сервиса. |  |
+
+
+
+## Enum: TypeEnum
+
+| Name | Value |
+|---- | -----|
+| SERVER | &quot;server&quot; |
+| BALANCER | &quot;balancer&quot; |
+| DBAAS | &quot;dbaas&quot; |
+
+
+

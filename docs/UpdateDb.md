@@ -1,0 +1,18 @@
+
+
+# UpdateDb
+
+Дополнительные параметры конфигурации базы данных.
+
+## Properties
+
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**password** | **String** | Пароль для подключения к базе данных. |  [optional] |
+|**name** | **String** | Название базы данных. |  [optional] |
+|**presetId** | **Integer** | Идентификатор тарифа. |  [optional] |
+|**configParameters** | [**ConfigParameters**](ConfigParameters.md) |  |  [optional] |
+|**isExternalIp** | **Boolean** | Использовать или нет внешний ip. |  [optional] |
+
+
+
