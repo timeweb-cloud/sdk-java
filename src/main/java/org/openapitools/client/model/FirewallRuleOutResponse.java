@@ -21,7 +21,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import org.openapitools.client.model.FirewallRuleOutAPI;
+import org.openapitools.client.model.Rule;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * FirewallRuleOutResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-21T13:36:56.928836Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-21T14:21:17.845880Z[Etc/UTC]")
 public class FirewallRuleOutResponse {
   public static final String SERIALIZED_NAME_RESPONSE_ID = "response_id";
   @SerializedName(SERIALIZED_NAME_RESPONSE_ID)
@@ -59,7 +59,7 @@ public class FirewallRuleOutResponse {
 
   public static final String SERIALIZED_NAME_RULE = "rule";
   @SerializedName(SERIALIZED_NAME_RULE)
-  private FirewallRuleOutAPI rule;
+  private Rule rule;
 
   public FirewallRuleOutResponse() {
   }
@@ -85,7 +85,7 @@ public class FirewallRuleOutResponse {
   }
 
 
-  public FirewallRuleOutResponse rule(FirewallRuleOutAPI rule) {
+  public FirewallRuleOutResponse rule(Rule rule) {
     
     this.rule = rule;
     return this;
@@ -96,12 +96,12 @@ public class FirewallRuleOutResponse {
    * @return rule
   **/
   @javax.annotation.Nonnull
-  public FirewallRuleOutAPI getRule() {
+  public Rule getRule() {
     return rule;
   }
 
 
-  public void setRule(FirewallRuleOutAPI rule) {
+  public void setRule(Rule rule) {
     this.rule = rule;
   }
 
@@ -193,7 +193,7 @@ public class FirewallRuleOutResponse {
         throw new IllegalArgumentException(String.format("Expected the field `response_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("response_id").toString()));
       }
       // validate the required field `rule`
-      FirewallRuleOutAPI.validateJsonElement(jsonObj.get("rule"));
+      Rule.validateJsonElement(jsonObj.get("rule"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

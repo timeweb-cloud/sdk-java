@@ -21,7 +21,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import org.openapitools.client.model.ClusterOut;
+import org.openapitools.client.model.Cluster;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * ClusterResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-21T13:36:56.928836Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-21T14:21:17.845880Z[Etc/UTC]")
 public class ClusterResponse {
   public static final String SERIALIZED_NAME_RESPONSE_ID = "response_id";
   @SerializedName(SERIALIZED_NAME_RESPONSE_ID)
@@ -59,7 +59,7 @@ public class ClusterResponse {
 
   public static final String SERIALIZED_NAME_CLUSTER = "cluster";
   @SerializedName(SERIALIZED_NAME_CLUSTER)
-  private ClusterOut cluster;
+  private Cluster cluster;
 
   public ClusterResponse() {
   }
@@ -85,7 +85,7 @@ public class ClusterResponse {
   }
 
 
-  public ClusterResponse cluster(ClusterOut cluster) {
+  public ClusterResponse cluster(Cluster cluster) {
     
     this.cluster = cluster;
     return this;
@@ -96,12 +96,12 @@ public class ClusterResponse {
    * @return cluster
   **/
   @javax.annotation.Nonnull
-  public ClusterOut getCluster() {
+  public Cluster getCluster() {
     return cluster;
   }
 
 
-  public void setCluster(ClusterOut cluster) {
+  public void setCluster(Cluster cluster) {
     this.cluster = cluster;
   }
 
@@ -193,7 +193,7 @@ public class ClusterResponse {
         throw new IllegalArgumentException(String.format("Expected the field `response_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("response_id").toString()));
       }
       // validate the required field `cluster`
-      ClusterOut.validateJsonElement(jsonObj.get("cluster"));
+      Cluster.validateJsonElement(jsonObj.get("cluster"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

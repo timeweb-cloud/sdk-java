@@ -23,7 +23,6 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import org.openapitools.client.model.S3ObjectOwner;
 
@@ -55,7 +54,7 @@ import org.openapitools.client.JSON;
 /**
  * An object consists of data and its descriptive metadata.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-21T13:36:56.928836Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-21T14:21:17.845880Z[Etc/UTC]")
 public class S3Object {
   public static final String SERIALIZED_NAME_KEY = "key";
   @SerializedName(SERIALIZED_NAME_KEY)
@@ -426,7 +425,7 @@ public class S3Object {
         throw new IllegalArgumentException(String.format("Expected the field `storage_class` to be a primitive type in the JSON string but got `%s`", jsonObj.get("storage_class").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("checksum_algorithm") != null && !jsonObj.get("checksum_algorithm").isJsonNull() && !jsonObj.get("checksum_algorithm").isJsonArray()) {
+      if (jsonObj.get("checksum_algorithm") != null && !jsonObj.get("checksum_algorithm").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `checksum_algorithm` to be an array in the JSON string but got `%s`", jsonObj.get("checksum_algorithm").toString()));
       }
       // validate the optional field `owner`

@@ -26,7 +26,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import com.google.gson.Gson;
@@ -46,12 +45,11 @@ import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonParseException;
 
 import org.openapitools.client.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-21T13:36:56.928836Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-21T14:21:17.845880Z[Etc/UTC]")
 public class Cidr extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(Cidr.class.getName());
 
@@ -64,7 +62,6 @@ public class Cidr extends AbstractOpenApiSchema {
             }
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
             final TypeAdapter<String> adapterString = gson.getDelegateAdapter(this, TypeToken.get(String.class));
-            final TypeAdapter<String> adapterString = gson.getDelegateAdapter(this, TypeToken.get(String.class));
 
             return (TypeAdapter<T>) new TypeAdapter<Cidr>() {
                 @Override
@@ -76,17 +73,12 @@ public class Cidr extends AbstractOpenApiSchema {
 
                     // check if the actual instance is of the type `String`
                     if (value.getActualInstance() instanceof String) {
-                      JsonPrimitive primitive = adapterString.toJsonTree((String)value.getActualInstance()).getAsJsonPrimitive();
-                      elementAdapter.write(out, primitive);
-                      return;
+                        JsonObject obj = adapterString.toJsonTree((String)value.getActualInstance()).getAsJsonObject();
+                        elementAdapter.write(out, obj);
+                        return;
                     }
-                    // check if the actual instance is of the type `String`
-                    if (value.getActualInstance() instanceof String) {
-                      JsonPrimitive primitive = adapterString.toJsonTree((String)value.getActualInstance()).getAsJsonPrimitive();
-                      elementAdapter.write(out, primitive);
-                      return;
-                    }
-                    throw new IOException("Failed to serialize as the type doesn't match anyOf schemae: String");
+
+                    throw new IOException("Failed to serialize as the type doesn't match anyOf schemas: String");
                 }
 
                 @Override
@@ -94,41 +86,21 @@ public class Cidr extends AbstractOpenApiSchema {
                     Object deserialized = null;
                     JsonElement jsonElement = elementAdapter.read(in);
 
-                    ArrayList<String> errorMessages = new ArrayList<>();
-                    TypeAdapter actualAdapter = elementAdapter;
-
                     // deserialize String
                     try {
-                      // validate the JSON object to see if any exception is thrown
-                      if(!jsonElement.getAsJsonPrimitive().isString()) {
-                        throw new IllegalArgumentException(String.format("Expected json element to be of type String in the JSON string but got `%s`", jsonElement.toString()));
-                      }
-                      actualAdapter = adapterString;
-                      Cidr ret = new Cidr();
-                      ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
-                      return ret;
+                        // validate the JSON object to see if any exception is thrown
+                        String.validateJsonElement(jsonElement);
+                        log.log(Level.FINER, "Input data matches schema 'String'");
+                        Cidr ret = new Cidr();
+                        ret.setActualInstance(adapterString.fromJsonTree(jsonElement));
+                        return ret;
                     } catch (Exception e) {
-                      // deserialization failed, continue
-                      errorMessages.add(String.format("Deserialization for String failed with `%s`.", e.getMessage()));
-                      log.log(Level.FINER, "Input data does not match schema 'String'", e);
-                    }
-                    // deserialize String
-                    try {
-                      // validate the JSON object to see if any exception is thrown
-                      if(!jsonElement.getAsJsonPrimitive().isString()) {
-                        throw new IllegalArgumentException(String.format("Expected json element to be of type String in the JSON string but got `%s`", jsonElement.toString()));
-                      }
-                      actualAdapter = adapterString;
-                      Cidr ret = new Cidr();
-                      ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
-                      return ret;
-                    } catch (Exception e) {
-                      // deserialization failed, continue
-                      errorMessages.add(String.format("Deserialization for String failed with `%s`.", e.getMessage()));
-                      log.log(Level.FINER, "Input data does not match schema 'String'", e);
+                        // deserialization failed, continue
+                        log.log(Level.FINER, "Input data does not match schema 'String'", e);
                     }
 
-                    throw new IOException(String.format("Failed deserialization for Cidr: no class matches result, expected at least 1. Detailed failure message for anyOf schemas: %s. JSON: %s", errorMessages, jsonElement.toString()));
+
+                    throw new IOException(String.format("Failed deserialization for Cidr: no class matched. JSON: %s", jsonElement.toString()));
                 }
             }.nullSafe();
         }
@@ -148,7 +120,6 @@ public class Cidr extends AbstractOpenApiSchema {
 
     static {
         schemas.put("String", String.class);
-        schemas.put("String", String.class);
     }
 
     @Override
@@ -162,14 +133,10 @@ public class Cidr extends AbstractOpenApiSchema {
      * String
      *
      * It could be an instance of the 'anyOf' schemas.
+     * The anyOf child schemas may themselves be a composed schema (allOf, anyOf, anyOf).
      */
     @Override
     public void setActualInstance(Object instance) {
-        if (instance instanceof String) {
-            super.setActualInstance(instance);
-            return;
-        }
-
         if (instance instanceof String) {
             super.setActualInstance(instance);
             return;
@@ -199,16 +166,7 @@ public class Cidr extends AbstractOpenApiSchema {
     public String getString() throws ClassCastException {
         return (String)super.getActualInstance();
     }
-    /**
-     * Get the actual instance of `String`. If the actual instance is not `String`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `String`
-     * @throws ClassCastException if the instance is not `String`
-     */
-    public String getString() throws ClassCastException {
-        return (String)super.getActualInstance();
-    }
+
 
  /**
   * Validates the JSON Element and throws an exception if issues found
@@ -218,29 +176,18 @@ public class Cidr extends AbstractOpenApiSchema {
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
     // validate anyOf schemas one by one
-    ArrayList<String> errorMessages = new ArrayList<>();
+    int validCount = 0;
     // validate the json string with String
     try {
-      if(!jsonElement.getAsJsonPrimitive().isString()) {
-        throw new IllegalArgumentException(String.format("Expected json element to be of type String in the JSON string but got `%s`", jsonElement.toString()));
-      }
-      return;
+      String.validateJsonElement(jsonElement);
+      return; // return earlier as at least one schema is valid with respect to the Json object
+      //validCount++;
     } catch (Exception e) {
-      errorMessages.add(String.format("Deserialization for String failed with `%s`.", e.getMessage()));
       // continue to the next one
     }
-    // validate the json string with String
-    try {
-      if(!jsonElement.getAsJsonPrimitive().isString()) {
-        throw new IllegalArgumentException(String.format("Expected json element to be of type String in the JSON string but got `%s`", jsonElement.toString()));
-      }
-      return;
-    } catch (Exception e) {
-      errorMessages.add(String.format("Deserialization for String failed with `%s`.", e.getMessage()));
-      // continue to the next one
+    if (validCount == 0) {
+      throw new IOException(String.format("The JSON string is invalid for Cidr with anyOf schemas: String. JSON: %s", jsonElement.toString()));
     }
-    throw new IOException(String.format("The JSON string is invalid for Cidr with anyOf schemas: String. no class match the result, expected at least 1. Detailed failure message for anyOf schemas: %s. JSON: %s", errorMessages, jsonElement.toString()));
-    
   }
 
  /**

@@ -8,7 +8,7 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**responseId** | **String** | Идентификатор запроса |  [optional] |
-|**resources** | [**Resources**](Resources.md) |  |  |
+|**resources** | [**Resources1**](Resources1.md) |  |  |
 
 
 

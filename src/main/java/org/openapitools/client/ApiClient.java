@@ -1181,15 +1181,12 @@ public class ApiClient {
         // prepare HTTP request body
         RequestBody reqBody;
         String contentType = headerParams.get("Content-Type");
-        String contentTypePure = contentType;
-        if (contentTypePure != null && contentTypePure.contains(";")) {
-            contentTypePure = contentType.substring(0, contentType.indexOf(";"));
-        }
+
         if (!HttpMethod.permitsRequestBody(method)) {
             reqBody = null;
-        } else if ("application/x-www-form-urlencoded".equals(contentTypePure)) {
+        } else if ("application/x-www-form-urlencoded".equals(contentType)) {
             reqBody = buildRequestBodyFormEncoding(formParams);
-        } else if ("multipart/form-data".equals(contentTypePure)) {
+        } else if ("multipart/form-data".equals(contentType)) {
             reqBody = buildRequestBodyMultipart(formParams);
         } else if (body == null) {
             if ("DELETE".equals(method)) {

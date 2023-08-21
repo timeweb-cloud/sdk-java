@@ -20,7 +20,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.UUID;
-import org.openapitools.client.model.ClusterOut;
+import org.openapitools.client.model.Cluster;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 

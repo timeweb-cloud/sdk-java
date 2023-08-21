@@ -22,9 +22,8 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import org.openapitools.client.model.Meta;
+import org.openapitools.client.model.Meta1;
 import org.openapitools.client.model.NodeGroupOut;
 
 import com.google.gson.Gson;
@@ -55,7 +54,7 @@ import org.openapitools.client.JSON;
 /**
  * NodeGroupsResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-21T13:36:56.928836Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-21T14:21:17.845880Z[Etc/UTC]")
 public class NodeGroupsResponse {
   public static final String SERIALIZED_NAME_RESPONSE_ID = "response_id";
   @SerializedName(SERIALIZED_NAME_RESPONSE_ID)
@@ -63,7 +62,7 @@ public class NodeGroupsResponse {
 
   public static final String SERIALIZED_NAME_META = "meta";
   @SerializedName(SERIALIZED_NAME_META)
-  private Meta meta;
+  private Meta1 meta;
 
   public static final String SERIALIZED_NAME_NODE_GROUPS = "node_groups";
   @SerializedName(SERIALIZED_NAME_NODE_GROUPS)
@@ -93,7 +92,7 @@ public class NodeGroupsResponse {
   }
 
 
-  public NodeGroupsResponse meta(Meta meta) {
+  public NodeGroupsResponse meta(Meta1 meta) {
     
     this.meta = meta;
     return this;
@@ -104,12 +103,12 @@ public class NodeGroupsResponse {
    * @return meta
   **/
   @javax.annotation.Nonnull
-  public Meta getMeta() {
+  public Meta1 getMeta() {
     return meta;
   }
 
 
-  public void setMeta(Meta meta) {
+  public void setMeta(Meta1 meta) {
     this.meta = meta;
   }
 
@@ -234,7 +233,7 @@ public class NodeGroupsResponse {
         throw new IllegalArgumentException(String.format("Expected the field `response_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("response_id").toString()));
       }
       // validate the required field `meta`
-      Meta.validateJsonElement(jsonObj.get("meta"));
+      Meta1.validateJsonElement(jsonObj.get("meta"));
       // ensure the json data is an array
       if (!jsonObj.get("node_groups").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `node_groups` to be an array in the JSON string but got `%s`", jsonObj.get("node_groups").toString()));

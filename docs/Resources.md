@@ -8,9 +8,9 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**nodes** | **Integer** | Количество нод |  [optional] |
-|**cores** | [**Resource**](Resource.md) |  |  [optional] |
-|**memory** | [**Resource**](Resource.md) |  |  [optional] |
-|**pods** | [**Resource**](Resource.md) |  |  [optional] |
+|**cores** | [**Cores**](Cores.md) |  |  [optional] |
+|**memory** | [**Memory**](Memory.md) |  |  [optional] |
+|**pods** | [**Pods**](Pods.md) |  |  [optional] |
 
 
 

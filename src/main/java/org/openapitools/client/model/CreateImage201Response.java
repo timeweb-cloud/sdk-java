@@ -22,7 +22,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.UUID;
-import org.openapitools.client.model.ImageOutAPI;
+import org.openapitools.client.model.Image;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * CreateImage201Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-21T13:36:56.928836Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-21T14:21:17.845880Z[Etc/UTC]")
 public class CreateImage201Response {
   public static final String SERIALIZED_NAME_RESPONSE_ID = "response_id";
   @SerializedName(SERIALIZED_NAME_RESPONSE_ID)
@@ -60,7 +60,7 @@ public class CreateImage201Response {
 
   public static final String SERIALIZED_NAME_IMAGE = "image";
   @SerializedName(SERIALIZED_NAME_IMAGE)
-  private ImageOutAPI image;
+  private Image image;
 
   public CreateImage201Response() {
   }
@@ -86,7 +86,7 @@ public class CreateImage201Response {
   }
 
 
-  public CreateImage201Response image(ImageOutAPI image) {
+  public CreateImage201Response image(Image image) {
     
     this.image = image;
     return this;
@@ -97,12 +97,12 @@ public class CreateImage201Response {
    * @return image
   **/
   @javax.annotation.Nonnull
-  public ImageOutAPI getImage() {
+  public Image getImage() {
     return image;
   }
 
 
-  public void setImage(ImageOutAPI image) {
+  public void setImage(Image image) {
     this.image = image;
   }
 
@@ -195,7 +195,7 @@ public class CreateImage201Response {
         throw new IllegalArgumentException(String.format("Expected the field `response_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("response_id").toString()));
       }
       // validate the required field `image`
-      ImageOutAPI.validateJsonElement(jsonObj.get("image"));
+      Image.validateJsonElement(jsonObj.get("image"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

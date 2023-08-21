@@ -21,7 +21,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import org.openapitools.client.model.ImageUrlAuth;
+import org.openapitools.client.model.Auth;
 import org.openapitools.client.model.URLType;
 
 import com.google.gson.Gson;
@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * ImageUrlIn
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-21T13:36:56.928836Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-21T14:21:17.845880Z[Etc/UTC]")
 public class ImageUrlIn {
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
@@ -64,7 +64,7 @@ public class ImageUrlIn {
 
   public static final String SERIALIZED_NAME_AUTH = "auth";
   @SerializedName(SERIALIZED_NAME_AUTH)
-  private ImageUrlAuth auth;
+  private Auth auth;
 
   public ImageUrlIn() {
   }
@@ -111,7 +111,7 @@ public class ImageUrlIn {
   }
 
 
-  public ImageUrlIn auth(ImageUrlAuth auth) {
+  public ImageUrlIn auth(Auth auth) {
     
     this.auth = auth;
     return this;
@@ -122,12 +122,12 @@ public class ImageUrlIn {
    * @return auth
   **/
   @javax.annotation.Nullable
-  public ImageUrlAuth getAuth() {
+  public Auth getAuth() {
     return auth;
   }
 
 
-  public void setAuth(ImageUrlAuth auth) {
+  public void setAuth(Auth auth) {
     this.auth = auth;
   }
 
@@ -215,7 +215,7 @@ public class ImageUrlIn {
       }
       // validate the optional field `auth`
       if (jsonObj.get("auth") != null && !jsonObj.get("auth").isJsonNull()) {
-        ImageUrlAuth.validateJsonElement(jsonObj.get("auth"));
+        Auth.validateJsonElement(jsonObj.get("auth"));
       }
   }
 

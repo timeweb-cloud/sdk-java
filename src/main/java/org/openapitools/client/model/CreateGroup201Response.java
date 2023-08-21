@@ -22,7 +22,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.UUID;
-import org.openapitools.client.model.FirewallGroupOutAPI;
+import org.openapitools.client.model.Group;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * CreateGroup201Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-21T13:36:56.928836Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-21T14:21:17.845880Z[Etc/UTC]")
 public class CreateGroup201Response {
   public static final String SERIALIZED_NAME_RESPONSE_ID = "response_id";
   @SerializedName(SERIALIZED_NAME_RESPONSE_ID)
@@ -60,7 +60,7 @@ public class CreateGroup201Response {
 
   public static final String SERIALIZED_NAME_GROUP = "group";
   @SerializedName(SERIALIZED_NAME_GROUP)
-  private FirewallGroupOutAPI group;
+  private Group group;
 
   public CreateGroup201Response() {
   }
@@ -86,7 +86,7 @@ public class CreateGroup201Response {
   }
 
 
-  public CreateGroup201Response group(FirewallGroupOutAPI group) {
+  public CreateGroup201Response group(Group group) {
     
     this.group = group;
     return this;
@@ -97,12 +97,12 @@ public class CreateGroup201Response {
    * @return group
   **/
   @javax.annotation.Nonnull
-  public FirewallGroupOutAPI getGroup() {
+  public Group getGroup() {
     return group;
   }
 
 
-  public void setGroup(FirewallGroupOutAPI group) {
+  public void setGroup(Group group) {
     this.group = group;
   }
 
@@ -195,7 +195,7 @@ public class CreateGroup201Response {
         throw new IllegalArgumentException(String.format("Expected the field `response_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("response_id").toString()));
       }
       // validate the required field `group`
-      FirewallGroupOutAPI.validateJsonElement(jsonObj.get("group"));
+      Group.validateJsonElement(jsonObj.get("group"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

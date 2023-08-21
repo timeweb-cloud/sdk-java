@@ -8,7 +8,7 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**responseId** | **String** | Идентификатор запроса |  [optional] |
-|**image** | [**ImageOutAPI**](ImageOutAPI.md) |  |  |
+|**image** | [**Image**](Image.md) |  |  |
 
 
 

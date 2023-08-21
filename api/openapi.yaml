@@ -36327,10 +36327,7 @@ components:
           title: Response Id
           type: string
         meta:
-          allOf:
-          - $ref: '#/components/schemas/Meta'
-          description: Вспомогательная информация о возвращаемой сущности
-          title: Meta
+          $ref: '#/components/schemas/Meta_1'
         images:
           description: Массив объектов Образ
           items:
@@ -36414,10 +36411,7 @@ components:
           title: Response Id
           type: string
         image:
-          allOf:
-          - $ref: '#/components/schemas/ImageOutAPI'
-          description: Образ
-          title: Image
+          $ref: '#/components/schemas/Image'
       required:
       - image
       title: ImageOutResponse
@@ -36525,10 +36519,7 @@ components:
           title: Response Id
           type: string
         meta:
-          allOf:
-          - $ref: '#/components/schemas/Meta'
-          description: Вспомогательная информация о возвращаемой сущности
-          title: Meta
+          $ref: '#/components/schemas/Meta_1'
         downloads:
           description: Массив объектов "Ссылка на загрузку"
           items:
@@ -36585,10 +36576,7 @@ components:
           title: Filename
           type: string
         auth:
-          allOf:
-          - $ref: '#/components/schemas/ImageUrlAuth'
-          description: Данные для аутентификации в облачном хранилище
-          title: Auth
+          $ref: '#/components/schemas/Auth'
       title: ImageUrlIn
       type: object
     ImageDownloadResponse:
@@ -36598,10 +36586,7 @@ components:
           title: Response Id
           type: string
         download:
-          allOf:
-          - $ref: '#/components/schemas/ImageDownloadAPI'
-          description: Объект ссылки на загрузку
-          title: Download
+          $ref: '#/components/schemas/Download'
       required:
       - download
       title: ImageDownloadResponse
@@ -36645,10 +36630,7 @@ components:
           title: Response Id
           type: string
         meta:
-          allOf:
-          - $ref: '#/components/schemas/Meta'
-          description: Вспомогательная информация о возвращаемой сущности
-          title: Meta
+          $ref: '#/components/schemas/Meta_1'
         groups:
           description: Массив объектов Групп правил
           items:
@@ -36684,10 +36666,7 @@ components:
           title: Response Id
           type: string
         group:
-          allOf:
-          - $ref: '#/components/schemas/FirewallGroupOutAPI'
-          description: Группа правил
-          title: Group
+          $ref: '#/components/schemas/Group'
       required:
       - group
       title: FirewallGroupOutResponse
@@ -36720,10 +36699,7 @@ components:
           title: Response Id
           type: string
         meta:
-          allOf:
-          - $ref: '#/components/schemas/Meta'
-          description: Вспомогательная информация о возвращаемой сущности
-          title: Meta
+          $ref: '#/components/schemas/Meta_1'
         resources:
           items:
             $ref: '#/components/schemas/FirewallGroupResourceOutAPI'
@@ -36804,10 +36780,7 @@ components:
           title: Response Id
           type: string
         meta:
-          allOf:
-          - $ref: '#/components/schemas/Meta'
-          description: Вспомогательная информация о возвращаемой сущности
-          title: Meta
+          $ref: '#/components/schemas/Meta_1'
         rules:
           description: Массив объектов Firewall правил
           items:
@@ -36857,10 +36830,7 @@ components:
           title: Response Id
           type: string
         rule:
-          allOf:
-          - $ref: '#/components/schemas/FirewallRuleOutAPI'
-          description: Firewall правило
-          title: Rule
+          $ref: '#/components/schemas/Rule'
       required:
       - rule
       title: FirewallRuleOutResponse
@@ -38554,10 +38524,7 @@ components:
           title: Response Id
           type: string
         meta:
-          allOf:
-          - $ref: '#/components/schemas/Meta'
-          description: Вспомогательная информация о возвращаемой сущности
-          title: Meta
+          $ref: '#/components/schemas/Meta_1'
         clusters:
           description: Массив объектов Кластер
           items:
@@ -38684,10 +38651,7 @@ components:
           title: Response Id
           type: string
         cluster:
-          allOf:
-          - $ref: '#/components/schemas/ClusterOut'
-          description: Кластер
-          title: Cluster
+          $ref: '#/components/schemas/Cluster'
       required:
       - cluster
       title: ClusterResponse
@@ -38735,35 +38699,11 @@ components:
           title: Nodes
           type: integer
         cores:
-          allOf:
-          - $ref: '#/components/schemas/Resource'
-          default:
-            requested: 0
-            allocatable: 0
-            capacity: 0
-            used: 0
-          description: Процессорный ресурс
-          title: Cores
+          $ref: '#/components/schemas/Cores'
         memory:
-          allOf:
-          - $ref: '#/components/schemas/Resource'
-          default:
-            requested: 0
-            allocatable: 0
-            capacity: 0
-            used: 0
-          description: Ресурс по памяти
-          title: Memory
+          $ref: '#/components/schemas/Memory'
         pods:
-          allOf:
-          - $ref: '#/components/schemas/Resource'
-          default:
-            requested: 0
-            allocatable: 0
-            capacity: 0
-            used: 0
-          description: Поды в кластере
-          title: Pods
+          $ref: '#/components/schemas/Pods'
       title: Resources
       type: object
     ResourcesResponse:
@@ -38773,10 +38713,7 @@ components:
           title: Response Id
           type: string
         resources:
-          allOf:
-          - $ref: '#/components/schemas/Resources'
-          description: Ресурсы кластера
-          title: Resources
+          $ref: '#/components/schemas/Resources_1'
       required:
       - resources
       title: ResourcesResponse
@@ -38819,10 +38756,7 @@ components:
           title: Response Id
           type: string
         meta:
-          allOf:
-          - $ref: '#/components/schemas/Meta'
-          description: Вспомогательная информация о возвращаемой сущности
-          title: Meta
+          $ref: '#/components/schemas/Meta_1'
         node_groups:
           description: Массив объектов Группа нод
           items:
@@ -38841,10 +38775,7 @@ components:
           title: Response Id
           type: string
         node_group:
-          allOf:
-          - $ref: '#/components/schemas/NodeGroupOut'
-          description: Группа нод
-          title: Node Group
+          $ref: '#/components/schemas/Node_Group'
       required:
       - node_group
       title: NodeGroupResponse
@@ -38912,10 +38843,7 @@ components:
           title: Response Id
           type: string
         meta:
-          allOf:
-          - $ref: '#/components/schemas/Meta'
-          description: Вспомогательная информация о возвращаемой сущности
-          title: Meta
+          $ref: '#/components/schemas/Meta_1'
         nodes:
           description: Массив объектов Нода
           items:
@@ -38948,10 +38876,7 @@ components:
           title: Response Id
           type: string
         meta:
-          allOf:
-          - $ref: '#/components/schemas/Meta'
-          description: Вспомогательная информация о возвращаемой сущности
-          title: Meta
+          $ref: '#/components/schemas/Meta_1'
         k8s_versions:
           description: Массив версий k8s
           items:
@@ -38970,10 +38895,7 @@ components:
           title: Response Id
           type: string
         meta:
-          allOf:
-          - $ref: '#/components/schemas/Meta'
-          description: Вспомогательная информация о возвращаемой сущности
-          title: Meta
+          $ref: '#/components/schemas/Meta_1'
         network_drivers:
           description: Массив сетевых драйверов k8s
           items:
@@ -39101,10 +39023,7 @@ components:
           title: Response Id
           type: string
         meta:
-          allOf:
-          - $ref: '#/components/schemas/Meta'
-          description: Вспомогательная информация о возвращаемой сущности
-          title: Meta
+          $ref: '#/components/schemas/Meta_1'
         k8s_presets:
           description: Массив тарифов k8s
           items:
@@ -44332,12 +44251,37 @@ components:
       - sms
       - telegram
       type: object
+    Meta_1:
+      allOf:
+      - $ref: '#/components/schemas/Meta'
+      description: Вспомогательная информация о возвращаемой сущности
+      title: Meta
     Message:
       anyOf:
       - type: string
       - items: {}
         type: array
       title: Message
+    Image:
+      allOf:
+      - $ref: '#/components/schemas/ImageOutAPI'
+      description: Образ
+      title: Image
+    Auth:
+      allOf:
+      - $ref: '#/components/schemas/ImageUrlAuth'
+      description: Данные для аутентификации в облачном хранилище
+      title: Auth
+    Download:
+      allOf:
+      - $ref: '#/components/schemas/ImageDownloadAPI'
+      description: Объект ссылки на загрузку
+      title: Download
+    Group:
+      allOf:
+      - $ref: '#/components/schemas/FirewallGroupOutAPI'
+      description: Группа правил
+      title: Group
     Cidr:
       anyOf:
       - format: ipv4
@@ -44346,6 +44290,11 @@ components:
         type: string
       description: Сетевой адрес или подсеть. Поддерживаются протоколы IPv4  и IPv6
       title: Cidr
+    Rule:
+      allOf:
+      - $ref: '#/components/schemas/FirewallRuleOutAPI'
+      description: Firewall правило
+      title: Rule
     database_cluster_networks_inner_ips_inner:
       properties:
         type:
@@ -44565,6 +44514,51 @@ components:
       - description
       - size
       type: object
+    Cluster:
+      allOf:
+      - $ref: '#/components/schemas/ClusterOut'
+      description: Кластер
+      title: Cluster
+    Cores:
+      allOf:
+      - $ref: '#/components/schemas/Resource'
+      default:
+        requested: 0
+        allocatable: 0
+        capacity: 0
+        used: 0
+      description: Процессорный ресурс
+      title: Cores
+    Memory:
+      allOf:
+      - $ref: '#/components/schemas/Resource'
+      default:
+        requested: 0
+        allocatable: 0
+        capacity: 0
+        used: 0
+      description: Ресурс по памяти
+      title: Memory
+    Pods:
+      allOf:
+      - $ref: '#/components/schemas/Resource'
+      default:
+        requested: 0
+        allocatable: 0
+        capacity: 0
+        used: 0
+      description: Поды в кластере
+      title: Pods
+    Resources_1:
+      allOf:
+      - $ref: '#/components/schemas/Resources'
+      description: Ресурсы кластера
+      title: Resources
+    Node_Group:
+      allOf:
+      - $ref: '#/components/schemas/NodeGroupOut'
+      description: Группа нод
+      title: Node Group
     K8S_Presets_inner:
       discriminator:
         mapping:

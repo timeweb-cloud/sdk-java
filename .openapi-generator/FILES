@@ -32,6 +32,7 @@ docs/AddSubdomain201Response.md
 docs/AddedSubdomain.md
 docs/ApiKey.md
 docs/ApiKeysApi.md
+docs/Auth.md
 docs/AutoBackup.md
 docs/AutoReplyIsDisabled.md
 docs/AutoReplyIsEnabled.md
@@ -45,6 +46,7 @@ docs/BucketDiskStats.md
 docs/BucketUser.md
 docs/CheckDomain200Response.md
 docs/Cidr.md
+docs/Cluster.md
 docs/ClusterEdit.md
 docs/ClusterIn.md
 docs/ClusterOut.md
@@ -53,6 +55,7 @@ docs/Clusterk8s.md
 docs/ClustersResponse.md
 docs/ConfigParameters.md
 docs/CopyStorageFileRequest.md
+docs/Cores.md
 docs/CreateAdmin.md
 docs/CreateApiKey.md
 docs/CreateBalancer.md
@@ -145,6 +148,7 @@ docs/DomainPaymentPeriod.md
 docs/DomainPrimeType.md
 docs/DomainRequest.md
 docs/DomainsApi.md
+docs/Download.md
 docs/EditApiKey.md
 docs/Finances.md
 docs/FirewallApi.md
@@ -255,6 +259,8 @@ docs/GetTokens200Response.md
 docs/GetVPCPorts200Response.md
 docs/GetVPCServices200Response.md
 docs/GetVPCs200Response.md
+docs/Group.md
+docs/Image.md
 docs/ImageDownloadAPI.md
 docs/ImageDownloadResponse.md
 docs/ImageDownloadsResponse.md
@@ -279,11 +285,14 @@ docs/MailboxForwardingIncoming.md
 docs/MailboxForwardingOutgoing.md
 docs/MailboxSpamFilter.md
 docs/MasterPresetOutApi.md
+docs/Memory.md
 docs/Message.md
 docs/Meta.md
+docs/Meta1.md
 docs/Network.md
 docs/NetworkDriversResponse.md
 docs/NodeCount.md
+docs/NodeGroup.md
 docs/NodeGroupIn.md
 docs/NodeGroupOut.md
 docs/NodeGroupResponse.md
@@ -297,6 +306,7 @@ docs/NotificationSettingType.md
 docs/OS.md
 docs/PerformActionOnBackupRequest.md
 docs/PerformActionOnServerRequest.md
+docs/Pods.md
 docs/PresetsBalancer.md
 docs/PresetsDbs.md
 docs/PresetsResponse.md
@@ -316,6 +326,7 @@ docs/Resource.md
 docs/ResourceTransfer.md
 docs/ResourceType.md
 docs/Resources.md
+docs/Resources1.md
 docs/ResourcesResponse.md
 docs/Rule.md
 docs/S3Api.md
@@ -471,6 +482,7 @@ src/main/java/org/openapitools/client/model/AddStorageToProjectRequest.java
 src/main/java/org/openapitools/client/model/AddSubdomain201Response.java
 src/main/java/org/openapitools/client/model/AddedSubdomain.java
 src/main/java/org/openapitools/client/model/ApiKey.java
+src/main/java/org/openapitools/client/model/Auth.java
 src/main/java/org/openapitools/client/model/AutoBackup.java
 src/main/java/org/openapitools/client/model/AutoReplyIsDisabled.java
 src/main/java/org/openapitools/client/model/AutoReplyIsEnabled.java
@@ -483,6 +495,7 @@ src/main/java/org/openapitools/client/model/BucketDiskStats.java
 src/main/java/org/openapitools/client/model/BucketUser.java
 src/main/java/org/openapitools/client/model/CheckDomain200Response.java
 src/main/java/org/openapitools/client/model/Cidr.java
+src/main/java/org/openapitools/client/model/Cluster.java
 src/main/java/org/openapitools/client/model/ClusterEdit.java
 src/main/java/org/openapitools/client/model/ClusterIn.java
 src/main/java/org/openapitools/client/model/ClusterOut.java
@@ -491,6 +504,7 @@ src/main/java/org/openapitools/client/model/Clusterk8s.java
 src/main/java/org/openapitools/client/model/ClustersResponse.java
 src/main/java/org/openapitools/client/model/ConfigParameters.java
 src/main/java/org/openapitools/client/model/CopyStorageFileRequest.java
+src/main/java/org/openapitools/client/model/Cores.java
 src/main/java/org/openapitools/client/model/CreateAdmin.java
 src/main/java/org/openapitools/client/model/CreateApiKey.java
 src/main/java/org/openapitools/client/model/CreateBalancer.java
@@ -580,6 +594,7 @@ src/main/java/org/openapitools/client/model/DomainNameServerItemsInner.java
 src/main/java/org/openapitools/client/model/DomainPaymentPeriod.java
 src/main/java/org/openapitools/client/model/DomainPrimeType.java
 src/main/java/org/openapitools/client/model/DomainRequest.java
+src/main/java/org/openapitools/client/model/Download.java
 src/main/java/org/openapitools/client/model/EditApiKey.java
 src/main/java/org/openapitools/client/model/Finances.java
 src/main/java/org/openapitools/client/model/FirewallGroupInAPI.java
@@ -689,6 +704,8 @@ src/main/java/org/openapitools/client/model/GetTokens200Response.java
 src/main/java/org/openapitools/client/model/GetVPCPorts200Response.java
 src/main/java/org/openapitools/client/model/GetVPCServices200Response.java
 src/main/java/org/openapitools/client/model/GetVPCs200Response.java
+src/main/java/org/openapitools/client/model/Group.java
+src/main/java/org/openapitools/client/model/Image.java
 src/main/java/org/openapitools/client/model/ImageDownloadAPI.java
 src/main/java/org/openapitools/client/model/ImageDownloadResponse.java
 src/main/java/org/openapitools/client/model/ImageDownloadsResponse.java
@@ -710,11 +727,14 @@ src/main/java/org/openapitools/client/model/MailboxForwardingIncoming.java
 src/main/java/org/openapitools/client/model/MailboxForwardingOutgoing.java
 src/main/java/org/openapitools/client/model/MailboxSpamFilter.java
 src/main/java/org/openapitools/client/model/MasterPresetOutApi.java
+src/main/java/org/openapitools/client/model/Memory.java
 src/main/java/org/openapitools/client/model/Message.java
 src/main/java/org/openapitools/client/model/Meta.java
+src/main/java/org/openapitools/client/model/Meta1.java
 src/main/java/org/openapitools/client/model/Network.java
 src/main/java/org/openapitools/client/model/NetworkDriversResponse.java
 src/main/java/org/openapitools/client/model/NodeCount.java
+src/main/java/org/openapitools/client/model/NodeGroup.java
 src/main/java/org/openapitools/client/model/NodeGroupIn.java
 src/main/java/org/openapitools/client/model/NodeGroupOut.java
 src/main/java/org/openapitools/client/model/NodeGroupResponse.java
@@ -728,6 +748,7 @@ src/main/java/org/openapitools/client/model/NotificationSettingType.java
 src/main/java/org/openapitools/client/model/OS.java
 src/main/java/org/openapitools/client/model/PerformActionOnBackupRequest.java
 src/main/java/org/openapitools/client/model/PerformActionOnServerRequest.java
+src/main/java/org/openapitools/client/model/Pods.java
 src/main/java/org/openapitools/client/model/PresetsBalancer.java
 src/main/java/org/openapitools/client/model/PresetsDbs.java
 src/main/java/org/openapitools/client/model/PresetsResponse.java
@@ -746,6 +767,7 @@ src/main/java/org/openapitools/client/model/Resource.java
 src/main/java/org/openapitools/client/model/ResourceTransfer.java
 src/main/java/org/openapitools/client/model/ResourceType.java
 src/main/java/org/openapitools/client/model/Resources.java
+src/main/java/org/openapitools/client/model/Resources1.java
 src/main/java/org/openapitools/client/model/ResourcesResponse.java
 src/main/java/org/openapitools/client/model/Rule.java
 src/main/java/org/openapitools/client/model/S3Object.java
@@ -870,6 +892,7 @@ src/test/java/org/openapitools/client/model/AddStorageToProjectRequestTest.java
 src/test/java/org/openapitools/client/model/AddSubdomain201ResponseTest.java
 src/test/java/org/openapitools/client/model/AddedSubdomainTest.java
 src/test/java/org/openapitools/client/model/ApiKeyTest.java
+src/test/java/org/openapitools/client/model/AuthTest.java
 src/test/java/org/openapitools/client/model/AutoBackupTest.java
 src/test/java/org/openapitools/client/model/AutoReplyIsDisabledTest.java
 src/test/java/org/openapitools/client/model/AutoReplyIsEnabledTest.java
@@ -886,10 +909,12 @@ src/test/java/org/openapitools/client/model/ClusterEditTest.java
 src/test/java/org/openapitools/client/model/ClusterInTest.java
 src/test/java/org/openapitools/client/model/ClusterOutTest.java
 src/test/java/org/openapitools/client/model/ClusterResponseTest.java
+src/test/java/org/openapitools/client/model/ClusterTest.java
 src/test/java/org/openapitools/client/model/Clusterk8sTest.java
 src/test/java/org/openapitools/client/model/ClustersResponseTest.java
 src/test/java/org/openapitools/client/model/ConfigParametersTest.java
 src/test/java/org/openapitools/client/model/CopyStorageFileRequestTest.java
+src/test/java/org/openapitools/client/model/CoresTest.java
 src/test/java/org/openapitools/client/model/CreateAdminTest.java
 src/test/java/org/openapitools/client/model/CreateApiKeyTest.java
 src/test/java/org/openapitools/client/model/CreateBalancer200ResponseTest.java
@@ -979,6 +1004,7 @@ src/test/java/org/openapitools/client/model/DomainPaymentPeriodTest.java
 src/test/java/org/openapitools/client/model/DomainPrimeTypeTest.java
 src/test/java/org/openapitools/client/model/DomainRequestTest.java
 src/test/java/org/openapitools/client/model/DomainTest.java
+src/test/java/org/openapitools/client/model/DownloadTest.java
 src/test/java/org/openapitools/client/model/EditApiKeyTest.java
 src/test/java/org/openapitools/client/model/FinancesTest.java
 src/test/java/org/openapitools/client/model/FirewallGroupInAPITest.java
@@ -1088,6 +1114,7 @@ src/test/java/org/openapitools/client/model/GetTokens200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetVPCPorts200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetVPCServices200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetVPCs200ResponseTest.java
+src/test/java/org/openapitools/client/model/GroupTest.java
 src/test/java/org/openapitools/client/model/ImageDownloadAPITest.java
 src/test/java/org/openapitools/client/model/ImageDownloadResponseTest.java
 src/test/java/org/openapitools/client/model/ImageDownloadsResponseTest.java
@@ -1095,6 +1122,7 @@ src/test/java/org/openapitools/client/model/ImageInAPITest.java
 src/test/java/org/openapitools/client/model/ImageOutAPITest.java
 src/test/java/org/openapitools/client/model/ImageOutResponseTest.java
 src/test/java/org/openapitools/client/model/ImageStatusTest.java
+src/test/java/org/openapitools/client/model/ImageTest.java
 src/test/java/org/openapitools/client/model/ImageUpdateAPITest.java
 src/test/java/org/openapitools/client/model/ImageUrlAuthTest.java
 src/test/java/org/openapitools/client/model/ImageUrlInTest.java
@@ -1109,7 +1137,9 @@ src/test/java/org/openapitools/client/model/MailboxForwardingOutgoingTest.java
 src/test/java/org/openapitools/client/model/MailboxSpamFilterTest.java
 src/test/java/org/openapitools/client/model/MailboxTest.java
 src/test/java/org/openapitools/client/model/MasterPresetOutApiTest.java
+src/test/java/org/openapitools/client/model/MemoryTest.java
 src/test/java/org/openapitools/client/model/MessageTest.java
+src/test/java/org/openapitools/client/model/Meta1Test.java
 src/test/java/org/openapitools/client/model/MetaTest.java
 src/test/java/org/openapitools/client/model/NetworkDriversResponseTest.java
 src/test/java/org/openapitools/client/model/NetworkTest.java
@@ -1117,6 +1147,7 @@ src/test/java/org/openapitools/client/model/NodeCountTest.java
 src/test/java/org/openapitools/client/model/NodeGroupInTest.java
 src/test/java/org/openapitools/client/model/NodeGroupOutTest.java
 src/test/java/org/openapitools/client/model/NodeGroupResponseTest.java
+src/test/java/org/openapitools/client/model/NodeGroupTest.java
 src/test/java/org/openapitools/client/model/NodeGroupsResponseTest.java
 src/test/java/org/openapitools/client/model/NodeOutTest.java
 src/test/java/org/openapitools/client/model/NodesResponseTest.java
@@ -1127,6 +1158,7 @@ src/test/java/org/openapitools/client/model/NotificationSettingTypeTest.java
 src/test/java/org/openapitools/client/model/OSTest.java
 src/test/java/org/openapitools/client/model/PerformActionOnBackupRequestTest.java
 src/test/java/org/openapitools/client/model/PerformActionOnServerRequestTest.java
+src/test/java/org/openapitools/client/model/PodsTest.java
 src/test/java/org/openapitools/client/model/PresetsBalancerTest.java
 src/test/java/org/openapitools/client/model/PresetsDbsTest.java
 src/test/java/org/openapitools/client/model/PresetsResponseTest.java
@@ -1144,6 +1176,7 @@ src/test/java/org/openapitools/client/model/RenameStorageFileRequestTest.java
 src/test/java/org/openapitools/client/model/ResourceTest.java
 src/test/java/org/openapitools/client/model/ResourceTransferTest.java
 src/test/java/org/openapitools/client/model/ResourceTypeTest.java
+src/test/java/org/openapitools/client/model/Resources1Test.java
 src/test/java/org/openapitools/client/model/ResourcesResponseTest.java
 src/test/java/org/openapitools/client/model/ResourcesTest.java
 src/test/java/org/openapitools/client/model/RuleTest.java

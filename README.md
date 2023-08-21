@@ -2,7 +2,7 @@
 
 Timeweb Cloud API
 - API version: 
-  - Build date: 2023-08-21T13:36:56.928836Z[Etc/UTC]
+  - Build date: 2023-08-21T14:21:17.845880Z[Etc/UTC]
 
 # Введение
 API Timeweb Cloud позволяет вам управлять ресурсами в облаке программным способом с использованием обычных HTTP-запросов.
@@ -523,6 +523,7 @@ Class | Method | HTTP request | Description
  - [AddSubdomain201Response](docs/AddSubdomain201Response.md)
  - [AddedSubdomain](docs/AddedSubdomain.md)
  - [ApiKey](docs/ApiKey.md)
+ - [Auth](docs/Auth.md)
  - [AutoBackup](docs/AutoBackup.md)
  - [AutoReplyIsDisabled](docs/AutoReplyIsDisabled.md)
  - [AutoReplyIsEnabled](docs/AutoReplyIsEnabled.md)
@@ -535,6 +536,7 @@ Class | Method | HTTP request | Description
  - [BucketUser](docs/BucketUser.md)
  - [CheckDomain200Response](docs/CheckDomain200Response.md)
  - [Cidr](docs/Cidr.md)
+ - [Cluster](docs/Cluster.md)
  - [ClusterEdit](docs/ClusterEdit.md)
  - [ClusterIn](docs/ClusterIn.md)
  - [ClusterOut](docs/ClusterOut.md)
@@ -543,6 +545,7 @@ Class | Method | HTTP request | Description
  - [ClustersResponse](docs/ClustersResponse.md)
  - [ConfigParameters](docs/ConfigParameters.md)
  - [CopyStorageFileRequest](docs/CopyStorageFileRequest.md)
+ - [Cores](docs/Cores.md)
  - [CreateAdmin](docs/CreateAdmin.md)
  - [CreateApiKey](docs/CreateApiKey.md)
  - [CreateBalancer](docs/CreateBalancer.md)
@@ -632,6 +635,7 @@ Class | Method | HTTP request | Description
  - [DomainPaymentPeriod](docs/DomainPaymentPeriod.md)
  - [DomainPrimeType](docs/DomainPrimeType.md)
  - [DomainRequest](docs/DomainRequest.md)
+ - [Download](docs/Download.md)
  - [EditApiKey](docs/EditApiKey.md)
  - [Finances](docs/Finances.md)
  - [FirewallGroupInAPI](docs/FirewallGroupInAPI.md)
@@ -741,6 +745,8 @@ Class | Method | HTTP request | Description
  - [GetVPCPorts200Response](docs/GetVPCPorts200Response.md)
  - [GetVPCServices200Response](docs/GetVPCServices200Response.md)
  - [GetVPCs200Response](docs/GetVPCs200Response.md)
+ - [Group](docs/Group.md)
+ - [Image](docs/Image.md)
  - [ImageDownloadAPI](docs/ImageDownloadAPI.md)
  - [ImageDownloadResponse](docs/ImageDownloadResponse.md)
  - [ImageDownloadsResponse](docs/ImageDownloadsResponse.md)
@@ -762,11 +768,14 @@ Class | Method | HTTP request | Description
  - [MailboxForwardingOutgoing](docs/MailboxForwardingOutgoing.md)
  - [MailboxSpamFilter](docs/MailboxSpamFilter.md)
  - [MasterPresetOutApi](docs/MasterPresetOutApi.md)
+ - [Memory](docs/Memory.md)
  - [Message](docs/Message.md)
  - [Meta](docs/Meta.md)
+ - [Meta1](docs/Meta1.md)
  - [Network](docs/Network.md)
  - [NetworkDriversResponse](docs/NetworkDriversResponse.md)
  - [NodeCount](docs/NodeCount.md)
+ - [NodeGroup](docs/NodeGroup.md)
  - [NodeGroupIn](docs/NodeGroupIn.md)
  - [NodeGroupOut](docs/NodeGroupOut.md)
  - [NodeGroupResponse](docs/NodeGroupResponse.md)
@@ -780,6 +789,7 @@ Class | Method | HTTP request | Description
  - [OS](docs/OS.md)
  - [PerformActionOnBackupRequest](docs/PerformActionOnBackupRequest.md)
  - [PerformActionOnServerRequest](docs/PerformActionOnServerRequest.md)
+ - [Pods](docs/Pods.md)
  - [PresetsBalancer](docs/PresetsBalancer.md)
  - [PresetsDbs](docs/PresetsDbs.md)
  - [PresetsResponse](docs/PresetsResponse.md)
@@ -798,6 +808,7 @@ Class | Method | HTTP request | Description
  - [ResourceTransfer](docs/ResourceTransfer.md)
  - [ResourceType](docs/ResourceType.md)
  - [Resources](docs/Resources.md)
+ - [Resources1](docs/Resources1.md)
  - [ResourcesResponse](docs/ResourcesResponse.md)
  - [Rule](docs/Rule.md)
  - [S3Object](docs/S3Object.md)

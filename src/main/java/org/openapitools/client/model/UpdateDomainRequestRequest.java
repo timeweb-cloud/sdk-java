@@ -62,7 +62,7 @@ import com.google.gson.JsonParseException;
 
 import org.openapitools.client.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-21T13:36:56.928836Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-21T14:21:17.845880Z[Etc/UTC]")
 public class UpdateDomainRequestRequest extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(UpdateDomainRequestRequest.class.getName());
 
@@ -229,6 +229,7 @@ public class UpdateDomainRequestRequest extends AbstractOpenApiSchema {
      * Bonus, Free, Invoice, Use
      *
      * It could be an instance of the 'oneOf' schemas.
+     * The oneOf child schemas may themselves be a composed schema (allOf, anyOf, oneOf).
      */
     @Override
     public void setActualInstance(Object instance) {

@@ -9,7 +9,7 @@
 |------------ | ------------- | ------------- | -------------|
 |**type** | **URLType** |  |  [optional] |
 |**filename** | **String** | Имя файла для загрузки в облачное хранилище |  [optional] |
-|**auth** | [**ImageUrlAuth**](ImageUrlAuth.md) |  |  [optional] |
+|**auth** | [**Auth**](Auth.md) |  |  [optional] |
 
 
 

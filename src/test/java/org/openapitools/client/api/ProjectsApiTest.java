@@ -21,7 +21,6 @@ import org.openapitools.client.model.AddDatabaseToProjectRequest;
 import org.openapitools.client.model.AddDedicatedServerToProjectRequest;
 import org.openapitools.client.model.AddServerToProjectRequest;
 import org.openapitools.client.model.AddStorageToProjectRequest;
-import java.math.BigDecimal;
 import org.openapitools.client.model.CreateProject;
 import org.openapitools.client.model.CreateProject201Response;
 import org.openapitools.client.model.GetAllProjectResources200Response;
