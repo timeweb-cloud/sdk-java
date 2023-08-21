@@ -2,7 +2,7 @@
 
 Timeweb Cloud API
 - API version: 
-  - Build date: 2023-08-21T11:05:55.388769Z[Etc/UTC]
+  - Build date: 2023-08-21T13:36:56.928836Z[Etc/UTC]
 
 # Введение
 API Timeweb Cloud позволяет вам управлять ресурсами в облаке программным способом с использованием обычных HTTP-запросов.

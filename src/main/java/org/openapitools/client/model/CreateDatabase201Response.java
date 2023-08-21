@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * CreateDatabase201Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-21T11:05:55.388769Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-21T13:36:56.928836Z[Etc/UTC]")
 public class CreateDatabase201Response {
   public static final String SERIALIZED_NAME_DB = "db";
   @SerializedName(SERIALIZED_NAME_DB)

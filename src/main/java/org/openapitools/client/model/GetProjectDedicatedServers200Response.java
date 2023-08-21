@@ -56,7 +56,7 @@ import org.openapitools.client.JSON;
 /**
  * GetProjectDedicatedServers200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-21T11:05:55.388769Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-21T13:36:56.928836Z[Etc/UTC]")
 public class GetProjectDedicatedServers200Response {
   public static final String SERIALIZED_NAME_DEDICATED_SERVERS = "dedicated_servers";
   @SerializedName(SERIALIZED_NAME_DEDICATED_SERVERS)
