@@ -20,8 +20,8 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.UUID;
 import org.openapitools.client.model.AutoBackup;
 import org.openapitools.client.model.Meta;
 import org.junit.jupiter.api.Disabled;
@@ -55,14 +55,6 @@ public class GetDatabaseAutoBackupsSettings200ResponseTest {
     @Test
     public void autoBackupsSettingsTest() {
         // TODO: test autoBackupsSettings
-    }
-
-    /**
-     * Test the property 'responseId'
-     */
-    @Test
-    public void responseIdTest() {
-        // TODO: test responseId
     }
 
 }

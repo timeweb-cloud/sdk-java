@@ -20,12 +20,12 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.UUID;
-import org.openapitools.client.model.GetServerStatistics200ResponseAllOfCpuInner;
-import org.openapitools.client.model.GetServerStatistics200ResponseAllOfDiskInner;
-import org.openapitools.client.model.GetServerStatistics200ResponseAllOfNetworkTrafficInner;
-import org.openapitools.client.model.GetServerStatistics200ResponseAllOfRamInner;
+import org.openapitools.client.model.GetServerStatistics200ResponseCpuInner;
+import org.openapitools.client.model.GetServerStatistics200ResponseDiskInner;
+import org.openapitools.client.model.GetServerStatistics200ResponseNetworkTrafficInner;
+import org.openapitools.client.model.GetServerStatistics200ResponseRamInner;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -73,14 +73,6 @@ public class GetServerStatistics200ResponseTest {
     @Test
     public void ramTest() {
         // TODO: test ram
-    }
-
-    /**
-     * Test the property 'responseId'
-     */
-    @Test
-    public void responseIdTest() {
-        // TODO: test responseId
     }
 
 }

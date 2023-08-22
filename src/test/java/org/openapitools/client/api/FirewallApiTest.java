@@ -14,19 +14,19 @@
 package org.openapitools.client.api;
 
 import org.openapitools.client.ApiException;
-import org.openapitools.client.model.AddResourceToGroup201Response;
-import org.openapitools.client.model.CreateGroup201Response;
-import org.openapitools.client.model.CreateGroupRule201Response;
 import org.openapitools.client.model.FirewallGroupInAPI;
+import org.openapitools.client.model.FirewallGroupOutResponse;
+import org.openapitools.client.model.FirewallGroupResourceOutResponse;
+import org.openapitools.client.model.FirewallGroupResourcesOutResponse;
+import org.openapitools.client.model.FirewallGroupsOutResponse;
 import org.openapitools.client.model.FirewallRuleInAPI;
+import org.openapitools.client.model.FirewallRuleOutResponse;
+import org.openapitools.client.model.FirewallRulesOutResponse;
 import org.openapitools.client.model.GetFinances400Response;
 import org.openapitools.client.model.GetFinances401Response;
 import org.openapitools.client.model.GetFinances404Response;
 import org.openapitools.client.model.GetFinances429Response;
 import org.openapitools.client.model.GetFinances500Response;
-import org.openapitools.client.model.GetGroupResources200Response;
-import org.openapitools.client.model.GetGroupRules200Response;
-import org.openapitools.client.model.GetGroups200Response;
 import org.openapitools.client.model.ResourceType;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -56,7 +56,7 @@ public class FirewallApiTest {
         String groupId = null;
         String resourceId = null;
         ResourceType resourceType = null;
-        AddResourceToGroup201Response response = api.addResourceToGroup(groupId, resourceId, resourceType);
+        FirewallGroupResourceOutResponse response = api.addResourceToGroup(groupId, resourceId, resourceType);
         // TODO: test validations
     }
 
@@ -70,7 +70,7 @@ public class FirewallApiTest {
     @Test
     public void createGroupTest() throws ApiException {
         FirewallGroupInAPI firewallGroupInAPI = null;
-        CreateGroup201Response response = api.createGroup(firewallGroupInAPI);
+        FirewallGroupOutResponse response = api.createGroup(firewallGroupInAPI);
         // TODO: test validations
     }
 
@@ -85,7 +85,7 @@ public class FirewallApiTest {
     public void createGroupRuleTest() throws ApiException {
         String groupId = null;
         FirewallRuleInAPI firewallRuleInAPI = null;
-        CreateGroupRule201Response response = api.createGroupRule(groupId, firewallRuleInAPI);
+        FirewallRuleOutResponse response = api.createGroupRule(groupId, firewallRuleInAPI);
         // TODO: test validations
     }
 
@@ -144,7 +144,7 @@ public class FirewallApiTest {
     @Test
     public void getGroupTest() throws ApiException {
         String groupId = null;
-        CreateGroup201Response response = api.getGroup(groupId);
+        FirewallGroupOutResponse response = api.getGroup(groupId);
         // TODO: test validations
     }
 
@@ -160,7 +160,7 @@ public class FirewallApiTest {
         String groupId = null;
         Integer limit = null;
         Integer offset = null;
-        GetGroupResources200Response response = api.getGroupResources(groupId, limit, offset);
+        FirewallGroupResourcesOutResponse response = api.getGroupResources(groupId, limit, offset);
         // TODO: test validations
     }
 
@@ -175,7 +175,7 @@ public class FirewallApiTest {
     public void getGroupRuleTest() throws ApiException {
         String ruleId = null;
         String groupId = null;
-        CreateGroupRule201Response response = api.getGroupRule(ruleId, groupId);
+        FirewallRuleOutResponse response = api.getGroupRule(ruleId, groupId);
         // TODO: test validations
     }
 
@@ -191,7 +191,7 @@ public class FirewallApiTest {
         String groupId = null;
         Integer limit = null;
         Integer offset = null;
-        GetGroupRules200Response response = api.getGroupRules(groupId, limit, offset);
+        FirewallRulesOutResponse response = api.getGroupRules(groupId, limit, offset);
         // TODO: test validations
     }
 
@@ -206,7 +206,7 @@ public class FirewallApiTest {
     public void getGroupsTest() throws ApiException {
         Integer limit = null;
         Integer offset = null;
-        GetGroups200Response response = api.getGroups(limit, offset);
+        FirewallGroupsOutResponse response = api.getGroups(limit, offset);
         // TODO: test validations
     }
 
@@ -223,7 +223,7 @@ public class FirewallApiTest {
         ResourceType resourceType = null;
         Integer limit = null;
         Integer offset = null;
-        GetGroups200Response response = api.getRulesForResource(resourceId, resourceType, limit, offset);
+        FirewallGroupsOutResponse response = api.getRulesForResource(resourceId, resourceType, limit, offset);
         // TODO: test validations
     }
 
@@ -238,7 +238,7 @@ public class FirewallApiTest {
     public void updateGroupTest() throws ApiException {
         String groupId = null;
         FirewallGroupInAPI firewallGroupInAPI = null;
-        CreateGroup201Response response = api.updateGroup(groupId, firewallGroupInAPI);
+        FirewallGroupOutResponse response = api.updateGroup(groupId, firewallGroupInAPI);
         // TODO: test validations
     }
 
@@ -254,7 +254,7 @@ public class FirewallApiTest {
         String groupId = null;
         String ruleId = null;
         FirewallRuleInAPI firewallRuleInAPI = null;
-        CreateGroupRule201Response response = api.updateGroupRule(groupId, ruleId, firewallRuleInAPI);
+        FirewallRuleOutResponse response = api.updateGroupRule(groupId, ruleId, firewallRuleInAPI);
         // TODO: test validations
     }
 

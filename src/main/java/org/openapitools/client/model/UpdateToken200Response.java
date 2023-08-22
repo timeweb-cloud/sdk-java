@@ -21,7 +21,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.UUID;
 import org.openapitools.client.model.ApiKey;
 
 import com.google.gson.Gson;
@@ -52,15 +51,11 @@ import org.openapitools.client.JSON;
 /**
  * UpdateToken200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-21T14:21:17.845880Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-22T13:06:16.524188Z[Etc/UTC]")
 public class UpdateToken200Response {
   public static final String SERIALIZED_NAME_API_KEY = "api_key";
   @SerializedName(SERIALIZED_NAME_API_KEY)
   private ApiKey apiKey;
-
-  public static final String SERIALIZED_NAME_RESPONSE_ID = "response_id";
-  @SerializedName(SERIALIZED_NAME_RESPONSE_ID)
-  private UUID responseId;
 
   public UpdateToken200Response() {
   }
@@ -86,27 +81,6 @@ public class UpdateToken200Response {
   }
 
 
-  public UpdateToken200Response responseId(UUID responseId) {
-    
-    this.responseId = responseId;
-    return this;
-  }
-
-   /**
-   * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
-   * @return responseId
-  **/
-  @javax.annotation.Nonnull
-  public UUID getResponseId() {
-    return responseId;
-  }
-
-
-  public void setResponseId(UUID responseId) {
-    this.responseId = responseId;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -117,13 +91,12 @@ public class UpdateToken200Response {
       return false;
     }
     UpdateToken200Response updateToken200Response = (UpdateToken200Response) o;
-    return Objects.equals(this.apiKey, updateToken200Response.apiKey) &&
-        Objects.equals(this.responseId, updateToken200Response.responseId);
+    return Objects.equals(this.apiKey, updateToken200Response.apiKey);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(apiKey, responseId);
+    return Objects.hash(apiKey);
   }
 
   @Override
@@ -131,7 +104,6 @@ public class UpdateToken200Response {
     StringBuilder sb = new StringBuilder();
     sb.append("class UpdateToken200Response {\n");
     sb.append("    apiKey: ").append(toIndentedString(apiKey)).append("\n");
-    sb.append("    responseId: ").append(toIndentedString(responseId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -155,12 +127,10 @@ public class UpdateToken200Response {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("api_key");
-    openapiFields.add("response_id");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("api_key");
-    openapiRequiredFields.add("response_id");
   }
 
  /**
@@ -193,9 +163,6 @@ public class UpdateToken200Response {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the required field `api_key`
       ApiKey.validateJsonElement(jsonObj.get("api_key"));
-      if (!jsonObj.get("response_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `response_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("response_id").toString()));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

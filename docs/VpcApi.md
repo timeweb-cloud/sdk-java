@@ -88,7 +88,7 @@ public class Example {
 
 <a id="deleteVPC"></a>
 # **deleteVPC**
-> DeleteVPC204Response deleteVPC(vpcId)
+> CreateVPC201Response deleteVPC(vpcId)
 
 Удаление VPC по идентификатору сети
 
@@ -116,7 +116,7 @@ public class Example {
     VpcApi apiInstance = new VpcApi(defaultClient);
     String vpcId = "network-1234567890"; // String | Идентификатор сети
     try {
-      DeleteVPC204Response result = apiInstance.deleteVPC(vpcId);
+      CreateVPC201Response result = apiInstance.deleteVPC(vpcId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling VpcApi#deleteVPC");
@@ -137,7 +137,7 @@ public class Example {
 
 ### Return type
 
-[**DeleteVPC204Response**](DeleteVPC204Response.md)
+[**CreateVPC201Response**](CreateVPC201Response.md)
 
 ### Authorization
 

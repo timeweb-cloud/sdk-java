@@ -21,9 +21,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import org.openapitools.client.model.Cidr;
-import org.openapitools.client.model.FirewallRuleDirection;
-import org.openapitools.client.model.FirewallRuleProtocol;
+import java.math.BigDecimal;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -51,185 +49,237 @@ import java.util.Set;
 import org.openapitools.client.JSON;
 
 /**
- * Firewall правило
+ * Правило для балансировщика
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-21T14:21:17.845880Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-22T13:06:16.524188Z[Etc/UTC]")
 public class Rule {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private String id;
+  private BigDecimal id;
 
-  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
-  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
-  private String description;
+  /**
+   * Протокол балансировщика.
+   */
+  @JsonAdapter(BalancerProtoEnum.Adapter.class)
+  public enum BalancerProtoEnum {
+    HTTP("http"),
+    
+    HTTP2("http2"),
+    
+    HTTPS("https"),
+    
+    TCP("tcp");
 
-  public static final String SERIALIZED_NAME_DIRECTION = "direction";
-  @SerializedName(SERIALIZED_NAME_DIRECTION)
-  private FirewallRuleDirection direction;
+    private String value;
 
-  public static final String SERIALIZED_NAME_PROTOCOL = "protocol";
-  @SerializedName(SERIALIZED_NAME_PROTOCOL)
-  private FirewallRuleProtocol protocol;
+    BalancerProtoEnum(String value) {
+      this.value = value;
+    }
 
-  public static final String SERIALIZED_NAME_PORT = "port";
-  @SerializedName(SERIALIZED_NAME_PORT)
-  private String port;
+    public String getValue() {
+      return value;
+    }
 
-  public static final String SERIALIZED_NAME_CIDR = "cidr";
-  @SerializedName(SERIALIZED_NAME_CIDR)
-  private Cidr cidr;
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
 
-  public static final String SERIALIZED_NAME_GROUP_ID = "group_id";
-  @SerializedName(SERIALIZED_NAME_GROUP_ID)
-  private String groupId;
+    public static BalancerProtoEnum fromValue(String value) {
+      for (BalancerProtoEnum b : BalancerProtoEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<BalancerProtoEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final BalancerProtoEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public BalancerProtoEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return BalancerProtoEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_BALANCER_PROTO = "balancer_proto";
+  @SerializedName(SERIALIZED_NAME_BALANCER_PROTO)
+  private BalancerProtoEnum balancerProto;
+
+  public static final String SERIALIZED_NAME_BALANCER_PORT = "balancer_port";
+  @SerializedName(SERIALIZED_NAME_BALANCER_PORT)
+  private BigDecimal balancerPort;
+
+  /**
+   * Протокол сервера.
+   */
+  @JsonAdapter(ServerProtoEnum.Adapter.class)
+  public enum ServerProtoEnum {
+    HTTP("http"),
+    
+    HTTP2("http2"),
+    
+    HTTPS("https"),
+    
+    TCP("tcp");
+
+    private String value;
+
+    ServerProtoEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static ServerProtoEnum fromValue(String value) {
+      for (ServerProtoEnum b : ServerProtoEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<ServerProtoEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final ServerProtoEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public ServerProtoEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return ServerProtoEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_SERVER_PROTO = "server_proto";
+  @SerializedName(SERIALIZED_NAME_SERVER_PROTO)
+  private ServerProtoEnum serverProto;
+
+  public static final String SERIALIZED_NAME_SERVER_PORT = "server_port";
+  @SerializedName(SERIALIZED_NAME_SERVER_PORT)
+  private BigDecimal serverPort;
 
   public Rule() {
   }
 
-  public Rule id(String id) {
+  public Rule id(BigDecimal id) {
     
     this.id = id;
     return this;
   }
 
    /**
-   * Идентификатор правила
+   * Уникальный идентификатор для каждого экземпляра правила для балансировщика. Автоматически генерируется при создании.
    * @return id
   **/
   @javax.annotation.Nonnull
-  public String getId() {
+  public BigDecimal getId() {
     return id;
   }
 
 
-  public void setId(String id) {
+  public void setId(BigDecimal id) {
     this.id = id;
   }
 
 
-  public Rule description(String description) {
+  public Rule balancerProto(BalancerProtoEnum balancerProto) {
     
-    this.description = description;
+    this.balancerProto = balancerProto;
     return this;
   }
 
    /**
-   * Описание правила
-   * @return description
+   * Протокол балансировщика.
+   * @return balancerProto
   **/
   @javax.annotation.Nonnull
-  public String getDescription() {
-    return description;
+  public BalancerProtoEnum getBalancerProto() {
+    return balancerProto;
   }
 
 
-  public void setDescription(String description) {
-    this.description = description;
+  public void setBalancerProto(BalancerProtoEnum balancerProto) {
+    this.balancerProto = balancerProto;
   }
 
 
-  public Rule direction(FirewallRuleDirection direction) {
+  public Rule balancerPort(BigDecimal balancerPort) {
     
-    this.direction = direction;
+    this.balancerPort = balancerPort;
     return this;
   }
 
    /**
-   * Get direction
-   * @return direction
+   * Порт балансировщика.
+   * @return balancerPort
   **/
   @javax.annotation.Nonnull
-  public FirewallRuleDirection getDirection() {
-    return direction;
+  public BigDecimal getBalancerPort() {
+    return balancerPort;
   }
 
 
-  public void setDirection(FirewallRuleDirection direction) {
-    this.direction = direction;
+  public void setBalancerPort(BigDecimal balancerPort) {
+    this.balancerPort = balancerPort;
   }
 
 
-  public Rule protocol(FirewallRuleProtocol protocol) {
+  public Rule serverProto(ServerProtoEnum serverProto) {
     
-    this.protocol = protocol;
+    this.serverProto = serverProto;
     return this;
   }
 
    /**
-   * Get protocol
-   * @return protocol
+   * Протокол сервера.
+   * @return serverProto
   **/
   @javax.annotation.Nonnull
-  public FirewallRuleProtocol getProtocol() {
-    return protocol;
+  public ServerProtoEnum getServerProto() {
+    return serverProto;
   }
 
 
-  public void setProtocol(FirewallRuleProtocol protocol) {
-    this.protocol = protocol;
+  public void setServerProto(ServerProtoEnum serverProto) {
+    this.serverProto = serverProto;
   }
 
 
-  public Rule port(String port) {
+  public Rule serverPort(BigDecimal serverPort) {
     
-    this.port = port;
+    this.serverPort = serverPort;
     return this;
   }
 
    /**
-   * Порт или диапазон портов, в случае tcp или udp
-   * @return port
-  **/
-  @javax.annotation.Nullable
-  public String getPort() {
-    return port;
-  }
-
-
-  public void setPort(String port) {
-    this.port = port;
-  }
-
-
-  public Rule cidr(Cidr cidr) {
-    
-    this.cidr = cidr;
-    return this;
-  }
-
-   /**
-   * Get cidr
-   * @return cidr
-  **/
-  @javax.annotation.Nullable
-  public Cidr getCidr() {
-    return cidr;
-  }
-
-
-  public void setCidr(Cidr cidr) {
-    this.cidr = cidr;
-  }
-
-
-  public Rule groupId(String groupId) {
-    
-    this.groupId = groupId;
-    return this;
-  }
-
-   /**
-   * Идентификатор группы правил
-   * @return groupId
+   * Порт сервера.
+   * @return serverPort
   **/
   @javax.annotation.Nonnull
-  public String getGroupId() {
-    return groupId;
+  public BigDecimal getServerPort() {
+    return serverPort;
   }
 
 
-  public void setGroupId(String groupId) {
-    this.groupId = groupId;
+  public void setServerPort(BigDecimal serverPort) {
+    this.serverPort = serverPort;
   }
 
 
@@ -244,17 +294,15 @@ public class Rule {
     }
     Rule rule = (Rule) o;
     return Objects.equals(this.id, rule.id) &&
-        Objects.equals(this.description, rule.description) &&
-        Objects.equals(this.direction, rule.direction) &&
-        Objects.equals(this.protocol, rule.protocol) &&
-        Objects.equals(this.port, rule.port) &&
-        Objects.equals(this.cidr, rule.cidr) &&
-        Objects.equals(this.groupId, rule.groupId);
+        Objects.equals(this.balancerProto, rule.balancerProto) &&
+        Objects.equals(this.balancerPort, rule.balancerPort) &&
+        Objects.equals(this.serverProto, rule.serverProto) &&
+        Objects.equals(this.serverPort, rule.serverPort);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, description, direction, protocol, port, cidr, groupId);
+    return Objects.hash(id, balancerProto, balancerPort, serverProto, serverPort);
   }
 
   @Override
@@ -262,12 +310,10 @@ public class Rule {
     StringBuilder sb = new StringBuilder();
     sb.append("class Rule {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    direction: ").append(toIndentedString(direction)).append("\n");
-    sb.append("    protocol: ").append(toIndentedString(protocol)).append("\n");
-    sb.append("    port: ").append(toIndentedString(port)).append("\n");
-    sb.append("    cidr: ").append(toIndentedString(cidr)).append("\n");
-    sb.append("    groupId: ").append(toIndentedString(groupId)).append("\n");
+    sb.append("    balancerProto: ").append(toIndentedString(balancerProto)).append("\n");
+    sb.append("    balancerPort: ").append(toIndentedString(balancerPort)).append("\n");
+    sb.append("    serverProto: ").append(toIndentedString(serverProto)).append("\n");
+    sb.append("    serverPort: ").append(toIndentedString(serverPort)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -291,20 +337,18 @@ public class Rule {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("id");
-    openapiFields.add("description");
-    openapiFields.add("direction");
-    openapiFields.add("protocol");
-    openapiFields.add("port");
-    openapiFields.add("cidr");
-    openapiFields.add("group_id");
+    openapiFields.add("balancer_proto");
+    openapiFields.add("balancer_port");
+    openapiFields.add("server_proto");
+    openapiFields.add("server_port");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("id");
-    openapiRequiredFields.add("description");
-    openapiRequiredFields.add("direction");
-    openapiRequiredFields.add("protocol");
-    openapiRequiredFields.add("group_id");
+    openapiRequiredFields.add("balancer_proto");
+    openapiRequiredFields.add("balancer_port");
+    openapiRequiredFields.add("server_proto");
+    openapiRequiredFields.add("server_port");
   }
 
  /**
@@ -335,21 +379,11 @@ public class Rule {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      if (!jsonObj.get("balancer_proto").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `balancer_proto` to be a primitive type in the JSON string but got `%s`", jsonObj.get("balancer_proto").toString()));
       }
-      if (!jsonObj.get("description").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
-      }
-      if ((jsonObj.get("port") != null && !jsonObj.get("port").isJsonNull()) && !jsonObj.get("port").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `port` to be a primitive type in the JSON string but got `%s`", jsonObj.get("port").toString()));
-      }
-      // validate the optional field `cidr`
-      if (jsonObj.get("cidr") != null && !jsonObj.get("cidr").isJsonNull()) {
-        Cidr.validateJsonElement(jsonObj.get("cidr"));
-      }
-      if (!jsonObj.get("group_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `group_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("group_id").toString()));
+      if (!jsonObj.get("server_proto").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `server_proto` to be a primitive type in the JSON string but got `%s`", jsonObj.get("server_proto").toString()));
       }
   }
 

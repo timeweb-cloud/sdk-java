@@ -21,7 +21,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import org.openapitools.client.model.Resources1;
+import org.openapitools.client.model.Resources;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * ResourcesResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-21T14:21:17.845880Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-22T13:06:16.524188Z[Etc/UTC]")
 public class ResourcesResponse {
   public static final String SERIALIZED_NAME_RESPONSE_ID = "response_id";
   @SerializedName(SERIALIZED_NAME_RESPONSE_ID)
@@ -59,7 +59,7 @@ public class ResourcesResponse {
 
   public static final String SERIALIZED_NAME_RESOURCES = "resources";
   @SerializedName(SERIALIZED_NAME_RESOURCES)
-  private Resources1 resources;
+  private Resources resources;
 
   public ResourcesResponse() {
   }
@@ -85,7 +85,7 @@ public class ResourcesResponse {
   }
 
 
-  public ResourcesResponse resources(Resources1 resources) {
+  public ResourcesResponse resources(Resources resources) {
     
     this.resources = resources;
     return this;
@@ -96,12 +96,12 @@ public class ResourcesResponse {
    * @return resources
   **/
   @javax.annotation.Nonnull
-  public Resources1 getResources() {
+  public Resources getResources() {
     return resources;
   }
 
 
-  public void setResources(Resources1 resources) {
+  public void setResources(Resources resources) {
     this.resources = resources;
   }
 
@@ -193,7 +193,7 @@ public class ResourcesResponse {
         throw new IllegalArgumentException(String.format("Expected the field `response_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("response_id").toString()));
       }
       // validate the required field `resources`
-      Resources1.validateJsonElement(jsonObj.get("resources"));
+      Resources.validateJsonElement(jsonObj.get("resources"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

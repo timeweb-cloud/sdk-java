@@ -23,7 +23,6 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.UUID;
-import org.openapitools.client.model.GetFinances500ResponseMessage;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -53,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * GetFinances500Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-21T14:21:17.845880Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-22T13:06:16.524188Z[Etc/UTC]")
 public class GetFinances500Response {
   public static final String SERIALIZED_NAME_STATUS_CODE = "status_code";
   @SerializedName(SERIALIZED_NAME_STATUS_CODE)
@@ -61,7 +60,7 @@ public class GetFinances500Response {
 
   public static final String SERIALIZED_NAME_MESSAGE = "message";
   @SerializedName(SERIALIZED_NAME_MESSAGE)
-  private GetFinances500ResponseMessage message;
+  private String message;
 
   public static final String SERIALIZED_NAME_ERROR_CODE = "error_code";
   @SerializedName(SERIALIZED_NAME_ERROR_CODE)
@@ -95,23 +94,23 @@ public class GetFinances500Response {
   }
 
 
-  public GetFinances500Response message(GetFinances500ResponseMessage message) {
+  public GetFinances500Response message(String message) {
     
     this.message = message;
     return this;
   }
 
    /**
-   * Get message
+   * Сообщение, предоставляющее дополнительную информацию об ошибке, в том числе сведения, помогающие устранить ее, когда это возможно.
    * @return message
   **/
   @javax.annotation.Nullable
-  public GetFinances500ResponseMessage getMessage() {
+  public String getMessage() {
     return message;
   }
 
 
-  public void setMessage(GetFinances500ResponseMessage message) {
+  public void setMessage(String message) {
     this.message = message;
   }
 
@@ -249,9 +248,8 @@ public class GetFinances500Response {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the optional field `message`
-      if (jsonObj.get("message") != null && !jsonObj.get("message").isJsonNull()) {
-        GetFinances500ResponseMessage.validateJsonElement(jsonObj.get("message"));
+      if ((jsonObj.get("message") != null && !jsonObj.get("message").isJsonNull()) && !jsonObj.get("message").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `message` to be a primitive type in the JSON string but got `%s`", jsonObj.get("message").toString()));
       }
       if (!jsonObj.get("error_code").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `error_code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("error_code").toString()));

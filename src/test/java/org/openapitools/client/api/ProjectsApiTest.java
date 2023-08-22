@@ -64,7 +64,7 @@ public class ProjectsApiTest {
      */
     @Test
     public void addBalancerToProjectTest() throws ApiException {
-        BigDecimal projectId = null;
+        Integer projectId = null;
         AddBalancerToProjectRequest addBalancerToProjectRequest = null;
         AddBalancerToProject200Response response = api.addBalancerToProject(projectId, addBalancerToProjectRequest);
         // TODO: test validations
@@ -79,7 +79,7 @@ public class ProjectsApiTest {
      */
     @Test
     public void addClusterToProjectTest() throws ApiException {
-        BigDecimal projectId = null;
+        Integer projectId = null;
         AddClusterToProjectRequest addClusterToProjectRequest = null;
         AddBalancerToProject200Response response = api.addClusterToProject(projectId, addClusterToProjectRequest);
         // TODO: test validations
@@ -94,7 +94,7 @@ public class ProjectsApiTest {
      */
     @Test
     public void addDatabaseToProjectTest() throws ApiException {
-        BigDecimal projectId = null;
+        Integer projectId = null;
         AddDatabaseToProjectRequest addDatabaseToProjectRequest = null;
         AddBalancerToProject200Response response = api.addDatabaseToProject(projectId, addDatabaseToProjectRequest);
         // TODO: test validations
@@ -109,7 +109,7 @@ public class ProjectsApiTest {
      */
     @Test
     public void addDedicatedServerToProjectTest() throws ApiException {
-        BigDecimal projectId = null;
+        Integer projectId = null;
         AddDedicatedServerToProjectRequest addDedicatedServerToProjectRequest = null;
         AddBalancerToProject200Response response = api.addDedicatedServerToProject(projectId, addDedicatedServerToProjectRequest);
         // TODO: test validations
@@ -124,7 +124,7 @@ public class ProjectsApiTest {
      */
     @Test
     public void addServerToProjectTest() throws ApiException {
-        BigDecimal projectId = null;
+        Integer projectId = null;
         AddServerToProjectRequest addServerToProjectRequest = null;
         AddBalancerToProject200Response response = api.addServerToProject(projectId, addServerToProjectRequest);
         // TODO: test validations
@@ -139,7 +139,7 @@ public class ProjectsApiTest {
      */
     @Test
     public void addStorageToProjectTest() throws ApiException {
-        BigDecimal projectId = null;
+        Integer projectId = null;
         AddStorageToProjectRequest addStorageToProjectRequest = null;
         AddBalancerToProject200Response response = api.addStorageToProject(projectId, addStorageToProjectRequest);
         // TODO: test validations
@@ -168,7 +168,7 @@ public class ProjectsApiTest {
      */
     @Test
     public void deleteProjectTest() throws ApiException {
-        BigDecimal projectId = null;
+        Integer projectId = null;
         api.deleteProject(projectId);
         // TODO: test validations
     }
@@ -260,7 +260,7 @@ public class ProjectsApiTest {
      */
     @Test
     public void getAllProjectResourcesTest() throws ApiException {
-        BigDecimal projectId = null;
+        Integer projectId = null;
         GetAllProjectResources200Response response = api.getAllProjectResources(projectId);
         // TODO: test validations
     }
@@ -274,7 +274,7 @@ public class ProjectsApiTest {
      */
     @Test
     public void getProjectTest() throws ApiException {
-        BigDecimal projectId = null;
+        Integer projectId = null;
         CreateProject201Response response = api.getProject(projectId);
         // TODO: test validations
     }
@@ -288,7 +288,7 @@ public class ProjectsApiTest {
      */
     @Test
     public void getProjectBalancersTest() throws ApiException {
-        BigDecimal projectId = null;
+        Integer projectId = null;
         GetProjectBalancers200Response response = api.getProjectBalancers(projectId);
         // TODO: test validations
     }
@@ -302,7 +302,7 @@ public class ProjectsApiTest {
      */
     @Test
     public void getProjectClustersTest() throws ApiException {
-        BigDecimal projectId = null;
+        Integer projectId = null;
         GetProjectClusters200Response response = api.getProjectClusters(projectId);
         // TODO: test validations
     }
@@ -316,7 +316,7 @@ public class ProjectsApiTest {
      */
     @Test
     public void getProjectDatabasesTest() throws ApiException {
-        BigDecimal projectId = null;
+        Integer projectId = null;
         GetProjectDatabases200Response response = api.getProjectDatabases(projectId);
         // TODO: test validations
     }
@@ -330,7 +330,7 @@ public class ProjectsApiTest {
      */
     @Test
     public void getProjectDedicatedServersTest() throws ApiException {
-        BigDecimal projectId = null;
+        Integer projectId = null;
         GetProjectDedicatedServers200Response response = api.getProjectDedicatedServers(projectId);
         // TODO: test validations
     }
@@ -344,7 +344,7 @@ public class ProjectsApiTest {
      */
     @Test
     public void getProjectServersTest() throws ApiException {
-        BigDecimal projectId = null;
+        Integer projectId = null;
         GetProjectServers200Response response = api.getProjectServers(projectId);
         // TODO: test validations
     }
@@ -358,7 +358,7 @@ public class ProjectsApiTest {
      */
     @Test
     public void getProjectStoragesTest() throws ApiException {
-        BigDecimal projectId = null;
+        Integer projectId = null;
         GetProjectStorages200Response response = api.getProjectStorages(projectId);
         // TODO: test validations
     }
@@ -385,7 +385,7 @@ public class ProjectsApiTest {
      */
     @Test
     public void transferResourceToAnotherProjectTest() throws ApiException {
-        BigDecimal projectId = null;
+        Integer projectId = null;
         ResourceTransfer resourceTransfer = null;
         AddBalancerToProject200Response response = api.transferResourceToAnotherProject(projectId, resourceTransfer);
         // TODO: test validations
@@ -400,7 +400,7 @@ public class ProjectsApiTest {
      */
     @Test
     public void updateProjectTest() throws ApiException {
-        BigDecimal projectId = null;
+        Integer projectId = null;
         UpdateProject updateProject = null;
         CreateProject201Response response = api.updateProject(projectId, updateProject);
         // TODO: test validations

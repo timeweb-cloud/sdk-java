@@ -9,7 +9,7 @@
 |------------ | ------------- | ------------- | -------------|
 |**statusCode** | **Integer** |  |  |
 |**errorCode** | **String** |  |  |
-|**message** | [**Message**](Message.md) |  |  |
+|**message** | **String** |  |  |
 |**responseId** | **String** |  |  [optional] |
 
 

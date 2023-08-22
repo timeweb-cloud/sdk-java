@@ -28,19 +28,19 @@ import java.io.IOException;
 
 
 import org.openapitools.client.model.BaseError;
-import org.openapitools.client.model.CreateImage201Response;
-import org.openapitools.client.model.CreateImageDownloadUrl201Response;
 import org.openapitools.client.model.GetFinances400Response;
 import org.openapitools.client.model.GetFinances401Response;
 import org.openapitools.client.model.GetFinances404Response;
 import org.openapitools.client.model.GetFinances429Response;
 import org.openapitools.client.model.GetFinances500Response;
-import org.openapitools.client.model.GetImageDownloadURLs200Response;
-import org.openapitools.client.model.GetImages200Response;
+import org.openapitools.client.model.ImageDownloadResponse;
+import org.openapitools.client.model.ImageDownloadsResponse;
 import org.openapitools.client.model.ImageInAPI;
+import org.openapitools.client.model.ImageOutResponse;
 import org.openapitools.client.model.ImageUpdateAPI;
 import org.openapitools.client.model.ImageUrlIn;
-import org.openapitools.client.model.UploadImage200Response;
+import org.openapitools.client.model.ImagesOutResponse;
+import org.openapitools.client.model.UploadSuccessfulResponse;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -161,7 +161,7 @@ public class ImagesApi {
      * Создание образа
      * Чтобы создать образ, отправьте POST запрос в &#x60;/api/v1/images&#x60;, задав необходимые атрибуты.   Для загрузки собственного образа вам нужно отправить параметры &#x60;location&#x60;, &#x60;os&#x60; и не указывать &#x60;disk_id&#x60;. Поддерживается два способа загрузки:  1. По ссылке. Для этого укажите &#x60;upload_url&#x60; с ссылкой на загрузку образа 2. Из файла. Для этого воспользуйтесь методом POST &#x60;/api/v1/images/{image_id}&#x60; Образ будет создан с использованием предоставленной информации.    Тело ответа будет содержать объект JSON с информацией о созданном образе.
      * @param imageInAPI  (required)
-     * @return CreateImage201Response
+     * @return ImageOutResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -173,8 +173,8 @@ public class ImagesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public CreateImage201Response createImage(ImageInAPI imageInAPI) throws ApiException {
-        ApiResponse<CreateImage201Response> localVarResp = createImageWithHttpInfo(imageInAPI);
+    public ImageOutResponse createImage(ImageInAPI imageInAPI) throws ApiException {
+        ApiResponse<ImageOutResponse> localVarResp = createImageWithHttpInfo(imageInAPI);
         return localVarResp.getData();
     }
 
@@ -182,7 +182,7 @@ public class ImagesApi {
      * Создание образа
      * Чтобы создать образ, отправьте POST запрос в &#x60;/api/v1/images&#x60;, задав необходимые атрибуты.   Для загрузки собственного образа вам нужно отправить параметры &#x60;location&#x60;, &#x60;os&#x60; и не указывать &#x60;disk_id&#x60;. Поддерживается два способа загрузки:  1. По ссылке. Для этого укажите &#x60;upload_url&#x60; с ссылкой на загрузку образа 2. Из файла. Для этого воспользуйтесь методом POST &#x60;/api/v1/images/{image_id}&#x60; Образ будет создан с использованием предоставленной информации.    Тело ответа будет содержать объект JSON с информацией о созданном образе.
      * @param imageInAPI  (required)
-     * @return ApiResponse&lt;CreateImage201Response&gt;
+     * @return ApiResponse&lt;ImageOutResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -194,9 +194,9 @@ public class ImagesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CreateImage201Response> createImageWithHttpInfo(ImageInAPI imageInAPI) throws ApiException {
+    public ApiResponse<ImageOutResponse> createImageWithHttpInfo(ImageInAPI imageInAPI) throws ApiException {
         okhttp3.Call localVarCall = createImageValidateBeforeCall(imageInAPI, null);
-        Type localVarReturnType = new TypeToken<CreateImage201Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<ImageOutResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -217,10 +217,10 @@ public class ImagesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createImageAsync(ImageInAPI imageInAPI, final ApiCallback<CreateImage201Response> _callback) throws ApiException {
+    public okhttp3.Call createImageAsync(ImageInAPI imageInAPI, final ApiCallback<ImageOutResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createImageValidateBeforeCall(imageInAPI, _callback);
-        Type localVarReturnType = new TypeToken<CreateImage201Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<ImageOutResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -310,7 +310,7 @@ public class ImagesApi {
      * Чтобы создать ссылку на скачивание образа, отправьте запрос POST в &#x60;/api/v1/images/{image_id}/download-url&#x60;.
      * @param imageId Идентификатор образа (required)
      * @param imageUrlIn  (required)
-     * @return CreateImageDownloadUrl201Response
+     * @return ImageDownloadResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -324,8 +324,8 @@ public class ImagesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public CreateImageDownloadUrl201Response createImageDownloadUrl(String imageId, ImageUrlIn imageUrlIn) throws ApiException {
-        ApiResponse<CreateImageDownloadUrl201Response> localVarResp = createImageDownloadUrlWithHttpInfo(imageId, imageUrlIn);
+    public ImageDownloadResponse createImageDownloadUrl(String imageId, ImageUrlIn imageUrlIn) throws ApiException {
+        ApiResponse<ImageDownloadResponse> localVarResp = createImageDownloadUrlWithHttpInfo(imageId, imageUrlIn);
         return localVarResp.getData();
     }
 
@@ -334,7 +334,7 @@ public class ImagesApi {
      * Чтобы создать ссылку на скачивание образа, отправьте запрос POST в &#x60;/api/v1/images/{image_id}/download-url&#x60;.
      * @param imageId Идентификатор образа (required)
      * @param imageUrlIn  (required)
-     * @return ApiResponse&lt;CreateImageDownloadUrl201Response&gt;
+     * @return ApiResponse&lt;ImageDownloadResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -348,9 +348,9 @@ public class ImagesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CreateImageDownloadUrl201Response> createImageDownloadUrlWithHttpInfo(String imageId, ImageUrlIn imageUrlIn) throws ApiException {
+    public ApiResponse<ImageDownloadResponse> createImageDownloadUrlWithHttpInfo(String imageId, ImageUrlIn imageUrlIn) throws ApiException {
         okhttp3.Call localVarCall = createImageDownloadUrlValidateBeforeCall(imageId, imageUrlIn, null);
-        Type localVarReturnType = new TypeToken<CreateImageDownloadUrl201Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<ImageDownloadResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -374,10 +374,10 @@ public class ImagesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createImageDownloadUrlAsync(String imageId, ImageUrlIn imageUrlIn, final ApiCallback<CreateImageDownloadUrl201Response> _callback) throws ApiException {
+    public okhttp3.Call createImageDownloadUrlAsync(String imageId, ImageUrlIn imageUrlIn, final ApiCallback<ImageDownloadResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createImageDownloadUrlValidateBeforeCall(imageId, imageUrlIn, _callback);
-        Type localVarReturnType = new TypeToken<CreateImageDownloadUrl201Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<ImageDownloadResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -738,7 +738,7 @@ public class ImagesApi {
      * Получение информации о образе
      * Чтобы получить образ, отправьте запрос GET в &#x60;/api/v1/images/{image_id}&#x60;.
      * @param imageId Идентификатор образа (required)
-     * @return CreateImage201Response
+     * @return ImageOutResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -751,8 +751,8 @@ public class ImagesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public CreateImage201Response getImage(String imageId) throws ApiException {
-        ApiResponse<CreateImage201Response> localVarResp = getImageWithHttpInfo(imageId);
+    public ImageOutResponse getImage(String imageId) throws ApiException {
+        ApiResponse<ImageOutResponse> localVarResp = getImageWithHttpInfo(imageId);
         return localVarResp.getData();
     }
 
@@ -760,7 +760,7 @@ public class ImagesApi {
      * Получение информации о образе
      * Чтобы получить образ, отправьте запрос GET в &#x60;/api/v1/images/{image_id}&#x60;.
      * @param imageId Идентификатор образа (required)
-     * @return ApiResponse&lt;CreateImage201Response&gt;
+     * @return ApiResponse&lt;ImageOutResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -773,9 +773,9 @@ public class ImagesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CreateImage201Response> getImageWithHttpInfo(String imageId) throws ApiException {
+    public ApiResponse<ImageOutResponse> getImageWithHttpInfo(String imageId) throws ApiException {
         okhttp3.Call localVarCall = getImageValidateBeforeCall(imageId, null);
-        Type localVarReturnType = new TypeToken<CreateImage201Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<ImageOutResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -797,10 +797,10 @@ public class ImagesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getImageAsync(String imageId, final ApiCallback<CreateImage201Response> _callback) throws ApiException {
+    public okhttp3.Call getImageAsync(String imageId, final ApiCallback<ImageOutResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getImageValidateBeforeCall(imageId, _callback);
-        Type localVarReturnType = new TypeToken<CreateImage201Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<ImageOutResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -889,7 +889,7 @@ public class ImagesApi {
      * Чтобы получить информацию о ссылке на скачивание образа, отправьте запрос GET в &#x60;/api/v1/images/{image_id}/download-url/{image_url_id}&#x60;.
      * @param imageId Идентификатор образа (required)
      * @param imageUrlId Идентификатор ссылки (required)
-     * @return CreateImageDownloadUrl201Response
+     * @return ImageDownloadResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -902,8 +902,8 @@ public class ImagesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public CreateImageDownloadUrl201Response getImageDownloadURL(String imageId, String imageUrlId) throws ApiException {
-        ApiResponse<CreateImageDownloadUrl201Response> localVarResp = getImageDownloadURLWithHttpInfo(imageId, imageUrlId);
+    public ImageDownloadResponse getImageDownloadURL(String imageId, String imageUrlId) throws ApiException {
+        ApiResponse<ImageDownloadResponse> localVarResp = getImageDownloadURLWithHttpInfo(imageId, imageUrlId);
         return localVarResp.getData();
     }
 
@@ -912,7 +912,7 @@ public class ImagesApi {
      * Чтобы получить информацию о ссылке на скачивание образа, отправьте запрос GET в &#x60;/api/v1/images/{image_id}/download-url/{image_url_id}&#x60;.
      * @param imageId Идентификатор образа (required)
      * @param imageUrlId Идентификатор ссылки (required)
-     * @return ApiResponse&lt;CreateImageDownloadUrl201Response&gt;
+     * @return ApiResponse&lt;ImageDownloadResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -925,9 +925,9 @@ public class ImagesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CreateImageDownloadUrl201Response> getImageDownloadURLWithHttpInfo(String imageId, String imageUrlId) throws ApiException {
+    public ApiResponse<ImageDownloadResponse> getImageDownloadURLWithHttpInfo(String imageId, String imageUrlId) throws ApiException {
         okhttp3.Call localVarCall = getImageDownloadURLValidateBeforeCall(imageId, imageUrlId, null);
-        Type localVarReturnType = new TypeToken<CreateImageDownloadUrl201Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<ImageDownloadResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -950,10 +950,10 @@ public class ImagesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getImageDownloadURLAsync(String imageId, String imageUrlId, final ApiCallback<CreateImageDownloadUrl201Response> _callback) throws ApiException {
+    public okhttp3.Call getImageDownloadURLAsync(String imageId, String imageUrlId, final ApiCallback<ImageDownloadResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getImageDownloadURLValidateBeforeCall(imageId, imageUrlId, _callback);
-        Type localVarReturnType = new TypeToken<CreateImageDownloadUrl201Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<ImageDownloadResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1046,7 +1046,7 @@ public class ImagesApi {
      * @param imageId Идентификатор образа (required)
      * @param limit  (optional, default to 100)
      * @param offset  (optional, default to 0)
-     * @return GetImageDownloadURLs200Response
+     * @return ImageDownloadsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1059,8 +1059,8 @@ public class ImagesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public GetImageDownloadURLs200Response getImageDownloadURLs(String imageId, Integer limit, Integer offset) throws ApiException {
-        ApiResponse<GetImageDownloadURLs200Response> localVarResp = getImageDownloadURLsWithHttpInfo(imageId, limit, offset);
+    public ImageDownloadsResponse getImageDownloadURLs(String imageId, Integer limit, Integer offset) throws ApiException {
+        ApiResponse<ImageDownloadsResponse> localVarResp = getImageDownloadURLsWithHttpInfo(imageId, limit, offset);
         return localVarResp.getData();
     }
 
@@ -1070,7 +1070,7 @@ public class ImagesApi {
      * @param imageId Идентификатор образа (required)
      * @param limit  (optional, default to 100)
      * @param offset  (optional, default to 0)
-     * @return ApiResponse&lt;GetImageDownloadURLs200Response&gt;
+     * @return ApiResponse&lt;ImageDownloadsResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1083,9 +1083,9 @@ public class ImagesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GetImageDownloadURLs200Response> getImageDownloadURLsWithHttpInfo(String imageId, Integer limit, Integer offset) throws ApiException {
+    public ApiResponse<ImageDownloadsResponse> getImageDownloadURLsWithHttpInfo(String imageId, Integer limit, Integer offset) throws ApiException {
         okhttp3.Call localVarCall = getImageDownloadURLsValidateBeforeCall(imageId, limit, offset, null);
-        Type localVarReturnType = new TypeToken<GetImageDownloadURLs200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<ImageDownloadsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1109,10 +1109,10 @@ public class ImagesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getImageDownloadURLsAsync(String imageId, Integer limit, Integer offset, final ApiCallback<GetImageDownloadURLs200Response> _callback) throws ApiException {
+    public okhttp3.Call getImageDownloadURLsAsync(String imageId, Integer limit, Integer offset, final ApiCallback<ImageDownloadsResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getImageDownloadURLsValidateBeforeCall(imageId, limit, offset, _callback);
-        Type localVarReturnType = new TypeToken<GetImageDownloadURLs200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<ImageDownloadsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1196,7 +1196,7 @@ public class ImagesApi {
      * Чтобы получить список образов, отправьте GET запрос на &#x60;/api/v1/images&#x60;
      * @param limit  (optional, default to 100)
      * @param offset  (optional, default to 0)
-     * @return GetImages200Response
+     * @return ImagesOutResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1208,8 +1208,8 @@ public class ImagesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public GetImages200Response getImages(Integer limit, Integer offset) throws ApiException {
-        ApiResponse<GetImages200Response> localVarResp = getImagesWithHttpInfo(limit, offset);
+    public ImagesOutResponse getImages(Integer limit, Integer offset) throws ApiException {
+        ApiResponse<ImagesOutResponse> localVarResp = getImagesWithHttpInfo(limit, offset);
         return localVarResp.getData();
     }
 
@@ -1218,7 +1218,7 @@ public class ImagesApi {
      * Чтобы получить список образов, отправьте GET запрос на &#x60;/api/v1/images&#x60;
      * @param limit  (optional, default to 100)
      * @param offset  (optional, default to 0)
-     * @return ApiResponse&lt;GetImages200Response&gt;
+     * @return ApiResponse&lt;ImagesOutResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1230,9 +1230,9 @@ public class ImagesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GetImages200Response> getImagesWithHttpInfo(Integer limit, Integer offset) throws ApiException {
+    public ApiResponse<ImagesOutResponse> getImagesWithHttpInfo(Integer limit, Integer offset) throws ApiException {
         okhttp3.Call localVarCall = getImagesValidateBeforeCall(limit, offset, null);
-        Type localVarReturnType = new TypeToken<GetImages200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<ImagesOutResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1254,10 +1254,10 @@ public class ImagesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getImagesAsync(Integer limit, Integer offset, final ApiCallback<GetImages200Response> _callback) throws ApiException {
+    public okhttp3.Call getImagesAsync(Integer limit, Integer offset, final ApiCallback<ImagesOutResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getImagesValidateBeforeCall(limit, offset, _callback);
-        Type localVarReturnType = new TypeToken<GetImages200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<ImagesOutResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1346,7 +1346,7 @@ public class ImagesApi {
      * Чтобы обновить только определенные атрибуты образа, отправьте запрос PATCH в &#x60;/api/v1/images/{image_id}&#x60;.
      * @param imageId Идентификатор образа (required)
      * @param imageUpdateAPI  (required)
-     * @return CreateImage201Response
+     * @return ImageOutResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1359,8 +1359,8 @@ public class ImagesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public CreateImage201Response updateImage(String imageId, ImageUpdateAPI imageUpdateAPI) throws ApiException {
-        ApiResponse<CreateImage201Response> localVarResp = updateImageWithHttpInfo(imageId, imageUpdateAPI);
+    public ImageOutResponse updateImage(String imageId, ImageUpdateAPI imageUpdateAPI) throws ApiException {
+        ApiResponse<ImageOutResponse> localVarResp = updateImageWithHttpInfo(imageId, imageUpdateAPI);
         return localVarResp.getData();
     }
 
@@ -1369,7 +1369,7 @@ public class ImagesApi {
      * Чтобы обновить только определенные атрибуты образа, отправьте запрос PATCH в &#x60;/api/v1/images/{image_id}&#x60;.
      * @param imageId Идентификатор образа (required)
      * @param imageUpdateAPI  (required)
-     * @return ApiResponse&lt;CreateImage201Response&gt;
+     * @return ApiResponse&lt;ImageOutResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1382,9 +1382,9 @@ public class ImagesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CreateImage201Response> updateImageWithHttpInfo(String imageId, ImageUpdateAPI imageUpdateAPI) throws ApiException {
+    public ApiResponse<ImageOutResponse> updateImageWithHttpInfo(String imageId, ImageUpdateAPI imageUpdateAPI) throws ApiException {
         okhttp3.Call localVarCall = updateImageValidateBeforeCall(imageId, imageUpdateAPI, null);
-        Type localVarReturnType = new TypeToken<CreateImage201Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<ImageOutResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1407,10 +1407,10 @@ public class ImagesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateImageAsync(String imageId, ImageUpdateAPI imageUpdateAPI, final ApiCallback<CreateImage201Response> _callback) throws ApiException {
+    public okhttp3.Call updateImageAsync(String imageId, ImageUpdateAPI imageUpdateAPI, final ApiCallback<ImageOutResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = updateImageValidateBeforeCall(imageId, imageUpdateAPI, _callback);
-        Type localVarReturnType = new TypeToken<CreateImage201Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<ImageOutResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1496,7 +1496,7 @@ public class ImagesApi {
      * Чтобы загрузить свой образ, отправьте POST запрос в &#x60;/api/v1/images/{image_id}&#x60;, отправив файл как &#x60;multipart/form-data&#x60;, указав имя файла в заголовке &#x60;Content-Disposition&#x60;.   Перед загрузкой, нужно создать образ используя POST &#x60;/api/v1/images&#x60;, указав параметры &#x60;location&#x60;, &#x60;os&#x60;   Тело ответа будет содержать объект JSON с информацией о загруженном образе.
      * @param imageId  (required)
      * @param contentDisposition  (optional)
-     * @return UploadImage200Response
+     * @return UploadSuccessfulResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1508,8 +1508,8 @@ public class ImagesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public UploadImage200Response uploadImage(String imageId, String contentDisposition) throws ApiException {
-        ApiResponse<UploadImage200Response> localVarResp = uploadImageWithHttpInfo(imageId, contentDisposition);
+    public UploadSuccessfulResponse uploadImage(String imageId, String contentDisposition) throws ApiException {
+        ApiResponse<UploadSuccessfulResponse> localVarResp = uploadImageWithHttpInfo(imageId, contentDisposition);
         return localVarResp.getData();
     }
 
@@ -1518,7 +1518,7 @@ public class ImagesApi {
      * Чтобы загрузить свой образ, отправьте POST запрос в &#x60;/api/v1/images/{image_id}&#x60;, отправив файл как &#x60;multipart/form-data&#x60;, указав имя файла в заголовке &#x60;Content-Disposition&#x60;.   Перед загрузкой, нужно создать образ используя POST &#x60;/api/v1/images&#x60;, указав параметры &#x60;location&#x60;, &#x60;os&#x60;   Тело ответа будет содержать объект JSON с информацией о загруженном образе.
      * @param imageId  (required)
      * @param contentDisposition  (optional)
-     * @return ApiResponse&lt;UploadImage200Response&gt;
+     * @return ApiResponse&lt;UploadSuccessfulResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1530,9 +1530,9 @@ public class ImagesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<UploadImage200Response> uploadImageWithHttpInfo(String imageId, String contentDisposition) throws ApiException {
+    public ApiResponse<UploadSuccessfulResponse> uploadImageWithHttpInfo(String imageId, String contentDisposition) throws ApiException {
         okhttp3.Call localVarCall = uploadImageValidateBeforeCall(imageId, contentDisposition, null);
-        Type localVarReturnType = new TypeToken<UploadImage200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<UploadSuccessfulResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1554,10 +1554,10 @@ public class ImagesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call uploadImageAsync(String imageId, String contentDisposition, final ApiCallback<UploadImage200Response> _callback) throws ApiException {
+    public okhttp3.Call uploadImageAsync(String imageId, String contentDisposition, final ApiCallback<UploadSuccessfulResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = uploadImageValidateBeforeCall(imageId, contentDisposition, _callback);
-        Type localVarReturnType = new TypeToken<UploadImage200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<UploadSuccessfulResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

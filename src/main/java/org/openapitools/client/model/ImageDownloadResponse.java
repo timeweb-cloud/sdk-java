@@ -21,7 +21,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import org.openapitools.client.model.Download;
+import org.openapitools.client.model.ImageDownloadAPI;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * ImageDownloadResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-21T14:21:17.845880Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-22T13:06:16.524188Z[Etc/UTC]")
 public class ImageDownloadResponse {
   public static final String SERIALIZED_NAME_RESPONSE_ID = "response_id";
   @SerializedName(SERIALIZED_NAME_RESPONSE_ID)
@@ -59,7 +59,7 @@ public class ImageDownloadResponse {
 
   public static final String SERIALIZED_NAME_DOWNLOAD = "download";
   @SerializedName(SERIALIZED_NAME_DOWNLOAD)
-  private Download download;
+  private ImageDownloadAPI download;
 
   public ImageDownloadResponse() {
   }
@@ -85,7 +85,7 @@ public class ImageDownloadResponse {
   }
 
 
-  public ImageDownloadResponse download(Download download) {
+  public ImageDownloadResponse download(ImageDownloadAPI download) {
     
     this.download = download;
     return this;
@@ -96,12 +96,12 @@ public class ImageDownloadResponse {
    * @return download
   **/
   @javax.annotation.Nonnull
-  public Download getDownload() {
+  public ImageDownloadAPI getDownload() {
     return download;
   }
 
 
-  public void setDownload(Download download) {
+  public void setDownload(ImageDownloadAPI download) {
     this.download = download;
   }
 
@@ -193,7 +193,7 @@ public class ImageDownloadResponse {
         throw new IllegalArgumentException(String.format("Expected the field `response_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("response_id").toString()));
       }
       // validate the required field `download`
-      Download.validateJsonElement(jsonObj.get("download"));
+      ImageDownloadAPI.validateJsonElement(jsonObj.get("download"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

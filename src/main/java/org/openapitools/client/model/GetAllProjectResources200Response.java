@@ -22,8 +22,8 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.UUID;
 import org.openapitools.client.model.Balancer;
 import org.openapitools.client.model.Bucket;
 import org.openapitools.client.model.Clusterk8s;
@@ -60,7 +60,7 @@ import org.openapitools.client.JSON;
 /**
  * GetAllProjectResources200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-21T14:21:17.845880Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-22T13:06:16.524188Z[Etc/UTC]")
 public class GetAllProjectResources200Response {
   public static final String SERIALIZED_NAME_SERVERS = "servers";
   @SerializedName(SERIALIZED_NAME_SERVERS)
@@ -89,10 +89,6 @@ public class GetAllProjectResources200Response {
   public static final String SERIALIZED_NAME_META = "meta";
   @SerializedName(SERIALIZED_NAME_META)
   private Meta meta;
-
-  public static final String SERIALIZED_NAME_RESPONSE_ID = "response_id";
-  @SerializedName(SERIALIZED_NAME_RESPONSE_ID)
-  private UUID responseId;
 
   public GetAllProjectResources200Response() {
   }
@@ -292,27 +288,6 @@ public class GetAllProjectResources200Response {
   }
 
 
-  public GetAllProjectResources200Response responseId(UUID responseId) {
-    
-    this.responseId = responseId;
-    return this;
-  }
-
-   /**
-   * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
-   * @return responseId
-  **/
-  @javax.annotation.Nonnull
-  public UUID getResponseId() {
-    return responseId;
-  }
-
-
-  public void setResponseId(UUID responseId) {
-    this.responseId = responseId;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -329,13 +304,12 @@ public class GetAllProjectResources200Response {
         Objects.equals(this.clusters, getAllProjectResources200Response.clusters) &&
         Objects.equals(this.databases, getAllProjectResources200Response.databases) &&
         Objects.equals(this.dedicatedServers, getAllProjectResources200Response.dedicatedServers) &&
-        Objects.equals(this.meta, getAllProjectResources200Response.meta) &&
-        Objects.equals(this.responseId, getAllProjectResources200Response.responseId);
+        Objects.equals(this.meta, getAllProjectResources200Response.meta);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(servers, balancers, buckets, clusters, databases, dedicatedServers, meta, responseId);
+    return Objects.hash(servers, balancers, buckets, clusters, databases, dedicatedServers, meta);
   }
 
   @Override
@@ -349,7 +323,6 @@ public class GetAllProjectResources200Response {
     sb.append("    databases: ").append(toIndentedString(databases)).append("\n");
     sb.append("    dedicatedServers: ").append(toIndentedString(dedicatedServers)).append("\n");
     sb.append("    meta: ").append(toIndentedString(meta)).append("\n");
-    sb.append("    responseId: ").append(toIndentedString(responseId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -379,7 +352,6 @@ public class GetAllProjectResources200Response {
     openapiFields.add("databases");
     openapiFields.add("dedicated_servers");
     openapiFields.add("meta");
-    openapiFields.add("response_id");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -390,7 +362,6 @@ public class GetAllProjectResources200Response {
     openapiRequiredFields.add("databases");
     openapiRequiredFields.add("dedicated_servers");
     openapiRequiredFields.add("meta");
-    openapiRequiredFields.add("response_id");
   }
 
  /**
@@ -483,9 +454,6 @@ public class GetAllProjectResources200Response {
       };
       // validate the required field `meta`
       Meta.validateJsonElement(jsonObj.get("meta"));
-      if (!jsonObj.get("response_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `response_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("response_id").toString()));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

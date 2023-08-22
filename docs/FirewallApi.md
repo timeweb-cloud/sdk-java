@@ -22,7 +22,7 @@ All URIs are relative to *https://api.timeweb.cloud*
 
 <a id="addResourceToGroup"></a>
 # **addResourceToGroup**
-> AddResourceToGroup201Response addResourceToGroup(groupId, resourceId, resourceType)
+> FirewallGroupResourceOutResponse addResourceToGroup(groupId, resourceId, resourceType)
 
 Линковка ресурса в firewall group
 
@@ -52,7 +52,7 @@ public class Example {
     String resourceId = "resourceId_example"; // String | Идентификатор ресурса
     ResourceType resourceType = ResourceType.fromValue("server"); // ResourceType | 
     try {
-      AddResourceToGroup201Response result = apiInstance.addResourceToGroup(groupId, resourceId, resourceType);
+      FirewallGroupResourceOutResponse result = apiInstance.addResourceToGroup(groupId, resourceId, resourceType);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling FirewallApi#addResourceToGroup");
@@ -71,11 +71,11 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **groupId** | **String**| Идентификатор группы правил | |
 | **resourceId** | **String**| Идентификатор ресурса | |
-| **resourceType** | [**ResourceType**](.md)|  | [optional] [default to server] [enum: server] |
+| **resourceType** | [**ResourceType**](.md)|  | [optional] [enum: server] |
 
 ### Return type
 
-[**AddResourceToGroup201Response**](AddResourceToGroup201Response.md)
+[**FirewallGroupResourceOutResponse**](FirewallGroupResourceOutResponse.md)
 
 ### Authorization
 
@@ -97,7 +97,7 @@ public class Example {
 
 <a id="createGroup"></a>
 # **createGroup**
-> CreateGroup201Response createGroup(firewallGroupInAPI)
+> FirewallGroupOutResponse createGroup(firewallGroupInAPI)
 
 Создание группы правил
 
@@ -125,7 +125,7 @@ public class Example {
     FirewallApi apiInstance = new FirewallApi(defaultClient);
     FirewallGroupInAPI firewallGroupInAPI = new FirewallGroupInAPI(); // FirewallGroupInAPI | 
     try {
-      CreateGroup201Response result = apiInstance.createGroup(firewallGroupInAPI);
+      FirewallGroupOutResponse result = apiInstance.createGroup(firewallGroupInAPI);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling FirewallApi#createGroup");
@@ -146,7 +146,7 @@ public class Example {
 
 ### Return type
 
-[**CreateGroup201Response**](CreateGroup201Response.md)
+[**FirewallGroupOutResponse**](FirewallGroupOutResponse.md)
 
 ### Authorization
 
@@ -168,7 +168,7 @@ public class Example {
 
 <a id="createGroupRule"></a>
 # **createGroupRule**
-> CreateGroupRule201Response createGroupRule(groupId, firewallRuleInAPI)
+> FirewallRuleOutResponse createGroupRule(groupId, firewallRuleInAPI)
 
 Создание firewall правила
 
@@ -197,7 +197,7 @@ public class Example {
     String groupId = "groupId_example"; // String | Идентификатор группы правил
     FirewallRuleInAPI firewallRuleInAPI = new FirewallRuleInAPI(); // FirewallRuleInAPI | 
     try {
-      CreateGroupRule201Response result = apiInstance.createGroupRule(groupId, firewallRuleInAPI);
+      FirewallRuleOutResponse result = apiInstance.createGroupRule(groupId, firewallRuleInAPI);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling FirewallApi#createGroupRule");
@@ -219,7 +219,7 @@ public class Example {
 
 ### Return type
 
-[**CreateGroupRule201Response**](CreateGroupRule201Response.md)
+[**FirewallRuleOutResponse**](FirewallRuleOutResponse.md)
 
 ### Authorization
 
@@ -433,7 +433,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **groupId** | **String**| Идентификатор группы правил | |
 | **resourceId** | **String**| Идентификатор ресурса | |
-| **resourceType** | [**ResourceType**](.md)|  | [optional] [default to server] [enum: server] |
+| **resourceType** | [**ResourceType**](.md)|  | [optional] [enum: server] |
 
 ### Return type
 
@@ -460,7 +460,7 @@ null (empty response body)
 
 <a id="getGroup"></a>
 # **getGroup**
-> CreateGroup201Response getGroup(groupId)
+> FirewallGroupOutResponse getGroup(groupId)
 
 Получение информации о группе правил
 
@@ -488,7 +488,7 @@ public class Example {
     FirewallApi apiInstance = new FirewallApi(defaultClient);
     String groupId = "groupId_example"; // String | Идентификатор группы правил
     try {
-      CreateGroup201Response result = apiInstance.getGroup(groupId);
+      FirewallGroupOutResponse result = apiInstance.getGroup(groupId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling FirewallApi#getGroup");
@@ -509,7 +509,7 @@ public class Example {
 
 ### Return type
 
-[**CreateGroup201Response**](CreateGroup201Response.md)
+[**FirewallGroupOutResponse**](FirewallGroupOutResponse.md)
 
 ### Authorization
 
@@ -532,7 +532,7 @@ public class Example {
 
 <a id="getGroupResources"></a>
 # **getGroupResources**
-> GetGroupResources200Response getGroupResources(groupId, limit, offset)
+> FirewallGroupResourcesOutResponse getGroupResources(groupId, limit, offset)
 
 Получение слинкованных ресурсов
 
@@ -562,7 +562,7 @@ public class Example {
     Integer limit = 100; // Integer | Обозначает количество записей, которое необходимо вернуть.
     Integer offset = 0; // Integer | Указывает на смещение относительно начала списка.
     try {
-      GetGroupResources200Response result = apiInstance.getGroupResources(groupId, limit, offset);
+      FirewallGroupResourcesOutResponse result = apiInstance.getGroupResources(groupId, limit, offset);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling FirewallApi#getGroupResources");
@@ -585,7 +585,7 @@ public class Example {
 
 ### Return type
 
-[**GetGroupResources200Response**](GetGroupResources200Response.md)
+[**FirewallGroupResourcesOutResponse**](FirewallGroupResourcesOutResponse.md)
 
 ### Authorization
 
@@ -607,7 +607,7 @@ public class Example {
 
 <a id="getGroupRule"></a>
 # **getGroupRule**
-> CreateGroupRule201Response getGroupRule(ruleId, groupId)
+> FirewallRuleOutResponse getGroupRule(ruleId, groupId)
 
 Получение информации о правиле
 
@@ -636,7 +636,7 @@ public class Example {
     String ruleId = "ruleId_example"; // String | Идентификатор правила
     String groupId = "groupId_example"; // String | Идентификатор группы правил
     try {
-      CreateGroupRule201Response result = apiInstance.getGroupRule(ruleId, groupId);
+      FirewallRuleOutResponse result = apiInstance.getGroupRule(ruleId, groupId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling FirewallApi#getGroupRule");
@@ -658,7 +658,7 @@ public class Example {
 
 ### Return type
 
-[**CreateGroupRule201Response**](CreateGroupRule201Response.md)
+[**FirewallRuleOutResponse**](FirewallRuleOutResponse.md)
 
 ### Authorization
 
@@ -681,7 +681,7 @@ public class Example {
 
 <a id="getGroupRules"></a>
 # **getGroupRules**
-> GetGroupRules200Response getGroupRules(groupId, limit, offset)
+> FirewallRulesOutResponse getGroupRules(groupId, limit, offset)
 
 Получение списка правил
 
@@ -711,7 +711,7 @@ public class Example {
     Integer limit = 100; // Integer | Обозначает количество записей, которое необходимо вернуть.
     Integer offset = 0; // Integer | Указывает на смещение относительно начала списка.
     try {
-      GetGroupRules200Response result = apiInstance.getGroupRules(groupId, limit, offset);
+      FirewallRulesOutResponse result = apiInstance.getGroupRules(groupId, limit, offset);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling FirewallApi#getGroupRules");
@@ -734,7 +734,7 @@ public class Example {
 
 ### Return type
 
-[**GetGroupRules200Response**](GetGroupRules200Response.md)
+[**FirewallRulesOutResponse**](FirewallRulesOutResponse.md)
 
 ### Authorization
 
@@ -756,7 +756,7 @@ public class Example {
 
 <a id="getGroups"></a>
 # **getGroups**
-> GetGroups200Response getGroups(limit, offset)
+> FirewallGroupsOutResponse getGroups(limit, offset)
 
 Получение групп правил
 
@@ -785,7 +785,7 @@ public class Example {
     Integer limit = 100; // Integer | Обозначает количество записей, которое необходимо вернуть.
     Integer offset = 0; // Integer | Указывает на смещение относительно начала списка.
     try {
-      GetGroups200Response result = apiInstance.getGroups(limit, offset);
+      FirewallGroupsOutResponse result = apiInstance.getGroups(limit, offset);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling FirewallApi#getGroups");
@@ -807,7 +807,7 @@ public class Example {
 
 ### Return type
 
-[**GetGroups200Response**](GetGroups200Response.md)
+[**FirewallGroupsOutResponse**](FirewallGroupsOutResponse.md)
 
 ### Authorization
 
@@ -829,7 +829,7 @@ public class Example {
 
 <a id="getRulesForResource"></a>
 # **getRulesForResource**
-> GetGroups200Response getRulesForResource(resourceId, resourceType, limit, offset)
+> FirewallGroupsOutResponse getRulesForResource(resourceId, resourceType, limit, offset)
 
 Получение групп правил для ресурса
 
@@ -860,7 +860,7 @@ public class Example {
     Integer limit = 100; // Integer | Обозначает количество записей, которое необходимо вернуть.
     Integer offset = 0; // Integer | Указывает на смещение относительно начала списка.
     try {
-      GetGroups200Response result = apiInstance.getRulesForResource(resourceId, resourceType, limit, offset);
+      FirewallGroupsOutResponse result = apiInstance.getRulesForResource(resourceId, resourceType, limit, offset);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling FirewallApi#getRulesForResource");
@@ -884,7 +884,7 @@ public class Example {
 
 ### Return type
 
-[**GetGroups200Response**](GetGroups200Response.md)
+[**FirewallGroupsOutResponse**](FirewallGroupsOutResponse.md)
 
 ### Authorization
 
@@ -906,7 +906,7 @@ public class Example {
 
 <a id="updateGroup"></a>
 # **updateGroup**
-> CreateGroup201Response updateGroup(groupId, firewallGroupInAPI)
+> FirewallGroupOutResponse updateGroup(groupId, firewallGroupInAPI)
 
 Обновление группы правил
 
@@ -935,7 +935,7 @@ public class Example {
     String groupId = "groupId_example"; // String | Идентификатор группы правил
     FirewallGroupInAPI firewallGroupInAPI = new FirewallGroupInAPI(); // FirewallGroupInAPI | 
     try {
-      CreateGroup201Response result = apiInstance.updateGroup(groupId, firewallGroupInAPI);
+      FirewallGroupOutResponse result = apiInstance.updateGroup(groupId, firewallGroupInAPI);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling FirewallApi#updateGroup");
@@ -957,7 +957,7 @@ public class Example {
 
 ### Return type
 
-[**CreateGroup201Response**](CreateGroup201Response.md)
+[**FirewallGroupOutResponse**](FirewallGroupOutResponse.md)
 
 ### Authorization
 
@@ -980,7 +980,7 @@ public class Example {
 
 <a id="updateGroupRule"></a>
 # **updateGroupRule**
-> CreateGroupRule201Response updateGroupRule(groupId, ruleId, firewallRuleInAPI)
+> FirewallRuleOutResponse updateGroupRule(groupId, ruleId, firewallRuleInAPI)
 
 Обновление firewall правила
 
@@ -1010,7 +1010,7 @@ public class Example {
     String ruleId = "ruleId_example"; // String | Идентификатор правила
     FirewallRuleInAPI firewallRuleInAPI = new FirewallRuleInAPI(); // FirewallRuleInAPI | 
     try {
-      CreateGroupRule201Response result = apiInstance.updateGroupRule(groupId, ruleId, firewallRuleInAPI);
+      FirewallRuleOutResponse result = apiInstance.updateGroupRule(groupId, ruleId, firewallRuleInAPI);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling FirewallApi#updateGroupRule");
@@ -1033,7 +1033,7 @@ public class Example {
 
 ### Return type
 
-[**CreateGroupRule201Response**](CreateGroupRule201Response.md)
+[**FirewallRuleOutResponse**](FirewallRuleOutResponse.md)
 
 ### Authorization
 

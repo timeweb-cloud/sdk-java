@@ -22,8 +22,8 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.UUID;
 import org.openapitools.client.model.DomainNameServer;
 import org.openapitools.client.model.Meta;
 
@@ -55,7 +55,7 @@ import org.openapitools.client.JSON;
 /**
  * GetDomainNameServers200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-21T14:21:17.845880Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-22T13:06:16.524188Z[Etc/UTC]")
 public class GetDomainNameServers200Response {
   public static final String SERIALIZED_NAME_META = "meta";
   @SerializedName(SERIALIZED_NAME_META)
@@ -64,10 +64,6 @@ public class GetDomainNameServers200Response {
   public static final String SERIALIZED_NAME_NAME_SERVERS = "name_servers";
   @SerializedName(SERIALIZED_NAME_NAME_SERVERS)
   private List<DomainNameServer> nameServers = new ArrayList<>();
-
-  public static final String SERIALIZED_NAME_RESPONSE_ID = "response_id";
-  @SerializedName(SERIALIZED_NAME_RESPONSE_ID)
-  private UUID responseId;
 
   public GetDomainNameServers200Response() {
   }
@@ -122,27 +118,6 @@ public class GetDomainNameServers200Response {
   }
 
 
-  public GetDomainNameServers200Response responseId(UUID responseId) {
-    
-    this.responseId = responseId;
-    return this;
-  }
-
-   /**
-   * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
-   * @return responseId
-  **/
-  @javax.annotation.Nonnull
-  public UUID getResponseId() {
-    return responseId;
-  }
-
-
-  public void setResponseId(UUID responseId) {
-    this.responseId = responseId;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -154,13 +129,12 @@ public class GetDomainNameServers200Response {
     }
     GetDomainNameServers200Response getDomainNameServers200Response = (GetDomainNameServers200Response) o;
     return Objects.equals(this.meta, getDomainNameServers200Response.meta) &&
-        Objects.equals(this.nameServers, getDomainNameServers200Response.nameServers) &&
-        Objects.equals(this.responseId, getDomainNameServers200Response.responseId);
+        Objects.equals(this.nameServers, getDomainNameServers200Response.nameServers);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(meta, nameServers, responseId);
+    return Objects.hash(meta, nameServers);
   }
 
   @Override
@@ -169,7 +143,6 @@ public class GetDomainNameServers200Response {
     sb.append("class GetDomainNameServers200Response {\n");
     sb.append("    meta: ").append(toIndentedString(meta)).append("\n");
     sb.append("    nameServers: ").append(toIndentedString(nameServers)).append("\n");
-    sb.append("    responseId: ").append(toIndentedString(responseId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -194,13 +167,11 @@ public class GetDomainNameServers200Response {
     openapiFields = new HashSet<String>();
     openapiFields.add("meta");
     openapiFields.add("name_servers");
-    openapiFields.add("response_id");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("meta");
     openapiRequiredFields.add("name_servers");
-    openapiRequiredFields.add("response_id");
   }
 
  /**
@@ -243,9 +214,6 @@ public class GetDomainNameServers200Response {
       for (int i = 0; i < jsonArraynameServers.size(); i++) {
         DomainNameServer.validateJsonElement(jsonArraynameServers.get(i));
       };
-      if (!jsonObj.get("response_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `response_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("response_id").toString()));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

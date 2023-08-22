@@ -27,7 +27,7 @@ All URIs are relative to *https://api.timeweb.cloud*
 
 <a id="createCluster"></a>
 # **createCluster**
-> CreateCluster201Response createCluster(clusterIn)
+> ClusterResponse createCluster(clusterIn)
 
 Создание кластера
 
@@ -55,7 +55,7 @@ public class Example {
     KubernetesApi apiInstance = new KubernetesApi(defaultClient);
     ClusterIn clusterIn = new ClusterIn(); // ClusterIn | 
     try {
-      CreateCluster201Response result = apiInstance.createCluster(clusterIn);
+      ClusterResponse result = apiInstance.createCluster(clusterIn);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling KubernetesApi#createCluster");
@@ -76,7 +76,7 @@ public class Example {
 
 ### Return type
 
-[**CreateCluster201Response**](CreateCluster201Response.md)
+[**ClusterResponse**](ClusterResponse.md)
 
 ### Authorization
 
@@ -98,7 +98,7 @@ public class Example {
 
 <a id="createClusterNodeGroup"></a>
 # **createClusterNodeGroup**
-> CreateClusterNodeGroup201Response createClusterNodeGroup(clusterId, nodeGroupIn)
+> NodeGroupResponse createClusterNodeGroup(clusterId, nodeGroupIn)
 
 Создание группы нод
 
@@ -127,7 +127,7 @@ public class Example {
     Integer clusterId = 56; // Integer | Уникальный идентификатор кластера
     NodeGroupIn nodeGroupIn = new NodeGroupIn(); // NodeGroupIn | 
     try {
-      CreateClusterNodeGroup201Response result = apiInstance.createClusterNodeGroup(clusterId, nodeGroupIn);
+      NodeGroupResponse result = apiInstance.createClusterNodeGroup(clusterId, nodeGroupIn);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling KubernetesApi#createClusterNodeGroup");
@@ -149,7 +149,7 @@ public class Example {
 
 ### Return type
 
-[**CreateClusterNodeGroup201Response**](CreateClusterNodeGroup201Response.md)
+[**NodeGroupResponse**](NodeGroupResponse.md)
 
 ### Authorization
 
@@ -399,7 +399,7 @@ null (empty response body)
 
 <a id="getCluster"></a>
 # **getCluster**
-> CreateCluster201Response getCluster(clusterId)
+> ClusterResponse getCluster(clusterId)
 
 Получение информации о кластере
 
@@ -427,7 +427,7 @@ public class Example {
     KubernetesApi apiInstance = new KubernetesApi(defaultClient);
     Integer clusterId = 56; // Integer | Уникальный идентификатор кластера
     try {
-      CreateCluster201Response result = apiInstance.getCluster(clusterId);
+      ClusterResponse result = apiInstance.getCluster(clusterId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling KubernetesApi#getCluster");
@@ -448,7 +448,7 @@ public class Example {
 
 ### Return type
 
-[**CreateCluster201Response**](CreateCluster201Response.md)
+[**ClusterResponse**](ClusterResponse.md)
 
 ### Authorization
 
@@ -545,7 +545,7 @@ public class Example {
 
 <a id="getClusterNodeGroup"></a>
 # **getClusterNodeGroup**
-> CreateClusterNodeGroup201Response getClusterNodeGroup(clusterId, groupId)
+> NodeGroupResponse getClusterNodeGroup(clusterId, groupId)
 
 Получение информации о группе нод
 
@@ -574,7 +574,7 @@ public class Example {
     Integer clusterId = 56; // Integer | Уникальный идентификатор кластера
     Integer groupId = 56; // Integer | Уникальный идентификатор группы
     try {
-      CreateClusterNodeGroup201Response result = apiInstance.getClusterNodeGroup(clusterId, groupId);
+      NodeGroupResponse result = apiInstance.getClusterNodeGroup(clusterId, groupId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling KubernetesApi#getClusterNodeGroup");
@@ -596,7 +596,7 @@ public class Example {
 
 ### Return type
 
-[**CreateClusterNodeGroup201Response**](CreateClusterNodeGroup201Response.md)
+[**NodeGroupResponse**](NodeGroupResponse.md)
 
 ### Authorization
 
@@ -620,7 +620,7 @@ public class Example {
 
 <a id="getClusterNodeGroups"></a>
 # **getClusterNodeGroups**
-> GetClusterNodeGroups200Response getClusterNodeGroups(clusterId)
+> NodeGroupsResponse getClusterNodeGroups(clusterId)
 
 Получение групп нод кластера
 
@@ -648,7 +648,7 @@ public class Example {
     KubernetesApi apiInstance = new KubernetesApi(defaultClient);
     Integer clusterId = 56; // Integer | Уникальный идентификатор кластера
     try {
-      GetClusterNodeGroups200Response result = apiInstance.getClusterNodeGroups(clusterId);
+      NodeGroupsResponse result = apiInstance.getClusterNodeGroups(clusterId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling KubernetesApi#getClusterNodeGroups");
@@ -669,7 +669,7 @@ public class Example {
 
 ### Return type
 
-[**GetClusterNodeGroups200Response**](GetClusterNodeGroups200Response.md)
+[**NodeGroupsResponse**](NodeGroupsResponse.md)
 
 ### Authorization
 
@@ -693,7 +693,7 @@ public class Example {
 
 <a id="getClusterNodes"></a>
 # **getClusterNodes**
-> GetClusterNodesFromGroup200Response getClusterNodes(clusterId)
+> NodesResponse getClusterNodes(clusterId)
 
 Получение списка нод
 
@@ -721,7 +721,7 @@ public class Example {
     KubernetesApi apiInstance = new KubernetesApi(defaultClient);
     Integer clusterId = 56; // Integer | Уникальный идентификатор кластера
     try {
-      GetClusterNodesFromGroup200Response result = apiInstance.getClusterNodes(clusterId);
+      NodesResponse result = apiInstance.getClusterNodes(clusterId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling KubernetesApi#getClusterNodes");
@@ -742,7 +742,7 @@ public class Example {
 
 ### Return type
 
-[**GetClusterNodesFromGroup200Response**](GetClusterNodesFromGroup200Response.md)
+[**NodesResponse**](NodesResponse.md)
 
 ### Authorization
 
@@ -766,7 +766,7 @@ public class Example {
 
 <a id="getClusterNodesFromGroup"></a>
 # **getClusterNodesFromGroup**
-> GetClusterNodesFromGroup200Response getClusterNodesFromGroup(clusterId, groupId, limit, offset)
+> NodesResponse getClusterNodesFromGroup(clusterId, groupId, limit, offset)
 
 Получение списка нод, принадлежащих группе
 
@@ -797,7 +797,7 @@ public class Example {
     Integer limit = 100; // Integer | Обозначает количество записей, которое необходимо вернуть.
     Integer offset = 0; // Integer | Указывает на смещение, относительно начала списка.
     try {
-      GetClusterNodesFromGroup200Response result = apiInstance.getClusterNodesFromGroup(clusterId, groupId, limit, offset);
+      NodesResponse result = apiInstance.getClusterNodesFromGroup(clusterId, groupId, limit, offset);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling KubernetesApi#getClusterNodesFromGroup");
@@ -821,7 +821,7 @@ public class Example {
 
 ### Return type
 
-[**GetClusterNodesFromGroup200Response**](GetClusterNodesFromGroup200Response.md)
+[**NodesResponse**](NodesResponse.md)
 
 ### Authorization
 
@@ -845,7 +845,7 @@ public class Example {
 
 <a id="getClusterResources"></a>
 # **getClusterResources**
-> GetClusterResources200Response getClusterResources(clusterId)
+> ResourcesResponse getClusterResources(clusterId)
 
 Получение ресурсов кластера
 
@@ -873,7 +873,7 @@ public class Example {
     KubernetesApi apiInstance = new KubernetesApi(defaultClient);
     Integer clusterId = 56; // Integer | Уникальный идентификатор кластера
     try {
-      GetClusterResources200Response result = apiInstance.getClusterResources(clusterId);
+      ResourcesResponse result = apiInstance.getClusterResources(clusterId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling KubernetesApi#getClusterResources");
@@ -894,7 +894,7 @@ public class Example {
 
 ### Return type
 
-[**GetClusterResources200Response**](GetClusterResources200Response.md)
+[**ResourcesResponse**](ResourcesResponse.md)
 
 ### Authorization
 
@@ -918,7 +918,7 @@ public class Example {
 
 <a id="getClusters"></a>
 # **getClusters**
-> GetClusters200Response getClusters(limit, offset)
+> ClustersResponse getClusters(limit, offset)
 
 Получение списка кластеров
 
@@ -947,7 +947,7 @@ public class Example {
     Integer limit = 100; // Integer | Обозначает количество записей, которое необходимо вернуть.
     Integer offset = 0; // Integer | Указывает на смещение относительно начала списка.
     try {
-      GetClusters200Response result = apiInstance.getClusters(limit, offset);
+      ClustersResponse result = apiInstance.getClusters(limit, offset);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling KubernetesApi#getClusters");
@@ -969,7 +969,7 @@ public class Example {
 
 ### Return type
 
-[**GetClusters200Response**](GetClusters200Response.md)
+[**ClustersResponse**](ClustersResponse.md)
 
 ### Authorization
 
@@ -991,7 +991,7 @@ public class Example {
 
 <a id="getK8SNetworkDrivers"></a>
 # **getK8SNetworkDrivers**
-> GetK8SNetworkDrivers200Response getK8SNetworkDrivers()
+> NetworkDriversResponse getK8SNetworkDrivers()
 
 Получение списка сетевых драйверов k8s
 
@@ -1018,7 +1018,7 @@ public class Example {
 
     KubernetesApi apiInstance = new KubernetesApi(defaultClient);
     try {
-      GetK8SNetworkDrivers200Response result = apiInstance.getK8SNetworkDrivers();
+      NetworkDriversResponse result = apiInstance.getK8SNetworkDrivers();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling KubernetesApi#getK8SNetworkDrivers");
@@ -1036,7 +1036,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**GetK8SNetworkDrivers200Response**](GetK8SNetworkDrivers200Response.md)
+[**NetworkDriversResponse**](NetworkDriversResponse.md)
 
 ### Authorization
 
@@ -1058,7 +1058,7 @@ This endpoint does not need any parameter.
 
 <a id="getK8SVersions"></a>
 # **getK8SVersions**
-> GetK8SVersions200Response getK8SVersions()
+> K8SVersionsResponse getK8SVersions()
 
 Получение списка версий k8s
 
@@ -1085,7 +1085,7 @@ public class Example {
 
     KubernetesApi apiInstance = new KubernetesApi(defaultClient);
     try {
-      GetK8SVersions200Response result = apiInstance.getK8SVersions();
+      K8SVersionsResponse result = apiInstance.getK8SVersions();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling KubernetesApi#getK8SVersions");
@@ -1103,7 +1103,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**GetK8SVersions200Response**](GetK8SVersions200Response.md)
+[**K8SVersionsResponse**](K8SVersionsResponse.md)
 
 ### Authorization
 
@@ -1125,7 +1125,7 @@ This endpoint does not need any parameter.
 
 <a id="getKubernetesPresets"></a>
 # **getKubernetesPresets**
-> GetKubernetesPresets200Response getKubernetesPresets()
+> PresetsResponse getKubernetesPresets()
 
 Получение списка тарифов
 
@@ -1152,7 +1152,7 @@ public class Example {
 
     KubernetesApi apiInstance = new KubernetesApi(defaultClient);
     try {
-      GetKubernetesPresets200Response result = apiInstance.getKubernetesPresets();
+      PresetsResponse result = apiInstance.getKubernetesPresets();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling KubernetesApi#getKubernetesPresets");
@@ -1170,7 +1170,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**GetKubernetesPresets200Response**](GetKubernetesPresets200Response.md)
+[**PresetsResponse**](PresetsResponse.md)
 
 ### Authorization
 
@@ -1192,7 +1192,7 @@ This endpoint does not need any parameter.
 
 <a id="increaseCountOfNodesInGroup"></a>
 # **increaseCountOfNodesInGroup**
-> GetClusterNodesFromGroup200Response increaseCountOfNodesInGroup(clusterId, groupId, nodeCount)
+> NodesResponse increaseCountOfNodesInGroup(clusterId, groupId, nodeCount)
 
 Увеличение количества нод в группе на указанное количество
 
@@ -1222,7 +1222,7 @@ public class Example {
     Integer groupId = 56; // Integer | Уникальный идентификатор группы
     NodeCount nodeCount = new NodeCount(); // NodeCount | 
     try {
-      GetClusterNodesFromGroup200Response result = apiInstance.increaseCountOfNodesInGroup(clusterId, groupId, nodeCount);
+      NodesResponse result = apiInstance.increaseCountOfNodesInGroup(clusterId, groupId, nodeCount);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling KubernetesApi#increaseCountOfNodesInGroup");
@@ -1245,7 +1245,7 @@ public class Example {
 
 ### Return type
 
-[**GetClusterNodesFromGroup200Response**](GetClusterNodesFromGroup200Response.md)
+[**NodesResponse**](NodesResponse.md)
 
 ### Authorization
 
@@ -1345,7 +1345,7 @@ null (empty response body)
 
 <a id="updateCluster"></a>
 # **updateCluster**
-> CreateCluster201Response updateCluster(clusterId, clusterEdit)
+> ClusterResponse updateCluster(clusterId, clusterEdit)
 
 Обновление информации о кластере
 
@@ -1374,7 +1374,7 @@ public class Example {
     Integer clusterId = 56; // Integer | Уникальный идентификатор кластера
     ClusterEdit clusterEdit = new ClusterEdit(); // ClusterEdit | 
     try {
-      CreateCluster201Response result = apiInstance.updateCluster(clusterId, clusterEdit);
+      ClusterResponse result = apiInstance.updateCluster(clusterId, clusterEdit);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling KubernetesApi#updateCluster");
@@ -1396,7 +1396,7 @@ public class Example {
 
 ### Return type
 
-[**CreateCluster201Response**](CreateCluster201Response.md)
+[**ClusterResponse**](ClusterResponse.md)
 
 ### Authorization
 

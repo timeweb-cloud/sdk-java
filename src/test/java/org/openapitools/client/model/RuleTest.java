@@ -19,9 +19,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import org.openapitools.client.model.Cidr;
-import org.openapitools.client.model.FirewallRuleDirection;
-import org.openapitools.client.model.FirewallRuleProtocol;
+import java.math.BigDecimal;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -48,51 +46,35 @@ public class RuleTest {
     }
 
     /**
-     * Test the property 'description'
+     * Test the property 'balancerProto'
      */
     @Test
-    public void descriptionTest() {
-        // TODO: test description
+    public void balancerProtoTest() {
+        // TODO: test balancerProto
     }
 
     /**
-     * Test the property 'direction'
+     * Test the property 'balancerPort'
      */
     @Test
-    public void directionTest() {
-        // TODO: test direction
+    public void balancerPortTest() {
+        // TODO: test balancerPort
     }
 
     /**
-     * Test the property 'protocol'
+     * Test the property 'serverProto'
      */
     @Test
-    public void protocolTest() {
-        // TODO: test protocol
+    public void serverProtoTest() {
+        // TODO: test serverProto
     }
 
     /**
-     * Test the property 'port'
+     * Test the property 'serverPort'
      */
     @Test
-    public void portTest() {
-        // TODO: test port
-    }
-
-    /**
-     * Test the property 'cidr'
-     */
-    @Test
-    public void cidrTest() {
-        // TODO: test cidr
-    }
-
-    /**
-     * Test the property 'groupId'
-     */
-    @Test
-    public void groupIdTest() {
-        // TODO: test groupId
+    public void serverPortTest() {
+        // TODO: test serverPort
     }
 
 }

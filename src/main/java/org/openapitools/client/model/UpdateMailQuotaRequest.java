@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * UpdateMailQuotaRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-21T14:21:17.845880Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-22T13:06:16.524188Z[Etc/UTC]")
 public class UpdateMailQuotaRequest {
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)
@@ -70,7 +70,7 @@ public class UpdateMailQuotaRequest {
    * Общее количество места на почте (в Мб).
    * @return total
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public BigDecimal getTotal() {
     return total;
   }
@@ -130,6 +130,7 @@ public class UpdateMailQuotaRequest {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("total");
   }
 
  /**
@@ -150,6 +151,13 @@ public class UpdateMailQuotaRequest {
       for (Entry<String, JsonElement> entry : entries) {
         if (!UpdateMailQuotaRequest.openapiFields.contains(entry.getKey())) {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `UpdateMailQuotaRequest` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        }
+      }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : UpdateMailQuotaRequest.openapiRequiredFields) {
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();

@@ -21,8 +21,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.UUID;
-import org.openapitools.client.model.GetAuthAccessSettings200ResponseAllOfWhiteList;
+import org.openapitools.client.model.GetAuthAccessSettings200ResponseWhiteList;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -52,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * GetAuthAccessSettings200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-21T14:21:17.845880Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-22T13:06:16.524188Z[Etc/UTC]")
 public class GetAuthAccessSettings200Response {
   public static final String SERIALIZED_NAME_IS_IP_RESTRICTIONS_ENABLED = "is_ip_restrictions_enabled";
   @SerializedName(SERIALIZED_NAME_IS_IP_RESTRICTIONS_ENABLED)
@@ -64,11 +63,7 @@ public class GetAuthAccessSettings200Response {
 
   public static final String SERIALIZED_NAME_WHITE_LIST = "white_list";
   @SerializedName(SERIALIZED_NAME_WHITE_LIST)
-  private GetAuthAccessSettings200ResponseAllOfWhiteList whiteList;
-
-  public static final String SERIALIZED_NAME_RESPONSE_ID = "response_id";
-  @SerializedName(SERIALIZED_NAME_RESPONSE_ID)
-  private UUID responseId;
+  private GetAuthAccessSettings200ResponseWhiteList whiteList;
 
   public GetAuthAccessSettings200Response() {
   }
@@ -115,7 +110,7 @@ public class GetAuthAccessSettings200Response {
   }
 
 
-  public GetAuthAccessSettings200Response whiteList(GetAuthAccessSettings200ResponseAllOfWhiteList whiteList) {
+  public GetAuthAccessSettings200Response whiteList(GetAuthAccessSettings200ResponseWhiteList whiteList) {
     
     this.whiteList = whiteList;
     return this;
@@ -126,34 +121,13 @@ public class GetAuthAccessSettings200Response {
    * @return whiteList
   **/
   @javax.annotation.Nonnull
-  public GetAuthAccessSettings200ResponseAllOfWhiteList getWhiteList() {
+  public GetAuthAccessSettings200ResponseWhiteList getWhiteList() {
     return whiteList;
   }
 
 
-  public void setWhiteList(GetAuthAccessSettings200ResponseAllOfWhiteList whiteList) {
+  public void setWhiteList(GetAuthAccessSettings200ResponseWhiteList whiteList) {
     this.whiteList = whiteList;
-  }
-
-
-  public GetAuthAccessSettings200Response responseId(UUID responseId) {
-    
-    this.responseId = responseId;
-    return this;
-  }
-
-   /**
-   * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
-   * @return responseId
-  **/
-  @javax.annotation.Nonnull
-  public UUID getResponseId() {
-    return responseId;
-  }
-
-
-  public void setResponseId(UUID responseId) {
-    this.responseId = responseId;
   }
 
 
@@ -169,13 +143,12 @@ public class GetAuthAccessSettings200Response {
     GetAuthAccessSettings200Response getAuthAccessSettings200Response = (GetAuthAccessSettings200Response) o;
     return Objects.equals(this.isIpRestrictionsEnabled, getAuthAccessSettings200Response.isIpRestrictionsEnabled) &&
         Objects.equals(this.isCountryRestrictionsEnabled, getAuthAccessSettings200Response.isCountryRestrictionsEnabled) &&
-        Objects.equals(this.whiteList, getAuthAccessSettings200Response.whiteList) &&
-        Objects.equals(this.responseId, getAuthAccessSettings200Response.responseId);
+        Objects.equals(this.whiteList, getAuthAccessSettings200Response.whiteList);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(isIpRestrictionsEnabled, isCountryRestrictionsEnabled, whiteList, responseId);
+    return Objects.hash(isIpRestrictionsEnabled, isCountryRestrictionsEnabled, whiteList);
   }
 
   @Override
@@ -185,7 +158,6 @@ public class GetAuthAccessSettings200Response {
     sb.append("    isIpRestrictionsEnabled: ").append(toIndentedString(isIpRestrictionsEnabled)).append("\n");
     sb.append("    isCountryRestrictionsEnabled: ").append(toIndentedString(isCountryRestrictionsEnabled)).append("\n");
     sb.append("    whiteList: ").append(toIndentedString(whiteList)).append("\n");
-    sb.append("    responseId: ").append(toIndentedString(responseId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -211,14 +183,12 @@ public class GetAuthAccessSettings200Response {
     openapiFields.add("is_ip_restrictions_enabled");
     openapiFields.add("is_country_restrictions_enabled");
     openapiFields.add("white_list");
-    openapiFields.add("response_id");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("is_ip_restrictions_enabled");
     openapiRequiredFields.add("is_country_restrictions_enabled");
     openapiRequiredFields.add("white_list");
-    openapiRequiredFields.add("response_id");
   }
 
  /**
@@ -250,10 +220,7 @@ public class GetAuthAccessSettings200Response {
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the required field `white_list`
-      GetAuthAccessSettings200ResponseAllOfWhiteList.validateJsonElement(jsonObj.get("white_list"));
-      if (!jsonObj.get("response_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `response_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("response_id").toString()));
-      }
+      GetAuthAccessSettings200ResponseWhiteList.validateJsonElement(jsonObj.get("white_list"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

@@ -21,7 +21,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.UUID;
 import org.openapitools.client.model.Vpc;
 
 import com.google.gson.Gson;
@@ -52,15 +51,11 @@ import org.openapitools.client.JSON;
 /**
  * CreateVPC201Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-21T14:21:17.845880Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-22T13:06:16.524188Z[Etc/UTC]")
 public class CreateVPC201Response {
   public static final String SERIALIZED_NAME_VPC = "vpc";
   @SerializedName(SERIALIZED_NAME_VPC)
   private Vpc vpc;
-
-  public static final String SERIALIZED_NAME_RESPONSE_ID = "response_id";
-  @SerializedName(SERIALIZED_NAME_RESPONSE_ID)
-  private UUID responseId;
 
   public CreateVPC201Response() {
   }
@@ -86,27 +81,6 @@ public class CreateVPC201Response {
   }
 
 
-  public CreateVPC201Response responseId(UUID responseId) {
-    
-    this.responseId = responseId;
-    return this;
-  }
-
-   /**
-   * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
-   * @return responseId
-  **/
-  @javax.annotation.Nonnull
-  public UUID getResponseId() {
-    return responseId;
-  }
-
-
-  public void setResponseId(UUID responseId) {
-    this.responseId = responseId;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -117,13 +91,12 @@ public class CreateVPC201Response {
       return false;
     }
     CreateVPC201Response createVPC201Response = (CreateVPC201Response) o;
-    return Objects.equals(this.vpc, createVPC201Response.vpc) &&
-        Objects.equals(this.responseId, createVPC201Response.responseId);
+    return Objects.equals(this.vpc, createVPC201Response.vpc);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(vpc, responseId);
+    return Objects.hash(vpc);
   }
 
   @Override
@@ -131,7 +104,6 @@ public class CreateVPC201Response {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateVPC201Response {\n");
     sb.append("    vpc: ").append(toIndentedString(vpc)).append("\n");
-    sb.append("    responseId: ").append(toIndentedString(responseId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -155,12 +127,10 @@ public class CreateVPC201Response {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("vpc");
-    openapiFields.add("response_id");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("vpc");
-    openapiRequiredFields.add("response_id");
   }
 
  /**
@@ -193,9 +163,6 @@ public class CreateVPC201Response {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the required field `vpc`
       Vpc.validateJsonElement(jsonObj.get("vpc"));
-      if (!jsonObj.get("response_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `response_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("response_id").toString()));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

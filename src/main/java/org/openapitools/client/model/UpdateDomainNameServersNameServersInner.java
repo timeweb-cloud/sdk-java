@@ -22,6 +22,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.google.gson.Gson;
@@ -52,7 +53,7 @@ import org.openapitools.client.JSON;
 /**
  * UpdateDomainNameServersNameServersInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-21T14:21:17.845880Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-22T13:06:16.524188Z[Etc/UTC]")
 public class UpdateDomainNameServersNameServersInner {
   public static final String SERIALIZED_NAME_HOST = "host";
   @SerializedName(SERIALIZED_NAME_HOST)
@@ -202,7 +203,7 @@ public class UpdateDomainNameServersNameServersInner {
         throw new IllegalArgumentException(String.format("Expected the field `host` to be a primitive type in the JSON string but got `%s`", jsonObj.get("host").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("ips") != null && !jsonObj.get("ips").isJsonArray()) {
+      if (jsonObj.get("ips") != null && !jsonObj.get("ips").isJsonNull() && !jsonObj.get("ips").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `ips` to be an array in the JSON string but got `%s`", jsonObj.get("ips").toString()));
       }
   }

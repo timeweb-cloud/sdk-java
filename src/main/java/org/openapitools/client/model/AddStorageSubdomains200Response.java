@@ -22,8 +22,8 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.UUID;
 import org.openapitools.client.model.AddedSubdomain;
 import org.openapitools.client.model.Meta;
 
@@ -55,7 +55,7 @@ import org.openapitools.client.JSON;
 /**
  * AddStorageSubdomains200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-21T14:21:17.845880Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-22T13:06:16.524188Z[Etc/UTC]")
 public class AddStorageSubdomains200Response {
   public static final String SERIALIZED_NAME_SUBDOMAINS = "subdomains";
   @SerializedName(SERIALIZED_NAME_SUBDOMAINS)
@@ -64,10 +64,6 @@ public class AddStorageSubdomains200Response {
   public static final String SERIALIZED_NAME_META = "meta";
   @SerializedName(SERIALIZED_NAME_META)
   private Meta meta;
-
-  public static final String SERIALIZED_NAME_RESPONSE_ID = "response_id";
-  @SerializedName(SERIALIZED_NAME_RESPONSE_ID)
-  private UUID responseId;
 
   public AddStorageSubdomains200Response() {
   }
@@ -122,27 +118,6 @@ public class AddStorageSubdomains200Response {
   }
 
 
-  public AddStorageSubdomains200Response responseId(UUID responseId) {
-    
-    this.responseId = responseId;
-    return this;
-  }
-
-   /**
-   * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
-   * @return responseId
-  **/
-  @javax.annotation.Nonnull
-  public UUID getResponseId() {
-    return responseId;
-  }
-
-
-  public void setResponseId(UUID responseId) {
-    this.responseId = responseId;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -154,13 +129,12 @@ public class AddStorageSubdomains200Response {
     }
     AddStorageSubdomains200Response addStorageSubdomains200Response = (AddStorageSubdomains200Response) o;
     return Objects.equals(this.subdomains, addStorageSubdomains200Response.subdomains) &&
-        Objects.equals(this.meta, addStorageSubdomains200Response.meta) &&
-        Objects.equals(this.responseId, addStorageSubdomains200Response.responseId);
+        Objects.equals(this.meta, addStorageSubdomains200Response.meta);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(subdomains, meta, responseId);
+    return Objects.hash(subdomains, meta);
   }
 
   @Override
@@ -169,7 +143,6 @@ public class AddStorageSubdomains200Response {
     sb.append("class AddStorageSubdomains200Response {\n");
     sb.append("    subdomains: ").append(toIndentedString(subdomains)).append("\n");
     sb.append("    meta: ").append(toIndentedString(meta)).append("\n");
-    sb.append("    responseId: ").append(toIndentedString(responseId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -194,13 +167,11 @@ public class AddStorageSubdomains200Response {
     openapiFields = new HashSet<String>();
     openapiFields.add("subdomains");
     openapiFields.add("meta");
-    openapiFields.add("response_id");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("subdomains");
     openapiRequiredFields.add("meta");
-    openapiRequiredFields.add("response_id");
   }
 
  /**
@@ -243,9 +214,6 @@ public class AddStorageSubdomains200Response {
       };
       // validate the required field `meta`
       Meta.validateJsonElement(jsonObj.get("meta"));
-      if (!jsonObj.get("response_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `response_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("response_id").toString()));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

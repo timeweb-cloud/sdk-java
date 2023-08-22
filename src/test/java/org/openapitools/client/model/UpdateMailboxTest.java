@@ -19,10 +19,10 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import org.openapitools.client.model.UpdateMailboxAutoReply;
-import org.openapitools.client.model.UpdateMailboxForwardingIncoming;
-import org.openapitools.client.model.UpdateMailboxForwardingOutgoing;
-import org.openapitools.client.model.UpdateMailboxSpamFilter;
+import org.openapitools.client.model.AutoReplyIsDisabled;
+import org.openapitools.client.model.ForwardingIncomingIsDisabled;
+import org.openapitools.client.model.ForwardingOutgoingIsDisabled;
+import org.openapitools.client.model.SpamFilterIsDisabled;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 

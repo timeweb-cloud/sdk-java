@@ -22,8 +22,8 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.UUID;
 import org.openapitools.client.model.Clusterk8s;
 import org.openapitools.client.model.Meta;
 
@@ -55,7 +55,7 @@ import org.openapitools.client.JSON;
 /**
  * GetProjectClusters200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-21T14:21:17.845880Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-22T13:06:16.524188Z[Etc/UTC]")
 public class GetProjectClusters200Response {
   public static final String SERIALIZED_NAME_CLUSTERS = "clusters";
   @SerializedName(SERIALIZED_NAME_CLUSTERS)
@@ -64,10 +64,6 @@ public class GetProjectClusters200Response {
   public static final String SERIALIZED_NAME_META = "meta";
   @SerializedName(SERIALIZED_NAME_META)
   private Meta meta;
-
-  public static final String SERIALIZED_NAME_RESPONSE_ID = "response_id";
-  @SerializedName(SERIALIZED_NAME_RESPONSE_ID)
-  private UUID responseId;
 
   public GetProjectClusters200Response() {
   }
@@ -122,27 +118,6 @@ public class GetProjectClusters200Response {
   }
 
 
-  public GetProjectClusters200Response responseId(UUID responseId) {
-    
-    this.responseId = responseId;
-    return this;
-  }
-
-   /**
-   * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
-   * @return responseId
-  **/
-  @javax.annotation.Nonnull
-  public UUID getResponseId() {
-    return responseId;
-  }
-
-
-  public void setResponseId(UUID responseId) {
-    this.responseId = responseId;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -154,13 +129,12 @@ public class GetProjectClusters200Response {
     }
     GetProjectClusters200Response getProjectClusters200Response = (GetProjectClusters200Response) o;
     return Objects.equals(this.clusters, getProjectClusters200Response.clusters) &&
-        Objects.equals(this.meta, getProjectClusters200Response.meta) &&
-        Objects.equals(this.responseId, getProjectClusters200Response.responseId);
+        Objects.equals(this.meta, getProjectClusters200Response.meta);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(clusters, meta, responseId);
+    return Objects.hash(clusters, meta);
   }
 
   @Override
@@ -169,7 +143,6 @@ public class GetProjectClusters200Response {
     sb.append("class GetProjectClusters200Response {\n");
     sb.append("    clusters: ").append(toIndentedString(clusters)).append("\n");
     sb.append("    meta: ").append(toIndentedString(meta)).append("\n");
-    sb.append("    responseId: ").append(toIndentedString(responseId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -194,13 +167,11 @@ public class GetProjectClusters200Response {
     openapiFields = new HashSet<String>();
     openapiFields.add("clusters");
     openapiFields.add("meta");
-    openapiFields.add("response_id");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("clusters");
     openapiRequiredFields.add("meta");
-    openapiRequiredFields.add("response_id");
   }
 
  /**
@@ -243,9 +214,6 @@ public class GetProjectClusters200Response {
       };
       // validate the required field `meta`
       Meta.validateJsonElement(jsonObj.get("meta"));
-      if (!jsonObj.get("response_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `response_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("response_id").toString()));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

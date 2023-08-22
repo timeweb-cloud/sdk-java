@@ -18,7 +18,7 @@ All URIs are relative to *https://api.timeweb.cloud*
 
 <a id="createImage"></a>
 # **createImage**
-> CreateImage201Response createImage(imageInAPI)
+> ImageOutResponse createImage(imageInAPI)
 
 Создание образа
 
@@ -46,7 +46,7 @@ public class Example {
     ImagesApi apiInstance = new ImagesApi(defaultClient);
     ImageInAPI imageInAPI = new ImageInAPI(); // ImageInAPI | 
     try {
-      CreateImage201Response result = apiInstance.createImage(imageInAPI);
+      ImageOutResponse result = apiInstance.createImage(imageInAPI);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ImagesApi#createImage");
@@ -67,7 +67,7 @@ public class Example {
 
 ### Return type
 
-[**CreateImage201Response**](CreateImage201Response.md)
+[**ImageOutResponse**](ImageOutResponse.md)
 
 ### Authorization
 
@@ -89,7 +89,7 @@ public class Example {
 
 <a id="createImageDownloadUrl"></a>
 # **createImageDownloadUrl**
-> CreateImageDownloadUrl201Response createImageDownloadUrl(imageId, imageUrlIn)
+> ImageDownloadResponse createImageDownloadUrl(imageId, imageUrlIn)
 
 Создание ссылки на скачивание образа
 
@@ -118,7 +118,7 @@ public class Example {
     String imageId = "imageId_example"; // String | Идентификатор образа
     ImageUrlIn imageUrlIn = new ImageUrlIn(); // ImageUrlIn | 
     try {
-      CreateImageDownloadUrl201Response result = apiInstance.createImageDownloadUrl(imageId, imageUrlIn);
+      ImageDownloadResponse result = apiInstance.createImageDownloadUrl(imageId, imageUrlIn);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ImagesApi#createImageDownloadUrl");
@@ -140,7 +140,7 @@ public class Example {
 
 ### Return type
 
-[**CreateImageDownloadUrl201Response**](CreateImageDownloadUrl201Response.md)
+[**ImageDownloadResponse**](ImageDownloadResponse.md)
 
 ### Authorization
 
@@ -306,7 +306,7 @@ null (empty response body)
 
 <a id="getImage"></a>
 # **getImage**
-> CreateImage201Response getImage(imageId)
+> ImageOutResponse getImage(imageId)
 
 Получение информации о образе
 
@@ -334,7 +334,7 @@ public class Example {
     ImagesApi apiInstance = new ImagesApi(defaultClient);
     String imageId = "imageId_example"; // String | Идентификатор образа
     try {
-      CreateImage201Response result = apiInstance.getImage(imageId);
+      ImageOutResponse result = apiInstance.getImage(imageId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ImagesApi#getImage");
@@ -355,7 +355,7 @@ public class Example {
 
 ### Return type
 
-[**CreateImage201Response**](CreateImage201Response.md)
+[**ImageOutResponse**](ImageOutResponse.md)
 
 ### Authorization
 
@@ -378,7 +378,7 @@ public class Example {
 
 <a id="getImageDownloadURL"></a>
 # **getImageDownloadURL**
-> CreateImageDownloadUrl201Response getImageDownloadURL(imageId, imageUrlId)
+> ImageDownloadResponse getImageDownloadURL(imageId, imageUrlId)
 
 Получение информации о ссылке на скачивание образа
 
@@ -407,7 +407,7 @@ public class Example {
     String imageId = "imageId_example"; // String | Идентификатор образа
     String imageUrlId = "imageUrlId_example"; // String | Идентификатор ссылки
     try {
-      CreateImageDownloadUrl201Response result = apiInstance.getImageDownloadURL(imageId, imageUrlId);
+      ImageDownloadResponse result = apiInstance.getImageDownloadURL(imageId, imageUrlId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ImagesApi#getImageDownloadURL");
@@ -429,7 +429,7 @@ public class Example {
 
 ### Return type
 
-[**CreateImageDownloadUrl201Response**](CreateImageDownloadUrl201Response.md)
+[**ImageDownloadResponse**](ImageDownloadResponse.md)
 
 ### Authorization
 
@@ -452,7 +452,7 @@ public class Example {
 
 <a id="getImageDownloadURLs"></a>
 # **getImageDownloadURLs**
-> GetImageDownloadURLs200Response getImageDownloadURLs(imageId, limit, offset)
+> ImageDownloadsResponse getImageDownloadURLs(imageId, limit, offset)
 
 Получение информации о ссылках на скачивание образов
 
@@ -482,7 +482,7 @@ public class Example {
     Integer limit = 100; // Integer | 
     Integer offset = 0; // Integer | 
     try {
-      GetImageDownloadURLs200Response result = apiInstance.getImageDownloadURLs(imageId, limit, offset);
+      ImageDownloadsResponse result = apiInstance.getImageDownloadURLs(imageId, limit, offset);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ImagesApi#getImageDownloadURLs");
@@ -505,7 +505,7 @@ public class Example {
 
 ### Return type
 
-[**GetImageDownloadURLs200Response**](GetImageDownloadURLs200Response.md)
+[**ImageDownloadsResponse**](ImageDownloadsResponse.md)
 
 ### Authorization
 
@@ -528,7 +528,7 @@ public class Example {
 
 <a id="getImages"></a>
 # **getImages**
-> GetImages200Response getImages(limit, offset)
+> ImagesOutResponse getImages(limit, offset)
 
 Получение списка образов
 
@@ -557,7 +557,7 @@ public class Example {
     Integer limit = 100; // Integer | 
     Integer offset = 0; // Integer | 
     try {
-      GetImages200Response result = apiInstance.getImages(limit, offset);
+      ImagesOutResponse result = apiInstance.getImages(limit, offset);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ImagesApi#getImages");
@@ -579,7 +579,7 @@ public class Example {
 
 ### Return type
 
-[**GetImages200Response**](GetImages200Response.md)
+[**ImagesOutResponse**](ImagesOutResponse.md)
 
 ### Authorization
 
@@ -601,7 +601,7 @@ public class Example {
 
 <a id="updateImage"></a>
 # **updateImage**
-> CreateImage201Response updateImage(imageId, imageUpdateAPI)
+> ImageOutResponse updateImage(imageId, imageUpdateAPI)
 
 Обновление информации о образе
 
@@ -630,7 +630,7 @@ public class Example {
     String imageId = "imageId_example"; // String | Идентификатор образа
     ImageUpdateAPI imageUpdateAPI = new ImageUpdateAPI(); // ImageUpdateAPI | 
     try {
-      CreateImage201Response result = apiInstance.updateImage(imageId, imageUpdateAPI);
+      ImageOutResponse result = apiInstance.updateImage(imageId, imageUpdateAPI);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ImagesApi#updateImage");
@@ -652,7 +652,7 @@ public class Example {
 
 ### Return type
 
-[**CreateImage201Response**](CreateImage201Response.md)
+[**ImageOutResponse**](ImageOutResponse.md)
 
 ### Authorization
 
@@ -675,7 +675,7 @@ public class Example {
 
 <a id="uploadImage"></a>
 # **uploadImage**
-> UploadImage200Response uploadImage(imageId, contentDisposition)
+> UploadSuccessfulResponse uploadImage(imageId, contentDisposition)
 
 Загрузка образа
 
@@ -704,7 +704,7 @@ public class Example {
     String imageId = "imageId_example"; // String | 
     String contentDisposition = "contentDisposition_example"; // String | 
     try {
-      UploadImage200Response result = apiInstance.uploadImage(imageId, contentDisposition);
+      UploadSuccessfulResponse result = apiInstance.uploadImage(imageId, contentDisposition);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ImagesApi#uploadImage");
@@ -726,7 +726,7 @@ public class Example {
 
 ### Return type
 
-[**UploadImage200Response**](UploadImage200Response.md)
+[**UploadSuccessfulResponse**](UploadSuccessfulResponse.md)
 
 ### Authorization
 

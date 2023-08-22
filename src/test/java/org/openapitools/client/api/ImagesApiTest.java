@@ -15,19 +15,19 @@ package org.openapitools.client.api;
 
 import org.openapitools.client.ApiException;
 import org.openapitools.client.model.BaseError;
-import org.openapitools.client.model.CreateImage201Response;
-import org.openapitools.client.model.CreateImageDownloadUrl201Response;
 import org.openapitools.client.model.GetFinances400Response;
 import org.openapitools.client.model.GetFinances401Response;
 import org.openapitools.client.model.GetFinances404Response;
 import org.openapitools.client.model.GetFinances429Response;
 import org.openapitools.client.model.GetFinances500Response;
-import org.openapitools.client.model.GetImageDownloadURLs200Response;
-import org.openapitools.client.model.GetImages200Response;
+import org.openapitools.client.model.ImageDownloadResponse;
+import org.openapitools.client.model.ImageDownloadsResponse;
 import org.openapitools.client.model.ImageInAPI;
+import org.openapitools.client.model.ImageOutResponse;
 import org.openapitools.client.model.ImageUpdateAPI;
 import org.openapitools.client.model.ImageUrlIn;
-import org.openapitools.client.model.UploadImage200Response;
+import org.openapitools.client.model.ImagesOutResponse;
+import org.openapitools.client.model.UploadSuccessfulResponse;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -54,7 +54,7 @@ public class ImagesApiTest {
     @Test
     public void createImageTest() throws ApiException {
         ImageInAPI imageInAPI = null;
-        CreateImage201Response response = api.createImage(imageInAPI);
+        ImageOutResponse response = api.createImage(imageInAPI);
         // TODO: test validations
     }
 
@@ -69,7 +69,7 @@ public class ImagesApiTest {
     public void createImageDownloadUrlTest() throws ApiException {
         String imageId = null;
         ImageUrlIn imageUrlIn = null;
-        CreateImageDownloadUrl201Response response = api.createImageDownloadUrl(imageId, imageUrlIn);
+        ImageDownloadResponse response = api.createImageDownloadUrl(imageId, imageUrlIn);
         // TODO: test validations
     }
 
@@ -112,7 +112,7 @@ public class ImagesApiTest {
     @Test
     public void getImageTest() throws ApiException {
         String imageId = null;
-        CreateImage201Response response = api.getImage(imageId);
+        ImageOutResponse response = api.getImage(imageId);
         // TODO: test validations
     }
 
@@ -127,7 +127,7 @@ public class ImagesApiTest {
     public void getImageDownloadURLTest() throws ApiException {
         String imageId = null;
         String imageUrlId = null;
-        CreateImageDownloadUrl201Response response = api.getImageDownloadURL(imageId, imageUrlId);
+        ImageDownloadResponse response = api.getImageDownloadURL(imageId, imageUrlId);
         // TODO: test validations
     }
 
@@ -143,7 +143,7 @@ public class ImagesApiTest {
         String imageId = null;
         Integer limit = null;
         Integer offset = null;
-        GetImageDownloadURLs200Response response = api.getImageDownloadURLs(imageId, limit, offset);
+        ImageDownloadsResponse response = api.getImageDownloadURLs(imageId, limit, offset);
         // TODO: test validations
     }
 
@@ -158,7 +158,7 @@ public class ImagesApiTest {
     public void getImagesTest() throws ApiException {
         Integer limit = null;
         Integer offset = null;
-        GetImages200Response response = api.getImages(limit, offset);
+        ImagesOutResponse response = api.getImages(limit, offset);
         // TODO: test validations
     }
 
@@ -173,7 +173,7 @@ public class ImagesApiTest {
     public void updateImageTest() throws ApiException {
         String imageId = null;
         ImageUpdateAPI imageUpdateAPI = null;
-        CreateImage201Response response = api.updateImage(imageId, imageUpdateAPI);
+        ImageOutResponse response = api.updateImage(imageId, imageUpdateAPI);
         // TODO: test validations
     }
 
@@ -188,7 +188,7 @@ public class ImagesApiTest {
     public void uploadImageTest() throws ApiException {
         String imageId = null;
         String contentDisposition = null;
-        UploadImage200Response response = api.uploadImage(imageId, contentDisposition);
+        UploadSuccessfulResponse response = api.uploadImage(imageId, contentDisposition);
         // TODO: test validations
     }
 

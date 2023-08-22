@@ -17,7 +17,6 @@ import org.openapitools.client.ApiException;
 import org.openapitools.client.model.CreateDatabaseBackup409Response;
 import org.openapitools.client.model.CreateVPC201Response;
 import org.openapitools.client.model.CreateVpc;
-import org.openapitools.client.model.DeleteVPC204Response;
 import org.openapitools.client.model.GetFinances400Response;
 import org.openapitools.client.model.GetFinances401Response;
 import org.openapitools.client.model.GetFinances403Response;
@@ -68,7 +67,7 @@ public class VpcApiTest {
     @Test
     public void deleteVPCTest() throws ApiException {
         String vpcId = null;
-        DeleteVPC204Response response = api.deleteVPC(vpcId);
+        CreateVPC201Response response = api.deleteVPC(vpcId);
         // TODO: test validations
     }
 

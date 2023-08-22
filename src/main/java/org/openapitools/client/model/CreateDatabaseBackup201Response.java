@@ -21,7 +21,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.UUID;
 import org.openapitools.client.model.Backup;
 
 import com.google.gson.Gson;
@@ -52,15 +51,11 @@ import org.openapitools.client.JSON;
 /**
  * CreateDatabaseBackup201Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-21T14:21:17.845880Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-22T13:06:16.524188Z[Etc/UTC]")
 public class CreateDatabaseBackup201Response {
   public static final String SERIALIZED_NAME_BACKUP = "backup";
   @SerializedName(SERIALIZED_NAME_BACKUP)
   private Backup backup;
-
-  public static final String SERIALIZED_NAME_RESPONSE_ID = "response_id";
-  @SerializedName(SERIALIZED_NAME_RESPONSE_ID)
-  private UUID responseId;
 
   public CreateDatabaseBackup201Response() {
   }
@@ -86,27 +81,6 @@ public class CreateDatabaseBackup201Response {
   }
 
 
-  public CreateDatabaseBackup201Response responseId(UUID responseId) {
-    
-    this.responseId = responseId;
-    return this;
-  }
-
-   /**
-   * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
-   * @return responseId
-  **/
-  @javax.annotation.Nonnull
-  public UUID getResponseId() {
-    return responseId;
-  }
-
-
-  public void setResponseId(UUID responseId) {
-    this.responseId = responseId;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -117,13 +91,12 @@ public class CreateDatabaseBackup201Response {
       return false;
     }
     CreateDatabaseBackup201Response createDatabaseBackup201Response = (CreateDatabaseBackup201Response) o;
-    return Objects.equals(this.backup, createDatabaseBackup201Response.backup) &&
-        Objects.equals(this.responseId, createDatabaseBackup201Response.responseId);
+    return Objects.equals(this.backup, createDatabaseBackup201Response.backup);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(backup, responseId);
+    return Objects.hash(backup);
   }
 
   @Override
@@ -131,7 +104,6 @@ public class CreateDatabaseBackup201Response {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateDatabaseBackup201Response {\n");
     sb.append("    backup: ").append(toIndentedString(backup)).append("\n");
-    sb.append("    responseId: ").append(toIndentedString(responseId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -155,12 +127,10 @@ public class CreateDatabaseBackup201Response {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("backup");
-    openapiFields.add("response_id");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("backup");
-    openapiRequiredFields.add("response_id");
   }
 
  /**
@@ -193,9 +163,6 @@ public class CreateDatabaseBackup201Response {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the required field `backup`
       Backup.validateJsonElement(jsonObj.get("backup"));
-      if (!jsonObj.get("response_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `response_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("response_id").toString()));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

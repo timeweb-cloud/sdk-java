@@ -21,7 +21,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.UUID;
 import org.openapitools.client.model.DeleteServiceResponse;
 
 import com.google.gson.Gson;
@@ -52,15 +51,11 @@ import org.openapitools.client.JSON;
 /**
  * DeleteServer200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-21T14:21:17.845880Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-22T13:06:16.524188Z[Etc/UTC]")
 public class DeleteServer200Response {
   public static final String SERIALIZED_NAME_SERVER_DELETE = "server_delete";
   @SerializedName(SERIALIZED_NAME_SERVER_DELETE)
   private DeleteServiceResponse serverDelete;
-
-  public static final String SERIALIZED_NAME_RESPONSE_ID = "response_id";
-  @SerializedName(SERIALIZED_NAME_RESPONSE_ID)
-  private UUID responseId;
 
   public DeleteServer200Response() {
   }
@@ -86,27 +81,6 @@ public class DeleteServer200Response {
   }
 
 
-  public DeleteServer200Response responseId(UUID responseId) {
-    
-    this.responseId = responseId;
-    return this;
-  }
-
-   /**
-   * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
-   * @return responseId
-  **/
-  @javax.annotation.Nonnull
-  public UUID getResponseId() {
-    return responseId;
-  }
-
-
-  public void setResponseId(UUID responseId) {
-    this.responseId = responseId;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -117,13 +91,12 @@ public class DeleteServer200Response {
       return false;
     }
     DeleteServer200Response deleteServer200Response = (DeleteServer200Response) o;
-    return Objects.equals(this.serverDelete, deleteServer200Response.serverDelete) &&
-        Objects.equals(this.responseId, deleteServer200Response.responseId);
+    return Objects.equals(this.serverDelete, deleteServer200Response.serverDelete);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(serverDelete, responseId);
+    return Objects.hash(serverDelete);
   }
 
   @Override
@@ -131,7 +104,6 @@ public class DeleteServer200Response {
     StringBuilder sb = new StringBuilder();
     sb.append("class DeleteServer200Response {\n");
     sb.append("    serverDelete: ").append(toIndentedString(serverDelete)).append("\n");
-    sb.append("    responseId: ").append(toIndentedString(responseId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -155,12 +127,10 @@ public class DeleteServer200Response {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("server_delete");
-    openapiFields.add("response_id");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("server_delete");
-    openapiRequiredFields.add("response_id");
   }
 
  /**
@@ -193,9 +163,6 @@ public class DeleteServer200Response {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the required field `server_delete`
       DeleteServiceResponse.validateJsonElement(jsonObj.get("server_delete"));
-      if (!jsonObj.get("response_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `response_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("response_id").toString()));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

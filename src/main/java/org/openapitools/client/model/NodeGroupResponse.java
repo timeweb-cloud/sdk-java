@@ -21,7 +21,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import org.openapitools.client.model.NodeGroup;
+import org.openapitools.client.model.NodeGroupOut;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * NodeGroupResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-21T14:21:17.845880Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-22T13:06:16.524188Z[Etc/UTC]")
 public class NodeGroupResponse {
   public static final String SERIALIZED_NAME_RESPONSE_ID = "response_id";
   @SerializedName(SERIALIZED_NAME_RESPONSE_ID)
@@ -59,7 +59,7 @@ public class NodeGroupResponse {
 
   public static final String SERIALIZED_NAME_NODE_GROUP = "node_group";
   @SerializedName(SERIALIZED_NAME_NODE_GROUP)
-  private NodeGroup nodeGroup;
+  private NodeGroupOut nodeGroup;
 
   public NodeGroupResponse() {
   }
@@ -85,7 +85,7 @@ public class NodeGroupResponse {
   }
 
 
-  public NodeGroupResponse nodeGroup(NodeGroup nodeGroup) {
+  public NodeGroupResponse nodeGroup(NodeGroupOut nodeGroup) {
     
     this.nodeGroup = nodeGroup;
     return this;
@@ -96,12 +96,12 @@ public class NodeGroupResponse {
    * @return nodeGroup
   **/
   @javax.annotation.Nonnull
-  public NodeGroup getNodeGroup() {
+  public NodeGroupOut getNodeGroup() {
     return nodeGroup;
   }
 
 
-  public void setNodeGroup(NodeGroup nodeGroup) {
+  public void setNodeGroup(NodeGroupOut nodeGroup) {
     this.nodeGroup = nodeGroup;
   }
 
@@ -193,7 +193,7 @@ public class NodeGroupResponse {
         throw new IllegalArgumentException(String.format("Expected the field `response_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("response_id").toString()));
       }
       // validate the required field `node_group`
-      NodeGroup.validateJsonElement(jsonObj.get("node_group"));
+      NodeGroupOut.validateJsonElement(jsonObj.get("node_group"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

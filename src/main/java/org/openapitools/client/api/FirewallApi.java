@@ -27,19 +27,19 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import org.openapitools.client.model.AddResourceToGroup201Response;
-import org.openapitools.client.model.CreateGroup201Response;
-import org.openapitools.client.model.CreateGroupRule201Response;
 import org.openapitools.client.model.FirewallGroupInAPI;
+import org.openapitools.client.model.FirewallGroupOutResponse;
+import org.openapitools.client.model.FirewallGroupResourceOutResponse;
+import org.openapitools.client.model.FirewallGroupResourcesOutResponse;
+import org.openapitools.client.model.FirewallGroupsOutResponse;
 import org.openapitools.client.model.FirewallRuleInAPI;
+import org.openapitools.client.model.FirewallRuleOutResponse;
+import org.openapitools.client.model.FirewallRulesOutResponse;
 import org.openapitools.client.model.GetFinances400Response;
 import org.openapitools.client.model.GetFinances401Response;
 import org.openapitools.client.model.GetFinances404Response;
 import org.openapitools.client.model.GetFinances429Response;
 import org.openapitools.client.model.GetFinances500Response;
-import org.openapitools.client.model.GetGroupResources200Response;
-import org.openapitools.client.model.GetGroupRules200Response;
-import org.openapitools.client.model.GetGroups200Response;
 import org.openapitools.client.model.ResourceType;
 
 import java.lang.reflect.Type;
@@ -89,7 +89,7 @@ public class FirewallApi {
      * Build call for addResourceToGroup
      * @param groupId Идентификатор группы правил (required)
      * @param resourceId Идентификатор ресурса (required)
-     * @param resourceType  (optional, default to server)
+     * @param resourceType  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -174,8 +174,8 @@ public class FirewallApi {
      * Чтобы слинковать ресурс с группой правил, отправьте POST запрос на &#x60;/api/v1/firewall/groups/{group_id}/resources/{resource_id}&#x60;
      * @param groupId Идентификатор группы правил (required)
      * @param resourceId Идентификатор ресурса (required)
-     * @param resourceType  (optional, default to server)
-     * @return AddResourceToGroup201Response
+     * @param resourceType  (optional)
+     * @return FirewallGroupResourceOutResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -187,8 +187,8 @@ public class FirewallApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public AddResourceToGroup201Response addResourceToGroup(String groupId, String resourceId, ResourceType resourceType) throws ApiException {
-        ApiResponse<AddResourceToGroup201Response> localVarResp = addResourceToGroupWithHttpInfo(groupId, resourceId, resourceType);
+    public FirewallGroupResourceOutResponse addResourceToGroup(String groupId, String resourceId, ResourceType resourceType) throws ApiException {
+        ApiResponse<FirewallGroupResourceOutResponse> localVarResp = addResourceToGroupWithHttpInfo(groupId, resourceId, resourceType);
         return localVarResp.getData();
     }
 
@@ -197,8 +197,8 @@ public class FirewallApi {
      * Чтобы слинковать ресурс с группой правил, отправьте POST запрос на &#x60;/api/v1/firewall/groups/{group_id}/resources/{resource_id}&#x60;
      * @param groupId Идентификатор группы правил (required)
      * @param resourceId Идентификатор ресурса (required)
-     * @param resourceType  (optional, default to server)
-     * @return ApiResponse&lt;AddResourceToGroup201Response&gt;
+     * @param resourceType  (optional)
+     * @return ApiResponse&lt;FirewallGroupResourceOutResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -210,9 +210,9 @@ public class FirewallApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AddResourceToGroup201Response> addResourceToGroupWithHttpInfo(String groupId, String resourceId, ResourceType resourceType) throws ApiException {
+    public ApiResponse<FirewallGroupResourceOutResponse> addResourceToGroupWithHttpInfo(String groupId, String resourceId, ResourceType resourceType) throws ApiException {
         okhttp3.Call localVarCall = addResourceToGroupValidateBeforeCall(groupId, resourceId, resourceType, null);
-        Type localVarReturnType = new TypeToken<AddResourceToGroup201Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<FirewallGroupResourceOutResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -221,7 +221,7 @@ public class FirewallApi {
      * Чтобы слинковать ресурс с группой правил, отправьте POST запрос на &#x60;/api/v1/firewall/groups/{group_id}/resources/{resource_id}&#x60;
      * @param groupId Идентификатор группы правил (required)
      * @param resourceId Идентификатор ресурса (required)
-     * @param resourceType  (optional, default to server)
+     * @param resourceType  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -235,10 +235,10 @@ public class FirewallApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call addResourceToGroupAsync(String groupId, String resourceId, ResourceType resourceType, final ApiCallback<AddResourceToGroup201Response> _callback) throws ApiException {
+    public okhttp3.Call addResourceToGroupAsync(String groupId, String resourceId, ResourceType resourceType, final ApiCallback<FirewallGroupResourceOutResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = addResourceToGroupValidateBeforeCall(groupId, resourceId, resourceType, _callback);
-        Type localVarReturnType = new TypeToken<AddResourceToGroup201Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<FirewallGroupResourceOutResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -318,7 +318,7 @@ public class FirewallApi {
      * Создание группы правил
      * Чтобы создать группу правил, отправьте POST запрос на &#x60;/api/v1/firewall/groups&#x60;
      * @param firewallGroupInAPI  (required)
-     * @return CreateGroup201Response
+     * @return FirewallGroupOutResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -330,8 +330,8 @@ public class FirewallApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public CreateGroup201Response createGroup(FirewallGroupInAPI firewallGroupInAPI) throws ApiException {
-        ApiResponse<CreateGroup201Response> localVarResp = createGroupWithHttpInfo(firewallGroupInAPI);
+    public FirewallGroupOutResponse createGroup(FirewallGroupInAPI firewallGroupInAPI) throws ApiException {
+        ApiResponse<FirewallGroupOutResponse> localVarResp = createGroupWithHttpInfo(firewallGroupInAPI);
         return localVarResp.getData();
     }
 
@@ -339,7 +339,7 @@ public class FirewallApi {
      * Создание группы правил
      * Чтобы создать группу правил, отправьте POST запрос на &#x60;/api/v1/firewall/groups&#x60;
      * @param firewallGroupInAPI  (required)
-     * @return ApiResponse&lt;CreateGroup201Response&gt;
+     * @return ApiResponse&lt;FirewallGroupOutResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -351,9 +351,9 @@ public class FirewallApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CreateGroup201Response> createGroupWithHttpInfo(FirewallGroupInAPI firewallGroupInAPI) throws ApiException {
+    public ApiResponse<FirewallGroupOutResponse> createGroupWithHttpInfo(FirewallGroupInAPI firewallGroupInAPI) throws ApiException {
         okhttp3.Call localVarCall = createGroupValidateBeforeCall(firewallGroupInAPI, null);
-        Type localVarReturnType = new TypeToken<CreateGroup201Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<FirewallGroupOutResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -374,10 +374,10 @@ public class FirewallApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createGroupAsync(FirewallGroupInAPI firewallGroupInAPI, final ApiCallback<CreateGroup201Response> _callback) throws ApiException {
+    public okhttp3.Call createGroupAsync(FirewallGroupInAPI firewallGroupInAPI, final ApiCallback<FirewallGroupOutResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createGroupValidateBeforeCall(firewallGroupInAPI, _callback);
-        Type localVarReturnType = new TypeToken<CreateGroup201Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<FirewallGroupOutResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -465,7 +465,7 @@ public class FirewallApi {
      * Чтобы создать правило в группе, отправьте POST запрос на &#x60;/api/v1/firewall/groups/{group_id}/rules&#x60;
      * @param groupId Идентификатор группы правил (required)
      * @param firewallRuleInAPI  (required)
-     * @return CreateGroupRule201Response
+     * @return FirewallRuleOutResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -477,8 +477,8 @@ public class FirewallApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public CreateGroupRule201Response createGroupRule(String groupId, FirewallRuleInAPI firewallRuleInAPI) throws ApiException {
-        ApiResponse<CreateGroupRule201Response> localVarResp = createGroupRuleWithHttpInfo(groupId, firewallRuleInAPI);
+    public FirewallRuleOutResponse createGroupRule(String groupId, FirewallRuleInAPI firewallRuleInAPI) throws ApiException {
+        ApiResponse<FirewallRuleOutResponse> localVarResp = createGroupRuleWithHttpInfo(groupId, firewallRuleInAPI);
         return localVarResp.getData();
     }
 
@@ -487,7 +487,7 @@ public class FirewallApi {
      * Чтобы создать правило в группе, отправьте POST запрос на &#x60;/api/v1/firewall/groups/{group_id}/rules&#x60;
      * @param groupId Идентификатор группы правил (required)
      * @param firewallRuleInAPI  (required)
-     * @return ApiResponse&lt;CreateGroupRule201Response&gt;
+     * @return ApiResponse&lt;FirewallRuleOutResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -499,9 +499,9 @@ public class FirewallApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CreateGroupRule201Response> createGroupRuleWithHttpInfo(String groupId, FirewallRuleInAPI firewallRuleInAPI) throws ApiException {
+    public ApiResponse<FirewallRuleOutResponse> createGroupRuleWithHttpInfo(String groupId, FirewallRuleInAPI firewallRuleInAPI) throws ApiException {
         okhttp3.Call localVarCall = createGroupRuleValidateBeforeCall(groupId, firewallRuleInAPI, null);
-        Type localVarReturnType = new TypeToken<CreateGroupRule201Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<FirewallRuleOutResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -523,10 +523,10 @@ public class FirewallApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createGroupRuleAsync(String groupId, FirewallRuleInAPI firewallRuleInAPI, final ApiCallback<CreateGroupRule201Response> _callback) throws ApiException {
+    public okhttp3.Call createGroupRuleAsync(String groupId, FirewallRuleInAPI firewallRuleInAPI, final ApiCallback<FirewallRuleOutResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createGroupRuleValidateBeforeCall(groupId, firewallRuleInAPI, _callback);
-        Type localVarReturnType = new TypeToken<CreateGroupRule201Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<FirewallRuleOutResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -822,7 +822,7 @@ public class FirewallApi {
      * Build call for deleteResourceFromGroup
      * @param groupId Идентификатор группы правил (required)
      * @param resourceId Идентификатор ресурса (required)
-     * @param resourceType  (optional, default to server)
+     * @param resourceType  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -908,7 +908,7 @@ public class FirewallApi {
      * Чтобы отлинковать ресурс от группы правил, отправьте DELETE запрос на &#x60;/api/v1/firewall/groups/{group_id}/resources/{resource_id}&#x60;
      * @param groupId Идентификатор группы правил (required)
      * @param resourceId Идентификатор ресурса (required)
-     * @param resourceType  (optional, default to server)
+     * @param resourceType  (optional)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -930,7 +930,7 @@ public class FirewallApi {
      * Чтобы отлинковать ресурс от группы правил, отправьте DELETE запрос на &#x60;/api/v1/firewall/groups/{group_id}/resources/{resource_id}&#x60;
      * @param groupId Идентификатор группы правил (required)
      * @param resourceId Идентификатор ресурса (required)
-     * @param resourceType  (optional, default to server)
+     * @param resourceType  (optional)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -954,7 +954,7 @@ public class FirewallApi {
      * Чтобы отлинковать ресурс от группы правил, отправьте DELETE запрос на &#x60;/api/v1/firewall/groups/{group_id}/resources/{resource_id}&#x60;
      * @param groupId Идентификатор группы правил (required)
      * @param resourceId Идентификатор ресурса (required)
-     * @param resourceType  (optional, default to server)
+     * @param resourceType  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1052,7 +1052,7 @@ public class FirewallApi {
      * Получение информации о группе правил
      * Чтобы получить информацию о группе правил, отправьте GET запрос на &#x60;/api/v1/firewall/groups/{group_id}&#x60;
      * @param groupId Идентификатор группы правил (required)
-     * @return CreateGroup201Response
+     * @return FirewallGroupOutResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1065,8 +1065,8 @@ public class FirewallApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public CreateGroup201Response getGroup(String groupId) throws ApiException {
-        ApiResponse<CreateGroup201Response> localVarResp = getGroupWithHttpInfo(groupId);
+    public FirewallGroupOutResponse getGroup(String groupId) throws ApiException {
+        ApiResponse<FirewallGroupOutResponse> localVarResp = getGroupWithHttpInfo(groupId);
         return localVarResp.getData();
     }
 
@@ -1074,7 +1074,7 @@ public class FirewallApi {
      * Получение информации о группе правил
      * Чтобы получить информацию о группе правил, отправьте GET запрос на &#x60;/api/v1/firewall/groups/{group_id}&#x60;
      * @param groupId Идентификатор группы правил (required)
-     * @return ApiResponse&lt;CreateGroup201Response&gt;
+     * @return ApiResponse&lt;FirewallGroupOutResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1087,9 +1087,9 @@ public class FirewallApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CreateGroup201Response> getGroupWithHttpInfo(String groupId) throws ApiException {
+    public ApiResponse<FirewallGroupOutResponse> getGroupWithHttpInfo(String groupId) throws ApiException {
         okhttp3.Call localVarCall = getGroupValidateBeforeCall(groupId, null);
-        Type localVarReturnType = new TypeToken<CreateGroup201Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<FirewallGroupOutResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1111,10 +1111,10 @@ public class FirewallApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getGroupAsync(String groupId, final ApiCallback<CreateGroup201Response> _callback) throws ApiException {
+    public okhttp3.Call getGroupAsync(String groupId, final ApiCallback<FirewallGroupOutResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getGroupValidateBeforeCall(groupId, _callback);
-        Type localVarReturnType = new TypeToken<CreateGroup201Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<FirewallGroupOutResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1206,7 +1206,7 @@ public class FirewallApi {
      * @param groupId Идентификатор группы правил (required)
      * @param limit Обозначает количество записей, которое необходимо вернуть. (optional, default to 100)
      * @param offset Указывает на смещение относительно начала списка. (optional, default to 0)
-     * @return GetGroupResources200Response
+     * @return FirewallGroupResourcesOutResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1218,8 +1218,8 @@ public class FirewallApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public GetGroupResources200Response getGroupResources(String groupId, Integer limit, Integer offset) throws ApiException {
-        ApiResponse<GetGroupResources200Response> localVarResp = getGroupResourcesWithHttpInfo(groupId, limit, offset);
+    public FirewallGroupResourcesOutResponse getGroupResources(String groupId, Integer limit, Integer offset) throws ApiException {
+        ApiResponse<FirewallGroupResourcesOutResponse> localVarResp = getGroupResourcesWithHttpInfo(groupId, limit, offset);
         return localVarResp.getData();
     }
 
@@ -1229,7 +1229,7 @@ public class FirewallApi {
      * @param groupId Идентификатор группы правил (required)
      * @param limit Обозначает количество записей, которое необходимо вернуть. (optional, default to 100)
      * @param offset Указывает на смещение относительно начала списка. (optional, default to 0)
-     * @return ApiResponse&lt;GetGroupResources200Response&gt;
+     * @return ApiResponse&lt;FirewallGroupResourcesOutResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1241,9 +1241,9 @@ public class FirewallApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GetGroupResources200Response> getGroupResourcesWithHttpInfo(String groupId, Integer limit, Integer offset) throws ApiException {
+    public ApiResponse<FirewallGroupResourcesOutResponse> getGroupResourcesWithHttpInfo(String groupId, Integer limit, Integer offset) throws ApiException {
         okhttp3.Call localVarCall = getGroupResourcesValidateBeforeCall(groupId, limit, offset, null);
-        Type localVarReturnType = new TypeToken<GetGroupResources200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<FirewallGroupResourcesOutResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1266,10 +1266,10 @@ public class FirewallApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getGroupResourcesAsync(String groupId, Integer limit, Integer offset, final ApiCallback<GetGroupResources200Response> _callback) throws ApiException {
+    public okhttp3.Call getGroupResourcesAsync(String groupId, Integer limit, Integer offset, final ApiCallback<FirewallGroupResourcesOutResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getGroupResourcesValidateBeforeCall(groupId, limit, offset, _callback);
-        Type localVarReturnType = new TypeToken<GetGroupResources200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<FirewallGroupResourcesOutResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1358,7 +1358,7 @@ public class FirewallApi {
      * Чтобы получить инфомрацию о правиле, отправьте GET запрос на &#x60;/api/v1/firewall/groups/{group_id}/rules/{rule_id}&#x60;
      * @param ruleId Идентификатор правила (required)
      * @param groupId Идентификатор группы правил (required)
-     * @return CreateGroupRule201Response
+     * @return FirewallRuleOutResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1371,8 +1371,8 @@ public class FirewallApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public CreateGroupRule201Response getGroupRule(String ruleId, String groupId) throws ApiException {
-        ApiResponse<CreateGroupRule201Response> localVarResp = getGroupRuleWithHttpInfo(ruleId, groupId);
+    public FirewallRuleOutResponse getGroupRule(String ruleId, String groupId) throws ApiException {
+        ApiResponse<FirewallRuleOutResponse> localVarResp = getGroupRuleWithHttpInfo(ruleId, groupId);
         return localVarResp.getData();
     }
 
@@ -1381,7 +1381,7 @@ public class FirewallApi {
      * Чтобы получить инфомрацию о правиле, отправьте GET запрос на &#x60;/api/v1/firewall/groups/{group_id}/rules/{rule_id}&#x60;
      * @param ruleId Идентификатор правила (required)
      * @param groupId Идентификатор группы правил (required)
-     * @return ApiResponse&lt;CreateGroupRule201Response&gt;
+     * @return ApiResponse&lt;FirewallRuleOutResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1394,9 +1394,9 @@ public class FirewallApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CreateGroupRule201Response> getGroupRuleWithHttpInfo(String ruleId, String groupId) throws ApiException {
+    public ApiResponse<FirewallRuleOutResponse> getGroupRuleWithHttpInfo(String ruleId, String groupId) throws ApiException {
         okhttp3.Call localVarCall = getGroupRuleValidateBeforeCall(ruleId, groupId, null);
-        Type localVarReturnType = new TypeToken<CreateGroupRule201Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<FirewallRuleOutResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1419,10 +1419,10 @@ public class FirewallApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getGroupRuleAsync(String ruleId, String groupId, final ApiCallback<CreateGroupRule201Response> _callback) throws ApiException {
+    public okhttp3.Call getGroupRuleAsync(String ruleId, String groupId, final ApiCallback<FirewallRuleOutResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getGroupRuleValidateBeforeCall(ruleId, groupId, _callback);
-        Type localVarReturnType = new TypeToken<CreateGroupRule201Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<FirewallRuleOutResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1514,7 +1514,7 @@ public class FirewallApi {
      * @param groupId Идентификатор группы правил (required)
      * @param limit Обозначает количество записей, которое необходимо вернуть. (optional, default to 100)
      * @param offset Указывает на смещение относительно начала списка. (optional, default to 0)
-     * @return GetGroupRules200Response
+     * @return FirewallRulesOutResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1526,8 +1526,8 @@ public class FirewallApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public GetGroupRules200Response getGroupRules(String groupId, Integer limit, Integer offset) throws ApiException {
-        ApiResponse<GetGroupRules200Response> localVarResp = getGroupRulesWithHttpInfo(groupId, limit, offset);
+    public FirewallRulesOutResponse getGroupRules(String groupId, Integer limit, Integer offset) throws ApiException {
+        ApiResponse<FirewallRulesOutResponse> localVarResp = getGroupRulesWithHttpInfo(groupId, limit, offset);
         return localVarResp.getData();
     }
 
@@ -1537,7 +1537,7 @@ public class FirewallApi {
      * @param groupId Идентификатор группы правил (required)
      * @param limit Обозначает количество записей, которое необходимо вернуть. (optional, default to 100)
      * @param offset Указывает на смещение относительно начала списка. (optional, default to 0)
-     * @return ApiResponse&lt;GetGroupRules200Response&gt;
+     * @return ApiResponse&lt;FirewallRulesOutResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1549,9 +1549,9 @@ public class FirewallApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GetGroupRules200Response> getGroupRulesWithHttpInfo(String groupId, Integer limit, Integer offset) throws ApiException {
+    public ApiResponse<FirewallRulesOutResponse> getGroupRulesWithHttpInfo(String groupId, Integer limit, Integer offset) throws ApiException {
         okhttp3.Call localVarCall = getGroupRulesValidateBeforeCall(groupId, limit, offset, null);
-        Type localVarReturnType = new TypeToken<GetGroupRules200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<FirewallRulesOutResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1574,10 +1574,10 @@ public class FirewallApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getGroupRulesAsync(String groupId, Integer limit, Integer offset, final ApiCallback<GetGroupRules200Response> _callback) throws ApiException {
+    public okhttp3.Call getGroupRulesAsync(String groupId, Integer limit, Integer offset, final ApiCallback<FirewallRulesOutResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getGroupRulesValidateBeforeCall(groupId, limit, offset, _callback);
-        Type localVarReturnType = new TypeToken<GetGroupRules200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<FirewallRulesOutResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1661,7 +1661,7 @@ public class FirewallApi {
      * Чтобы получить групп правил для аккаунта, отправьте GET запрос на &#x60;/api/v1/firewall/groups&#x60;
      * @param limit Обозначает количество записей, которое необходимо вернуть. (optional, default to 100)
      * @param offset Указывает на смещение относительно начала списка. (optional, default to 0)
-     * @return GetGroups200Response
+     * @return FirewallGroupsOutResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1673,8 +1673,8 @@ public class FirewallApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public GetGroups200Response getGroups(Integer limit, Integer offset) throws ApiException {
-        ApiResponse<GetGroups200Response> localVarResp = getGroupsWithHttpInfo(limit, offset);
+    public FirewallGroupsOutResponse getGroups(Integer limit, Integer offset) throws ApiException {
+        ApiResponse<FirewallGroupsOutResponse> localVarResp = getGroupsWithHttpInfo(limit, offset);
         return localVarResp.getData();
     }
 
@@ -1683,7 +1683,7 @@ public class FirewallApi {
      * Чтобы получить групп правил для аккаунта, отправьте GET запрос на &#x60;/api/v1/firewall/groups&#x60;
      * @param limit Обозначает количество записей, которое необходимо вернуть. (optional, default to 100)
      * @param offset Указывает на смещение относительно начала списка. (optional, default to 0)
-     * @return ApiResponse&lt;GetGroups200Response&gt;
+     * @return ApiResponse&lt;FirewallGroupsOutResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1695,9 +1695,9 @@ public class FirewallApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GetGroups200Response> getGroupsWithHttpInfo(Integer limit, Integer offset) throws ApiException {
+    public ApiResponse<FirewallGroupsOutResponse> getGroupsWithHttpInfo(Integer limit, Integer offset) throws ApiException {
         okhttp3.Call localVarCall = getGroupsValidateBeforeCall(limit, offset, null);
-        Type localVarReturnType = new TypeToken<GetGroups200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<FirewallGroupsOutResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1719,10 +1719,10 @@ public class FirewallApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getGroupsAsync(Integer limit, Integer offset, final ApiCallback<GetGroups200Response> _callback) throws ApiException {
+    public okhttp3.Call getGroupsAsync(Integer limit, Integer offset, final ApiCallback<FirewallGroupsOutResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getGroupsValidateBeforeCall(limit, offset, _callback);
-        Type localVarReturnType = new TypeToken<GetGroups200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<FirewallGroupsOutResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1822,7 +1822,7 @@ public class FirewallApi {
      * @param resourceType  (required)
      * @param limit Обозначает количество записей, которое необходимо вернуть. (optional, default to 100)
      * @param offset Указывает на смещение относительно начала списка. (optional, default to 0)
-     * @return GetGroups200Response
+     * @return FirewallGroupsOutResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1834,8 +1834,8 @@ public class FirewallApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public GetGroups200Response getRulesForResource(String resourceId, ResourceType resourceType, Integer limit, Integer offset) throws ApiException {
-        ApiResponse<GetGroups200Response> localVarResp = getRulesForResourceWithHttpInfo(resourceId, resourceType, limit, offset);
+    public FirewallGroupsOutResponse getRulesForResource(String resourceId, ResourceType resourceType, Integer limit, Integer offset) throws ApiException {
+        ApiResponse<FirewallGroupsOutResponse> localVarResp = getRulesForResourceWithHttpInfo(resourceId, resourceType, limit, offset);
         return localVarResp.getData();
     }
 
@@ -1846,7 +1846,7 @@ public class FirewallApi {
      * @param resourceType  (required)
      * @param limit Обозначает количество записей, которое необходимо вернуть. (optional, default to 100)
      * @param offset Указывает на смещение относительно начала списка. (optional, default to 0)
-     * @return ApiResponse&lt;GetGroups200Response&gt;
+     * @return ApiResponse&lt;FirewallGroupsOutResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1858,9 +1858,9 @@ public class FirewallApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GetGroups200Response> getRulesForResourceWithHttpInfo(String resourceId, ResourceType resourceType, Integer limit, Integer offset) throws ApiException {
+    public ApiResponse<FirewallGroupsOutResponse> getRulesForResourceWithHttpInfo(String resourceId, ResourceType resourceType, Integer limit, Integer offset) throws ApiException {
         okhttp3.Call localVarCall = getRulesForResourceValidateBeforeCall(resourceId, resourceType, limit, offset, null);
-        Type localVarReturnType = new TypeToken<GetGroups200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<FirewallGroupsOutResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1884,10 +1884,10 @@ public class FirewallApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getRulesForResourceAsync(String resourceId, ResourceType resourceType, Integer limit, Integer offset, final ApiCallback<GetGroups200Response> _callback) throws ApiException {
+    public okhttp3.Call getRulesForResourceAsync(String resourceId, ResourceType resourceType, Integer limit, Integer offset, final ApiCallback<FirewallGroupsOutResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getRulesForResourceValidateBeforeCall(resourceId, resourceType, limit, offset, _callback);
-        Type localVarReturnType = new TypeToken<GetGroups200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<FirewallGroupsOutResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1976,7 +1976,7 @@ public class FirewallApi {
      * Чтобы изменить группу правил, отправьте PATCH запрос на &#x60;/api/v1/firewall/groups/{group_id}&#x60;
      * @param groupId Идентификатор группы правил (required)
      * @param firewallGroupInAPI  (required)
-     * @return CreateGroup201Response
+     * @return FirewallGroupOutResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1989,8 +1989,8 @@ public class FirewallApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public CreateGroup201Response updateGroup(String groupId, FirewallGroupInAPI firewallGroupInAPI) throws ApiException {
-        ApiResponse<CreateGroup201Response> localVarResp = updateGroupWithHttpInfo(groupId, firewallGroupInAPI);
+    public FirewallGroupOutResponse updateGroup(String groupId, FirewallGroupInAPI firewallGroupInAPI) throws ApiException {
+        ApiResponse<FirewallGroupOutResponse> localVarResp = updateGroupWithHttpInfo(groupId, firewallGroupInAPI);
         return localVarResp.getData();
     }
 
@@ -1999,7 +1999,7 @@ public class FirewallApi {
      * Чтобы изменить группу правил, отправьте PATCH запрос на &#x60;/api/v1/firewall/groups/{group_id}&#x60;
      * @param groupId Идентификатор группы правил (required)
      * @param firewallGroupInAPI  (required)
-     * @return ApiResponse&lt;CreateGroup201Response&gt;
+     * @return ApiResponse&lt;FirewallGroupOutResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2012,9 +2012,9 @@ public class FirewallApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CreateGroup201Response> updateGroupWithHttpInfo(String groupId, FirewallGroupInAPI firewallGroupInAPI) throws ApiException {
+    public ApiResponse<FirewallGroupOutResponse> updateGroupWithHttpInfo(String groupId, FirewallGroupInAPI firewallGroupInAPI) throws ApiException {
         okhttp3.Call localVarCall = updateGroupValidateBeforeCall(groupId, firewallGroupInAPI, null);
-        Type localVarReturnType = new TypeToken<CreateGroup201Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<FirewallGroupOutResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -2037,10 +2037,10 @@ public class FirewallApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateGroupAsync(String groupId, FirewallGroupInAPI firewallGroupInAPI, final ApiCallback<CreateGroup201Response> _callback) throws ApiException {
+    public okhttp3.Call updateGroupAsync(String groupId, FirewallGroupInAPI firewallGroupInAPI, final ApiCallback<FirewallGroupOutResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = updateGroupValidateBeforeCall(groupId, firewallGroupInAPI, _callback);
-        Type localVarReturnType = new TypeToken<CreateGroup201Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<FirewallGroupOutResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2137,7 +2137,7 @@ public class FirewallApi {
      * @param groupId Идентификатор группы правил (required)
      * @param ruleId Идентификатор правила (required)
      * @param firewallRuleInAPI  (required)
-     * @return CreateGroupRule201Response
+     * @return FirewallRuleOutResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2150,8 +2150,8 @@ public class FirewallApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public CreateGroupRule201Response updateGroupRule(String groupId, String ruleId, FirewallRuleInAPI firewallRuleInAPI) throws ApiException {
-        ApiResponse<CreateGroupRule201Response> localVarResp = updateGroupRuleWithHttpInfo(groupId, ruleId, firewallRuleInAPI);
+    public FirewallRuleOutResponse updateGroupRule(String groupId, String ruleId, FirewallRuleInAPI firewallRuleInAPI) throws ApiException {
+        ApiResponse<FirewallRuleOutResponse> localVarResp = updateGroupRuleWithHttpInfo(groupId, ruleId, firewallRuleInAPI);
         return localVarResp.getData();
     }
 
@@ -2161,7 +2161,7 @@ public class FirewallApi {
      * @param groupId Идентификатор группы правил (required)
      * @param ruleId Идентификатор правила (required)
      * @param firewallRuleInAPI  (required)
-     * @return ApiResponse&lt;CreateGroupRule201Response&gt;
+     * @return ApiResponse&lt;FirewallRuleOutResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2174,9 +2174,9 @@ public class FirewallApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CreateGroupRule201Response> updateGroupRuleWithHttpInfo(String groupId, String ruleId, FirewallRuleInAPI firewallRuleInAPI) throws ApiException {
+    public ApiResponse<FirewallRuleOutResponse> updateGroupRuleWithHttpInfo(String groupId, String ruleId, FirewallRuleInAPI firewallRuleInAPI) throws ApiException {
         okhttp3.Call localVarCall = updateGroupRuleValidateBeforeCall(groupId, ruleId, firewallRuleInAPI, null);
-        Type localVarReturnType = new TypeToken<CreateGroupRule201Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<FirewallRuleOutResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -2200,10 +2200,10 @@ public class FirewallApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateGroupRuleAsync(String groupId, String ruleId, FirewallRuleInAPI firewallRuleInAPI, final ApiCallback<CreateGroupRule201Response> _callback) throws ApiException {
+    public okhttp3.Call updateGroupRuleAsync(String groupId, String ruleId, FirewallRuleInAPI firewallRuleInAPI, final ApiCallback<FirewallRuleOutResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = updateGroupRuleValidateBeforeCall(groupId, ruleId, firewallRuleInAPI, _callback);
-        Type localVarReturnType = new TypeToken<CreateGroupRule201Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<FirewallRuleOutResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

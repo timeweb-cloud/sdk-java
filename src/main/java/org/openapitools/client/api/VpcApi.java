@@ -30,7 +30,6 @@ import java.io.IOException;
 import org.openapitools.client.model.CreateDatabaseBackup409Response;
 import org.openapitools.client.model.CreateVPC201Response;
 import org.openapitools.client.model.CreateVpc;
-import org.openapitools.client.model.DeleteVPC204Response;
 import org.openapitools.client.model.GetFinances400Response;
 import org.openapitools.client.model.GetFinances401Response;
 import org.openapitools.client.model.GetFinances403Response;
@@ -310,7 +309,7 @@ public class VpcApi {
      * Удаление VPC по идентификатору сети
      * Чтобы удалить VPC, отправьте DELETE-запрос на &#x60;/api/v1/vpcs/{vpc_id}&#x60;
      * @param vpcId Идентификатор сети (required)
-     * @return DeleteVPC204Response
+     * @return CreateVPC201Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -324,8 +323,8 @@ public class VpcApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public DeleteVPC204Response deleteVPC(String vpcId) throws ApiException {
-        ApiResponse<DeleteVPC204Response> localVarResp = deleteVPCWithHttpInfo(vpcId);
+    public CreateVPC201Response deleteVPC(String vpcId) throws ApiException {
+        ApiResponse<CreateVPC201Response> localVarResp = deleteVPCWithHttpInfo(vpcId);
         return localVarResp.getData();
     }
 
@@ -333,7 +332,7 @@ public class VpcApi {
      * Удаление VPC по идентификатору сети
      * Чтобы удалить VPC, отправьте DELETE-запрос на &#x60;/api/v1/vpcs/{vpc_id}&#x60;
      * @param vpcId Идентификатор сети (required)
-     * @return ApiResponse&lt;DeleteVPC204Response&gt;
+     * @return ApiResponse&lt;CreateVPC201Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -347,9 +346,9 @@ public class VpcApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DeleteVPC204Response> deleteVPCWithHttpInfo(String vpcId) throws ApiException {
+    public ApiResponse<CreateVPC201Response> deleteVPCWithHttpInfo(String vpcId) throws ApiException {
         okhttp3.Call localVarCall = deleteVPCValidateBeforeCall(vpcId, null);
-        Type localVarReturnType = new TypeToken<DeleteVPC204Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<CreateVPC201Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -372,10 +371,10 @@ public class VpcApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteVPCAsync(String vpcId, final ApiCallback<DeleteVPC204Response> _callback) throws ApiException {
+    public okhttp3.Call deleteVPCAsync(String vpcId, final ApiCallback<CreateVPC201Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteVPCValidateBeforeCall(vpcId, _callback);
-        Type localVarReturnType = new TypeToken<DeleteVPC204Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<CreateVPC201Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

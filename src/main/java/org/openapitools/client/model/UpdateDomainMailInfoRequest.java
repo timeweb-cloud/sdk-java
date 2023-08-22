@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * UpdateDomainMailInfoRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-21T14:21:17.845880Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-22T13:06:16.524188Z[Etc/UTC]")
 public class UpdateDomainMailInfoRequest {
   public static final String SERIALIZED_NAME_EMAIL = "email";
   @SerializedName(SERIALIZED_NAME_EMAIL)
@@ -69,7 +69,7 @@ public class UpdateDomainMailInfoRequest {
    * Адрес для сбора почты с ошибочных ящиков
    * @return email
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getEmail() {
     return email;
   }
@@ -129,6 +129,7 @@ public class UpdateDomainMailInfoRequest {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("email");
   }
 
  /**
@@ -151,8 +152,15 @@ public class UpdateDomainMailInfoRequest {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `UpdateDomainMailInfoRequest` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : UpdateDomainMailInfoRequest.openapiRequiredFields) {
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+        }
+      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("email") != null && !jsonObj.get("email").isJsonNull()) && !jsonObj.get("email").isJsonPrimitive()) {
+      if (!jsonObj.get("email").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `email` to be a primitive type in the JSON string but got `%s`", jsonObj.get("email").toString()));
       }
   }

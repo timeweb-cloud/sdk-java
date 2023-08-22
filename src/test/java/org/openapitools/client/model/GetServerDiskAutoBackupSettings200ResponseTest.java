@@ -19,7 +19,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.UUID;
 import org.openapitools.client.model.AutoBackup;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -44,14 +43,6 @@ public class GetServerDiskAutoBackupSettings200ResponseTest {
     @Test
     public void autoBackupsSettingsTest() {
         // TODO: test autoBackupsSettings
-    }
-
-    /**
-     * Test the property 'responseId'
-     */
-    @Test
-    public void responseIdTest() {
-        // TODO: test responseId
     }
 
 }

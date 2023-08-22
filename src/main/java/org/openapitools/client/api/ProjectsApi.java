@@ -114,7 +114,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call addBalancerToProjectCall(BigDecimal projectId, AddBalancerToProjectRequest addBalancerToProjectRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call addBalancerToProjectCall(Integer projectId, AddBalancerToProjectRequest addBalancerToProjectRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -161,7 +161,7 @@ public class ProjectsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call addBalancerToProjectValidateBeforeCall(BigDecimal projectId, AddBalancerToProjectRequest addBalancerToProjectRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call addBalancerToProjectValidateBeforeCall(Integer projectId, AddBalancerToProjectRequest addBalancerToProjectRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'projectId' is set
         if (projectId == null) {
             throw new ApiException("Missing the required parameter 'projectId' when calling addBalancerToProject(Async)");
@@ -194,7 +194,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public AddBalancerToProject200Response addBalancerToProject(BigDecimal projectId, AddBalancerToProjectRequest addBalancerToProjectRequest) throws ApiException {
+    public AddBalancerToProject200Response addBalancerToProject(Integer projectId, AddBalancerToProjectRequest addBalancerToProjectRequest) throws ApiException {
         ApiResponse<AddBalancerToProject200Response> localVarResp = addBalancerToProjectWithHttpInfo(projectId, addBalancerToProjectRequest);
         return localVarResp.getData();
     }
@@ -217,7 +217,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AddBalancerToProject200Response> addBalancerToProjectWithHttpInfo(BigDecimal projectId, AddBalancerToProjectRequest addBalancerToProjectRequest) throws ApiException {
+    public ApiResponse<AddBalancerToProject200Response> addBalancerToProjectWithHttpInfo(Integer projectId, AddBalancerToProjectRequest addBalancerToProjectRequest) throws ApiException {
         okhttp3.Call localVarCall = addBalancerToProjectValidateBeforeCall(projectId, addBalancerToProjectRequest, null);
         Type localVarReturnType = new TypeToken<AddBalancerToProject200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -242,7 +242,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call addBalancerToProjectAsync(BigDecimal projectId, AddBalancerToProjectRequest addBalancerToProjectRequest, final ApiCallback<AddBalancerToProject200Response> _callback) throws ApiException {
+    public okhttp3.Call addBalancerToProjectAsync(Integer projectId, AddBalancerToProjectRequest addBalancerToProjectRequest, final ApiCallback<AddBalancerToProject200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = addBalancerToProjectValidateBeforeCall(projectId, addBalancerToProjectRequest, _callback);
         Type localVarReturnType = new TypeToken<AddBalancerToProject200Response>(){}.getType();
@@ -267,7 +267,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call addClusterToProjectCall(BigDecimal projectId, AddClusterToProjectRequest addClusterToProjectRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call addClusterToProjectCall(Integer projectId, AddClusterToProjectRequest addClusterToProjectRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -314,7 +314,7 @@ public class ProjectsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call addClusterToProjectValidateBeforeCall(BigDecimal projectId, AddClusterToProjectRequest addClusterToProjectRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call addClusterToProjectValidateBeforeCall(Integer projectId, AddClusterToProjectRequest addClusterToProjectRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'projectId' is set
         if (projectId == null) {
             throw new ApiException("Missing the required parameter 'projectId' when calling addClusterToProject(Async)");
@@ -347,7 +347,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public AddBalancerToProject200Response addClusterToProject(BigDecimal projectId, AddClusterToProjectRequest addClusterToProjectRequest) throws ApiException {
+    public AddBalancerToProject200Response addClusterToProject(Integer projectId, AddClusterToProjectRequest addClusterToProjectRequest) throws ApiException {
         ApiResponse<AddBalancerToProject200Response> localVarResp = addClusterToProjectWithHttpInfo(projectId, addClusterToProjectRequest);
         return localVarResp.getData();
     }
@@ -370,7 +370,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AddBalancerToProject200Response> addClusterToProjectWithHttpInfo(BigDecimal projectId, AddClusterToProjectRequest addClusterToProjectRequest) throws ApiException {
+    public ApiResponse<AddBalancerToProject200Response> addClusterToProjectWithHttpInfo(Integer projectId, AddClusterToProjectRequest addClusterToProjectRequest) throws ApiException {
         okhttp3.Call localVarCall = addClusterToProjectValidateBeforeCall(projectId, addClusterToProjectRequest, null);
         Type localVarReturnType = new TypeToken<AddBalancerToProject200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -395,7 +395,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call addClusterToProjectAsync(BigDecimal projectId, AddClusterToProjectRequest addClusterToProjectRequest, final ApiCallback<AddBalancerToProject200Response> _callback) throws ApiException {
+    public okhttp3.Call addClusterToProjectAsync(Integer projectId, AddClusterToProjectRequest addClusterToProjectRequest, final ApiCallback<AddBalancerToProject200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = addClusterToProjectValidateBeforeCall(projectId, addClusterToProjectRequest, _callback);
         Type localVarReturnType = new TypeToken<AddBalancerToProject200Response>(){}.getType();
@@ -420,7 +420,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call addDatabaseToProjectCall(BigDecimal projectId, AddDatabaseToProjectRequest addDatabaseToProjectRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call addDatabaseToProjectCall(Integer projectId, AddDatabaseToProjectRequest addDatabaseToProjectRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -467,7 +467,7 @@ public class ProjectsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call addDatabaseToProjectValidateBeforeCall(BigDecimal projectId, AddDatabaseToProjectRequest addDatabaseToProjectRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call addDatabaseToProjectValidateBeforeCall(Integer projectId, AddDatabaseToProjectRequest addDatabaseToProjectRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'projectId' is set
         if (projectId == null) {
             throw new ApiException("Missing the required parameter 'projectId' when calling addDatabaseToProject(Async)");
@@ -500,7 +500,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public AddBalancerToProject200Response addDatabaseToProject(BigDecimal projectId, AddDatabaseToProjectRequest addDatabaseToProjectRequest) throws ApiException {
+    public AddBalancerToProject200Response addDatabaseToProject(Integer projectId, AddDatabaseToProjectRequest addDatabaseToProjectRequest) throws ApiException {
         ApiResponse<AddBalancerToProject200Response> localVarResp = addDatabaseToProjectWithHttpInfo(projectId, addDatabaseToProjectRequest);
         return localVarResp.getData();
     }
@@ -523,7 +523,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AddBalancerToProject200Response> addDatabaseToProjectWithHttpInfo(BigDecimal projectId, AddDatabaseToProjectRequest addDatabaseToProjectRequest) throws ApiException {
+    public ApiResponse<AddBalancerToProject200Response> addDatabaseToProjectWithHttpInfo(Integer projectId, AddDatabaseToProjectRequest addDatabaseToProjectRequest) throws ApiException {
         okhttp3.Call localVarCall = addDatabaseToProjectValidateBeforeCall(projectId, addDatabaseToProjectRequest, null);
         Type localVarReturnType = new TypeToken<AddBalancerToProject200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -548,7 +548,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call addDatabaseToProjectAsync(BigDecimal projectId, AddDatabaseToProjectRequest addDatabaseToProjectRequest, final ApiCallback<AddBalancerToProject200Response> _callback) throws ApiException {
+    public okhttp3.Call addDatabaseToProjectAsync(Integer projectId, AddDatabaseToProjectRequest addDatabaseToProjectRequest, final ApiCallback<AddBalancerToProject200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = addDatabaseToProjectValidateBeforeCall(projectId, addDatabaseToProjectRequest, _callback);
         Type localVarReturnType = new TypeToken<AddBalancerToProject200Response>(){}.getType();
@@ -573,7 +573,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call addDedicatedServerToProjectCall(BigDecimal projectId, AddDedicatedServerToProjectRequest addDedicatedServerToProjectRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call addDedicatedServerToProjectCall(Integer projectId, AddDedicatedServerToProjectRequest addDedicatedServerToProjectRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -620,7 +620,7 @@ public class ProjectsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call addDedicatedServerToProjectValidateBeforeCall(BigDecimal projectId, AddDedicatedServerToProjectRequest addDedicatedServerToProjectRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call addDedicatedServerToProjectValidateBeforeCall(Integer projectId, AddDedicatedServerToProjectRequest addDedicatedServerToProjectRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'projectId' is set
         if (projectId == null) {
             throw new ApiException("Missing the required parameter 'projectId' when calling addDedicatedServerToProject(Async)");
@@ -653,7 +653,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public AddBalancerToProject200Response addDedicatedServerToProject(BigDecimal projectId, AddDedicatedServerToProjectRequest addDedicatedServerToProjectRequest) throws ApiException {
+    public AddBalancerToProject200Response addDedicatedServerToProject(Integer projectId, AddDedicatedServerToProjectRequest addDedicatedServerToProjectRequest) throws ApiException {
         ApiResponse<AddBalancerToProject200Response> localVarResp = addDedicatedServerToProjectWithHttpInfo(projectId, addDedicatedServerToProjectRequest);
         return localVarResp.getData();
     }
@@ -676,7 +676,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AddBalancerToProject200Response> addDedicatedServerToProjectWithHttpInfo(BigDecimal projectId, AddDedicatedServerToProjectRequest addDedicatedServerToProjectRequest) throws ApiException {
+    public ApiResponse<AddBalancerToProject200Response> addDedicatedServerToProjectWithHttpInfo(Integer projectId, AddDedicatedServerToProjectRequest addDedicatedServerToProjectRequest) throws ApiException {
         okhttp3.Call localVarCall = addDedicatedServerToProjectValidateBeforeCall(projectId, addDedicatedServerToProjectRequest, null);
         Type localVarReturnType = new TypeToken<AddBalancerToProject200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -701,7 +701,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call addDedicatedServerToProjectAsync(BigDecimal projectId, AddDedicatedServerToProjectRequest addDedicatedServerToProjectRequest, final ApiCallback<AddBalancerToProject200Response> _callback) throws ApiException {
+    public okhttp3.Call addDedicatedServerToProjectAsync(Integer projectId, AddDedicatedServerToProjectRequest addDedicatedServerToProjectRequest, final ApiCallback<AddBalancerToProject200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = addDedicatedServerToProjectValidateBeforeCall(projectId, addDedicatedServerToProjectRequest, _callback);
         Type localVarReturnType = new TypeToken<AddBalancerToProject200Response>(){}.getType();
@@ -726,7 +726,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call addServerToProjectCall(BigDecimal projectId, AddServerToProjectRequest addServerToProjectRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call addServerToProjectCall(Integer projectId, AddServerToProjectRequest addServerToProjectRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -773,7 +773,7 @@ public class ProjectsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call addServerToProjectValidateBeforeCall(BigDecimal projectId, AddServerToProjectRequest addServerToProjectRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call addServerToProjectValidateBeforeCall(Integer projectId, AddServerToProjectRequest addServerToProjectRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'projectId' is set
         if (projectId == null) {
             throw new ApiException("Missing the required parameter 'projectId' when calling addServerToProject(Async)");
@@ -806,7 +806,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public AddBalancerToProject200Response addServerToProject(BigDecimal projectId, AddServerToProjectRequest addServerToProjectRequest) throws ApiException {
+    public AddBalancerToProject200Response addServerToProject(Integer projectId, AddServerToProjectRequest addServerToProjectRequest) throws ApiException {
         ApiResponse<AddBalancerToProject200Response> localVarResp = addServerToProjectWithHttpInfo(projectId, addServerToProjectRequest);
         return localVarResp.getData();
     }
@@ -829,7 +829,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AddBalancerToProject200Response> addServerToProjectWithHttpInfo(BigDecimal projectId, AddServerToProjectRequest addServerToProjectRequest) throws ApiException {
+    public ApiResponse<AddBalancerToProject200Response> addServerToProjectWithHttpInfo(Integer projectId, AddServerToProjectRequest addServerToProjectRequest) throws ApiException {
         okhttp3.Call localVarCall = addServerToProjectValidateBeforeCall(projectId, addServerToProjectRequest, null);
         Type localVarReturnType = new TypeToken<AddBalancerToProject200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -854,7 +854,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call addServerToProjectAsync(BigDecimal projectId, AddServerToProjectRequest addServerToProjectRequest, final ApiCallback<AddBalancerToProject200Response> _callback) throws ApiException {
+    public okhttp3.Call addServerToProjectAsync(Integer projectId, AddServerToProjectRequest addServerToProjectRequest, final ApiCallback<AddBalancerToProject200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = addServerToProjectValidateBeforeCall(projectId, addServerToProjectRequest, _callback);
         Type localVarReturnType = new TypeToken<AddBalancerToProject200Response>(){}.getType();
@@ -879,7 +879,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call addStorageToProjectCall(BigDecimal projectId, AddStorageToProjectRequest addStorageToProjectRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call addStorageToProjectCall(Integer projectId, AddStorageToProjectRequest addStorageToProjectRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -926,7 +926,7 @@ public class ProjectsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call addStorageToProjectValidateBeforeCall(BigDecimal projectId, AddStorageToProjectRequest addStorageToProjectRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call addStorageToProjectValidateBeforeCall(Integer projectId, AddStorageToProjectRequest addStorageToProjectRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'projectId' is set
         if (projectId == null) {
             throw new ApiException("Missing the required parameter 'projectId' when calling addStorageToProject(Async)");
@@ -959,7 +959,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public AddBalancerToProject200Response addStorageToProject(BigDecimal projectId, AddStorageToProjectRequest addStorageToProjectRequest) throws ApiException {
+    public AddBalancerToProject200Response addStorageToProject(Integer projectId, AddStorageToProjectRequest addStorageToProjectRequest) throws ApiException {
         ApiResponse<AddBalancerToProject200Response> localVarResp = addStorageToProjectWithHttpInfo(projectId, addStorageToProjectRequest);
         return localVarResp.getData();
     }
@@ -982,7 +982,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AddBalancerToProject200Response> addStorageToProjectWithHttpInfo(BigDecimal projectId, AddStorageToProjectRequest addStorageToProjectRequest) throws ApiException {
+    public ApiResponse<AddBalancerToProject200Response> addStorageToProjectWithHttpInfo(Integer projectId, AddStorageToProjectRequest addStorageToProjectRequest) throws ApiException {
         okhttp3.Call localVarCall = addStorageToProjectValidateBeforeCall(projectId, addStorageToProjectRequest, null);
         Type localVarReturnType = new TypeToken<AddBalancerToProject200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1007,7 +1007,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call addStorageToProjectAsync(BigDecimal projectId, AddStorageToProjectRequest addStorageToProjectRequest, final ApiCallback<AddBalancerToProject200Response> _callback) throws ApiException {
+    public okhttp3.Call addStorageToProjectAsync(Integer projectId, AddStorageToProjectRequest addStorageToProjectRequest, final ApiCallback<AddBalancerToProject200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = addStorageToProjectValidateBeforeCall(projectId, addStorageToProjectRequest, _callback);
         Type localVarReturnType = new TypeToken<AddBalancerToProject200Response>(){}.getType();
@@ -1170,7 +1170,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteProjectCall(BigDecimal projectId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteProjectCall(Integer projectId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1216,7 +1216,7 @@ public class ProjectsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteProjectValidateBeforeCall(BigDecimal projectId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteProjectValidateBeforeCall(Integer projectId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'projectId' is set
         if (projectId == null) {
             throw new ApiException("Missing the required parameter 'projectId' when calling deleteProject(Async)");
@@ -1242,7 +1242,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteProject(BigDecimal projectId) throws ApiException {
+    public void deleteProject(Integer projectId) throws ApiException {
         deleteProjectWithHttpInfo(projectId);
     }
 
@@ -1263,7 +1263,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteProjectWithHttpInfo(BigDecimal projectId) throws ApiException {
+    public ApiResponse<Void> deleteProjectWithHttpInfo(Integer projectId) throws ApiException {
         okhttp3.Call localVarCall = deleteProjectValidateBeforeCall(projectId, null);
         return localVarApiClient.execute(localVarCall);
     }
@@ -1286,7 +1286,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteProjectAsync(BigDecimal projectId, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteProjectAsync(Integer projectId, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteProjectValidateBeforeCall(projectId, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
@@ -2107,7 +2107,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAllProjectResourcesCall(BigDecimal projectId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAllProjectResourcesCall(Integer projectId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2153,7 +2153,7 @@ public class ProjectsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getAllProjectResourcesValidateBeforeCall(BigDecimal projectId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getAllProjectResourcesValidateBeforeCall(Integer projectId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'projectId' is set
         if (projectId == null) {
             throw new ApiException("Missing the required parameter 'projectId' when calling getAllProjectResources(Async)");
@@ -2180,7 +2180,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public GetAllProjectResources200Response getAllProjectResources(BigDecimal projectId) throws ApiException {
+    public GetAllProjectResources200Response getAllProjectResources(Integer projectId) throws ApiException {
         ApiResponse<GetAllProjectResources200Response> localVarResp = getAllProjectResourcesWithHttpInfo(projectId);
         return localVarResp.getData();
     }
@@ -2202,7 +2202,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GetAllProjectResources200Response> getAllProjectResourcesWithHttpInfo(BigDecimal projectId) throws ApiException {
+    public ApiResponse<GetAllProjectResources200Response> getAllProjectResourcesWithHttpInfo(Integer projectId) throws ApiException {
         okhttp3.Call localVarCall = getAllProjectResourcesValidateBeforeCall(projectId, null);
         Type localVarReturnType = new TypeToken<GetAllProjectResources200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -2226,7 +2226,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAllProjectResourcesAsync(BigDecimal projectId, final ApiCallback<GetAllProjectResources200Response> _callback) throws ApiException {
+    public okhttp3.Call getAllProjectResourcesAsync(Integer projectId, final ApiCallback<GetAllProjectResources200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAllProjectResourcesValidateBeforeCall(projectId, _callback);
         Type localVarReturnType = new TypeToken<GetAllProjectResources200Response>(){}.getType();
@@ -2250,7 +2250,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getProjectCall(BigDecimal projectId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getProjectCall(Integer projectId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2296,7 +2296,7 @@ public class ProjectsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getProjectValidateBeforeCall(BigDecimal projectId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getProjectValidateBeforeCall(Integer projectId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'projectId' is set
         if (projectId == null) {
             throw new ApiException("Missing the required parameter 'projectId' when calling getProject(Async)");
@@ -2323,7 +2323,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public CreateProject201Response getProject(BigDecimal projectId) throws ApiException {
+    public CreateProject201Response getProject(Integer projectId) throws ApiException {
         ApiResponse<CreateProject201Response> localVarResp = getProjectWithHttpInfo(projectId);
         return localVarResp.getData();
     }
@@ -2345,7 +2345,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CreateProject201Response> getProjectWithHttpInfo(BigDecimal projectId) throws ApiException {
+    public ApiResponse<CreateProject201Response> getProjectWithHttpInfo(Integer projectId) throws ApiException {
         okhttp3.Call localVarCall = getProjectValidateBeforeCall(projectId, null);
         Type localVarReturnType = new TypeToken<CreateProject201Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -2369,7 +2369,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getProjectAsync(BigDecimal projectId, final ApiCallback<CreateProject201Response> _callback) throws ApiException {
+    public okhttp3.Call getProjectAsync(Integer projectId, final ApiCallback<CreateProject201Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getProjectValidateBeforeCall(projectId, _callback);
         Type localVarReturnType = new TypeToken<CreateProject201Response>(){}.getType();
@@ -2393,7 +2393,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getProjectBalancersCall(BigDecimal projectId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getProjectBalancersCall(Integer projectId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2439,7 +2439,7 @@ public class ProjectsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getProjectBalancersValidateBeforeCall(BigDecimal projectId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getProjectBalancersValidateBeforeCall(Integer projectId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'projectId' is set
         if (projectId == null) {
             throw new ApiException("Missing the required parameter 'projectId' when calling getProjectBalancers(Async)");
@@ -2466,7 +2466,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public GetProjectBalancers200Response getProjectBalancers(BigDecimal projectId) throws ApiException {
+    public GetProjectBalancers200Response getProjectBalancers(Integer projectId) throws ApiException {
         ApiResponse<GetProjectBalancers200Response> localVarResp = getProjectBalancersWithHttpInfo(projectId);
         return localVarResp.getData();
     }
@@ -2488,7 +2488,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GetProjectBalancers200Response> getProjectBalancersWithHttpInfo(BigDecimal projectId) throws ApiException {
+    public ApiResponse<GetProjectBalancers200Response> getProjectBalancersWithHttpInfo(Integer projectId) throws ApiException {
         okhttp3.Call localVarCall = getProjectBalancersValidateBeforeCall(projectId, null);
         Type localVarReturnType = new TypeToken<GetProjectBalancers200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -2512,7 +2512,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getProjectBalancersAsync(BigDecimal projectId, final ApiCallback<GetProjectBalancers200Response> _callback) throws ApiException {
+    public okhttp3.Call getProjectBalancersAsync(Integer projectId, final ApiCallback<GetProjectBalancers200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getProjectBalancersValidateBeforeCall(projectId, _callback);
         Type localVarReturnType = new TypeToken<GetProjectBalancers200Response>(){}.getType();
@@ -2536,7 +2536,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getProjectClustersCall(BigDecimal projectId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getProjectClustersCall(Integer projectId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2582,7 +2582,7 @@ public class ProjectsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getProjectClustersValidateBeforeCall(BigDecimal projectId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getProjectClustersValidateBeforeCall(Integer projectId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'projectId' is set
         if (projectId == null) {
             throw new ApiException("Missing the required parameter 'projectId' when calling getProjectClusters(Async)");
@@ -2609,7 +2609,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public GetProjectClusters200Response getProjectClusters(BigDecimal projectId) throws ApiException {
+    public GetProjectClusters200Response getProjectClusters(Integer projectId) throws ApiException {
         ApiResponse<GetProjectClusters200Response> localVarResp = getProjectClustersWithHttpInfo(projectId);
         return localVarResp.getData();
     }
@@ -2631,7 +2631,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GetProjectClusters200Response> getProjectClustersWithHttpInfo(BigDecimal projectId) throws ApiException {
+    public ApiResponse<GetProjectClusters200Response> getProjectClustersWithHttpInfo(Integer projectId) throws ApiException {
         okhttp3.Call localVarCall = getProjectClustersValidateBeforeCall(projectId, null);
         Type localVarReturnType = new TypeToken<GetProjectClusters200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -2655,7 +2655,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getProjectClustersAsync(BigDecimal projectId, final ApiCallback<GetProjectClusters200Response> _callback) throws ApiException {
+    public okhttp3.Call getProjectClustersAsync(Integer projectId, final ApiCallback<GetProjectClusters200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getProjectClustersValidateBeforeCall(projectId, _callback);
         Type localVarReturnType = new TypeToken<GetProjectClusters200Response>(){}.getType();
@@ -2679,7 +2679,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getProjectDatabasesCall(BigDecimal projectId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getProjectDatabasesCall(Integer projectId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2725,7 +2725,7 @@ public class ProjectsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getProjectDatabasesValidateBeforeCall(BigDecimal projectId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getProjectDatabasesValidateBeforeCall(Integer projectId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'projectId' is set
         if (projectId == null) {
             throw new ApiException("Missing the required parameter 'projectId' when calling getProjectDatabases(Async)");
@@ -2752,7 +2752,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public GetProjectDatabases200Response getProjectDatabases(BigDecimal projectId) throws ApiException {
+    public GetProjectDatabases200Response getProjectDatabases(Integer projectId) throws ApiException {
         ApiResponse<GetProjectDatabases200Response> localVarResp = getProjectDatabasesWithHttpInfo(projectId);
         return localVarResp.getData();
     }
@@ -2774,7 +2774,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GetProjectDatabases200Response> getProjectDatabasesWithHttpInfo(BigDecimal projectId) throws ApiException {
+    public ApiResponse<GetProjectDatabases200Response> getProjectDatabasesWithHttpInfo(Integer projectId) throws ApiException {
         okhttp3.Call localVarCall = getProjectDatabasesValidateBeforeCall(projectId, null);
         Type localVarReturnType = new TypeToken<GetProjectDatabases200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -2798,7 +2798,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getProjectDatabasesAsync(BigDecimal projectId, final ApiCallback<GetProjectDatabases200Response> _callback) throws ApiException {
+    public okhttp3.Call getProjectDatabasesAsync(Integer projectId, final ApiCallback<GetProjectDatabases200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getProjectDatabasesValidateBeforeCall(projectId, _callback);
         Type localVarReturnType = new TypeToken<GetProjectDatabases200Response>(){}.getType();
@@ -2822,7 +2822,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getProjectDedicatedServersCall(BigDecimal projectId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getProjectDedicatedServersCall(Integer projectId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2868,7 +2868,7 @@ public class ProjectsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getProjectDedicatedServersValidateBeforeCall(BigDecimal projectId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getProjectDedicatedServersValidateBeforeCall(Integer projectId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'projectId' is set
         if (projectId == null) {
             throw new ApiException("Missing the required parameter 'projectId' when calling getProjectDedicatedServers(Async)");
@@ -2895,7 +2895,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public GetProjectDedicatedServers200Response getProjectDedicatedServers(BigDecimal projectId) throws ApiException {
+    public GetProjectDedicatedServers200Response getProjectDedicatedServers(Integer projectId) throws ApiException {
         ApiResponse<GetProjectDedicatedServers200Response> localVarResp = getProjectDedicatedServersWithHttpInfo(projectId);
         return localVarResp.getData();
     }
@@ -2917,7 +2917,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GetProjectDedicatedServers200Response> getProjectDedicatedServersWithHttpInfo(BigDecimal projectId) throws ApiException {
+    public ApiResponse<GetProjectDedicatedServers200Response> getProjectDedicatedServersWithHttpInfo(Integer projectId) throws ApiException {
         okhttp3.Call localVarCall = getProjectDedicatedServersValidateBeforeCall(projectId, null);
         Type localVarReturnType = new TypeToken<GetProjectDedicatedServers200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -2941,7 +2941,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getProjectDedicatedServersAsync(BigDecimal projectId, final ApiCallback<GetProjectDedicatedServers200Response> _callback) throws ApiException {
+    public okhttp3.Call getProjectDedicatedServersAsync(Integer projectId, final ApiCallback<GetProjectDedicatedServers200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getProjectDedicatedServersValidateBeforeCall(projectId, _callback);
         Type localVarReturnType = new TypeToken<GetProjectDedicatedServers200Response>(){}.getType();
@@ -2965,7 +2965,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getProjectServersCall(BigDecimal projectId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getProjectServersCall(Integer projectId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3011,7 +3011,7 @@ public class ProjectsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getProjectServersValidateBeforeCall(BigDecimal projectId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getProjectServersValidateBeforeCall(Integer projectId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'projectId' is set
         if (projectId == null) {
             throw new ApiException("Missing the required parameter 'projectId' when calling getProjectServers(Async)");
@@ -3038,7 +3038,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public GetProjectServers200Response getProjectServers(BigDecimal projectId) throws ApiException {
+    public GetProjectServers200Response getProjectServers(Integer projectId) throws ApiException {
         ApiResponse<GetProjectServers200Response> localVarResp = getProjectServersWithHttpInfo(projectId);
         return localVarResp.getData();
     }
@@ -3060,7 +3060,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GetProjectServers200Response> getProjectServersWithHttpInfo(BigDecimal projectId) throws ApiException {
+    public ApiResponse<GetProjectServers200Response> getProjectServersWithHttpInfo(Integer projectId) throws ApiException {
         okhttp3.Call localVarCall = getProjectServersValidateBeforeCall(projectId, null);
         Type localVarReturnType = new TypeToken<GetProjectServers200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -3084,7 +3084,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getProjectServersAsync(BigDecimal projectId, final ApiCallback<GetProjectServers200Response> _callback) throws ApiException {
+    public okhttp3.Call getProjectServersAsync(Integer projectId, final ApiCallback<GetProjectServers200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getProjectServersValidateBeforeCall(projectId, _callback);
         Type localVarReturnType = new TypeToken<GetProjectServers200Response>(){}.getType();
@@ -3108,7 +3108,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getProjectStoragesCall(BigDecimal projectId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getProjectStoragesCall(Integer projectId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3154,7 +3154,7 @@ public class ProjectsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getProjectStoragesValidateBeforeCall(BigDecimal projectId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getProjectStoragesValidateBeforeCall(Integer projectId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'projectId' is set
         if (projectId == null) {
             throw new ApiException("Missing the required parameter 'projectId' when calling getProjectStorages(Async)");
@@ -3181,7 +3181,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public GetProjectStorages200Response getProjectStorages(BigDecimal projectId) throws ApiException {
+    public GetProjectStorages200Response getProjectStorages(Integer projectId) throws ApiException {
         ApiResponse<GetProjectStorages200Response> localVarResp = getProjectStoragesWithHttpInfo(projectId);
         return localVarResp.getData();
     }
@@ -3203,7 +3203,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GetProjectStorages200Response> getProjectStoragesWithHttpInfo(BigDecimal projectId) throws ApiException {
+    public ApiResponse<GetProjectStorages200Response> getProjectStoragesWithHttpInfo(Integer projectId) throws ApiException {
         okhttp3.Call localVarCall = getProjectStoragesValidateBeforeCall(projectId, null);
         Type localVarReturnType = new TypeToken<GetProjectStorages200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -3227,7 +3227,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getProjectStoragesAsync(BigDecimal projectId, final ApiCallback<GetProjectStorages200Response> _callback) throws ApiException {
+    public okhttp3.Call getProjectStoragesAsync(Integer projectId, final ApiCallback<GetProjectStorages200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getProjectStoragesValidateBeforeCall(projectId, _callback);
         Type localVarReturnType = new TypeToken<GetProjectStorages200Response>(){}.getType();
@@ -3382,7 +3382,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call transferResourceToAnotherProjectCall(BigDecimal projectId, ResourceTransfer resourceTransfer, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call transferResourceToAnotherProjectCall(Integer projectId, ResourceTransfer resourceTransfer, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3429,7 +3429,7 @@ public class ProjectsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call transferResourceToAnotherProjectValidateBeforeCall(BigDecimal projectId, ResourceTransfer resourceTransfer, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call transferResourceToAnotherProjectValidateBeforeCall(Integer projectId, ResourceTransfer resourceTransfer, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'projectId' is set
         if (projectId == null) {
             throw new ApiException("Missing the required parameter 'projectId' when calling transferResourceToAnotherProject(Async)");
@@ -3463,7 +3463,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public AddBalancerToProject200Response transferResourceToAnotherProject(BigDecimal projectId, ResourceTransfer resourceTransfer) throws ApiException {
+    public AddBalancerToProject200Response transferResourceToAnotherProject(Integer projectId, ResourceTransfer resourceTransfer) throws ApiException {
         ApiResponse<AddBalancerToProject200Response> localVarResp = transferResourceToAnotherProjectWithHttpInfo(projectId, resourceTransfer);
         return localVarResp.getData();
     }
@@ -3487,7 +3487,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AddBalancerToProject200Response> transferResourceToAnotherProjectWithHttpInfo(BigDecimal projectId, ResourceTransfer resourceTransfer) throws ApiException {
+    public ApiResponse<AddBalancerToProject200Response> transferResourceToAnotherProjectWithHttpInfo(Integer projectId, ResourceTransfer resourceTransfer) throws ApiException {
         okhttp3.Call localVarCall = transferResourceToAnotherProjectValidateBeforeCall(projectId, resourceTransfer, null);
         Type localVarReturnType = new TypeToken<AddBalancerToProject200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -3513,7 +3513,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call transferResourceToAnotherProjectAsync(BigDecimal projectId, ResourceTransfer resourceTransfer, final ApiCallback<AddBalancerToProject200Response> _callback) throws ApiException {
+    public okhttp3.Call transferResourceToAnotherProjectAsync(Integer projectId, ResourceTransfer resourceTransfer, final ApiCallback<AddBalancerToProject200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = transferResourceToAnotherProjectValidateBeforeCall(projectId, resourceTransfer, _callback);
         Type localVarReturnType = new TypeToken<AddBalancerToProject200Response>(){}.getType();
@@ -3538,7 +3538,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateProjectCall(BigDecimal projectId, UpdateProject updateProject, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call updateProjectCall(Integer projectId, UpdateProject updateProject, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3585,7 +3585,7 @@ public class ProjectsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateProjectValidateBeforeCall(BigDecimal projectId, UpdateProject updateProject, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateProjectValidateBeforeCall(Integer projectId, UpdateProject updateProject, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'projectId' is set
         if (projectId == null) {
             throw new ApiException("Missing the required parameter 'projectId' when calling updateProject(Async)");
@@ -3618,7 +3618,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public CreateProject201Response updateProject(BigDecimal projectId, UpdateProject updateProject) throws ApiException {
+    public CreateProject201Response updateProject(Integer projectId, UpdateProject updateProject) throws ApiException {
         ApiResponse<CreateProject201Response> localVarResp = updateProjectWithHttpInfo(projectId, updateProject);
         return localVarResp.getData();
     }
@@ -3641,7 +3641,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CreateProject201Response> updateProjectWithHttpInfo(BigDecimal projectId, UpdateProject updateProject) throws ApiException {
+    public ApiResponse<CreateProject201Response> updateProjectWithHttpInfo(Integer projectId, UpdateProject updateProject) throws ApiException {
         okhttp3.Call localVarCall = updateProjectValidateBeforeCall(projectId, updateProject, null);
         Type localVarReturnType = new TypeToken<CreateProject201Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -3666,7 +3666,7 @@ public class ProjectsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateProjectAsync(BigDecimal projectId, UpdateProject updateProject, final ApiCallback<CreateProject201Response> _callback) throws ApiException {
+    public okhttp3.Call updateProjectAsync(Integer projectId, UpdateProject updateProject, final ApiCallback<CreateProject201Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = updateProjectValidateBeforeCall(projectId, updateProject, _callback);
         Type localVarReturnType = new TypeToken<CreateProject201Response>(){}.getType();

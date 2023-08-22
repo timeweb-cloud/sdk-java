@@ -23,6 +23,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 import org.openapitools.client.model.CreateServerConfiguration;
@@ -56,7 +57,7 @@ import org.openapitools.client.JSON;
 /**
  * CreateServer
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-21T14:21:17.845880Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-22T13:06:16.524188Z[Etc/UTC]")
 public class CreateServer {
   public static final String SERIALIZED_NAME_CONFIGURATION = "configuration";
   @SerializedName(SERIALIZED_NAME_CONFIGURATION)
@@ -534,7 +535,7 @@ public class CreateServer {
         throw new IllegalArgumentException(String.format("Expected the field `comment` to be a primitive type in the JSON string but got `%s`", jsonObj.get("comment").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("ssh_keys_ids") != null && !jsonObj.get("ssh_keys_ids").isJsonArray()) {
+      if (jsonObj.get("ssh_keys_ids") != null && !jsonObj.get("ssh_keys_ids").isJsonNull() && !jsonObj.get("ssh_keys_ids").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `ssh_keys_ids` to be an array in the JSON string but got `%s`", jsonObj.get("ssh_keys_ids").toString()));
       }
       // validate the optional field `network`

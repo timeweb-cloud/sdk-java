@@ -22,12 +22,12 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.UUID;
-import org.openapitools.client.model.GetServerStatistics200ResponseAllOfCpuInner;
-import org.openapitools.client.model.GetServerStatistics200ResponseAllOfDiskInner;
-import org.openapitools.client.model.GetServerStatistics200ResponseAllOfNetworkTrafficInner;
-import org.openapitools.client.model.GetServerStatistics200ResponseAllOfRamInner;
+import org.openapitools.client.model.GetServerStatistics200ResponseCpuInner;
+import org.openapitools.client.model.GetServerStatistics200ResponseDiskInner;
+import org.openapitools.client.model.GetServerStatistics200ResponseNetworkTrafficInner;
+import org.openapitools.client.model.GetServerStatistics200ResponseRamInner;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -57,38 +57,34 @@ import org.openapitools.client.JSON;
 /**
  * GetServerStatistics200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-21T14:21:17.845880Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-22T13:06:16.524188Z[Etc/UTC]")
 public class GetServerStatistics200Response {
   public static final String SERIALIZED_NAME_CPU = "cpu";
   @SerializedName(SERIALIZED_NAME_CPU)
-  private List<GetServerStatistics200ResponseAllOfCpuInner> cpu = new ArrayList<>();
+  private List<GetServerStatistics200ResponseCpuInner> cpu = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_NETWORK_TRAFFIC = "network_traffic";
   @SerializedName(SERIALIZED_NAME_NETWORK_TRAFFIC)
-  private List<GetServerStatistics200ResponseAllOfNetworkTrafficInner> networkTraffic = new ArrayList<>();
+  private List<GetServerStatistics200ResponseNetworkTrafficInner> networkTraffic = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_DISK = "disk";
   @SerializedName(SERIALIZED_NAME_DISK)
-  private List<GetServerStatistics200ResponseAllOfDiskInner> disk = new ArrayList<>();
+  private List<GetServerStatistics200ResponseDiskInner> disk = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_RAM = "ram";
   @SerializedName(SERIALIZED_NAME_RAM)
-  private List<GetServerStatistics200ResponseAllOfRamInner> ram = new ArrayList<>();
-
-  public static final String SERIALIZED_NAME_RESPONSE_ID = "response_id";
-  @SerializedName(SERIALIZED_NAME_RESPONSE_ID)
-  private UUID responseId;
+  private List<GetServerStatistics200ResponseRamInner> ram = new ArrayList<>();
 
   public GetServerStatistics200Response() {
   }
 
-  public GetServerStatistics200Response cpu(List<GetServerStatistics200ResponseAllOfCpuInner> cpu) {
+  public GetServerStatistics200Response cpu(List<GetServerStatistics200ResponseCpuInner> cpu) {
     
     this.cpu = cpu;
     return this;
   }
 
-  public GetServerStatistics200Response addCpuItem(GetServerStatistics200ResponseAllOfCpuInner cpuItem) {
+  public GetServerStatistics200Response addCpuItem(GetServerStatistics200ResponseCpuInner cpuItem) {
     if (this.cpu == null) {
       this.cpu = new ArrayList<>();
     }
@@ -101,23 +97,23 @@ public class GetServerStatistics200Response {
    * @return cpu
   **/
   @javax.annotation.Nonnull
-  public List<GetServerStatistics200ResponseAllOfCpuInner> getCpu() {
+  public List<GetServerStatistics200ResponseCpuInner> getCpu() {
     return cpu;
   }
 
 
-  public void setCpu(List<GetServerStatistics200ResponseAllOfCpuInner> cpu) {
+  public void setCpu(List<GetServerStatistics200ResponseCpuInner> cpu) {
     this.cpu = cpu;
   }
 
 
-  public GetServerStatistics200Response networkTraffic(List<GetServerStatistics200ResponseAllOfNetworkTrafficInner> networkTraffic) {
+  public GetServerStatistics200Response networkTraffic(List<GetServerStatistics200ResponseNetworkTrafficInner> networkTraffic) {
     
     this.networkTraffic = networkTraffic;
     return this;
   }
 
-  public GetServerStatistics200Response addNetworkTrafficItem(GetServerStatistics200ResponseAllOfNetworkTrafficInner networkTrafficItem) {
+  public GetServerStatistics200Response addNetworkTrafficItem(GetServerStatistics200ResponseNetworkTrafficInner networkTrafficItem) {
     if (this.networkTraffic == null) {
       this.networkTraffic = new ArrayList<>();
     }
@@ -130,23 +126,23 @@ public class GetServerStatistics200Response {
    * @return networkTraffic
   **/
   @javax.annotation.Nonnull
-  public List<GetServerStatistics200ResponseAllOfNetworkTrafficInner> getNetworkTraffic() {
+  public List<GetServerStatistics200ResponseNetworkTrafficInner> getNetworkTraffic() {
     return networkTraffic;
   }
 
 
-  public void setNetworkTraffic(List<GetServerStatistics200ResponseAllOfNetworkTrafficInner> networkTraffic) {
+  public void setNetworkTraffic(List<GetServerStatistics200ResponseNetworkTrafficInner> networkTraffic) {
     this.networkTraffic = networkTraffic;
   }
 
 
-  public GetServerStatistics200Response disk(List<GetServerStatistics200ResponseAllOfDiskInner> disk) {
+  public GetServerStatistics200Response disk(List<GetServerStatistics200ResponseDiskInner> disk) {
     
     this.disk = disk;
     return this;
   }
 
-  public GetServerStatistics200Response addDiskItem(GetServerStatistics200ResponseAllOfDiskInner diskItem) {
+  public GetServerStatistics200Response addDiskItem(GetServerStatistics200ResponseDiskInner diskItem) {
     if (this.disk == null) {
       this.disk = new ArrayList<>();
     }
@@ -159,23 +155,23 @@ public class GetServerStatistics200Response {
    * @return disk
   **/
   @javax.annotation.Nonnull
-  public List<GetServerStatistics200ResponseAllOfDiskInner> getDisk() {
+  public List<GetServerStatistics200ResponseDiskInner> getDisk() {
     return disk;
   }
 
 
-  public void setDisk(List<GetServerStatistics200ResponseAllOfDiskInner> disk) {
+  public void setDisk(List<GetServerStatistics200ResponseDiskInner> disk) {
     this.disk = disk;
   }
 
 
-  public GetServerStatistics200Response ram(List<GetServerStatistics200ResponseAllOfRamInner> ram) {
+  public GetServerStatistics200Response ram(List<GetServerStatistics200ResponseRamInner> ram) {
     
     this.ram = ram;
     return this;
   }
 
-  public GetServerStatistics200Response addRamItem(GetServerStatistics200ResponseAllOfRamInner ramItem) {
+  public GetServerStatistics200Response addRamItem(GetServerStatistics200ResponseRamInner ramItem) {
     if (this.ram == null) {
       this.ram = new ArrayList<>();
     }
@@ -188,34 +184,13 @@ public class GetServerStatistics200Response {
    * @return ram
   **/
   @javax.annotation.Nonnull
-  public List<GetServerStatistics200ResponseAllOfRamInner> getRam() {
+  public List<GetServerStatistics200ResponseRamInner> getRam() {
     return ram;
   }
 
 
-  public void setRam(List<GetServerStatistics200ResponseAllOfRamInner> ram) {
+  public void setRam(List<GetServerStatistics200ResponseRamInner> ram) {
     this.ram = ram;
-  }
-
-
-  public GetServerStatistics200Response responseId(UUID responseId) {
-    
-    this.responseId = responseId;
-    return this;
-  }
-
-   /**
-   * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
-   * @return responseId
-  **/
-  @javax.annotation.Nonnull
-  public UUID getResponseId() {
-    return responseId;
-  }
-
-
-  public void setResponseId(UUID responseId) {
-    this.responseId = responseId;
   }
 
 
@@ -232,13 +207,12 @@ public class GetServerStatistics200Response {
     return Objects.equals(this.cpu, getServerStatistics200Response.cpu) &&
         Objects.equals(this.networkTraffic, getServerStatistics200Response.networkTraffic) &&
         Objects.equals(this.disk, getServerStatistics200Response.disk) &&
-        Objects.equals(this.ram, getServerStatistics200Response.ram) &&
-        Objects.equals(this.responseId, getServerStatistics200Response.responseId);
+        Objects.equals(this.ram, getServerStatistics200Response.ram);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(cpu, networkTraffic, disk, ram, responseId);
+    return Objects.hash(cpu, networkTraffic, disk, ram);
   }
 
   @Override
@@ -249,7 +223,6 @@ public class GetServerStatistics200Response {
     sb.append("    networkTraffic: ").append(toIndentedString(networkTraffic)).append("\n");
     sb.append("    disk: ").append(toIndentedString(disk)).append("\n");
     sb.append("    ram: ").append(toIndentedString(ram)).append("\n");
-    sb.append("    responseId: ").append(toIndentedString(responseId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -276,7 +249,6 @@ public class GetServerStatistics200Response {
     openapiFields.add("network_traffic");
     openapiFields.add("disk");
     openapiFields.add("ram");
-    openapiFields.add("response_id");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -284,7 +256,6 @@ public class GetServerStatistics200Response {
     openapiRequiredFields.add("network_traffic");
     openapiRequiredFields.add("disk");
     openapiRequiredFields.add("ram");
-    openapiRequiredFields.add("response_id");
   }
 
  /**
@@ -323,7 +294,7 @@ public class GetServerStatistics200Response {
       JsonArray jsonArraycpu = jsonObj.getAsJsonArray("cpu");
       // validate the required field `cpu` (array)
       for (int i = 0; i < jsonArraycpu.size(); i++) {
-        GetServerStatistics200ResponseAllOfCpuInner.validateJsonElement(jsonArraycpu.get(i));
+        GetServerStatistics200ResponseCpuInner.validateJsonElement(jsonArraycpu.get(i));
       };
       // ensure the json data is an array
       if (!jsonObj.get("network_traffic").isJsonArray()) {
@@ -333,7 +304,7 @@ public class GetServerStatistics200Response {
       JsonArray jsonArraynetworkTraffic = jsonObj.getAsJsonArray("network_traffic");
       // validate the required field `network_traffic` (array)
       for (int i = 0; i < jsonArraynetworkTraffic.size(); i++) {
-        GetServerStatistics200ResponseAllOfNetworkTrafficInner.validateJsonElement(jsonArraynetworkTraffic.get(i));
+        GetServerStatistics200ResponseNetworkTrafficInner.validateJsonElement(jsonArraynetworkTraffic.get(i));
       };
       // ensure the json data is an array
       if (!jsonObj.get("disk").isJsonArray()) {
@@ -343,7 +314,7 @@ public class GetServerStatistics200Response {
       JsonArray jsonArraydisk = jsonObj.getAsJsonArray("disk");
       // validate the required field `disk` (array)
       for (int i = 0; i < jsonArraydisk.size(); i++) {
-        GetServerStatistics200ResponseAllOfDiskInner.validateJsonElement(jsonArraydisk.get(i));
+        GetServerStatistics200ResponseDiskInner.validateJsonElement(jsonArraydisk.get(i));
       };
       // ensure the json data is an array
       if (!jsonObj.get("ram").isJsonArray()) {
@@ -353,11 +324,8 @@ public class GetServerStatistics200Response {
       JsonArray jsonArrayram = jsonObj.getAsJsonArray("ram");
       // validate the required field `ram` (array)
       for (int i = 0; i < jsonArrayram.size(); i++) {
-        GetServerStatistics200ResponseAllOfRamInner.validateJsonElement(jsonArrayram.get(i));
+        GetServerStatistics200ResponseRamInner.validateJsonElement(jsonArrayram.get(i));
       };
-      if (!jsonObj.get("response_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `response_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("response_id").toString()));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

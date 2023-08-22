@@ -29,24 +29,24 @@ import java.io.IOException;
 
 import org.openapitools.client.model.ClusterEdit;
 import org.openapitools.client.model.ClusterIn;
-import org.openapitools.client.model.CreateCluster201Response;
-import org.openapitools.client.model.CreateClusterNodeGroup201Response;
+import org.openapitools.client.model.ClusterResponse;
+import org.openapitools.client.model.ClustersResponse;
 import org.openapitools.client.model.DeleteCluster200Response;
-import org.openapitools.client.model.GetClusterNodeGroups200Response;
-import org.openapitools.client.model.GetClusterNodesFromGroup200Response;
-import org.openapitools.client.model.GetClusterResources200Response;
-import org.openapitools.client.model.GetClusters200Response;
 import org.openapitools.client.model.GetFinances400Response;
 import org.openapitools.client.model.GetFinances401Response;
 import org.openapitools.client.model.GetFinances403Response;
 import org.openapitools.client.model.GetFinances404Response;
 import org.openapitools.client.model.GetFinances429Response;
 import org.openapitools.client.model.GetFinances500Response;
-import org.openapitools.client.model.GetK8SNetworkDrivers200Response;
-import org.openapitools.client.model.GetK8SVersions200Response;
-import org.openapitools.client.model.GetKubernetesPresets200Response;
+import org.openapitools.client.model.K8SVersionsResponse;
+import org.openapitools.client.model.NetworkDriversResponse;
 import org.openapitools.client.model.NodeCount;
 import org.openapitools.client.model.NodeGroupIn;
+import org.openapitools.client.model.NodeGroupResponse;
+import org.openapitools.client.model.NodeGroupsResponse;
+import org.openapitools.client.model.NodesResponse;
+import org.openapitools.client.model.PresetsResponse;
+import org.openapitools.client.model.ResourcesResponse;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -167,7 +167,7 @@ public class KubernetesApi {
      * Создание кластера
      * Чтобы создать кластер, отправьте POST-запрос на &#x60;/api/v1/k8s/clusters&#x60;.
      * @param clusterIn  (required)
-     * @return CreateCluster201Response
+     * @return ClusterResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -179,8 +179,8 @@ public class KubernetesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public CreateCluster201Response createCluster(ClusterIn clusterIn) throws ApiException {
-        ApiResponse<CreateCluster201Response> localVarResp = createClusterWithHttpInfo(clusterIn);
+    public ClusterResponse createCluster(ClusterIn clusterIn) throws ApiException {
+        ApiResponse<ClusterResponse> localVarResp = createClusterWithHttpInfo(clusterIn);
         return localVarResp.getData();
     }
 
@@ -188,7 +188,7 @@ public class KubernetesApi {
      * Создание кластера
      * Чтобы создать кластер, отправьте POST-запрос на &#x60;/api/v1/k8s/clusters&#x60;.
      * @param clusterIn  (required)
-     * @return ApiResponse&lt;CreateCluster201Response&gt;
+     * @return ApiResponse&lt;ClusterResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -200,9 +200,9 @@ public class KubernetesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CreateCluster201Response> createClusterWithHttpInfo(ClusterIn clusterIn) throws ApiException {
+    public ApiResponse<ClusterResponse> createClusterWithHttpInfo(ClusterIn clusterIn) throws ApiException {
         okhttp3.Call localVarCall = createClusterValidateBeforeCall(clusterIn, null);
-        Type localVarReturnType = new TypeToken<CreateCluster201Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<ClusterResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -223,10 +223,10 @@ public class KubernetesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createClusterAsync(ClusterIn clusterIn, final ApiCallback<CreateCluster201Response> _callback) throws ApiException {
+    public okhttp3.Call createClusterAsync(ClusterIn clusterIn, final ApiCallback<ClusterResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createClusterValidateBeforeCall(clusterIn, _callback);
-        Type localVarReturnType = new TypeToken<CreateCluster201Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<ClusterResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -316,7 +316,7 @@ public class KubernetesApi {
      * Чтобы создать группу нод кластера, отправьте POST-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/groups&#x60;.
      * @param clusterId Уникальный идентификатор кластера (required)
      * @param nodeGroupIn  (required)
-     * @return CreateClusterNodeGroup201Response
+     * @return NodeGroupResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -330,8 +330,8 @@ public class KubernetesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public CreateClusterNodeGroup201Response createClusterNodeGroup(Integer clusterId, NodeGroupIn nodeGroupIn) throws ApiException {
-        ApiResponse<CreateClusterNodeGroup201Response> localVarResp = createClusterNodeGroupWithHttpInfo(clusterId, nodeGroupIn);
+    public NodeGroupResponse createClusterNodeGroup(Integer clusterId, NodeGroupIn nodeGroupIn) throws ApiException {
+        ApiResponse<NodeGroupResponse> localVarResp = createClusterNodeGroupWithHttpInfo(clusterId, nodeGroupIn);
         return localVarResp.getData();
     }
 
@@ -340,7 +340,7 @@ public class KubernetesApi {
      * Чтобы создать группу нод кластера, отправьте POST-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/groups&#x60;.
      * @param clusterId Уникальный идентификатор кластера (required)
      * @param nodeGroupIn  (required)
-     * @return ApiResponse&lt;CreateClusterNodeGroup201Response&gt;
+     * @return ApiResponse&lt;NodeGroupResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -354,9 +354,9 @@ public class KubernetesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CreateClusterNodeGroup201Response> createClusterNodeGroupWithHttpInfo(Integer clusterId, NodeGroupIn nodeGroupIn) throws ApiException {
+    public ApiResponse<NodeGroupResponse> createClusterNodeGroupWithHttpInfo(Integer clusterId, NodeGroupIn nodeGroupIn) throws ApiException {
         okhttp3.Call localVarCall = createClusterNodeGroupValidateBeforeCall(clusterId, nodeGroupIn, null);
-        Type localVarReturnType = new TypeToken<CreateClusterNodeGroup201Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<NodeGroupResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -380,10 +380,10 @@ public class KubernetesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createClusterNodeGroupAsync(Integer clusterId, NodeGroupIn nodeGroupIn, final ApiCallback<CreateClusterNodeGroup201Response> _callback) throws ApiException {
+    public okhttp3.Call createClusterNodeGroupAsync(Integer clusterId, NodeGroupIn nodeGroupIn, final ApiCallback<NodeGroupResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createClusterNodeGroupValidateBeforeCall(clusterId, nodeGroupIn, _callback);
-        Type localVarReturnType = new TypeToken<CreateClusterNodeGroup201Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<NodeGroupResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -938,7 +938,7 @@ public class KubernetesApi {
      * Получение информации о кластере
      * Чтобы получить информацию о кластере, отправьте GET-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}&#x60;
      * @param clusterId Уникальный идентификатор кластера (required)
-     * @return CreateCluster201Response
+     * @return ClusterResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -952,8 +952,8 @@ public class KubernetesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public CreateCluster201Response getCluster(Integer clusterId) throws ApiException {
-        ApiResponse<CreateCluster201Response> localVarResp = getClusterWithHttpInfo(clusterId);
+    public ClusterResponse getCluster(Integer clusterId) throws ApiException {
+        ApiResponse<ClusterResponse> localVarResp = getClusterWithHttpInfo(clusterId);
         return localVarResp.getData();
     }
 
@@ -961,7 +961,7 @@ public class KubernetesApi {
      * Получение информации о кластере
      * Чтобы получить информацию о кластере, отправьте GET-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}&#x60;
      * @param clusterId Уникальный идентификатор кластера (required)
-     * @return ApiResponse&lt;CreateCluster201Response&gt;
+     * @return ApiResponse&lt;ClusterResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -975,9 +975,9 @@ public class KubernetesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CreateCluster201Response> getClusterWithHttpInfo(Integer clusterId) throws ApiException {
+    public ApiResponse<ClusterResponse> getClusterWithHttpInfo(Integer clusterId) throws ApiException {
         okhttp3.Call localVarCall = getClusterValidateBeforeCall(clusterId, null);
-        Type localVarReturnType = new TypeToken<CreateCluster201Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<ClusterResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1000,10 +1000,10 @@ public class KubernetesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getClusterAsync(Integer clusterId, final ApiCallback<CreateCluster201Response> _callback) throws ApiException {
+    public okhttp3.Call getClusterAsync(Integer clusterId, final ApiCallback<ClusterResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getClusterValidateBeforeCall(clusterId, _callback);
-        Type localVarReturnType = new TypeToken<CreateCluster201Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<ClusterResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1241,7 +1241,7 @@ public class KubernetesApi {
      * Чтобы получить информацию о группе нод, отправьте GET-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/groups/{group_id}&#x60;.
      * @param clusterId Уникальный идентификатор кластера (required)
      * @param groupId Уникальный идентификатор группы (required)
-     * @return CreateClusterNodeGroup201Response
+     * @return NodeGroupResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1255,8 +1255,8 @@ public class KubernetesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public CreateClusterNodeGroup201Response getClusterNodeGroup(Integer clusterId, Integer groupId) throws ApiException {
-        ApiResponse<CreateClusterNodeGroup201Response> localVarResp = getClusterNodeGroupWithHttpInfo(clusterId, groupId);
+    public NodeGroupResponse getClusterNodeGroup(Integer clusterId, Integer groupId) throws ApiException {
+        ApiResponse<NodeGroupResponse> localVarResp = getClusterNodeGroupWithHttpInfo(clusterId, groupId);
         return localVarResp.getData();
     }
 
@@ -1265,7 +1265,7 @@ public class KubernetesApi {
      * Чтобы получить информацию о группе нод, отправьте GET-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/groups/{group_id}&#x60;.
      * @param clusterId Уникальный идентификатор кластера (required)
      * @param groupId Уникальный идентификатор группы (required)
-     * @return ApiResponse&lt;CreateClusterNodeGroup201Response&gt;
+     * @return ApiResponse&lt;NodeGroupResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1279,9 +1279,9 @@ public class KubernetesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CreateClusterNodeGroup201Response> getClusterNodeGroupWithHttpInfo(Integer clusterId, Integer groupId) throws ApiException {
+    public ApiResponse<NodeGroupResponse> getClusterNodeGroupWithHttpInfo(Integer clusterId, Integer groupId) throws ApiException {
         okhttp3.Call localVarCall = getClusterNodeGroupValidateBeforeCall(clusterId, groupId, null);
-        Type localVarReturnType = new TypeToken<CreateClusterNodeGroup201Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<NodeGroupResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1305,10 +1305,10 @@ public class KubernetesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getClusterNodeGroupAsync(Integer clusterId, Integer groupId, final ApiCallback<CreateClusterNodeGroup201Response> _callback) throws ApiException {
+    public okhttp3.Call getClusterNodeGroupAsync(Integer clusterId, Integer groupId, final ApiCallback<NodeGroupResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getClusterNodeGroupValidateBeforeCall(clusterId, groupId, _callback);
-        Type localVarReturnType = new TypeToken<CreateClusterNodeGroup201Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<NodeGroupResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1390,7 +1390,7 @@ public class KubernetesApi {
      * Получение групп нод кластера
      * Чтобы получить группы нод кластера, отправьте GET-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/groups&#x60;.
      * @param clusterId Уникальный идентификатор кластера (required)
-     * @return GetClusterNodeGroups200Response
+     * @return NodeGroupsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1404,8 +1404,8 @@ public class KubernetesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public GetClusterNodeGroups200Response getClusterNodeGroups(Integer clusterId) throws ApiException {
-        ApiResponse<GetClusterNodeGroups200Response> localVarResp = getClusterNodeGroupsWithHttpInfo(clusterId);
+    public NodeGroupsResponse getClusterNodeGroups(Integer clusterId) throws ApiException {
+        ApiResponse<NodeGroupsResponse> localVarResp = getClusterNodeGroupsWithHttpInfo(clusterId);
         return localVarResp.getData();
     }
 
@@ -1413,7 +1413,7 @@ public class KubernetesApi {
      * Получение групп нод кластера
      * Чтобы получить группы нод кластера, отправьте GET-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/groups&#x60;.
      * @param clusterId Уникальный идентификатор кластера (required)
-     * @return ApiResponse&lt;GetClusterNodeGroups200Response&gt;
+     * @return ApiResponse&lt;NodeGroupsResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1427,9 +1427,9 @@ public class KubernetesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GetClusterNodeGroups200Response> getClusterNodeGroupsWithHttpInfo(Integer clusterId) throws ApiException {
+    public ApiResponse<NodeGroupsResponse> getClusterNodeGroupsWithHttpInfo(Integer clusterId) throws ApiException {
         okhttp3.Call localVarCall = getClusterNodeGroupsValidateBeforeCall(clusterId, null);
-        Type localVarReturnType = new TypeToken<GetClusterNodeGroups200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<NodeGroupsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1452,10 +1452,10 @@ public class KubernetesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getClusterNodeGroupsAsync(Integer clusterId, final ApiCallback<GetClusterNodeGroups200Response> _callback) throws ApiException {
+    public okhttp3.Call getClusterNodeGroupsAsync(Integer clusterId, final ApiCallback<NodeGroupsResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getClusterNodeGroupsValidateBeforeCall(clusterId, _callback);
-        Type localVarReturnType = new TypeToken<GetClusterNodeGroups200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<NodeGroupsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1537,7 +1537,7 @@ public class KubernetesApi {
      * Получение списка нод
      * Чтобы получить список нод, отправьте GET-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/nodes&#x60;.
      * @param clusterId Уникальный идентификатор кластера (required)
-     * @return GetClusterNodesFromGroup200Response
+     * @return NodesResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1551,8 +1551,8 @@ public class KubernetesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public GetClusterNodesFromGroup200Response getClusterNodes(Integer clusterId) throws ApiException {
-        ApiResponse<GetClusterNodesFromGroup200Response> localVarResp = getClusterNodesWithHttpInfo(clusterId);
+    public NodesResponse getClusterNodes(Integer clusterId) throws ApiException {
+        ApiResponse<NodesResponse> localVarResp = getClusterNodesWithHttpInfo(clusterId);
         return localVarResp.getData();
     }
 
@@ -1560,7 +1560,7 @@ public class KubernetesApi {
      * Получение списка нод
      * Чтобы получить список нод, отправьте GET-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/nodes&#x60;.
      * @param clusterId Уникальный идентификатор кластера (required)
-     * @return ApiResponse&lt;GetClusterNodesFromGroup200Response&gt;
+     * @return ApiResponse&lt;NodesResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1574,9 +1574,9 @@ public class KubernetesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GetClusterNodesFromGroup200Response> getClusterNodesWithHttpInfo(Integer clusterId) throws ApiException {
+    public ApiResponse<NodesResponse> getClusterNodesWithHttpInfo(Integer clusterId) throws ApiException {
         okhttp3.Call localVarCall = getClusterNodesValidateBeforeCall(clusterId, null);
-        Type localVarReturnType = new TypeToken<GetClusterNodesFromGroup200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<NodesResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1599,10 +1599,10 @@ public class KubernetesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getClusterNodesAsync(Integer clusterId, final ApiCallback<GetClusterNodesFromGroup200Response> _callback) throws ApiException {
+    public okhttp3.Call getClusterNodesAsync(Integer clusterId, final ApiCallback<NodesResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getClusterNodesValidateBeforeCall(clusterId, _callback);
-        Type localVarReturnType = new TypeToken<GetClusterNodesFromGroup200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<NodesResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1704,7 +1704,7 @@ public class KubernetesApi {
      * @param groupId Уникальный идентификатор группы (required)
      * @param limit Обозначает количество записей, которое необходимо вернуть. (optional, default to 100)
      * @param offset Указывает на смещение, относительно начала списка. (optional, default to 0)
-     * @return GetClusterNodesFromGroup200Response
+     * @return NodesResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1718,8 +1718,8 @@ public class KubernetesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public GetClusterNodesFromGroup200Response getClusterNodesFromGroup(Integer clusterId, Integer groupId, Integer limit, Integer offset) throws ApiException {
-        ApiResponse<GetClusterNodesFromGroup200Response> localVarResp = getClusterNodesFromGroupWithHttpInfo(clusterId, groupId, limit, offset);
+    public NodesResponse getClusterNodesFromGroup(Integer clusterId, Integer groupId, Integer limit, Integer offset) throws ApiException {
+        ApiResponse<NodesResponse> localVarResp = getClusterNodesFromGroupWithHttpInfo(clusterId, groupId, limit, offset);
         return localVarResp.getData();
     }
 
@@ -1730,7 +1730,7 @@ public class KubernetesApi {
      * @param groupId Уникальный идентификатор группы (required)
      * @param limit Обозначает количество записей, которое необходимо вернуть. (optional, default to 100)
      * @param offset Указывает на смещение, относительно начала списка. (optional, default to 0)
-     * @return ApiResponse&lt;GetClusterNodesFromGroup200Response&gt;
+     * @return ApiResponse&lt;NodesResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1744,9 +1744,9 @@ public class KubernetesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GetClusterNodesFromGroup200Response> getClusterNodesFromGroupWithHttpInfo(Integer clusterId, Integer groupId, Integer limit, Integer offset) throws ApiException {
+    public ApiResponse<NodesResponse> getClusterNodesFromGroupWithHttpInfo(Integer clusterId, Integer groupId, Integer limit, Integer offset) throws ApiException {
         okhttp3.Call localVarCall = getClusterNodesFromGroupValidateBeforeCall(clusterId, groupId, limit, offset, null);
-        Type localVarReturnType = new TypeToken<GetClusterNodesFromGroup200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<NodesResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1772,10 +1772,10 @@ public class KubernetesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getClusterNodesFromGroupAsync(Integer clusterId, Integer groupId, Integer limit, Integer offset, final ApiCallback<GetClusterNodesFromGroup200Response> _callback) throws ApiException {
+    public okhttp3.Call getClusterNodesFromGroupAsync(Integer clusterId, Integer groupId, Integer limit, Integer offset, final ApiCallback<NodesResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getClusterNodesFromGroupValidateBeforeCall(clusterId, groupId, limit, offset, _callback);
-        Type localVarReturnType = new TypeToken<GetClusterNodesFromGroup200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<NodesResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1857,7 +1857,7 @@ public class KubernetesApi {
      * Получение ресурсов кластера
      * Чтобы получить ресурсы кластера, отправьте GET-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/resources&#x60;.
      * @param clusterId Уникальный идентификатор кластера (required)
-     * @return GetClusterResources200Response
+     * @return ResourcesResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1871,8 +1871,8 @@ public class KubernetesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public GetClusterResources200Response getClusterResources(Integer clusterId) throws ApiException {
-        ApiResponse<GetClusterResources200Response> localVarResp = getClusterResourcesWithHttpInfo(clusterId);
+    public ResourcesResponse getClusterResources(Integer clusterId) throws ApiException {
+        ApiResponse<ResourcesResponse> localVarResp = getClusterResourcesWithHttpInfo(clusterId);
         return localVarResp.getData();
     }
 
@@ -1880,7 +1880,7 @@ public class KubernetesApi {
      * Получение ресурсов кластера
      * Чтобы получить ресурсы кластера, отправьте GET-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/resources&#x60;.
      * @param clusterId Уникальный идентификатор кластера (required)
-     * @return ApiResponse&lt;GetClusterResources200Response&gt;
+     * @return ApiResponse&lt;ResourcesResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1894,9 +1894,9 @@ public class KubernetesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GetClusterResources200Response> getClusterResourcesWithHttpInfo(Integer clusterId) throws ApiException {
+    public ApiResponse<ResourcesResponse> getClusterResourcesWithHttpInfo(Integer clusterId) throws ApiException {
         okhttp3.Call localVarCall = getClusterResourcesValidateBeforeCall(clusterId, null);
-        Type localVarReturnType = new TypeToken<GetClusterResources200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<ResourcesResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1919,10 +1919,10 @@ public class KubernetesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getClusterResourcesAsync(Integer clusterId, final ApiCallback<GetClusterResources200Response> _callback) throws ApiException {
+    public okhttp3.Call getClusterResourcesAsync(Integer clusterId, final ApiCallback<ResourcesResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getClusterResourcesValidateBeforeCall(clusterId, _callback);
-        Type localVarReturnType = new TypeToken<GetClusterResources200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<ResourcesResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2006,7 +2006,7 @@ public class KubernetesApi {
      * Чтобы получить список кластеров, отправьте GET-запрос на &#x60;/api/v1/k8s/clusters&#x60;.
      * @param limit Обозначает количество записей, которое необходимо вернуть. (optional, default to 100)
      * @param offset Указывает на смещение относительно начала списка. (optional, default to 0)
-     * @return GetClusters200Response
+     * @return ClustersResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2018,8 +2018,8 @@ public class KubernetesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public GetClusters200Response getClusters(Integer limit, Integer offset) throws ApiException {
-        ApiResponse<GetClusters200Response> localVarResp = getClustersWithHttpInfo(limit, offset);
+    public ClustersResponse getClusters(Integer limit, Integer offset) throws ApiException {
+        ApiResponse<ClustersResponse> localVarResp = getClustersWithHttpInfo(limit, offset);
         return localVarResp.getData();
     }
 
@@ -2028,7 +2028,7 @@ public class KubernetesApi {
      * Чтобы получить список кластеров, отправьте GET-запрос на &#x60;/api/v1/k8s/clusters&#x60;.
      * @param limit Обозначает количество записей, которое необходимо вернуть. (optional, default to 100)
      * @param offset Указывает на смещение относительно начала списка. (optional, default to 0)
-     * @return ApiResponse&lt;GetClusters200Response&gt;
+     * @return ApiResponse&lt;ClustersResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2040,9 +2040,9 @@ public class KubernetesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GetClusters200Response> getClustersWithHttpInfo(Integer limit, Integer offset) throws ApiException {
+    public ApiResponse<ClustersResponse> getClustersWithHttpInfo(Integer limit, Integer offset) throws ApiException {
         okhttp3.Call localVarCall = getClustersValidateBeforeCall(limit, offset, null);
-        Type localVarReturnType = new TypeToken<GetClusters200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<ClustersResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -2064,10 +2064,10 @@ public class KubernetesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getClustersAsync(Integer limit, Integer offset, final ApiCallback<GetClusters200Response> _callback) throws ApiException {
+    public okhttp3.Call getClustersAsync(Integer limit, Integer offset, final ApiCallback<ClustersResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getClustersValidateBeforeCall(limit, offset, _callback);
-        Type localVarReturnType = new TypeToken<GetClusters200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<ClustersResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2139,7 +2139,7 @@ public class KubernetesApi {
     /**
      * Получение списка сетевых драйверов k8s
      * Чтобы получить список сетевых драйверов k8s, отправьте GET-запрос в &#x60;/api/v1/k8s/network_drivers&#x60;.
-     * @return GetK8SNetworkDrivers200Response
+     * @return NetworkDriversResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2151,15 +2151,15 @@ public class KubernetesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public GetK8SNetworkDrivers200Response getK8SNetworkDrivers() throws ApiException {
-        ApiResponse<GetK8SNetworkDrivers200Response> localVarResp = getK8SNetworkDriversWithHttpInfo();
+    public NetworkDriversResponse getK8SNetworkDrivers() throws ApiException {
+        ApiResponse<NetworkDriversResponse> localVarResp = getK8SNetworkDriversWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Получение списка сетевых драйверов k8s
      * Чтобы получить список сетевых драйверов k8s, отправьте GET-запрос в &#x60;/api/v1/k8s/network_drivers&#x60;.
-     * @return ApiResponse&lt;GetK8SNetworkDrivers200Response&gt;
+     * @return ApiResponse&lt;NetworkDriversResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2171,9 +2171,9 @@ public class KubernetesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GetK8SNetworkDrivers200Response> getK8SNetworkDriversWithHttpInfo() throws ApiException {
+    public ApiResponse<NetworkDriversResponse> getK8SNetworkDriversWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getK8SNetworkDriversValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<GetK8SNetworkDrivers200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<NetworkDriversResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -2193,10 +2193,10 @@ public class KubernetesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getK8SNetworkDriversAsync(final ApiCallback<GetK8SNetworkDrivers200Response> _callback) throws ApiException {
+    public okhttp3.Call getK8SNetworkDriversAsync(final ApiCallback<NetworkDriversResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getK8SNetworkDriversValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<GetK8SNetworkDrivers200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<NetworkDriversResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2268,7 +2268,7 @@ public class KubernetesApi {
     /**
      * Получение списка версий k8s
      * Чтобы получить список версий k8s, отправьте GET-запрос в &#x60;/api/v1/k8s/k8s_versions&#x60;.
-     * @return GetK8SVersions200Response
+     * @return K8SVersionsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2280,15 +2280,15 @@ public class KubernetesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public GetK8SVersions200Response getK8SVersions() throws ApiException {
-        ApiResponse<GetK8SVersions200Response> localVarResp = getK8SVersionsWithHttpInfo();
+    public K8SVersionsResponse getK8SVersions() throws ApiException {
+        ApiResponse<K8SVersionsResponse> localVarResp = getK8SVersionsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Получение списка версий k8s
      * Чтобы получить список версий k8s, отправьте GET-запрос в &#x60;/api/v1/k8s/k8s_versions&#x60;.
-     * @return ApiResponse&lt;GetK8SVersions200Response&gt;
+     * @return ApiResponse&lt;K8SVersionsResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2300,9 +2300,9 @@ public class KubernetesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GetK8SVersions200Response> getK8SVersionsWithHttpInfo() throws ApiException {
+    public ApiResponse<K8SVersionsResponse> getK8SVersionsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getK8SVersionsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<GetK8SVersions200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<K8SVersionsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -2322,10 +2322,10 @@ public class KubernetesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getK8SVersionsAsync(final ApiCallback<GetK8SVersions200Response> _callback) throws ApiException {
+    public okhttp3.Call getK8SVersionsAsync(final ApiCallback<K8SVersionsResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getK8SVersionsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<GetK8SVersions200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<K8SVersionsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2397,7 +2397,7 @@ public class KubernetesApi {
     /**
      * Получение списка тарифов
      * Чтобы получить список тарифов, отправьте GET-запрос в &#x60;/api/v1/presets/k8s&#x60;.
-     * @return GetKubernetesPresets200Response
+     * @return PresetsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2409,15 +2409,15 @@ public class KubernetesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public GetKubernetesPresets200Response getKubernetesPresets() throws ApiException {
-        ApiResponse<GetKubernetesPresets200Response> localVarResp = getKubernetesPresetsWithHttpInfo();
+    public PresetsResponse getKubernetesPresets() throws ApiException {
+        ApiResponse<PresetsResponse> localVarResp = getKubernetesPresetsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Получение списка тарифов
      * Чтобы получить список тарифов, отправьте GET-запрос в &#x60;/api/v1/presets/k8s&#x60;.
-     * @return ApiResponse&lt;GetKubernetesPresets200Response&gt;
+     * @return ApiResponse&lt;PresetsResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2429,9 +2429,9 @@ public class KubernetesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GetKubernetesPresets200Response> getKubernetesPresetsWithHttpInfo() throws ApiException {
+    public ApiResponse<PresetsResponse> getKubernetesPresetsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getKubernetesPresetsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<GetKubernetesPresets200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<PresetsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -2451,10 +2451,10 @@ public class KubernetesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getKubernetesPresetsAsync(final ApiCallback<GetKubernetesPresets200Response> _callback) throws ApiException {
+    public okhttp3.Call getKubernetesPresetsAsync(final ApiCallback<PresetsResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getKubernetesPresetsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<GetKubernetesPresets200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<PresetsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2552,7 +2552,7 @@ public class KubernetesApi {
      * @param clusterId Уникальный идентификатор кластера (required)
      * @param groupId Уникальный идентификатор группы (required)
      * @param nodeCount  (required)
-     * @return GetClusterNodesFromGroup200Response
+     * @return NodesResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2566,8 +2566,8 @@ public class KubernetesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public GetClusterNodesFromGroup200Response increaseCountOfNodesInGroup(Integer clusterId, Integer groupId, NodeCount nodeCount) throws ApiException {
-        ApiResponse<GetClusterNodesFromGroup200Response> localVarResp = increaseCountOfNodesInGroupWithHttpInfo(clusterId, groupId, nodeCount);
+    public NodesResponse increaseCountOfNodesInGroup(Integer clusterId, Integer groupId, NodeCount nodeCount) throws ApiException {
+        ApiResponse<NodesResponse> localVarResp = increaseCountOfNodesInGroupWithHttpInfo(clusterId, groupId, nodeCount);
         return localVarResp.getData();
     }
 
@@ -2577,7 +2577,7 @@ public class KubernetesApi {
      * @param clusterId Уникальный идентификатор кластера (required)
      * @param groupId Уникальный идентификатор группы (required)
      * @param nodeCount  (required)
-     * @return ApiResponse&lt;GetClusterNodesFromGroup200Response&gt;
+     * @return ApiResponse&lt;NodesResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2591,9 +2591,9 @@ public class KubernetesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GetClusterNodesFromGroup200Response> increaseCountOfNodesInGroupWithHttpInfo(Integer clusterId, Integer groupId, NodeCount nodeCount) throws ApiException {
+    public ApiResponse<NodesResponse> increaseCountOfNodesInGroupWithHttpInfo(Integer clusterId, Integer groupId, NodeCount nodeCount) throws ApiException {
         okhttp3.Call localVarCall = increaseCountOfNodesInGroupValidateBeforeCall(clusterId, groupId, nodeCount, null);
-        Type localVarReturnType = new TypeToken<GetClusterNodesFromGroup200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<NodesResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -2618,10 +2618,10 @@ public class KubernetesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call increaseCountOfNodesInGroupAsync(Integer clusterId, Integer groupId, NodeCount nodeCount, final ApiCallback<GetClusterNodesFromGroup200Response> _callback) throws ApiException {
+    public okhttp3.Call increaseCountOfNodesInGroupAsync(Integer clusterId, Integer groupId, NodeCount nodeCount, final ApiCallback<NodesResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = increaseCountOfNodesInGroupValidateBeforeCall(clusterId, groupId, nodeCount, _callback);
-        Type localVarReturnType = new TypeToken<GetClusterNodesFromGroup200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<NodesResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2874,7 +2874,7 @@ public class KubernetesApi {
      * Чтобы обновить информацию о кластере, отправьте PATCH-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}&#x60;
      * @param clusterId Уникальный идентификатор кластера (required)
      * @param clusterEdit  (required)
-     * @return CreateCluster201Response
+     * @return ClusterResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2888,8 +2888,8 @@ public class KubernetesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public CreateCluster201Response updateCluster(Integer clusterId, ClusterEdit clusterEdit) throws ApiException {
-        ApiResponse<CreateCluster201Response> localVarResp = updateClusterWithHttpInfo(clusterId, clusterEdit);
+    public ClusterResponse updateCluster(Integer clusterId, ClusterEdit clusterEdit) throws ApiException {
+        ApiResponse<ClusterResponse> localVarResp = updateClusterWithHttpInfo(clusterId, clusterEdit);
         return localVarResp.getData();
     }
 
@@ -2898,7 +2898,7 @@ public class KubernetesApi {
      * Чтобы обновить информацию о кластере, отправьте PATCH-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}&#x60;
      * @param clusterId Уникальный идентификатор кластера (required)
      * @param clusterEdit  (required)
-     * @return ApiResponse&lt;CreateCluster201Response&gt;
+     * @return ApiResponse&lt;ClusterResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2912,9 +2912,9 @@ public class KubernetesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CreateCluster201Response> updateClusterWithHttpInfo(Integer clusterId, ClusterEdit clusterEdit) throws ApiException {
+    public ApiResponse<ClusterResponse> updateClusterWithHttpInfo(Integer clusterId, ClusterEdit clusterEdit) throws ApiException {
         okhttp3.Call localVarCall = updateClusterValidateBeforeCall(clusterId, clusterEdit, null);
-        Type localVarReturnType = new TypeToken<CreateCluster201Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<ClusterResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -2938,10 +2938,10 @@ public class KubernetesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateClusterAsync(Integer clusterId, ClusterEdit clusterEdit, final ApiCallback<CreateCluster201Response> _callback) throws ApiException {
+    public okhttp3.Call updateClusterAsync(Integer clusterId, ClusterEdit clusterEdit, final ApiCallback<ClusterResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = updateClusterValidateBeforeCall(clusterId, clusterEdit, _callback);
-        Type localVarReturnType = new TypeToken<CreateCluster201Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<ClusterResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

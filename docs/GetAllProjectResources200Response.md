@@ -14,7 +14,6 @@
 |**databases** | [**List&lt;Db&gt;**](Db.md) |  |  |
 |**dedicatedServers** | [**List&lt;DedicatedServer&gt;**](DedicatedServer.md) |  |  |
 |**meta** | [**Meta**](Meta.md) |  |  |
-|**responseId** | **UUID** | Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему. |  |
 
 
 

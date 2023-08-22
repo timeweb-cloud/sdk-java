@@ -21,7 +21,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.UUID;
 import org.openapitools.client.model.Domain;
 
 import com.google.gson.Gson;
@@ -52,15 +51,11 @@ import org.openapitools.client.JSON;
 /**
  * UpdateDomainAutoProlongation200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-21T14:21:17.845880Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-22T13:06:16.524188Z[Etc/UTC]")
 public class UpdateDomainAutoProlongation200Response {
   public static final String SERIALIZED_NAME_DOMAIN = "domain";
   @SerializedName(SERIALIZED_NAME_DOMAIN)
   private Domain domain;
-
-  public static final String SERIALIZED_NAME_RESPONSE_ID = "response_id";
-  @SerializedName(SERIALIZED_NAME_RESPONSE_ID)
-  private UUID responseId;
 
   public UpdateDomainAutoProlongation200Response() {
   }
@@ -86,27 +81,6 @@ public class UpdateDomainAutoProlongation200Response {
   }
 
 
-  public UpdateDomainAutoProlongation200Response responseId(UUID responseId) {
-    
-    this.responseId = responseId;
-    return this;
-  }
-
-   /**
-   * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
-   * @return responseId
-  **/
-  @javax.annotation.Nonnull
-  public UUID getResponseId() {
-    return responseId;
-  }
-
-
-  public void setResponseId(UUID responseId) {
-    this.responseId = responseId;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -117,13 +91,12 @@ public class UpdateDomainAutoProlongation200Response {
       return false;
     }
     UpdateDomainAutoProlongation200Response updateDomainAutoProlongation200Response = (UpdateDomainAutoProlongation200Response) o;
-    return Objects.equals(this.domain, updateDomainAutoProlongation200Response.domain) &&
-        Objects.equals(this.responseId, updateDomainAutoProlongation200Response.responseId);
+    return Objects.equals(this.domain, updateDomainAutoProlongation200Response.domain);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(domain, responseId);
+    return Objects.hash(domain);
   }
 
   @Override
@@ -131,7 +104,6 @@ public class UpdateDomainAutoProlongation200Response {
     StringBuilder sb = new StringBuilder();
     sb.append("class UpdateDomainAutoProlongation200Response {\n");
     sb.append("    domain: ").append(toIndentedString(domain)).append("\n");
-    sb.append("    responseId: ").append(toIndentedString(responseId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -155,12 +127,10 @@ public class UpdateDomainAutoProlongation200Response {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("domain");
-    openapiFields.add("response_id");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("domain");
-    openapiRequiredFields.add("response_id");
   }
 
  /**
@@ -193,9 +163,6 @@ public class UpdateDomainAutoProlongation200Response {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the required field `domain`
       Domain.validateJsonElement(jsonObj.get("domain"));
-      if (!jsonObj.get("response_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `response_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("response_id").toString()));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

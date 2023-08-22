@@ -19,7 +19,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.UUID;
 import org.openapitools.client.model.Meta;
 import org.openapitools.client.model.SshKey;
 import org.junit.jupiter.api.Disabled;
@@ -53,14 +52,6 @@ public class GetKey200ResponseTest {
     @Test
     public void sshKeyTest() {
         // TODO: test sshKey
-    }
-
-    /**
-     * Test the property 'responseId'
-     */
-    @Test
-    public void responseIdTest() {
-        // TODO: test responseId
     }
 
 }

@@ -22,8 +22,8 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.UUID;
 import org.openapitools.client.model.Meta;
 import org.openapitools.client.model.PresetsDbs;
 
@@ -55,7 +55,7 @@ import org.openapitools.client.JSON;
 /**
  * GetDatabasesPresets200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-21T14:21:17.845880Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-22T13:06:16.524188Z[Etc/UTC]")
 public class GetDatabasesPresets200Response {
   public static final String SERIALIZED_NAME_META = "meta";
   @SerializedName(SERIALIZED_NAME_META)
@@ -64,10 +64,6 @@ public class GetDatabasesPresets200Response {
   public static final String SERIALIZED_NAME_DATABASES_PRESETS = "databases_presets";
   @SerializedName(SERIALIZED_NAME_DATABASES_PRESETS)
   private List<PresetsDbs> databasesPresets = new ArrayList<>();
-
-  public static final String SERIALIZED_NAME_RESPONSE_ID = "response_id";
-  @SerializedName(SERIALIZED_NAME_RESPONSE_ID)
-  private UUID responseId;
 
   public GetDatabasesPresets200Response() {
   }
@@ -122,27 +118,6 @@ public class GetDatabasesPresets200Response {
   }
 
 
-  public GetDatabasesPresets200Response responseId(UUID responseId) {
-    
-    this.responseId = responseId;
-    return this;
-  }
-
-   /**
-   * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
-   * @return responseId
-  **/
-  @javax.annotation.Nonnull
-  public UUID getResponseId() {
-    return responseId;
-  }
-
-
-  public void setResponseId(UUID responseId) {
-    this.responseId = responseId;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -154,13 +129,12 @@ public class GetDatabasesPresets200Response {
     }
     GetDatabasesPresets200Response getDatabasesPresets200Response = (GetDatabasesPresets200Response) o;
     return Objects.equals(this.meta, getDatabasesPresets200Response.meta) &&
-        Objects.equals(this.databasesPresets, getDatabasesPresets200Response.databasesPresets) &&
-        Objects.equals(this.responseId, getDatabasesPresets200Response.responseId);
+        Objects.equals(this.databasesPresets, getDatabasesPresets200Response.databasesPresets);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(meta, databasesPresets, responseId);
+    return Objects.hash(meta, databasesPresets);
   }
 
   @Override
@@ -169,7 +143,6 @@ public class GetDatabasesPresets200Response {
     sb.append("class GetDatabasesPresets200Response {\n");
     sb.append("    meta: ").append(toIndentedString(meta)).append("\n");
     sb.append("    databasesPresets: ").append(toIndentedString(databasesPresets)).append("\n");
-    sb.append("    responseId: ").append(toIndentedString(responseId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -194,13 +167,11 @@ public class GetDatabasesPresets200Response {
     openapiFields = new HashSet<String>();
     openapiFields.add("meta");
     openapiFields.add("databases_presets");
-    openapiFields.add("response_id");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("meta");
     openapiRequiredFields.add("databases_presets");
-    openapiRequiredFields.add("response_id");
   }
 
  /**
@@ -243,9 +214,6 @@ public class GetDatabasesPresets200Response {
       for (int i = 0; i < jsonArraydatabasesPresets.size(); i++) {
         PresetsDbs.validateJsonElement(jsonArraydatabasesPresets.get(i));
       };
-      if (!jsonObj.get("response_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `response_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("response_id").toString()));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

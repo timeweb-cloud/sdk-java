@@ -21,7 +21,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.UUID;
 import org.openapitools.client.model.DnsRecord;
 
 import com.google.gson.Gson;
@@ -52,15 +51,11 @@ import org.openapitools.client.JSON;
 /**
  * CreateDomainDNSRecord201Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-21T14:21:17.845880Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-22T13:06:16.524188Z[Etc/UTC]")
 public class CreateDomainDNSRecord201Response {
   public static final String SERIALIZED_NAME_DNS_RECORD = "dns_record";
   @SerializedName(SERIALIZED_NAME_DNS_RECORD)
   private DnsRecord dnsRecord;
-
-  public static final String SERIALIZED_NAME_RESPONSE_ID = "response_id";
-  @SerializedName(SERIALIZED_NAME_RESPONSE_ID)
-  private UUID responseId;
 
   public CreateDomainDNSRecord201Response() {
   }
@@ -86,27 +81,6 @@ public class CreateDomainDNSRecord201Response {
   }
 
 
-  public CreateDomainDNSRecord201Response responseId(UUID responseId) {
-    
-    this.responseId = responseId;
-    return this;
-  }
-
-   /**
-   * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
-   * @return responseId
-  **/
-  @javax.annotation.Nonnull
-  public UUID getResponseId() {
-    return responseId;
-  }
-
-
-  public void setResponseId(UUID responseId) {
-    this.responseId = responseId;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -117,13 +91,12 @@ public class CreateDomainDNSRecord201Response {
       return false;
     }
     CreateDomainDNSRecord201Response createDomainDNSRecord201Response = (CreateDomainDNSRecord201Response) o;
-    return Objects.equals(this.dnsRecord, createDomainDNSRecord201Response.dnsRecord) &&
-        Objects.equals(this.responseId, createDomainDNSRecord201Response.responseId);
+    return Objects.equals(this.dnsRecord, createDomainDNSRecord201Response.dnsRecord);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(dnsRecord, responseId);
+    return Objects.hash(dnsRecord);
   }
 
   @Override
@@ -131,7 +104,6 @@ public class CreateDomainDNSRecord201Response {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateDomainDNSRecord201Response {\n");
     sb.append("    dnsRecord: ").append(toIndentedString(dnsRecord)).append("\n");
-    sb.append("    responseId: ").append(toIndentedString(responseId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -155,12 +127,10 @@ public class CreateDomainDNSRecord201Response {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("dns_record");
-    openapiFields.add("response_id");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("dns_record");
-    openapiRequiredFields.add("response_id");
   }
 
  /**
@@ -193,9 +163,6 @@ public class CreateDomainDNSRecord201Response {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the required field `dns_record`
       DnsRecord.validateJsonElement(jsonObj.get("dns_record"));
-      if (!jsonObj.get("response_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `response_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("response_id").toString()));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

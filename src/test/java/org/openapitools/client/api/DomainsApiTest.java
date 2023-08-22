@@ -20,7 +20,6 @@ import org.openapitools.client.model.CreateDatabaseBackup409Response;
 import org.openapitools.client.model.CreateDns;
 import org.openapitools.client.model.CreateDomainDNSRecord201Response;
 import org.openapitools.client.model.CreateDomainRequest201Response;
-import org.openapitools.client.model.CreateDomainRequestRequest;
 import org.openapitools.client.model.GetDomain200Response;
 import org.openapitools.client.model.GetDomainDNSRecords200Response;
 import org.openapitools.client.model.GetDomainNameServers200Response;
@@ -33,10 +32,11 @@ import org.openapitools.client.model.GetFinances429Response;
 import org.openapitools.client.model.GetFinances500Response;
 import org.openapitools.client.model.GetTLD200Response;
 import org.openapitools.client.model.GetTLDs200Response;
+import org.openapitools.client.model.Register;
 import org.openapitools.client.model.UpdateDomain;
 import org.openapitools.client.model.UpdateDomainAutoProlongation200Response;
 import org.openapitools.client.model.UpdateDomainNameServers;
-import org.openapitools.client.model.UpdateDomainRequestRequest;
+import org.openapitools.client.model.Use;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -120,8 +120,8 @@ public class DomainsApiTest {
      */
     @Test
     public void createDomainRequestTest() throws ApiException {
-        CreateDomainRequestRequest createDomainRequestRequest = null;
-        CreateDomainRequest201Response response = api.createDomainRequest(createDomainRequestRequest);
+        Register register = null;
+        CreateDomainRequest201Response response = api.createDomainRequest(register);
         // TODO: test validations
     }
 
@@ -361,8 +361,8 @@ public class DomainsApiTest {
     @Test
     public void updateDomainRequestTest() throws ApiException {
         Integer requestId = null;
-        UpdateDomainRequestRequest updateDomainRequestRequest = null;
-        CreateDomainRequest201Response response = api.updateDomainRequest(requestId, updateDomainRequestRequest);
+        Use use = null;
+        CreateDomainRequest201Response response = api.updateDomainRequest(requestId, use);
         // TODO: test validations
     }
 

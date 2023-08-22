@@ -19,7 +19,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.UUID;
 import org.openapitools.client.model.DatabaseAdmin;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -44,14 +43,6 @@ public class CreateDatabaseUser201ResponseTest {
     @Test
     public void adminTest() {
         // TODO: test admin
-    }
-
-    /**
-     * Test the property 'responseId'
-     */
-    @Test
-    public void responseIdTest() {
-        // TODO: test responseId
     }
 
 }

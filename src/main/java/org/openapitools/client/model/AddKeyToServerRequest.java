@@ -23,6 +23,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.google.gson.Gson;
@@ -53,7 +54,7 @@ import org.openapitools.client.JSON;
 /**
  * AddKeyToServerRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-21T14:21:17.845880Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-22T13:06:16.524188Z[Etc/UTC]")
 public class AddKeyToServerRequest {
   public static final String SERIALIZED_NAME_SSH_KEY_IDS = "ssh_key_ids";
   @SerializedName(SERIALIZED_NAME_SSH_KEY_IDS)

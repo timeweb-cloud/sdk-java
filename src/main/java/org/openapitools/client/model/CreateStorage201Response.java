@@ -21,7 +21,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.UUID;
 import org.openapitools.client.model.Bucket;
 
 import com.google.gson.Gson;
@@ -52,15 +51,11 @@ import org.openapitools.client.JSON;
 /**
  * CreateStorage201Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-21T14:21:17.845880Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-22T13:06:16.524188Z[Etc/UTC]")
 public class CreateStorage201Response {
   public static final String SERIALIZED_NAME_BUCKET = "bucket";
   @SerializedName(SERIALIZED_NAME_BUCKET)
   private Bucket bucket;
-
-  public static final String SERIALIZED_NAME_RESPONSE_ID = "response_id";
-  @SerializedName(SERIALIZED_NAME_RESPONSE_ID)
-  private UUID responseId;
 
   public CreateStorage201Response() {
   }
@@ -86,27 +81,6 @@ public class CreateStorage201Response {
   }
 
 
-  public CreateStorage201Response responseId(UUID responseId) {
-    
-    this.responseId = responseId;
-    return this;
-  }
-
-   /**
-   * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
-   * @return responseId
-  **/
-  @javax.annotation.Nonnull
-  public UUID getResponseId() {
-    return responseId;
-  }
-
-
-  public void setResponseId(UUID responseId) {
-    this.responseId = responseId;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -117,13 +91,12 @@ public class CreateStorage201Response {
       return false;
     }
     CreateStorage201Response createStorage201Response = (CreateStorage201Response) o;
-    return Objects.equals(this.bucket, createStorage201Response.bucket) &&
-        Objects.equals(this.responseId, createStorage201Response.responseId);
+    return Objects.equals(this.bucket, createStorage201Response.bucket);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(bucket, responseId);
+    return Objects.hash(bucket);
   }
 
   @Override
@@ -131,7 +104,6 @@ public class CreateStorage201Response {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateStorage201Response {\n");
     sb.append("    bucket: ").append(toIndentedString(bucket)).append("\n");
-    sb.append("    responseId: ").append(toIndentedString(responseId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -155,12 +127,10 @@ public class CreateStorage201Response {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("bucket");
-    openapiFields.add("response_id");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("bucket");
-    openapiRequiredFields.add("response_id");
   }
 
  /**
@@ -193,9 +163,6 @@ public class CreateStorage201Response {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the required field `bucket`
       Bucket.validateJsonElement(jsonObj.get("bucket"));
-      if (!jsonObj.get("response_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `response_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("response_id").toString()));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

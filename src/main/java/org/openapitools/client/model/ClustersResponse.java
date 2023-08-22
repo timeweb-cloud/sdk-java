@@ -22,9 +22,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import org.openapitools.client.model.ClusterOut;
-import org.openapitools.client.model.Meta1;
+import org.openapitools.client.model.Meta;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -54,7 +55,7 @@ import org.openapitools.client.JSON;
 /**
  * ClustersResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-21T14:21:17.845880Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-22T13:06:16.524188Z[Etc/UTC]")
 public class ClustersResponse {
   public static final String SERIALIZED_NAME_RESPONSE_ID = "response_id";
   @SerializedName(SERIALIZED_NAME_RESPONSE_ID)
@@ -62,7 +63,7 @@ public class ClustersResponse {
 
   public static final String SERIALIZED_NAME_META = "meta";
   @SerializedName(SERIALIZED_NAME_META)
-  private Meta1 meta;
+  private Meta meta;
 
   public static final String SERIALIZED_NAME_CLUSTERS = "clusters";
   @SerializedName(SERIALIZED_NAME_CLUSTERS)
@@ -92,7 +93,7 @@ public class ClustersResponse {
   }
 
 
-  public ClustersResponse meta(Meta1 meta) {
+  public ClustersResponse meta(Meta meta) {
     
     this.meta = meta;
     return this;
@@ -103,12 +104,12 @@ public class ClustersResponse {
    * @return meta
   **/
   @javax.annotation.Nonnull
-  public Meta1 getMeta() {
+  public Meta getMeta() {
     return meta;
   }
 
 
-  public void setMeta(Meta1 meta) {
+  public void setMeta(Meta meta) {
     this.meta = meta;
   }
 
@@ -233,7 +234,7 @@ public class ClustersResponse {
         throw new IllegalArgumentException(String.format("Expected the field `response_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("response_id").toString()));
       }
       // validate the required field `meta`
-      Meta1.validateJsonElement(jsonObj.get("meta"));
+      Meta.validateJsonElement(jsonObj.get("meta"));
       // ensure the json data is an array
       if (!jsonObj.get("clusters").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `clusters` to be an array in the JSON string but got `%s`", jsonObj.get("clusters").toString()));

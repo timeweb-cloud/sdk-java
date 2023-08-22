@@ -22,9 +22,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import org.openapitools.client.model.K8SPresetsInner;
-import org.openapitools.client.model.Meta1;
+import org.openapitools.client.model.Meta;
+import org.openapitools.client.model.WorkerPresetOutApi;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -54,7 +55,7 @@ import org.openapitools.client.JSON;
 /**
  * PresetsResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-21T14:21:17.845880Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-22T13:06:16.524188Z[Etc/UTC]")
 public class PresetsResponse {
   public static final String SERIALIZED_NAME_RESPONSE_ID = "response_id";
   @SerializedName(SERIALIZED_NAME_RESPONSE_ID)
@@ -62,11 +63,11 @@ public class PresetsResponse {
 
   public static final String SERIALIZED_NAME_META = "meta";
   @SerializedName(SERIALIZED_NAME_META)
-  private Meta1 meta;
+  private Meta meta;
 
   public static final String SERIALIZED_NAME_K8S_PRESETS = "k8s_presets";
   @SerializedName(SERIALIZED_NAME_K8S_PRESETS)
-  private List<K8SPresetsInner> k8sPresets = new ArrayList<>();
+  private List<WorkerPresetOutApi> k8sPresets = new ArrayList<>();
 
   public PresetsResponse() {
   }
@@ -92,7 +93,7 @@ public class PresetsResponse {
   }
 
 
-  public PresetsResponse meta(Meta1 meta) {
+  public PresetsResponse meta(Meta meta) {
     
     this.meta = meta;
     return this;
@@ -103,23 +104,23 @@ public class PresetsResponse {
    * @return meta
   **/
   @javax.annotation.Nonnull
-  public Meta1 getMeta() {
+  public Meta getMeta() {
     return meta;
   }
 
 
-  public void setMeta(Meta1 meta) {
+  public void setMeta(Meta meta) {
     this.meta = meta;
   }
 
 
-  public PresetsResponse k8sPresets(List<K8SPresetsInner> k8sPresets) {
+  public PresetsResponse k8sPresets(List<WorkerPresetOutApi> k8sPresets) {
     
     this.k8sPresets = k8sPresets;
     return this;
   }
 
-  public PresetsResponse addK8sPresetsItem(K8SPresetsInner k8sPresetsItem) {
+  public PresetsResponse addK8sPresetsItem(WorkerPresetOutApi k8sPresetsItem) {
     if (this.k8sPresets == null) {
       this.k8sPresets = new ArrayList<>();
     }
@@ -132,12 +133,12 @@ public class PresetsResponse {
    * @return k8sPresets
   **/
   @javax.annotation.Nonnull
-  public List<K8SPresetsInner> getK8sPresets() {
+  public List<WorkerPresetOutApi> getK8sPresets() {
     return k8sPresets;
   }
 
 
-  public void setK8sPresets(List<K8SPresetsInner> k8sPresets) {
+  public void setK8sPresets(List<WorkerPresetOutApi> k8sPresets) {
     this.k8sPresets = k8sPresets;
   }
 
@@ -233,7 +234,7 @@ public class PresetsResponse {
         throw new IllegalArgumentException(String.format("Expected the field `response_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("response_id").toString()));
       }
       // validate the required field `meta`
-      Meta1.validateJsonElement(jsonObj.get("meta"));
+      Meta.validateJsonElement(jsonObj.get("meta"));
       // ensure the json data is an array
       if (!jsonObj.get("k8s_presets").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `k8s_presets` to be an array in the JSON string but got `%s`", jsonObj.get("k8s_presets").toString()));
@@ -242,7 +243,7 @@ public class PresetsResponse {
       JsonArray jsonArrayk8sPresets = jsonObj.getAsJsonArray("k8s_presets");
       // validate the required field `k8s_presets` (array)
       for (int i = 0; i < jsonArrayk8sPresets.size(); i++) {
-        K8SPresetsInner.validateJsonElement(jsonArrayk8sPresets.get(i));
+        WorkerPresetOutApi.validateJsonElement(jsonArrayk8sPresets.get(i));
       };
   }
 

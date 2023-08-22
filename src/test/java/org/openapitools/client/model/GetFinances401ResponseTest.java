@@ -21,7 +21,6 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.UUID;
-import org.openapitools.client.model.GetFinances401ResponseMessage;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 

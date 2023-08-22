@@ -21,10 +21,10 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import org.openapitools.client.model.UpdateMailboxAutoReply;
-import org.openapitools.client.model.UpdateMailboxForwardingIncoming;
-import org.openapitools.client.model.UpdateMailboxForwardingOutgoing;
-import org.openapitools.client.model.UpdateMailboxSpamFilter;
+import org.openapitools.client.model.AutoReplyIsDisabled;
+import org.openapitools.client.model.ForwardingIncomingIsDisabled;
+import org.openapitools.client.model.ForwardingOutgoingIsDisabled;
+import org.openapitools.client.model.SpamFilterIsDisabled;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -54,23 +54,23 @@ import org.openapitools.client.JSON;
 /**
  * Изменение почтового ящика
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-21T14:21:17.845880Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-22T13:06:16.524188Z[Etc/UTC]")
 public class UpdateMailbox {
   public static final String SERIALIZED_NAME_AUTO_REPLY = "auto_reply";
   @SerializedName(SERIALIZED_NAME_AUTO_REPLY)
-  private UpdateMailboxAutoReply autoReply;
+  private AutoReplyIsDisabled autoReply;
 
   public static final String SERIALIZED_NAME_SPAM_FILTER = "spam_filter";
   @SerializedName(SERIALIZED_NAME_SPAM_FILTER)
-  private UpdateMailboxSpamFilter spamFilter;
+  private SpamFilterIsDisabled spamFilter;
 
   public static final String SERIALIZED_NAME_FORWARDING_INCOMING = "forwarding_incoming";
   @SerializedName(SERIALIZED_NAME_FORWARDING_INCOMING)
-  private UpdateMailboxForwardingIncoming forwardingIncoming;
+  private ForwardingIncomingIsDisabled forwardingIncoming;
 
   public static final String SERIALIZED_NAME_FORWARDING_OUTGOING = "forwarding_outgoing";
   @SerializedName(SERIALIZED_NAME_FORWARDING_OUTGOING)
-  private UpdateMailboxForwardingOutgoing forwardingOutgoing;
+  private ForwardingOutgoingIsDisabled forwardingOutgoing;
 
   public static final String SERIALIZED_NAME_COMMENT = "comment";
   @SerializedName(SERIALIZED_NAME_COMMENT)
@@ -83,7 +83,7 @@ public class UpdateMailbox {
   public UpdateMailbox() {
   }
 
-  public UpdateMailbox autoReply(UpdateMailboxAutoReply autoReply) {
+  public UpdateMailbox autoReply(AutoReplyIsDisabled autoReply) {
     
     this.autoReply = autoReply;
     return this;
@@ -94,17 +94,17 @@ public class UpdateMailbox {
    * @return autoReply
   **/
   @javax.annotation.Nullable
-  public UpdateMailboxAutoReply getAutoReply() {
+  public AutoReplyIsDisabled getAutoReply() {
     return autoReply;
   }
 
 
-  public void setAutoReply(UpdateMailboxAutoReply autoReply) {
+  public void setAutoReply(AutoReplyIsDisabled autoReply) {
     this.autoReply = autoReply;
   }
 
 
-  public UpdateMailbox spamFilter(UpdateMailboxSpamFilter spamFilter) {
+  public UpdateMailbox spamFilter(SpamFilterIsDisabled spamFilter) {
     
     this.spamFilter = spamFilter;
     return this;
@@ -115,17 +115,17 @@ public class UpdateMailbox {
    * @return spamFilter
   **/
   @javax.annotation.Nullable
-  public UpdateMailboxSpamFilter getSpamFilter() {
+  public SpamFilterIsDisabled getSpamFilter() {
     return spamFilter;
   }
 
 
-  public void setSpamFilter(UpdateMailboxSpamFilter spamFilter) {
+  public void setSpamFilter(SpamFilterIsDisabled spamFilter) {
     this.spamFilter = spamFilter;
   }
 
 
-  public UpdateMailbox forwardingIncoming(UpdateMailboxForwardingIncoming forwardingIncoming) {
+  public UpdateMailbox forwardingIncoming(ForwardingIncomingIsDisabled forwardingIncoming) {
     
     this.forwardingIncoming = forwardingIncoming;
     return this;
@@ -136,17 +136,17 @@ public class UpdateMailbox {
    * @return forwardingIncoming
   **/
   @javax.annotation.Nullable
-  public UpdateMailboxForwardingIncoming getForwardingIncoming() {
+  public ForwardingIncomingIsDisabled getForwardingIncoming() {
     return forwardingIncoming;
   }
 
 
-  public void setForwardingIncoming(UpdateMailboxForwardingIncoming forwardingIncoming) {
+  public void setForwardingIncoming(ForwardingIncomingIsDisabled forwardingIncoming) {
     this.forwardingIncoming = forwardingIncoming;
   }
 
 
-  public UpdateMailbox forwardingOutgoing(UpdateMailboxForwardingOutgoing forwardingOutgoing) {
+  public UpdateMailbox forwardingOutgoing(ForwardingOutgoingIsDisabled forwardingOutgoing) {
     
     this.forwardingOutgoing = forwardingOutgoing;
     return this;
@@ -157,12 +157,12 @@ public class UpdateMailbox {
    * @return forwardingOutgoing
   **/
   @javax.annotation.Nullable
-  public UpdateMailboxForwardingOutgoing getForwardingOutgoing() {
+  public ForwardingOutgoingIsDisabled getForwardingOutgoing() {
     return forwardingOutgoing;
   }
 
 
-  public void setForwardingOutgoing(UpdateMailboxForwardingOutgoing forwardingOutgoing) {
+  public void setForwardingOutgoing(ForwardingOutgoingIsDisabled forwardingOutgoing) {
     this.forwardingOutgoing = forwardingOutgoing;
   }
 
@@ -298,19 +298,19 @@ public class UpdateMailbox {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the optional field `auto_reply`
       if (jsonObj.get("auto_reply") != null && !jsonObj.get("auto_reply").isJsonNull()) {
-        UpdateMailboxAutoReply.validateJsonElement(jsonObj.get("auto_reply"));
+        AutoReplyIsDisabled.validateJsonElement(jsonObj.get("auto_reply"));
       }
       // validate the optional field `spam_filter`
       if (jsonObj.get("spam_filter") != null && !jsonObj.get("spam_filter").isJsonNull()) {
-        UpdateMailboxSpamFilter.validateJsonElement(jsonObj.get("spam_filter"));
+        SpamFilterIsDisabled.validateJsonElement(jsonObj.get("spam_filter"));
       }
       // validate the optional field `forwarding_incoming`
       if (jsonObj.get("forwarding_incoming") != null && !jsonObj.get("forwarding_incoming").isJsonNull()) {
-        UpdateMailboxForwardingIncoming.validateJsonElement(jsonObj.get("forwarding_incoming"));
+        ForwardingIncomingIsDisabled.validateJsonElement(jsonObj.get("forwarding_incoming"));
       }
       // validate the optional field `forwarding_outgoing`
       if (jsonObj.get("forwarding_outgoing") != null && !jsonObj.get("forwarding_outgoing").isJsonNull()) {
-        UpdateMailboxForwardingOutgoing.validateJsonElement(jsonObj.get("forwarding_outgoing"));
+        ForwardingOutgoingIsDisabled.validateJsonElement(jsonObj.get("forwarding_outgoing"));
       }
       if ((jsonObj.get("comment") != null && !jsonObj.get("comment").isJsonNull()) && !jsonObj.get("comment").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `comment` to be a primitive type in the JSON string but got `%s`", jsonObj.get("comment").toString()));

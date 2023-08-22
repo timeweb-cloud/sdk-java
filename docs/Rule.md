@@ -2,19 +2,39 @@
 
 # Rule
 
-Firewall правило
+Правило для балансировщика
 
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**id** | **String** | Идентификатор правила |  |
-|**description** | **String** | Описание правила |  |
-|**direction** | **FirewallRuleDirection** |  |  |
-|**protocol** | **FirewallRuleProtocol** |  |  |
-|**port** | **String** | Порт или диапазон портов, в случае tcp или udp |  [optional] |
-|**cidr** | [**Cidr**](Cidr.md) |  |  [optional] |
-|**groupId** | **String** | Идентификатор группы правил |  |
+|**id** | **BigDecimal** | Уникальный идентификатор для каждого экземпляра правила для балансировщика. Автоматически генерируется при создании. |  |
+|**balancerProto** | [**BalancerProtoEnum**](#BalancerProtoEnum) | Протокол балансировщика. |  |
+|**balancerPort** | **BigDecimal** | Порт балансировщика. |  |
+|**serverProto** | [**ServerProtoEnum**](#ServerProtoEnum) | Протокол сервера. |  |
+|**serverPort** | **BigDecimal** | Порт сервера. |  |
+
+
+
+## Enum: BalancerProtoEnum
+
+| Name | Value |
+|---- | -----|
+| HTTP | &quot;http&quot; |
+| HTTP2 | &quot;http2&quot; |
+| HTTPS | &quot;https&quot; |
+| TCP | &quot;tcp&quot; |
+
+
+
+## Enum: ServerProtoEnum
+
+| Name | Value |
+|---- | -----|
+| HTTP | &quot;http&quot; |
+| HTTP2 | &quot;http2&quot; |
+| HTTPS | &quot;https&quot; |
+| TCP | &quot;tcp&quot; |
 
 
 

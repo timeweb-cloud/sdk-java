@@ -21,7 +21,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import org.openapitools.client.model.Cidr;
 import org.openapitools.client.model.FirewallRuleDirection;
 import org.openapitools.client.model.FirewallRuleProtocol;
 
@@ -53,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * FirewallRuleInAPI
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-21T14:21:17.845880Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-22T13:06:16.524188Z[Etc/UTC]")
 public class FirewallRuleInAPI {
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
@@ -73,7 +72,7 @@ public class FirewallRuleInAPI {
 
   public static final String SERIALIZED_NAME_CIDR = "cidr";
   @SerializedName(SERIALIZED_NAME_CIDR)
-  private Cidr cidr;
+  private String cidr;
 
   public FirewallRuleInAPI() {
   }
@@ -162,23 +161,23 @@ public class FirewallRuleInAPI {
   }
 
 
-  public FirewallRuleInAPI cidr(Cidr cidr) {
+  public FirewallRuleInAPI cidr(String cidr) {
     
     this.cidr = cidr;
     return this;
   }
 
    /**
-   * Get cidr
+   * Сетевой адрес или подсеть. Поддерживаются протоколы IPv4  и IPv6
    * @return cidr
   **/
   @javax.annotation.Nullable
-  public Cidr getCidr() {
+  public String getCidr() {
     return cidr;
   }
 
 
-  public void setCidr(Cidr cidr) {
+  public void setCidr(String cidr) {
     this.cidr = cidr;
   }
 
@@ -282,9 +281,8 @@ public class FirewallRuleInAPI {
       if ((jsonObj.get("port") != null && !jsonObj.get("port").isJsonNull()) && !jsonObj.get("port").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `port` to be a primitive type in the JSON string but got `%s`", jsonObj.get("port").toString()));
       }
-      // validate the optional field `cidr`
-      if (jsonObj.get("cidr") != null && !jsonObj.get("cidr").isJsonNull()) {
-        Cidr.validateJsonElement(jsonObj.get("cidr"));
+      if ((jsonObj.get("cidr") != null && !jsonObj.get("cidr").isJsonNull()) && !jsonObj.get("cidr").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `cidr` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cidr").toString()));
       }
   }
 

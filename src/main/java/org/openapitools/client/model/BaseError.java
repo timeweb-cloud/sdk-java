@@ -21,7 +21,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import org.openapitools.client.model.Message;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -51,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * BaseError
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-21T14:21:17.845880Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-22T13:06:16.524188Z[Etc/UTC]")
 public class BaseError {
   public static final String SERIALIZED_NAME_STATUS_CODE = "status_code";
   @SerializedName(SERIALIZED_NAME_STATUS_CODE)
@@ -63,7 +62,7 @@ public class BaseError {
 
   public static final String SERIALIZED_NAME_MESSAGE = "message";
   @SerializedName(SERIALIZED_NAME_MESSAGE)
-  private Message message;
+  private String message;
 
   public static final String SERIALIZED_NAME_RESPONSE_ID = "response_id";
   @SerializedName(SERIALIZED_NAME_RESPONSE_ID)
@@ -114,7 +113,7 @@ public class BaseError {
   }
 
 
-  public BaseError message(Message message) {
+  public BaseError message(String message) {
     
     this.message = message;
     return this;
@@ -125,12 +124,12 @@ public class BaseError {
    * @return message
   **/
   @javax.annotation.Nonnull
-  public Message getMessage() {
+  public String getMessage() {
     return message;
   }
 
 
-  public void setMessage(Message message) {
+  public void setMessage(String message) {
     this.message = message;
   }
 
@@ -250,8 +249,9 @@ public class BaseError {
       if (!jsonObj.get("error_code").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `error_code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("error_code").toString()));
       }
-      // validate the required field `message`
-      Message.validateJsonElement(jsonObj.get("message"));
+      if (!jsonObj.get("message").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `message` to be a primitive type in the JSON string but got `%s`", jsonObj.get("message").toString()));
+      }
       if ((jsonObj.get("response_id") != null && !jsonObj.get("response_id").isJsonNull()) && !jsonObj.get("response_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `response_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("response_id").toString()));
       }

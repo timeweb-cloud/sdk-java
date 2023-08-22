@@ -20,8 +20,8 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.UUID;
 import org.openapitools.client.model.Meta;
 import org.openapitools.client.model.ServerDisk;
 import org.junit.jupiter.api.Disabled;
@@ -55,14 +55,6 @@ public class GetServerDisks200ResponseTest {
     @Test
     public void serverDisksTest() {
         // TODO: test serverDisks
-    }
-
-    /**
-     * Test the property 'responseId'
-     */
-    @Test
-    public void responseIdTest() {
-        // TODO: test responseId
     }
 
 }

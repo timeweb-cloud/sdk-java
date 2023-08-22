@@ -21,7 +21,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.UUID;
 import org.openapitools.client.model.Vds;
 
 import com.google.gson.Gson;
@@ -52,15 +51,11 @@ import org.openapitools.client.JSON;
 /**
  * CreateServer201Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-21T14:21:17.845880Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-22T13:06:16.524188Z[Etc/UTC]")
 public class CreateServer201Response {
   public static final String SERIALIZED_NAME_SERVER = "server";
   @SerializedName(SERIALIZED_NAME_SERVER)
   private Vds server;
-
-  public static final String SERIALIZED_NAME_RESPONSE_ID = "response_id";
-  @SerializedName(SERIALIZED_NAME_RESPONSE_ID)
-  private UUID responseId;
 
   public CreateServer201Response() {
   }
@@ -86,27 +81,6 @@ public class CreateServer201Response {
   }
 
 
-  public CreateServer201Response responseId(UUID responseId) {
-    
-    this.responseId = responseId;
-    return this;
-  }
-
-   /**
-   * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
-   * @return responseId
-  **/
-  @javax.annotation.Nonnull
-  public UUID getResponseId() {
-    return responseId;
-  }
-
-
-  public void setResponseId(UUID responseId) {
-    this.responseId = responseId;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -117,13 +91,12 @@ public class CreateServer201Response {
       return false;
     }
     CreateServer201Response createServer201Response = (CreateServer201Response) o;
-    return Objects.equals(this.server, createServer201Response.server) &&
-        Objects.equals(this.responseId, createServer201Response.responseId);
+    return Objects.equals(this.server, createServer201Response.server);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(server, responseId);
+    return Objects.hash(server);
   }
 
   @Override
@@ -131,7 +104,6 @@ public class CreateServer201Response {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateServer201Response {\n");
     sb.append("    server: ").append(toIndentedString(server)).append("\n");
-    sb.append("    responseId: ").append(toIndentedString(responseId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -155,12 +127,10 @@ public class CreateServer201Response {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("server");
-    openapiFields.add("response_id");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("server");
-    openapiRequiredFields.add("response_id");
   }
 
  /**
@@ -193,9 +163,6 @@ public class CreateServer201Response {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the required field `server`
       Vds.validateJsonElement(jsonObj.get("server"));
-      if (!jsonObj.get("response_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `response_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("response_id").toString()));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

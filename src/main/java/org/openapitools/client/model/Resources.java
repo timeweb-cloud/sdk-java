@@ -21,9 +21,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import org.openapitools.client.model.Cores;
-import org.openapitools.client.model.Memory;
-import org.openapitools.client.model.Pods;
+import org.openapitools.client.model.Resource;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -53,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * Resources
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-21T14:21:17.845880Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-22T13:06:16.524188Z[Etc/UTC]")
 public class Resources {
   public static final String SERIALIZED_NAME_NODES = "nodes";
   @SerializedName(SERIALIZED_NAME_NODES)
@@ -61,15 +59,15 @@ public class Resources {
 
   public static final String SERIALIZED_NAME_CORES = "cores";
   @SerializedName(SERIALIZED_NAME_CORES)
-  private Cores cores = {"requested":0,"allocatable":0,"capacity":0,"used":0};
+  private Resource cores;
 
   public static final String SERIALIZED_NAME_MEMORY = "memory";
   @SerializedName(SERIALIZED_NAME_MEMORY)
-  private Memory memory = {"requested":0,"allocatable":0,"capacity":0,"used":0};
+  private Resource memory;
 
   public static final String SERIALIZED_NAME_PODS = "pods";
   @SerializedName(SERIALIZED_NAME_PODS)
-  private Pods pods = {"requested":0,"allocatable":0,"capacity":0,"used":0};
+  private Resource pods;
 
   public Resources() {
   }
@@ -95,7 +93,7 @@ public class Resources {
   }
 
 
-  public Resources cores(Cores cores) {
+  public Resources cores(Resource cores) {
     
     this.cores = cores;
     return this;
@@ -106,17 +104,17 @@ public class Resources {
    * @return cores
   **/
   @javax.annotation.Nullable
-  public Cores getCores() {
+  public Resource getCores() {
     return cores;
   }
 
 
-  public void setCores(Cores cores) {
+  public void setCores(Resource cores) {
     this.cores = cores;
   }
 
 
-  public Resources memory(Memory memory) {
+  public Resources memory(Resource memory) {
     
     this.memory = memory;
     return this;
@@ -127,17 +125,17 @@ public class Resources {
    * @return memory
   **/
   @javax.annotation.Nullable
-  public Memory getMemory() {
+  public Resource getMemory() {
     return memory;
   }
 
 
-  public void setMemory(Memory memory) {
+  public void setMemory(Resource memory) {
     this.memory = memory;
   }
 
 
-  public Resources pods(Pods pods) {
+  public Resources pods(Resource pods) {
     
     this.pods = pods;
     return this;
@@ -148,12 +146,12 @@ public class Resources {
    * @return pods
   **/
   @javax.annotation.Nullable
-  public Pods getPods() {
+  public Resource getPods() {
     return pods;
   }
 
 
-  public void setPods(Pods pods) {
+  public void setPods(Resource pods) {
     this.pods = pods;
   }
 
@@ -241,15 +239,15 @@ public class Resources {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the optional field `cores`
       if (jsonObj.get("cores") != null && !jsonObj.get("cores").isJsonNull()) {
-        Cores.validateJsonElement(jsonObj.get("cores"));
+        Resource.validateJsonElement(jsonObj.get("cores"));
       }
       // validate the optional field `memory`
       if (jsonObj.get("memory") != null && !jsonObj.get("memory").isJsonNull()) {
-        Memory.validateJsonElement(jsonObj.get("memory"));
+        Resource.validateJsonElement(jsonObj.get("memory"));
       }
       // validate the optional field `pods`
       if (jsonObj.get("pods") != null && !jsonObj.get("pods").isJsonNull()) {
-        Pods.validateJsonElement(jsonObj.get("pods"));
+        Resource.validateJsonElement(jsonObj.get("pods"));
       }
   }
 

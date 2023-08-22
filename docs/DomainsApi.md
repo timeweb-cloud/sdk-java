@@ -319,7 +319,7 @@ public class Example {
 
 <a id="createDomainRequest"></a>
 # **createDomainRequest**
-> CreateDomainRequest201Response createDomainRequest(createDomainRequestRequest)
+> CreateDomainRequest201Response createDomainRequest(register)
 
 Создание заявки на регистрацию/продление/трансфер домена
 
@@ -345,9 +345,9 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     DomainsApi apiInstance = new DomainsApi(defaultClient);
-    CreateDomainRequestRequest createDomainRequestRequest = new CreateDomainRequestRequest(); // CreateDomainRequestRequest | 
+    Register register = new Register(); // Register | 
     try {
-      CreateDomainRequest201Response result = apiInstance.createDomainRequest(createDomainRequestRequest);
+      CreateDomainRequest201Response result = apiInstance.createDomainRequest(register);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling DomainsApi#createDomainRequest");
@@ -364,7 +364,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **createDomainRequestRequest** | [**CreateDomainRequestRequest**](CreateDomainRequestRequest.md)|  | |
+| **register** | [**Register**](Register.md)|  | |
 
 ### Return type
 
@@ -1500,7 +1500,7 @@ public class Example {
 
 <a id="updateDomainRequest"></a>
 # **updateDomainRequest**
-> CreateDomainRequest201Response updateDomainRequest(requestId, updateDomainRequestRequest)
+> CreateDomainRequest201Response updateDomainRequest(requestId, use)
 
 Оплата/обновление заявки на регистрацию/продление/трансфер домена
 
@@ -1527,9 +1527,9 @@ public class Example {
 
     DomainsApi apiInstance = new DomainsApi(defaultClient);
     Integer requestId = 123; // Integer | Идентификатор заявки на регистрацию/продление/трансфер домена.
-    UpdateDomainRequestRequest updateDomainRequestRequest = new UpdateDomainRequestRequest(); // UpdateDomainRequestRequest | 
+    Use use = new Use(); // Use | 
     try {
-      CreateDomainRequest201Response result = apiInstance.updateDomainRequest(requestId, updateDomainRequestRequest);
+      CreateDomainRequest201Response result = apiInstance.updateDomainRequest(requestId, use);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling DomainsApi#updateDomainRequest");
@@ -1547,7 +1547,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **requestId** | **Integer**| Идентификатор заявки на регистрацию/продление/трансфер домена. | |
-| **updateDomainRequestRequest** | [**UpdateDomainRequestRequest**](UpdateDomainRequestRequest.md)|  | |
+| **use** | [**Use**](Use.md)|  | |
 
 ### Return type
 

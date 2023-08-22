@@ -21,7 +21,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.UUID;
 import org.openapitools.client.model.Meta;
 import org.openapitools.client.model.SshKey;
 
@@ -53,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * GetKey200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-21T14:21:17.845880Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-22T13:06:16.524188Z[Etc/UTC]")
 public class GetKey200Response {
   public static final String SERIALIZED_NAME_META = "meta";
   @SerializedName(SERIALIZED_NAME_META)
@@ -62,10 +61,6 @@ public class GetKey200Response {
   public static final String SERIALIZED_NAME_SSH_KEY = "ssh-key";
   @SerializedName(SERIALIZED_NAME_SSH_KEY)
   private SshKey sshKey;
-
-  public static final String SERIALIZED_NAME_RESPONSE_ID = "response_id";
-  @SerializedName(SERIALIZED_NAME_RESPONSE_ID)
-  private UUID responseId;
 
   public GetKey200Response() {
   }
@@ -112,27 +107,6 @@ public class GetKey200Response {
   }
 
 
-  public GetKey200Response responseId(UUID responseId) {
-    
-    this.responseId = responseId;
-    return this;
-  }
-
-   /**
-   * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
-   * @return responseId
-  **/
-  @javax.annotation.Nonnull
-  public UUID getResponseId() {
-    return responseId;
-  }
-
-
-  public void setResponseId(UUID responseId) {
-    this.responseId = responseId;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -144,13 +118,12 @@ public class GetKey200Response {
     }
     GetKey200Response getKey200Response = (GetKey200Response) o;
     return Objects.equals(this.meta, getKey200Response.meta) &&
-        Objects.equals(this.sshKey, getKey200Response.sshKey) &&
-        Objects.equals(this.responseId, getKey200Response.responseId);
+        Objects.equals(this.sshKey, getKey200Response.sshKey);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(meta, sshKey, responseId);
+    return Objects.hash(meta, sshKey);
   }
 
   @Override
@@ -159,7 +132,6 @@ public class GetKey200Response {
     sb.append("class GetKey200Response {\n");
     sb.append("    meta: ").append(toIndentedString(meta)).append("\n");
     sb.append("    sshKey: ").append(toIndentedString(sshKey)).append("\n");
-    sb.append("    responseId: ").append(toIndentedString(responseId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -184,13 +156,11 @@ public class GetKey200Response {
     openapiFields = new HashSet<String>();
     openapiFields.add("meta");
     openapiFields.add("ssh-key");
-    openapiFields.add("response_id");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("meta");
     openapiRequiredFields.add("ssh-key");
-    openapiRequiredFields.add("response_id");
   }
 
  /**
@@ -225,9 +195,6 @@ public class GetKey200Response {
       Meta.validateJsonElement(jsonObj.get("meta"));
       // validate the required field `ssh-key`
       SshKey.validateJsonElement(jsonObj.get("ssh-key"));
-      if (!jsonObj.get("response_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `response_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("response_id").toString()));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

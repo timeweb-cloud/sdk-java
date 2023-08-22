@@ -33,7 +33,6 @@ import org.openapitools.client.model.CreateDatabaseBackup409Response;
 import org.openapitools.client.model.CreateDns;
 import org.openapitools.client.model.CreateDomainDNSRecord201Response;
 import org.openapitools.client.model.CreateDomainRequest201Response;
-import org.openapitools.client.model.CreateDomainRequestRequest;
 import org.openapitools.client.model.GetDomain200Response;
 import org.openapitools.client.model.GetDomainDNSRecords200Response;
 import org.openapitools.client.model.GetDomainNameServers200Response;
@@ -46,10 +45,11 @@ import org.openapitools.client.model.GetFinances429Response;
 import org.openapitools.client.model.GetFinances500Response;
 import org.openapitools.client.model.GetTLD200Response;
 import org.openapitools.client.model.GetTLDs200Response;
+import org.openapitools.client.model.Register;
 import org.openapitools.client.model.UpdateDomain;
 import org.openapitools.client.model.UpdateDomainAutoProlongation200Response;
 import org.openapitools.client.model.UpdateDomainNameServers;
-import org.openapitools.client.model.UpdateDomainRequestRequest;
+import org.openapitools.client.model.Use;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -680,7 +680,7 @@ public class DomainsApi {
     }
     /**
      * Build call for createDomainRequest
-     * @param createDomainRequestRequest  (required)
+     * @param register  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -695,7 +695,7 @@ public class DomainsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createDomainRequestCall(CreateDomainRequestRequest createDomainRequestRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createDomainRequestCall(Register register, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -709,7 +709,7 @@ public class DomainsApi {
             basePath = null;
         }
 
-        Object localVarPostBody = createDomainRequestRequest;
+        Object localVarPostBody = register;
 
         // create path and map variables
         String localVarPath = "/api/v1/domains-requests";
@@ -741,20 +741,20 @@ public class DomainsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createDomainRequestValidateBeforeCall(CreateDomainRequestRequest createDomainRequestRequest, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'createDomainRequestRequest' is set
-        if (createDomainRequestRequest == null) {
-            throw new ApiException("Missing the required parameter 'createDomainRequestRequest' when calling createDomainRequest(Async)");
+    private okhttp3.Call createDomainRequestValidateBeforeCall(Register register, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'register' is set
+        if (register == null) {
+            throw new ApiException("Missing the required parameter 'register' when calling createDomainRequest(Async)");
         }
 
-        return createDomainRequestCall(createDomainRequestRequest, _callback);
+        return createDomainRequestCall(register, _callback);
 
     }
 
     /**
      * Создание заявки на регистрацию/продление/трансфер домена
      * Чтобы создать заявку на регистрацию/продление/трансфер домена, отправьте POST-запрос в &#x60;api/v1/domains-requests&#x60;, задав необходимые атрибуты.  Заявка будет создана с использованием предоставленной информации. Тело ответа будет содержать объект JSON с информацией о созданной заявке.
-     * @param createDomainRequestRequest  (required)
+     * @param register  (required)
      * @return CreateDomainRequest201Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -768,15 +768,15 @@ public class DomainsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public CreateDomainRequest201Response createDomainRequest(CreateDomainRequestRequest createDomainRequestRequest) throws ApiException {
-        ApiResponse<CreateDomainRequest201Response> localVarResp = createDomainRequestWithHttpInfo(createDomainRequestRequest);
+    public CreateDomainRequest201Response createDomainRequest(Register register) throws ApiException {
+        ApiResponse<CreateDomainRequest201Response> localVarResp = createDomainRequestWithHttpInfo(register);
         return localVarResp.getData();
     }
 
     /**
      * Создание заявки на регистрацию/продление/трансфер домена
      * Чтобы создать заявку на регистрацию/продление/трансфер домена, отправьте POST-запрос в &#x60;api/v1/domains-requests&#x60;, задав необходимые атрибуты.  Заявка будет создана с использованием предоставленной информации. Тело ответа будет содержать объект JSON с информацией о созданной заявке.
-     * @param createDomainRequestRequest  (required)
+     * @param register  (required)
      * @return ApiResponse&lt;CreateDomainRequest201Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -790,8 +790,8 @@ public class DomainsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CreateDomainRequest201Response> createDomainRequestWithHttpInfo(CreateDomainRequestRequest createDomainRequestRequest) throws ApiException {
-        okhttp3.Call localVarCall = createDomainRequestValidateBeforeCall(createDomainRequestRequest, null);
+    public ApiResponse<CreateDomainRequest201Response> createDomainRequestWithHttpInfo(Register register) throws ApiException {
+        okhttp3.Call localVarCall = createDomainRequestValidateBeforeCall(register, null);
         Type localVarReturnType = new TypeToken<CreateDomainRequest201Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -799,7 +799,7 @@ public class DomainsApi {
     /**
      * Создание заявки на регистрацию/продление/трансфер домена (asynchronously)
      * Чтобы создать заявку на регистрацию/продление/трансфер домена, отправьте POST-запрос в &#x60;api/v1/domains-requests&#x60;, задав необходимые атрибуты.  Заявка будет создана с использованием предоставленной информации. Тело ответа будет содержать объект JSON с информацией о созданной заявке.
-     * @param createDomainRequestRequest  (required)
+     * @param register  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -814,9 +814,9 @@ public class DomainsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createDomainRequestAsync(CreateDomainRequestRequest createDomainRequestRequest, final ApiCallback<CreateDomainRequest201Response> _callback) throws ApiException {
+    public okhttp3.Call createDomainRequestAsync(Register register, final ApiCallback<CreateDomainRequest201Response> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createDomainRequestValidateBeforeCall(createDomainRequestRequest, _callback);
+        okhttp3.Call localVarCall = createDomainRequestValidateBeforeCall(register, _callback);
         Type localVarReturnType = new TypeToken<CreateDomainRequest201Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -3091,7 +3091,7 @@ public class DomainsApi {
     /**
      * Build call for updateDomainRequest
      * @param requestId Идентификатор заявки на регистрацию/продление/трансфер домена. (required)
-     * @param updateDomainRequestRequest  (required)
+     * @param use  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3107,7 +3107,7 @@ public class DomainsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateDomainRequestCall(Integer requestId, UpdateDomainRequestRequest updateDomainRequestRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call updateDomainRequestCall(Integer requestId, Use use, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3121,7 +3121,7 @@ public class DomainsApi {
             basePath = null;
         }
 
-        Object localVarPostBody = updateDomainRequestRequest;
+        Object localVarPostBody = use;
 
         // create path and map variables
         String localVarPath = "/api/v1/domains-requests/{request_id}"
@@ -3154,18 +3154,18 @@ public class DomainsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateDomainRequestValidateBeforeCall(Integer requestId, UpdateDomainRequestRequest updateDomainRequestRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateDomainRequestValidateBeforeCall(Integer requestId, Use use, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'requestId' is set
         if (requestId == null) {
             throw new ApiException("Missing the required parameter 'requestId' when calling updateDomainRequest(Async)");
         }
 
-        // verify the required parameter 'updateDomainRequestRequest' is set
-        if (updateDomainRequestRequest == null) {
-            throw new ApiException("Missing the required parameter 'updateDomainRequestRequest' when calling updateDomainRequest(Async)");
+        // verify the required parameter 'use' is set
+        if (use == null) {
+            throw new ApiException("Missing the required parameter 'use' when calling updateDomainRequest(Async)");
         }
 
-        return updateDomainRequestCall(requestId, updateDomainRequestRequest, _callback);
+        return updateDomainRequestCall(requestId, use, _callback);
 
     }
 
@@ -3173,7 +3173,7 @@ public class DomainsApi {
      * Оплата/обновление заявки на регистрацию/продление/трансфер домена
      * Чтобы оплатить/обновить заявку на регистрацию/продление/трансфер домена, отправьте запрос PATCH на &#x60;/api/v1/domains-requests/{request_id}&#x60;, задав необходимые атрибуты.  Заявка будет обновлена с использованием предоставленной информации. Тело ответа будет содержать объект JSON с информацией о обновленной заявке.
      * @param requestId Идентификатор заявки на регистрацию/продление/трансфер домена. (required)
-     * @param updateDomainRequestRequest  (required)
+     * @param use  (required)
      * @return CreateDomainRequest201Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3188,8 +3188,8 @@ public class DomainsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public CreateDomainRequest201Response updateDomainRequest(Integer requestId, UpdateDomainRequestRequest updateDomainRequestRequest) throws ApiException {
-        ApiResponse<CreateDomainRequest201Response> localVarResp = updateDomainRequestWithHttpInfo(requestId, updateDomainRequestRequest);
+    public CreateDomainRequest201Response updateDomainRequest(Integer requestId, Use use) throws ApiException {
+        ApiResponse<CreateDomainRequest201Response> localVarResp = updateDomainRequestWithHttpInfo(requestId, use);
         return localVarResp.getData();
     }
 
@@ -3197,7 +3197,7 @@ public class DomainsApi {
      * Оплата/обновление заявки на регистрацию/продление/трансфер домена
      * Чтобы оплатить/обновить заявку на регистрацию/продление/трансфер домена, отправьте запрос PATCH на &#x60;/api/v1/domains-requests/{request_id}&#x60;, задав необходимые атрибуты.  Заявка будет обновлена с использованием предоставленной информации. Тело ответа будет содержать объект JSON с информацией о обновленной заявке.
      * @param requestId Идентификатор заявки на регистрацию/продление/трансфер домена. (required)
-     * @param updateDomainRequestRequest  (required)
+     * @param use  (required)
      * @return ApiResponse&lt;CreateDomainRequest201Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3212,8 +3212,8 @@ public class DomainsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CreateDomainRequest201Response> updateDomainRequestWithHttpInfo(Integer requestId, UpdateDomainRequestRequest updateDomainRequestRequest) throws ApiException {
-        okhttp3.Call localVarCall = updateDomainRequestValidateBeforeCall(requestId, updateDomainRequestRequest, null);
+    public ApiResponse<CreateDomainRequest201Response> updateDomainRequestWithHttpInfo(Integer requestId, Use use) throws ApiException {
+        okhttp3.Call localVarCall = updateDomainRequestValidateBeforeCall(requestId, use, null);
         Type localVarReturnType = new TypeToken<CreateDomainRequest201Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -3222,7 +3222,7 @@ public class DomainsApi {
      * Оплата/обновление заявки на регистрацию/продление/трансфер домена (asynchronously)
      * Чтобы оплатить/обновить заявку на регистрацию/продление/трансфер домена, отправьте запрос PATCH на &#x60;/api/v1/domains-requests/{request_id}&#x60;, задав необходимые атрибуты.  Заявка будет обновлена с использованием предоставленной информации. Тело ответа будет содержать объект JSON с информацией о обновленной заявке.
      * @param requestId Идентификатор заявки на регистрацию/продление/трансфер домена. (required)
-     * @param updateDomainRequestRequest  (required)
+     * @param use  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3238,9 +3238,9 @@ public class DomainsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateDomainRequestAsync(Integer requestId, UpdateDomainRequestRequest updateDomainRequestRequest, final ApiCallback<CreateDomainRequest201Response> _callback) throws ApiException {
+    public okhttp3.Call updateDomainRequestAsync(Integer requestId, Use use, final ApiCallback<CreateDomainRequest201Response> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = updateDomainRequestValidateBeforeCall(requestId, updateDomainRequestRequest, _callback);
+        okhttp3.Call localVarCall = updateDomainRequestValidateBeforeCall(requestId, use, _callback);
         Type localVarReturnType = new TypeToken<CreateDomainRequest201Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

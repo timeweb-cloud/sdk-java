@@ -22,8 +22,8 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.UUID;
 import org.openapitools.client.model.Meta;
 import org.openapitools.client.model.ServerIp;
 
@@ -55,7 +55,7 @@ import org.openapitools.client.JSON;
 /**
  * GetServerIPs200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-21T14:21:17.845880Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-22T13:06:16.524188Z[Etc/UTC]")
 public class GetServerIPs200Response {
   public static final String SERIALIZED_NAME_META = "meta";
   @SerializedName(SERIALIZED_NAME_META)
@@ -64,10 +64,6 @@ public class GetServerIPs200Response {
   public static final String SERIALIZED_NAME_SERVER_IPS = "server_ips";
   @SerializedName(SERIALIZED_NAME_SERVER_IPS)
   private List<ServerIp> serverIps = new ArrayList<>();
-
-  public static final String SERIALIZED_NAME_RESPONSE_ID = "response_id";
-  @SerializedName(SERIALIZED_NAME_RESPONSE_ID)
-  private UUID responseId;
 
   public GetServerIPs200Response() {
   }
@@ -122,27 +118,6 @@ public class GetServerIPs200Response {
   }
 
 
-  public GetServerIPs200Response responseId(UUID responseId) {
-    
-    this.responseId = responseId;
-    return this;
-  }
-
-   /**
-   * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
-   * @return responseId
-  **/
-  @javax.annotation.Nonnull
-  public UUID getResponseId() {
-    return responseId;
-  }
-
-
-  public void setResponseId(UUID responseId) {
-    this.responseId = responseId;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -154,13 +129,12 @@ public class GetServerIPs200Response {
     }
     GetServerIPs200Response getServerIPs200Response = (GetServerIPs200Response) o;
     return Objects.equals(this.meta, getServerIPs200Response.meta) &&
-        Objects.equals(this.serverIps, getServerIPs200Response.serverIps) &&
-        Objects.equals(this.responseId, getServerIPs200Response.responseId);
+        Objects.equals(this.serverIps, getServerIPs200Response.serverIps);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(meta, serverIps, responseId);
+    return Objects.hash(meta, serverIps);
   }
 
   @Override
@@ -169,7 +143,6 @@ public class GetServerIPs200Response {
     sb.append("class GetServerIPs200Response {\n");
     sb.append("    meta: ").append(toIndentedString(meta)).append("\n");
     sb.append("    serverIps: ").append(toIndentedString(serverIps)).append("\n");
-    sb.append("    responseId: ").append(toIndentedString(responseId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -194,13 +167,11 @@ public class GetServerIPs200Response {
     openapiFields = new HashSet<String>();
     openapiFields.add("meta");
     openapiFields.add("server_ips");
-    openapiFields.add("response_id");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("meta");
     openapiRequiredFields.add("server_ips");
-    openapiRequiredFields.add("response_id");
   }
 
  /**
@@ -243,9 +214,6 @@ public class GetServerIPs200Response {
       for (int i = 0; i < jsonArrayserverIps.size(); i++) {
         ServerIp.validateJsonElement(jsonArrayserverIps.get(i));
       };
-      if (!jsonObj.get("response_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `response_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("response_id").toString()));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

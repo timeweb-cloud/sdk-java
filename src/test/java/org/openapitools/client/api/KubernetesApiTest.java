@@ -16,24 +16,24 @@ package org.openapitools.client.api;
 import org.openapitools.client.ApiException;
 import org.openapitools.client.model.ClusterEdit;
 import org.openapitools.client.model.ClusterIn;
-import org.openapitools.client.model.CreateCluster201Response;
-import org.openapitools.client.model.CreateClusterNodeGroup201Response;
+import org.openapitools.client.model.ClusterResponse;
+import org.openapitools.client.model.ClustersResponse;
 import org.openapitools.client.model.DeleteCluster200Response;
-import org.openapitools.client.model.GetClusterNodeGroups200Response;
-import org.openapitools.client.model.GetClusterNodesFromGroup200Response;
-import org.openapitools.client.model.GetClusterResources200Response;
-import org.openapitools.client.model.GetClusters200Response;
 import org.openapitools.client.model.GetFinances400Response;
 import org.openapitools.client.model.GetFinances401Response;
 import org.openapitools.client.model.GetFinances403Response;
 import org.openapitools.client.model.GetFinances404Response;
 import org.openapitools.client.model.GetFinances429Response;
 import org.openapitools.client.model.GetFinances500Response;
-import org.openapitools.client.model.GetK8SNetworkDrivers200Response;
-import org.openapitools.client.model.GetK8SVersions200Response;
-import org.openapitools.client.model.GetKubernetesPresets200Response;
+import org.openapitools.client.model.K8SVersionsResponse;
+import org.openapitools.client.model.NetworkDriversResponse;
 import org.openapitools.client.model.NodeCount;
 import org.openapitools.client.model.NodeGroupIn;
+import org.openapitools.client.model.NodeGroupResponse;
+import org.openapitools.client.model.NodeGroupsResponse;
+import org.openapitools.client.model.NodesResponse;
+import org.openapitools.client.model.PresetsResponse;
+import org.openapitools.client.model.ResourcesResponse;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -60,7 +60,7 @@ public class KubernetesApiTest {
     @Test
     public void createClusterTest() throws ApiException {
         ClusterIn clusterIn = null;
-        CreateCluster201Response response = api.createCluster(clusterIn);
+        ClusterResponse response = api.createCluster(clusterIn);
         // TODO: test validations
     }
 
@@ -75,7 +75,7 @@ public class KubernetesApiTest {
     public void createClusterNodeGroupTest() throws ApiException {
         Integer clusterId = null;
         NodeGroupIn nodeGroupIn = null;
-        CreateClusterNodeGroup201Response response = api.createClusterNodeGroup(clusterId, nodeGroupIn);
+        NodeGroupResponse response = api.createClusterNodeGroup(clusterId, nodeGroupIn);
         // TODO: test validations
     }
 
@@ -135,7 +135,7 @@ public class KubernetesApiTest {
     @Test
     public void getClusterTest() throws ApiException {
         Integer clusterId = null;
-        CreateCluster201Response response = api.getCluster(clusterId);
+        ClusterResponse response = api.getCluster(clusterId);
         // TODO: test validations
     }
 
@@ -164,7 +164,7 @@ public class KubernetesApiTest {
     public void getClusterNodeGroupTest() throws ApiException {
         Integer clusterId = null;
         Integer groupId = null;
-        CreateClusterNodeGroup201Response response = api.getClusterNodeGroup(clusterId, groupId);
+        NodeGroupResponse response = api.getClusterNodeGroup(clusterId, groupId);
         // TODO: test validations
     }
 
@@ -178,7 +178,7 @@ public class KubernetesApiTest {
     @Test
     public void getClusterNodeGroupsTest() throws ApiException {
         Integer clusterId = null;
-        GetClusterNodeGroups200Response response = api.getClusterNodeGroups(clusterId);
+        NodeGroupsResponse response = api.getClusterNodeGroups(clusterId);
         // TODO: test validations
     }
 
@@ -192,7 +192,7 @@ public class KubernetesApiTest {
     @Test
     public void getClusterNodesTest() throws ApiException {
         Integer clusterId = null;
-        GetClusterNodesFromGroup200Response response = api.getClusterNodes(clusterId);
+        NodesResponse response = api.getClusterNodes(clusterId);
         // TODO: test validations
     }
 
@@ -209,7 +209,7 @@ public class KubernetesApiTest {
         Integer groupId = null;
         Integer limit = null;
         Integer offset = null;
-        GetClusterNodesFromGroup200Response response = api.getClusterNodesFromGroup(clusterId, groupId, limit, offset);
+        NodesResponse response = api.getClusterNodesFromGroup(clusterId, groupId, limit, offset);
         // TODO: test validations
     }
 
@@ -223,7 +223,7 @@ public class KubernetesApiTest {
     @Test
     public void getClusterResourcesTest() throws ApiException {
         Integer clusterId = null;
-        GetClusterResources200Response response = api.getClusterResources(clusterId);
+        ResourcesResponse response = api.getClusterResources(clusterId);
         // TODO: test validations
     }
 
@@ -238,7 +238,7 @@ public class KubernetesApiTest {
     public void getClustersTest() throws ApiException {
         Integer limit = null;
         Integer offset = null;
-        GetClusters200Response response = api.getClusters(limit, offset);
+        ClustersResponse response = api.getClusters(limit, offset);
         // TODO: test validations
     }
 
@@ -251,7 +251,7 @@ public class KubernetesApiTest {
      */
     @Test
     public void getK8SNetworkDriversTest() throws ApiException {
-        GetK8SNetworkDrivers200Response response = api.getK8SNetworkDrivers();
+        NetworkDriversResponse response = api.getK8SNetworkDrivers();
         // TODO: test validations
     }
 
@@ -264,7 +264,7 @@ public class KubernetesApiTest {
      */
     @Test
     public void getK8SVersionsTest() throws ApiException {
-        GetK8SVersions200Response response = api.getK8SVersions();
+        K8SVersionsResponse response = api.getK8SVersions();
         // TODO: test validations
     }
 
@@ -277,7 +277,7 @@ public class KubernetesApiTest {
      */
     @Test
     public void getKubernetesPresetsTest() throws ApiException {
-        GetKubernetesPresets200Response response = api.getKubernetesPresets();
+        PresetsResponse response = api.getKubernetesPresets();
         // TODO: test validations
     }
 
@@ -293,7 +293,7 @@ public class KubernetesApiTest {
         Integer clusterId = null;
         Integer groupId = null;
         NodeCount nodeCount = null;
-        GetClusterNodesFromGroup200Response response = api.increaseCountOfNodesInGroup(clusterId, groupId, nodeCount);
+        NodesResponse response = api.increaseCountOfNodesInGroup(clusterId, groupId, nodeCount);
         // TODO: test validations
     }
 
@@ -324,7 +324,7 @@ public class KubernetesApiTest {
     public void updateClusterTest() throws ApiException {
         Integer clusterId = null;
         ClusterEdit clusterEdit = null;
-        CreateCluster201Response response = api.updateCluster(clusterId, clusterEdit);
+        ClusterResponse response = api.updateCluster(clusterId, clusterEdit);
         // TODO: test validations
     }
 
