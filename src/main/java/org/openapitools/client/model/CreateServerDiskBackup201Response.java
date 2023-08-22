@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * CreateServerDiskBackup201Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-22T13:06:16.524188Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-22T13:17:51.540698Z[Etc/UTC]")
 public class CreateServerDiskBackup201Response {
   public static final String SERIALIZED_NAME_BACKUP = "backup";
   @SerializedName(SERIALIZED_NAME_BACKUP)
