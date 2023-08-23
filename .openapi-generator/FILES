@@ -132,7 +132,11 @@ docs/DomainNameServer.md
 docs/DomainNameServerItemsInner.md
 docs/DomainPaymentPeriod.md
 docs/DomainPrimeType.md
+docs/DomainProlong.md
+docs/DomainRegister.md
+docs/DomainRegisterNsInner.md
 docs/DomainRequest.md
+docs/DomainTransfer.md
 docs/DomainsApi.md
 docs/EditApiKey.md
 docs/Finances.md
@@ -273,11 +277,8 @@ docs/PresetsStorage.md
 docs/Project.md
 docs/ProjectResource.md
 docs/ProjectsApi.md
-docs/Prolong.md
 docs/Quota.md
 docs/RefreshApiKey.md
-docs/Register.md
-docs/RegisterNsInner.md
 docs/RemoveCountries.md
 docs/RemoveIps.md
 docs/RenameStorageFileRequest.md
@@ -315,7 +316,6 @@ docs/StatusCompanyInfo.md
 docs/Subdomain.md
 docs/TopLevelDomain.md
 docs/TopLevelDomainAllowedBuyPeriodsInner.md
-docs/Transfer.md
 docs/TransferStatus.md
 docs/TransferStatusErrorsInner.md
 docs/TransferStorageRequest.md
@@ -531,7 +531,11 @@ src/main/java/org/openapitools/client/model/DomainNameServer.java
 src/main/java/org/openapitools/client/model/DomainNameServerItemsInner.java
 src/main/java/org/openapitools/client/model/DomainPaymentPeriod.java
 src/main/java/org/openapitools/client/model/DomainPrimeType.java
+src/main/java/org/openapitools/client/model/DomainProlong.java
+src/main/java/org/openapitools/client/model/DomainRegister.java
+src/main/java/org/openapitools/client/model/DomainRegisterNsInner.java
 src/main/java/org/openapitools/client/model/DomainRequest.java
+src/main/java/org/openapitools/client/model/DomainTransfer.java
 src/main/java/org/openapitools/client/model/EditApiKey.java
 src/main/java/org/openapitools/client/model/Finances.java
 src/main/java/org/openapitools/client/model/FirewallGroupInAPI.java
@@ -666,11 +670,8 @@ src/main/java/org/openapitools/client/model/PresetsResponse.java
 src/main/java/org/openapitools/client/model/PresetsStorage.java
 src/main/java/org/openapitools/client/model/Project.java
 src/main/java/org/openapitools/client/model/ProjectResource.java
-src/main/java/org/openapitools/client/model/Prolong.java
 src/main/java/org/openapitools/client/model/Quota.java
 src/main/java/org/openapitools/client/model/RefreshApiKey.java
-src/main/java/org/openapitools/client/model/Register.java
-src/main/java/org/openapitools/client/model/RegisterNsInner.java
 src/main/java/org/openapitools/client/model/RemoveCountries.java
 src/main/java/org/openapitools/client/model/RemoveIps.java
 src/main/java/org/openapitools/client/model/RenameStorageFileRequest.java
@@ -705,7 +706,6 @@ src/main/java/org/openapitools/client/model/StatusCompanyInfo.java
 src/main/java/org/openapitools/client/model/Subdomain.java
 src/main/java/org/openapitools/client/model/TopLevelDomain.java
 src/main/java/org/openapitools/client/model/TopLevelDomainAllowedBuyPeriodsInner.java
-src/main/java/org/openapitools/client/model/Transfer.java
 src/main/java/org/openapitools/client/model/TransferStatus.java
 src/main/java/org/openapitools/client/model/TransferStatusErrorsInner.java
 src/main/java/org/openapitools/client/model/TransferStorageRequest.java
@@ -892,8 +892,12 @@ src/test/java/org/openapitools/client/model/DomainNameServerItemsInnerTest.java
 src/test/java/org/openapitools/client/model/DomainNameServerTest.java
 src/test/java/org/openapitools/client/model/DomainPaymentPeriodTest.java
 src/test/java/org/openapitools/client/model/DomainPrimeTypeTest.java
+src/test/java/org/openapitools/client/model/DomainProlongTest.java
+src/test/java/org/openapitools/client/model/DomainRegisterNsInnerTest.java
+src/test/java/org/openapitools/client/model/DomainRegisterTest.java
 src/test/java/org/openapitools/client/model/DomainRequestTest.java
 src/test/java/org/openapitools/client/model/DomainTest.java
+src/test/java/org/openapitools/client/model/DomainTransferTest.java
 src/test/java/org/openapitools/client/model/EditApiKeyTest.java
 src/test/java/org/openapitools/client/model/FinancesTest.java
 src/test/java/org/openapitools/client/model/FirewallGroupInAPITest.java
@@ -1028,11 +1032,8 @@ src/test/java/org/openapitools/client/model/PresetsResponseTest.java
 src/test/java/org/openapitools/client/model/PresetsStorageTest.java
 src/test/java/org/openapitools/client/model/ProjectResourceTest.java
 src/test/java/org/openapitools/client/model/ProjectTest.java
-src/test/java/org/openapitools/client/model/ProlongTest.java
 src/test/java/org/openapitools/client/model/QuotaTest.java
 src/test/java/org/openapitools/client/model/RefreshApiKeyTest.java
-src/test/java/org/openapitools/client/model/RegisterNsInnerTest.java
-src/test/java/org/openapitools/client/model/RegisterTest.java
 src/test/java/org/openapitools/client/model/RemoveCountriesTest.java
 src/test/java/org/openapitools/client/model/RemoveIpsTest.java
 src/test/java/org/openapitools/client/model/RenameStorageFileRequestTest.java
@@ -1070,7 +1071,6 @@ src/test/java/org/openapitools/client/model/TopLevelDomainTest.java
 src/test/java/org/openapitools/client/model/TransferStatusErrorsInnerTest.java
 src/test/java/org/openapitools/client/model/TransferStatusTest.java
 src/test/java/org/openapitools/client/model/TransferStorageRequestTest.java
-src/test/java/org/openapitools/client/model/TransferTest.java
 src/test/java/org/openapitools/client/model/URLTypeTest.java
 src/test/java/org/openapitools/client/model/UpdateAdminTest.java
 src/test/java/org/openapitools/client/model/UpdateAuthRestrictionsByCountriesRequestTest.java

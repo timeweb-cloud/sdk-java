@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * Ресурс проекта
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-23T13:55:55.873746Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-23T14:47:40.767053Z[Etc/UTC]")
 public class ProjectResource {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)

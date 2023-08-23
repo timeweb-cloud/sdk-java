@@ -13,88 +13,250 @@
 
 package org.openapitools.client.model;
 
+import java.util.Objects;
+import java.util.Arrays;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import org.openapitools.client.model.DomainPaymentPeriod;
-import org.openapitools.client.model.RegisterNsInner;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import org.openapitools.client.JSON;
 
 /**
- * Model tests for Register
+ * DomainRegisterNsInner
  */
-public class RegisterTest {
-    private final Register model = new Register();
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-23T14:47:40.767053Z[Etc/UTC]")
+public class DomainRegisterNsInner {
+  public static final String SERIALIZED_NAME_HOST = "host";
+  @SerializedName(SERIALIZED_NAME_HOST)
+  private String host;
 
-    /**
-     * Model tests for Register
-     */
-    @Test
-    public void testRegister() {
-        // TODO: test Register
+  public static final String SERIALIZED_NAME_IPS = "ips";
+  @SerializedName(SERIALIZED_NAME_IPS)
+  private List<String> ips = new ArrayList<>();
+
+  public DomainRegisterNsInner() {
+  }
+
+  public DomainRegisterNsInner host(String host) {
+    
+    this.host = host;
+    return this;
+  }
+
+   /**
+   * Хост name-сервера.
+   * @return host
+  **/
+  @javax.annotation.Nonnull
+  public String getHost() {
+    return host;
+  }
+
+
+  public void setHost(String host) {
+    this.host = host;
+  }
+
+
+  public DomainRegisterNsInner ips(List<String> ips) {
+    
+    this.ips = ips;
+    return this;
+  }
+
+  public DomainRegisterNsInner addIpsItem(String ipsItem) {
+    if (this.ips == null) {
+      this.ips = new ArrayList<>();
     }
+    this.ips.add(ipsItem);
+    return this;
+  }
 
-    /**
-     * Test the property 'action'
-     */
-    @Test
-    public void actionTest() {
-        // TODO: test action
+   /**
+   * Список IP-адресов name-сервера
+   * @return ips
+  **/
+  @javax.annotation.Nonnull
+  public List<String> getIps() {
+    return ips;
+  }
+
+
+  public void setIps(List<String> ips) {
+    this.ips = ips;
+  }
+
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
     }
-
-    /**
-     * Test the property 'fqdn'
-     */
-    @Test
-    public void fqdnTest() {
-        // TODO: test fqdn
+    if (o == null || getClass() != o.getClass()) {
+      return false;
     }
+    DomainRegisterNsInner domainRegisterNsInner = (DomainRegisterNsInner) o;
+    return Objects.equals(this.host, domainRegisterNsInner.host) &&
+        Objects.equals(this.ips, domainRegisterNsInner.ips);
+  }
 
-    /**
-     * Test the property 'isAutoprolongEnabled'
-     */
-    @Test
-    public void isAutoprolongEnabledTest() {
-        // TODO: test isAutoprolongEnabled
+  @Override
+  public int hashCode() {
+    return Objects.hash(host, ips);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class DomainRegisterNsInner {\n");
+    sb.append("    host: ").append(toIndentedString(host)).append("\n");
+    sb.append("    ips: ").append(toIndentedString(ips)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    if (o == null) {
+      return "null";
     }
+    return o.toString().replace("\n", "\n    ");
+  }
 
-    /**
-     * Test the property 'isWhoisPrivacyEnabled'
-     */
-    @Test
-    public void isWhoisPrivacyEnabledTest() {
-        // TODO: test isWhoisPrivacyEnabled
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("host");
+    openapiFields.add("ips");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("host");
+    openapiRequiredFields.add("ips");
+  }
+
+ /**
+  * Validates the JSON Element and throws an exception if issues found
+  *
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to DomainRegisterNsInner
+  */
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!DomainRegisterNsInner.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in DomainRegisterNsInner is not found in the empty JSON string", DomainRegisterNsInner.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!DomainRegisterNsInner.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `DomainRegisterNsInner` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        }
+      }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : DomainRegisterNsInner.openapiRequiredFields) {
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+        }
+      }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if (!jsonObj.get("host").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `host` to be a primitive type in the JSON string but got `%s`", jsonObj.get("host").toString()));
+      }
+      // ensure the required json array is present
+      if (jsonObj.get("ips") == null) {
+        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+      } else if (!jsonObj.get("ips").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ips` to be an array in the JSON string but got `%s`", jsonObj.get("ips").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!DomainRegisterNsInner.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'DomainRegisterNsInner' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<DomainRegisterNsInner> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(DomainRegisterNsInner.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<DomainRegisterNsInner>() {
+           @Override
+           public void write(JsonWriter out, DomainRegisterNsInner value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public DomainRegisterNsInner read(JsonReader in) throws IOException {
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
+           }
+
+       }.nullSafe();
     }
+  }
 
-    /**
-     * Test the property 'ns'
-     */
-    @Test
-    public void nsTest() {
-        // TODO: test ns
-    }
+ /**
+  * Create an instance of DomainRegisterNsInner given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of DomainRegisterNsInner
+  * @throws IOException if the JSON string is invalid with respect to DomainRegisterNsInner
+  */
+  public static DomainRegisterNsInner fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, DomainRegisterNsInner.class);
+  }
 
-    /**
-     * Test the property 'period'
-     */
-    @Test
-    public void periodTest() {
-        // TODO: test period
-    }
-
-    /**
-     * Test the property 'personId'
-     */
-    @Test
-    public void personIdTest() {
-        // TODO: test personId
-    }
-
+ /**
+  * Convert an instance of DomainRegisterNsInner to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
+

@@ -319,7 +319,7 @@ public class Example {
 
 <a id="createDomainRequest"></a>
 # **createDomainRequest**
-> CreateDomainRequest201Response createDomainRequest(register)
+> CreateDomainRequest201Response createDomainRequest(domainRegister)
 
 Создание заявки на регистрацию/продление/трансфер домена
 
@@ -345,9 +345,9 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     DomainsApi apiInstance = new DomainsApi(defaultClient);
-    Register register = new Register(); // Register | 
+    DomainRegister domainRegister = new DomainRegister(); // DomainRegister | 
     try {
-      CreateDomainRequest201Response result = apiInstance.createDomainRequest(register);
+      CreateDomainRequest201Response result = apiInstance.createDomainRequest(domainRegister);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling DomainsApi#createDomainRequest");
@@ -364,7 +364,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **register** | [**Register**](Register.md)|  | |
+| **domainRegister** | [**DomainRegister**](DomainRegister.md)|  | |
 
 ### Return type
 

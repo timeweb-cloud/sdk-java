@@ -20,6 +20,7 @@ import org.openapitools.client.model.CreateDatabaseBackup409Response;
 import org.openapitools.client.model.CreateDns;
 import org.openapitools.client.model.CreateDomainDNSRecord201Response;
 import org.openapitools.client.model.CreateDomainRequest201Response;
+import org.openapitools.client.model.DomainRegister;
 import org.openapitools.client.model.GetDomain200Response;
 import org.openapitools.client.model.GetDomainDNSRecords200Response;
 import org.openapitools.client.model.GetDomainNameServers200Response;
@@ -32,7 +33,6 @@ import org.openapitools.client.model.GetFinances429Response;
 import org.openapitools.client.model.GetFinances500Response;
 import org.openapitools.client.model.GetTLD200Response;
 import org.openapitools.client.model.GetTLDs200Response;
-import org.openapitools.client.model.Register;
 import org.openapitools.client.model.UpdateDomain;
 import org.openapitools.client.model.UpdateDomainAutoProlongation200Response;
 import org.openapitools.client.model.UpdateDomainNameServers;
@@ -120,8 +120,8 @@ public class DomainsApiTest {
      */
     @Test
     public void createDomainRequestTest() throws ApiException {
-        Register register = null;
-        CreateDomainRequest201Response response = api.createDomainRequest(register);
+        DomainRegister domainRegister = null;
+        CreateDomainRequest201Response response = api.createDomainRequest(domainRegister);
         // TODO: test validations
     }
 

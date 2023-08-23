@@ -13,8 +13,6 @@
 
 package org.openapitools.client.model;
 
-import java.util.Objects;
-import java.util.Arrays;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -22,444 +20,81 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
-import org.openapitools.client.model.DomainPaymentPeriod;
-import org.openapitools.client.model.DomainPrimeType;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
-import java.lang.reflect.Type;
-import java.util.HashMap;
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-
-import org.openapitools.client.JSON;
+import org.openapitools.client.model.DomainPaymentPeriod;
+import org.openapitools.client.model.DomainRegisterNsInner;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 /**
- * Заявка на продление домена
+ * Model tests for DomainRegister
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-23T13:55:55.873746Z[Etc/UTC]")
-public class Prolong {
-  /**
-   * Тип создаваемой заявки.
-   */
-  @JsonAdapter(ActionEnum.Adapter.class)
-  public enum ActionEnum {
-    PROLONG("prolong");
+public class DomainRegisterTest {
+    private final DomainRegister model = new DomainRegister();
 
-    private String value;
-
-    ActionEnum(String value) {
-      this.value = value;
+    /**
+     * Model tests for DomainRegister
+     */
+    @Test
+    public void testDomainRegister() {
+        // TODO: test DomainRegister
     }
 
-    public String getValue() {
-      return value;
+    /**
+     * Test the property 'action'
+     */
+    @Test
+    public void actionTest() {
+        // TODO: test action
     }
 
-    @Override
-    public String toString() {
-      return String.valueOf(value);
+    /**
+     * Test the property 'fqdn'
+     */
+    @Test
+    public void fqdnTest() {
+        // TODO: test fqdn
     }
 
-    public static ActionEnum fromValue(String value) {
-      for (ActionEnum b : ActionEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    /**
+     * Test the property 'isAutoprolongEnabled'
+     */
+    @Test
+    public void isAutoprolongEnabledTest() {
+        // TODO: test isAutoprolongEnabled
     }
 
-    public static class Adapter extends TypeAdapter<ActionEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final ActionEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public ActionEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return ActionEnum.fromValue(value);
-      }
+    /**
+     * Test the property 'isWhoisPrivacyEnabled'
+     */
+    @Test
+    public void isWhoisPrivacyEnabledTest() {
+        // TODO: test isWhoisPrivacyEnabled
     }
-  }
 
-  public static final String SERIALIZED_NAME_ACTION = "action";
-  @SerializedName(SERIALIZED_NAME_ACTION)
-  private ActionEnum action;
-
-  public static final String SERIALIZED_NAME_FQDN = "fqdn";
-  @SerializedName(SERIALIZED_NAME_FQDN)
-  private String fqdn;
-
-  public static final String SERIALIZED_NAME_IS_ANTISPAM_ENABLED = "is_antispam_enabled";
-  @SerializedName(SERIALIZED_NAME_IS_ANTISPAM_ENABLED)
-  private Boolean isAntispamEnabled;
-
-  public static final String SERIALIZED_NAME_IS_AUTOPROLONG_ENABLED = "is_autoprolong_enabled";
-  @SerializedName(SERIALIZED_NAME_IS_AUTOPROLONG_ENABLED)
-  private Boolean isAutoprolongEnabled;
-
-  public static final String SERIALIZED_NAME_IS_WHOIS_PRIVACY_ENABLED = "is_whois_privacy_enabled";
-  @SerializedName(SERIALIZED_NAME_IS_WHOIS_PRIVACY_ENABLED)
-  private Boolean isWhoisPrivacyEnabled;
-
-  public static final String SERIALIZED_NAME_PERIOD = "period";
-  @SerializedName(SERIALIZED_NAME_PERIOD)
-  private DomainPaymentPeriod period;
-
-  public static final String SERIALIZED_NAME_PERSON_ID = "person_id";
-  @SerializedName(SERIALIZED_NAME_PERSON_ID)
-  private BigDecimal personId;
-
-  public static final String SERIALIZED_NAME_PRIME = "prime";
-  @SerializedName(SERIALIZED_NAME_PRIME)
-  private DomainPrimeType prime;
-
-  public Prolong() {
-  }
-
-  public Prolong action(ActionEnum action) {
-    
-    this.action = action;
-    return this;
-  }
-
-   /**
-   * Тип создаваемой заявки.
-   * @return action
-  **/
-  @javax.annotation.Nonnull
-  public ActionEnum getAction() {
-    return action;
-  }
-
-
-  public void setAction(ActionEnum action) {
-    this.action = action;
-  }
-
-
-  public Prolong fqdn(String fqdn) {
-    
-    this.fqdn = fqdn;
-    return this;
-  }
-
-   /**
-   * Полное имя домена.
-   * @return fqdn
-  **/
-  @javax.annotation.Nonnull
-  public String getFqdn() {
-    return fqdn;
-  }
-
-
-  public void setFqdn(String fqdn) {
-    this.fqdn = fqdn;
-  }
-
-
-  public Prolong isAntispamEnabled(Boolean isAntispamEnabled) {
-    
-    this.isAntispamEnabled = isAntispamEnabled;
-    return this;
-  }
-
-   /**
-   * Это логическое значение, которое показывает включена ли услуга \&quot;Антиспам\&quot; для домена
-   * @return isAntispamEnabled
-  **/
-  @javax.annotation.Nullable
-  public Boolean getIsAntispamEnabled() {
-    return isAntispamEnabled;
-  }
-
-
-  public void setIsAntispamEnabled(Boolean isAntispamEnabled) {
-    this.isAntispamEnabled = isAntispamEnabled;
-  }
-
-
-  public Prolong isAutoprolongEnabled(Boolean isAutoprolongEnabled) {
-    
-    this.isAutoprolongEnabled = isAutoprolongEnabled;
-    return this;
-  }
-
-   /**
-   * Это логическое значение, которое показывает, включено ли автопродление домена.
-   * @return isAutoprolongEnabled
-  **/
-  @javax.annotation.Nullable
-  public Boolean getIsAutoprolongEnabled() {
-    return isAutoprolongEnabled;
-  }
-
-
-  public void setIsAutoprolongEnabled(Boolean isAutoprolongEnabled) {
-    this.isAutoprolongEnabled = isAutoprolongEnabled;
-  }
-
-
-  public Prolong isWhoisPrivacyEnabled(Boolean isWhoisPrivacyEnabled) {
-    
-    this.isWhoisPrivacyEnabled = isWhoisPrivacyEnabled;
-    return this;
-  }
-
-   /**
-   * Это логическое значение, которое показывает, включено ли скрытие данных администратора домена для whois. Опция недоступна для доменов в зонах .ru и .рф.
-   * @return isWhoisPrivacyEnabled
-  **/
-  @javax.annotation.Nullable
-  public Boolean getIsWhoisPrivacyEnabled() {
-    return isWhoisPrivacyEnabled;
-  }
-
-
-  public void setIsWhoisPrivacyEnabled(Boolean isWhoisPrivacyEnabled) {
-    this.isWhoisPrivacyEnabled = isWhoisPrivacyEnabled;
-  }
-
-
-  public Prolong period(DomainPaymentPeriod period) {
-    
-    this.period = period;
-    return this;
-  }
-
-   /**
-   * Get period
-   * @return period
-  **/
-  @javax.annotation.Nullable
-  public DomainPaymentPeriod getPeriod() {
-    return period;
-  }
-
-
-  public void setPeriod(DomainPaymentPeriod period) {
-    this.period = period;
-  }
-
-
-  public Prolong personId(BigDecimal personId) {
-    
-    this.personId = personId;
-    return this;
-  }
-
-   /**
-   * Идентификатор администратора, на которого зарегистрирован домен.
-   * @return personId
-  **/
-  @javax.annotation.Nullable
-  public BigDecimal getPersonId() {
-    return personId;
-  }
-
-
-  public void setPersonId(BigDecimal personId) {
-    this.personId = personId;
-  }
-
-
-  public Prolong prime(DomainPrimeType prime) {
-    
-    this.prime = prime;
-    return this;
-  }
-
-   /**
-   * Get prime
-   * @return prime
-  **/
-  @javax.annotation.Nullable
-  public DomainPrimeType getPrime() {
-    return prime;
-  }
-
-
-  public void setPrime(DomainPrimeType prime) {
-    this.prime = prime;
-  }
-
-
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+    /**
+     * Test the property 'ns'
+     */
+    @Test
+    public void nsTest() {
+        // TODO: test ns
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    /**
+     * Test the property 'period'
+     */
+    @Test
+    public void periodTest() {
+        // TODO: test period
     }
-    Prolong prolong = (Prolong) o;
-    return Objects.equals(this.action, prolong.action) &&
-        Objects.equals(this.fqdn, prolong.fqdn) &&
-        Objects.equals(this.isAntispamEnabled, prolong.isAntispamEnabled) &&
-        Objects.equals(this.isAutoprolongEnabled, prolong.isAutoprolongEnabled) &&
-        Objects.equals(this.isWhoisPrivacyEnabled, prolong.isWhoisPrivacyEnabled) &&
-        Objects.equals(this.period, prolong.period) &&
-        Objects.equals(this.personId, prolong.personId) &&
-        Objects.equals(this.prime, prolong.prime);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(action, fqdn, isAntispamEnabled, isAutoprolongEnabled, isWhoisPrivacyEnabled, period, personId, prime);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class Prolong {\n");
-    sb.append("    action: ").append(toIndentedString(action)).append("\n");
-    sb.append("    fqdn: ").append(toIndentedString(fqdn)).append("\n");
-    sb.append("    isAntispamEnabled: ").append(toIndentedString(isAntispamEnabled)).append("\n");
-    sb.append("    isAutoprolongEnabled: ").append(toIndentedString(isAutoprolongEnabled)).append("\n");
-    sb.append("    isWhoisPrivacyEnabled: ").append(toIndentedString(isWhoisPrivacyEnabled)).append("\n");
-    sb.append("    period: ").append(toIndentedString(period)).append("\n");
-    sb.append("    personId: ").append(toIndentedString(personId)).append("\n");
-    sb.append("    prime: ").append(toIndentedString(prime)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
+    /**
+     * Test the property 'personId'
+     */
+    @Test
+    public void personIdTest() {
+        // TODO: test personId
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("action");
-    openapiFields.add("fqdn");
-    openapiFields.add("is_antispam_enabled");
-    openapiFields.add("is_autoprolong_enabled");
-    openapiFields.add("is_whois_privacy_enabled");
-    openapiFields.add("period");
-    openapiFields.add("person_id");
-    openapiFields.add("prime");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("action");
-    openapiRequiredFields.add("fqdn");
-  }
-
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to Prolong
-  */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!Prolong.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in Prolong is not found in the empty JSON string", Prolong.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!Prolong.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Prolong` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : Prolong.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("action").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `action` to be a primitive type in the JSON string but got `%s`", jsonObj.get("action").toString()));
-      }
-      if (!jsonObj.get("fqdn").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `fqdn` to be a primitive type in the JSON string but got `%s`", jsonObj.get("fqdn").toString()));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!Prolong.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'Prolong' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<Prolong> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(Prolong.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<Prolong>() {
-           @Override
-           public void write(JsonWriter out, Prolong value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public Prolong read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
-    }
-  }
-
- /**
-  * Create an instance of Prolong given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of Prolong
-  * @throws IOException if the JSON string is invalid with respect to Prolong
-  */
-  public static Prolong fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, Prolong.class);
-  }
-
- /**
-  * Convert an instance of Prolong to an JSON string
-  *
-  * @return JSON string
-  */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
-

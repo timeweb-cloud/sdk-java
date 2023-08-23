@@ -53,7 +53,7 @@ import org.openapitools.client.JSON;
 /**
  * UpdateNotificationSettingsRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-23T13:55:55.873746Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-23T14:47:40.767053Z[Etc/UTC]")
 public class UpdateNotificationSettingsRequest {
   public static final String SERIALIZED_NAME_SETTINGS = "settings";
   @SerializedName(SERIALIZED_NAME_SETTINGS)

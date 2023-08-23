@@ -13,94 +13,314 @@
 
 package org.openapitools.client.model;
 
+import java.util.Objects;
+import java.util.Arrays;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
-import org.openapitools.client.model.DomainPaymentPeriod;
-import org.openapitools.client.model.DomainPrimeType;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import org.openapitools.client.JSON;
 
 /**
- * Model tests for Prolong
+ * Заявка на перенос домена
  */
-public class ProlongTest {
-    private final Prolong model = new Prolong();
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-23T14:47:40.767053Z[Etc/UTC]")
+public class DomainTransfer {
+  /**
+   * Тип создаваемой заявки.
+   */
+  @JsonAdapter(ActionEnum.Adapter.class)
+  public enum ActionEnum {
+    TRANSFER("transfer");
 
-    /**
-     * Model tests for Prolong
-     */
-    @Test
-    public void testProlong() {
-        // TODO: test Prolong
+    private String value;
+
+    ActionEnum(String value) {
+      this.value = value;
     }
 
-    /**
-     * Test the property 'action'
-     */
-    @Test
-    public void actionTest() {
-        // TODO: test action
+    public String getValue() {
+      return value;
     }
 
-    /**
-     * Test the property 'fqdn'
-     */
-    @Test
-    public void fqdnTest() {
-        // TODO: test fqdn
+    @Override
+    public String toString() {
+      return String.valueOf(value);
     }
 
-    /**
-     * Test the property 'isAntispamEnabled'
-     */
-    @Test
-    public void isAntispamEnabledTest() {
-        // TODO: test isAntispamEnabled
+    public static ActionEnum fromValue(String value) {
+      for (ActionEnum b : ActionEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
-    /**
-     * Test the property 'isAutoprolongEnabled'
-     */
-    @Test
-    public void isAutoprolongEnabledTest() {
-        // TODO: test isAutoprolongEnabled
-    }
+    public static class Adapter extends TypeAdapter<ActionEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final ActionEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
 
-    /**
-     * Test the property 'isWhoisPrivacyEnabled'
-     */
-    @Test
-    public void isWhoisPrivacyEnabledTest() {
-        // TODO: test isWhoisPrivacyEnabled
+      @Override
+      public ActionEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return ActionEnum.fromValue(value);
+      }
     }
+  }
 
-    /**
-     * Test the property 'period'
-     */
-    @Test
-    public void periodTest() {
-        // TODO: test period
+  public static final String SERIALIZED_NAME_ACTION = "action";
+  @SerializedName(SERIALIZED_NAME_ACTION)
+  private ActionEnum action;
+
+  public static final String SERIALIZED_NAME_AUTH_CODE = "auth_code";
+  @SerializedName(SERIALIZED_NAME_AUTH_CODE)
+  private String authCode;
+
+  public static final String SERIALIZED_NAME_FQDN = "fqdn";
+  @SerializedName(SERIALIZED_NAME_FQDN)
+  private String fqdn;
+
+  public DomainTransfer() {
+  }
+
+  public DomainTransfer action(ActionEnum action) {
+    
+    this.action = action;
+    return this;
+  }
+
+   /**
+   * Тип создаваемой заявки.
+   * @return action
+  **/
+  @javax.annotation.Nonnull
+  public ActionEnum getAction() {
+    return action;
+  }
+
+
+  public void setAction(ActionEnum action) {
+    this.action = action;
+  }
+
+
+  public DomainTransfer authCode(String authCode) {
+    
+    this.authCode = authCode;
+    return this;
+  }
+
+   /**
+   * Код авторизации для переноса домена.
+   * @return authCode
+  **/
+  @javax.annotation.Nonnull
+  public String getAuthCode() {
+    return authCode;
+  }
+
+
+  public void setAuthCode(String authCode) {
+    this.authCode = authCode;
+  }
+
+
+  public DomainTransfer fqdn(String fqdn) {
+    
+    this.fqdn = fqdn;
+    return this;
+  }
+
+   /**
+   * Полное имя домена.
+   * @return fqdn
+  **/
+  @javax.annotation.Nonnull
+  public String getFqdn() {
+    return fqdn;
+  }
+
+
+  public void setFqdn(String fqdn) {
+    this.fqdn = fqdn;
+  }
+
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
     }
-
-    /**
-     * Test the property 'personId'
-     */
-    @Test
-    public void personIdTest() {
-        // TODO: test personId
+    if (o == null || getClass() != o.getClass()) {
+      return false;
     }
+    DomainTransfer domainTransfer = (DomainTransfer) o;
+    return Objects.equals(this.action, domainTransfer.action) &&
+        Objects.equals(this.authCode, domainTransfer.authCode) &&
+        Objects.equals(this.fqdn, domainTransfer.fqdn);
+  }
 
-    /**
-     * Test the property 'prime'
-     */
-    @Test
-    public void primeTest() {
-        // TODO: test prime
+  @Override
+  public int hashCode() {
+    return Objects.hash(action, authCode, fqdn);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class DomainTransfer {\n");
+    sb.append("    action: ").append(toIndentedString(action)).append("\n");
+    sb.append("    authCode: ").append(toIndentedString(authCode)).append("\n");
+    sb.append("    fqdn: ").append(toIndentedString(fqdn)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    if (o == null) {
+      return "null";
     }
+    return o.toString().replace("\n", "\n    ");
+  }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("action");
+    openapiFields.add("auth_code");
+    openapiFields.add("fqdn");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("action");
+    openapiRequiredFields.add("auth_code");
+    openapiRequiredFields.add("fqdn");
+  }
+
+ /**
+  * Validates the JSON Element and throws an exception if issues found
+  *
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to DomainTransfer
+  */
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!DomainTransfer.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in DomainTransfer is not found in the empty JSON string", DomainTransfer.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!DomainTransfer.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `DomainTransfer` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        }
+      }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : DomainTransfer.openapiRequiredFields) {
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+        }
+      }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if (!jsonObj.get("action").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `action` to be a primitive type in the JSON string but got `%s`", jsonObj.get("action").toString()));
+      }
+      if (!jsonObj.get("auth_code").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `auth_code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("auth_code").toString()));
+      }
+      if (!jsonObj.get("fqdn").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `fqdn` to be a primitive type in the JSON string but got `%s`", jsonObj.get("fqdn").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!DomainTransfer.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'DomainTransfer' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<DomainTransfer> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(DomainTransfer.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<DomainTransfer>() {
+           @Override
+           public void write(JsonWriter out, DomainTransfer value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public DomainTransfer read(JsonReader in) throws IOException {
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of DomainTransfer given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of DomainTransfer
+  * @throws IOException if the JSON string is invalid with respect to DomainTransfer
+  */
+  public static DomainTransfer fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, DomainTransfer.class);
+  }
+
+ /**
+  * Convert an instance of DomainTransfer to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
+

@@ -53,7 +53,7 @@ import org.openapitools.client.JSON;
 /**
  * ClusterIn
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-23T13:55:55.873746Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-23T14:47:40.767053Z[Etc/UTC]")
 public class ClusterIn {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -61,7 +61,7 @@ public class ClusterIn {
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
-  private String description = "";
+  private String description;
 
   public static final String SERIALIZED_NAME_HA = "ha";
   @SerializedName(SERIALIZED_NAME_HA)
@@ -85,7 +85,7 @@ public class ClusterIn {
 
   public static final String SERIALIZED_NAME_WORKER_GROUPS = "worker_groups";
   @SerializedName(SERIALIZED_NAME_WORKER_GROUPS)
-  private List<NodeGroupIn> workerGroups = new ArrayList<>(Arrays.asList());
+  private List<NodeGroupIn> workerGroups;
 
   public ClusterIn() {
   }
@@ -245,7 +245,7 @@ public class ClusterIn {
 
   public ClusterIn addWorkerGroupsItem(NodeGroupIn workerGroupsItem) {
     if (this.workerGroups == null) {
-      this.workerGroups = new ArrayList<>(Arrays.asList());
+      this.workerGroups = new ArrayList<>();
     }
     this.workerGroups.add(workerGroupsItem);
     return this;

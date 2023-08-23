@@ -13,450 +13,51 @@
 
 package org.openapitools.client.model;
 
-import java.util.Objects;
-import java.util.Arrays;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
-import org.openapitools.client.model.DomainPaymentPeriod;
-import org.openapitools.client.model.RegisterNsInner;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
-import java.lang.reflect.Type;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-
-import org.openapitools.client.JSON;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 /**
- * Заявка на регистрацию домена
+ * Model tests for DomainTransfer
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-23T13:55:55.873746Z[Etc/UTC]")
-public class Register {
-  /**
-   * Тип создаваемой заявки.
-   */
-  @JsonAdapter(ActionEnum.Adapter.class)
-  public enum ActionEnum {
-    REGISTER("register");
+public class DomainTransferTest {
+    private final DomainTransfer model = new DomainTransfer();
 
-    private String value;
-
-    ActionEnum(String value) {
-      this.value = value;
+    /**
+     * Model tests for DomainTransfer
+     */
+    @Test
+    public void testDomainTransfer() {
+        // TODO: test DomainTransfer
     }
 
-    public String getValue() {
-      return value;
+    /**
+     * Test the property 'action'
+     */
+    @Test
+    public void actionTest() {
+        // TODO: test action
     }
 
-    @Override
-    public String toString() {
-      return String.valueOf(value);
+    /**
+     * Test the property 'authCode'
+     */
+    @Test
+    public void authCodeTest() {
+        // TODO: test authCode
     }
 
-    public static ActionEnum fromValue(String value) {
-      for (ActionEnum b : ActionEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    /**
+     * Test the property 'fqdn'
+     */
+    @Test
+    public void fqdnTest() {
+        // TODO: test fqdn
     }
 
-    public static class Adapter extends TypeAdapter<ActionEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final ActionEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public ActionEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return ActionEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_ACTION = "action";
-  @SerializedName(SERIALIZED_NAME_ACTION)
-  private ActionEnum action;
-
-  public static final String SERIALIZED_NAME_FQDN = "fqdn";
-  @SerializedName(SERIALIZED_NAME_FQDN)
-  private String fqdn;
-
-  public static final String SERIALIZED_NAME_IS_AUTOPROLONG_ENABLED = "is_autoprolong_enabled";
-  @SerializedName(SERIALIZED_NAME_IS_AUTOPROLONG_ENABLED)
-  private Boolean isAutoprolongEnabled;
-
-  public static final String SERIALIZED_NAME_IS_WHOIS_PRIVACY_ENABLED = "is_whois_privacy_enabled";
-  @SerializedName(SERIALIZED_NAME_IS_WHOIS_PRIVACY_ENABLED)
-  private Boolean isWhoisPrivacyEnabled;
-
-  public static final String SERIALIZED_NAME_NS = "ns";
-  @SerializedName(SERIALIZED_NAME_NS)
-  private List<RegisterNsInner> ns;
-
-  public static final String SERIALIZED_NAME_PERIOD = "period";
-  @SerializedName(SERIALIZED_NAME_PERIOD)
-  private DomainPaymentPeriod period;
-
-  public static final String SERIALIZED_NAME_PERSON_ID = "person_id";
-  @SerializedName(SERIALIZED_NAME_PERSON_ID)
-  private BigDecimal personId;
-
-  public Register() {
-  }
-
-  public Register action(ActionEnum action) {
-    
-    this.action = action;
-    return this;
-  }
-
-   /**
-   * Тип создаваемой заявки.
-   * @return action
-  **/
-  @javax.annotation.Nonnull
-  public ActionEnum getAction() {
-    return action;
-  }
-
-
-  public void setAction(ActionEnum action) {
-    this.action = action;
-  }
-
-
-  public Register fqdn(String fqdn) {
-    
-    this.fqdn = fqdn;
-    return this;
-  }
-
-   /**
-   * Полное имя домена.
-   * @return fqdn
-  **/
-  @javax.annotation.Nonnull
-  public String getFqdn() {
-    return fqdn;
-  }
-
-
-  public void setFqdn(String fqdn) {
-    this.fqdn = fqdn;
-  }
-
-
-  public Register isAutoprolongEnabled(Boolean isAutoprolongEnabled) {
-    
-    this.isAutoprolongEnabled = isAutoprolongEnabled;
-    return this;
-  }
-
-   /**
-   * Это логическое значение, которое показывает, включено ли автопродление домена.
-   * @return isAutoprolongEnabled
-  **/
-  @javax.annotation.Nullable
-  public Boolean getIsAutoprolongEnabled() {
-    return isAutoprolongEnabled;
-  }
-
-
-  public void setIsAutoprolongEnabled(Boolean isAutoprolongEnabled) {
-    this.isAutoprolongEnabled = isAutoprolongEnabled;
-  }
-
-
-  public Register isWhoisPrivacyEnabled(Boolean isWhoisPrivacyEnabled) {
-    
-    this.isWhoisPrivacyEnabled = isWhoisPrivacyEnabled;
-    return this;
-  }
-
-   /**
-   * Это логическое значение, которое показывает, включено ли скрытие данных администратора домена для whois. Опция недоступна для доменов в зонах .ru и .рф.
-   * @return isWhoisPrivacyEnabled
-  **/
-  @javax.annotation.Nullable
-  public Boolean getIsWhoisPrivacyEnabled() {
-    return isWhoisPrivacyEnabled;
-  }
-
-
-  public void setIsWhoisPrivacyEnabled(Boolean isWhoisPrivacyEnabled) {
-    this.isWhoisPrivacyEnabled = isWhoisPrivacyEnabled;
-  }
-
-
-  public Register ns(List<RegisterNsInner> ns) {
-    
-    this.ns = ns;
-    return this;
-  }
-
-  public Register addNsItem(RegisterNsInner nsItem) {
-    if (this.ns == null) {
-      this.ns = new ArrayList<>();
-    }
-    this.ns.add(nsItem);
-    return this;
-  }
-
-   /**
-   * Name-серверы для регистрации домена. Если не передавать этот параметр, будут использованы наши стандартные name-серверы. Нужно указать как минимум 2 name-сервера.
-   * @return ns
-  **/
-  @javax.annotation.Nullable
-  public List<RegisterNsInner> getNs() {
-    return ns;
-  }
-
-
-  public void setNs(List<RegisterNsInner> ns) {
-    this.ns = ns;
-  }
-
-
-  public Register period(DomainPaymentPeriod period) {
-    
-    this.period = period;
-    return this;
-  }
-
-   /**
-   * Get period
-   * @return period
-  **/
-  @javax.annotation.Nullable
-  public DomainPaymentPeriod getPeriod() {
-    return period;
-  }
-
-
-  public void setPeriod(DomainPaymentPeriod period) {
-    this.period = period;
-  }
-
-
-  public Register personId(BigDecimal personId) {
-    
-    this.personId = personId;
-    return this;
-  }
-
-   /**
-   * Идентификатор администратора, на которого регистрируется домен.
-   * @return personId
-  **/
-  @javax.annotation.Nonnull
-  public BigDecimal getPersonId() {
-    return personId;
-  }
-
-
-  public void setPersonId(BigDecimal personId) {
-    this.personId = personId;
-  }
-
-
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    Register register = (Register) o;
-    return Objects.equals(this.action, register.action) &&
-        Objects.equals(this.fqdn, register.fqdn) &&
-        Objects.equals(this.isAutoprolongEnabled, register.isAutoprolongEnabled) &&
-        Objects.equals(this.isWhoisPrivacyEnabled, register.isWhoisPrivacyEnabled) &&
-        Objects.equals(this.ns, register.ns) &&
-        Objects.equals(this.period, register.period) &&
-        Objects.equals(this.personId, register.personId);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(action, fqdn, isAutoprolongEnabled, isWhoisPrivacyEnabled, ns, period, personId);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class Register {\n");
-    sb.append("    action: ").append(toIndentedString(action)).append("\n");
-    sb.append("    fqdn: ").append(toIndentedString(fqdn)).append("\n");
-    sb.append("    isAutoprolongEnabled: ").append(toIndentedString(isAutoprolongEnabled)).append("\n");
-    sb.append("    isWhoisPrivacyEnabled: ").append(toIndentedString(isWhoisPrivacyEnabled)).append("\n");
-    sb.append("    ns: ").append(toIndentedString(ns)).append("\n");
-    sb.append("    period: ").append(toIndentedString(period)).append("\n");
-    sb.append("    personId: ").append(toIndentedString(personId)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("action");
-    openapiFields.add("fqdn");
-    openapiFields.add("is_autoprolong_enabled");
-    openapiFields.add("is_whois_privacy_enabled");
-    openapiFields.add("ns");
-    openapiFields.add("period");
-    openapiFields.add("person_id");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("action");
-    openapiRequiredFields.add("fqdn");
-    openapiRequiredFields.add("person_id");
-  }
-
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to Register
-  */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!Register.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in Register is not found in the empty JSON string", Register.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!Register.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Register` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : Register.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("action").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `action` to be a primitive type in the JSON string but got `%s`", jsonObj.get("action").toString()));
-      }
-      if (!jsonObj.get("fqdn").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `fqdn` to be a primitive type in the JSON string but got `%s`", jsonObj.get("fqdn").toString()));
-      }
-      if (jsonObj.get("ns") != null && !jsonObj.get("ns").isJsonNull()) {
-        JsonArray jsonArrayns = jsonObj.getAsJsonArray("ns");
-        if (jsonArrayns != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("ns").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `ns` to be an array in the JSON string but got `%s`", jsonObj.get("ns").toString()));
-          }
-
-          // validate the optional field `ns` (array)
-          for (int i = 0; i < jsonArrayns.size(); i++) {
-            RegisterNsInner.validateJsonElement(jsonArrayns.get(i));
-          };
-        }
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!Register.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'Register' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<Register> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(Register.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<Register>() {
-           @Override
-           public void write(JsonWriter out, Register value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public Register read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
-    }
-  }
-
- /**
-  * Create an instance of Register given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of Register
-  * @throws IOException if the JSON string is invalid with respect to Register
-  */
-  public static Register fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, Register.class);
-  }
-
- /**
-  * Convert an instance of Register to an JSON string
-  *
-  * @return JSON string
-  */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
-

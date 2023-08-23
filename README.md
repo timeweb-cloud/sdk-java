@@ -2,7 +2,7 @@
 
 Timeweb Cloud API
 - API version: 1.0.0
-  - Build date: 2023-08-23T13:55:55.873746Z[Etc/UTC]
+  - Build date: 2023-08-23T14:47:40.767053Z[Etc/UTC]
 
 # Введение
 API Timeweb Cloud позволяет вам управлять ресурсами в облаке программным способом с использованием обычных HTTP-запросов.
@@ -620,7 +620,11 @@ Class | Method | HTTP request | Description
  - [DomainNameServerItemsInner](docs/DomainNameServerItemsInner.md)
  - [DomainPaymentPeriod](docs/DomainPaymentPeriod.md)
  - [DomainPrimeType](docs/DomainPrimeType.md)
+ - [DomainProlong](docs/DomainProlong.md)
+ - [DomainRegister](docs/DomainRegister.md)
+ - [DomainRegisterNsInner](docs/DomainRegisterNsInner.md)
  - [DomainRequest](docs/DomainRequest.md)
+ - [DomainTransfer](docs/DomainTransfer.md)
  - [EditApiKey](docs/EditApiKey.md)
  - [Finances](docs/Finances.md)
  - [FirewallGroupInAPI](docs/FirewallGroupInAPI.md)
@@ -755,11 +759,8 @@ Class | Method | HTTP request | Description
  - [PresetsStorage](docs/PresetsStorage.md)
  - [Project](docs/Project.md)
  - [ProjectResource](docs/ProjectResource.md)
- - [Prolong](docs/Prolong.md)
  - [Quota](docs/Quota.md)
  - [RefreshApiKey](docs/RefreshApiKey.md)
- - [Register](docs/Register.md)
- - [RegisterNsInner](docs/RegisterNsInner.md)
  - [RemoveCountries](docs/RemoveCountries.md)
  - [RemoveIps](docs/RemoveIps.md)
  - [RenameStorageFileRequest](docs/RenameStorageFileRequest.md)
@@ -794,7 +795,6 @@ Class | Method | HTTP request | Description
  - [Subdomain](docs/Subdomain.md)
  - [TopLevelDomain](docs/TopLevelDomain.md)
  - [TopLevelDomainAllowedBuyPeriodsInner](docs/TopLevelDomainAllowedBuyPeriodsInner.md)
- - [Transfer](docs/Transfer.md)
  - [TransferStatus](docs/TransferStatus.md)
  - [TransferStatusErrorsInner](docs/TransferStatusErrorsInner.md)
  - [TransferStorageRequest](docs/TransferStorageRequest.md)

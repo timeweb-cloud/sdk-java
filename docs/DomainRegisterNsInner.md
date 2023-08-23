@@ -1,6 +1,6 @@
 
 
-# RegisterNsInner
+# DomainRegisterNsInner
 
 
 ## Properties
