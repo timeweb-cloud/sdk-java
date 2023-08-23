@@ -1,8 +1,8 @@
 # openapi-java-client
 
 Timeweb Cloud API
-- API version: 
-  - Build date: 2023-08-22T13:41:29.183776Z[Etc/UTC]
+- API version: 1.0.0
+  - Build date: 2023-08-23T13:55:55.873746Z[Etc/UTC]
 
 # Введение
 API Timeweb Cloud позволяет вам управлять ресурсами в облаке программным способом с использованием обычных HTTP-запросов.
