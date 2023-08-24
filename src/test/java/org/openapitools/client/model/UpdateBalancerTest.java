@@ -141,12 +141,4 @@ public class UpdateBalancerTest {
         // TODO: test rise
     }
 
-    /**
-     * Test the property 'presetId'
-     */
-    @Test
-    public void presetIdTest() {
-        // TODO: test presetId
-    }
-
 }

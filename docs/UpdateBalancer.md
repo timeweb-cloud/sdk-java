@@ -20,7 +20,6 @@
 |**timeout** | **BigDecimal** | Таймаут ответа балансировщика. |  [optional] |
 |**fall** | **BigDecimal** | Порог количества ошибок. |  [optional] |
 |**rise** | **BigDecimal** | Порог количества успешных ответов. |  [optional] |
-|**presetId** | **BigDecimal** | Идентификатор тарифа. |  [optional] |
 
 
 

@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * UpdateBalancer
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-23T15:22:55.488823Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-24T13:31:29.967465Z[Etc/UTC]")
 public class UpdateBalancer {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -202,10 +202,6 @@ public class UpdateBalancer {
   public static final String SERIALIZED_NAME_RISE = "rise";
   @SerializedName(SERIALIZED_NAME_RISE)
   private BigDecimal rise;
-
-  public static final String SERIALIZED_NAME_PRESET_ID = "preset_id";
-  @SerializedName(SERIALIZED_NAME_PRESET_ID)
-  private BigDecimal presetId;
 
   public UpdateBalancer() {
   }
@@ -483,27 +479,6 @@ public class UpdateBalancer {
   }
 
 
-  public UpdateBalancer presetId(BigDecimal presetId) {
-    
-    this.presetId = presetId;
-    return this;
-  }
-
-   /**
-   * Идентификатор тарифа.
-   * @return presetId
-  **/
-  @javax.annotation.Nullable
-  public BigDecimal getPresetId() {
-    return presetId;
-  }
-
-
-  public void setPresetId(BigDecimal presetId) {
-    this.presetId = presetId;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -526,13 +501,12 @@ public class UpdateBalancer {
         Objects.equals(this.inter, updateBalancer.inter) &&
         Objects.equals(this.timeout, updateBalancer.timeout) &&
         Objects.equals(this.fall, updateBalancer.fall) &&
-        Objects.equals(this.rise, updateBalancer.rise) &&
-        Objects.equals(this.presetId, updateBalancer.presetId);
+        Objects.equals(this.rise, updateBalancer.rise);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, algo, isSticky, isUseProxy, isSsl, isKeepalive, proto, port, path, inter, timeout, fall, rise, presetId);
+    return Objects.hash(name, algo, isSticky, isUseProxy, isSsl, isKeepalive, proto, port, path, inter, timeout, fall, rise);
   }
 
   @Override
@@ -552,7 +526,6 @@ public class UpdateBalancer {
     sb.append("    timeout: ").append(toIndentedString(timeout)).append("\n");
     sb.append("    fall: ").append(toIndentedString(fall)).append("\n");
     sb.append("    rise: ").append(toIndentedString(rise)).append("\n");
-    sb.append("    presetId: ").append(toIndentedString(presetId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -588,7 +561,6 @@ public class UpdateBalancer {
     openapiFields.add("timeout");
     openapiFields.add("fall");
     openapiFields.add("rise");
-    openapiFields.add("preset_id");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
