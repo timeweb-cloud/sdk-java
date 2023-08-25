@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * CreateKeyRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-24T13:31:29.967465Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-25T09:01:17.600291Z[Etc/UTC]")
 public class CreateKeyRequest {
   public static final String SERIALIZED_NAME_BODY = "body";
   @SerializedName(SERIALIZED_NAME_BODY)

@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * ForwardingIncomingIsDisabled
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-24T13:31:29.967465Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-25T09:01:17.600291Z[Etc/UTC]")
 public class ForwardingIncomingIsDisabled {
   public static final String SERIALIZED_NAME_IS_ENABLED = "is_enabled";
   @SerializedName(SERIALIZED_NAME_IS_ENABLED)

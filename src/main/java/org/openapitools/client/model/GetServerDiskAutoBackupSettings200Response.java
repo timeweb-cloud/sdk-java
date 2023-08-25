@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * GetServerDiskAutoBackupSettings200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-24T13:31:29.967465Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-25T09:01:17.600291Z[Etc/UTC]")
 public class GetServerDiskAutoBackupSettings200Response {
   public static final String SERIALIZED_NAME_AUTO_BACKUPS_SETTINGS = "auto_backups_settings";
   @SerializedName(SERIALIZED_NAME_AUTO_BACKUPS_SETTINGS)

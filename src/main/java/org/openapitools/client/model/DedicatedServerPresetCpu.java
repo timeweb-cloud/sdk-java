@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * Объект, содержащий информацию о процессоре выделенного сервера.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-24T13:31:29.967465Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-25T09:01:17.600291Z[Etc/UTC]")
 public class DedicatedServerPresetCpu {
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)

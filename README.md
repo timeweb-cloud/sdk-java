@@ -2,7 +2,7 @@
 
 Timeweb Cloud API
 - API version: 1.0.0
-  - Build date: 2023-08-24T13:31:29.967465Z[Etc/UTC]
+  - Build date: 2023-08-25T09:01:17.600291Z[Etc/UTC]
 
 # Введение
 API Timeweb Cloud позволяет вам управлять ресурсами в облаке программным способом с использованием обычных HTTP-запросов.
@@ -837,6 +837,7 @@ Class | Method | HTTP request | Description
  - [Use](docs/Use.md)
  - [Vds](docs/Vds.md)
  - [VdsDisksInner](docs/VdsDisksInner.md)
+ - [VdsImage](docs/VdsImage.md)
  - [VdsNetworksInner](docs/VdsNetworksInner.md)
  - [VdsNetworksInnerIpsInner](docs/VdsNetworksInnerIpsInner.md)
  - [VdsOs](docs/VdsOs.md)

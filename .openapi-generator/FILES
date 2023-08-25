@@ -358,6 +358,7 @@ docs/UrlStatus.md
 docs/Use.md
 docs/Vds.md
 docs/VdsDisksInner.md
+docs/VdsImage.md
 docs/VdsNetworksInner.md
 docs/VdsNetworksInnerIpsInner.md
 docs/VdsOs.md
@@ -748,6 +749,7 @@ src/main/java/org/openapitools/client/model/UrlStatus.java
 src/main/java/org/openapitools/client/model/Use.java
 src/main/java/org/openapitools/client/model/Vds.java
 src/main/java/org/openapitools/client/model/VdsDisksInner.java
+src/main/java/org/openapitools/client/model/VdsImage.java
 src/main/java/org/openapitools/client/model/VdsNetworksInner.java
 src/main/java/org/openapitools/client/model/VdsNetworksInnerIpsInner.java
 src/main/java/org/openapitools/client/model/VdsOs.java
@@ -1109,6 +1111,7 @@ src/test/java/org/openapitools/client/model/UploadSuccessfulTest.java
 src/test/java/org/openapitools/client/model/UrlStatusTest.java
 src/test/java/org/openapitools/client/model/UseTest.java
 src/test/java/org/openapitools/client/model/VdsDisksInnerTest.java
+src/test/java/org/openapitools/client/model/VdsImageTest.java
 src/test/java/org/openapitools/client/model/VdsNetworksInnerIpsInnerTest.java
 src/test/java/org/openapitools/client/model/VdsNetworksInnerTest.java
 src/test/java/org/openapitools/client/model/VdsOsTest.java

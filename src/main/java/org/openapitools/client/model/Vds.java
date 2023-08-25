@@ -26,6 +26,7 @@ import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import org.openapitools.client.model.VdsDisksInner;
+import org.openapitools.client.model.VdsImage;
 import org.openapitools.client.model.VdsNetworksInner;
 import org.openapitools.client.model.VdsOs;
 import org.openapitools.client.model.VdsSoftware;
@@ -58,7 +59,7 @@ import org.openapitools.client.JSON;
 /**
  * Сервер
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-24T13:31:29.967465Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-25T09:01:17.600291Z[Etc/UTC]")
 public class Vds {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -318,6 +319,10 @@ public class Vds {
   public static final String SERIALIZED_NAME_ROOT_PASS = "root_pass";
   @SerializedName(SERIALIZED_NAME_ROOT_PASS)
   private String rootPass;
+
+  public static final String SERIALIZED_NAME_IMAGE = "image";
+  @SerializedName(SERIALIZED_NAME_IMAGE)
+  private VdsImage image;
 
   public static final String SERIALIZED_NAME_NETWORKS = "networks";
   @SerializedName(SERIALIZED_NAME_NETWORKS)
@@ -754,6 +759,27 @@ public class Vds {
   }
 
 
+  public Vds image(VdsImage image) {
+    
+    this.image = image;
+    return this;
+  }
+
+   /**
+   * Get image
+   * @return image
+  **/
+  @javax.annotation.Nullable
+  public VdsImage getImage() {
+    return image;
+  }
+
+
+  public void setImage(VdsImage image) {
+    this.image = image;
+  }
+
+
   public Vds networks(List<VdsNetworksInner> networks) {
     
     this.networks = networks;
@@ -813,12 +839,13 @@ public class Vds {
         Objects.equals(this.avatarId, vds.avatarId) &&
         Objects.equals(this.vncPass, vds.vncPass) &&
         Objects.equals(this.rootPass, vds.rootPass) &&
+        Objects.equals(this.image, vds.image) &&
         Objects.equals(this.networks, vds.networks);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, comment, createdAt, os, software, presetId, location, configuratorId, bootMode, status, startAt, isDdosGuard, cpu, cpuFrequency, ram, disks, avatarId, vncPass, rootPass, networks);
+    return Objects.hash(id, name, comment, createdAt, os, software, presetId, location, configuratorId, bootMode, status, startAt, isDdosGuard, cpu, cpuFrequency, ram, disks, avatarId, vncPass, rootPass, image, networks);
   }
 
   @Override
@@ -845,6 +872,7 @@ public class Vds {
     sb.append("    avatarId: ").append(toIndentedString(avatarId)).append("\n");
     sb.append("    vncPass: ").append(toIndentedString(vncPass)).append("\n");
     sb.append("    rootPass: ").append(toIndentedString(rootPass)).append("\n");
+    sb.append("    image: ").append(toIndentedString(image)).append("\n");
     sb.append("    networks: ").append(toIndentedString(networks)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -888,6 +916,7 @@ public class Vds {
     openapiFields.add("avatar_id");
     openapiFields.add("vnc_pass");
     openapiFields.add("root_pass");
+    openapiFields.add("image");
     openapiFields.add("networks");
 
     // a set of required properties/fields (JSON key names)
@@ -912,6 +941,7 @@ public class Vds {
     openapiRequiredFields.add("avatar_id");
     openapiRequiredFields.add("vnc_pass");
     openapiRequiredFields.add("root_pass");
+    openapiRequiredFields.add("image");
     openapiRequiredFields.add("networks");
   }
 
@@ -987,6 +1017,8 @@ public class Vds {
       if ((jsonObj.get("root_pass") != null && !jsonObj.get("root_pass").isJsonNull()) && !jsonObj.get("root_pass").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `root_pass` to be a primitive type in the JSON string but got `%s`", jsonObj.get("root_pass").toString()));
       }
+      // validate the required field `image`
+      VdsImage.validateJsonElement(jsonObj.get("image"));
       // ensure the json data is an array
       if (!jsonObj.get("networks").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `networks` to be an array in the JSON string but got `%s`", jsonObj.get("networks").toString()));

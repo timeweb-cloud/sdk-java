@@ -24,6 +24,7 @@ import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import org.openapitools.client.model.VdsDisksInner;
+import org.openapitools.client.model.VdsImage;
 import org.openapitools.client.model.VdsNetworksInner;
 import org.openapitools.client.model.VdsOs;
 import org.openapitools.client.model.VdsSoftware;
@@ -202,6 +203,14 @@ public class VdsTest {
     @Test
     public void rootPassTest() {
         // TODO: test rootPass
+    }
+
+    /**
+     * Test the property 'image'
+     */
+    @Test
+    public void imageTest() {
+        // TODO: test image
     }
 
     /**
