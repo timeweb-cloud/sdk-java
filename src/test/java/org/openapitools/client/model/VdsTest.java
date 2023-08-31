@@ -221,4 +221,12 @@ public class VdsTest {
         // TODO: test networks
     }
 
+    /**
+     * Test the property 'cloudInit'
+     */
+    @Test
+    public void cloudInitTest() {
+        // TODO: test cloudInit
+    }
+
 }

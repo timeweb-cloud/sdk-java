@@ -59,7 +59,7 @@ import org.openapitools.client.JSON;
 /**
  * Сервер
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-25T09:01:17.600291Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-31T16:11:14.747382Z[Etc/UTC]")
 public class Vds {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -327,6 +327,10 @@ public class Vds {
   public static final String SERIALIZED_NAME_NETWORKS = "networks";
   @SerializedName(SERIALIZED_NAME_NETWORKS)
   private List<VdsNetworksInner> networks = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_CLOUD_INIT = "cloud_init";
+  @SerializedName(SERIALIZED_NAME_CLOUD_INIT)
+  private String cloudInit;
 
   public Vds() {
   }
@@ -809,6 +813,27 @@ public class Vds {
   }
 
 
+  public Vds cloudInit(String cloudInit) {
+    
+    this.cloudInit = cloudInit;
+    return this;
+  }
+
+   /**
+   * Cloud-init скрипт
+   * @return cloudInit
+  **/
+  @javax.annotation.Nullable
+  public String getCloudInit() {
+    return cloudInit;
+  }
+
+
+  public void setCloudInit(String cloudInit) {
+    this.cloudInit = cloudInit;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -840,12 +865,13 @@ public class Vds {
         Objects.equals(this.vncPass, vds.vncPass) &&
         Objects.equals(this.rootPass, vds.rootPass) &&
         Objects.equals(this.image, vds.image) &&
-        Objects.equals(this.networks, vds.networks);
+        Objects.equals(this.networks, vds.networks) &&
+        Objects.equals(this.cloudInit, vds.cloudInit);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, comment, createdAt, os, software, presetId, location, configuratorId, bootMode, status, startAt, isDdosGuard, cpu, cpuFrequency, ram, disks, avatarId, vncPass, rootPass, image, networks);
+    return Objects.hash(id, name, comment, createdAt, os, software, presetId, location, configuratorId, bootMode, status, startAt, isDdosGuard, cpu, cpuFrequency, ram, disks, avatarId, vncPass, rootPass, image, networks, cloudInit);
   }
 
   @Override
@@ -874,6 +900,7 @@ public class Vds {
     sb.append("    rootPass: ").append(toIndentedString(rootPass)).append("\n");
     sb.append("    image: ").append(toIndentedString(image)).append("\n");
     sb.append("    networks: ").append(toIndentedString(networks)).append("\n");
+    sb.append("    cloudInit: ").append(toIndentedString(cloudInit)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -918,6 +945,7 @@ public class Vds {
     openapiFields.add("root_pass");
     openapiFields.add("image");
     openapiFields.add("networks");
+    openapiFields.add("cloud_init");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -943,6 +971,7 @@ public class Vds {
     openapiRequiredFields.add("root_pass");
     openapiRequiredFields.add("image");
     openapiRequiredFields.add("networks");
+    openapiRequiredFields.add("cloud_init");
   }
 
  /**
@@ -1029,6 +1058,9 @@ public class Vds {
       for (int i = 0; i < jsonArraynetworks.size(); i++) {
         VdsNetworksInner.validateJsonElement(jsonArraynetworks.get(i));
       };
+      if ((jsonObj.get("cloud_init") != null && !jsonObj.get("cloud_init").isJsonNull()) && !jsonObj.get("cloud_init").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `cloud_init` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cloud_init").toString()));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

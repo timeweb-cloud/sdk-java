@@ -111,4 +111,12 @@ public class UpdateServerTest {
         // TODO: test imageId
     }
 
+    /**
+     * Test the property 'cloudInit'
+     */
+    @Test
+    public void cloudInitTest() {
+        // TODO: test cloudInit
+    }
+
 }

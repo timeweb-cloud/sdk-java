@@ -56,7 +56,7 @@ import org.openapitools.client.JSON;
 /**
  * CreateServer
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-25T09:01:17.600291Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-31T16:11:14.747382Z[Etc/UTC]")
 public class CreateServer {
   public static final String SERIALIZED_NAME_CONFIGURATION = "configuration";
   @SerializedName(SERIALIZED_NAME_CONFIGURATION)
@@ -110,6 +110,10 @@ public class CreateServer {
   public static final String SERIALIZED_NAME_NETWORK = "network";
   @SerializedName(SERIALIZED_NAME_NETWORK)
   private Network network;
+
+  public static final String SERIALIZED_NAME_CLOUD_INIT = "cloud_init";
+  @SerializedName(SERIALIZED_NAME_CLOUD_INIT)
+  private String cloudInit;
 
   public CreateServer() {
   }
@@ -399,6 +403,27 @@ public class CreateServer {
   }
 
 
+  public CreateServer cloudInit(String cloudInit) {
+    
+    this.cloudInit = cloudInit;
+    return this;
+  }
+
+   /**
+   * Cloud-init скрипт
+   * @return cloudInit
+  **/
+  @javax.annotation.Nullable
+  public String getCloudInit() {
+    return cloudInit;
+  }
+
+
+  public void setCloudInit(String cloudInit) {
+    this.cloudInit = cloudInit;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -421,12 +446,13 @@ public class CreateServer {
         Objects.equals(this.comment, createServer.comment) &&
         Objects.equals(this.sshKeysIds, createServer.sshKeysIds) &&
         Objects.equals(this.isLocalNetwork, createServer.isLocalNetwork) &&
-        Objects.equals(this.network, createServer.network);
+        Objects.equals(this.network, createServer.network) &&
+        Objects.equals(this.cloudInit, createServer.cloudInit);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(_configuration, isDdosGuard, osId, imageId, softwareId, presetId, bandwidth, name, avatarId, comment, sshKeysIds, isLocalNetwork, network);
+    return Objects.hash(_configuration, isDdosGuard, osId, imageId, softwareId, presetId, bandwidth, name, avatarId, comment, sshKeysIds, isLocalNetwork, network, cloudInit);
   }
 
   @Override
@@ -446,6 +472,7 @@ public class CreateServer {
     sb.append("    sshKeysIds: ").append(toIndentedString(sshKeysIds)).append("\n");
     sb.append("    isLocalNetwork: ").append(toIndentedString(isLocalNetwork)).append("\n");
     sb.append("    network: ").append(toIndentedString(network)).append("\n");
+    sb.append("    cloudInit: ").append(toIndentedString(cloudInit)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -481,6 +508,7 @@ public class CreateServer {
     openapiFields.add("ssh_keys_ids");
     openapiFields.add("is_local_network");
     openapiFields.add("network");
+    openapiFields.add("cloud_init");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -540,6 +568,9 @@ public class CreateServer {
       // validate the optional field `network`
       if (jsonObj.get("network") != null && !jsonObj.get("network").isJsonNull()) {
         Network.validateJsonElement(jsonObj.get("network"));
+      }
+      if ((jsonObj.get("cloud_init") != null && !jsonObj.get("cloud_init").isJsonNull()) && !jsonObj.get("cloud_init").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `cloud_init` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cloud_init").toString()));
       }
   }
 

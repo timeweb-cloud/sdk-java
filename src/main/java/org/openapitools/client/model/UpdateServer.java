@@ -53,7 +53,7 @@ import org.openapitools.client.JSON;
 /**
  * UpdateServer
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-25T09:01:17.600291Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-31T16:11:14.747382Z[Etc/UTC]")
 public class UpdateServer {
   public static final String SERIALIZED_NAME_CONFIGURATOR = "configurator";
   @SerializedName(SERIALIZED_NAME_CONFIGURATOR)
@@ -90,6 +90,10 @@ public class UpdateServer {
   public static final String SERIALIZED_NAME_IMAGE_ID = "image_id";
   @SerializedName(SERIALIZED_NAME_IMAGE_ID)
   private UUID imageId;
+
+  public static final String SERIALIZED_NAME_CLOUD_INIT = "cloud_init";
+  @SerializedName(SERIALIZED_NAME_CLOUD_INIT)
+  private String cloudInit;
 
   public UpdateServer() {
   }
@@ -283,6 +287,27 @@ public class UpdateServer {
   }
 
 
+  public UpdateServer cloudInit(String cloudInit) {
+    
+    this.cloudInit = cloudInit;
+    return this;
+  }
+
+   /**
+   * Cloud-init скрипт
+   * @return cloudInit
+  **/
+  @javax.annotation.Nullable
+  public String getCloudInit() {
+    return cloudInit;
+  }
+
+
+  public void setCloudInit(String cloudInit) {
+    this.cloudInit = cloudInit;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -301,12 +326,13 @@ public class UpdateServer {
         Objects.equals(this.name, updateServer.name) &&
         Objects.equals(this.avatarId, updateServer.avatarId) &&
         Objects.equals(this.comment, updateServer.comment) &&
-        Objects.equals(this.imageId, updateServer.imageId);
+        Objects.equals(this.imageId, updateServer.imageId) &&
+        Objects.equals(this.cloudInit, updateServer.cloudInit);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(configurator, osId, softwareId, presetId, bandwidth, name, avatarId, comment, imageId);
+    return Objects.hash(configurator, osId, softwareId, presetId, bandwidth, name, avatarId, comment, imageId, cloudInit);
   }
 
   @Override
@@ -322,6 +348,7 @@ public class UpdateServer {
     sb.append("    avatarId: ").append(toIndentedString(avatarId)).append("\n");
     sb.append("    comment: ").append(toIndentedString(comment)).append("\n");
     sb.append("    imageId: ").append(toIndentedString(imageId)).append("\n");
+    sb.append("    cloudInit: ").append(toIndentedString(cloudInit)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -353,6 +380,7 @@ public class UpdateServer {
     openapiFields.add("avatar_id");
     openapiFields.add("comment");
     openapiFields.add("image_id");
+    openapiFields.add("cloud_init");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -394,6 +422,9 @@ public class UpdateServer {
       }
       if ((jsonObj.get("image_id") != null && !jsonObj.get("image_id").isJsonNull()) && !jsonObj.get("image_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `image_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("image_id").toString()));
+      }
+      if ((jsonObj.get("cloud_init") != null && !jsonObj.get("cloud_init").isJsonNull()) && !jsonObj.get("cloud_init").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `cloud_init` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cloud_init").toString()));
       }
   }
 

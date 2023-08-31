@@ -146,4 +146,12 @@ public class CreateServerTest {
         // TODO: test network
     }
 
+    /**
+     * Test the property 'cloudInit'
+     */
+    @Test
+    public void cloudInitTest() {
+        // TODO: test cloudInit
+    }
+
 }
