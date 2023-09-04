@@ -21,6 +21,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,7 +53,7 @@ import org.openapitools.client.JSON;
 /**
  * UpdateAdmin
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-31T16:11:14.747382Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-09-04T16:27:58.449978Z[Etc/UTC]")
 public class UpdateAdmin {
   public static final String SERIALIZED_NAME_PASSWORD = "password";
   @SerializedName(SERIALIZED_NAME_PASSWORD)
@@ -153,6 +154,10 @@ public class UpdateAdmin {
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
 
+  public static final String SERIALIZED_NAME_INSTANCE_ID = "instance_id";
+  @SerializedName(SERIALIZED_NAME_INSTANCE_ID)
+  private BigDecimal instanceId;
+
   public UpdateAdmin() {
   }
 
@@ -227,6 +232,27 @@ public class UpdateAdmin {
   }
 
 
+  public UpdateAdmin instanceId(BigDecimal instanceId) {
+    
+    this.instanceId = instanceId;
+    return this;
+  }
+
+   /**
+   * Уникальный идентификатор инстанса базы данных для приминения привилегий. В данных момент поле доступно только для кластеров MySQL. Если поле не передано, то привилегии будут применены ко всем инстансам
+   * @return instanceId
+  **/
+  @javax.annotation.Nullable
+  public BigDecimal getInstanceId() {
+    return instanceId;
+  }
+
+
+  public void setInstanceId(BigDecimal instanceId) {
+    this.instanceId = instanceId;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -239,12 +265,13 @@ public class UpdateAdmin {
     UpdateAdmin updateAdmin = (UpdateAdmin) o;
     return Objects.equals(this.password, updateAdmin.password) &&
         Objects.equals(this.privileges, updateAdmin.privileges) &&
-        Objects.equals(this.description, updateAdmin.description);
+        Objects.equals(this.description, updateAdmin.description) &&
+        Objects.equals(this.instanceId, updateAdmin.instanceId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(password, privileges, description);
+    return Objects.hash(password, privileges, description, instanceId);
   }
 
   @Override
@@ -254,6 +281,7 @@ public class UpdateAdmin {
     sb.append("    password: ").append(toIndentedString(password)).append("\n");
     sb.append("    privileges: ").append(toIndentedString(privileges)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    instanceId: ").append(toIndentedString(instanceId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -279,6 +307,7 @@ public class UpdateAdmin {
     openapiFields.add("password");
     openapiFields.add("privileges");
     openapiFields.add("description");
+    openapiFields.add("instance_id");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

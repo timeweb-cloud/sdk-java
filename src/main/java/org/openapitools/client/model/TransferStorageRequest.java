@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * TransferStorageRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-31T16:11:14.747382Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-09-04T16:27:58.449978Z[Etc/UTC]")
 public class TransferStorageRequest {
   public static final String SERIALIZED_NAME_ACCESS_KEY = "access_key";
   @SerializedName(SERIALIZED_NAME_ACCESS_KEY)

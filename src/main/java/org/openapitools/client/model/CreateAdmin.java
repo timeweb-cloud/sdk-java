@@ -21,6 +21,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,7 +53,7 @@ import org.openapitools.client.JSON;
 /**
  * CreateAdmin
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-31T16:11:14.747382Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-09-04T16:27:58.449978Z[Etc/UTC]")
 public class CreateAdmin {
   public static final String SERIALIZED_NAME_LOGIN = "login";
   @SerializedName(SERIALIZED_NAME_LOGIN)
@@ -65,6 +66,10 @@ public class CreateAdmin {
   public static final String SERIALIZED_NAME_HOST = "host";
   @SerializedName(SERIALIZED_NAME_HOST)
   private String host;
+
+  public static final String SERIALIZED_NAME_INSTANCE_ID = "instance_id";
+  @SerializedName(SERIALIZED_NAME_INSTANCE_ID)
+  private BigDecimal instanceId;
 
   /**
    * Gets or Sets privileges
@@ -227,6 +232,27 @@ public class CreateAdmin {
   }
 
 
+  public CreateAdmin instanceId(BigDecimal instanceId) {
+    
+    this.instanceId = instanceId;
+    return this;
+  }
+
+   /**
+   * Уникальный идентификатор инстанса базы данных для приминения привилегий. В данных момент поле доступно только для кластеров MySQL. Если поле не передано, то привилегии будут применены ко всем инстансам
+   * @return instanceId
+  **/
+  @javax.annotation.Nullable
+  public BigDecimal getInstanceId() {
+    return instanceId;
+  }
+
+
+  public void setInstanceId(BigDecimal instanceId) {
+    this.instanceId = instanceId;
+  }
+
+
   public CreateAdmin privileges(List<PrivilegesEnum> privileges) {
     
     this.privileges = privileges;
@@ -290,13 +316,14 @@ public class CreateAdmin {
     return Objects.equals(this.login, createAdmin.login) &&
         Objects.equals(this.password, createAdmin.password) &&
         Objects.equals(this.host, createAdmin.host) &&
+        Objects.equals(this.instanceId, createAdmin.instanceId) &&
         Objects.equals(this.privileges, createAdmin.privileges) &&
         Objects.equals(this.description, createAdmin.description);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(login, password, host, privileges, description);
+    return Objects.hash(login, password, host, instanceId, privileges, description);
   }
 
   @Override
@@ -306,6 +333,7 @@ public class CreateAdmin {
     sb.append("    login: ").append(toIndentedString(login)).append("\n");
     sb.append("    password: ").append(toIndentedString(password)).append("\n");
     sb.append("    host: ").append(toIndentedString(host)).append("\n");
+    sb.append("    instanceId: ").append(toIndentedString(instanceId)).append("\n");
     sb.append("    privileges: ").append(toIndentedString(privileges)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("}");
@@ -333,6 +361,7 @@ public class CreateAdmin {
     openapiFields.add("login");
     openapiFields.add("password");
     openapiFields.add("host");
+    openapiFields.add("instance_id");
     openapiFields.add("privileges");
     openapiFields.add("description");
 

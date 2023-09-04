@@ -638,7 +638,7 @@ public class DatabasesApi {
 
     /**
      * Создание инстанса базы данных
-     * Чтобы создать инстанс базы данных, отправьте POST-запрос на &#x60;/api/v1/databases/{db_cluster_id}/instances&#x60;.
+     * Чтобы создать инстанс базы данных, отправьте POST-запрос на &#x60;/api/v1/databases/{db_cluster_id}/instances&#x60;.\\    Существующие пользователи не будут иметь доступа к новой базе данных после создания. Вы можете изменить привилегии для пользователя через &lt;a href&#x3D;&#39;#tag/Bazy-dannyh/operation/updateDatabaseUser&#39;&gt;метод изменения пользователя&lt;/a&gt; 
      * @param dbClusterId Идентификатор кластера базы данных (required)
      * @param createInstance  (required)
      * @return CreateDatabaseInstance201Response
@@ -662,7 +662,7 @@ public class DatabasesApi {
 
     /**
      * Создание инстанса базы данных
-     * Чтобы создать инстанс базы данных, отправьте POST-запрос на &#x60;/api/v1/databases/{db_cluster_id}/instances&#x60;.
+     * Чтобы создать инстанс базы данных, отправьте POST-запрос на &#x60;/api/v1/databases/{db_cluster_id}/instances&#x60;.\\    Существующие пользователи не будут иметь доступа к новой базе данных после создания. Вы можете изменить привилегии для пользователя через &lt;a href&#x3D;&#39;#tag/Bazy-dannyh/operation/updateDatabaseUser&#39;&gt;метод изменения пользователя&lt;/a&gt; 
      * @param dbClusterId Идентификатор кластера базы данных (required)
      * @param createInstance  (required)
      * @return ApiResponse&lt;CreateDatabaseInstance201Response&gt;
@@ -687,7 +687,7 @@ public class DatabasesApi {
 
     /**
      * Создание инстанса базы данных (asynchronously)
-     * Чтобы создать инстанс базы данных, отправьте POST-запрос на &#x60;/api/v1/databases/{db_cluster_id}/instances&#x60;.
+     * Чтобы создать инстанс базы данных, отправьте POST-запрос на &#x60;/api/v1/databases/{db_cluster_id}/instances&#x60;.\\    Существующие пользователи не будут иметь доступа к новой базе данных после создания. Вы можете изменить привилегии для пользователя через &lt;a href&#x3D;&#39;#tag/Bazy-dannyh/operation/updateDatabaseUser&#39;&gt;метод изменения пользователя&lt;/a&gt; 
      * @param dbClusterId Идентификатор кластера базы данных (required)
      * @param createInstance  (required)
      * @param _callback The callback to be executed when the API call finishes

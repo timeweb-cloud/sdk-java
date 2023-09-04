@@ -19,6 +19,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Disabled;
@@ -60,6 +61,14 @@ public class UpdateAdminTest {
     @Test
     public void descriptionTest() {
         // TODO: test description
+    }
+
+    /**
+     * Test the property 'instanceId'
+     */
+    @Test
+    public void instanceIdTest() {
+        // TODO: test instanceId
     }
 
 }
