@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * DeleteStorageFileRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-09-04T16:27:58.449978Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-09-18T15:53:32.493699Z[Etc/UTC]")
 public class DeleteStorageFileRequest {
   public static final String SERIALIZED_NAME_SOURCE = "source";
   @SerializedName(SERIALIZED_NAME_SOURCE)

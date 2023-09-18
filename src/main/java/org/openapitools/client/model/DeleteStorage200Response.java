@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * DeleteStorage200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-09-04T16:27:58.449978Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-09-18T15:53:32.493699Z[Etc/UTC]")
 public class DeleteStorage200Response {
   public static final String SERIALIZED_NAME_BUCKET_DELETE = "bucket_delete";
   @SerializedName(SERIALIZED_NAME_BUCKET_DELETE)
