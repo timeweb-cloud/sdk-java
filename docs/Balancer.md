@@ -29,6 +29,7 @@
 |**isUseProxy** | **Boolean** | Это логическое значение, которое показывает, выступает ли балансировщик в качестве прокси. |  |
 |**rules** | [**List&lt;Rule&gt;**](Rule.md) |  |  |
 |**ips** | **List&lt;String&gt;** | Список IP-адресов, привязанных к балансировщику |  |
+|**location** | [**LocationEnum**](#LocationEnum) | Географическое расположение балансировщика |  |
 
 
 
@@ -60,6 +61,15 @@
 | STOPED | &quot;stoped&quot; |
 | STARTING | &quot;starting&quot; |
 | NO_PAID | &quot;no_paid&quot; |
+
+
+
+## Enum: LocationEnum
+
+| Name | Value |
+|---- | -----|
+| RU_1 | &quot;ru-1&quot; |
+| PL_1 | &quot;pl-1&quot; |
 
 
 

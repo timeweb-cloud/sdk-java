@@ -55,7 +55,7 @@ import org.openapitools.client.JSON;
 /**
  * Балансировщик
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-09-18T15:53:32.493699Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-09-19T10:43:50.888053Z[Etc/UTC]")
 public class Balancer {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -289,6 +289,57 @@ public class Balancer {
   public static final String SERIALIZED_NAME_IPS = "ips";
   @SerializedName(SERIALIZED_NAME_IPS)
   private List<String> ips = new ArrayList<>();
+
+  /**
+   * Географическое расположение балансировщика
+   */
+  @JsonAdapter(LocationEnum.Adapter.class)
+  public enum LocationEnum {
+    RU_1("ru-1"),
+    
+    PL_1("pl-1");
+
+    private String value;
+
+    LocationEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static LocationEnum fromValue(String value) {
+      for (LocationEnum b : LocationEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<LocationEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final LocationEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public LocationEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return LocationEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_LOCATION = "location";
+  @SerializedName(SERIALIZED_NAME_LOCATION)
+  private LocationEnum location;
 
   public Balancer() {
   }
@@ -750,6 +801,27 @@ public class Balancer {
   }
 
 
+  public Balancer location(LocationEnum location) {
+    
+    this.location = location;
+    return this;
+  }
+
+   /**
+   * Географическое расположение балансировщика
+   * @return location
+  **/
+  @javax.annotation.Nonnull
+  public LocationEnum getLocation() {
+    return location;
+  }
+
+
+  public void setLocation(LocationEnum location) {
+    this.location = location;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -780,12 +852,13 @@ public class Balancer {
         Objects.equals(this.timeout, balancer.timeout) &&
         Objects.equals(this.isUseProxy, balancer.isUseProxy) &&
         Objects.equals(this.rules, balancer.rules) &&
-        Objects.equals(this.ips, balancer.ips);
+        Objects.equals(this.ips, balancer.ips) &&
+        Objects.equals(this.location, balancer.location);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, algo, createdAt, fall, inter, ip, localIp, isKeepalive, name, path, port, proto, rise, presetId, isSsl, status, isSticky, timeout, isUseProxy, rules, ips);
+    return Objects.hash(id, algo, createdAt, fall, inter, ip, localIp, isKeepalive, name, path, port, proto, rise, presetId, isSsl, status, isSticky, timeout, isUseProxy, rules, ips, location);
   }
 
   @Override
@@ -813,6 +886,7 @@ public class Balancer {
     sb.append("    isUseProxy: ").append(toIndentedString(isUseProxy)).append("\n");
     sb.append("    rules: ").append(toIndentedString(rules)).append("\n");
     sb.append("    ips: ").append(toIndentedString(ips)).append("\n");
+    sb.append("    location: ").append(toIndentedString(location)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -856,6 +930,7 @@ public class Balancer {
     openapiFields.add("is_use_proxy");
     openapiFields.add("rules");
     openapiFields.add("ips");
+    openapiFields.add("location");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -880,6 +955,7 @@ public class Balancer {
     openapiRequiredFields.add("is_use_proxy");
     openapiRequiredFields.add("rules");
     openapiRequiredFields.add("ips");
+    openapiRequiredFields.add("location");
   }
 
  /**
@@ -946,6 +1022,9 @@ public class Balancer {
         throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
       } else if (!jsonObj.get("ips").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `ips` to be an array in the JSON string but got `%s`", jsonObj.get("ips").toString()));
+      }
+      if (!jsonObj.get("location").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `location` to be a primitive type in the JSON string but got `%s`", jsonObj.get("location").toString()));
       }
   }
 

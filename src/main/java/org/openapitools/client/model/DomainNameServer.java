@@ -53,7 +53,7 @@ import org.openapitools.client.JSON;
 /**
  * Name-сервер
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-09-18T15:53:32.493699Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-09-19T10:43:50.888053Z[Etc/UTC]")
 public class DomainNameServer {
   public static final String SERIALIZED_NAME_IS_DELEGATION_ALLOWED = "is_delegation_allowed";
   @SerializedName(SERIALIZED_NAME_IS_DELEGATION_ALLOWED)

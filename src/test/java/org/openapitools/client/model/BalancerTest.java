@@ -209,4 +209,12 @@ public class BalancerTest {
         // TODO: test ips
     }
 
+    /**
+     * Test the property 'location'
+     */
+    @Test
+    public void locationTest() {
+        // TODO: test location
+    }
+
 }
