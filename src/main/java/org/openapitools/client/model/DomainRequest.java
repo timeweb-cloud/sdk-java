@@ -54,7 +54,7 @@ import org.openapitools.client.JSON;
 /**
  * Заявка на продление/регистрацию/трансфер домена.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-09-19T10:43:50.888053Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-13T16:26:14.779732Z[Etc/UTC]")
 public class DomainRequest {
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "account_id";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)

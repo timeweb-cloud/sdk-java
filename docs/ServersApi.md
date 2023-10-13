@@ -1491,8 +1491,8 @@ public class Example {
 
     ServersApi apiInstance = new ServersApi(defaultClient);
     Integer serverId = 1051; // Integer | Уникальный идентификатор облачного сервера.
-    String dateFrom = "dateFrom_example"; // String | Дата начала сбора статистики
-    String dateTo = "dateTo_example"; // String | Дата окончания сбора статистики
+    String dateFrom = "dateFrom_example"; // String | Дата начала сбора статистики. Строка в формате ISO 8061, закодированная в ASCII, пример: `2023-05-25%202023-05-25T14%3A35%3A38`
+    String dateTo = "dateTo_example"; // String | Дата окончания сбора статистики. Строка в формате ISO 8061, закодированная в ASCII, пример: `2023-05-26%202023-05-25T14%3A35%3A38`
     try {
       GetServerStatistics200Response result = apiInstance.getServerStatistics(serverId, dateFrom, dateTo);
       System.out.println(result);
@@ -1512,8 +1512,8 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **serverId** | **Integer**| Уникальный идентификатор облачного сервера. | |
-| **dateFrom** | **String**| Дата начала сбора статистики | |
-| **dateTo** | **String**| Дата окончания сбора статистики | |
+| **dateFrom** | **String**| Дата начала сбора статистики. Строка в формате ISO 8061, закодированная в ASCII, пример: &#x60;2023-05-25%202023-05-25T14%3A35%3A38&#x60; | |
+| **dateTo** | **String**| Дата окончания сбора статистики. Строка в формате ISO 8061, закодированная в ASCII, пример: &#x60;2023-05-26%202023-05-25T14%3A35%3A38&#x60; | |
 
 ### Return type
 
