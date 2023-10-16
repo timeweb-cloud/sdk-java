@@ -31,6 +31,7 @@
 |**image** | [**VdsImage**](VdsImage.md) |  |  |
 |**networks** | [**List&lt;VdsNetworksInner&gt;**](VdsNetworksInner.md) | Список сетей диска. |  |
 |**cloudInit** | **String** | Cloud-init скрипт |  |
+|**qemuAgent** | **Boolean** | Включен ли QEMU-agent на сервере |  |
 
 
 

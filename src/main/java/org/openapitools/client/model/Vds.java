@@ -59,7 +59,7 @@ import org.openapitools.client.JSON;
 /**
  * Сервер
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-16T12:53:14.765246Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-16T14:07:49.422769Z[Etc/UTC]")
 public class Vds {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -331,6 +331,10 @@ public class Vds {
   public static final String SERIALIZED_NAME_CLOUD_INIT = "cloud_init";
   @SerializedName(SERIALIZED_NAME_CLOUD_INIT)
   private String cloudInit;
+
+  public static final String SERIALIZED_NAME_QEMU_AGENT = "qemu_agent";
+  @SerializedName(SERIALIZED_NAME_QEMU_AGENT)
+  private Boolean qemuAgent;
 
   public Vds() {
   }
@@ -834,6 +838,27 @@ public class Vds {
   }
 
 
+  public Vds qemuAgent(Boolean qemuAgent) {
+    
+    this.qemuAgent = qemuAgent;
+    return this;
+  }
+
+   /**
+   * Включен ли QEMU-agent на сервере
+   * @return qemuAgent
+  **/
+  @javax.annotation.Nonnull
+  public Boolean getQemuAgent() {
+    return qemuAgent;
+  }
+
+
+  public void setQemuAgent(Boolean qemuAgent) {
+    this.qemuAgent = qemuAgent;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -866,12 +891,13 @@ public class Vds {
         Objects.equals(this.rootPass, vds.rootPass) &&
         Objects.equals(this.image, vds.image) &&
         Objects.equals(this.networks, vds.networks) &&
-        Objects.equals(this.cloudInit, vds.cloudInit);
+        Objects.equals(this.cloudInit, vds.cloudInit) &&
+        Objects.equals(this.qemuAgent, vds.qemuAgent);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, comment, createdAt, os, software, presetId, location, configuratorId, bootMode, status, startAt, isDdosGuard, cpu, cpuFrequency, ram, disks, avatarId, vncPass, rootPass, image, networks, cloudInit);
+    return Objects.hash(id, name, comment, createdAt, os, software, presetId, location, configuratorId, bootMode, status, startAt, isDdosGuard, cpu, cpuFrequency, ram, disks, avatarId, vncPass, rootPass, image, networks, cloudInit, qemuAgent);
   }
 
   @Override
@@ -901,6 +927,7 @@ public class Vds {
     sb.append("    image: ").append(toIndentedString(image)).append("\n");
     sb.append("    networks: ").append(toIndentedString(networks)).append("\n");
     sb.append("    cloudInit: ").append(toIndentedString(cloudInit)).append("\n");
+    sb.append("    qemuAgent: ").append(toIndentedString(qemuAgent)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -946,6 +973,7 @@ public class Vds {
     openapiFields.add("image");
     openapiFields.add("networks");
     openapiFields.add("cloud_init");
+    openapiFields.add("qemu_agent");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -972,6 +1000,7 @@ public class Vds {
     openapiRequiredFields.add("image");
     openapiRequiredFields.add("networks");
     openapiRequiredFields.add("cloud_init");
+    openapiRequiredFields.add("qemu_agent");
   }
 
  /**

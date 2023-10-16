@@ -39775,6 +39775,7 @@ components:
           used: 5120
           type: nvme
           status: done
+        qemu_agent: true
         created_at: 2021-02-25T11:04:15Z
         cpu: 16
         cloud_init: '#cloud-config'
@@ -39949,6 +39950,10 @@ components:
           example: '#cloud-config'
           nullable: true
           type: string
+        qemu_agent:
+          description: Включен ли QEMU-agent на сервере
+          example: true
+          type: boolean
       required:
       - avatar_id
       - boot_mode
@@ -39967,6 +39972,7 @@ components:
       - networks
       - os
       - preset_id
+      - qemu_agent
       - ram
       - root_pass
       - software
@@ -43997,6 +44003,7 @@ components:
             used: 5120
             type: nvme
             status: done
+          qemu_agent: true
           created_at: 2021-02-25T11:04:15Z
           cpu: 16
           cloud_init: '#cloud-config'
@@ -44070,6 +44077,7 @@ components:
             used: 5120
             type: nvme
             status: done
+          qemu_agent: true
           created_at: 2021-02-25T11:04:15Z
           cpu: 16
           cloud_init: '#cloud-config'
@@ -44159,6 +44167,7 @@ components:
             used: 5120
             type: nvme
             status: done
+          qemu_agent: true
           created_at: 2021-02-25T11:04:15Z
           cpu: 16
           cloud_init: '#cloud-config'
@@ -45157,6 +45166,7 @@ components:
             used: 5120
             type: nvme
             status: done
+          qemu_agent: true
           created_at: 2021-02-25T11:04:15Z
           cpu: 16
           cloud_init: '#cloud-config'
@@ -45230,6 +45240,7 @@ components:
             used: 5120
             type: nvme
             status: done
+          qemu_agent: true
           created_at: 2021-02-25T11:04:15Z
           cpu: 16
           cloud_init: '#cloud-config'
@@ -45627,6 +45638,7 @@ components:
             used: 5120
             type: nvme
             status: done
+          qemu_agent: true
           created_at: 2021-02-25T11:04:15Z
           cpu: 16
           cloud_init: '#cloud-config'
@@ -45700,6 +45712,7 @@ components:
             used: 5120
             type: nvme
             status: done
+          qemu_agent: true
           created_at: 2021-02-25T11:04:15Z
           cpu: 16
           cloud_init: '#cloud-config'

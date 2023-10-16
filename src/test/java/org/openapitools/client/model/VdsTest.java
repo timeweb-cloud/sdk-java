@@ -229,4 +229,12 @@ public class VdsTest {
         // TODO: test cloudInit
     }
 
+    /**
+     * Test the property 'qemuAgent'
+     */
+    @Test
+    public void qemuAgentTest() {
+        // TODO: test qemuAgent
+    }
+
 }
