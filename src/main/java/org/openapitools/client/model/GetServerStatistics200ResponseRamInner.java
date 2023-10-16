@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * GetServerStatistics200ResponseRamInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-16T14:07:49.422769Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-16T15:50:11.385994Z[Etc/UTC]")
 public class GetServerStatistics200ResponseRamInner {
   public static final String SERIALIZED_NAME_LOGGED_AT = "logged_at";
   @SerializedName(SERIALIZED_NAME_LOGGED_AT)

@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * AddServerIPRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-16T14:07:49.422769Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-16T15:50:11.385994Z[Etc/UTC]")
 public class AddServerIPRequest {
   /**
    * Тип IP-адреса

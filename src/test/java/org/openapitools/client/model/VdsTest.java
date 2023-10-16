@@ -230,11 +230,11 @@ public class VdsTest {
     }
 
     /**
-     * Test the property 'qemuAgent'
+     * Test the property 'isQemuAgent'
      */
     @Test
-    public void qemuAgentTest() {
-        // TODO: test qemuAgent
+    public void isQemuAgentTest() {
+        // TODO: test isQemuAgent
     }
 
 }
