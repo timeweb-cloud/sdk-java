@@ -54,7 +54,7 @@ import org.openapitools.client.JSON;
 /**
  * Доменная зона.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-13T16:26:14.779732Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-16T12:53:14.765246Z[Etc/UTC]")
 public class TopLevelDomain {
   public static final String SERIALIZED_NAME_ALLOWED_BUY_PERIODS = "allowed_buy_periods";
   @SerializedName(SERIALIZED_NAME_ALLOWED_BUY_PERIODS)

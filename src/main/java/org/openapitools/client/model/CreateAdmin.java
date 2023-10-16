@@ -53,7 +53,7 @@ import org.openapitools.client.JSON;
 /**
  * CreateAdmin
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-13T16:26:14.779732Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-16T12:53:14.765246Z[Etc/UTC]")
 public class CreateAdmin {
   public static final String SERIALIZED_NAME_LOGIN = "login";
   @SerializedName(SERIALIZED_NAME_LOGIN)
