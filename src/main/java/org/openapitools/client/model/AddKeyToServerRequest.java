@@ -53,7 +53,7 @@ import org.openapitools.client.JSON;
 /**
  * AddKeyToServerRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-16T15:50:11.385994Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-18T17:10:31.266786Z[Etc/UTC]")
 public class AddKeyToServerRequest {
   public static final String SERIALIZED_NAME_SSH_KEY_IDS = "ssh_key_ids";
   @SerializedName(SERIALIZED_NAME_SSH_KEY_IDS)
