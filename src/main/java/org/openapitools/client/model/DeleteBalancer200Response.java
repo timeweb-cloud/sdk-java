@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * DeleteBalancer200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-18T17:10:31.266786Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-26T09:16:26.039546Z[Etc/UTC]")
 public class DeleteBalancer200Response {
   public static final String SERIALIZED_NAME_BALANCER_DELETE = "balancer_delete";
   @SerializedName(SERIALIZED_NAME_BALANCER_DELETE)

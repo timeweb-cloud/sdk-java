@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * Токен.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-18T17:10:31.266786Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-26T09:16:26.039546Z[Etc/UTC]")
 public class ApiKey {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
