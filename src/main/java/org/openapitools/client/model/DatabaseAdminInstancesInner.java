@@ -53,7 +53,7 @@ import org.openapitools.client.JSON;
 /**
  * DatabaseAdminInstancesInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-26T09:16:26.039546Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-26T10:04:12.261118Z[Etc/UTC]")
 public class DatabaseAdminInstancesInner {
   public static final String SERIALIZED_NAME_INSTANCE_ID = "instance_id";
   @SerializedName(SERIALIZED_NAME_INSTANCE_ID)

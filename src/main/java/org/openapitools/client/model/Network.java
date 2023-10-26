@@ -50,13 +50,14 @@ import org.openapitools.client.JSON;
 /**
  * Network
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-26T09:16:26.039546Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-26T10:04:12.261118Z[Etc/UTC]")
 public class Network {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
 
   public static final String SERIALIZED_NAME_IP = "ip";
+  @Deprecated
   @SerializedName(SERIALIZED_NAME_IP)
   private String ip;
 
@@ -84,6 +85,7 @@ public class Network {
   }
 
 
+  @Deprecated
   public Network ip(String ip) {
     
     this.ip = ip;
@@ -93,13 +95,16 @@ public class Network {
    /**
    * IP-адрес в сети.
    * @return ip
+   * @deprecated
   **/
+  @Deprecated
   @javax.annotation.Nullable
   public String getIp() {
     return ip;
   }
 
 
+  @Deprecated
   public void setIp(String ip) {
     this.ip = ip;
   }
