@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * VdsNetworksInnerIpsInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-26T10:04:12.261118Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-27T09:01:23.754338Z[Etc/UTC]")
 public class VdsNetworksInnerIpsInner {
   /**
    * Тип IP-адреса сети
@@ -146,7 +146,7 @@ public class VdsNetworksInnerIpsInner {
   }
 
    /**
-   * IP-адрес сети
+   * IP-адрес сети.
    * @return ip
   **/
   @javax.annotation.Nonnull
@@ -167,7 +167,7 @@ public class VdsNetworksInnerIpsInner {
   }
 
    /**
-   * Запись имени узла
+   * Запись имени узла.
    * @return ptr
   **/
   @javax.annotation.Nullable

@@ -50,10 +50,10 @@ import org.openapitools.client.JSON;
 /**
  * IP-адрес сервера
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-26T10:04:12.261118Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-27T09:01:23.754338Z[Etc/UTC]")
 public class ServerIp {
   /**
-   * Тип IP-адреса сети
+   * Тип IP-адреса сети.
    */
   @JsonAdapter(TypeEnum.Adapter.class)
   public enum TypeEnum {
@@ -125,7 +125,7 @@ public class ServerIp {
   }
 
    /**
-   * Тип IP-адреса сети
+   * Тип IP-адреса сети.
    * @return type
   **/
   @javax.annotation.Nonnull
@@ -146,7 +146,7 @@ public class ServerIp {
   }
 
    /**
-   * IP-адрес сети
+   * IP-адрес сети.
    * @return ip
   **/
   @javax.annotation.Nonnull
@@ -167,7 +167,7 @@ public class ServerIp {
   }
 
    /**
-   * Запись имени узла
+   * Запись имени узла.
    * @return ptr
   **/
   @javax.annotation.Nonnull

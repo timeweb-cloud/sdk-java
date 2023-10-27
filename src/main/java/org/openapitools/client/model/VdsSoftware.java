@@ -49,9 +49,9 @@ import java.util.Set;
 import org.openapitools.client.JSON;
 
 /**
- * ПО из маркетплейса
+ * ПО из маркетплейса.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-26T10:04:12.261118Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-27T09:01:23.754338Z[Etc/UTC]")
 public class VdsSoftware {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -71,7 +71,7 @@ public class VdsSoftware {
   }
 
    /**
-   * Уникальный идентификатор ПО из маркетплейса
+   * Уникальный идентификатор ПО из маркетплейса.
    * @return id
   **/
   @javax.annotation.Nullable
@@ -92,7 +92,7 @@ public class VdsSoftware {
   }
 
    /**
-   * Название ПО из маркетплейса
+   * Название ПО из маркетплейса.
    * @return name
   **/
   @javax.annotation.Nullable

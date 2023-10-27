@@ -59,7 +59,7 @@ import org.openapitools.client.JSON;
 /**
  * Сервер
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-26T10:04:12.261118Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-27T09:01:23.754338Z[Etc/UTC]")
 public class Vds {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -824,7 +824,7 @@ public class Vds {
   }
 
    /**
-   * Cloud-init скрипт
+   * Cloud-init скрипт.
    * @return cloudInit
   **/
   @javax.annotation.Nullable
@@ -845,7 +845,7 @@ public class Vds {
   }
 
    /**
-   * Включен ли QEMU-agent на сервере
+   * Включен ли QEMU-agent на сервере.
    * @return isQemuAgent
   **/
   @javax.annotation.Nullable

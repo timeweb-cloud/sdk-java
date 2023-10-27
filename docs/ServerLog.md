@@ -9,8 +9,8 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**id** | **BigDecimal** | Уникальный идентификатор диска. |  |
-|**loggedAt** | **OffsetDateTime** | Дата лога |  |
-|**event** | **String** | Событие сервера |  |
+|**loggedAt** | **OffsetDateTime** | Дата лога. |  |
+|**event** | **String** | Событие сервера. |  |
 
 
 

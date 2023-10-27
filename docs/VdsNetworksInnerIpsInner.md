@@ -8,8 +8,8 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**type** | [**TypeEnum**](#TypeEnum) | Тип IP-адреса сети |  |
-|**ip** | **String** | IP-адрес сети |  |
-|**ptr** | **String** | Запись имени узла |  [optional] |
+|**ip** | **String** | IP-адрес сети. |  |
+|**ptr** | **String** | Запись имени узла. |  [optional] |
 |**isMain** | **Boolean** | Является ли сеть основной. |  |
 
 

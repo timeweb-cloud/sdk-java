@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * Лог сервера
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-26T10:04:12.261118Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-27T09:01:23.754338Z[Etc/UTC]")
 public class ServerLog {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -97,7 +97,7 @@ public class ServerLog {
   }
 
    /**
-   * Дата лога
+   * Дата лога.
    * @return loggedAt
   **/
   @javax.annotation.Nonnull
@@ -118,7 +118,7 @@ public class ServerLog {
   }
 
    /**
-   * Событие сервера
+   * Событие сервера.
    * @return event
   **/
   @javax.annotation.Nonnull
