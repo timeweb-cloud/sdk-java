@@ -22,6 +22,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import org.openapitools.client.model.AvailabilityZone;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -51,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * Vpc
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-27T09:01:23.754338Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-21T14:35:54.644183Z[Etc/UTC]")
 public class Vpc {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -123,6 +124,10 @@ public class Vpc {
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
+
+  public static final String SERIALIZED_NAME_AVAILABILITY_ZONE = "availability_zone";
+  @SerializedName(SERIALIZED_NAME_AVAILABILITY_ZONE)
+  private AvailabilityZone availabilityZone;
 
   public Vpc() {
   }
@@ -253,6 +258,27 @@ public class Vpc {
   }
 
 
+  public Vpc availabilityZone(AvailabilityZone availabilityZone) {
+    
+    this.availabilityZone = availabilityZone;
+    return this;
+  }
+
+   /**
+   * Get availabilityZone
+   * @return availabilityZone
+  **/
+  @javax.annotation.Nonnull
+  public AvailabilityZone getAvailabilityZone() {
+    return availabilityZone;
+  }
+
+
+  public void setAvailabilityZone(AvailabilityZone availabilityZone) {
+    this.availabilityZone = availabilityZone;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -268,12 +294,13 @@ public class Vpc {
         Objects.equals(this.subnetV4, vpc.subnetV4) &&
         Objects.equals(this.location, vpc.location) &&
         Objects.equals(this.createdAt, vpc.createdAt) &&
-        Objects.equals(this.description, vpc.description);
+        Objects.equals(this.description, vpc.description) &&
+        Objects.equals(this.availabilityZone, vpc.availabilityZone);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, subnetV4, location, createdAt, description);
+    return Objects.hash(id, name, subnetV4, location, createdAt, description, availabilityZone);
   }
 
   @Override
@@ -286,6 +313,7 @@ public class Vpc {
     sb.append("    location: ").append(toIndentedString(location)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    availabilityZone: ").append(toIndentedString(availabilityZone)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -314,6 +342,7 @@ public class Vpc {
     openapiFields.add("location");
     openapiFields.add("created_at");
     openapiFields.add("description");
+    openapiFields.add("availability_zone");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -322,6 +351,7 @@ public class Vpc {
     openapiRequiredFields.add("subnet_v4");
     openapiRequiredFields.add("location");
     openapiRequiredFields.add("created_at");
+    openapiRequiredFields.add("availability_zone");
   }
 
  /**

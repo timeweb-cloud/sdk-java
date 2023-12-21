@@ -30,6 +30,7 @@
 |**rules** | [**List&lt;Rule&gt;**](Rule.md) |  |  |
 |**ips** | **List&lt;String&gt;** | Список IP-адресов, привязанных к балансировщику |  |
 |**location** | [**LocationEnum**](#LocationEnum) | Географическое расположение балансировщика |  |
+|**availabilityZone** | **AvailabilityZone** |  |  |
 
 
 

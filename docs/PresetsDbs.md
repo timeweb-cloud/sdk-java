@@ -13,21 +13,9 @@
 |**cpu** | **BigDecimal** | Описание процессора тарифа. |  [optional] |
 |**ram** | **BigDecimal** | Описание ОЗУ тарифа. |  [optional] |
 |**disk** | **BigDecimal** | Описание диска тарифа. |  [optional] |
-|**type** | [**TypeEnum**](#TypeEnum) | Тип тарифа базы данных |  [optional] |
+|**type** | **DbType** |  |  [optional] |
 |**price** | **BigDecimal** | Стоимость тарифа базы данных |  [optional] |
 |**location** | [**LocationEnum**](#LocationEnum) | Географическое расположение тарифа. |  [optional] |
-
-
-
-## Enum: TypeEnum
-
-| Name | Value |
-|---- | -----|
-| MYSQL | &quot;mysql&quot; |
-| MYSQL5 | &quot;mysql5&quot; |
-| POSTGRES | &quot;postgres&quot; |
-| REDIS | &quot;redis&quot; |
-| MONGODB | &quot;mongodb&quot; |
 
 
 

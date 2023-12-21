@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * ServersConfiguratorRequirements
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-27T09:01:23.754338Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-21T14:35:54.644183Z[Etc/UTC]")
 public class ServersConfiguratorRequirements {
   public static final String SERIALIZED_NAME_CPU_MIN = "cpu_min";
   @SerializedName(SERIALIZED_NAME_CPU_MIN)

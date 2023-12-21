@@ -12,7 +12,7 @@
 |**name** | **String** | Название базы данных. |  [optional] |
 |**presetId** | **Integer** | Идентификатор тарифа. |  [optional] |
 |**configParameters** | [**ConfigParameters**](ConfigParameters.md) |  |  [optional] |
-|**isExternalIp** | **Boolean** | Использовать или нет внешний ip. |  [optional] |
+|**isExternalIp** | **Boolean** | Использовать или нет внешний IP. |  [optional] |
 
 
 

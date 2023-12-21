@@ -25,6 +25,7 @@ import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import org.openapitools.client.model.AvailabilityZone;
 import org.openapitools.client.model.Rule;
 
 import com.google.gson.Gson;
@@ -55,7 +56,7 @@ import org.openapitools.client.JSON;
 /**
  * Балансировщик
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-27T09:01:23.754338Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-21T14:35:54.644183Z[Etc/UTC]")
 public class Balancer {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -340,6 +341,10 @@ public class Balancer {
   public static final String SERIALIZED_NAME_LOCATION = "location";
   @SerializedName(SERIALIZED_NAME_LOCATION)
   private LocationEnum location;
+
+  public static final String SERIALIZED_NAME_AVAILABILITY_ZONE = "availability_zone";
+  @SerializedName(SERIALIZED_NAME_AVAILABILITY_ZONE)
+  private AvailabilityZone availabilityZone;
 
   public Balancer() {
   }
@@ -822,6 +827,27 @@ public class Balancer {
   }
 
 
+  public Balancer availabilityZone(AvailabilityZone availabilityZone) {
+    
+    this.availabilityZone = availabilityZone;
+    return this;
+  }
+
+   /**
+   * Get availabilityZone
+   * @return availabilityZone
+  **/
+  @javax.annotation.Nonnull
+  public AvailabilityZone getAvailabilityZone() {
+    return availabilityZone;
+  }
+
+
+  public void setAvailabilityZone(AvailabilityZone availabilityZone) {
+    this.availabilityZone = availabilityZone;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -853,12 +879,13 @@ public class Balancer {
         Objects.equals(this.isUseProxy, balancer.isUseProxy) &&
         Objects.equals(this.rules, balancer.rules) &&
         Objects.equals(this.ips, balancer.ips) &&
-        Objects.equals(this.location, balancer.location);
+        Objects.equals(this.location, balancer.location) &&
+        Objects.equals(this.availabilityZone, balancer.availabilityZone);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, algo, createdAt, fall, inter, ip, localIp, isKeepalive, name, path, port, proto, rise, presetId, isSsl, status, isSticky, timeout, isUseProxy, rules, ips, location);
+    return Objects.hash(id, algo, createdAt, fall, inter, ip, localIp, isKeepalive, name, path, port, proto, rise, presetId, isSsl, status, isSticky, timeout, isUseProxy, rules, ips, location, availabilityZone);
   }
 
   @Override
@@ -887,6 +914,7 @@ public class Balancer {
     sb.append("    rules: ").append(toIndentedString(rules)).append("\n");
     sb.append("    ips: ").append(toIndentedString(ips)).append("\n");
     sb.append("    location: ").append(toIndentedString(location)).append("\n");
+    sb.append("    availabilityZone: ").append(toIndentedString(availabilityZone)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -931,6 +959,7 @@ public class Balancer {
     openapiFields.add("rules");
     openapiFields.add("ips");
     openapiFields.add("location");
+    openapiFields.add("availability_zone");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -956,6 +985,7 @@ public class Balancer {
     openapiRequiredFields.add("rules");
     openapiRequiredFields.add("ips");
     openapiRequiredFields.add("location");
+    openapiRequiredFields.add("availability_zone");
   }
 
  /**

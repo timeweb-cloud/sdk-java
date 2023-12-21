@@ -50,11 +50,15 @@ import org.openapitools.client.JSON;
 /**
  * Network
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-27T09:01:23.754338Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-21T14:35:54.644183Z[Etc/UTC]")
 public class Network {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
+
+  public static final String SERIALIZED_NAME_FLOATING_IP = "floating_ip";
+  @SerializedName(SERIALIZED_NAME_FLOATING_IP)
+  private String floatingIp;
 
   public static final String SERIALIZED_NAME_IP = "ip";
   @Deprecated
@@ -82,6 +86,27 @@ public class Network {
 
   public void setId(String id) {
     this.id = id;
+  }
+
+
+  public Network floatingIp(String floatingIp) {
+    
+    this.floatingIp = floatingIp;
+    return this;
+  }
+
+   /**
+   * Плавающий IP-адрес
+   * @return floatingIp
+  **/
+  @javax.annotation.Nullable
+  public String getFloatingIp() {
+    return floatingIp;
+  }
+
+
+  public void setFloatingIp(String floatingIp) {
+    this.floatingIp = floatingIp;
   }
 
 
@@ -121,12 +146,13 @@ public class Network {
     }
     Network network = (Network) o;
     return Objects.equals(this.id, network.id) &&
+        Objects.equals(this.floatingIp, network.floatingIp) &&
         Objects.equals(this.ip, network.ip);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, ip);
+    return Objects.hash(id, floatingIp, ip);
   }
 
   @Override
@@ -134,6 +160,7 @@ public class Network {
     StringBuilder sb = new StringBuilder();
     sb.append("class Network {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    floatingIp: ").append(toIndentedString(floatingIp)).append("\n");
     sb.append("    ip: ").append(toIndentedString(ip)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -158,6 +185,7 @@ public class Network {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("id");
+    openapiFields.add("floating_ip");
     openapiFields.add("ip");
 
     // a set of required properties/fields (JSON key names)
@@ -195,6 +223,9 @@ public class Network {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      }
+      if ((jsonObj.get("floating_ip") != null && !jsonObj.get("floating_ip").isJsonNull()) && !jsonObj.get("floating_ip").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `floating_ip` to be a primitive type in the JSON string but got `%s`", jsonObj.get("floating_ip").toString()));
       }
       if ((jsonObj.get("ip") != null && !jsonObj.get("ip").isJsonNull()) && !jsonObj.get("ip").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `ip` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ip").toString()));

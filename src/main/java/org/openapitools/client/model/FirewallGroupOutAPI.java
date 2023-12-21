@@ -22,6 +22,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import org.openapitools.client.model.Policy;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -51,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * FirewallGroupOutAPI
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-27T09:01:23.754338Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-21T14:35:54.644183Z[Etc/UTC]")
 public class FirewallGroupOutAPI {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -72,6 +73,10 @@ public class FirewallGroupOutAPI {
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
+
+  public static final String SERIALIZED_NAME_POLICY = "policy";
+  @SerializedName(SERIALIZED_NAME_POLICY)
+  private Policy policy;
 
   public FirewallGroupOutAPI() {
   }
@@ -181,6 +186,27 @@ public class FirewallGroupOutAPI {
   }
 
 
+  public FirewallGroupOutAPI policy(Policy policy) {
+    
+    this.policy = policy;
+    return this;
+  }
+
+   /**
+   * Get policy
+   * @return policy
+  **/
+  @javax.annotation.Nonnull
+  public Policy getPolicy() {
+    return policy;
+  }
+
+
+  public void setPolicy(Policy policy) {
+    this.policy = policy;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -195,12 +221,13 @@ public class FirewallGroupOutAPI {
         Objects.equals(this.createdAt, firewallGroupOutAPI.createdAt) &&
         Objects.equals(this.updatedAt, firewallGroupOutAPI.updatedAt) &&
         Objects.equals(this.name, firewallGroupOutAPI.name) &&
-        Objects.equals(this.description, firewallGroupOutAPI.description);
+        Objects.equals(this.description, firewallGroupOutAPI.description) &&
+        Objects.equals(this.policy, firewallGroupOutAPI.policy);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, updatedAt, name, description);
+    return Objects.hash(id, createdAt, updatedAt, name, description, policy);
   }
 
   @Override
@@ -212,6 +239,7 @@ public class FirewallGroupOutAPI {
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    policy: ").append(toIndentedString(policy)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -239,6 +267,7 @@ public class FirewallGroupOutAPI {
     openapiFields.add("updated_at");
     openapiFields.add("name");
     openapiFields.add("description");
+    openapiFields.add("policy");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -247,6 +276,7 @@ public class FirewallGroupOutAPI {
     openapiRequiredFields.add("updated_at");
     openapiRequiredFields.add("name");
     openapiRequiredFields.add("description");
+    openapiRequiredFields.add("policy");
   }
 
  /**

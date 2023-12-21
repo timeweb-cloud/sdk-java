@@ -21,9 +21,11 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import org.openapitools.client.model.AvailabilityZone;
 import org.openapitools.client.model.ConfigParameters;
 import org.openapitools.client.model.CreateClusterAdmin;
 import org.openapitools.client.model.CreateClusterInstance;
+import org.openapitools.client.model.DbType;
 import org.openapitools.client.model.Network;
 
 import com.google.gson.Gson;
@@ -54,68 +56,15 @@ import org.openapitools.client.JSON;
 /**
  * CreateCluster
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-27T09:01:23.754338Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-21T14:35:54.644183Z[Etc/UTC]")
 public class CreateCluster {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
 
-  /**
-   * Тип базы данных.
-   */
-  @JsonAdapter(TypeEnum.Adapter.class)
-  public enum TypeEnum {
-    MYSQL("mysql"),
-    
-    MYSQL5("mysql5"),
-    
-    POSTGRES("postgres"),
-    
-    REDIS("redis"),
-    
-    MONGODB("mongodb");
-
-    private String value;
-
-    TypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static TypeEnum fromValue(String value) {
-      for (TypeEnum b : TypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<TypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public TypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return TypeEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
-  private TypeEnum type;
+  private DbType type;
 
   public static final String SERIALIZED_NAME_ADMIN = "admin";
   @SerializedName(SERIALIZED_NAME_ADMIN)
@@ -192,6 +141,10 @@ public class CreateCluster {
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
 
+  public static final String SERIALIZED_NAME_AVAILABILITY_ZONE = "availability_zone";
+  @SerializedName(SERIALIZED_NAME_AVAILABILITY_ZONE)
+  private AvailabilityZone availabilityZone;
+
   public CreateCluster() {
   }
 
@@ -216,23 +169,23 @@ public class CreateCluster {
   }
 
 
-  public CreateCluster type(TypeEnum type) {
+  public CreateCluster type(DbType type) {
     
     this.type = type;
     return this;
   }
 
    /**
-   * Тип базы данных.
+   * Get type
    * @return type
   **/
   @javax.annotation.Nonnull
-  public TypeEnum getType() {
+  public DbType getType() {
     return type;
   }
 
 
-  public void setType(TypeEnum type) {
+  public void setType(DbType type) {
     this.type = type;
   }
 
@@ -384,6 +337,27 @@ public class CreateCluster {
   }
 
 
+  public CreateCluster availabilityZone(AvailabilityZone availabilityZone) {
+    
+    this.availabilityZone = availabilityZone;
+    return this;
+  }
+
+   /**
+   * Get availabilityZone
+   * @return availabilityZone
+  **/
+  @javax.annotation.Nullable
+  public AvailabilityZone getAvailabilityZone() {
+    return availabilityZone;
+  }
+
+
+  public void setAvailabilityZone(AvailabilityZone availabilityZone) {
+    this.availabilityZone = availabilityZone;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -402,12 +376,13 @@ public class CreateCluster {
         Objects.equals(this.presetId, createCluster.presetId) &&
         Objects.equals(this.configParameters, createCluster.configParameters) &&
         Objects.equals(this.network, createCluster.network) &&
-        Objects.equals(this.description, createCluster.description);
+        Objects.equals(this.description, createCluster.description) &&
+        Objects.equals(this.availabilityZone, createCluster.availabilityZone);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, type, admin, instance, hashType, presetId, configParameters, network, description);
+    return Objects.hash(name, type, admin, instance, hashType, presetId, configParameters, network, description, availabilityZone);
   }
 
   @Override
@@ -423,6 +398,7 @@ public class CreateCluster {
     sb.append("    configParameters: ").append(toIndentedString(configParameters)).append("\n");
     sb.append("    network: ").append(toIndentedString(network)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    availabilityZone: ").append(toIndentedString(availabilityZone)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -454,6 +430,7 @@ public class CreateCluster {
     openapiFields.add("config_parameters");
     openapiFields.add("network");
     openapiFields.add("description");
+    openapiFields.add("availability_zone");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -492,9 +469,6 @@ public class CreateCluster {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
-      }
-      if (!jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
       // validate the optional field `admin`
       if (jsonObj.get("admin") != null && !jsonObj.get("admin").isJsonNull()) {

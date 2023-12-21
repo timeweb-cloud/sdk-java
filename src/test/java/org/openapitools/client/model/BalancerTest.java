@@ -23,6 +23,7 @@ import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import org.openapitools.client.model.AvailabilityZone;
 import org.openapitools.client.model.Rule;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -215,6 +216,14 @@ public class BalancerTest {
     @Test
     public void locationTest() {
         // TODO: test location
+    }
+
+    /**
+     * Test the property 'availabilityZone'
+     */
+    @Test
+    public void availabilityZoneTest() {
+        // TODO: test availabilityZone
     }
 
 }

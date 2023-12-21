@@ -13,6 +13,7 @@
 |**location** | [**LocationEnum**](#LocationEnum) | Локация сети. |  |
 |**createdAt** | **OffsetDateTime** | Дата создания сети. |  |
 |**description** | **String** | Описание. |  [optional] |
+|**availabilityZone** | **AvailabilityZone** |  |  |
 
 
 

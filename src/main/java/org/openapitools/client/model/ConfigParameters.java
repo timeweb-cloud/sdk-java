@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * ConfigParameters
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-27T09:01:23.754338Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-21T14:35:54.644183Z[Etc/UTC]")
 public class ConfigParameters {
   public static final String SERIALIZED_NAME_AUTO_INCREMENT_INCREMENT = "auto_increment_increment";
   @SerializedName(SERIALIZED_NAME_AUTO_INCREMENT_INCREMENT)
@@ -384,7 +384,7 @@ public class ConfigParameters {
   }
 
    /**
-   * Доля измененных или удаленных записей в таблице, при которой процесс автоочистки выполнит команду &#x60;ANALYZE&#x60; (&#x60;postgres&#x60;).
+   * Доля измененных или удаленных записей в таблице, при которой процесс автоочистки выполнит команду &#x60;ANALYZE&#x60; (&#x60;postgres&#x60; | &#x60;postgres14&#x60;| &#x60;postgres15&#x60;).
    * @return autovacuumAnalyzeScaleFactor
   **/
   @javax.annotation.Nullable
@@ -405,7 +405,7 @@ public class ConfigParameters {
   }
 
    /**
-   * Задержка между запусками процесса фоновой записи (&#x60;postgres&#x60;).
+   * Задержка между запусками процесса фоновой записи (&#x60;postgres&#x60; | &#x60;postgres14&#x60;| &#x60;postgres15&#x60;).
    * @return bgwriterDelay
   **/
   @javax.annotation.Nullable
@@ -426,7 +426,7 @@ public class ConfigParameters {
   }
 
    /**
-   * Максимальное число элементов буферного кеша (&#x60;postgres&#x60;).
+   * Максимальное число элементов буферного кеша (&#x60;postgres&#x60; | &#x60;postgres14&#x60;| &#x60;postgres15&#x60;).
    * @return bgwriterLruMaxpages
   **/
   @javax.annotation.Nullable
@@ -447,7 +447,7 @@ public class ConfigParameters {
   }
 
    /**
-   * Время ожидания, по истечении которого будет выполняться проверка состояния перекрестной блокировки (&#x60;postgres&#x60;).
+   * Время ожидания, по истечении которого будет выполняться проверка состояния перекрестной блокировки (&#x60;postgres&#x60; | &#x60;postgres14&#x60;| &#x60;postgres15&#x60;).
    * @return deadlockTimeout
   **/
   @javax.annotation.Nullable
@@ -468,7 +468,7 @@ public class ConfigParameters {
   }
 
    /**
-   * Максимальный размер очереди записей индекса &#x60;GIN&#x60; (&#x60;postgres&#x60;).
+   * Максимальный размер очереди записей индекса &#x60;GIN&#x60; (&#x60;postgres&#x60; | &#x60;postgres14&#x60;| &#x60;postgres15&#x60;).
    * @return ginPendingListLimit
   **/
   @javax.annotation.Nullable
@@ -489,7 +489,7 @@ public class ConfigParameters {
   }
 
    /**
-   * Время простоя открытой транзакции, при превышении которого будет завершена сессия с этой транзакцией (&#x60;postgres&#x60;).
+   * Время простоя открытой транзакции, при превышении которого будет завершена сессия с этой транзакцией (&#x60;postgres&#x60; | &#x60;postgres14&#x60;| &#x60;postgres15&#x60;).
    * @return idleInTransactionSessionTimeout
   **/
   @javax.annotation.Nullable
@@ -510,7 +510,7 @@ public class ConfigParameters {
   }
 
    /**
-   * Время простоя не открытой транзакции, при превышении которого будет завершена сессия с этой транзакцией (&#x60;postgres&#x60;).
+   * Время простоя не открытой транзакции, при превышении которого будет завершена сессия с этой транзакцией (&#x60;postgres&#x60; | &#x60;postgres14&#x60;| &#x60;postgres15&#x60;).
    * @return idleSessionTimeout
   **/
   @javax.annotation.Nullable
@@ -531,7 +531,7 @@ public class ConfigParameters {
   }
 
    /**
-   * Значение количества элементов в списке &#x60;FROM&#x60; при превышении которого, планировщик будет переносить в список явные инструкции &#x60;JOIN&#x60; (&#x60;postgres&#x60;).
+   * Значение количества элементов в списке &#x60;FROM&#x60; при превышении которого, планировщик будет переносить в список явные инструкции &#x60;JOIN&#x60; (&#x60;postgres&#x60; | &#x60;postgres14&#x60;| &#x60;postgres15&#x60;).
    * @return joinCollapseLimit
   **/
   @javax.annotation.Nullable
@@ -552,7 +552,7 @@ public class ConfigParameters {
   }
 
    /**
-   * Время ожидания освобождения блокировки (&#x60;postgres&#x60;).
+   * Время ожидания освобождения блокировки (&#x60;postgres&#x60; | &#x60;postgres14&#x60;| &#x60;postgres15&#x60;).
    * @return lockTimeout
   **/
   @javax.annotation.Nullable
@@ -573,7 +573,7 @@ public class ConfigParameters {
   }
 
    /**
-   * Максимальное число транзакций, которые могут одновременно находиться в подготовленном состоянии (&#x60;postgres&#x60;).
+   * Максимальное число транзакций, которые могут одновременно находиться в подготовленном состоянии (&#x60;postgres&#x60; | &#x60;postgres14&#x60;| &#x60;postgres15&#x60;).
    * @return maxPreparedTransactions
   **/
   @javax.annotation.Nullable
@@ -594,7 +594,7 @@ public class ConfigParameters {
   }
 
    /**
-   * Допустимое количество соединений (&#x60;postgres&#x60; | &#x60;mysql&#x60;).
+   * Допустимое количество соединений (&#x60;postgres&#x60; | &#x60;postgres14&#x60;| &#x60;postgres15&#x60; | &#x60;mysql&#x60;).
    * @return maxConnections
   **/
   @javax.annotation.Nullable
@@ -615,7 +615,7 @@ public class ConfigParameters {
   }
 
    /**
-   * Устанавливает количество буферов общей памяти, используемых сервером (&#x60;postgres&#x60;).
+   * Устанавливает количество буферов общей памяти, используемых сервером (&#x60;postgres&#x60; | &#x60;postgres14&#x60;| &#x60;postgres15&#x60;).
    * @return sharedBuffers
   **/
   @javax.annotation.Nullable
@@ -636,7 +636,7 @@ public class ConfigParameters {
   }
 
    /**
-   * Устанавливает количество буферов дисковых страниц в общей памяти для WAL (&#x60;postgres&#x60;).
+   * Устанавливает количество буферов дисковых страниц в общей памяти для WAL (&#x60;postgres&#x60; | &#x60;postgres14&#x60;| &#x60;postgres15&#x60;).
    * @return walBuffers
   **/
   @javax.annotation.Nullable
@@ -657,7 +657,7 @@ public class ConfigParameters {
   }
 
    /**
-   * Устанавливает максимальное количество временных буферов, используемых каждой сессией (&#x60;postgres&#x60;).
+   * Устанавливает максимальное количество временных буферов, используемых каждой сессией (&#x60;postgres&#x60; | &#x60;postgres14&#x60;| &#x60;postgres15&#x60;).
    * @return tempBuffers
   **/
   @javax.annotation.Nullable
@@ -678,7 +678,7 @@ public class ConfigParameters {
   }
 
    /**
-   * Устанавливает максимальное количество памяти, используемое для рабочих пространств запросов (&#x60;postgres&#x60;).
+   * Устанавливает максимальное количество памяти, используемое для рабочих пространств запросов (&#x60;postgres&#x60; | &#x60;postgres14&#x60;| &#x60;postgres15&#x60;).
    * @return workMem
   **/
   @javax.annotation.Nullable

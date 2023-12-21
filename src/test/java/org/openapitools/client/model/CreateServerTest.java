@@ -23,6 +23,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import org.openapitools.client.model.AvailabilityZone;
 import org.openapitools.client.model.CreateServerConfiguration;
 import org.openapitools.client.model.Network;
 import org.junit.jupiter.api.Disabled;
@@ -152,6 +153,14 @@ public class CreateServerTest {
     @Test
     public void cloudInitTest() {
         // TODO: test cloudInit
+    }
+
+    /**
+     * Test the property 'availabilityZone'
+     */
+    @Test
+    public void availabilityZoneTest() {
+        // TODO: test availabilityZone
     }
 
 }

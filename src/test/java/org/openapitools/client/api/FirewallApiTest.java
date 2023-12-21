@@ -70,7 +70,8 @@ public class FirewallApiTest {
     @Test
     public void createGroupTest() throws ApiException {
         FirewallGroupInAPI firewallGroupInAPI = null;
-        FirewallGroupOutResponse response = api.createGroup(firewallGroupInAPI);
+        String policy = null;
+        FirewallGroupOutResponse response = api.createGroup(firewallGroupInAPI, policy);
         // TODO: test validations
     }
 

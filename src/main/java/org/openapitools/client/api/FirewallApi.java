@@ -245,6 +245,7 @@ public class FirewallApi {
     /**
      * Build call for createGroup
      * @param firewallGroupInAPI  (required)
+     * @param policy Тип группы правил (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -258,7 +259,7 @@ public class FirewallApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createGroupCall(FirewallGroupInAPI firewallGroupInAPI, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createGroupCall(FirewallGroupInAPI firewallGroupInAPI, String policy, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -283,6 +284,10 @@ public class FirewallApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (policy != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("policy", policy));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -304,13 +309,13 @@ public class FirewallApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createGroupValidateBeforeCall(FirewallGroupInAPI firewallGroupInAPI, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createGroupValidateBeforeCall(FirewallGroupInAPI firewallGroupInAPI, String policy, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'firewallGroupInAPI' is set
         if (firewallGroupInAPI == null) {
             throw new ApiException("Missing the required parameter 'firewallGroupInAPI' when calling createGroup(Async)");
         }
 
-        return createGroupCall(firewallGroupInAPI, _callback);
+        return createGroupCall(firewallGroupInAPI, policy, _callback);
 
     }
 
@@ -318,6 +323,7 @@ public class FirewallApi {
      * Создание группы правил
      * Чтобы создать группу правил, отправьте POST запрос на &#x60;/api/v1/firewall/groups&#x60;
      * @param firewallGroupInAPI  (required)
+     * @param policy Тип группы правил (optional)
      * @return FirewallGroupOutResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -330,8 +336,8 @@ public class FirewallApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public FirewallGroupOutResponse createGroup(FirewallGroupInAPI firewallGroupInAPI) throws ApiException {
-        ApiResponse<FirewallGroupOutResponse> localVarResp = createGroupWithHttpInfo(firewallGroupInAPI);
+    public FirewallGroupOutResponse createGroup(FirewallGroupInAPI firewallGroupInAPI, String policy) throws ApiException {
+        ApiResponse<FirewallGroupOutResponse> localVarResp = createGroupWithHttpInfo(firewallGroupInAPI, policy);
         return localVarResp.getData();
     }
 
@@ -339,6 +345,7 @@ public class FirewallApi {
      * Создание группы правил
      * Чтобы создать группу правил, отправьте POST запрос на &#x60;/api/v1/firewall/groups&#x60;
      * @param firewallGroupInAPI  (required)
+     * @param policy Тип группы правил (optional)
      * @return ApiResponse&lt;FirewallGroupOutResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -351,8 +358,8 @@ public class FirewallApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FirewallGroupOutResponse> createGroupWithHttpInfo(FirewallGroupInAPI firewallGroupInAPI) throws ApiException {
-        okhttp3.Call localVarCall = createGroupValidateBeforeCall(firewallGroupInAPI, null);
+    public ApiResponse<FirewallGroupOutResponse> createGroupWithHttpInfo(FirewallGroupInAPI firewallGroupInAPI, String policy) throws ApiException {
+        okhttp3.Call localVarCall = createGroupValidateBeforeCall(firewallGroupInAPI, policy, null);
         Type localVarReturnType = new TypeToken<FirewallGroupOutResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -361,6 +368,7 @@ public class FirewallApi {
      * Создание группы правил (asynchronously)
      * Чтобы создать группу правил, отправьте POST запрос на &#x60;/api/v1/firewall/groups&#x60;
      * @param firewallGroupInAPI  (required)
+     * @param policy Тип группы правил (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -374,9 +382,9 @@ public class FirewallApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createGroupAsync(FirewallGroupInAPI firewallGroupInAPI, final ApiCallback<FirewallGroupOutResponse> _callback) throws ApiException {
+    public okhttp3.Call createGroupAsync(FirewallGroupInAPI firewallGroupInAPI, String policy, final ApiCallback<FirewallGroupOutResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createGroupValidateBeforeCall(firewallGroupInAPI, _callback);
+        okhttp3.Call localVarCall = createGroupValidateBeforeCall(firewallGroupInAPI, policy, _callback);
         Type localVarReturnType = new TypeToken<FirewallGroupOutResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

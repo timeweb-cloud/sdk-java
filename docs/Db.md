@@ -16,7 +16,7 @@
 |**password** | **String** | Пароль для подключения к базе данных. |  |
 |**name** | **String** | Название базы данных. |  |
 |**host** | **String** | Хост. |  |
-|**type** | [**TypeEnum**](#TypeEnum) | Тип базы данных. |  |
+|**type** | **DbType** |  |  |
 |**hashType** | [**HashTypeEnum**](#HashTypeEnum) | Тип хеширования базы данных (mysql5 | mysql | postgres). |  |
 |**port** | **Integer** | Порт |  |
 |**ip** | **String** | IP-адрес сетевого интерфейса IPv4. |  |
@@ -26,6 +26,7 @@
 |**diskStats** | [**DbDiskStats**](DbDiskStats.md) |  |  |
 |**configParameters** | [**ConfigParameters**](ConfigParameters.md) |  |  |
 |**isOnlyLocalIpAccess** | **Boolean** | Это логическое значение, которое показывает, доступна ли база данных только по локальному IP адресу. |  |
+|**availabilityZone** | **AvailabilityZone** |  |  |
 
 
 
@@ -37,18 +38,6 @@
 | RU_2 | &quot;ru-2&quot; |
 | PL_1 | &quot;pl-1&quot; |
 | KZ_1 | &quot;kz-1&quot; |
-
-
-
-## Enum: TypeEnum
-
-| Name | Value |
-|---- | -----|
-| MYSQL | &quot;mysql&quot; |
-| MYSQL5 | &quot;mysql5&quot; |
-| POSTGRES | &quot;postgres&quot; |
-| REDIS | &quot;redis&quot; |
-| MONGODB | &quot;mongodb&quot; |
 
 
 

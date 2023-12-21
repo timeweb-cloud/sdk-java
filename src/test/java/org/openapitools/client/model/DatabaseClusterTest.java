@@ -25,6 +25,7 @@ import java.util.List;
 import org.openapitools.client.model.ConfigParameters;
 import org.openapitools.client.model.DatabaseClusterDiskStats;
 import org.openapitools.client.model.DatabaseClusterNetworksInner;
+import org.openapitools.client.model.DbType;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 

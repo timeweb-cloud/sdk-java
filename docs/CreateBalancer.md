@@ -22,6 +22,7 @@
 |**rise** | **BigDecimal** | Порог количества успешных ответов. |  |
 |**presetId** | **BigDecimal** | Идентификатор тарифа. |  |
 |**network** | [**Network**](Network.md) |  |  [optional] |
+|**availabilityZone** | **AvailabilityZone** |  |  [optional] |
 
 
 

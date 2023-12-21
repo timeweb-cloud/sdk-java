@@ -25,6 +25,7 @@ import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import org.openapitools.client.model.AvailabilityZone;
 import org.openapitools.client.model.VdsDisksInner;
 import org.openapitools.client.model.VdsImage;
 import org.openapitools.client.model.VdsNetworksInner;
@@ -59,7 +60,7 @@ import org.openapitools.client.JSON;
 /**
  * Сервер
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-27T09:01:23.754338Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-21T14:35:54.644183Z[Etc/UTC]")
 public class Vds {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -336,6 +337,10 @@ public class Vds {
   @SerializedName(SERIALIZED_NAME_IS_QEMU_AGENT)
   private Boolean isQemuAgent;
 
+  public static final String SERIALIZED_NAME_AVAILABILITY_ZONE = "availability_zone";
+  @SerializedName(SERIALIZED_NAME_AVAILABILITY_ZONE)
+  private AvailabilityZone availabilityZone;
+
   public Vds() {
   }
 
@@ -598,7 +603,7 @@ public class Vds {
   }
 
    /**
-   * Это логическое значение, которое показывает, включена ли защита от DDOS у данного сервера.
+   * Это логическое значение, которое показывает, включена ли защита от DDoS у данного сервера.
    * @return isDdosGuard
   **/
   @javax.annotation.Nonnull
@@ -859,6 +864,27 @@ public class Vds {
   }
 
 
+  public Vds availabilityZone(AvailabilityZone availabilityZone) {
+    
+    this.availabilityZone = availabilityZone;
+    return this;
+  }
+
+   /**
+   * Get availabilityZone
+   * @return availabilityZone
+  **/
+  @javax.annotation.Nonnull
+  public AvailabilityZone getAvailabilityZone() {
+    return availabilityZone;
+  }
+
+
+  public void setAvailabilityZone(AvailabilityZone availabilityZone) {
+    this.availabilityZone = availabilityZone;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -892,12 +918,13 @@ public class Vds {
         Objects.equals(this.image, vds.image) &&
         Objects.equals(this.networks, vds.networks) &&
         Objects.equals(this.cloudInit, vds.cloudInit) &&
-        Objects.equals(this.isQemuAgent, vds.isQemuAgent);
+        Objects.equals(this.isQemuAgent, vds.isQemuAgent) &&
+        Objects.equals(this.availabilityZone, vds.availabilityZone);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, comment, createdAt, os, software, presetId, location, configuratorId, bootMode, status, startAt, isDdosGuard, cpu, cpuFrequency, ram, disks, avatarId, vncPass, rootPass, image, networks, cloudInit, isQemuAgent);
+    return Objects.hash(id, name, comment, createdAt, os, software, presetId, location, configuratorId, bootMode, status, startAt, isDdosGuard, cpu, cpuFrequency, ram, disks, avatarId, vncPass, rootPass, image, networks, cloudInit, isQemuAgent, availabilityZone);
   }
 
   @Override
@@ -928,6 +955,7 @@ public class Vds {
     sb.append("    networks: ").append(toIndentedString(networks)).append("\n");
     sb.append("    cloudInit: ").append(toIndentedString(cloudInit)).append("\n");
     sb.append("    isQemuAgent: ").append(toIndentedString(isQemuAgent)).append("\n");
+    sb.append("    availabilityZone: ").append(toIndentedString(availabilityZone)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -974,6 +1002,7 @@ public class Vds {
     openapiFields.add("networks");
     openapiFields.add("cloud_init");
     openapiFields.add("is_qemu_agent");
+    openapiFields.add("availability_zone");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -1000,6 +1029,7 @@ public class Vds {
     openapiRequiredFields.add("image");
     openapiRequiredFields.add("networks");
     openapiRequiredFields.add("cloud_init");
+    openapiRequiredFields.add("availability_zone");
   }
 
  /**

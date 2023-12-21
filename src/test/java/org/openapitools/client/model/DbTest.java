@@ -20,8 +20,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
+import org.openapitools.client.model.AvailabilityZone;
 import org.openapitools.client.model.ConfigParameters;
 import org.openapitools.client.model.DbDiskStats;
+import org.openapitools.client.model.DbType;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -181,6 +183,14 @@ public class DbTest {
     @Test
     public void isOnlyLocalIpAccessTest() {
         // TODO: test isOnlyLocalIpAccess
+    }
+
+    /**
+     * Test the property 'availabilityZone'
+     */
+    @Test
+    public void availabilityZoneTest() {
+        // TODO: test availabilityZone
     }
 
 }

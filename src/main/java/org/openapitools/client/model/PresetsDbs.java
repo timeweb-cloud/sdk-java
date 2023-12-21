@@ -22,6 +22,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
+import org.openapitools.client.model.DbType;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -51,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * PresetsDbs
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-27T09:01:23.754338Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-21T14:35:54.644183Z[Etc/UTC]")
 public class PresetsDbs {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -77,62 +78,9 @@ public class PresetsDbs {
   @SerializedName(SERIALIZED_NAME_DISK)
   private BigDecimal disk;
 
-  /**
-   * Тип тарифа базы данных
-   */
-  @JsonAdapter(TypeEnum.Adapter.class)
-  public enum TypeEnum {
-    MYSQL("mysql"),
-    
-    MYSQL5("mysql5"),
-    
-    POSTGRES("postgres"),
-    
-    REDIS("redis"),
-    
-    MONGODB("mongodb");
-
-    private String value;
-
-    TypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static TypeEnum fromValue(String value) {
-      for (TypeEnum b : TypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<TypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public TypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return TypeEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
-  private TypeEnum type;
+  private DbType type;
 
   public static final String SERIALIZED_NAME_PRICE = "price";
   @SerializedName(SERIALIZED_NAME_PRICE)
@@ -320,23 +268,23 @@ public class PresetsDbs {
   }
 
 
-  public PresetsDbs type(TypeEnum type) {
+  public PresetsDbs type(DbType type) {
     
     this.type = type;
     return this;
   }
 
    /**
-   * Тип тарифа базы данных
+   * Get type
    * @return type
   **/
   @javax.annotation.Nullable
-  public TypeEnum getType() {
+  public DbType getType() {
     return type;
   }
 
 
-  public void setType(TypeEnum type) {
+  public void setType(DbType type) {
     this.type = type;
   }
 
@@ -484,9 +432,6 @@ public class PresetsDbs {
       }
       if ((jsonObj.get("description_short") != null && !jsonObj.get("description_short").isJsonNull()) && !jsonObj.get("description_short").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description_short` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description_short").toString()));
-      }
-      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
       if ((jsonObj.get("location") != null && !jsonObj.get("location").isJsonNull()) && !jsonObj.get("location").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `location` to be a primitive type in the JSON string but got `%s`", jsonObj.get("location").toString()));

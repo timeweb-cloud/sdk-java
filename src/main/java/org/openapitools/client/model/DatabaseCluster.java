@@ -27,6 +27,7 @@ import java.util.List;
 import org.openapitools.client.model.ConfigParameters;
 import org.openapitools.client.model.DatabaseClusterDiskStats;
 import org.openapitools.client.model.DatabaseClusterNetworksInner;
+import org.openapitools.client.model.DbType;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -56,7 +57,7 @@ import org.openapitools.client.JSON;
 /**
  * Кластер базы данных
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-27T09:01:23.754338Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-21T14:35:54.644183Z[Etc/UTC]")
 public class DatabaseCluster {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -129,62 +130,9 @@ public class DatabaseCluster {
   @SerializedName(SERIALIZED_NAME_NETWORKS)
   private List<DatabaseClusterNetworksInner> networks = new ArrayList<>();
 
-  /**
-   * Тип кластера базы данных.
-   */
-  @JsonAdapter(TypeEnum.Adapter.class)
-  public enum TypeEnum {
-    MYSQL("mysql"),
-    
-    MYSQL5("mysql5"),
-    
-    POSTGRES("postgres"),
-    
-    REDIS("redis"),
-    
-    MONGODB("mongodb");
-
-    private String value;
-
-    TypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static TypeEnum fromValue(String value) {
-      for (TypeEnum b : TypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<TypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public TypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return TypeEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
-  private TypeEnum type;
+  private DbType type;
 
   /**
    * Тип хеширования кластера базы данных (mysql5 | mysql | postgres).
@@ -430,23 +378,23 @@ public class DatabaseCluster {
   }
 
 
-  public DatabaseCluster type(TypeEnum type) {
+  public DatabaseCluster type(DbType type) {
     
     this.type = type;
     return this;
   }
 
    /**
-   * Тип кластера базы данных.
+   * Get type
    * @return type
   **/
   @javax.annotation.Nonnull
-  public TypeEnum getType() {
+  public DbType getType() {
     return type;
   }
 
 
-  public void setType(TypeEnum type) {
+  public void setType(DbType type) {
     this.type = type;
   }
 
@@ -745,9 +693,6 @@ public class DatabaseCluster {
       for (int i = 0; i < jsonArraynetworks.size(); i++) {
         DatabaseClusterNetworksInner.validateJsonElement(jsonArraynetworks.get(i));
       };
-      if (!jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
-      }
       if ((jsonObj.get("hash_type") != null && !jsonObj.get("hash_type").isJsonNull()) && !jsonObj.get("hash_type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `hash_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("hash_type").toString()));
       }

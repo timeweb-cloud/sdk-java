@@ -20,7 +20,7 @@
 |**bootMode** | [**BootModeEnum**](#BootModeEnum) | Режим загрузки ОС сервера. |  |
 |**status** | [**StatusEnum**](#StatusEnum) | Статус сервера. |  |
 |**startAt** | **OffsetDateTime** | Значение времени, указанное в комбинированном формате даты и времени ISO8601, которое представляет, когда был запущен сервер. |  |
-|**isDdosGuard** | **Boolean** | Это логическое значение, которое показывает, включена ли защита от DDOS у данного сервера. |  |
+|**isDdosGuard** | **Boolean** | Это логическое значение, которое показывает, включена ли защита от DDoS у данного сервера. |  |
 |**cpu** | **BigDecimal** | Количество ядер процессора сервера. |  |
 |**cpuFrequency** | **String** | Частота ядер процессора сервера. |  |
 |**ram** | **BigDecimal** | Размер (в Мб) ОЗУ сервера. |  |
@@ -32,6 +32,7 @@
 |**networks** | [**List&lt;VdsNetworksInner&gt;**](VdsNetworksInner.md) | Список сетей диска. |  |
 |**cloudInit** | **String** | Cloud-init скрипт. |  |
 |**isQemuAgent** | **Boolean** | Включен ли QEMU-agent на сервере. |  [optional] |
+|**availabilityZone** | **AvailabilityZone** |  |  |
 
 
 

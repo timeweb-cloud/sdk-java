@@ -45,6 +45,14 @@ public class NetworkTest {
     }
 
     /**
+     * Test the property 'floatingIp'
+     */
+    @Test
+    public void floatingIpTest() {
+        // TODO: test floatingIp
+    }
+
+    /**
      * Test the property 'ip'
      */
     @Test

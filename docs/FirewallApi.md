@@ -97,7 +97,7 @@ public class Example {
 
 <a id="createGroup"></a>
 # **createGroup**
-> FirewallGroupOutResponse createGroup(firewallGroupInAPI)
+> FirewallGroupOutResponse createGroup(firewallGroupInAPI, policy)
 
 Создание группы правил
 
@@ -124,8 +124,9 @@ public class Example {
 
     FirewallApi apiInstance = new FirewallApi(defaultClient);
     FirewallGroupInAPI firewallGroupInAPI = new FirewallGroupInAPI(); // FirewallGroupInAPI | 
+    String policy = "DROP"; // String | Тип группы правил
     try {
-      FirewallGroupOutResponse result = apiInstance.createGroup(firewallGroupInAPI);
+      FirewallGroupOutResponse result = apiInstance.createGroup(firewallGroupInAPI, policy);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling FirewallApi#createGroup");
@@ -143,6 +144,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **firewallGroupInAPI** | [**FirewallGroupInAPI**](FirewallGroupInAPI.md)|  | |
+| **policy** | **String**| Тип группы правил | [optional] [enum: DROP, ACCEPT] |
 
 ### Return type
 

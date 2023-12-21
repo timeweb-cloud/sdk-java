@@ -20,6 +20,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
+import org.openapitools.client.model.AvailabilityZone;
 import org.openapitools.client.model.Network;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -156,6 +157,14 @@ public class CreateBalancerTest {
     @Test
     public void networkTest() {
         // TODO: test network
+    }
+
+    /**
+     * Test the property 'availabilityZone'
+     */
+    @Test
+    public void availabilityZoneTest() {
+        // TODO: test availabilityZone
     }
 
 }

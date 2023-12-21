@@ -22,8 +22,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
+import org.openapitools.client.model.AvailabilityZone;
 import org.openapitools.client.model.ConfigParameters;
 import org.openapitools.client.model.DbDiskStats;
+import org.openapitools.client.model.DbType;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -53,7 +55,7 @@ import org.openapitools.client.JSON;
 /**
  * База данных
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-27T09:01:23.754338Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-21T14:35:54.644183Z[Etc/UTC]")
 public class Db {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -138,62 +140,9 @@ public class Db {
   @SerializedName(SERIALIZED_NAME_HOST)
   private String host;
 
-  /**
-   * Тип базы данных.
-   */
-  @JsonAdapter(TypeEnum.Adapter.class)
-  public enum TypeEnum {
-    MYSQL("mysql"),
-    
-    MYSQL5("mysql5"),
-    
-    POSTGRES("postgres"),
-    
-    REDIS("redis"),
-    
-    MONGODB("mongodb");
-
-    private String value;
-
-    TypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static TypeEnum fromValue(String value) {
-      for (TypeEnum b : TypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<TypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public TypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return TypeEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
-  private TypeEnum type;
+  private DbType type;
 
   /**
    * Тип хеширования базы данных (mysql5 | mysql | postgres).
@@ -330,6 +279,10 @@ public class Db {
   public static final String SERIALIZED_NAME_IS_ONLY_LOCAL_IP_ACCESS = "is_only_local_ip_access";
   @SerializedName(SERIALIZED_NAME_IS_ONLY_LOCAL_IP_ACCESS)
   private Boolean isOnlyLocalIpAccess;
+
+  public static final String SERIALIZED_NAME_AVAILABILITY_ZONE = "availability_zone";
+  @SerializedName(SERIALIZED_NAME_AVAILABILITY_ZONE)
+  private AvailabilityZone availabilityZone;
 
   public Db() {
   }
@@ -502,23 +455,23 @@ public class Db {
   }
 
 
-  public Db type(TypeEnum type) {
+  public Db type(DbType type) {
     
     this.type = type;
     return this;
   }
 
    /**
-   * Тип базы данных.
+   * Get type
    * @return type
   **/
   @javax.annotation.Nonnull
-  public TypeEnum getType() {
+  public DbType getType() {
     return type;
   }
 
 
-  public void setType(TypeEnum type) {
+  public void setType(DbType type) {
     this.type = type;
   }
 
@@ -712,6 +665,27 @@ public class Db {
   }
 
 
+  public Db availabilityZone(AvailabilityZone availabilityZone) {
+    
+    this.availabilityZone = availabilityZone;
+    return this;
+  }
+
+   /**
+   * Get availabilityZone
+   * @return availabilityZone
+  **/
+  @javax.annotation.Nonnull
+  public AvailabilityZone getAvailabilityZone() {
+    return availabilityZone;
+  }
+
+
+  public void setAvailabilityZone(AvailabilityZone availabilityZone) {
+    this.availabilityZone = availabilityZone;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -739,12 +713,13 @@ public class Db {
         Objects.equals(this.presetId, db.presetId) &&
         Objects.equals(this.diskStats, db.diskStats) &&
         Objects.equals(this.configParameters, db.configParameters) &&
-        Objects.equals(this.isOnlyLocalIpAccess, db.isOnlyLocalIpAccess);
+        Objects.equals(this.isOnlyLocalIpAccess, db.isOnlyLocalIpAccess) &&
+        Objects.equals(this.availabilityZone, db.availabilityZone);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, accountId, login, location, password, name, host, type, hashType, port, ip, localIp, status, presetId, diskStats, configParameters, isOnlyLocalIpAccess);
+    return Objects.hash(id, createdAt, accountId, login, location, password, name, host, type, hashType, port, ip, localIp, status, presetId, diskStats, configParameters, isOnlyLocalIpAccess, availabilityZone);
   }
 
   @Override
@@ -769,6 +744,7 @@ public class Db {
     sb.append("    diskStats: ").append(toIndentedString(diskStats)).append("\n");
     sb.append("    configParameters: ").append(toIndentedString(configParameters)).append("\n");
     sb.append("    isOnlyLocalIpAccess: ").append(toIndentedString(isOnlyLocalIpAccess)).append("\n");
+    sb.append("    availabilityZone: ").append(toIndentedString(availabilityZone)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -809,6 +785,7 @@ public class Db {
     openapiFields.add("disk_stats");
     openapiFields.add("config_parameters");
     openapiFields.add("is_only_local_ip_access");
+    openapiFields.add("availability_zone");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -829,6 +806,7 @@ public class Db {
     openapiRequiredFields.add("disk_stats");
     openapiRequiredFields.add("config_parameters");
     openapiRequiredFields.add("is_only_local_ip_access");
+    openapiRequiredFields.add("availability_zone");
   }
 
  /**
@@ -879,9 +857,6 @@ public class Db {
       }
       if ((jsonObj.get("host") != null && !jsonObj.get("host").isJsonNull()) && !jsonObj.get("host").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `host` to be a primitive type in the JSON string but got `%s`", jsonObj.get("host").toString()));
-      }
-      if (!jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
       if ((jsonObj.get("hash_type") != null && !jsonObj.get("hash_type").isJsonNull()) && !jsonObj.get("hash_type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `hash_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("hash_type").toString()));

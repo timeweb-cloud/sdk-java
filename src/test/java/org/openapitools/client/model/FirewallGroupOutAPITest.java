@@ -20,6 +20,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import org.openapitools.client.model.Policy;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -75,6 +76,14 @@ public class FirewallGroupOutAPITest {
     @Test
     public void descriptionTest() {
         // TODO: test description
+    }
+
+    /**
+     * Test the property 'policy'
+     */
+    @Test
+    public void policyTest() {
+        // TODO: test policy
     }
 
 }

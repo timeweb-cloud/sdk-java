@@ -11,6 +11,7 @@
 |**subnetV4** | **String** | Маска подсети. |  |
 |**location** | [**LocationEnum**](#LocationEnum) | Локация сети. |  |
 |**description** | **String** | Описание. |  [optional] |
+|**availabilityZone** | **AvailabilityZone** |  |  [optional] |
 
 
 

@@ -34,10 +34,12 @@ docs/ApiKeysApi.md
 docs/AutoBackup.md
 docs/AutoReplyIsDisabled.md
 docs/AutoReplyIsEnabled.md
+docs/AvailabilityZone.md
 docs/Backup.md
 docs/Balancer.md
 docs/BalancersApi.md
 docs/BaseError.md
+docs/BindFloatingIp.md
 docs/Bonus.md
 docs/Bucket.md
 docs/BucketDiskStats.md
@@ -73,6 +75,8 @@ docs/CreateDomainDNSRecord201Response.md
 docs/CreateDomainMailbox201Response.md
 docs/CreateDomainMailboxRequest.md
 docs/CreateDomainRequest201Response.md
+docs/CreateFloatingIp.md
+docs/CreateFloatingIp201Response.md
 docs/CreateFolderInStorageRequest.md
 docs/CreateInstance.md
 docs/CreateKey201Response.md
@@ -103,6 +107,7 @@ docs/DatabaseInstance.md
 docs/DatabasesApi.md
 docs/Db.md
 docs/DbDiskStats.md
+docs/DbType.md
 docs/DedicatedServer.md
 docs/DedicatedServerAdditionalService.md
 docs/DedicatedServerPreset.md
@@ -154,6 +159,8 @@ docs/FirewallRuleOutAPI.md
 docs/FirewallRuleOutResponse.md
 docs/FirewallRuleProtocol.md
 docs/FirewallRulesOutResponse.md
+docs/FloatingIp.md
+docs/FloatingIpApi.md
 docs/ForwardingIncomingIsDisabled.md
 docs/ForwardingIncomingIsEnabled.md
 docs/ForwardingOutgoingIsDisabled.md
@@ -192,6 +199,7 @@ docs/GetFinances403Response.md
 docs/GetFinances404Response.md
 docs/GetFinances429Response.md
 docs/GetFinances500Response.md
+docs/GetFloatingIps200Response.md
 docs/GetKey200Response.md
 docs/GetKeys200Response.md
 docs/GetMailQuota200Response.md
@@ -270,6 +278,7 @@ docs/NotificationSettingType.md
 docs/OS.md
 docs/PerformActionOnBackupRequest.md
 docs/PerformActionOnServerRequest.md
+docs/Policy.md
 docs/PresetsBalancer.md
 docs/PresetsDbs.md
 docs/PresetsResponse.md
@@ -331,6 +340,7 @@ docs/UpdateDomainAutoProlongation200Response.md
 docs/UpdateDomainMailInfoRequest.md
 docs/UpdateDomainNameServers.md
 docs/UpdateDomainNameServersNameServersInner.md
+docs/UpdateFloatingIp.md
 docs/UpdateInstance.md
 docs/UpdateKeyRequest.md
 docs/UpdateMailQuotaRequest.md
@@ -398,6 +408,7 @@ src/main/java/org/openapitools/client/api/DatabasesApi.java
 src/main/java/org/openapitools/client/api/DedicatedServersApi.java
 src/main/java/org/openapitools/client/api/DomainsApi.java
 src/main/java/org/openapitools/client/api/FirewallApi.java
+src/main/java/org/openapitools/client/api/FloatingIpApi.java
 src/main/java/org/openapitools/client/api/ImagesApi.java
 src/main/java/org/openapitools/client/api/KubernetesApi.java
 src/main/java/org/openapitools/client/api/MailApi.java
@@ -437,9 +448,11 @@ src/main/java/org/openapitools/client/model/ApiKey.java
 src/main/java/org/openapitools/client/model/AutoBackup.java
 src/main/java/org/openapitools/client/model/AutoReplyIsDisabled.java
 src/main/java/org/openapitools/client/model/AutoReplyIsEnabled.java
+src/main/java/org/openapitools/client/model/AvailabilityZone.java
 src/main/java/org/openapitools/client/model/Backup.java
 src/main/java/org/openapitools/client/model/Balancer.java
 src/main/java/org/openapitools/client/model/BaseError.java
+src/main/java/org/openapitools/client/model/BindFloatingIp.java
 src/main/java/org/openapitools/client/model/Bonus.java
 src/main/java/org/openapitools/client/model/Bucket.java
 src/main/java/org/openapitools/client/model/BucketDiskStats.java
@@ -475,6 +488,8 @@ src/main/java/org/openapitools/client/model/CreateDomainDNSRecord201Response.jav
 src/main/java/org/openapitools/client/model/CreateDomainMailbox201Response.java
 src/main/java/org/openapitools/client/model/CreateDomainMailboxRequest.java
 src/main/java/org/openapitools/client/model/CreateDomainRequest201Response.java
+src/main/java/org/openapitools/client/model/CreateFloatingIp.java
+src/main/java/org/openapitools/client/model/CreateFloatingIp201Response.java
 src/main/java/org/openapitools/client/model/CreateFolderInStorageRequest.java
 src/main/java/org/openapitools/client/model/CreateInstance.java
 src/main/java/org/openapitools/client/model/CreateKey201Response.java
@@ -504,6 +519,7 @@ src/main/java/org/openapitools/client/model/DatabaseClusterNetworksInnerIpsInner
 src/main/java/org/openapitools/client/model/DatabaseInstance.java
 src/main/java/org/openapitools/client/model/Db.java
 src/main/java/org/openapitools/client/model/DbDiskStats.java
+src/main/java/org/openapitools/client/model/DbType.java
 src/main/java/org/openapitools/client/model/DedicatedServer.java
 src/main/java/org/openapitools/client/model/DedicatedServerAdditionalService.java
 src/main/java/org/openapitools/client/model/DedicatedServerPreset.java
@@ -552,6 +568,7 @@ src/main/java/org/openapitools/client/model/FirewallRuleOutAPI.java
 src/main/java/org/openapitools/client/model/FirewallRuleOutResponse.java
 src/main/java/org/openapitools/client/model/FirewallRuleProtocol.java
 src/main/java/org/openapitools/client/model/FirewallRulesOutResponse.java
+src/main/java/org/openapitools/client/model/FloatingIp.java
 src/main/java/org/openapitools/client/model/ForwardingIncomingIsDisabled.java
 src/main/java/org/openapitools/client/model/ForwardingIncomingIsEnabled.java
 src/main/java/org/openapitools/client/model/ForwardingOutgoingIsDisabled.java
@@ -590,6 +607,7 @@ src/main/java/org/openapitools/client/model/GetFinances403Response.java
 src/main/java/org/openapitools/client/model/GetFinances404Response.java
 src/main/java/org/openapitools/client/model/GetFinances429Response.java
 src/main/java/org/openapitools/client/model/GetFinances500Response.java
+src/main/java/org/openapitools/client/model/GetFloatingIps200Response.java
 src/main/java/org/openapitools/client/model/GetKey200Response.java
 src/main/java/org/openapitools/client/model/GetKeys200Response.java
 src/main/java/org/openapitools/client/model/GetMailQuota200Response.java
@@ -665,6 +683,7 @@ src/main/java/org/openapitools/client/model/NotificationSettingType.java
 src/main/java/org/openapitools/client/model/OS.java
 src/main/java/org/openapitools/client/model/PerformActionOnBackupRequest.java
 src/main/java/org/openapitools/client/model/PerformActionOnServerRequest.java
+src/main/java/org/openapitools/client/model/Policy.java
 src/main/java/org/openapitools/client/model/PresetsBalancer.java
 src/main/java/org/openapitools/client/model/PresetsDbs.java
 src/main/java/org/openapitools/client/model/PresetsResponse.java
@@ -722,6 +741,7 @@ src/main/java/org/openapitools/client/model/UpdateDomainAutoProlongation200Respo
 src/main/java/org/openapitools/client/model/UpdateDomainMailInfoRequest.java
 src/main/java/org/openapitools/client/model/UpdateDomainNameServers.java
 src/main/java/org/openapitools/client/model/UpdateDomainNameServersNameServersInner.java
+src/main/java/org/openapitools/client/model/UpdateFloatingIp.java
 src/main/java/org/openapitools/client/model/UpdateInstance.java
 src/main/java/org/openapitools/client/model/UpdateKeyRequest.java
 src/main/java/org/openapitools/client/model/UpdateMailQuotaRequest.java
@@ -766,6 +786,7 @@ src/test/java/org/openapitools/client/api/DatabasesApiTest.java
 src/test/java/org/openapitools/client/api/DedicatedServersApiTest.java
 src/test/java/org/openapitools/client/api/DomainsApiTest.java
 src/test/java/org/openapitools/client/api/FirewallApiTest.java
+src/test/java/org/openapitools/client/api/FloatingIpApiTest.java
 src/test/java/org/openapitools/client/api/ImagesApiTest.java
 src/test/java/org/openapitools/client/api/KubernetesApiTest.java
 src/test/java/org/openapitools/client/api/MailApiTest.java
@@ -800,9 +821,11 @@ src/test/java/org/openapitools/client/model/ApiKeyTest.java
 src/test/java/org/openapitools/client/model/AutoBackupTest.java
 src/test/java/org/openapitools/client/model/AutoReplyIsDisabledTest.java
 src/test/java/org/openapitools/client/model/AutoReplyIsEnabledTest.java
+src/test/java/org/openapitools/client/model/AvailabilityZoneTest.java
 src/test/java/org/openapitools/client/model/BackupTest.java
 src/test/java/org/openapitools/client/model/BalancerTest.java
 src/test/java/org/openapitools/client/model/BaseErrorTest.java
+src/test/java/org/openapitools/client/model/BindFloatingIpTest.java
 src/test/java/org/openapitools/client/model/BonusTest.java
 src/test/java/org/openapitools/client/model/BucketDiskStatsTest.java
 src/test/java/org/openapitools/client/model/BucketTest.java
@@ -838,6 +861,8 @@ src/test/java/org/openapitools/client/model/CreateDomainDNSRecord201ResponseTest
 src/test/java/org/openapitools/client/model/CreateDomainMailbox201ResponseTest.java
 src/test/java/org/openapitools/client/model/CreateDomainMailboxRequestTest.java
 src/test/java/org/openapitools/client/model/CreateDomainRequest201ResponseTest.java
+src/test/java/org/openapitools/client/model/CreateFloatingIp201ResponseTest.java
+src/test/java/org/openapitools/client/model/CreateFloatingIpTest.java
 src/test/java/org/openapitools/client/model/CreateFolderInStorageRequestTest.java
 src/test/java/org/openapitools/client/model/CreateInstanceTest.java
 src/test/java/org/openapitools/client/model/CreateKey201ResponseTest.java
@@ -867,6 +892,7 @@ src/test/java/org/openapitools/client/model/DatabaseClusterTest.java
 src/test/java/org/openapitools/client/model/DatabaseInstanceTest.java
 src/test/java/org/openapitools/client/model/DbDiskStatsTest.java
 src/test/java/org/openapitools/client/model/DbTest.java
+src/test/java/org/openapitools/client/model/DbTypeTest.java
 src/test/java/org/openapitools/client/model/DedicatedServerAdditionalServiceTest.java
 src/test/java/org/openapitools/client/model/DedicatedServerPresetCpuTest.java
 src/test/java/org/openapitools/client/model/DedicatedServerPresetDiskTest.java
@@ -915,6 +941,7 @@ src/test/java/org/openapitools/client/model/FirewallRuleOutAPITest.java
 src/test/java/org/openapitools/client/model/FirewallRuleOutResponseTest.java
 src/test/java/org/openapitools/client/model/FirewallRuleProtocolTest.java
 src/test/java/org/openapitools/client/model/FirewallRulesOutResponseTest.java
+src/test/java/org/openapitools/client/model/FloatingIpTest.java
 src/test/java/org/openapitools/client/model/ForwardingIncomingIsDisabledTest.java
 src/test/java/org/openapitools/client/model/ForwardingIncomingIsEnabledTest.java
 src/test/java/org/openapitools/client/model/ForwardingOutgoingIsDisabledTest.java
@@ -953,6 +980,7 @@ src/test/java/org/openapitools/client/model/GetFinances403ResponseTest.java
 src/test/java/org/openapitools/client/model/GetFinances404ResponseTest.java
 src/test/java/org/openapitools/client/model/GetFinances429ResponseTest.java
 src/test/java/org/openapitools/client/model/GetFinances500ResponseTest.java
+src/test/java/org/openapitools/client/model/GetFloatingIps200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetKey200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetKeys200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetMailQuota200ResponseTest.java
@@ -1028,6 +1056,7 @@ src/test/java/org/openapitools/client/model/NotificationSettingTypeTest.java
 src/test/java/org/openapitools/client/model/OSTest.java
 src/test/java/org/openapitools/client/model/PerformActionOnBackupRequestTest.java
 src/test/java/org/openapitools/client/model/PerformActionOnServerRequestTest.java
+src/test/java/org/openapitools/client/model/PolicyTest.java
 src/test/java/org/openapitools/client/model/PresetsBalancerTest.java
 src/test/java/org/openapitools/client/model/PresetsDbsTest.java
 src/test/java/org/openapitools/client/model/PresetsResponseTest.java
@@ -1085,6 +1114,7 @@ src/test/java/org/openapitools/client/model/UpdateDomainMailInfoRequestTest.java
 src/test/java/org/openapitools/client/model/UpdateDomainNameServersNameServersInnerTest.java
 src/test/java/org/openapitools/client/model/UpdateDomainNameServersTest.java
 src/test/java/org/openapitools/client/model/UpdateDomainTest.java
+src/test/java/org/openapitools/client/model/UpdateFloatingIpTest.java
 src/test/java/org/openapitools/client/model/UpdateInstanceTest.java
 src/test/java/org/openapitools/client/model/UpdateKeyRequestTest.java
 src/test/java/org/openapitools/client/model/UpdateMailQuotaRequestTest.java

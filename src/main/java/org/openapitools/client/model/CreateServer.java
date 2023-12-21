@@ -25,6 +25,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import org.openapitools.client.model.AvailabilityZone;
 import org.openapitools.client.model.CreateServerConfiguration;
 import org.openapitools.client.model.Network;
 
@@ -56,7 +57,7 @@ import org.openapitools.client.JSON;
 /**
  * CreateServer
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-27T09:01:23.754338Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-21T14:35:54.644183Z[Etc/UTC]")
 public class CreateServer {
   public static final String SERIALIZED_NAME_CONFIGURATION = "configuration";
   @SerializedName(SERIALIZED_NAME_CONFIGURATION)
@@ -114,6 +115,10 @@ public class CreateServer {
   public static final String SERIALIZED_NAME_CLOUD_INIT = "cloud_init";
   @SerializedName(SERIALIZED_NAME_CLOUD_INIT)
   private String cloudInit;
+
+  public static final String SERIALIZED_NAME_AVAILABILITY_ZONE = "availability_zone";
+  @SerializedName(SERIALIZED_NAME_AVAILABILITY_ZONE)
+  private AvailabilityZone availabilityZone;
 
   public CreateServer() {
   }
@@ -424,6 +429,27 @@ public class CreateServer {
   }
 
 
+  public CreateServer availabilityZone(AvailabilityZone availabilityZone) {
+    
+    this.availabilityZone = availabilityZone;
+    return this;
+  }
+
+   /**
+   * Get availabilityZone
+   * @return availabilityZone
+  **/
+  @javax.annotation.Nullable
+  public AvailabilityZone getAvailabilityZone() {
+    return availabilityZone;
+  }
+
+
+  public void setAvailabilityZone(AvailabilityZone availabilityZone) {
+    this.availabilityZone = availabilityZone;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -447,12 +473,13 @@ public class CreateServer {
         Objects.equals(this.sshKeysIds, createServer.sshKeysIds) &&
         Objects.equals(this.isLocalNetwork, createServer.isLocalNetwork) &&
         Objects.equals(this.network, createServer.network) &&
-        Objects.equals(this.cloudInit, createServer.cloudInit);
+        Objects.equals(this.cloudInit, createServer.cloudInit) &&
+        Objects.equals(this.availabilityZone, createServer.availabilityZone);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(_configuration, isDdosGuard, osId, imageId, softwareId, presetId, bandwidth, name, avatarId, comment, sshKeysIds, isLocalNetwork, network, cloudInit);
+    return Objects.hash(_configuration, isDdosGuard, osId, imageId, softwareId, presetId, bandwidth, name, avatarId, comment, sshKeysIds, isLocalNetwork, network, cloudInit, availabilityZone);
   }
 
   @Override
@@ -473,6 +500,7 @@ public class CreateServer {
     sb.append("    isLocalNetwork: ").append(toIndentedString(isLocalNetwork)).append("\n");
     sb.append("    network: ").append(toIndentedString(network)).append("\n");
     sb.append("    cloudInit: ").append(toIndentedString(cloudInit)).append("\n");
+    sb.append("    availabilityZone: ").append(toIndentedString(availabilityZone)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -509,6 +537,7 @@ public class CreateServer {
     openapiFields.add("is_local_network");
     openapiFields.add("network");
     openapiFields.add("cloud_init");
+    openapiFields.add("availability_zone");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
