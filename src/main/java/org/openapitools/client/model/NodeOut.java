@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * NodeOut
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-21T14:35:54.644183Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-11T15:19:47.015285Z[Etc/UTC]")
 public class NodeOut {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -92,6 +92,10 @@ public class NodeOut {
   public static final String SERIALIZED_NAME_NETWORK = "network";
   @SerializedName(SERIALIZED_NAME_NETWORK)
   private Integer network;
+
+  public static final String SERIALIZED_NAME_NODE_IP = "node_ip";
+  @SerializedName(SERIALIZED_NAME_NODE_IP)
+  private String nodeIp;
 
   public NodeOut() {
   }
@@ -306,6 +310,27 @@ public class NodeOut {
   }
 
 
+  public NodeOut nodeIp(String nodeIp) {
+    
+    this.nodeIp = nodeIp;
+    return this;
+  }
+
+   /**
+   * Ip-адрес ноды
+   * @return nodeIp
+  **/
+  @javax.annotation.Nonnull
+  public String getNodeIp() {
+    return nodeIp;
+  }
+
+
+  public void setNodeIp(String nodeIp) {
+    this.nodeIp = nodeIp;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -325,12 +350,13 @@ public class NodeOut {
         Objects.equals(this.cpu, nodeOut.cpu) &&
         Objects.equals(this.ram, nodeOut.ram) &&
         Objects.equals(this.disk, nodeOut.disk) &&
-        Objects.equals(this.network, nodeOut.network);
+        Objects.equals(this.network, nodeOut.network) &&
+        Objects.equals(this.nodeIp, nodeOut.nodeIp);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, type, groupId, status, presetId, cpu, ram, disk, network);
+    return Objects.hash(id, createdAt, type, groupId, status, presetId, cpu, ram, disk, network, nodeIp);
   }
 
   @Override
@@ -347,6 +373,7 @@ public class NodeOut {
     sb.append("    ram: ").append(toIndentedString(ram)).append("\n");
     sb.append("    disk: ").append(toIndentedString(disk)).append("\n");
     sb.append("    network: ").append(toIndentedString(network)).append("\n");
+    sb.append("    nodeIp: ").append(toIndentedString(nodeIp)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -379,6 +406,7 @@ public class NodeOut {
     openapiFields.add("ram");
     openapiFields.add("disk");
     openapiFields.add("network");
+    openapiFields.add("node_ip");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -392,6 +420,7 @@ public class NodeOut {
     openapiRequiredFields.add("ram");
     openapiRequiredFields.add("disk");
     openapiRequiredFields.add("network");
+    openapiRequiredFields.add("node_ip");
   }
 
  /**
@@ -427,6 +456,9 @@ public class NodeOut {
       }
       if (!jsonObj.get("status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
+      }
+      if (!jsonObj.get("node_ip").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `node_ip` to be a primitive type in the JSON string but got `%s`", jsonObj.get("node_ip").toString()));
       }
   }
 

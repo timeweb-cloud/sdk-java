@@ -14073,6 +14073,7 @@ paths:
                   ram: 1024
                   disk: 10
                   network: 200
+                  node_ip: 100.64.2.20
                 - id: 2240
                   created_at: 2023-01-13T10:10:29.753879
                   type: worker
@@ -14083,6 +14084,7 @@ paths:
                   ram: 1024
                   disk: 10
                   network: 200
+                  node_ip: 100.64.2.20
                 - id: 6584
                   created_at: 2023-01-13T10:10:29.753984
                   type: worker
@@ -14093,6 +14095,7 @@ paths:
                   ram: 1024
                   disk: 10
                   network: 200
+                  node_ip: 100.64.2.20
               schema:
                 $ref: '#/components/schemas/NodesResponse'
           description: Список нод
@@ -40566,6 +40569,7 @@ components:
     NodeOut:
       example:
         disk: 2
+        node_ip: node_ip
         group_id: 6
         preset_id: 1
         created_at: 2000-01-23T04:56:07.000+00:00
@@ -40617,6 +40621,10 @@ components:
           description: Пропускная способность сети
           title: Network
           type: integer
+        node_ip:
+          description: Ip-адрес ноды
+          title: Node Ip
+          type: string
       required:
       - cpu
       - created_at
@@ -40624,6 +40632,7 @@ components:
       - group_id
       - id
       - network
+      - node_ip
       - preset_id
       - ram
       - status
@@ -40634,6 +40643,7 @@ components:
       example:
         nodes:
         - disk: 2
+          node_ip: node_ip
           group_id: 6
           preset_id: 1
           created_at: 2000-01-23T04:56:07.000+00:00
@@ -40644,6 +40654,7 @@ components:
           ram: 5
           network: 7
         - disk: 2
+          node_ip: node_ip
           group_id: 6
           preset_id: 1
           created_at: 2000-01-23T04:56:07.000+00:00

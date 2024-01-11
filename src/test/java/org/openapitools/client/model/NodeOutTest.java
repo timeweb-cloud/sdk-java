@@ -117,4 +117,12 @@ public class NodeOutTest {
         // TODO: test network
     }
 
+    /**
+     * Test the property 'nodeIp'
+     */
+    @Test
+    public void nodeIpTest() {
+        // TODO: test nodeIp
+    }
+
 }
