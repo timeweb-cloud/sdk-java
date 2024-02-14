@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * CreateDomainRequest201Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-11T15:19:47.015285Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-02-14T11:30:23.203185Z[Etc/UTC]")
 public class CreateDomainRequest201Response {
   public static final String SERIALIZED_NAME_REQUEST = "request";
   @SerializedName(SERIALIZED_NAME_REQUEST)

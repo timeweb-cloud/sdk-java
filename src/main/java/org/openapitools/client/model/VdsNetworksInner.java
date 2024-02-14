@@ -55,8 +55,12 @@ import org.openapitools.client.JSON;
 /**
  * VdsNetworksInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-11T15:19:47.015285Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-02-14T11:30:23.203185Z[Etc/UTC]")
 public class VdsNetworksInner {
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  private String id;
+
   /**
    * Тип сети.
    */
@@ -175,6 +179,27 @@ public class VdsNetworksInner {
 
   public VdsNetworksInner() {
   }
+
+  public VdsNetworksInner id(String id) {
+    
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * Уникальный идентификатор сети. Есть только у приватных сетей.
+   * @return id
+  **/
+  @javax.annotation.Nullable
+  public String getId() {
+    return id;
+  }
+
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
 
   public VdsNetworksInner type(TypeEnum type) {
     
@@ -299,7 +324,8 @@ public class VdsNetworksInner {
       return false;
     }
     VdsNetworksInner vdsNetworksInner = (VdsNetworksInner) o;
-    return Objects.equals(this.type, vdsNetworksInner.type) &&
+    return Objects.equals(this.id, vdsNetworksInner.id) &&
+        Objects.equals(this.type, vdsNetworksInner.type) &&
         Objects.equals(this.natMode, vdsNetworksInner.natMode) &&
         Objects.equals(this.bandwidth, vdsNetworksInner.bandwidth) &&
         Objects.equals(this.ips, vdsNetworksInner.ips) &&
@@ -312,7 +338,7 @@ public class VdsNetworksInner {
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, natMode, bandwidth, ips, isDdosGuard);
+    return Objects.hash(id, type, natMode, bandwidth, ips, isDdosGuard);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -326,6 +352,7 @@ public class VdsNetworksInner {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class VdsNetworksInner {\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    natMode: ").append(toIndentedString(natMode)).append("\n");
     sb.append("    bandwidth: ").append(toIndentedString(bandwidth)).append("\n");
@@ -353,6 +380,7 @@ public class VdsNetworksInner {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("id");
     openapiFields.add("type");
     openapiFields.add("nat_mode");
     openapiFields.add("bandwidth");
@@ -393,6 +421,9 @@ public class VdsNetworksInner {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      }
       if (!jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }

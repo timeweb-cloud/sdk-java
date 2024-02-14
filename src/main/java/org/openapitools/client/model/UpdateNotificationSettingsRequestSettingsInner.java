@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * UpdateNotificationSettingsRequestSettingsInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-11T15:19:47.015285Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-02-14T11:30:23.203185Z[Etc/UTC]")
 public class UpdateNotificationSettingsRequestSettingsInner {
   public static final String SERIALIZED_NAME_CHANNELS = "channels";
   @SerializedName(SERIALIZED_NAME_CHANNELS)
