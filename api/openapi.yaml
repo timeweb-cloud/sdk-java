@@ -48841,6 +48841,7 @@ components:
       - used
       type: object
     create_cluster_admin:
+      description: Пользователь базы данных.
       properties:
         login:
           description: Имя пользователя базы данных

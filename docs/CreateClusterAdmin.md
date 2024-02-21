@@ -2,6 +2,7 @@
 
 # CreateClusterAdmin
 
+Пользователь базы данных.
 
 ## Properties
 
