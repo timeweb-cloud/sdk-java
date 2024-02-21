@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * UpdateDomain
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-02-14T11:30:23.203185Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-02-21T10:17:19.178316Z[Etc/UTC]")
 public class UpdateDomain {
   public static final String SERIALIZED_NAME_IS_AUTOPROLONG_ENABLED = "is_autoprolong_enabled";
   @SerializedName(SERIALIZED_NAME_IS_AUTOPROLONG_ENABLED)

@@ -25,5 +25,7 @@
 
 * `RABBITMQ` (value: `"rabbitmq"`)
 
+* `CLICKHOUSE` (value: `"clickhouse"`)
+
 
 

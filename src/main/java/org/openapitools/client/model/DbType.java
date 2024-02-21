@@ -47,7 +47,9 @@ public enum DbType {
   
   KAFKA("kafka"),
   
-  RABBITMQ("rabbitmq");
+  RABBITMQ("rabbitmq"),
+  
+  CLICKHOUSE("clickhouse");
 
   private String value;
 
