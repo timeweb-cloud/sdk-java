@@ -17,6 +17,7 @@
 |**network** | [**Network**](Network.md) |  |  [optional] |
 |**description** | **String** | Описание кластера базы данных |  [optional] |
 |**availabilityZone** | **AvailabilityZone** |  |  [optional] |
+|**autoBackups** | [**CreateDbAutoBackups**](CreateDbAutoBackups.md) |  |  [optional] |
 
 
 

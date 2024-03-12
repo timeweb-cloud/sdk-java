@@ -25,6 +25,7 @@ import org.openapitools.client.model.AvailabilityZone;
 import org.openapitools.client.model.ConfigParameters;
 import org.openapitools.client.model.CreateClusterAdmin;
 import org.openapitools.client.model.CreateClusterInstance;
+import org.openapitools.client.model.CreateDbAutoBackups;
 import org.openapitools.client.model.DbType;
 import org.openapitools.client.model.Network;
 
@@ -56,7 +57,7 @@ import org.openapitools.client.JSON;
 /**
  * CreateCluster
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-02-21T10:20:20.537374Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-03-12T09:10:41.526127Z[Etc/UTC]")
 public class CreateCluster {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -144,6 +145,10 @@ public class CreateCluster {
   public static final String SERIALIZED_NAME_AVAILABILITY_ZONE = "availability_zone";
   @SerializedName(SERIALIZED_NAME_AVAILABILITY_ZONE)
   private AvailabilityZone availabilityZone;
+
+  public static final String SERIALIZED_NAME_AUTO_BACKUPS = "auto_backups";
+  @SerializedName(SERIALIZED_NAME_AUTO_BACKUPS)
+  private CreateDbAutoBackups autoBackups;
 
   public CreateCluster() {
   }
@@ -358,6 +363,27 @@ public class CreateCluster {
   }
 
 
+  public CreateCluster autoBackups(CreateDbAutoBackups autoBackups) {
+    
+    this.autoBackups = autoBackups;
+    return this;
+  }
+
+   /**
+   * Get autoBackups
+   * @return autoBackups
+  **/
+  @javax.annotation.Nullable
+  public CreateDbAutoBackups getAutoBackups() {
+    return autoBackups;
+  }
+
+
+  public void setAutoBackups(CreateDbAutoBackups autoBackups) {
+    this.autoBackups = autoBackups;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -377,12 +403,13 @@ public class CreateCluster {
         Objects.equals(this.configParameters, createCluster.configParameters) &&
         Objects.equals(this.network, createCluster.network) &&
         Objects.equals(this.description, createCluster.description) &&
-        Objects.equals(this.availabilityZone, createCluster.availabilityZone);
+        Objects.equals(this.availabilityZone, createCluster.availabilityZone) &&
+        Objects.equals(this.autoBackups, createCluster.autoBackups);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, type, admin, instance, hashType, presetId, configParameters, network, description, availabilityZone);
+    return Objects.hash(name, type, admin, instance, hashType, presetId, configParameters, network, description, availabilityZone, autoBackups);
   }
 
   @Override
@@ -399,6 +426,7 @@ public class CreateCluster {
     sb.append("    network: ").append(toIndentedString(network)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    availabilityZone: ").append(toIndentedString(availabilityZone)).append("\n");
+    sb.append("    autoBackups: ").append(toIndentedString(autoBackups)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -431,6 +459,7 @@ public class CreateCluster {
     openapiFields.add("network");
     openapiFields.add("description");
     openapiFields.add("availability_zone");
+    openapiFields.add("auto_backups");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -491,6 +520,10 @@ public class CreateCluster {
       }
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
+      }
+      // validate the optional field `auto_backups`
+      if (jsonObj.get("auto_backups") != null && !jsonObj.get("auto_backups").isJsonNull()) {
+        CreateDbAutoBackups.validateJsonElement(jsonObj.get("auto_backups"));
       }
   }
 

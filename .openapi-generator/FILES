@@ -68,6 +68,7 @@ docs/CreateDatabaseCluster201Response.md
 docs/CreateDatabaseInstance201Response.md
 docs/CreateDatabaseUser201Response.md
 docs/CreateDb.md
+docs/CreateDbAutoBackups.md
 docs/CreateDedicatedServer.md
 docs/CreateDedicatedServer201Response.md
 docs/CreateDns.md
@@ -481,6 +482,7 @@ src/main/java/org/openapitools/client/model/CreateDatabaseCluster201Response.jav
 src/main/java/org/openapitools/client/model/CreateDatabaseInstance201Response.java
 src/main/java/org/openapitools/client/model/CreateDatabaseUser201Response.java
 src/main/java/org/openapitools/client/model/CreateDb.java
+src/main/java/org/openapitools/client/model/CreateDbAutoBackups.java
 src/main/java/org/openapitools/client/model/CreateDedicatedServer.java
 src/main/java/org/openapitools/client/model/CreateDedicatedServer201Response.java
 src/main/java/org/openapitools/client/model/CreateDns.java
@@ -853,6 +855,7 @@ src/test/java/org/openapitools/client/model/CreateDatabaseBackup409ResponseTest.
 src/test/java/org/openapitools/client/model/CreateDatabaseCluster201ResponseTest.java
 src/test/java/org/openapitools/client/model/CreateDatabaseInstance201ResponseTest.java
 src/test/java/org/openapitools/client/model/CreateDatabaseUser201ResponseTest.java
+src/test/java/org/openapitools/client/model/CreateDbAutoBackupsTest.java
 src/test/java/org/openapitools/client/model/CreateDbTest.java
 src/test/java/org/openapitools/client/model/CreateDedicatedServer201ResponseTest.java
 src/test/java/org/openapitools/client/model/CreateDedicatedServerTest.java

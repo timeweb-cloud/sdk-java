@@ -2,7 +2,7 @@
 
 Timeweb Cloud API
 - API version: 1.0.0
-  - Build date: 2024-02-21T10:20:20.537374Z[Etc/UTC]
+  - Build date: 2024-03-12T09:10:41.526127Z[Etc/UTC]
 
 # Введение
 API Timeweb Cloud позволяет вам управлять ресурсами в облаке программным способом с использованием обычных HTTP-запросов.
@@ -565,6 +565,7 @@ Class | Method | HTTP request | Description
  - [CreateDatabaseInstance201Response](docs/CreateDatabaseInstance201Response.md)
  - [CreateDatabaseUser201Response](docs/CreateDatabaseUser201Response.md)
  - [CreateDb](docs/CreateDb.md)
+ - [CreateDbAutoBackups](docs/CreateDbAutoBackups.md)
  - [CreateDedicatedServer](docs/CreateDedicatedServer.md)
  - [CreateDedicatedServer201Response](docs/CreateDedicatedServer201Response.md)
  - [CreateDns](docs/CreateDns.md)

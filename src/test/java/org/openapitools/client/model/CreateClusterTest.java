@@ -23,6 +23,7 @@ import org.openapitools.client.model.AvailabilityZone;
 import org.openapitools.client.model.ConfigParameters;
 import org.openapitools.client.model.CreateClusterAdmin;
 import org.openapitools.client.model.CreateClusterInstance;
+import org.openapitools.client.model.CreateDbAutoBackups;
 import org.openapitools.client.model.DbType;
 import org.openapitools.client.model.Network;
 import org.junit.jupiter.api.Disabled;
@@ -120,6 +121,14 @@ public class CreateClusterTest {
     @Test
     public void availabilityZoneTest() {
         // TODO: test availabilityZone
+    }
+
+    /**
+     * Test the property 'autoBackups'
+     */
+    @Test
+    public void autoBackupsTest() {
+        // TODO: test autoBackups
     }
 
 }
