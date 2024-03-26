@@ -39,9 +39,17 @@ public enum DbType {
   
   POSTGRES15("postgres15"),
   
+  POSTGRES16("postgres16"),
+  
   REDIS("redis"),
   
+  MONGODB4("mongodb4"),
+  
   MONGODB("mongodb"),
+  
+  MONGODB6("mongodb6"),
+  
+  MONGODB7("mongodb7"),
   
   OPENSEARCH("opensearch"),
   

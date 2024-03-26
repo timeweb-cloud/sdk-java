@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * Пересылка исходящих писем
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-03-12T09:10:41.526127Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-03-26T09:25:01.104095Z[Etc/UTC]")
 public class MailboxForwardingOutgoing {
   public static final String SERIALIZED_NAME_IS_ENABLED = "is_enabled";
   @SerializedName(SERIALIZED_NAME_IS_ENABLED)

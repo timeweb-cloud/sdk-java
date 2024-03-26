@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * UpdateServerDiskBackupRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-03-12T09:10:41.526127Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-03-26T09:25:01.104095Z[Etc/UTC]")
 public class UpdateServerDiskBackupRequest {
   public static final String SERIALIZED_NAME_COMMENT = "comment";
   @SerializedName(SERIALIZED_NAME_COMMENT)
