@@ -19,6 +19,7 @@
 | SERVER | &quot;server&quot; |
 | BALANCER | &quot;balancer&quot; |
 | DATABASE | &quot;database&quot; |
+| NETWORK | &quot;network&quot; |
 
 
 

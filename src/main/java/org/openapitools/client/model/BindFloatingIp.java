@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * BindFloatingIp
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-03-26T09:25:01.104095Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-04-12T14:47:20.505059Z[Etc/UTC]")
 public class BindFloatingIp {
   /**
    * Тип ресурса.
@@ -62,7 +62,9 @@ public class BindFloatingIp {
     
     BALANCER("balancer"),
     
-    DATABASE("database");
+    DATABASE("database"),
+    
+    NETWORK("network");
 
     private String value;
 

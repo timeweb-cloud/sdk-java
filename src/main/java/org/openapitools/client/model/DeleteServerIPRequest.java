@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * DeleteServerIPRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-03-26T09:25:01.104095Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-04-12T14:47:20.505059Z[Etc/UTC]")
 public class DeleteServerIPRequest {
   public static final String SERIALIZED_NAME_IP = "ip";
   @SerializedName(SERIALIZED_NAME_IP)

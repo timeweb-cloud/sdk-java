@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * FloatingIp
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-03-26T09:25:01.104095Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-04-12T14:47:20.505059Z[Etc/UTC]")
 public class FloatingIp {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -79,7 +79,9 @@ public class FloatingIp {
     
     BALANCER("balancer"),
     
-    DATABASE("database");
+    DATABASE("database"),
+    
+    NETWORK("network");
 
     private String value;
 
@@ -102,7 +104,7 @@ public class FloatingIp {
           return b;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+      return null;
     }
 
     public static class Adapter extends TypeAdapter<ResourceTypeEnum> {
@@ -169,7 +171,7 @@ public class FloatingIp {
    * IP-адрес
    * @return ip
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getIp() {
     return ip;
   }
@@ -380,6 +382,10 @@ public class FloatingIp {
     openapiRequiredFields.add("ip");
     openapiRequiredFields.add("is_ddos_guard");
     openapiRequiredFields.add("availability_zone");
+    openapiRequiredFields.add("resource_type");
+    openapiRequiredFields.add("resource_id");
+    openapiRequiredFields.add("comment");
+    openapiRequiredFields.add("ptr");
   }
 
  /**
@@ -413,7 +419,7 @@ public class FloatingIp {
       if (!jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
-      if (!jsonObj.get("ip").isJsonPrimitive()) {
+      if ((jsonObj.get("ip") != null && !jsonObj.get("ip").isJsonNull()) && !jsonObj.get("ip").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `ip` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ip").toString()));
       }
       if ((jsonObj.get("resource_type") != null && !jsonObj.get("resource_type").isJsonNull()) && !jsonObj.get("resource_type").isJsonPrimitive()) {

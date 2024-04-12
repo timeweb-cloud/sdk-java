@@ -60,7 +60,7 @@ public class FloatingIpApiTest {
     /**
      * Создание плавающего IP
      *
-     * Чтобы создать создать плавающий IP, отправьте POST-запрос в &#x60;/api/v1/floating-ip&#x60;, задав необходимые атрибуты.
+     * Чтобы создать создать плавающий IP, отправьте POST-запрос в &#x60;/api/v1/floating-ips&#x60;, задав необходимые атрибуты.
      *
      * @throws ApiException if the Api call fails
      */

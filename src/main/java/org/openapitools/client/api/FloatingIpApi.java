@@ -312,7 +312,7 @@ public class FloatingIpApi {
 
     /**
      * Создание плавающего IP
-     * Чтобы создать создать плавающий IP, отправьте POST-запрос в &#x60;/api/v1/floating-ip&#x60;, задав необходимые атрибуты.
+     * Чтобы создать создать плавающий IP, отправьте POST-запрос в &#x60;/api/v1/floating-ips&#x60;, задав необходимые атрибуты.
      * @param createFloatingIp  (required)
      * @return CreateFloatingIp201Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -335,7 +335,7 @@ public class FloatingIpApi {
 
     /**
      * Создание плавающего IP
-     * Чтобы создать создать плавающий IP, отправьте POST-запрос в &#x60;/api/v1/floating-ip&#x60;, задав необходимые атрибуты.
+     * Чтобы создать создать плавающий IP, отправьте POST-запрос в &#x60;/api/v1/floating-ips&#x60;, задав необходимые атрибуты.
      * @param createFloatingIp  (required)
      * @return ApiResponse&lt;CreateFloatingIp201Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -359,7 +359,7 @@ public class FloatingIpApi {
 
     /**
      * Создание плавающего IP (asynchronously)
-     * Чтобы создать создать плавающий IP, отправьте POST-запрос в &#x60;/api/v1/floating-ip&#x60;, задав необходимые атрибуты.
+     * Чтобы создать создать плавающий IP, отправьте POST-запрос в &#x60;/api/v1/floating-ips&#x60;, задав необходимые атрибуты.
      * @param createFloatingIp  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -392,7 +392,7 @@ public class FloatingIpApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Плавающий IP успешно удален </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Плавающий IP успешно удален </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -465,7 +465,7 @@ public class FloatingIpApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Плавающий IP успешно удален </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Плавающий IP успешно удален </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -487,7 +487,7 @@ public class FloatingIpApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Плавающий IP успешно удален </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Плавающий IP успешно удален </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -511,7 +511,7 @@ public class FloatingIpApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Плавающий IP успешно удален </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Плавающий IP успешно удален </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
