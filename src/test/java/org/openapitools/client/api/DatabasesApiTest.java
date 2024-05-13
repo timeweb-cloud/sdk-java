@@ -29,6 +29,7 @@ import org.openapitools.client.model.DeleteDatabase200Response;
 import org.openapitools.client.model.DeleteDatabaseCluster200Response;
 import org.openapitools.client.model.GetDatabaseAutoBackupsSettings200Response;
 import org.openapitools.client.model.GetDatabaseBackups200Response;
+import org.openapitools.client.model.GetDatabaseClusterTypes200Response;
 import org.openapitools.client.model.GetDatabaseClusters200Response;
 import org.openapitools.client.model.GetDatabaseInstances200Response;
 import org.openapitools.client.model.GetDatabaseUsers200Response;
@@ -279,6 +280,19 @@ public class DatabasesApiTest {
     public void getDatabaseClusterTest() throws ApiException {
         Integer dbClusterId = null;
         CreateDatabaseCluster201Response response = api.getDatabaseCluster(dbClusterId);
+        // TODO: test validations
+    }
+
+    /**
+     * Получение списка типов кластеров баз данных
+     *
+     * Чтобы получить список типов баз данных на вашем аккаунте, отправьте GET-запрос на &#x60;/api/v1/database-types&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void getDatabaseClusterTypesTest() throws ApiException {
+        GetDatabaseClusterTypes200Response response = api.getDatabaseClusterTypes();
         // TODO: test validations
     }
 

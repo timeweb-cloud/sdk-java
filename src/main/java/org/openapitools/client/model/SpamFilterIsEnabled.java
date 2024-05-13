@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * SpamFilterIsEnabled
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-05-13T11:29:00.286642Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-05-13T13:57:27.379589Z[Etc/UTC]")
 public class SpamFilterIsEnabled {
   public static final String SERIALIZED_NAME_IS_ENABLED = "is_enabled";
   @SerializedName(SERIALIZED_NAME_IS_ENABLED)

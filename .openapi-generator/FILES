@@ -105,6 +105,7 @@ docs/DatabaseClusterDiskStats.md
 docs/DatabaseClusterNetworksInner.md
 docs/DatabaseClusterNetworksInnerIpsInner.md
 docs/DatabaseInstance.md
+docs/DatabaseType.md
 docs/DatabasesApi.md
 docs/Db.md
 docs/DbDiskStats.md
@@ -179,6 +180,7 @@ docs/GetConfigurators200Response.md
 docs/GetCountries200Response.md
 docs/GetDatabaseAutoBackupsSettings200Response.md
 docs/GetDatabaseBackups200Response.md
+docs/GetDatabaseClusterTypes200Response.md
 docs/GetDatabaseClusters200Response.md
 docs/GetDatabaseInstances200Response.md
 docs/GetDatabaseUsers200Response.md
@@ -523,6 +525,7 @@ src/main/java/org/openapitools/client/model/DatabaseClusterDiskStats.java
 src/main/java/org/openapitools/client/model/DatabaseClusterNetworksInner.java
 src/main/java/org/openapitools/client/model/DatabaseClusterNetworksInnerIpsInner.java
 src/main/java/org/openapitools/client/model/DatabaseInstance.java
+src/main/java/org/openapitools/client/model/DatabaseType.java
 src/main/java/org/openapitools/client/model/Db.java
 src/main/java/org/openapitools/client/model/DbDiskStats.java
 src/main/java/org/openapitools/client/model/DbType.java
@@ -592,6 +595,7 @@ src/main/java/org/openapitools/client/model/GetConfigurators200Response.java
 src/main/java/org/openapitools/client/model/GetCountries200Response.java
 src/main/java/org/openapitools/client/model/GetDatabaseAutoBackupsSettings200Response.java
 src/main/java/org/openapitools/client/model/GetDatabaseBackups200Response.java
+src/main/java/org/openapitools/client/model/GetDatabaseClusterTypes200Response.java
 src/main/java/org/openapitools/client/model/GetDatabaseClusters200Response.java
 src/main/java/org/openapitools/client/model/GetDatabaseInstances200Response.java
 src/main/java/org/openapitools/client/model/GetDatabaseUsers200Response.java
@@ -900,6 +904,7 @@ src/test/java/org/openapitools/client/model/DatabaseClusterNetworksInnerIpsInner
 src/test/java/org/openapitools/client/model/DatabaseClusterNetworksInnerTest.java
 src/test/java/org/openapitools/client/model/DatabaseClusterTest.java
 src/test/java/org/openapitools/client/model/DatabaseInstanceTest.java
+src/test/java/org/openapitools/client/model/DatabaseTypeTest.java
 src/test/java/org/openapitools/client/model/DbDiskStatsTest.java
 src/test/java/org/openapitools/client/model/DbTest.java
 src/test/java/org/openapitools/client/model/DbTypeTest.java
@@ -969,6 +974,7 @@ src/test/java/org/openapitools/client/model/GetConfigurators200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetCountries200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetDatabaseAutoBackupsSettings200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetDatabaseBackups200ResponseTest.java
+src/test/java/org/openapitools/client/model/GetDatabaseClusterTypes200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetDatabaseClusters200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetDatabaseInstances200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetDatabaseUsers200ResponseTest.java

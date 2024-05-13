@@ -39,11 +39,7 @@ public enum Location {
   
   KZ_1("kz-1"),
   
-  NL_1("nl-1"),
-  
-  US_1("us-1"),
-  
-  US_2("us-2");
+  NL_1("nl-1");
 
   private String value;
 

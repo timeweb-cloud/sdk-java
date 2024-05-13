@@ -2,7 +2,7 @@
 
 Timeweb Cloud API
 - API version: 1.0.0
-  - Build date: 2024-05-13T11:29:00.286642Z[Etc/UTC]
+  - Build date: 2024-05-13T13:57:27.379589Z[Etc/UTC]
 
 # Введение
 API Timeweb Cloud позволяет вам управлять ресурсами в облаке программным способом с использованием обычных HTTP-запросов.
@@ -310,6 +310,7 @@ Class | Method | HTTP request | Description
 *DatabasesApi* | [**getDatabaseBackup**](docs/DatabasesApi.md#getDatabaseBackup) | **GET** /api/v1/dbs/{db_id}/backups/{backup_id} | Получение бэкапа базы данных
 *DatabasesApi* | [**getDatabaseBackups**](docs/DatabasesApi.md#getDatabaseBackups) | **GET** /api/v1/dbs/{db_id}/backups | Список бэкапов базы данных
 *DatabasesApi* | [**getDatabaseCluster**](docs/DatabasesApi.md#getDatabaseCluster) | **GET** /api/v1/databases/{db_cluster_id} | Получение кластера базы данных
+*DatabasesApi* | [**getDatabaseClusterTypes**](docs/DatabasesApi.md#getDatabaseClusterTypes) | **GET** /api/v1/database-types | Получение списка типов кластеров баз данных
 *DatabasesApi* | [**getDatabaseClusters**](docs/DatabasesApi.md#getDatabaseClusters) | **GET** /api/v1/databases | Получение списка кластеров баз данных
 *DatabasesApi* | [**getDatabaseInstance**](docs/DatabasesApi.md#getDatabaseInstance) | **GET** /api/v1/databases/{db_cluster_id}/instances/{instance_id} | Получение инстанса базы данных
 *DatabasesApi* | [**getDatabaseInstances**](docs/DatabasesApi.md#getDatabaseInstances) | **GET** /api/v1/databases/{db_cluster_id}/instances | Получение списка инстансов баз данных
@@ -603,6 +604,7 @@ Class | Method | HTTP request | Description
  - [DatabaseClusterNetworksInner](docs/DatabaseClusterNetworksInner.md)
  - [DatabaseClusterNetworksInnerIpsInner](docs/DatabaseClusterNetworksInnerIpsInner.md)
  - [DatabaseInstance](docs/DatabaseInstance.md)
+ - [DatabaseType](docs/DatabaseType.md)
  - [Db](docs/Db.md)
  - [DbDiskStats](docs/DbDiskStats.md)
  - [DbType](docs/DbType.md)
@@ -672,6 +674,7 @@ Class | Method | HTTP request | Description
  - [GetCountries200Response](docs/GetCountries200Response.md)
  - [GetDatabaseAutoBackupsSettings200Response](docs/GetDatabaseAutoBackupsSettings200Response.md)
  - [GetDatabaseBackups200Response](docs/GetDatabaseBackups200Response.md)
+ - [GetDatabaseClusterTypes200Response](docs/GetDatabaseClusterTypes200Response.md)
  - [GetDatabaseClusters200Response](docs/GetDatabaseClusters200Response.md)
  - [GetDatabaseInstances200Response](docs/GetDatabaseInstances200Response.md)
  - [GetDatabaseUsers200Response](docs/GetDatabaseUsers200Response.md)
