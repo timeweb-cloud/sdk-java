@@ -24,7 +24,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * An enumeration.
+ * Локация.
  */
 @JsonAdapter(Location.Adapter.class)
 public enum Location {
@@ -33,9 +33,17 @@ public enum Location {
   
   RU_2("ru-2"),
   
+  RU_3("ru-3"),
+  
   PL_1("pl-1"),
   
-  KZ_1("kz-1");
+  KZ_1("kz-1"),
+  
+  NL_1("nl-1"),
+  
+  US_1("us-1"),
+  
+  US_2("us-2");
 
   private String value;
 

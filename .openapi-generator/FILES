@@ -203,6 +203,7 @@ docs/GetFinances500Response.md
 docs/GetFloatingIps200Response.md
 docs/GetKey200Response.md
 docs/GetKeys200Response.md
+docs/GetLocations200Response.md
 docs/GetMailQuota200Response.md
 docs/GetMailboxes200Response.md
 docs/GetNotificationSettings200Response.md
@@ -255,6 +256,8 @@ docs/Invoice.md
 docs/K8SVersionsResponse.md
 docs/KubernetesApi.md
 docs/Location.md
+docs/LocationDto.md
+docs/LocationsApi.md
 docs/MailApi.md
 docs/Mailbox.md
 docs/MailboxAutoReply.md
@@ -412,6 +415,7 @@ src/main/java/org/openapitools/client/api/FirewallApi.java
 src/main/java/org/openapitools/client/api/FloatingIpApi.java
 src/main/java/org/openapitools/client/api/ImagesApi.java
 src/main/java/org/openapitools/client/api/KubernetesApi.java
+src/main/java/org/openapitools/client/api/LocationsApi.java
 src/main/java/org/openapitools/client/api/MailApi.java
 src/main/java/org/openapitools/client/api/ProjectsApi.java
 src/main/java/org/openapitools/client/api/S3Api.java
@@ -612,6 +616,7 @@ src/main/java/org/openapitools/client/model/GetFinances500Response.java
 src/main/java/org/openapitools/client/model/GetFloatingIps200Response.java
 src/main/java/org/openapitools/client/model/GetKey200Response.java
 src/main/java/org/openapitools/client/model/GetKeys200Response.java
+src/main/java/org/openapitools/client/model/GetLocations200Response.java
 src/main/java/org/openapitools/client/model/GetMailQuota200Response.java
 src/main/java/org/openapitools/client/model/GetMailboxes200Response.java
 src/main/java/org/openapitools/client/model/GetNotificationSettings200Response.java
@@ -662,6 +667,7 @@ src/main/java/org/openapitools/client/model/ImagesOutResponse.java
 src/main/java/org/openapitools/client/model/Invoice.java
 src/main/java/org/openapitools/client/model/K8SVersionsResponse.java
 src/main/java/org/openapitools/client/model/Location.java
+src/main/java/org/openapitools/client/model/LocationDto.java
 src/main/java/org/openapitools/client/model/Mailbox.java
 src/main/java/org/openapitools/client/model/MailboxAutoReply.java
 src/main/java/org/openapitools/client/model/MailboxForwardingIncoming.java
@@ -791,6 +797,7 @@ src/test/java/org/openapitools/client/api/FirewallApiTest.java
 src/test/java/org/openapitools/client/api/FloatingIpApiTest.java
 src/test/java/org/openapitools/client/api/ImagesApiTest.java
 src/test/java/org/openapitools/client/api/KubernetesApiTest.java
+src/test/java/org/openapitools/client/api/LocationsApiTest.java
 src/test/java/org/openapitools/client/api/MailApiTest.java
 src/test/java/org/openapitools/client/api/ProjectsApiTest.java
 src/test/java/org/openapitools/client/api/S3ApiTest.java
@@ -986,6 +993,7 @@ src/test/java/org/openapitools/client/model/GetFinances500ResponseTest.java
 src/test/java/org/openapitools/client/model/GetFloatingIps200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetKey200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetKeys200ResponseTest.java
+src/test/java/org/openapitools/client/model/GetLocations200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetMailQuota200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetMailboxes200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetNotificationSettings200ResponseTest.java
@@ -1035,6 +1043,7 @@ src/test/java/org/openapitools/client/model/ImageUrlInTest.java
 src/test/java/org/openapitools/client/model/ImagesOutResponseTest.java
 src/test/java/org/openapitools/client/model/InvoiceTest.java
 src/test/java/org/openapitools/client/model/K8SVersionsResponseTest.java
+src/test/java/org/openapitools/client/model/LocationDtoTest.java
 src/test/java/org/openapitools/client/model/LocationTest.java
 src/test/java/org/openapitools/client/model/MailboxAutoReplyTest.java
 src/test/java/org/openapitools/client/model/MailboxForwardingIncomingTest.java
