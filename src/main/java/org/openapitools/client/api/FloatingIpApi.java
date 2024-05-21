@@ -166,7 +166,7 @@ public class FloatingIpApi {
 
     /**
      * Привязать IP к сервису
-     * Чтобы привязать IP к сервису, отправьте POST-запрос на &#x60;/api/v1/floating-ip/{floating_ip_id}/bind&#x60;.
+     * Чтобы привязать IP к сервису, отправьте POST-запрос на &#x60;/api/v1/floating-ips/{floating_ip_id}/bind&#x60;.
      * @param floatingIpId Идентификатор плавающего IP (required)
      * @param bindFloatingIp  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -188,7 +188,7 @@ public class FloatingIpApi {
 
     /**
      * Привязать IP к сервису
-     * Чтобы привязать IP к сервису, отправьте POST-запрос на &#x60;/api/v1/floating-ip/{floating_ip_id}/bind&#x60;.
+     * Чтобы привязать IP к сервису, отправьте POST-запрос на &#x60;/api/v1/floating-ips/{floating_ip_id}/bind&#x60;.
      * @param floatingIpId Идентификатор плавающего IP (required)
      * @param bindFloatingIp  (required)
      * @return ApiResponse&lt;Void&gt;
@@ -212,7 +212,7 @@ public class FloatingIpApi {
 
     /**
      * Привязать IP к сервису (asynchronously)
-     * Чтобы привязать IP к сервису, отправьте POST-запрос на &#x60;/api/v1/floating-ip/{floating_ip_id}/bind&#x60;.
+     * Чтобы привязать IP к сервису, отправьте POST-запрос на &#x60;/api/v1/floating-ips/{floating_ip_id}/bind&#x60;.
      * @param floatingIpId Идентификатор плавающего IP (required)
      * @param bindFloatingIp  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -886,7 +886,7 @@ public class FloatingIpApi {
 
     /**
      * Отвязать IP от сервиса
-     * Чтобы отвязать IP от сервиса, отправьте POST-запрос на &#x60;/api/v1/floating-ip/{floating_ip_id}/unbind&#x60;.
+     * Чтобы отвязать IP от сервиса, отправьте POST-запрос на &#x60;/api/v1/floating-ips/{floating_ip_id}/unbind&#x60;.
      * @param floatingIpId Идентификатор плавающего IP (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -907,7 +907,7 @@ public class FloatingIpApi {
 
     /**
      * Отвязать IP от сервиса
-     * Чтобы отвязать IP от сервиса, отправьте POST-запрос на &#x60;/api/v1/floating-ip/{floating_ip_id}/unbind&#x60;.
+     * Чтобы отвязать IP от сервиса, отправьте POST-запрос на &#x60;/api/v1/floating-ips/{floating_ip_id}/unbind&#x60;.
      * @param floatingIpId Идентификатор плавающего IP (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -930,7 +930,7 @@ public class FloatingIpApi {
 
     /**
      * Отвязать IP от сервиса (asynchronously)
-     * Чтобы отвязать IP от сервиса, отправьте POST-запрос на &#x60;/api/v1/floating-ip/{floating_ip_id}/unbind&#x60;.
+     * Чтобы отвязать IP от сервиса, отправьте POST-запрос на &#x60;/api/v1/floating-ips/{floating_ip_id}/unbind&#x60;.
      * @param floatingIpId Идентификатор плавающего IP (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

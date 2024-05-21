@@ -19,7 +19,7 @@ All URIs are relative to *https://api.timeweb.cloud*
 
 Привязать IP к сервису
 
-Чтобы привязать IP к сервису, отправьте POST-запрос на &#x60;/api/v1/floating-ip/{floating_ip_id}/bind&#x60;.
+Чтобы привязать IP к сервису, отправьте POST-запрос на &#x60;/api/v1/floating-ips/{floating_ip_id}/bind&#x60;.
 
 ### Example
 ```java
@@ -380,7 +380,7 @@ This endpoint does not need any parameter.
 
 Отвязать IP от сервиса
 
-Чтобы отвязать IP от сервиса, отправьте POST-запрос на &#x60;/api/v1/floating-ip/{floating_ip_id}/unbind&#x60;.
+Чтобы отвязать IP от сервиса, отправьте POST-запрос на &#x60;/api/v1/floating-ips/{floating_ip_id}/unbind&#x60;.
 
 ### Example
 ```java

@@ -36527,7 +36527,7 @@ paths:
       x-accepts: application/json
   /api/v1/floating-ips/{floating_ip_id}/bind:
     post:
-      description: "Чтобы привязать IP к сервису, отправьте POST-запрос на `/api/v1/floating-ip/{floating_ip_id}/bind`."
+      description: "Чтобы привязать IP к сервису, отправьте POST-запрос на `/api/v1/floating-ips/{floating_ip_id}/bind`."
       operationId: bindFloatingIp
       parameters:
       - description: Идентификатор плавающего IP
@@ -36595,10 +36595,10 @@ paths:
           curl -X POST \
             -H "Content-Type: application/json" \
             -H "Authorization: Bearer $TIMEWEB_CLOUD_TOKEN" \
-            "https://api.timeweb.cloud/api/v1/floating-ip/{floating_ip_id}/bind"
+            "https://api.timeweb.cloud/api/v1/floating-ips/{floating_ip_id}/bind"
       - lang: JavaScript
         source: |
-          fetch('https://api.timeweb.cloud/api/v1/floating-ip/{floating_ip_id}/bind', {
+          fetch('https://api.timeweb.cloud/api/v1/floating-ips/{floating_ip_id}/bind', {
               method: 'POST',
               headers: {
                   'Content-Type': 'application/json',
@@ -36610,7 +36610,7 @@ paths:
           const axios = require('axios');
 
           const response = await axios.post(
-              'https://api.timeweb.cloud/api/v1/floating-ip/{floating_ip_id}/bind',
+              'https://api.timeweb.cloud/api/v1/floating-ips/{floating_ip_id}/bind',
               '',
               {
                   headers: {
@@ -36629,12 +36629,12 @@ paths:
               'Authorization': 'Bearer ' + os.getenv('TIMEWEB_CLOUD_TOKEN', ''),
           }
 
-          response = requests.post('https://api.timeweb.cloud/api/v1/floating-ip/{floating_ip_id}/bind', headers=headers)
+          response = requests.post('https://api.timeweb.cloud/api/v1/floating-ips/{floating_ip_id}/bind', headers=headers)
       - lang: PHP
         source: |
           <?php
           $ch = curl_init();
-          curl_setopt($ch, CURLOPT_URL, 'https://api.timeweb.cloud/api/v1/floating-ip/{floating_ip_id}/bind');
+          curl_setopt($ch, CURLOPT_URL, 'https://api.timeweb.cloud/api/v1/floating-ips/{floating_ip_id}/bind');
           curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
           curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
           curl_setopt($ch, CURLOPT_HTTPHEADER, [
@@ -36648,7 +36648,7 @@ paths:
       - lang: Go
         source: "package main\n\nimport (\n\t\"fmt\"\n\t\"io\"\n\t\"log\"\n\t\"net/http\"\
           \n\t\"os\"\n)\n\nfunc main() {\n\tclient := &http.Client{}\n\treq, err :=\
-          \ http.NewRequest(\"POST\", \"https://api.timeweb.cloud/api/v1/floating-ip/{floating_ip_id}/bind\"\
+          \ http.NewRequest(\"POST\", \"https://api.timeweb.cloud/api/v1/floating-ips/{floating_ip_id}/bind\"\
           , nil)\n\tif err != nil {\n\t\tlog.Fatal(err)\n\t}\n\treq.Header.Set(\"\
           Content-Type\", \"application/json\")\n\treq.Header.Set(\"Authorization\"\
           , \"Bearer \" + os.Getenv(\"TIMEWEB_CLOUD_TOKEN\"))\n\tresp, err := client.Do(req)\n\
@@ -36659,7 +36659,7 @@ paths:
         source: "import java.io.IOException;\nimport java.io.InputStream;\nimport\
           \ java.lang.System;\nimport java.net.HttpURLConnection;\nimport java.net.URL;\n\
           import java.util.Scanner;\n\nclass Main {\n\n\tpublic static void main(String[]\
-          \ args) throws IOException {\n\t\tURL url = new URL(\"https://api.timeweb.cloud/api/v1/floating-ip/{floating_ip_id}/bind\"\
+          \ args) throws IOException {\n\t\tURL url = new URL(\"https://api.timeweb.cloud/api/v1/floating-ips/{floating_ip_id}/bind\"\
           );\n\t\tHttpURLConnection httpConn = (HttpURLConnection) url.openConnection();\n\
           \t\thttpConn.setRequestMethod(\"POST\");\n\n\t\thttpConn.setRequestProperty(\"\
           Content-Type\", \"application/json\");\n\t\thttpConn.setRequestProperty(\"\
@@ -36673,7 +36673,7 @@ paths:
       x-accepts: application/json
   /api/v1/floating-ips/{floating_ip_id}/unbind:
     post:
-      description: "Чтобы отвязать IP от сервиса, отправьте POST-запрос на `/api/v1/floating-ip/{floating_ip_id}/unbind`."
+      description: "Чтобы отвязать IP от сервиса, отправьте POST-запрос на `/api/v1/floating-ips/{floating_ip_id}/unbind`."
       operationId: unbindFloatingIp
       parameters:
       - description: Идентификатор плавающего IP
@@ -36735,10 +36735,10 @@ paths:
           curl -X POST \
             -H "Content-Type: application/json" \
             -H "Authorization: Bearer $TIMEWEB_CLOUD_TOKEN" \
-            "https://api.timeweb.cloud/api/v1/floating-ip/{floating_ip_id}/unbind"
+            "https://api.timeweb.cloud/api/v1/floating-ips/{floating_ip_id}/unbind"
       - lang: JavaScript
         source: |
-          fetch('https://api.timeweb.cloud/api/v1/floating-ip/{floating_ip_id}/unbind', {
+          fetch('https://api.timeweb.cloud/api/v1/floating-ips/{floating_ip_id}/unbind', {
               method: 'POST',
               headers: {
                   'Content-Type': 'application/json',
@@ -36750,7 +36750,7 @@ paths:
           const axios = require('axios');
 
           const response = await axios.post(
-              'https://api.timeweb.cloud/api/v1/floating-ip/{floating_ip_id}/unbind',
+              'https://api.timeweb.cloud/api/v1/floating-ips/{floating_ip_id}/unbind',
               '',
               {
                   headers: {
@@ -36769,12 +36769,12 @@ paths:
               'Authorization': 'Bearer ' + os.getenv('TIMEWEB_CLOUD_TOKEN', ''),
           }
 
-          response = requests.post('https://api.timeweb.cloud/api/v1/floating-ip/{floating_ip_id}/unbind', headers=headers)
+          response = requests.post('https://api.timeweb.cloud/api/v1/floating-ips/{floating_ip_id}/unbind', headers=headers)
       - lang: PHP
         source: |
           <?php
           $ch = curl_init();
-          curl_setopt($ch, CURLOPT_URL, 'https://api.timeweb.cloud/api/v1/floating-ip/{floating_ip_id}/unbind');
+          curl_setopt($ch, CURLOPT_URL, 'https://api.timeweb.cloud/api/v1/floating-ips/{floating_ip_id}/unbind');
           curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
           curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
           curl_setopt($ch, CURLOPT_HTTPHEADER, [
@@ -36788,7 +36788,7 @@ paths:
       - lang: Go
         source: "package main\n\nimport (\n\t\"fmt\"\n\t\"io\"\n\t\"log\"\n\t\"net/http\"\
           \n\t\"os\"\n)\n\nfunc main() {\n\tclient := &http.Client{}\n\treq, err :=\
-          \ http.NewRequest(\"POST\", \"https://api.timeweb.cloud/api/v1/floating-ip/{floating_ip_id}/unbind\"\
+          \ http.NewRequest(\"POST\", \"https://api.timeweb.cloud/api/v1/floating-ips/{floating_ip_id}/unbind\"\
           , nil)\n\tif err != nil {\n\t\tlog.Fatal(err)\n\t}\n\treq.Header.Set(\"\
           Content-Type\", \"application/json\")\n\treq.Header.Set(\"Authorization\"\
           , \"Bearer \" + os.Getenv(\"TIMEWEB_CLOUD_TOKEN\"))\n\tresp, err := client.Do(req)\n\
@@ -36799,7 +36799,7 @@ paths:
         source: "import java.io.IOException;\nimport java.io.InputStream;\nimport\
           \ java.lang.System;\nimport java.net.HttpURLConnection;\nimport java.net.URL;\n\
           import java.util.Scanner;\n\nclass Main {\n\n\tpublic static void main(String[]\
-          \ args) throws IOException {\n\t\tURL url = new URL(\"https://api.timeweb.cloud/api/v1/floating-ip/{floating_ip_id}/unbind\"\
+          \ args) throws IOException {\n\t\tURL url = new URL(\"https://api.timeweb.cloud/api/v1/floating-ips/{floating_ip_id}/unbind\"\
           );\n\t\tHttpURLConnection httpConn = (HttpURLConnection) url.openConnection();\n\
           \t\thttpConn.setRequestMethod(\"POST\");\n\n\t\thttpConn.setRequestProperty(\"\
           Content-Type\", \"application/json\");\n\t\thttpConn.setRequestProperty(\"\
