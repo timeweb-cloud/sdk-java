@@ -4004,7 +4004,9 @@ public class ServersApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call performActionOnServerCall(Integer serverId, PerformActionOnServerRequest performActionOnServerRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -4051,6 +4053,7 @@ public class ServersApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call performActionOnServerValidateBeforeCall(Integer serverId, PerformActionOnServerRequest performActionOnServerRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'serverId' is set
@@ -4085,7 +4088,9 @@ public class ServersApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public void performActionOnServer(Integer serverId, PerformActionOnServerRequest performActionOnServerRequest) throws ApiException {
         performActionOnServerWithHttpInfo(serverId, performActionOnServerRequest);
     }
@@ -4109,7 +4114,9 @@ public class ServersApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<Void> performActionOnServerWithHttpInfo(Integer serverId, PerformActionOnServerRequest performActionOnServerRequest) throws ApiException {
         okhttp3.Call localVarCall = performActionOnServerValidateBeforeCall(serverId, performActionOnServerRequest, null);
         return localVarApiClient.execute(localVarCall);
@@ -4135,7 +4142,9 @@ public class ServersApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call performActionOnServerAsync(Integer serverId, PerformActionOnServerRequest performActionOnServerRequest, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = performActionOnServerValidateBeforeCall(serverId, performActionOnServerRequest, _callback);

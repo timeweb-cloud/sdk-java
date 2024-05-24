@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * UpdateVpc
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-05-21T13:22:29.724690Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-05-24T09:39:24.723070Z[Etc/UTC]")
 public class UpdateVpc {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
