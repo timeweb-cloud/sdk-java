@@ -2,7 +2,7 @@
 
 Timeweb Cloud API
 - API version: 1.0.0
-  - Build date: 2024-05-24T09:39:24.723070Z[Etc/UTC]
+  - Build date: 2024-05-29T13:52:33.808101Z[Etc/UTC]
 
 # Введение
 API Timeweb Cloud позволяет вам управлять ресурсами в облаке программным способом с использованием обычных HTTP-запросов.
@@ -457,6 +457,7 @@ Class | Method | HTTP request | Description
 *S3Api* | [**updateStorage**](docs/S3Api.md#updateStorage) | **PATCH** /api/v1/storages/buckets/{bucket_id} | Изменение хранилища на аккаунте
 *S3Api* | [**updateStorageUser**](docs/S3Api.md#updateStorageUser) | **PATCH** /api/v1/storages/users/{user_id} | Изменение пароля пользователя-администратора хранилища
 *S3Api* | [**uploadFileToStorage**](docs/S3Api.md#uploadFileToStorage) | **POST** /api/v1/storages/buckets/{bucket_id}/object-manager/upload | Загрузка файлов в хранилище
+*ServersApi* | [**actionOnServer**](docs/ServersApi.md#actionOnServer) | **POST** /api/v2/{account_id}/servers/{server_id}/{action} | Выполнение действия над сервером
 *ServersApi* | [**addServerIP**](docs/ServersApi.md#addServerIP) | **POST** /api/v1/servers/{server_id}/ips | Добавление IP-адреса сервера
 *ServersApi* | [**cloneServer**](docs/ServersApi.md#cloneServer) | **POST** /api/v1/servers/{server_id}/clone | Клонирование сервера
 *ServersApi* | [**createServer**](docs/ServersApi.md#createServer) | **POST** /api/v1/servers | Создание сервера

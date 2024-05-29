@@ -69,6 +69,21 @@ public class ServersApiTest {
     private final ServersApi api = new ServersApi();
 
     /**
+     * Выполнение действия над сервером
+     *
+     * Чтобы выполнить действие над сервером, отправьте POST-запрос на &#x60;/api/v2/{account_id}/servers/{server_id}/{action}&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void actionOnServerTest() throws ApiException {
+        Integer serverId = null;
+        String action = null;
+        api.actionOnServer(serverId, action);
+        // TODO: test validations
+    }
+
+    /**
      * Добавление IP-адреса сервера
      *
      * Чтобы добавить IP-адрес сервера, отправьте POST-запрос на &#x60;/api/v1/servers/{server_id}/ips&#x60;. \\  На данный момент IPv6 доступны только для серверов с локацией &#x60;ru-1&#x60;.

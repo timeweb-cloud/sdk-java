@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * Каналы отправки уведомления.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-05-24T09:39:24.723070Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-05-29T13:52:33.808101Z[Etc/UTC]")
 public class NotificationSettingChannels {
   public static final String SERIALIZED_NAME_EMAIL = "email";
   @SerializedName(SERIALIZED_NAME_EMAIL)

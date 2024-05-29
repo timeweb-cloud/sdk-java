@@ -110,6 +110,163 @@ public class ServersApi {
     }
 
     /**
+     * Build call for actionOnServer
+     * @param serverId Уникальный идентификатор облачного сервера. (required)
+     * @param action Действие над сервером (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Успешное выполнение действия </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call actionOnServerCall(Integer serverId, String action, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/v2/{account_id}/servers/{server_id}/{action}"
+            .replace("{" + "server_id" + "}", localVarApiClient.escapeString(serverId.toString()))
+            .replace("{" + "action" + "}", localVarApiClient.escapeString(action.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "Bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call actionOnServerValidateBeforeCall(Integer serverId, String action, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'serverId' is set
+        if (serverId == null) {
+            throw new ApiException("Missing the required parameter 'serverId' when calling actionOnServer(Async)");
+        }
+
+        // verify the required parameter 'action' is set
+        if (action == null) {
+            throw new ApiException("Missing the required parameter 'action' when calling actionOnServer(Async)");
+        }
+
+        return actionOnServerCall(serverId, action, _callback);
+
+    }
+
+    /**
+     * Выполнение действия над сервером
+     * Чтобы выполнить действие над сервером, отправьте POST-запрос на &#x60;/api/v2/{account_id}/servers/{server_id}/{action}&#x60;.
+     * @param serverId Уникальный идентификатор облачного сервера. (required)
+     * @param action Действие над сервером (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Успешное выполнение действия </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public void actionOnServer(Integer serverId, String action) throws ApiException {
+        actionOnServerWithHttpInfo(serverId, action);
+    }
+
+    /**
+     * Выполнение действия над сервером
+     * Чтобы выполнить действие над сервером, отправьте POST-запрос на &#x60;/api/v2/{account_id}/servers/{server_id}/{action}&#x60;.
+     * @param serverId Уникальный идентификатор облачного сервера. (required)
+     * @param action Действие над сервером (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Успешное выполнение действия </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> actionOnServerWithHttpInfo(Integer serverId, String action) throws ApiException {
+        okhttp3.Call localVarCall = actionOnServerValidateBeforeCall(serverId, action, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Выполнение действия над сервером (asynchronously)
+     * Чтобы выполнить действие над сервером, отправьте POST-запрос на &#x60;/api/v2/{account_id}/servers/{server_id}/{action}&#x60;.
+     * @param serverId Уникальный идентификатор облачного сервера. (required)
+     * @param action Действие над сервером (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Успешное выполнение действия </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call actionOnServerAsync(Integer serverId, String action, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = actionOnServerValidateBeforeCall(serverId, action, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for addServerIP
      * @param serverId Уникальный идентификатор облачного сервера. (required)
      * @param addServerIPRequest  (required)
@@ -3988,7 +4145,7 @@ public class ServersApi {
     /**
      * Build call for performActionOnServer
      * @param serverId Уникальный идентификатор облачного сервера. (required)
-     * @param performActionOnServerRequest  (required)
+     * @param performActionOnServerRequest  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -4061,11 +4218,6 @@ public class ServersApi {
             throw new ApiException("Missing the required parameter 'serverId' when calling performActionOnServer(Async)");
         }
 
-        // verify the required parameter 'performActionOnServerRequest' is set
-        if (performActionOnServerRequest == null) {
-            throw new ApiException("Missing the required parameter 'performActionOnServerRequest' when calling performActionOnServer(Async)");
-        }
-
         return performActionOnServerCall(serverId, performActionOnServerRequest, _callback);
 
     }
@@ -4074,7 +4226,7 @@ public class ServersApi {
      * Выполнение действия над сервером
      * Чтобы выполнить действие над сервером, отправьте POST-запрос на &#x60;/api/v1/servers/{server_id}/action&#x60;.
      * @param serverId Уникальный идентификатор облачного сервера. (required)
-     * @param performActionOnServerRequest  (required)
+     * @param performActionOnServerRequest  (optional)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -4099,7 +4251,7 @@ public class ServersApi {
      * Выполнение действия над сервером
      * Чтобы выполнить действие над сервером, отправьте POST-запрос на &#x60;/api/v1/servers/{server_id}/action&#x60;.
      * @param serverId Уникальный идентификатор облачного сервера. (required)
-     * @param performActionOnServerRequest  (required)
+     * @param performActionOnServerRequest  (optional)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -4126,7 +4278,7 @@ public class ServersApi {
      * Выполнение действия над сервером (asynchronously)
      * Чтобы выполнить действие над сервером, отправьте POST-запрос на &#x60;/api/v1/servers/{server_id}/action&#x60;.
      * @param serverId Уникальный идентификатор облачного сервера. (required)
-     * @param performActionOnServerRequest  (required)
+     * @param performActionOnServerRequest  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
