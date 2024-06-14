@@ -2,7 +2,7 @@
 
 Timeweb Cloud API
 - API version: 1.0.0
-  - Build date: 2024-05-29T13:52:33.808101Z[Etc/UTC]
+  - Build date: 2024-06-14T12:52:28.658666Z[Etc/UTC]
 
 # Введение
 API Timeweb Cloud позволяет вам управлять ресурсами в облаке программным способом с использованием обычных HTTP-запросов.
@@ -457,7 +457,6 @@ Class | Method | HTTP request | Description
 *S3Api* | [**updateStorage**](docs/S3Api.md#updateStorage) | **PATCH** /api/v1/storages/buckets/{bucket_id} | Изменение хранилища на аккаунте
 *S3Api* | [**updateStorageUser**](docs/S3Api.md#updateStorageUser) | **PATCH** /api/v1/storages/users/{user_id} | Изменение пароля пользователя-администратора хранилища
 *S3Api* | [**uploadFileToStorage**](docs/S3Api.md#uploadFileToStorage) | **POST** /api/v1/storages/buckets/{bucket_id}/object-manager/upload | Загрузка файлов в хранилище
-*ServersApi* | [**actionOnServer**](docs/ServersApi.md#actionOnServer) | **POST** /api/v2/{account_id}/servers/{server_id}/{action} | Выполнение действия над сервером
 *ServersApi* | [**addServerIP**](docs/ServersApi.md#addServerIP) | **POST** /api/v1/servers/{server_id}/ips | Добавление IP-адреса сервера
 *ServersApi* | [**cloneServer**](docs/ServersApi.md#cloneServer) | **POST** /api/v1/servers/{server_id}/clone | Клонирование сервера
 *ServersApi* | [**createServer**](docs/ServersApi.md#createServer) | **POST** /api/v1/servers | Создание сервера
@@ -481,9 +480,15 @@ Class | Method | HTTP request | Description
 *ServersApi* | [**getServers**](docs/ServersApi.md#getServers) | **GET** /api/v1/servers | Получение списка серверов
 *ServersApi* | [**getServersPresets**](docs/ServersApi.md#getServersPresets) | **GET** /api/v1/presets/servers | Получение списка тарифов серверов
 *ServersApi* | [**getSoftware**](docs/ServersApi.md#getSoftware) | **GET** /api/v1/software/servers | Получение списка ПО из маркетплейса
+*ServersApi* | [**hardShutdownServer**](docs/ServersApi.md#hardShutdownServer) | **POST** /api/v1/servers/{server_id}/hard-shutdown | Принудительное выключение сервера
 *ServersApi* | [**imageUnmountAndServerReload**](docs/ServersApi.md#imageUnmountAndServerReload) | **POST** /api/v1/servers/{server_id}/image-unmount | Отмонтирование ISO образа и перезагрузка сервера
+*ServersApi* | [**installServer**](docs/ServersApi.md#installServer) | **POST** /api/v1/servers/{server_id}/install | Установка сервера
 *ServersApi* | [**performActionOnBackup**](docs/ServersApi.md#performActionOnBackup) | **POST** /api/v1/servers/{server_id}/disks/{disk_id}/backups/{backup_id}/action | Выполнение действия над бэкапом диска сервера
 *ServersApi* | [**performActionOnServer**](docs/ServersApi.md#performActionOnServer) | **POST** /api/v1/servers/{server_id}/action | Выполнение действия над сервером
+*ServersApi* | [**rebootServer**](docs/ServersApi.md#rebootServer) | **POST** /api/v1/servers/{server_id}/reboot | Перезагрузка сервера
+*ServersApi* | [**resetServerPassword**](docs/ServersApi.md#resetServerPassword) | **POST** /api/v1/servers/{server_id}/reset-password | Сброс пароля сервера
+*ServersApi* | [**shutdownServer**](docs/ServersApi.md#shutdownServer) | **POST** /api/v1/servers/{server_id}/shutdown | Выключение сервера
+*ServersApi* | [**startServer**](docs/ServersApi.md#startServer) | **POST** /api/v1/servers/{server_id}/start | Запуск сервера
 *ServersApi* | [**updateServer**](docs/ServersApi.md#updateServer) | **PATCH** /api/v1/servers/{server_id} | Изменение сервера
 *ServersApi* | [**updateServerDisk**](docs/ServersApi.md#updateServerDisk) | **PATCH** /api/v1/servers/{server_id}/disks/{disk_id} | Изменение параметров диска сервера
 *ServersApi* | [**updateServerDiskAutoBackupSettings**](docs/ServersApi.md#updateServerDiskAutoBackupSettings) | **PATCH** /api/v1/servers/{server_id}/disks/{disk_id}/auto-backups | Изменение настроек автобэкапов диска сервера

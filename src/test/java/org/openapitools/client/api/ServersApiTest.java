@@ -69,21 +69,6 @@ public class ServersApiTest {
     private final ServersApi api = new ServersApi();
 
     /**
-     * Выполнение действия над сервером
-     *
-     * Чтобы выполнить действие над сервером, отправьте POST-запрос на &#x60;/api/v2/{account_id}/servers/{server_id}/{action}&#x60;.
-     *
-     * @throws ApiException if the Api call fails
-     */
-    @Test
-    public void actionOnServerTest() throws ApiException {
-        Integer serverId = null;
-        String action = null;
-        api.actionOnServer(serverId, action);
-        // TODO: test validations
-    }
-
-    /**
      * Добавление IP-адреса сервера
      *
      * Чтобы добавить IP-адрес сервера, отправьте POST-запрос на &#x60;/api/v1/servers/{server_id}/ips&#x60;. \\  На данный момент IPv6 доступны только для серверов с локацией &#x60;ru-1&#x60;.
@@ -423,6 +408,20 @@ public class ServersApiTest {
     }
 
     /**
+     * Принудительное выключение сервера
+     *
+     * Чтобы выполнить принудительное выключение сервера, отправьте POST-запрос на &#x60;/api/v1/servers/{server_id}/hard-shutdown&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void hardShutdownServerTest() throws ApiException {
+        Integer serverId = null;
+        api.hardShutdownServer(serverId);
+        // TODO: test validations
+    }
+
+    /**
      * Отмонтирование ISO образа и перезагрузка сервера
      *
      * Чтобы отмонтировать ISO образ и перезагрузить сервер, отправьте POST-запрос на &#x60;/api/v1/servers/{server_id}/image-unmount&#x60;.
@@ -433,6 +432,20 @@ public class ServersApiTest {
     public void imageUnmountAndServerReloadTest() throws ApiException {
         Integer serverId = null;
         api.imageUnmountAndServerReload(serverId);
+        // TODO: test validations
+    }
+
+    /**
+     * Установка сервера
+     *
+     * Чтобы установить сервер, отправьте POST-запрос на &#x60;/api/v1/servers/{server_id}/install&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void installServerTest() throws ApiException {
+        Integer serverId = null;
+        api.installServer(serverId);
         // TODO: test validations
     }
 
@@ -465,6 +478,62 @@ public class ServersApiTest {
         Integer serverId = null;
         PerformActionOnServerRequest performActionOnServerRequest = null;
         api.performActionOnServer(serverId, performActionOnServerRequest);
+        // TODO: test validations
+    }
+
+    /**
+     * Перезагрузка сервера
+     *
+     * Чтобы перезагрузить сервер, отправьте POST-запрос на &#x60;/api/v1/servers/{server_id}/reboot&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void rebootServerTest() throws ApiException {
+        Integer serverId = null;
+        api.rebootServer(serverId);
+        // TODO: test validations
+    }
+
+    /**
+     * Сброс пароля сервера
+     *
+     * Чтобы сбросить пароль сервера, отправьте POST-запрос на &#x60;/api/v1/servers/{server_id}/reset-password&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void resetServerPasswordTest() throws ApiException {
+        Integer serverId = null;
+        api.resetServerPassword(serverId);
+        // TODO: test validations
+    }
+
+    /**
+     * Выключение сервера
+     *
+     * Чтобы выключить сервер, отправьте POST-запрос на &#x60;/api/v1/servers/{server_id}/shutdown&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void shutdownServerTest() throws ApiException {
+        Integer serverId = null;
+        api.shutdownServer(serverId);
+        // TODO: test validations
+    }
+
+    /**
+     * Запуск сервера
+     *
+     * Чтобы запустить сервер, отправьте POST-запрос на &#x60;/api/v1/servers/{server_id}/start&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void startServerTest() throws ApiException {
+        Integer serverId = null;
+        api.startServer(serverId);
         // TODO: test validations
     }
 

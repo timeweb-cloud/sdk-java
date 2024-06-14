@@ -4,7 +4,6 @@ All URIs are relative to *https://api.timeweb.cloud*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**actionOnServer**](ServersApi.md#actionOnServer) | **POST** /api/v2/{account_id}/servers/{server_id}/{action} | Выполнение действия над сервером |
 | [**addServerIP**](ServersApi.md#addServerIP) | **POST** /api/v1/servers/{server_id}/ips | Добавление IP-адреса сервера |
 | [**cloneServer**](ServersApi.md#cloneServer) | **POST** /api/v1/servers/{server_id}/clone | Клонирование сервера |
 | [**createServer**](ServersApi.md#createServer) | **POST** /api/v1/servers | Создание сервера |
@@ -28,9 +27,15 @@ All URIs are relative to *https://api.timeweb.cloud*
 | [**getServers**](ServersApi.md#getServers) | **GET** /api/v1/servers | Получение списка серверов |
 | [**getServersPresets**](ServersApi.md#getServersPresets) | **GET** /api/v1/presets/servers | Получение списка тарифов серверов |
 | [**getSoftware**](ServersApi.md#getSoftware) | **GET** /api/v1/software/servers | Получение списка ПО из маркетплейса |
+| [**hardShutdownServer**](ServersApi.md#hardShutdownServer) | **POST** /api/v1/servers/{server_id}/hard-shutdown | Принудительное выключение сервера |
 | [**imageUnmountAndServerReload**](ServersApi.md#imageUnmountAndServerReload) | **POST** /api/v1/servers/{server_id}/image-unmount | Отмонтирование ISO образа и перезагрузка сервера |
+| [**installServer**](ServersApi.md#installServer) | **POST** /api/v1/servers/{server_id}/install | Установка сервера |
 | [**performActionOnBackup**](ServersApi.md#performActionOnBackup) | **POST** /api/v1/servers/{server_id}/disks/{disk_id}/backups/{backup_id}/action | Выполнение действия над бэкапом диска сервера |
 | [**performActionOnServer**](ServersApi.md#performActionOnServer) | **POST** /api/v1/servers/{server_id}/action | Выполнение действия над сервером |
+| [**rebootServer**](ServersApi.md#rebootServer) | **POST** /api/v1/servers/{server_id}/reboot | Перезагрузка сервера |
+| [**resetServerPassword**](ServersApi.md#resetServerPassword) | **POST** /api/v1/servers/{server_id}/reset-password | Сброс пароля сервера |
+| [**shutdownServer**](ServersApi.md#shutdownServer) | **POST** /api/v1/servers/{server_id}/shutdown | Выключение сервера |
+| [**startServer**](ServersApi.md#startServer) | **POST** /api/v1/servers/{server_id}/start | Запуск сервера |
 | [**updateServer**](ServersApi.md#updateServer) | **PATCH** /api/v1/servers/{server_id} | Изменение сервера |
 | [**updateServerDisk**](ServersApi.md#updateServerDisk) | **PATCH** /api/v1/servers/{server_id}/disks/{disk_id} | Изменение параметров диска сервера |
 | [**updateServerDiskAutoBackupSettings**](ServersApi.md#updateServerDiskAutoBackupSettings) | **PATCH** /api/v1/servers/{server_id}/disks/{disk_id}/auto-backups | Изменение настроек автобэкапов диска сервера |
@@ -39,81 +44,6 @@ All URIs are relative to *https://api.timeweb.cloud*
 | [**updateServerNAT**](ServersApi.md#updateServerNAT) | **PATCH** /api/v1/servers/{server_id}/local-networks/nat-mode | Изменение правил маршрутизации трафика сервера (NAT) |
 | [**updateServerOSBootMode**](ServersApi.md#updateServerOSBootMode) | **POST** /api/v1/servers/{server_id}/boot-mode | Выбор типа загрузки операционной системы сервера |
 
-
-<a id="actionOnServer"></a>
-# **actionOnServer**
-> actionOnServer(serverId, action)
-
-Выполнение действия над сервером
-
-Чтобы выполнить действие над сервером, отправьте POST-запрос на &#x60;/api/v2/{account_id}/servers/{server_id}/{action}&#x60;.
-
-### Example
-```java
-// Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.auth.*;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.ServersApi;
-
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://api.timeweb.cloud");
-    
-    // Configure HTTP bearer authorization: Bearer
-    HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
-    Bearer.setBearerToken("BEARER TOKEN");
-
-    ServersApi apiInstance = new ServersApi(defaultClient);
-    Integer serverId = 1051; // Integer | Уникальный идентификатор облачного сервера.
-    String action = "hard_reboot"; // String | Действие над сервером
-    try {
-      apiInstance.actionOnServer(serverId, action);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling ServersApi#actionOnServer");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **serverId** | **Integer**| Уникальный идентификатор облачного сервера. | |
-| **action** | **String**| Действие над сервером | [enum: hard_reboot, hard_shutdown, install, reboot, remove, reset_password, shutdown, start, clone] |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **204** | Успешное выполнение действия |  -  |
-| **400** | Некорректный запрос |  -  |
-| **401** | Не авторизован |  -  |
-| **403** | Запрещено |  -  |
-| **404** | Не найдено |  -  |
-| **409** | Конфликт |  -  |
-| **429** | Слишком много запросов |  -  |
-| **500** | Внутренняя ошибка сервера |  -  |
 
 <a id="addServerIP"></a>
 # **addServerIP**
@@ -1828,6 +1758,78 @@ This endpoint does not need any parameter.
 | **429** | Слишком много запросов |  -  |
 | **500** | Внутренняя ошибка сервера |  -  |
 
+<a id="hardShutdownServer"></a>
+# **hardShutdownServer**
+> hardShutdownServer(serverId)
+
+Принудительное выключение сервера
+
+Чтобы выполнить принудительное выключение сервера, отправьте POST-запрос на &#x60;/api/v1/servers/{server_id}/hard-shutdown&#x60;.
+
+### Example
+```java
+// Import classes:
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.ServersApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.timeweb.cloud");
+    
+    // Configure HTTP bearer authorization: Bearer
+    HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
+    Bearer.setBearerToken("BEARER TOKEN");
+
+    ServersApi apiInstance = new ServersApi(defaultClient);
+    Integer serverId = 1051; // Integer | Уникальный идентификатор облачного сервера.
+    try {
+      apiInstance.hardShutdownServer(serverId);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ServersApi#hardShutdownServer");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **serverId** | **Integer**| Уникальный идентификатор облачного сервера. | |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | Успешное выполнение действия |  -  |
+| **400** | Некорректный запрос |  -  |
+| **401** | Не авторизован |  -  |
+| **403** | Запрещено |  -  |
+| **409** | Конфликт |  -  |
+| **429** | Слишком много запросов |  -  |
+| **500** | Внутренняя ошибка сервера |  -  |
+
 <a id="imageUnmountAndServerReload"></a>
 # **imageUnmountAndServerReload**
 > imageUnmountAndServerReload(serverId)
@@ -1896,6 +1898,78 @@ null (empty response body)
 | **400** | Некорректный запрос |  -  |
 | **401** | Не авторизован |  -  |
 | **404** | Не найдено |  -  |
+| **429** | Слишком много запросов |  -  |
+| **500** | Внутренняя ошибка сервера |  -  |
+
+<a id="installServer"></a>
+# **installServer**
+> installServer(serverId)
+
+Установка сервера
+
+Чтобы установить сервер, отправьте POST-запрос на &#x60;/api/v1/servers/{server_id}/install&#x60;.
+
+### Example
+```java
+// Import classes:
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.ServersApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.timeweb.cloud");
+    
+    // Configure HTTP bearer authorization: Bearer
+    HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
+    Bearer.setBearerToken("BEARER TOKEN");
+
+    ServersApi apiInstance = new ServersApi(defaultClient);
+    Integer serverId = 1051; // Integer | Уникальный идентификатор облачного сервера.
+    try {
+      apiInstance.installServer(serverId);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ServersApi#installServer");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **serverId** | **Integer**| Уникальный идентификатор облачного сервера. | |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | Успешное выполнение действия |  -  |
+| **400** | Некорректный запрос |  -  |
+| **401** | Не авторизован |  -  |
+| **403** | Запрещено |  -  |
+| **409** | Конфликт |  -  |
 | **429** | Слишком много запросов |  -  |
 | **500** | Внутренняя ошибка сервера |  -  |
 
@@ -2049,6 +2123,292 @@ null (empty response body)
 | **401** | Не авторизован |  -  |
 | **403** | Запрещено |  -  |
 | **404** | Не найдено |  -  |
+| **409** | Конфликт |  -  |
+| **429** | Слишком много запросов |  -  |
+| **500** | Внутренняя ошибка сервера |  -  |
+
+<a id="rebootServer"></a>
+# **rebootServer**
+> rebootServer(serverId)
+
+Перезагрузка сервера
+
+Чтобы перезагрузить сервер, отправьте POST-запрос на &#x60;/api/v1/servers/{server_id}/reboot&#x60;.
+
+### Example
+```java
+// Import classes:
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.ServersApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.timeweb.cloud");
+    
+    // Configure HTTP bearer authorization: Bearer
+    HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
+    Bearer.setBearerToken("BEARER TOKEN");
+
+    ServersApi apiInstance = new ServersApi(defaultClient);
+    Integer serverId = 1051; // Integer | Уникальный идентификатор облачного сервера.
+    try {
+      apiInstance.rebootServer(serverId);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ServersApi#rebootServer");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **serverId** | **Integer**| Уникальный идентификатор облачного сервера. | |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | Успешное выполнение действия |  -  |
+| **400** | Некорректный запрос |  -  |
+| **401** | Не авторизован |  -  |
+| **403** | Запрещено |  -  |
+| **409** | Конфликт |  -  |
+| **429** | Слишком много запросов |  -  |
+| **500** | Внутренняя ошибка сервера |  -  |
+
+<a id="resetServerPassword"></a>
+# **resetServerPassword**
+> resetServerPassword(serverId)
+
+Сброс пароля сервера
+
+Чтобы сбросить пароль сервера, отправьте POST-запрос на &#x60;/api/v1/servers/{server_id}/reset-password&#x60;.
+
+### Example
+```java
+// Import classes:
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.ServersApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.timeweb.cloud");
+    
+    // Configure HTTP bearer authorization: Bearer
+    HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
+    Bearer.setBearerToken("BEARER TOKEN");
+
+    ServersApi apiInstance = new ServersApi(defaultClient);
+    Integer serverId = 1051; // Integer | Уникальный идентификатор облачного сервера.
+    try {
+      apiInstance.resetServerPassword(serverId);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ServersApi#resetServerPassword");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **serverId** | **Integer**| Уникальный идентификатор облачного сервера. | |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | Успешное выполнение действия |  -  |
+| **400** | Некорректный запрос |  -  |
+| **401** | Не авторизован |  -  |
+| **409** | Конфликт |  -  |
+| **429** | Слишком много запросов |  -  |
+| **500** | Внутренняя ошибка сервера |  -  |
+
+<a id="shutdownServer"></a>
+# **shutdownServer**
+> shutdownServer(serverId)
+
+Выключение сервера
+
+Чтобы выключить сервер, отправьте POST-запрос на &#x60;/api/v1/servers/{server_id}/shutdown&#x60;.
+
+### Example
+```java
+// Import classes:
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.ServersApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.timeweb.cloud");
+    
+    // Configure HTTP bearer authorization: Bearer
+    HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
+    Bearer.setBearerToken("BEARER TOKEN");
+
+    ServersApi apiInstance = new ServersApi(defaultClient);
+    Integer serverId = 1051; // Integer | Уникальный идентификатор облачного сервера.
+    try {
+      apiInstance.shutdownServer(serverId);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ServersApi#shutdownServer");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **serverId** | **Integer**| Уникальный идентификатор облачного сервера. | |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | Успешное выполнение действия |  -  |
+| **400** | Некорректный запрос |  -  |
+| **401** | Не авторизован |  -  |
+| **403** | Запрещено |  -  |
+| **409** | Конфликт |  -  |
+| **429** | Слишком много запросов |  -  |
+| **500** | Внутренняя ошибка сервера |  -  |
+
+<a id="startServer"></a>
+# **startServer**
+> startServer(serverId)
+
+Запуск сервера
+
+Чтобы запустить сервер, отправьте POST-запрос на &#x60;/api/v1/servers/{server_id}/start&#x60;.
+
+### Example
+```java
+// Import classes:
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.ServersApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.timeweb.cloud");
+    
+    // Configure HTTP bearer authorization: Bearer
+    HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
+    Bearer.setBearerToken("BEARER TOKEN");
+
+    ServersApi apiInstance = new ServersApi(defaultClient);
+    Integer serverId = 1051; // Integer | Уникальный идентификатор облачного сервера.
+    try {
+      apiInstance.startServer(serverId);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ServersApi#startServer");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **serverId** | **Integer**| Уникальный идентификатор облачного сервера. | |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | Успешное выполнение действия |  -  |
+| **400** | Некорректный запрос |  -  |
+| **401** | Не авторизован |  -  |
 | **409** | Конфликт |  -  |
 | **429** | Слишком много запросов |  -  |
 | **500** | Внутренняя ошибка сервера |  -  |
