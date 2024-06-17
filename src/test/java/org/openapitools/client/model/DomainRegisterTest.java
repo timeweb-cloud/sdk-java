@@ -20,10 +20,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
 import org.openapitools.client.model.DomainPaymentPeriod;
-import org.openapitools.client.model.DomainRegisterNsInner;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -71,14 +68,6 @@ public class DomainRegisterTest {
     @Test
     public void isWhoisPrivacyEnabledTest() {
         // TODO: test isWhoisPrivacyEnabled
-    }
-
-    /**
-     * Test the property 'ns'
-     */
-    @Test
-    public void nsTest() {
-        // TODO: test ns
     }
 
     /**

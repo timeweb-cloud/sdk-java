@@ -54,7 +54,7 @@ import org.openapitools.client.JSON;
 /**
  * Изменение почтового ящика
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-06-14T12:52:28.658666Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-06-17T10:34:03.776579Z[Etc/UTC]")
 public class UpdateMailbox {
   public static final String SERIALIZED_NAME_AUTO_REPLY = "auto_reply";
   @SerializedName(SERIALIZED_NAME_AUTO_REPLY)

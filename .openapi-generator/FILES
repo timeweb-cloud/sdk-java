@@ -141,7 +141,6 @@ docs/DomainPaymentPeriod.md
 docs/DomainPrimeType.md
 docs/DomainProlong.md
 docs/DomainRegister.md
-docs/DomainRegisterNsInner.md
 docs/DomainRequest.md
 docs/DomainTransfer.md
 docs/DomainsApi.md
@@ -559,7 +558,6 @@ src/main/java/org/openapitools/client/model/DomainPaymentPeriod.java
 src/main/java/org/openapitools/client/model/DomainPrimeType.java
 src/main/java/org/openapitools/client/model/DomainProlong.java
 src/main/java/org/openapitools/client/model/DomainRegister.java
-src/main/java/org/openapitools/client/model/DomainRegisterNsInner.java
 src/main/java/org/openapitools/client/model/DomainRequest.java
 src/main/java/org/openapitools/client/model/DomainTransfer.java
 src/main/java/org/openapitools/client/model/EditApiKey.java
@@ -936,7 +934,6 @@ src/test/java/org/openapitools/client/model/DomainNameServerTest.java
 src/test/java/org/openapitools/client/model/DomainPaymentPeriodTest.java
 src/test/java/org/openapitools/client/model/DomainPrimeTypeTest.java
 src/test/java/org/openapitools/client/model/DomainProlongTest.java
-src/test/java/org/openapitools/client/model/DomainRegisterNsInnerTest.java
 src/test/java/org/openapitools/client/model/DomainRegisterTest.java
 src/test/java/org/openapitools/client/model/DomainRequestTest.java
 src/test/java/org/openapitools/client/model/DomainTest.java

@@ -22,10 +22,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
 import org.openapitools.client.model.DomainPaymentPeriod;
-import org.openapitools.client.model.DomainRegisterNsInner;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -55,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * Заявка на регистрацию домена
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-06-14T12:52:28.658666Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-06-17T10:34:03.776579Z[Etc/UTC]")
 public class DomainRegister {
   /**
    * Тип создаваемой заявки.
@@ -117,10 +114,6 @@ public class DomainRegister {
   public static final String SERIALIZED_NAME_IS_WHOIS_PRIVACY_ENABLED = "is_whois_privacy_enabled";
   @SerializedName(SERIALIZED_NAME_IS_WHOIS_PRIVACY_ENABLED)
   private Boolean isWhoisPrivacyEnabled;
-
-  public static final String SERIALIZED_NAME_NS = "ns";
-  @SerializedName(SERIALIZED_NAME_NS)
-  private List<DomainRegisterNsInner> ns;
 
   public static final String SERIALIZED_NAME_PERIOD = "period";
   @SerializedName(SERIALIZED_NAME_PERIOD)
@@ -217,35 +210,6 @@ public class DomainRegister {
   }
 
 
-  public DomainRegister ns(List<DomainRegisterNsInner> ns) {
-    
-    this.ns = ns;
-    return this;
-  }
-
-  public DomainRegister addNsItem(DomainRegisterNsInner nsItem) {
-    if (this.ns == null) {
-      this.ns = new ArrayList<>();
-    }
-    this.ns.add(nsItem);
-    return this;
-  }
-
-   /**
-   * Name-серверы для регистрации домена. Если не передавать этот параметр, будут использованы наши стандартные name-серверы. Нужно указать как минимум 2 name-сервера.
-   * @return ns
-  **/
-  @javax.annotation.Nullable
-  public List<DomainRegisterNsInner> getNs() {
-    return ns;
-  }
-
-
-  public void setNs(List<DomainRegisterNsInner> ns) {
-    this.ns = ns;
-  }
-
-
   public DomainRegister period(DomainPaymentPeriod period) {
     
     this.period = period;
@@ -302,14 +266,13 @@ public class DomainRegister {
         Objects.equals(this.fqdn, domainRegister.fqdn) &&
         Objects.equals(this.isAutoprolongEnabled, domainRegister.isAutoprolongEnabled) &&
         Objects.equals(this.isWhoisPrivacyEnabled, domainRegister.isWhoisPrivacyEnabled) &&
-        Objects.equals(this.ns, domainRegister.ns) &&
         Objects.equals(this.period, domainRegister.period) &&
         Objects.equals(this.personId, domainRegister.personId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(action, fqdn, isAutoprolongEnabled, isWhoisPrivacyEnabled, ns, period, personId);
+    return Objects.hash(action, fqdn, isAutoprolongEnabled, isWhoisPrivacyEnabled, period, personId);
   }
 
   @Override
@@ -320,7 +283,6 @@ public class DomainRegister {
     sb.append("    fqdn: ").append(toIndentedString(fqdn)).append("\n");
     sb.append("    isAutoprolongEnabled: ").append(toIndentedString(isAutoprolongEnabled)).append("\n");
     sb.append("    isWhoisPrivacyEnabled: ").append(toIndentedString(isWhoisPrivacyEnabled)).append("\n");
-    sb.append("    ns: ").append(toIndentedString(ns)).append("\n");
     sb.append("    period: ").append(toIndentedString(period)).append("\n");
     sb.append("    personId: ").append(toIndentedString(personId)).append("\n");
     sb.append("}");
@@ -349,7 +311,6 @@ public class DomainRegister {
     openapiFields.add("fqdn");
     openapiFields.add("is_autoprolong_enabled");
     openapiFields.add("is_whois_privacy_enabled");
-    openapiFields.add("ns");
     openapiFields.add("period");
     openapiFields.add("person_id");
 
@@ -393,20 +354,6 @@ public class DomainRegister {
       }
       if (!jsonObj.get("fqdn").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `fqdn` to be a primitive type in the JSON string but got `%s`", jsonObj.get("fqdn").toString()));
-      }
-      if (jsonObj.get("ns") != null && !jsonObj.get("ns").isJsonNull()) {
-        JsonArray jsonArrayns = jsonObj.getAsJsonArray("ns");
-        if (jsonArrayns != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("ns").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `ns` to be an array in the JSON string but got `%s`", jsonObj.get("ns").toString()));
-          }
-
-          // validate the optional field `ns` (array)
-          for (int i = 0; i < jsonArrayns.size(); i++) {
-            DomainRegisterNsInner.validateJsonElement(jsonArrayns.get(i));
-          };
-        }
       }
   }
 

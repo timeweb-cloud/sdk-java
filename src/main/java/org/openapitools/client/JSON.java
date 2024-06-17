@@ -219,7 +219,6 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new org.openapitools.client.model.DomainNameServerItemsInner.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new org.openapitools.client.model.DomainProlong.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new org.openapitools.client.model.DomainRegister.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new org.openapitools.client.model.DomainRegisterNsInner.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new org.openapitools.client.model.DomainRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new org.openapitools.client.model.DomainTransfer.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new org.openapitools.client.model.EditApiKey.CustomTypeAdapterFactory());
