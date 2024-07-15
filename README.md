@@ -2,7 +2,7 @@
 
 Timeweb Cloud API
 - API version: 1.0.0
-  - Build date: 2024-07-12T10:43:21.175729Z[Etc/UTC]
+  - Build date: 2024-07-15T13:20:04.083456Z[Etc/UTC]
 
 # Введение
 API Timeweb Cloud позволяет вам управлять ресурсами в облаке программным способом с использованием обычных HTTP-запросов.
@@ -482,7 +482,6 @@ Class | Method | HTTP request | Description
 *ServersApi* | [**getSoftware**](docs/ServersApi.md#getSoftware) | **GET** /api/v1/software/servers | Получение списка ПО из маркетплейса
 *ServersApi* | [**hardShutdownServer**](docs/ServersApi.md#hardShutdownServer) | **POST** /api/v1/servers/{server_id}/hard-shutdown | Принудительное выключение сервера
 *ServersApi* | [**imageUnmountAndServerReload**](docs/ServersApi.md#imageUnmountAndServerReload) | **POST** /api/v1/servers/{server_id}/image-unmount | Отмонтирование ISO образа и перезагрузка сервера
-*ServersApi* | [**installServer**](docs/ServersApi.md#installServer) | **POST** /api/v1/servers/{server_id}/install | Установка сервера
 *ServersApi* | [**performActionOnBackup**](docs/ServersApi.md#performActionOnBackup) | **POST** /api/v1/servers/{server_id}/disks/{disk_id}/backups/{backup_id}/action | Выполнение действия над бэкапом диска сервера
 *ServersApi* | [**performActionOnServer**](docs/ServersApi.md#performActionOnServer) | **POST** /api/v1/servers/{server_id}/action | Выполнение действия над сервером
 *ServersApi* | [**rebootServer**](docs/ServersApi.md#rebootServer) | **POST** /api/v1/servers/{server_id}/reboot | Перезагрузка сервера

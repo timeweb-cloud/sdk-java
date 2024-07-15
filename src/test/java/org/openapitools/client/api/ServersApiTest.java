@@ -436,20 +436,6 @@ public class ServersApiTest {
     }
 
     /**
-     * Установка сервера
-     *
-     * Чтобы установить сервер, отправьте POST-запрос на &#x60;/api/v1/servers/{server_id}/install&#x60;.
-     *
-     * @throws ApiException if the Api call fails
-     */
-    @Test
-    public void installServerTest() throws ApiException {
-        Integer serverId = null;
-        api.installServer(serverId);
-        // TODO: test validations
-    }
-
-    /**
      * Выполнение действия над бэкапом диска сервера
      *
      * Чтобы выполнить действие над бэкапом диска сервера, отправьте POST-запрос на &#x60;/api/v1/servers/{server_id}/disks/{disk_id}/backups/{backup_id}/action&#x60;.

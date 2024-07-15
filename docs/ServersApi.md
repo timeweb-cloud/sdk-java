@@ -29,7 +29,6 @@ All URIs are relative to *https://api.timeweb.cloud*
 | [**getSoftware**](ServersApi.md#getSoftware) | **GET** /api/v1/software/servers | Получение списка ПО из маркетплейса |
 | [**hardShutdownServer**](ServersApi.md#hardShutdownServer) | **POST** /api/v1/servers/{server_id}/hard-shutdown | Принудительное выключение сервера |
 | [**imageUnmountAndServerReload**](ServersApi.md#imageUnmountAndServerReload) | **POST** /api/v1/servers/{server_id}/image-unmount | Отмонтирование ISO образа и перезагрузка сервера |
-| [**installServer**](ServersApi.md#installServer) | **POST** /api/v1/servers/{server_id}/install | Установка сервера |
 | [**performActionOnBackup**](ServersApi.md#performActionOnBackup) | **POST** /api/v1/servers/{server_id}/disks/{disk_id}/backups/{backup_id}/action | Выполнение действия над бэкапом диска сервера |
 | [**performActionOnServer**](ServersApi.md#performActionOnServer) | **POST** /api/v1/servers/{server_id}/action | Выполнение действия над сервером |
 | [**rebootServer**](ServersApi.md#rebootServer) | **POST** /api/v1/servers/{server_id}/reboot | Перезагрузка сервера |
@@ -1898,78 +1897,6 @@ null (empty response body)
 | **400** | Некорректный запрос |  -  |
 | **401** | Не авторизован |  -  |
 | **404** | Не найдено |  -  |
-| **429** | Слишком много запросов |  -  |
-| **500** | Внутренняя ошибка сервера |  -  |
-
-<a id="installServer"></a>
-# **installServer**
-> installServer(serverId)
-
-Установка сервера
-
-Чтобы установить сервер, отправьте POST-запрос на &#x60;/api/v1/servers/{server_id}/install&#x60;.
-
-### Example
-```java
-// Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.auth.*;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.ServersApi;
-
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://api.timeweb.cloud");
-    
-    // Configure HTTP bearer authorization: Bearer
-    HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
-    Bearer.setBearerToken("BEARER TOKEN");
-
-    ServersApi apiInstance = new ServersApi(defaultClient);
-    Integer serverId = 1051; // Integer | Уникальный идентификатор облачного сервера.
-    try {
-      apiInstance.installServer(serverId);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling ServersApi#installServer");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **serverId** | **Integer**| Уникальный идентификатор облачного сервера. | |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **204** | Успешное выполнение действия |  -  |
-| **400** | Некорректный запрос |  -  |
-| **401** | Не авторизован |  -  |
-| **403** | Запрещено |  -  |
-| **409** | Конфликт |  -  |
 | **429** | Слишком много запросов |  -  |
 | **500** | Внутренняя ошибка сервера |  -  |
 

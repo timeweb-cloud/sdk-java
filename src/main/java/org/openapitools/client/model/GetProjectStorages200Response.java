@@ -54,7 +54,7 @@ import org.openapitools.client.JSON;
 /**
  * GetProjectStorages200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-07-12T10:43:21.175729Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-07-15T13:20:04.083456Z[Etc/UTC]")
 public class GetProjectStorages200Response {
   public static final String SERIALIZED_NAME_BUCKETS = "buckets";
   @SerializedName(SERIALIZED_NAME_BUCKETS)
