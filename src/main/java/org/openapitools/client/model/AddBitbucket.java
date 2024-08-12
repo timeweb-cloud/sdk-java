@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * Добавление аккаунта Bitbucket
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-12T14:49:08.740818Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-12T16:00:08.082183Z[Etc/UTC]")
 public class AddBitbucket {
   /**
    * Тип провайдера.
@@ -161,7 +161,7 @@ public class AddBitbucket {
   }
 
    /**
-   * Логин пользователя BitBucket.
+   * Логин пользователя Bitbucket.
    * @return login
   **/
   @javax.annotation.Nonnull

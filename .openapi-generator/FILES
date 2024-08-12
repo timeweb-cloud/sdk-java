@@ -196,7 +196,6 @@ docs/Frameworks.md
 docs/Free.md
 docs/GetAccountStatus200Response.md
 docs/GetAllProjectResources200Response.md
-docs/GetApp200Response.md
 docs/GetAppDeploys200Response.md
 docs/GetAppLogs200Response.md
 docs/GetApps200Response.md
@@ -652,7 +651,6 @@ src/main/java/org/openapitools/client/model/Frameworks.java
 src/main/java/org/openapitools/client/model/Free.java
 src/main/java/org/openapitools/client/model/GetAccountStatus200Response.java
 src/main/java/org/openapitools/client/model/GetAllProjectResources200Response.java
-src/main/java/org/openapitools/client/model/GetApp200Response.java
 src/main/java/org/openapitools/client/model/GetAppDeploys200Response.java
 src/main/java/org/openapitools/client/model/GetAppLogs200Response.java
 src/main/java/org/openapitools/client/model/GetApps200Response.java
@@ -1072,7 +1070,6 @@ src/test/java/org/openapitools/client/model/FrameworksTest.java
 src/test/java/org/openapitools/client/model/FreeTest.java
 src/test/java/org/openapitools/client/model/GetAccountStatus200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetAllProjectResources200ResponseTest.java
-src/test/java/org/openapitools/client/model/GetApp200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetAppDeploys200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetAppLogs200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetApps200ResponseTest.java

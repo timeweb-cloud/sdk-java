@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * UpdeteSettings
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-12T14:49:08.740818Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-12T16:00:08.082183Z[Etc/UTC]")
 public class UpdeteSettings {
   public static final String SERIALIZED_NAME_IS_AUTO_DEPLOY = "is_auto_deploy";
   @SerializedName(SERIALIZED_NAME_IS_AUTO_DEPLOY)
@@ -238,7 +238,7 @@ public class UpdeteSettings {
   }
 
    /**
-   * Директория с индексным файлом. Обязателен для приложений &#x60;type: frontend&#x60;. Не используется для приложений &#x60;type: backend&#x60;.
+   * Путь к директории с индексным файлом. Используется для приложений &#x60;type: frontend&#x60;. Не используется для приложений &#x60;type: backend&#x60;. Значение всегда должно начинаться с &#x60;/&#x60;.
    * @return indexDir
   **/
   @javax.annotation.Nullable
@@ -259,7 +259,7 @@ public class UpdeteSettings {
   }
 
    /**
-   * Команда для запуска приложения. Обязателен для приложений &#x60;type: backend&#x60;. Не используется для приложений &#x60;type: frontend&#x60;.
+   * Команда для запуска приложения. Используется для приложений &#x60;type: backend&#x60;. Не используется для приложений &#x60;type: frontend&#x60;.
    * @return runCmd
   **/
   @javax.annotation.Nullable

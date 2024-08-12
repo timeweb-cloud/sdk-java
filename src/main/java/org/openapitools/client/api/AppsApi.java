@@ -36,7 +36,6 @@ import org.openapitools.client.model.CreateApp201Response;
 import org.openapitools.client.model.CreateDatabaseBackup409Response;
 import org.openapitools.client.model.CreateDeploy201Response;
 import org.openapitools.client.model.CreateDeployRequest;
-import org.openapitools.client.model.GetApp200Response;
 import org.openapitools.client.model.GetAppDeploys200Response;
 import org.openapitools.client.model.GetAppLogs200Response;
 import org.openapitools.client.model.GetApps200Response;
@@ -1071,7 +1070,7 @@ public class AppsApi {
      * Получение приложения по id
      * Чтобы получить приложение по id, отправьте GET-запрос на &#x60;/api/v1/apps/{app_id}&#x60;.
      * @param appId  (required)
-     * @return GetApp200Response
+     * @return CreateApp201Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1085,8 +1084,8 @@ public class AppsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public GetApp200Response getApp(String appId) throws ApiException {
-        ApiResponse<GetApp200Response> localVarResp = getAppWithHttpInfo(appId);
+    public CreateApp201Response getApp(String appId) throws ApiException {
+        ApiResponse<CreateApp201Response> localVarResp = getAppWithHttpInfo(appId);
         return localVarResp.getData();
     }
 
@@ -1094,7 +1093,7 @@ public class AppsApi {
      * Получение приложения по id
      * Чтобы получить приложение по id, отправьте GET-запрос на &#x60;/api/v1/apps/{app_id}&#x60;.
      * @param appId  (required)
-     * @return ApiResponse&lt;GetApp200Response&gt;
+     * @return ApiResponse&lt;CreateApp201Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1108,9 +1107,9 @@ public class AppsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GetApp200Response> getAppWithHttpInfo(String appId) throws ApiException {
+    public ApiResponse<CreateApp201Response> getAppWithHttpInfo(String appId) throws ApiException {
         okhttp3.Call localVarCall = getAppValidateBeforeCall(appId, null);
-        Type localVarReturnType = new TypeToken<GetApp200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<CreateApp201Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1133,10 +1132,10 @@ public class AppsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAppAsync(String appId, final ApiCallback<GetApp200Response> _callback) throws ApiException {
+    public okhttp3.Call getAppAsync(String appId, final ApiCallback<CreateApp201Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAppValidateBeforeCall(appId, _callback);
-        Type localVarReturnType = new TypeToken<GetApp200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<CreateApp201Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

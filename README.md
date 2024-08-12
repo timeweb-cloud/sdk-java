@@ -2,7 +2,7 @@
 
 Timeweb Cloud API
 - API version: 1.0.0
-  - Build date: 2024-08-12T14:49:08.740818Z[Etc/UTC]
+  - Build date: 2024-08-12T16:00:08.082183Z[Etc/UTC]
 
 # Введение
 API Timeweb Cloud позволяет вам управлять ресурсами в облаке программным способом с использованием обычных HTTP-запросов.
@@ -715,7 +715,6 @@ Class | Method | HTTP request | Description
  - [Free](docs/Free.md)
  - [GetAccountStatus200Response](docs/GetAccountStatus200Response.md)
  - [GetAllProjectResources200Response](docs/GetAllProjectResources200Response.md)
- - [GetApp200Response](docs/GetApp200Response.md)
  - [GetAppDeploys200Response](docs/GetAppDeploys200Response.md)
  - [GetAppLogs200Response](docs/GetAppLogs200Response.md)
  - [GetApps200Response](docs/GetApps200Response.md)

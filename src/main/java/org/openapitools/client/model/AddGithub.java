@@ -48,16 +48,16 @@ import java.util.Set;
 import org.openapitools.client.JSON;
 
 /**
- * Добавление аккаунта github
+ * Добавление аккаунта GitHub
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-12T14:49:08.740818Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-12T16:00:08.082183Z[Etc/UTC]")
 public class AddGithub {
   /**
    * Тип провайдера.
    */
   @JsonAdapter(ProviderTypeEnum.Adapter.class)
   public enum ProviderTypeEnum {
-    GITHUB("github");
+    GITHUB("Github");
 
     private String value;
 
@@ -136,7 +136,7 @@ public class AddGithub {
   }
 
    /**
-   * Токен доступа. &lt;br&gt; Для GitHub необходимо использовать &#39;Fine-grained personal access token&#39;. Инструкции по созданию можно найти в &lt;a target&#x3D;&#39;_blank&#39; href&#x3D;&#39;https://docs.github.com/ru/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token&#39;&gt;документации GitHub&lt;/a&gt;. &lt;br&gt; Выберите репозитории, к которым хотите предоставить доступ, и установите следующие разрешения: &#x60;Webhooks: read and write&#x60;, &#x60;Contents: read-only&#x60;.
+   * Токен доступа. &lt;br&gt; Для GitHub необходимо использовать &#39;Fine-grained personal access token&#39;. Инструкции по созданию можно найти в &lt;a target&#x3D;&#39;_blank&#39; href&#x3D;&#39;https://docs.GitHub.com/ru/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token&#39;&gt;документации GitHub&lt;/a&gt;. &lt;br&gt; Выберите репозитории, к которым хотите предоставить доступ, и установите следующие разрешения: &#x60;Webhooks: read and write&#x60;, &#x60;Contents: read-only&#x60;.
    * @return providerToken
   **/
   @javax.annotation.Nonnull

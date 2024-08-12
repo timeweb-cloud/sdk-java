@@ -469,7 +469,7 @@ public class Example {
 
 <a id="getApp"></a>
 # **getApp**
-> GetApp200Response getApp(appId)
+> CreateApp201Response getApp(appId)
 
 Получение приложения по id
 
@@ -497,7 +497,7 @@ public class Example {
     AppsApi apiInstance = new AppsApi(defaultClient);
     String appId = "appId_example"; // String | 
     try {
-      GetApp200Response result = apiInstance.getApp(appId);
+      CreateApp201Response result = apiInstance.getApp(appId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AppsApi#getApp");
@@ -518,7 +518,7 @@ public class Example {
 
 ### Return type
 
-[**GetApp200Response**](GetApp200Response.md)
+[**CreateApp201Response**](CreateApp201Response.md)
 
 ### Authorization
 

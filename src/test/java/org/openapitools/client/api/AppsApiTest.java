@@ -23,7 +23,6 @@ import org.openapitools.client.model.CreateApp201Response;
 import org.openapitools.client.model.CreateDatabaseBackup409Response;
 import org.openapitools.client.model.CreateDeploy201Response;
 import org.openapitools.client.model.CreateDeployRequest;
-import org.openapitools.client.model.GetApp200Response;
 import org.openapitools.client.model.GetAppDeploys200Response;
 import org.openapitools.client.model.GetAppLogs200Response;
 import org.openapitools.client.model.GetApps200Response;
@@ -154,7 +153,7 @@ public class AppsApiTest {
     @Test
     public void getAppTest() throws ApiException {
         String appId = null;
-        GetApp200Response response = api.getApp(appId);
+        CreateApp201Response response = api.getApp(appId);
         // TODO: test validations
     }
 

@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**app** | [**List&lt;App&gt;**](App.md) |  |  |
+|**app** | [**App**](App.md) |  |  |
 |**meta** | [**Meta**](Meta.md) |  |  |
 
 

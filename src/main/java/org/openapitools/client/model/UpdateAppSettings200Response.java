@@ -21,8 +21,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import org.openapitools.client.model.App;
 import org.openapitools.client.model.Meta;
 
@@ -54,11 +52,11 @@ import org.openapitools.client.JSON;
 /**
  * UpdateAppSettings200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-12T14:49:08.740818Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-12T16:00:08.082183Z[Etc/UTC]")
 public class UpdateAppSettings200Response {
   public static final String SERIALIZED_NAME_APP = "app";
   @SerializedName(SERIALIZED_NAME_APP)
-  private List<App> app = new ArrayList<>();
+  private App app;
 
   public static final String SERIALIZED_NAME_META = "meta";
   @SerializedName(SERIALIZED_NAME_META)
@@ -67,17 +65,9 @@ public class UpdateAppSettings200Response {
   public UpdateAppSettings200Response() {
   }
 
-  public UpdateAppSettings200Response app(List<App> app) {
+  public UpdateAppSettings200Response app(App app) {
     
     this.app = app;
-    return this;
-  }
-
-  public UpdateAppSettings200Response addAppItem(App appItem) {
-    if (this.app == null) {
-      this.app = new ArrayList<>();
-    }
-    this.app.add(appItem);
     return this;
   }
 
@@ -86,12 +76,12 @@ public class UpdateAppSettings200Response {
    * @return app
   **/
   @javax.annotation.Nonnull
-  public List<App> getApp() {
+  public App getApp() {
     return app;
   }
 
 
-  public void setApp(List<App> app) {
+  public void setApp(App app) {
     this.app = app;
   }
 
@@ -201,16 +191,8 @@ public class UpdateAppSettings200Response {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // ensure the json data is an array
-      if (!jsonObj.get("app").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `app` to be an array in the JSON string but got `%s`", jsonObj.get("app").toString()));
-      }
-
-      JsonArray jsonArrayapp = jsonObj.getAsJsonArray("app");
-      // validate the required field `app` (array)
-      for (int i = 0; i < jsonArrayapp.size(); i++) {
-        App.validateJsonElement(jsonArrayapp.get(i));
-      };
+      // validate the required field `app`
+      App.validateJsonElement(jsonObj.get("app"));
       // validate the required field `meta`
       Meta.validateJsonElement(jsonObj.get("meta"));
   }
