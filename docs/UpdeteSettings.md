@@ -17,7 +17,7 @@
 |**runCmd** | **String** | Команда для запуска приложения. Используется для приложений &#x60;type: backend&#x60;. Не используется для приложений &#x60;type: frontend&#x60;. |  [optional] |
 |**framework** | **Frameworks** |  |  [optional] |
 |**name** | **String** | Имя приложения. |  [optional] |
-|**comment** | **String** | Комментарий к приложения. |  [optional] |
+|**comment** | **String** | Комментарий к приложению. |  [optional] |
 |**presetId** | **BigDecimal** | Идентификатор тарифа. |  [optional] |
 
 

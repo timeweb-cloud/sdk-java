@@ -60,7 +60,7 @@ import org.openapitools.client.JSON;
 /**
  * Экземпляр приложения.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-12T16:00:08.082183Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-13T10:06:44.224808Z[Etc/UTC]")
 public class App {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -692,7 +692,7 @@ public class App {
   }
 
    /**
-   * Директория с индексным файлом. Определено для приложений &#x60;type: frontend&#x60;. Для приложений &#x60;type: backend&#x60; всегда null.
+   * Путь к директории с индексным файлом. Определен для приложений &#x60;type: frontend&#x60;. Для приложений &#x60;type: backend&#x60; всегда null.
    * @return indexDir
   **/
   @javax.annotation.Nullable
@@ -734,7 +734,7 @@ public class App {
   }
 
    /**
-   * Команда для запуска приложения. Определено для приложений &#x60;type: backend&#x60;. Для приложений &#x60;type: frontend&#x60; всегда null.
+   * Команда для запуска приложения. Определена для приложений &#x60;type: backend&#x60;. Для приложений &#x60;type: frontend&#x60; всегда null.
    * @return runCmd
   **/
   @javax.annotation.Nullable

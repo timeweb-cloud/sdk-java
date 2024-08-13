@@ -2,7 +2,7 @@
 
 # AppDiskStatus
 
-Объект с конфигурацией диска. Определено для приложений `type: backend`.Для приложений `type: frontend` всегда null.
+Объект с конфигурацией диска. Определен для приложений `type: backend`.Для приложений `type: frontend` всегда null.
 
 ## Properties
 

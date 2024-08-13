@@ -53,7 +53,7 @@ import org.openapitools.client.JSON;
 /**
  * Локация
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-12T16:00:08.082183Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-13T10:06:44.224808Z[Etc/UTC]")
 public class LocationDto {
   public static final String SERIALIZED_NAME_LOCATION = "location";
   @SerializedName(SERIALIZED_NAME_LOCATION)

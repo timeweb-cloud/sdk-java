@@ -53,7 +53,7 @@ import org.openapitools.client.JSON;
 /**
  * CreateApp
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-12T16:00:08.082183Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-13T10:06:44.224808Z[Etc/UTC]")
 public class CreateApp {
   public static final String SERIALIZED_NAME_PROVIDER_ID = "provider_id";
   @SerializedName(SERIALIZED_NAME_PROVIDER_ID)
@@ -361,7 +361,7 @@ public class CreateApp {
   }
 
    /**
-   * Комментарий к приложения.
+   * Комментарий к приложению.
    * @return comment
   **/
   @javax.annotation.Nonnull
@@ -466,7 +466,7 @@ public class CreateApp {
   }
 
    /**
-   * Команда для запуска приложения. Обязателен для приложений &#x60;type: backend&#x60;. Не используется для приложений &#x60;type: frontend&#x60;.
+   * Команда для запуска приложения. Обязательна для приложений &#x60;type: backend&#x60;. Не используется для приложений &#x60;type: frontend&#x60;.
    * @return runCmd
   **/
   @javax.annotation.Nullable

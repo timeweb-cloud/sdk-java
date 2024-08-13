@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * UpdeteSettings
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-12T16:00:08.082183Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-13T10:06:44.224808Z[Etc/UTC]")
 public class UpdeteSettings {
   public static final String SERIALIZED_NAME_IS_AUTO_DEPLOY = "is_auto_deploy";
   @SerializedName(SERIALIZED_NAME_IS_AUTO_DEPLOY)
@@ -322,7 +322,7 @@ public class UpdeteSettings {
   }
 
    /**
-   * Комментарий к приложения.
+   * Комментарий к приложению.
    * @return comment
   **/
   @javax.annotation.Nullable

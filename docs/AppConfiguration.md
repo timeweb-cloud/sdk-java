@@ -2,7 +2,7 @@
 
 # AppConfiguration
 
-Объект с конфигурацией сервера. Определено для приложений `type: backend`.Для приложений `type: frontend` всегда null.
+Объект с конфигурацией сервера. Определен для приложений `type: backend`.Для приложений `type: frontend` всегда null.
 
 ## Properties
 
