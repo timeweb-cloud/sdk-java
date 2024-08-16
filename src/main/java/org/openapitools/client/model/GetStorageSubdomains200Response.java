@@ -54,7 +54,7 @@ import org.openapitools.client.JSON;
 /**
  * GetStorageSubdomains200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-13T10:06:44.224808Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-16T13:12:24.259575Z[Etc/UTC]")
 public class GetStorageSubdomains200Response {
   public static final String SERIALIZED_NAME_SUBDOMAINS = "subdomains";
   @SerializedName(SERIALIZED_NAME_SUBDOMAINS)

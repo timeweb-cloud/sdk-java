@@ -21985,6 +21985,7 @@ paths:
       x-accepts: application/json
   /api/v1/projects/{project_id}/resources/balancers:
     get:
+      deprecated: true
       description: "Чтобы получить список балансировщиков проекта, отправьте GET-з\
         апрос на `/api/v1/projects/{project_id}/resources/balancers`."
       operationId: getProjectBalancers
@@ -22117,6 +22118,7 @@ paths:
           \t}\n}\n"
       x-accepts: application/json
     post:
+      deprecated: true
       description: |-
         Чтобы добавить балансировщик в проект, отправьте POST-запрос на `/api/v1/projects/{project_id}/resources/balancers`, задав необходимые атрибуты.
 
@@ -22284,6 +22286,7 @@ paths:
       x-accepts: application/json
   /api/v1/projects/{project_id}/resources/buckets:
     get:
+      deprecated: true
       description: "Чтобы получить список хранилищ проекта, отправьте GET-запрос н\
         а `/api/v1/projects/{project_id}/resources/buckets`."
       operationId: getProjectStorages
@@ -22416,6 +22419,7 @@ paths:
           \t}\n}\n"
       x-accepts: application/json
     post:
+      deprecated: true
       description: |-
         Чтобы добавить хранилище в проект, отправьте POST-запрос на `/api/v1/projects/{project_id}/resources/buckets`, задав необходимые атрибуты.
 
@@ -22583,6 +22587,7 @@ paths:
       x-accepts: application/json
   /api/v1/projects/{project_id}/resources/clusters:
     get:
+      deprecated: true
       description: "Чтобы получить список кластеров проекта, отправьте GET-запрос\
         \ на `/api/v1/projects/{project_id}/resources/clusters`."
       operationId: getProjectClusters
@@ -22715,6 +22720,7 @@ paths:
           \t}\n}\n"
       x-accepts: application/json
     post:
+      deprecated: true
       description: |-
         Чтобы добавить кластер в проект, отправьте POST-запрос на `/api/v1/projects/{project_id}/resources/clusters`, задав необходимые атрибуты.
 
@@ -22882,6 +22888,7 @@ paths:
       x-accepts: application/json
   /api/v1/projects/{project_id}/resources/servers:
     get:
+      deprecated: true
       description: "Чтобы получить список серверов проекта, отправьте GET-запрос н\
         а `/api/v1/projects/{project_id}/resources/servers`."
       operationId: getProjectServers
@@ -23014,6 +23021,7 @@ paths:
           \t}\n}\n"
       x-accepts: application/json
     post:
+      deprecated: true
       description: |-
         Чтобы добавить сервер в проект, отправьте POST-запрос на `/api/v1/projects/{project_id}/resources/servers`, задав необходимые атрибуты.
 
@@ -23181,6 +23189,7 @@ paths:
       x-accepts: application/json
   /api/v1/projects/{project_id}/resources/databases:
     get:
+      deprecated: true
       description: "Чтобы получить список баз данных проекта, отправьте GET-запрос\
         \ на `/api/v1/projects/{project_id}/resources/databases`."
       operationId: getProjectDatabases
@@ -23313,6 +23322,7 @@ paths:
           \t}\n}\n"
       x-accepts: application/json
     post:
+      deprecated: true
       description: |-
         Чтобы добавить базу данных в проект, отправьте POST-запрос на `/api/v1/projects/{project_id}/resources/databases`, задав необходимые атрибуты.
 
@@ -23480,6 +23490,7 @@ paths:
       x-accepts: application/json
   /api/v1/projects/{project_id}/resources/dedicated:
     get:
+      deprecated: true
       description: "Чтобы получить список выделенных серверов проекта, отправьте GET-з\
         апрос на `/api/v1/projects/{project_id}/resources/dedicated`."
       operationId: getProjectDedicatedServers
@@ -23612,6 +23623,7 @@ paths:
           \t}\n}\n"
       x-accepts: application/json
     post:
+      deprecated: true
       description: |-
         Чтобы добавить выделенный сервер в проект, отправьте POST-запрос на `/api/v1/projects/{project_id}/resources/dedicated`, задав необходимые атрибуты.
 
@@ -23779,6 +23791,7 @@ paths:
       x-accepts: application/json
   /api/v1/projects/{project_id}/resources:
     get:
+      deprecated: true
       description: "Чтобы получить все ресурсы проекта, отправьте GET-запрос на `/api/v1/projects/{project_id}/resources`."
       operationId: getAllProjectResources
       parameters:
@@ -23912,6 +23925,7 @@ paths:
       x-accepts: application/json
   /api/v1/projects/resources/balancers:
     get:
+      deprecated: true
       description: "Чтобы получить список всех балансировщиков на аккаунте, отправ\
         ьте GET-запрос на `/api/v1/projects/resources/balancers`."
       operationId: getAccountBalancers
@@ -24034,6 +24048,7 @@ paths:
       x-accepts: application/json
   /api/v1/projects/resources/servers:
     get:
+      deprecated: true
       description: "Чтобы получить список всех серверов на аккаунте, отправьте GET-з\
         апрос на `/api/v1/projects/resources/servers`."
       operationId: getAccountServers
@@ -24156,6 +24171,7 @@ paths:
       x-accepts: application/json
   /api/v1/projects/resources/buckets:
     get:
+      deprecated: true
       description: "Чтобы получить список всех хранилищ на аккаунте, отправьте GET-з\
         апрос на `/api/v1/projects/resources/buckets`."
       operationId: getAccountStorages
@@ -24278,6 +24294,7 @@ paths:
       x-accepts: application/json
   /api/v1/projects/resources/clusters:
     get:
+      deprecated: true
       description: "Чтобы получить список всех кластеров на аккаунте, отправьте GET-з\
         апрос на `/api/v1/projects/resources/clusters`."
       operationId: getAccountClusters
@@ -24400,6 +24417,7 @@ paths:
       x-accepts: application/json
   /api/v1/projects/resources/databases:
     get:
+      deprecated: true
       description: "Чтобы получить список всех баз данных на аккаунте, отправьте GET-з\
         апрос на `/api/v1/projects/resources/databases`."
       operationId: getAccountDatabases
@@ -24522,6 +24540,7 @@ paths:
       x-accepts: application/json
   /api/v1/projects/resources/dedicated:
     get:
+      deprecated: true
       description: "Чтобы получить список всех выделенных серверов на аккаунте, от\
         правьте GET-запрос на `/api/v1/projects/resources/dedicated`."
       operationId: getAccountDedicatedServers
