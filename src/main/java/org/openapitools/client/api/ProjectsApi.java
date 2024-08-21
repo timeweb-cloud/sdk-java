@@ -113,9 +113,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public okhttp3.Call addBalancerToProjectCall(Integer projectId, AddBalancerToProjectRequest addBalancerToProjectRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -162,7 +160,6 @@ public class ProjectsApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
-    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call addBalancerToProjectValidateBeforeCall(Integer projectId, AddBalancerToProjectRequest addBalancerToProjectRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'projectId' is set
@@ -196,9 +193,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public AddBalancerToProject200Response addBalancerToProject(Integer projectId, AddBalancerToProjectRequest addBalancerToProjectRequest) throws ApiException {
         ApiResponse<AddBalancerToProject200Response> localVarResp = addBalancerToProjectWithHttpInfo(projectId, addBalancerToProjectRequest);
         return localVarResp.getData();
@@ -221,9 +216,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public ApiResponse<AddBalancerToProject200Response> addBalancerToProjectWithHttpInfo(Integer projectId, AddBalancerToProjectRequest addBalancerToProjectRequest) throws ApiException {
         okhttp3.Call localVarCall = addBalancerToProjectValidateBeforeCall(projectId, addBalancerToProjectRequest, null);
         Type localVarReturnType = new TypeToken<AddBalancerToProject200Response>(){}.getType();
@@ -248,9 +241,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public okhttp3.Call addBalancerToProjectAsync(Integer projectId, AddBalancerToProjectRequest addBalancerToProjectRequest, final ApiCallback<AddBalancerToProject200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = addBalancerToProjectValidateBeforeCall(projectId, addBalancerToProjectRequest, _callback);
@@ -275,9 +266,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public okhttp3.Call addClusterToProjectCall(Integer projectId, AddClusterToProjectRequest addClusterToProjectRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -324,7 +313,6 @@ public class ProjectsApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
-    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call addClusterToProjectValidateBeforeCall(Integer projectId, AddClusterToProjectRequest addClusterToProjectRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'projectId' is set
@@ -358,9 +346,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public AddBalancerToProject200Response addClusterToProject(Integer projectId, AddClusterToProjectRequest addClusterToProjectRequest) throws ApiException {
         ApiResponse<AddBalancerToProject200Response> localVarResp = addClusterToProjectWithHttpInfo(projectId, addClusterToProjectRequest);
         return localVarResp.getData();
@@ -383,9 +369,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public ApiResponse<AddBalancerToProject200Response> addClusterToProjectWithHttpInfo(Integer projectId, AddClusterToProjectRequest addClusterToProjectRequest) throws ApiException {
         okhttp3.Call localVarCall = addClusterToProjectValidateBeforeCall(projectId, addClusterToProjectRequest, null);
         Type localVarReturnType = new TypeToken<AddBalancerToProject200Response>(){}.getType();
@@ -410,9 +394,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public okhttp3.Call addClusterToProjectAsync(Integer projectId, AddClusterToProjectRequest addClusterToProjectRequest, final ApiCallback<AddBalancerToProject200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = addClusterToProjectValidateBeforeCall(projectId, addClusterToProjectRequest, _callback);
@@ -437,9 +419,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public okhttp3.Call addDatabaseToProjectCall(Integer projectId, AddDatabaseToProjectRequest addDatabaseToProjectRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -486,7 +466,6 @@ public class ProjectsApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
-    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call addDatabaseToProjectValidateBeforeCall(Integer projectId, AddDatabaseToProjectRequest addDatabaseToProjectRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'projectId' is set
@@ -520,9 +499,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public AddBalancerToProject200Response addDatabaseToProject(Integer projectId, AddDatabaseToProjectRequest addDatabaseToProjectRequest) throws ApiException {
         ApiResponse<AddBalancerToProject200Response> localVarResp = addDatabaseToProjectWithHttpInfo(projectId, addDatabaseToProjectRequest);
         return localVarResp.getData();
@@ -545,9 +522,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public ApiResponse<AddBalancerToProject200Response> addDatabaseToProjectWithHttpInfo(Integer projectId, AddDatabaseToProjectRequest addDatabaseToProjectRequest) throws ApiException {
         okhttp3.Call localVarCall = addDatabaseToProjectValidateBeforeCall(projectId, addDatabaseToProjectRequest, null);
         Type localVarReturnType = new TypeToken<AddBalancerToProject200Response>(){}.getType();
@@ -572,9 +547,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public okhttp3.Call addDatabaseToProjectAsync(Integer projectId, AddDatabaseToProjectRequest addDatabaseToProjectRequest, final ApiCallback<AddBalancerToProject200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = addDatabaseToProjectValidateBeforeCall(projectId, addDatabaseToProjectRequest, _callback);
@@ -599,9 +572,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public okhttp3.Call addDedicatedServerToProjectCall(Integer projectId, AddDedicatedServerToProjectRequest addDedicatedServerToProjectRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -648,7 +619,6 @@ public class ProjectsApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
-    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call addDedicatedServerToProjectValidateBeforeCall(Integer projectId, AddDedicatedServerToProjectRequest addDedicatedServerToProjectRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'projectId' is set
@@ -682,9 +652,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public AddBalancerToProject200Response addDedicatedServerToProject(Integer projectId, AddDedicatedServerToProjectRequest addDedicatedServerToProjectRequest) throws ApiException {
         ApiResponse<AddBalancerToProject200Response> localVarResp = addDedicatedServerToProjectWithHttpInfo(projectId, addDedicatedServerToProjectRequest);
         return localVarResp.getData();
@@ -707,9 +675,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public ApiResponse<AddBalancerToProject200Response> addDedicatedServerToProjectWithHttpInfo(Integer projectId, AddDedicatedServerToProjectRequest addDedicatedServerToProjectRequest) throws ApiException {
         okhttp3.Call localVarCall = addDedicatedServerToProjectValidateBeforeCall(projectId, addDedicatedServerToProjectRequest, null);
         Type localVarReturnType = new TypeToken<AddBalancerToProject200Response>(){}.getType();
@@ -734,9 +700,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public okhttp3.Call addDedicatedServerToProjectAsync(Integer projectId, AddDedicatedServerToProjectRequest addDedicatedServerToProjectRequest, final ApiCallback<AddBalancerToProject200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = addDedicatedServerToProjectValidateBeforeCall(projectId, addDedicatedServerToProjectRequest, _callback);
@@ -761,9 +725,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public okhttp3.Call addServerToProjectCall(Integer projectId, AddServerToProjectRequest addServerToProjectRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -810,7 +772,6 @@ public class ProjectsApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
-    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call addServerToProjectValidateBeforeCall(Integer projectId, AddServerToProjectRequest addServerToProjectRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'projectId' is set
@@ -844,9 +805,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public AddBalancerToProject200Response addServerToProject(Integer projectId, AddServerToProjectRequest addServerToProjectRequest) throws ApiException {
         ApiResponse<AddBalancerToProject200Response> localVarResp = addServerToProjectWithHttpInfo(projectId, addServerToProjectRequest);
         return localVarResp.getData();
@@ -869,9 +828,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public ApiResponse<AddBalancerToProject200Response> addServerToProjectWithHttpInfo(Integer projectId, AddServerToProjectRequest addServerToProjectRequest) throws ApiException {
         okhttp3.Call localVarCall = addServerToProjectValidateBeforeCall(projectId, addServerToProjectRequest, null);
         Type localVarReturnType = new TypeToken<AddBalancerToProject200Response>(){}.getType();
@@ -896,9 +853,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public okhttp3.Call addServerToProjectAsync(Integer projectId, AddServerToProjectRequest addServerToProjectRequest, final ApiCallback<AddBalancerToProject200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = addServerToProjectValidateBeforeCall(projectId, addServerToProjectRequest, _callback);
@@ -923,9 +878,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public okhttp3.Call addStorageToProjectCall(Integer projectId, AddStorageToProjectRequest addStorageToProjectRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -972,7 +925,6 @@ public class ProjectsApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
-    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call addStorageToProjectValidateBeforeCall(Integer projectId, AddStorageToProjectRequest addStorageToProjectRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'projectId' is set
@@ -1006,9 +958,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public AddBalancerToProject200Response addStorageToProject(Integer projectId, AddStorageToProjectRequest addStorageToProjectRequest) throws ApiException {
         ApiResponse<AddBalancerToProject200Response> localVarResp = addStorageToProjectWithHttpInfo(projectId, addStorageToProjectRequest);
         return localVarResp.getData();
@@ -1031,9 +981,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public ApiResponse<AddBalancerToProject200Response> addStorageToProjectWithHttpInfo(Integer projectId, AddStorageToProjectRequest addStorageToProjectRequest) throws ApiException {
         okhttp3.Call localVarCall = addStorageToProjectValidateBeforeCall(projectId, addStorageToProjectRequest, null);
         Type localVarReturnType = new TypeToken<AddBalancerToProject200Response>(){}.getType();
@@ -1058,9 +1006,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public okhttp3.Call addStorageToProjectAsync(Integer projectId, AddStorageToProjectRequest addStorageToProjectRequest, final ApiCallback<AddBalancerToProject200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = addStorageToProjectValidateBeforeCall(projectId, addStorageToProjectRequest, _callback);
@@ -1361,9 +1307,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public okhttp3.Call getAccountBalancersCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -1408,7 +1352,6 @@ public class ProjectsApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
-    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getAccountBalancersValidateBeforeCall(final ApiCallback _callback) throws ApiException {
         return getAccountBalancersCall(_callback);
@@ -1430,9 +1373,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public GetProjectBalancers200Response getAccountBalancers() throws ApiException {
         ApiResponse<GetProjectBalancers200Response> localVarResp = getAccountBalancersWithHttpInfo();
         return localVarResp.getData();
@@ -1453,9 +1394,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public ApiResponse<GetProjectBalancers200Response> getAccountBalancersWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getAccountBalancersValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<GetProjectBalancers200Response>(){}.getType();
@@ -1478,9 +1417,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public okhttp3.Call getAccountBalancersAsync(final ApiCallback<GetProjectBalancers200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAccountBalancersValidateBeforeCall(_callback);
@@ -1503,9 +1440,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public okhttp3.Call getAccountClustersCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -1550,7 +1485,6 @@ public class ProjectsApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
-    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getAccountClustersValidateBeforeCall(final ApiCallback _callback) throws ApiException {
         return getAccountClustersCall(_callback);
@@ -1572,9 +1506,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public GetProjectClusters200Response getAccountClusters() throws ApiException {
         ApiResponse<GetProjectClusters200Response> localVarResp = getAccountClustersWithHttpInfo();
         return localVarResp.getData();
@@ -1595,9 +1527,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public ApiResponse<GetProjectClusters200Response> getAccountClustersWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getAccountClustersValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<GetProjectClusters200Response>(){}.getType();
@@ -1620,9 +1550,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public okhttp3.Call getAccountClustersAsync(final ApiCallback<GetProjectClusters200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAccountClustersValidateBeforeCall(_callback);
@@ -1645,9 +1573,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public okhttp3.Call getAccountDatabasesCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -1692,7 +1618,6 @@ public class ProjectsApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
-    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getAccountDatabasesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
         return getAccountDatabasesCall(_callback);
@@ -1714,9 +1639,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public GetProjectDatabases200Response getAccountDatabases() throws ApiException {
         ApiResponse<GetProjectDatabases200Response> localVarResp = getAccountDatabasesWithHttpInfo();
         return localVarResp.getData();
@@ -1737,9 +1660,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public ApiResponse<GetProjectDatabases200Response> getAccountDatabasesWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getAccountDatabasesValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<GetProjectDatabases200Response>(){}.getType();
@@ -1762,9 +1683,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public okhttp3.Call getAccountDatabasesAsync(final ApiCallback<GetProjectDatabases200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAccountDatabasesValidateBeforeCall(_callback);
@@ -1787,9 +1706,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public okhttp3.Call getAccountDedicatedServersCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -1834,7 +1751,6 @@ public class ProjectsApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
-    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getAccountDedicatedServersValidateBeforeCall(final ApiCallback _callback) throws ApiException {
         return getAccountDedicatedServersCall(_callback);
@@ -1856,9 +1772,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public GetProjectDedicatedServers200Response getAccountDedicatedServers() throws ApiException {
         ApiResponse<GetProjectDedicatedServers200Response> localVarResp = getAccountDedicatedServersWithHttpInfo();
         return localVarResp.getData();
@@ -1879,9 +1793,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public ApiResponse<GetProjectDedicatedServers200Response> getAccountDedicatedServersWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getAccountDedicatedServersValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<GetProjectDedicatedServers200Response>(){}.getType();
@@ -1904,9 +1816,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public okhttp3.Call getAccountDedicatedServersAsync(final ApiCallback<GetProjectDedicatedServers200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAccountDedicatedServersValidateBeforeCall(_callback);
@@ -1929,9 +1839,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public okhttp3.Call getAccountServersCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -1976,7 +1884,6 @@ public class ProjectsApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
-    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getAccountServersValidateBeforeCall(final ApiCallback _callback) throws ApiException {
         return getAccountServersCall(_callback);
@@ -1998,9 +1905,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public GetProjectServers200Response getAccountServers() throws ApiException {
         ApiResponse<GetProjectServers200Response> localVarResp = getAccountServersWithHttpInfo();
         return localVarResp.getData();
@@ -2021,9 +1926,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public ApiResponse<GetProjectServers200Response> getAccountServersWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getAccountServersValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<GetProjectServers200Response>(){}.getType();
@@ -2046,9 +1949,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public okhttp3.Call getAccountServersAsync(final ApiCallback<GetProjectServers200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAccountServersValidateBeforeCall(_callback);
@@ -2071,9 +1972,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public okhttp3.Call getAccountStoragesCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -2118,7 +2017,6 @@ public class ProjectsApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
-    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getAccountStoragesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
         return getAccountStoragesCall(_callback);
@@ -2140,9 +2038,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public GetProjectStorages200Response getAccountStorages() throws ApiException {
         ApiResponse<GetProjectStorages200Response> localVarResp = getAccountStoragesWithHttpInfo();
         return localVarResp.getData();
@@ -2163,9 +2059,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public ApiResponse<GetProjectStorages200Response> getAccountStoragesWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getAccountStoragesValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<GetProjectStorages200Response>(){}.getType();
@@ -2188,9 +2082,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public okhttp3.Call getAccountStoragesAsync(final ApiCallback<GetProjectStorages200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAccountStoragesValidateBeforeCall(_callback);
@@ -2214,9 +2106,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public okhttp3.Call getAllProjectResourcesCall(Integer projectId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -2262,7 +2152,6 @@ public class ProjectsApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
-    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getAllProjectResourcesValidateBeforeCall(Integer projectId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'projectId' is set
@@ -2290,9 +2179,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public GetAllProjectResources200Response getAllProjectResources(Integer projectId) throws ApiException {
         ApiResponse<GetAllProjectResources200Response> localVarResp = getAllProjectResourcesWithHttpInfo(projectId);
         return localVarResp.getData();
@@ -2314,9 +2201,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public ApiResponse<GetAllProjectResources200Response> getAllProjectResourcesWithHttpInfo(Integer projectId) throws ApiException {
         okhttp3.Call localVarCall = getAllProjectResourcesValidateBeforeCall(projectId, null);
         Type localVarReturnType = new TypeToken<GetAllProjectResources200Response>(){}.getType();
@@ -2340,9 +2225,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public okhttp3.Call getAllProjectResourcesAsync(Integer projectId, final ApiCallback<GetAllProjectResources200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAllProjectResourcesValidateBeforeCall(projectId, _callback);
@@ -2509,9 +2392,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public okhttp3.Call getProjectBalancersCall(Integer projectId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -2557,7 +2438,6 @@ public class ProjectsApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
-    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getProjectBalancersValidateBeforeCall(Integer projectId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'projectId' is set
@@ -2585,9 +2465,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public GetProjectBalancers200Response getProjectBalancers(Integer projectId) throws ApiException {
         ApiResponse<GetProjectBalancers200Response> localVarResp = getProjectBalancersWithHttpInfo(projectId);
         return localVarResp.getData();
@@ -2609,9 +2487,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public ApiResponse<GetProjectBalancers200Response> getProjectBalancersWithHttpInfo(Integer projectId) throws ApiException {
         okhttp3.Call localVarCall = getProjectBalancersValidateBeforeCall(projectId, null);
         Type localVarReturnType = new TypeToken<GetProjectBalancers200Response>(){}.getType();
@@ -2635,9 +2511,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public okhttp3.Call getProjectBalancersAsync(Integer projectId, final ApiCallback<GetProjectBalancers200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getProjectBalancersValidateBeforeCall(projectId, _callback);
@@ -2661,9 +2535,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public okhttp3.Call getProjectClustersCall(Integer projectId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -2709,7 +2581,6 @@ public class ProjectsApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
-    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getProjectClustersValidateBeforeCall(Integer projectId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'projectId' is set
@@ -2737,9 +2608,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public GetProjectClusters200Response getProjectClusters(Integer projectId) throws ApiException {
         ApiResponse<GetProjectClusters200Response> localVarResp = getProjectClustersWithHttpInfo(projectId);
         return localVarResp.getData();
@@ -2761,9 +2630,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public ApiResponse<GetProjectClusters200Response> getProjectClustersWithHttpInfo(Integer projectId) throws ApiException {
         okhttp3.Call localVarCall = getProjectClustersValidateBeforeCall(projectId, null);
         Type localVarReturnType = new TypeToken<GetProjectClusters200Response>(){}.getType();
@@ -2787,9 +2654,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public okhttp3.Call getProjectClustersAsync(Integer projectId, final ApiCallback<GetProjectClusters200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getProjectClustersValidateBeforeCall(projectId, _callback);
@@ -2813,9 +2678,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public okhttp3.Call getProjectDatabasesCall(Integer projectId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -2861,7 +2724,6 @@ public class ProjectsApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
-    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getProjectDatabasesValidateBeforeCall(Integer projectId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'projectId' is set
@@ -2889,9 +2751,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public GetProjectDatabases200Response getProjectDatabases(Integer projectId) throws ApiException {
         ApiResponse<GetProjectDatabases200Response> localVarResp = getProjectDatabasesWithHttpInfo(projectId);
         return localVarResp.getData();
@@ -2913,9 +2773,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public ApiResponse<GetProjectDatabases200Response> getProjectDatabasesWithHttpInfo(Integer projectId) throws ApiException {
         okhttp3.Call localVarCall = getProjectDatabasesValidateBeforeCall(projectId, null);
         Type localVarReturnType = new TypeToken<GetProjectDatabases200Response>(){}.getType();
@@ -2939,9 +2797,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public okhttp3.Call getProjectDatabasesAsync(Integer projectId, final ApiCallback<GetProjectDatabases200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getProjectDatabasesValidateBeforeCall(projectId, _callback);
@@ -2965,9 +2821,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public okhttp3.Call getProjectDedicatedServersCall(Integer projectId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -3013,7 +2867,6 @@ public class ProjectsApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
-    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getProjectDedicatedServersValidateBeforeCall(Integer projectId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'projectId' is set
@@ -3041,9 +2894,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public GetProjectDedicatedServers200Response getProjectDedicatedServers(Integer projectId) throws ApiException {
         ApiResponse<GetProjectDedicatedServers200Response> localVarResp = getProjectDedicatedServersWithHttpInfo(projectId);
         return localVarResp.getData();
@@ -3065,9 +2916,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public ApiResponse<GetProjectDedicatedServers200Response> getProjectDedicatedServersWithHttpInfo(Integer projectId) throws ApiException {
         okhttp3.Call localVarCall = getProjectDedicatedServersValidateBeforeCall(projectId, null);
         Type localVarReturnType = new TypeToken<GetProjectDedicatedServers200Response>(){}.getType();
@@ -3091,9 +2940,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public okhttp3.Call getProjectDedicatedServersAsync(Integer projectId, final ApiCallback<GetProjectDedicatedServers200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getProjectDedicatedServersValidateBeforeCall(projectId, _callback);
@@ -3117,9 +2964,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public okhttp3.Call getProjectServersCall(Integer projectId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -3165,7 +3010,6 @@ public class ProjectsApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
-    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getProjectServersValidateBeforeCall(Integer projectId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'projectId' is set
@@ -3193,9 +3037,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public GetProjectServers200Response getProjectServers(Integer projectId) throws ApiException {
         ApiResponse<GetProjectServers200Response> localVarResp = getProjectServersWithHttpInfo(projectId);
         return localVarResp.getData();
@@ -3217,9 +3059,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public ApiResponse<GetProjectServers200Response> getProjectServersWithHttpInfo(Integer projectId) throws ApiException {
         okhttp3.Call localVarCall = getProjectServersValidateBeforeCall(projectId, null);
         Type localVarReturnType = new TypeToken<GetProjectServers200Response>(){}.getType();
@@ -3243,9 +3083,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public okhttp3.Call getProjectServersAsync(Integer projectId, final ApiCallback<GetProjectServers200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getProjectServersValidateBeforeCall(projectId, _callback);
@@ -3269,9 +3107,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public okhttp3.Call getProjectStoragesCall(Integer projectId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -3317,7 +3153,6 @@ public class ProjectsApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
-    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getProjectStoragesValidateBeforeCall(Integer projectId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'projectId' is set
@@ -3345,9 +3180,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public GetProjectStorages200Response getProjectStorages(Integer projectId) throws ApiException {
         ApiResponse<GetProjectStorages200Response> localVarResp = getProjectStoragesWithHttpInfo(projectId);
         return localVarResp.getData();
@@ -3369,9 +3202,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public ApiResponse<GetProjectStorages200Response> getProjectStoragesWithHttpInfo(Integer projectId) throws ApiException {
         okhttp3.Call localVarCall = getProjectStoragesValidateBeforeCall(projectId, null);
         Type localVarReturnType = new TypeToken<GetProjectStorages200Response>(){}.getType();
@@ -3395,9 +3226,7 @@ public class ProjectsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
     public okhttp3.Call getProjectStoragesAsync(Integer projectId, final ApiCallback<GetProjectStorages200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getProjectStoragesValidateBeforeCall(projectId, _callback);
