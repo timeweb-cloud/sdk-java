@@ -1796,7 +1796,9 @@ public class KubernetesApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call getClusterResourcesCall(Integer clusterId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -1842,6 +1844,7 @@ public class KubernetesApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getClusterResourcesValidateBeforeCall(Integer clusterId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'clusterId' is set
@@ -1855,7 +1858,7 @@ public class KubernetesApi {
 
     /**
      * Получение ресурсов кластера
-     * Чтобы получить ресурсы кластера, отправьте GET-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/resources&#x60;.
+     * Устаревший метод, работает только для старых кластеров. \\  Чтобы получить ресурсы кластера, отправьте GET-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/resources&#x60;.
      * @param clusterId Уникальный идентификатор кластера (required)
      * @return ResourcesResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1870,7 +1873,9 @@ public class KubernetesApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ResourcesResponse getClusterResources(Integer clusterId) throws ApiException {
         ApiResponse<ResourcesResponse> localVarResp = getClusterResourcesWithHttpInfo(clusterId);
         return localVarResp.getData();
@@ -1878,7 +1883,7 @@ public class KubernetesApi {
 
     /**
      * Получение ресурсов кластера
-     * Чтобы получить ресурсы кластера, отправьте GET-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/resources&#x60;.
+     * Устаревший метод, работает только для старых кластеров. \\  Чтобы получить ресурсы кластера, отправьте GET-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/resources&#x60;.
      * @param clusterId Уникальный идентификатор кластера (required)
      * @return ApiResponse&lt;ResourcesResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1893,7 +1898,9 @@ public class KubernetesApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<ResourcesResponse> getClusterResourcesWithHttpInfo(Integer clusterId) throws ApiException {
         okhttp3.Call localVarCall = getClusterResourcesValidateBeforeCall(clusterId, null);
         Type localVarReturnType = new TypeToken<ResourcesResponse>(){}.getType();
@@ -1902,7 +1909,7 @@ public class KubernetesApi {
 
     /**
      * Получение ресурсов кластера (asynchronously)
-     * Чтобы получить ресурсы кластера, отправьте GET-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/resources&#x60;.
+     * Устаревший метод, работает только для старых кластеров. \\  Чтобы получить ресурсы кластера, отправьте GET-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/resources&#x60;.
      * @param clusterId Уникальный идентификатор кластера (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1918,7 +1925,9 @@ public class KubernetesApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call getClusterResourcesAsync(Integer clusterId, final ApiCallback<ResourcesResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getClusterResourcesValidateBeforeCall(clusterId, _callback);
