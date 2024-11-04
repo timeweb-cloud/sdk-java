@@ -245,7 +245,7 @@ public class KubernetesApiTest {
     /**
      * Получение списка сетевых драйверов k8s
      *
-     * Чтобы получить список сетевых драйверов k8s, отправьте GET-запрос в &#x60;/api/v1/k8s/network_drivers&#x60;.
+     * Чтобы получить список сетевых драйверов k8s, отправьте GET-запрос в &#x60;/api/v1/k8s/network-drivers&#x60;.
      *
      * @throws ApiException if the Api call fails
      */
@@ -258,7 +258,7 @@ public class KubernetesApiTest {
     /**
      * Получение списка версий k8s
      *
-     * Чтобы получить список версий k8s, отправьте GET-запрос в &#x60;/api/v1/k8s/k8s_versions&#x60;.
+     * Чтобы получить список версий k8s, отправьте GET-запрос в &#x60;/api/v1/k8s/k8s-versions&#x60;.
      *
      * @throws ApiException if the Api call fails
      */

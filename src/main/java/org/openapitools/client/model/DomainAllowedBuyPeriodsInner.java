@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * DomainAllowedBuyPeriodsInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-02T11:00:48.617913Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-04T10:32:43.083895Z[Etc/UTC]")
 public class DomainAllowedBuyPeriodsInner {
   public static final String SERIALIZED_NAME_PERIOD = "period";
   @SerializedName(SERIALIZED_NAME_PERIOD)

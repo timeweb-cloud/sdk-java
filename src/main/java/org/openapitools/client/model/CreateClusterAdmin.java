@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * Пользователь базы данных.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-02T11:00:48.617913Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-04T10:32:43.083895Z[Etc/UTC]")
 public class CreateClusterAdmin {
   public static final String SERIALIZED_NAME_LOGIN = "login";
   @SerializedName(SERIALIZED_NAME_LOGIN)

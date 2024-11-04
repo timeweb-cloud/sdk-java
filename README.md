@@ -2,7 +2,7 @@
 
 Timeweb Cloud API
 - API version: 1.0.0
-  - Build date: 2024-11-02T11:00:48.617913Z[Etc/UTC]
+  - Build date: 2024-11-04T10:32:43.083895Z[Etc/UTC]
 
 # Введение
 API Timeweb Cloud позволяет вам управлять ресурсами в облаке программным способом с использованием обычных HTTP-запросов.
@@ -417,8 +417,8 @@ Class | Method | HTTP request | Description
 *KubernetesApi* | [**getClusterNodesFromGroup**](docs/KubernetesApi.md#getClusterNodesFromGroup) | **GET** /api/v1/k8s/clusters/{cluster_id}/groups/{group_id}/nodes | Получение списка нод, принадлежащих группе
 *KubernetesApi* | [**getClusterResources**](docs/KubernetesApi.md#getClusterResources) | **GET** /api/v1/k8s/clusters/{cluster_id}/resources | Получение ресурсов кластера
 *KubernetesApi* | [**getClusters**](docs/KubernetesApi.md#getClusters) | **GET** /api/v1/k8s/clusters | Получение списка кластеров
-*KubernetesApi* | [**getK8SNetworkDrivers**](docs/KubernetesApi.md#getK8SNetworkDrivers) | **GET** /api/v1/k8s/network_drivers | Получение списка сетевых драйверов k8s
-*KubernetesApi* | [**getK8SVersions**](docs/KubernetesApi.md#getK8SVersions) | **GET** /api/v1/k8s/k8s_versions | Получение списка версий k8s
+*KubernetesApi* | [**getK8SNetworkDrivers**](docs/KubernetesApi.md#getK8SNetworkDrivers) | **GET** /api/v1/k8s/network-drivers | Получение списка сетевых драйверов k8s
+*KubernetesApi* | [**getK8SVersions**](docs/KubernetesApi.md#getK8SVersions) | **GET** /api/v1/k8s/k8s-versions | Получение списка версий k8s
 *KubernetesApi* | [**getKubernetesPresets**](docs/KubernetesApi.md#getKubernetesPresets) | **GET** /api/v1/presets/k8s | Получение списка тарифов
 *KubernetesApi* | [**increaseCountOfNodesInGroup**](docs/KubernetesApi.md#increaseCountOfNodesInGroup) | **POST** /api/v1/k8s/clusters/{cluster_id}/groups/{group_id}/nodes | Увеличение количества нод в группе на указанное количество
 *KubernetesApi* | [**reduceCountOfNodesInGroup**](docs/KubernetesApi.md#reduceCountOfNodesInGroup) | **DELETE** /api/v1/k8s/clusters/{cluster_id}/groups/{group_id}/nodes | Уменьшение количества нод в группе на указанное количество

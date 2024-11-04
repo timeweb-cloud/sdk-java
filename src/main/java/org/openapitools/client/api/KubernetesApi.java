@@ -2112,7 +2112,7 @@ public class KubernetesApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/v1/k8s/network_drivers";
+        String localVarPath = "/api/v1/k8s/network-drivers";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2147,7 +2147,7 @@ public class KubernetesApi {
 
     /**
      * Получение списка сетевых драйверов k8s
-     * Чтобы получить список сетевых драйверов k8s, отправьте GET-запрос в &#x60;/api/v1/k8s/network_drivers&#x60;.
+     * Чтобы получить список сетевых драйверов k8s, отправьте GET-запрос в &#x60;/api/v1/k8s/network-drivers&#x60;.
      * @return NetworkDriversResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2167,7 +2167,7 @@ public class KubernetesApi {
 
     /**
      * Получение списка сетевых драйверов k8s
-     * Чтобы получить список сетевых драйверов k8s, отправьте GET-запрос в &#x60;/api/v1/k8s/network_drivers&#x60;.
+     * Чтобы получить список сетевых драйверов k8s, отправьте GET-запрос в &#x60;/api/v1/k8s/network-drivers&#x60;.
      * @return ApiResponse&lt;NetworkDriversResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2188,7 +2188,7 @@ public class KubernetesApi {
 
     /**
      * Получение списка сетевых драйверов k8s (asynchronously)
-     * Чтобы получить список сетевых драйверов k8s, отправьте GET-запрос в &#x60;/api/v1/k8s/network_drivers&#x60;.
+     * Чтобы получить список сетевых драйверов k8s, отправьте GET-запрос в &#x60;/api/v1/k8s/network-drivers&#x60;.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2241,7 +2241,7 @@ public class KubernetesApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/v1/k8s/k8s_versions";
+        String localVarPath = "/api/v1/k8s/k8s-versions";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2276,7 +2276,7 @@ public class KubernetesApi {
 
     /**
      * Получение списка версий k8s
-     * Чтобы получить список версий k8s, отправьте GET-запрос в &#x60;/api/v1/k8s/k8s_versions&#x60;.
+     * Чтобы получить список версий k8s, отправьте GET-запрос в &#x60;/api/v1/k8s/k8s-versions&#x60;.
      * @return K8SVersionsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2296,7 +2296,7 @@ public class KubernetesApi {
 
     /**
      * Получение списка версий k8s
-     * Чтобы получить список версий k8s, отправьте GET-запрос в &#x60;/api/v1/k8s/k8s_versions&#x60;.
+     * Чтобы получить список версий k8s, отправьте GET-запрос в &#x60;/api/v1/k8s/k8s-versions&#x60;.
      * @return ApiResponse&lt;K8SVersionsResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2317,7 +2317,7 @@ public class KubernetesApi {
 
     /**
      * Получение списка версий k8s (asynchronously)
-     * Чтобы получить список версий k8s, отправьте GET-запрос в &#x60;/api/v1/k8s/k8s_versions&#x60;.
+     * Чтобы получить список версий k8s, отправьте GET-запрос в &#x60;/api/v1/k8s/k8s-versions&#x60;.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
