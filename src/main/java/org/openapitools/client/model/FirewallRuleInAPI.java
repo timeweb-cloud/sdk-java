@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * FirewallRuleInAPI
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-11T11:27:03.045595Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-12-06T10:00:03.206418Z[Etc/UTC]")
 public class FirewallRuleInAPI {
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)

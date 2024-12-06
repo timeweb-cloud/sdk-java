@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * RenameStorageFileRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-11T11:27:03.045595Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-12-06T10:00:03.206418Z[Etc/UTC]")
 public class RenameStorageFileRequest {
   public static final String SERIALIZED_NAME_NEW_FILENAME = "new_filename";
   @SerializedName(SERIALIZED_NAME_NEW_FILENAME)

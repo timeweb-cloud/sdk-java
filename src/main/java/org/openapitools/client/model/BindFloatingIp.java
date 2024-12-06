@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * BindFloatingIp
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-11T11:27:03.045595Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-12-06T10:00:03.206418Z[Etc/UTC]")
 public class BindFloatingIp {
   /**
    * Тип ресурса.

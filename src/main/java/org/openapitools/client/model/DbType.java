@@ -33,15 +33,17 @@ public enum DbType {
   
   MYSQL5("mysql5"),
   
-  POSTGRES("postgres"),
-  
   POSTGRES14("postgres14"),
   
   POSTGRES15("postgres15"),
   
   POSTGRES16("postgres16"),
   
+  POSTGRES17("postgres17"),
+  
   REDIS("redis"),
+  
+  REDIS7("redis7"),
   
   MONGODB4("mongodb4"),
   

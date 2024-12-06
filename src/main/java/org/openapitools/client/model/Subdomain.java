@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * Subdomain
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-11T11:27:03.045595Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-12-06T10:00:03.206418Z[Etc/UTC]")
 public class Subdomain {
   public static final String SERIALIZED_NAME_FQDN = "fqdn";
   @SerializedName(SERIALIZED_NAME_FQDN)
