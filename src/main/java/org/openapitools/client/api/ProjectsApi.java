@@ -3301,7 +3301,7 @@ public class ProjectsApi {
 
     /**
      * Получение списка проектов
-     * Чтобы получить список всех проектов на вашем аккаунте, отправьте GET-запрос на &#x60;/api/v1/dedicated-servers&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;projects&#x60;.
+     * Чтобы получить список всех проектов на вашем аккаунте, отправьте GET-запрос на &#x60;/api/v1/projects&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;projects&#x60;.
      * @return GetProjects200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3321,7 +3321,7 @@ public class ProjectsApi {
 
     /**
      * Получение списка проектов
-     * Чтобы получить список всех проектов на вашем аккаунте, отправьте GET-запрос на &#x60;/api/v1/dedicated-servers&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;projects&#x60;.
+     * Чтобы получить список всех проектов на вашем аккаунте, отправьте GET-запрос на &#x60;/api/v1/projects&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;projects&#x60;.
      * @return ApiResponse&lt;GetProjects200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3342,7 +3342,7 @@ public class ProjectsApi {
 
     /**
      * Получение списка проектов (asynchronously)
-     * Чтобы получить список всех проектов на вашем аккаунте, отправьте GET-запрос на &#x60;/api/v1/dedicated-servers&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;projects&#x60;.
+     * Чтобы получить список всех проектов на вашем аккаунте, отправьте GET-запрос на &#x60;/api/v1/projects&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;projects&#x60;.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

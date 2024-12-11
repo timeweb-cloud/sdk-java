@@ -21,6 +21,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import org.openapitools.client.model.DatabaseTypeRequirements;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -50,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * Тип кластера базы данных
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-12-06T10:00:03.206418Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-12-11T15:23:34.737181Z[Etc/UTC]")
 public class DatabaseType {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -63,6 +64,14 @@ public class DatabaseType {
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
   private String type;
+
+  public static final String SERIALIZED_NAME_IS_AVAILABLE_REPLICATION = "is_available_replication";
+  @SerializedName(SERIALIZED_NAME_IS_AVAILABLE_REPLICATION)
+  private Boolean isAvailableReplication;
+
+  public static final String SERIALIZED_NAME_REQUIREMENTS = "requirements";
+  @SerializedName(SERIALIZED_NAME_REQUIREMENTS)
+  private DatabaseTypeRequirements requirements;
 
   public DatabaseType() {
   }
@@ -130,6 +139,48 @@ public class DatabaseType {
   }
 
 
+  public DatabaseType isAvailableReplication(Boolean isAvailableReplication) {
+    
+    this.isAvailableReplication = isAvailableReplication;
+    return this;
+  }
+
+   /**
+   * Поддерживает ли база данных репликацию.
+   * @return isAvailableReplication
+  **/
+  @javax.annotation.Nonnull
+  public Boolean getIsAvailableReplication() {
+    return isAvailableReplication;
+  }
+
+
+  public void setIsAvailableReplication(Boolean isAvailableReplication) {
+    this.isAvailableReplication = isAvailableReplication;
+  }
+
+
+  public DatabaseType requirements(DatabaseTypeRequirements requirements) {
+    
+    this.requirements = requirements;
+    return this;
+  }
+
+   /**
+   * Get requirements
+   * @return requirements
+  **/
+  @javax.annotation.Nullable
+  public DatabaseTypeRequirements getRequirements() {
+    return requirements;
+  }
+
+
+  public void setRequirements(DatabaseTypeRequirements requirements) {
+    this.requirements = requirements;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -142,12 +193,14 @@ public class DatabaseType {
     DatabaseType databaseType = (DatabaseType) o;
     return Objects.equals(this.name, databaseType.name) &&
         Objects.equals(this.version, databaseType.version) &&
-        Objects.equals(this.type, databaseType.type);
+        Objects.equals(this.type, databaseType.type) &&
+        Objects.equals(this.isAvailableReplication, databaseType.isAvailableReplication) &&
+        Objects.equals(this.requirements, databaseType.requirements);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, version, type);
+    return Objects.hash(name, version, type, isAvailableReplication, requirements);
   }
 
   @Override
@@ -157,6 +210,8 @@ public class DatabaseType {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    isAvailableReplication: ").append(toIndentedString(isAvailableReplication)).append("\n");
+    sb.append("    requirements: ").append(toIndentedString(requirements)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -182,12 +237,15 @@ public class DatabaseType {
     openapiFields.add("name");
     openapiFields.add("version");
     openapiFields.add("type");
+    openapiFields.add("is_available_replication");
+    openapiFields.add("requirements");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("name");
     openapiRequiredFields.add("version");
     openapiRequiredFields.add("type");
+    openapiRequiredFields.add("is_available_replication");
   }
 
  /**
@@ -226,6 +284,10 @@ public class DatabaseType {
       }
       if (!jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+      }
+      // validate the optional field `requirements`
+      if (jsonObj.get("requirements") != null && !jsonObj.get("requirements").isJsonNull()) {
+        DatabaseTypeRequirements.validateJsonElement(jsonObj.get("requirements"));
       }
   }
 

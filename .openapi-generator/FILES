@@ -129,6 +129,7 @@ docs/DatabaseClusterNetworksInner.md
 docs/DatabaseClusterNetworksInnerIpsInner.md
 docs/DatabaseInstance.md
 docs/DatabaseType.md
+docs/DatabaseTypeRequirements.md
 docs/DatabasesApi.md
 docs/Db.md
 docs/DbDiskStats.md
@@ -589,6 +590,7 @@ src/main/java/org/openapitools/client/model/DatabaseClusterNetworksInner.java
 src/main/java/org/openapitools/client/model/DatabaseClusterNetworksInnerIpsInner.java
 src/main/java/org/openapitools/client/model/DatabaseInstance.java
 src/main/java/org/openapitools/client/model/DatabaseType.java
+src/main/java/org/openapitools/client/model/DatabaseTypeRequirements.java
 src/main/java/org/openapitools/client/model/Db.java
 src/main/java/org/openapitools/client/model/DbDiskStats.java
 src/main/java/org/openapitools/client/model/DbType.java
@@ -1007,6 +1009,7 @@ src/test/java/org/openapitools/client/model/DatabaseClusterNetworksInnerIpsInner
 src/test/java/org/openapitools/client/model/DatabaseClusterNetworksInnerTest.java
 src/test/java/org/openapitools/client/model/DatabaseClusterTest.java
 src/test/java/org/openapitools/client/model/DatabaseInstanceTest.java
+src/test/java/org/openapitools/client/model/DatabaseTypeRequirementsTest.java
 src/test/java/org/openapitools/client/model/DatabaseTypeTest.java
 src/test/java/org/openapitools/client/model/DbDiskStatsTest.java
 src/test/java/org/openapitools/client/model/DbTest.java
