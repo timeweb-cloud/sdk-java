@@ -341,6 +341,19 @@ public class DatabasesApiTest {
     }
 
     /**
+     * Получение списка параметров баз данных
+     *
+     * Чтобы получить список параметров баз данных, отправьте GET-запрос на &#x60;/api/v1/dbs/parameters&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void getDatabaseParametersTest() throws ApiException {
+        Map<String, List<String>> response = api.getDatabaseParameters();
+        // TODO: test validations
+    }
+
+    /**
      * Получение пользователя базы данных
      *
      * Чтобы получить пользователя базы данных на вашем аккаунте, отправьте GET-запрос на &#x60;/api/v1/databases/{db_cluster_id}/admins/{admin_id}&#x60;.
