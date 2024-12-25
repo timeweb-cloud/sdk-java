@@ -50485,7 +50485,7 @@ components:
           example: nvme
           type: string
         preset_id:
-          description: Идентификатор сетевого диска.
+          description: Идентификатор тарифа.
           example: 5
           type: integer
       required:

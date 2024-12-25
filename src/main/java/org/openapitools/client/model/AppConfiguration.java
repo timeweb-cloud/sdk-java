@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * Объект с конфигурацией сервера. Определен для приложений &#x60;type: backend&#x60;.Для приложений &#x60;type: frontend&#x60; всегда null.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-12-25T12:35:47.138766Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-12-25T16:56:49.033312Z[Etc/UTC]")
 public class AppConfiguration {
   public static final String SERIALIZED_NAME_CPU = "cpu";
   @SerializedName(SERIALIZED_NAME_CPU)

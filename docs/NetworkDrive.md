@@ -16,7 +16,7 @@
 |**status** | [**StatusEnum**](#StatusEnum) | Статус сетевого диска. |  |
 |**availabilityZone** | **AvailabilityZone** |  |  |
 |**type** | [**TypeEnum**](#TypeEnum) | Тип сетевого диска. |  |
-|**presetId** | **Integer** | Идентификатор сетевого диска. |  |
+|**presetId** | **Integer** | Идентификатор тарифа. |  |
 
 
 
