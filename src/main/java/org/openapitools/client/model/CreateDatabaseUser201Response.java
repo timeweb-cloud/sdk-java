@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * CreateDatabaseUser201Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-12-11T15:40:43.716139Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-12-25T12:35:47.138766Z[Etc/UTC]")
 public class CreateDatabaseUser201Response {
   public static final String SERIALIZED_NAME_ADMIN = "admin";
   @SerializedName(SERIALIZED_NAME_ADMIN)
