@@ -8,7 +8,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**configuratorId** | **BigDecimal** | Уникальный идентификатор конфигуратора сервера. |  [optional] |
+|**configuratorId** | **BigDecimal** | ID конфигуратора сервера. |  [optional] |
 |**disk** | **BigDecimal** | Размер диска в МБ. |  [optional] |
 |**cpu** | **BigDecimal** | Количество ядер процессора. |  [optional] |
 |**ram** | **BigDecimal** | Размер ОЗУ сервера в МБ. |  [optional] |

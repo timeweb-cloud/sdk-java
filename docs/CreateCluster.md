@@ -12,7 +12,7 @@
 |**admin** | [**CreateClusterAdmin**](CreateClusterAdmin.md) |  |  [optional] |
 |**instance** | [**CreateClusterInstance**](CreateClusterInstance.md) |  |  [optional] |
 |**hashType** | [**HashTypeEnum**](#HashTypeEnum) | Тип хеширования базы данных (mysql5 | mysql | postgres). |  [optional] |
-|**presetId** | **Integer** | Идентификатор тарифа. |  |
+|**presetId** | **Integer** | ID тарифа. |  |
 |**configParameters** | [**ConfigParameters**](ConfigParameters.md) |  |  [optional] |
 |**network** | [**Network**](Network.md) |  |  [optional] |
 |**description** | **String** | Описание кластера базы данных |  [optional] |

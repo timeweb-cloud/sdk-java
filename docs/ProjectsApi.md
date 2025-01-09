@@ -19,7 +19,7 @@ All URIs are relative to *https://api.timeweb.cloud*
 | [**getAccountServers**](ProjectsApi.md#getAccountServers) | **GET** /api/v1/projects/resources/servers | Получение списка всех серверов на аккаунте |
 | [**getAccountStorages**](ProjectsApi.md#getAccountStorages) | **GET** /api/v1/projects/resources/buckets | Получение списка всех хранилищ на аккаунте |
 | [**getAllProjectResources**](ProjectsApi.md#getAllProjectResources) | **GET** /api/v1/projects/{project_id}/resources | Получение всех ресурсов проекта |
-| [**getProject**](ProjectsApi.md#getProject) | **GET** /api/v1/projects/{project_id} | Получение проекта по идентификатору |
+| [**getProject**](ProjectsApi.md#getProject) | **GET** /api/v1/projects/{project_id} | Получение проекта по ID |
 | [**getProjectBalancers**](ProjectsApi.md#getProjectBalancers) | **GET** /api/v1/projects/{project_id}/resources/balancers | Получение списка балансировщиков проекта |
 | [**getProjectClusters**](ProjectsApi.md#getProjectClusters) | **GET** /api/v1/projects/{project_id}/resources/clusters | Получение списка кластеров проекта |
 | [**getProjectDatabases**](ProjectsApi.md#getProjectDatabases) | **GET** /api/v1/projects/{project_id}/resources/databases | Получение списка баз данных проекта |
@@ -59,7 +59,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     ProjectsApi apiInstance = new ProjectsApi(defaultClient);
-    Integer projectId = 99; // Integer | Уникальный идентификатор проекта.
+    Integer projectId = 99; // Integer | ID проекта.
     AddBalancerToProjectRequest addBalancerToProjectRequest = new AddBalancerToProjectRequest(); // AddBalancerToProjectRequest | 
     try {
       AddBalancerToProject200Response result = apiInstance.addBalancerToProject(projectId, addBalancerToProjectRequest);
@@ -79,7 +79,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **projectId** | **Integer**| Уникальный идентификатор проекта. | |
+| **projectId** | **Integer**| ID проекта. | |
 | **addBalancerToProjectRequest** | [**AddBalancerToProjectRequest**](AddBalancerToProjectRequest.md)|  | |
 
 ### Return type
@@ -134,7 +134,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     ProjectsApi apiInstance = new ProjectsApi(defaultClient);
-    Integer projectId = 99; // Integer | Уникальный идентификатор проекта.
+    Integer projectId = 99; // Integer | ID проекта.
     AddClusterToProjectRequest addClusterToProjectRequest = new AddClusterToProjectRequest(); // AddClusterToProjectRequest | 
     try {
       AddBalancerToProject200Response result = apiInstance.addClusterToProject(projectId, addClusterToProjectRequest);
@@ -154,7 +154,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **projectId** | **Integer**| Уникальный идентификатор проекта. | |
+| **projectId** | **Integer**| ID проекта. | |
 | **addClusterToProjectRequest** | [**AddClusterToProjectRequest**](AddClusterToProjectRequest.md)|  | |
 
 ### Return type
@@ -209,7 +209,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     ProjectsApi apiInstance = new ProjectsApi(defaultClient);
-    Integer projectId = 99; // Integer | Уникальный идентификатор проекта.
+    Integer projectId = 99; // Integer | ID проекта.
     AddDatabaseToProjectRequest addDatabaseToProjectRequest = new AddDatabaseToProjectRequest(); // AddDatabaseToProjectRequest | 
     try {
       AddBalancerToProject200Response result = apiInstance.addDatabaseToProject(projectId, addDatabaseToProjectRequest);
@@ -229,7 +229,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **projectId** | **Integer**| Уникальный идентификатор проекта. | |
+| **projectId** | **Integer**| ID проекта. | |
 | **addDatabaseToProjectRequest** | [**AddDatabaseToProjectRequest**](AddDatabaseToProjectRequest.md)|  | |
 
 ### Return type
@@ -284,7 +284,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     ProjectsApi apiInstance = new ProjectsApi(defaultClient);
-    Integer projectId = 99; // Integer | Уникальный идентификатор проекта.
+    Integer projectId = 99; // Integer | ID проекта.
     AddDedicatedServerToProjectRequest addDedicatedServerToProjectRequest = new AddDedicatedServerToProjectRequest(); // AddDedicatedServerToProjectRequest | 
     try {
       AddBalancerToProject200Response result = apiInstance.addDedicatedServerToProject(projectId, addDedicatedServerToProjectRequest);
@@ -304,7 +304,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **projectId** | **Integer**| Уникальный идентификатор проекта. | |
+| **projectId** | **Integer**| ID проекта. | |
 | **addDedicatedServerToProjectRequest** | [**AddDedicatedServerToProjectRequest**](AddDedicatedServerToProjectRequest.md)|  | |
 
 ### Return type
@@ -359,7 +359,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     ProjectsApi apiInstance = new ProjectsApi(defaultClient);
-    Integer projectId = 99; // Integer | Уникальный идентификатор проекта.
+    Integer projectId = 99; // Integer | ID проекта.
     AddServerToProjectRequest addServerToProjectRequest = new AddServerToProjectRequest(); // AddServerToProjectRequest | 
     try {
       AddBalancerToProject200Response result = apiInstance.addServerToProject(projectId, addServerToProjectRequest);
@@ -379,7 +379,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **projectId** | **Integer**| Уникальный идентификатор проекта. | |
+| **projectId** | **Integer**| ID проекта. | |
 | **addServerToProjectRequest** | [**AddServerToProjectRequest**](AddServerToProjectRequest.md)|  | |
 
 ### Return type
@@ -434,7 +434,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     ProjectsApi apiInstance = new ProjectsApi(defaultClient);
-    Integer projectId = 99; // Integer | Уникальный идентификатор проекта.
+    Integer projectId = 99; // Integer | ID проекта.
     AddStorageToProjectRequest addStorageToProjectRequest = new AddStorageToProjectRequest(); // AddStorageToProjectRequest | 
     try {
       AddBalancerToProject200Response result = apiInstance.addStorageToProject(projectId, addStorageToProjectRequest);
@@ -454,7 +454,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **projectId** | **Integer**| Уникальный идентификатор проекта. | |
+| **projectId** | **Integer**| ID проекта. | |
 | **addStorageToProjectRequest** | [**AddStorageToProjectRequest**](AddStorageToProjectRequest.md)|  | |
 
 ### Return type
@@ -581,7 +581,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     ProjectsApi apiInstance = new ProjectsApi(defaultClient);
-    Integer projectId = 99; // Integer | Уникальный идентификатор проекта.
+    Integer projectId = 99; // Integer | ID проекта.
     try {
       apiInstance.deleteProject(projectId);
     } catch (ApiException e) {
@@ -599,7 +599,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **projectId** | **Integer**| Уникальный идентификатор проекта. | |
+| **projectId** | **Integer**| ID проекта. | |
 
 ### Return type
 
@@ -1055,7 +1055,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     ProjectsApi apiInstance = new ProjectsApi(defaultClient);
-    Integer projectId = 99; // Integer | Уникальный идентификатор проекта.
+    Integer projectId = 99; // Integer | ID проекта.
     try {
       GetAllProjectResources200Response result = apiInstance.getAllProjectResources(projectId);
       System.out.println(result);
@@ -1074,7 +1074,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **projectId** | **Integer**| Уникальный идентификатор проекта. | |
+| **projectId** | **Integer**| ID проекта. | |
 
 ### Return type
 
@@ -1104,9 +1104,9 @@ public class Example {
 # **getProject**
 > CreateProject201Response getProject(projectId)
 
-Получение проекта по идентификатору
+Получение проекта по ID
 
-Чтобы получить проект по идентификатору, отправьте GET-запрос на &#x60;/api/v1/projects/{project_id}&#x60;.
+Чтобы получить проект по ID, отправьте GET-запрос на &#x60;/api/v1/projects/{project_id}&#x60;.
 
 ### Example
 ```java
@@ -1128,7 +1128,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     ProjectsApi apiInstance = new ProjectsApi(defaultClient);
-    Integer projectId = 99; // Integer | Уникальный идентификатор проекта.
+    Integer projectId = 99; // Integer | ID проекта.
     try {
       CreateProject201Response result = apiInstance.getProject(projectId);
       System.out.println(result);
@@ -1147,7 +1147,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **projectId** | **Integer**| Уникальный идентификатор проекта. | |
+| **projectId** | **Integer**| ID проекта. | |
 
 ### Return type
 
@@ -1201,7 +1201,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     ProjectsApi apiInstance = new ProjectsApi(defaultClient);
-    Integer projectId = 99; // Integer | Уникальный идентификатор проекта.
+    Integer projectId = 99; // Integer | ID проекта.
     try {
       GetProjectBalancers200Response result = apiInstance.getProjectBalancers(projectId);
       System.out.println(result);
@@ -1220,7 +1220,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **projectId** | **Integer**| Уникальный идентификатор проекта. | |
+| **projectId** | **Integer**| ID проекта. | |
 
 ### Return type
 
@@ -1274,7 +1274,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     ProjectsApi apiInstance = new ProjectsApi(defaultClient);
-    Integer projectId = 99; // Integer | Уникальный идентификатор проекта.
+    Integer projectId = 99; // Integer | ID проекта.
     try {
       GetProjectClusters200Response result = apiInstance.getProjectClusters(projectId);
       System.out.println(result);
@@ -1293,7 +1293,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **projectId** | **Integer**| Уникальный идентификатор проекта. | |
+| **projectId** | **Integer**| ID проекта. | |
 
 ### Return type
 
@@ -1347,7 +1347,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     ProjectsApi apiInstance = new ProjectsApi(defaultClient);
-    Integer projectId = 99; // Integer | Уникальный идентификатор проекта.
+    Integer projectId = 99; // Integer | ID проекта.
     try {
       GetProjectDatabases200Response result = apiInstance.getProjectDatabases(projectId);
       System.out.println(result);
@@ -1366,7 +1366,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **projectId** | **Integer**| Уникальный идентификатор проекта. | |
+| **projectId** | **Integer**| ID проекта. | |
 
 ### Return type
 
@@ -1420,7 +1420,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     ProjectsApi apiInstance = new ProjectsApi(defaultClient);
-    Integer projectId = 99; // Integer | Уникальный идентификатор проекта.
+    Integer projectId = 99; // Integer | ID проекта.
     try {
       GetProjectDedicatedServers200Response result = apiInstance.getProjectDedicatedServers(projectId);
       System.out.println(result);
@@ -1439,7 +1439,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **projectId** | **Integer**| Уникальный идентификатор проекта. | |
+| **projectId** | **Integer**| ID проекта. | |
 
 ### Return type
 
@@ -1493,7 +1493,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     ProjectsApi apiInstance = new ProjectsApi(defaultClient);
-    Integer projectId = 99; // Integer | Уникальный идентификатор проекта.
+    Integer projectId = 99; // Integer | ID проекта.
     try {
       GetProjectServers200Response result = apiInstance.getProjectServers(projectId);
       System.out.println(result);
@@ -1512,7 +1512,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **projectId** | **Integer**| Уникальный идентификатор проекта. | |
+| **projectId** | **Integer**| ID проекта. | |
 
 ### Return type
 
@@ -1566,7 +1566,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     ProjectsApi apiInstance = new ProjectsApi(defaultClient);
-    Integer projectId = 99; // Integer | Уникальный идентификатор проекта.
+    Integer projectId = 99; // Integer | ID проекта.
     try {
       GetProjectStorages200Response result = apiInstance.getProjectStorages(projectId);
       System.out.println(result);
@@ -1585,7 +1585,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **projectId** | **Integer**| Уникальный идентификатор проекта. | |
+| **projectId** | **Integer**| ID проекта. | |
 
 ### Return type
 
@@ -1706,7 +1706,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     ProjectsApi apiInstance = new ProjectsApi(defaultClient);
-    Integer projectId = 99; // Integer | Уникальный идентификатор проекта.
+    Integer projectId = 99; // Integer | ID проекта.
     ResourceTransfer resourceTransfer = new ResourceTransfer(); // ResourceTransfer | 
     try {
       AddBalancerToProject200Response result = apiInstance.transferResourceToAnotherProject(projectId, resourceTransfer);
@@ -1726,7 +1726,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **projectId** | **Integer**| Уникальный идентификатор проекта. | |
+| **projectId** | **Integer**| ID проекта. | |
 | **resourceTransfer** | [**ResourceTransfer**](ResourceTransfer.md)|  | |
 
 ### Return type
@@ -1781,7 +1781,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     ProjectsApi apiInstance = new ProjectsApi(defaultClient);
-    Integer projectId = 99; // Integer | Уникальный идентификатор проекта.
+    Integer projectId = 99; // Integer | ID проекта.
     UpdateProject updateProject = new UpdateProject(); // UpdateProject | 
     try {
       CreateProject201Response result = apiInstance.updateProject(projectId, updateProject);
@@ -1801,7 +1801,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **projectId** | **Integer**| Уникальный идентификатор проекта. | |
+| **projectId** | **Integer**| ID проекта. | |
 | **updateProject** | [**UpdateProject**](UpdateProject.md)|  | |
 
 ### Return type

@@ -1,6 +1,6 @@
 /*
  * Timeweb Cloud API
- * # Введение API Timeweb Cloud позволяет вам управлять ресурсами в облаке программным способом с использованием обычных HTTP-запросов.  Множество функций, которые доступны в панели управления Timeweb Cloud, также доступны через API, что позволяет вам автоматизировать ваши собственные сценарии.  В этой документации сперва будет описан общий дизайн и принципы работы API, а после этого конкретные конечные точки. Также будут приведены примеры запросов к ним.   ## Запросы Запросы должны выполняться по протоколу `HTTPS`, чтобы гарантировать шифрование транзакций. Поддерживаются следующие методы запроса: |Метод|Применение| |--- |--- | |GET|Извлекает данные о коллекциях и отдельных ресурсах.| |POST|Для коллекций создает новый ресурс этого типа. Также используется для выполнения действий с конкретным ресурсом.| |PUT|Обновляет существующий ресурс.| |PATCH|Некоторые ресурсы поддерживают частичное обновление, то есть обновление только части атрибутов ресурса, в этом случае вместо метода PUT будет использован PATCH.| |DELETE|Удаляет ресурс.|  Методы `POST`, `PUT` и `PATCH` могут включать объект в тело запроса с типом содержимого `application/json`.  ### Параметры в запросах Некоторые коллекции поддерживают пагинацию, поиск или сортировку в запросах. В параметрах запроса требуется передать: - `limit` — обозначает количество записей, которое необходимо вернуть  - `offset` — указывает на смещение, относительно начала списка  - `search` — позволяет указать набор символов для поиска  - `sort` — можно задать правило сортировки коллекции  ## Ответы Запросы вернут один из следующих кодов состояния ответа HTTP:  |Статус|Описание| |--- |--- | |200 OK|Действие с ресурсом было выполнено успешно.| |201 Created|Ресурс был успешно создан. При этом ресурс может быть как уже готовым к использованию, так и находиться в процессе запуска.| |204 No Content|Действие с ресурсом было выполнено успешно, и ответ не содержит дополнительной информации в теле.| |400 Bad Request|Был отправлен неверный запрос, например, в нем отсутствуют обязательные параметры и т. д. Тело ответа будет содержать дополнительную информацию об ошибке.| |401 Unauthorized|Ошибка аутентификации.| |403 Forbidden|Аутентификация прошла успешно, но недостаточно прав для выполнения действия.| |404 Not Found|Запрашиваемый ресурс не найден.| |409 Conflict|Запрос конфликтует с текущим состоянием.| |423 Locked|Ресурс из запроса заблокирован от применения к нему указанного метода.| |429 Too Many Requests|Был достигнут лимит по количеству запросов в единицу времени.| |500 Internal Server Error|При выполнении запроса произошла какая-то внутренняя ошибка. Чтобы решить эту проблему, лучше всего создать тикет в панели управления.|  ### Структура успешного ответа Все конечные точки будут возвращать данные в формате `JSON`. Ответы на `GET`-запросы будут иметь на верхнем уровне следующую структуру атрибутов:  |Название поля|Тип|Описание| |--- |--- |--- | |[entity_name]|object, object[], string[], number[], boolean|Динамическое поле, которое будет меняться в зависимости от запрашиваемого ресурса и будет содержать все атрибуты, необходимые для описания этого ресурса. Например, при запросе списка баз данных будет возвращаться поле `dbs`, а при запросе конкретного облачного сервера `server`. Для некоторых конечных точек в ответе может возвращаться сразу несколько ресурсов.| |meta|object|Опционально. Объект, который содержит вспомогательную информацию о ресурсе. Чаще всего будет встречаться при запросе коллекций и содержать поле `total`, которое будет указывать на количество элементов в коллекции.| |response_id|string|Опционально. В большинстве случаев в ответе будет содержаться уникальный идентификатор ответа в формате UUIDv4, который однозначно указывает на ваш запрос внутри нашей системы. Если вам потребуется задать вопрос нашей поддержке, приложите к вопросу этот идентификатор — так мы сможем найти ответ на него намного быстрее. Также вы можете использовать этот идентификатор, чтобы убедиться, что это новый ответ на запрос и результат не был получен из кэша.|  Пример запроса на получение списка SSH-ключей: ```     HTTP/2.0 200 OK     {       \"ssh_keys\":[           {             \"body\":\"ssh-rsa AAAAB3NzaC1sdfghjkOAsBwWhs= example@device.local\",             \"created_at\":\"2021-09-15T19:52:27Z\",             \"expired_at\":null,             \"id\":5297,             \"is_default\":false,             \"name\":\"example@device.local\",             \"used_at\":null,             \"used_by\":[]           }       ],       \"meta\":{           \"total\":1       },       \"response_id\":\"94608d15-8672-4eed-8ab6-28bd6fa3cdf7\"     } ```  ### Структура ответа с ошибкой |Название поля|Тип|Описание| |--- |--- |--- | |status_code|number|Короткий числовой идентификатор ошибки.| |error_code|string|Короткий текстовый идентификатор ошибки, который уточняет числовой идентификатор и удобен для программной обработки. Самый простой пример — это код `not_found` для ошибки 404.| |message|string, string[]|Опционально. В большинстве случаев в ответе будет содержаться человекочитаемое подробное описание ошибки или ошибок, которые помогут понять, что нужно исправить.| |response_id|string|Опционально. В большинстве случае в ответе будет содержаться уникальный идентификатор ответа в формате UUIDv4, который однозначно указывает на ваш запрос внутри нашей системы. Если вам потребуется задать вопрос нашей поддержке, приложите к вопросу этот идентификатор — так мы сможем найти ответ на него намного быстрее.|  Пример: ```     HTTP/2.0 403 Forbidden     {       \"status_code\": 403,       \"error_code\":  \"forbidden\",       \"message\":     \"You do not have access for the attempted action\",       \"response_id\": \"94608d15-8672-4eed-8ab6-28bd6fa3cdf7\"     } ```  ## Статусы ресурсов Важно учесть, что при создании большинства ресурсов внутри платформы вам будет сразу возвращен ответ от сервера со статусом `200 OK` или `201 Created` и идентификатором созданного ресурса в теле ответа, но при этом этот ресурс может быть ещё в *состоянии запуска*.  Для того чтобы понять, в каком состоянии сейчас находится ваш ресурс, мы добавили поле `status` в ответ на получение информации о ресурсе.  Список статусов будет отличаться в зависимости от типа ресурса. Увидеть поддерживаемый список статусов вы сможете в описании каждого конкретного ресурса.     ## Ограничение скорости запросов (Rate Limiting) Чтобы обеспечить стабильность для всех пользователей, Timeweb Cloud защищает API от всплесков входящего трафика, анализируя количество запросов c каждого аккаунта к каждой конечной точке.  Если ваше приложение отправляет более 20 запросов в секунду на одну конечную точку, то для этого запроса API может вернуть код состояния HTTP `429 Too Many Requests`.   ## Аутентификация Доступ к API осуществляется с помощью JWT-токена. Токенами можно управлять внутри панели управления Timeweb Cloud в разделе *API и Terraform*.  Токен необходимо передавать в заголовке каждого запроса в формате: ```   Authorization: Bearer $TIMEWEB_CLOUD_TOKEN ```  ## Формат примеров API Примеры в этой документации описаны с помощью `curl`, HTTP-клиента командной строки. На компьютерах `Linux` и `macOS` обычно по умолчанию установлен `curl`, и он доступен для загрузки на всех популярных платформах, включая `Windows`.  Каждый пример разделен на несколько строк символом `\\`, который совместим с `bash`. Типичный пример выглядит так: ```   curl -X PATCH      -H \"Content-Type: application/json\"      -H \"Authorization: Bearer $TIMEWEB_CLOUD_TOKEN\"      -d '{\"name\":\"Cute Corvus\",\"comment\":\"Development Server\"}'      \"https://api.timeweb.cloud/api/v1/dedicated/1051\" ``` - Параметр `-X` задает метод запроса. Для согласованности метод будет указан во всех примерах, даже если он явно не требуется для методов `GET`. - Строки `-H` задают требуемые HTTP-заголовки. - Примеры, для которых требуется объект JSON в теле запроса, передают требуемые данные через параметр `-d`.  Чтобы использовать приведенные примеры, не подставляя каждый раз в них свой токен, вы можете добавить токен один раз в переменные окружения в вашей консоли. Например, на `Linux` это можно сделать с помощью команды:  ``` TIMEWEB_CLOUD_TOKEN=\"token\" ```  После этого токен будет автоматически подставляться в ваши запросы.  Обратите внимание, что все значения в этой документации являются примерами. Не полагайтесь на идентификаторы операционных систем, тарифов и т.д., используемые в примерах. Используйте соответствующую конечную точку для получения значений перед созданием ресурсов.   ## Версионирование API построено согласно принципам [семантического версионирования](https://semver.org/lang/ru). Это значит, что мы гарантируем обратную совместимость всех изменений в пределах одной мажорной версии.  Мажорная версия каждой конечной точки обозначается в пути запроса, например, запрос `/api/v1/servers` указывает, что этот метод имеет версию 1.
+ * # Введение API Timeweb Cloud позволяет вам управлять ресурсами в облаке программным способом с использованием обычных HTTP-запросов.  Множество функций, которые доступны в панели управления Timeweb Cloud, также доступны через API, что позволяет вам автоматизировать ваши собственные сценарии.  В этой документации сперва будет описан общий дизайн и принципы работы API, а после этого конкретные конечные точки. Также будут приведены примеры запросов к ним.   ## Запросы Запросы должны выполняться по протоколу `HTTPS`, чтобы гарантировать шифрование транзакций. Поддерживаются следующие методы запроса: |Метод|Применение| |--- |--- | |GET|Извлекает данные о коллекциях и отдельных ресурсах.| |POST|Для коллекций создает новый ресурс этого типа. Также используется для выполнения действий с конкретным ресурсом.| |PUT|Обновляет существующий ресурс.| |PATCH|Некоторые ресурсы поддерживают частичное обновление, то есть обновление только части атрибутов ресурса, в этом случае вместо метода PUT будет использован PATCH.| |DELETE|Удаляет ресурс.|  Методы `POST`, `PUT` и `PATCH` могут включать объект в тело запроса с типом содержимого `application/json`.  ### Параметры в запросах Некоторые коллекции поддерживают пагинацию, поиск или сортировку в запросах. В параметрах запроса требуется передать: - `limit` — обозначает количество записей, которое необходимо вернуть  - `offset` — указывает на смещение, относительно начала списка  - `search` — позволяет указать набор символов для поиска  - `sort` — можно задать правило сортировки коллекции  ## Ответы Запросы вернут один из следующих кодов состояния ответа HTTP:  |Статус|Описание| |--- |--- | |200 OK|Действие с ресурсом было выполнено успешно.| |201 Created|Ресурс был успешно создан. При этом ресурс может быть как уже готовым к использованию, так и находиться в процессе запуска.| |204 No Content|Действие с ресурсом было выполнено успешно, и ответ не содержит дополнительной информации в теле.| |400 Bad Request|Был отправлен неверный запрос, например, в нем отсутствуют обязательные параметры и т. д. Тело ответа будет содержать дополнительную информацию об ошибке.| |401 Unauthorized|Ошибка аутентификации.| |403 Forbidden|Аутентификация прошла успешно, но недостаточно прав для выполнения действия.| |404 Not Found|Запрашиваемый ресурс не найден.| |409 Conflict|Запрос конфликтует с текущим состоянием.| |423 Locked|Ресурс из запроса заблокирован от применения к нему указанного метода.| |429 Too Many Requests|Был достигнут лимит по количеству запросов в единицу времени.| |500 Internal Server Error|При выполнении запроса произошла какая-то внутренняя ошибка. Чтобы решить эту проблему, лучше всего создать тикет в панели управления.|  ### Структура успешного ответа Все конечные точки будут возвращать данные в формате `JSON`. Ответы на `GET`-запросы будут иметь на верхнем уровне следующую структуру атрибутов:  |Название поля|Тип|Описание| |--- |--- |--- | |[entity_name]|object, object[], string[], number[], boolean|Динамическое поле, которое будет меняться в зависимости от запрашиваемого ресурса и будет содержать все атрибуты, необходимые для описания этого ресурса. Например, при запросе списка баз данных будет возвращаться поле `dbs`, а при запросе конкретного облачного сервера `server`. Для некоторых конечных точек в ответе может возвращаться сразу несколько ресурсов.| |meta|object|Опционально. Объект, который содержит вспомогательную информацию о ресурсе. Чаще всего будет встречаться при запросе коллекций и содержать поле `total`, которое будет указывать на количество элементов в коллекции.| |response_id|string|Опционально. В большинстве случаев в ответе будет содержаться ID ответа в формате UUIDv4, который однозначно указывает на ваш запрос внутри нашей системы. Если вам потребуется задать вопрос нашей поддержке, приложите к вопросу этот ID— так мы сможем найти ответ на него намного быстрее. Также вы можете использовать этот ID, чтобы убедиться, что это новый ответ на запрос и результат не был получен из кэша.|  Пример запроса на получение списка SSH-ключей: ```     HTTP/2.0 200 OK     {       \"ssh_keys\":[           {             \"body\":\"ssh-rsa AAAAB3NzaC1sdfghjkOAsBwWhs= example@device.local\",             \"created_at\":\"2021-09-15T19:52:27Z\",             \"expired_at\":null,             \"id\":5297,             \"is_default\":false,             \"name\":\"example@device.local\",             \"used_at\":null,             \"used_by\":[]           }       ],       \"meta\":{           \"total\":1       },       \"response_id\":\"94608d15-8672-4eed-8ab6-28bd6fa3cdf7\"     } ```  ### Структура ответа с ошибкой |Название поля|Тип|Описание| |--- |--- |--- | |status_code|number|Короткий числовой идентификатор ошибки.| |error_code|string|Короткий текстовый идентификатор ошибки, который уточняет числовой идентификатор и удобен для программной обработки. Самый простой пример — это код `not_found` для ошибки 404.| |message|string, string[]|Опционально. В большинстве случаев в ответе будет содержаться человекочитаемое подробное описание ошибки или ошибок, которые помогут понять, что нужно исправить.| |response_id|string|Опционально. В большинстве случае в ответе будет содержаться ID ответа в формате UUIDv4, который однозначно указывает на ваш запрос внутри нашей системы. Если вам потребуется задать вопрос нашей поддержке, приложите к вопросу этот ID — так мы сможем найти ответ на него намного быстрее.|  Пример: ```     HTTP/2.0 403 Forbidden     {       \"status_code\": 403,       \"error_code\":  \"forbidden\",       \"message\":     \"You do not have access for the attempted action\",       \"response_id\": \"94608d15-8672-4eed-8ab6-28bd6fa3cdf7\"     } ```  ## Статусы ресурсов Важно учесть, что при создании большинства ресурсов внутри платформы вам будет сразу возвращен ответ от сервера со статусом `200 OK` или `201 Created` и ID созданного ресурса в теле ответа, но при этом этот ресурс может быть ещё в *состоянии запуска*.  Для того чтобы понять, в каком состоянии сейчас находится ваш ресурс, мы добавили поле `status` в ответ на получение информации о ресурсе.  Список статусов будет отличаться в зависимости от типа ресурса. Увидеть поддерживаемый список статусов вы сможете в описании каждого конкретного ресурса.     ## Ограничение скорости запросов (Rate Limiting) Чтобы обеспечить стабильность для всех пользователей, Timeweb Cloud защищает API от всплесков входящего трафика, анализируя количество запросов c каждого аккаунта к каждой конечной точке.  Если ваше приложение отправляет более 20 запросов в секунду на одну конечную точку, то для этого запроса API может вернуть код состояния HTTP `429 Too Many Requests`.   ## Аутентификация Доступ к API осуществляется с помощью JWT-токена. Токенами можно управлять внутри панели управления Timeweb Cloud в разделе *API и Terraform*.  Токен необходимо передавать в заголовке каждого запроса в формате: ```   Authorization: Bearer $TIMEWEB_CLOUD_TOKEN ```  ## Формат примеров API Примеры в этой документации описаны с помощью `curl`, HTTP-клиента командной строки. На компьютерах `Linux` и `macOS` обычно по умолчанию установлен `curl`, и он доступен для загрузки на всех популярных платформах, включая `Windows`.  Каждый пример разделен на несколько строк символом `\\`, который совместим с `bash`. Типичный пример выглядит так: ```   curl -X PATCH      -H \"Content-Type: application/json\"      -H \"Authorization: Bearer $TIMEWEB_CLOUD_TOKEN\"      -d '{\"name\":\"Cute Corvus\",\"comment\":\"Development Server\"}'      \"https://api.timeweb.cloud/api/v1/dedicated/1051\" ``` - Параметр `-X` задает метод запроса. Для согласованности метод будет указан во всех примерах, даже если он явно не требуется для методов `GET`. - Строки `-H` задают требуемые HTTP-заголовки. - Примеры, для которых требуется объект JSON в теле запроса, передают требуемые данные через параметр `-d`.  Чтобы использовать приведенные примеры, не подставляя каждый раз в них свой токен, вы можете добавить токен один раз в переменные окружения в вашей консоли. Например, на `Linux` это можно сделать с помощью команды:  ``` TIMEWEB_CLOUD_TOKEN=\"token\" ```  После этого токен будет автоматически подставляться в ваши запросы.  Обратите внимание, что все значения в этой документации являются примерами. Не полагайтесь на IDы операционных систем, тарифов и т.д., используемые в примерах. Используйте соответствующую конечную точку для получения значений перед созданием ресурсов.   ## Версионирование API построено согласно принципам [семантического версионирования](https://semver.org/lang/ru). Это значит, что мы гарантируем обратную совместимость всех изменений в пределах одной мажорной версии.  Мажорная версия каждой конечной точки обозначается в пути запроса, например, запрос `/api/v1/servers` указывает, что этот метод имеет версию 1.
  *
  * The version of the OpenAPI document: 1.0.0
  * Contact: info@timeweb.cloud
@@ -232,7 +232,7 @@ public class KubernetesApi {
     }
     /**
      * Build call for createClusterNodeGroup
-     * @param clusterId Уникальный идентификатор кластера (required)
+     * @param clusterId ID кластера (required)
      * @param nodeGroupIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -314,7 +314,7 @@ public class KubernetesApi {
     /**
      * Создание группы нод
      * Чтобы создать группу нод кластера, отправьте POST-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/groups&#x60;.
-     * @param clusterId Уникальный идентификатор кластера (required)
+     * @param clusterId ID кластера (required)
      * @param nodeGroupIn  (required)
      * @return NodeGroupResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -338,7 +338,7 @@ public class KubernetesApi {
     /**
      * Создание группы нод
      * Чтобы создать группу нод кластера, отправьте POST-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/groups&#x60;.
-     * @param clusterId Уникальный идентификатор кластера (required)
+     * @param clusterId ID кластера (required)
      * @param nodeGroupIn  (required)
      * @return ApiResponse&lt;NodeGroupResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -363,7 +363,7 @@ public class KubernetesApi {
     /**
      * Создание группы нод (asynchronously)
      * Чтобы создать группу нод кластера, отправьте POST-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/groups&#x60;.
-     * @param clusterId Уникальный идентификатор кластера (required)
+     * @param clusterId ID кластера (required)
      * @param nodeGroupIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -389,7 +389,7 @@ public class KubernetesApi {
     }
     /**
      * Build call for deleteCluster
-     * @param clusterId Уникальный идентификатор кластера (required)
+     * @param clusterId ID кластера (required)
      * @param hash Хеш, который совместно с кодом авторизации надо отправить для удаления, если включено подтверждение удаления сервисов через Телеграм. (optional)
      * @param code Код подтверждения, который придет к вам в Телеграм, после запроса удаления, если включено подтверждение удаления сервисов.  При помощи API токена сервисы можно удалять без подтверждения, если параметр токена &#x60;is_able_to_delete&#x60; установлен в значение &#x60;true&#x60; (optional)
      * @param _callback Callback for upload/download progress
@@ -475,7 +475,7 @@ public class KubernetesApi {
     /**
      * Удаление кластера
      * Чтобы удалить кластер, отправьте DELETE-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}&#x60;
-     * @param clusterId Уникальный идентификатор кластера (required)
+     * @param clusterId ID кластера (required)
      * @param hash Хеш, который совместно с кодом авторизации надо отправить для удаления, если включено подтверждение удаления сервисов через Телеграм. (optional)
      * @param code Код подтверждения, который придет к вам в Телеграм, после запроса удаления, если включено подтверждение удаления сервисов.  При помощи API токена сервисы можно удалять без подтверждения, если параметр токена &#x60;is_able_to_delete&#x60; установлен в значение &#x60;true&#x60; (optional)
      * @return DeleteCluster200Response
@@ -501,7 +501,7 @@ public class KubernetesApi {
     /**
      * Удаление кластера
      * Чтобы удалить кластер, отправьте DELETE-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}&#x60;
-     * @param clusterId Уникальный идентификатор кластера (required)
+     * @param clusterId ID кластера (required)
      * @param hash Хеш, который совместно с кодом авторизации надо отправить для удаления, если включено подтверждение удаления сервисов через Телеграм. (optional)
      * @param code Код подтверждения, который придет к вам в Телеграм, после запроса удаления, если включено подтверждение удаления сервисов.  При помощи API токена сервисы можно удалять без подтверждения, если параметр токена &#x60;is_able_to_delete&#x60; установлен в значение &#x60;true&#x60; (optional)
      * @return ApiResponse&lt;DeleteCluster200Response&gt;
@@ -528,7 +528,7 @@ public class KubernetesApi {
     /**
      * Удаление кластера (asynchronously)
      * Чтобы удалить кластер, отправьте DELETE-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}&#x60;
-     * @param clusterId Уникальный идентификатор кластера (required)
+     * @param clusterId ID кластера (required)
      * @param hash Хеш, который совместно с кодом авторизации надо отправить для удаления, если включено подтверждение удаления сервисов через Телеграм. (optional)
      * @param code Код подтверждения, который придет к вам в Телеграм, после запроса удаления, если включено подтверждение удаления сервисов.  При помощи API токена сервисы можно удалять без подтверждения, если параметр токена &#x60;is_able_to_delete&#x60; установлен в значение &#x60;true&#x60; (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -556,8 +556,8 @@ public class KubernetesApi {
     }
     /**
      * Build call for deleteClusterNode
-     * @param clusterId Уникальный идентификатор кластера (required)
-     * @param nodeId Уникальный идентификатор группы нод (required)
+     * @param clusterId ID кластера (required)
+     * @param nodeId ID группы нод (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -638,8 +638,8 @@ public class KubernetesApi {
     /**
      * Удаление ноды
      * Чтобы удалить ноду, отправьте DELETE-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/nodes/{node_id}&#x60;.
-     * @param clusterId Уникальный идентификатор кластера (required)
-     * @param nodeId Уникальный идентификатор группы нод (required)
+     * @param clusterId ID кластера (required)
+     * @param nodeId ID группы нод (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -660,8 +660,8 @@ public class KubernetesApi {
     /**
      * Удаление ноды
      * Чтобы удалить ноду, отправьте DELETE-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/nodes/{node_id}&#x60;.
-     * @param clusterId Уникальный идентификатор кластера (required)
-     * @param nodeId Уникальный идентификатор группы нод (required)
+     * @param clusterId ID кластера (required)
+     * @param nodeId ID группы нод (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -684,8 +684,8 @@ public class KubernetesApi {
     /**
      * Удаление ноды (asynchronously)
      * Чтобы удалить ноду, отправьте DELETE-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/nodes/{node_id}&#x60;.
-     * @param clusterId Уникальный идентификатор кластера (required)
-     * @param nodeId Уникальный идентификатор группы нод (required)
+     * @param clusterId ID кластера (required)
+     * @param nodeId ID группы нод (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -709,8 +709,8 @@ public class KubernetesApi {
     }
     /**
      * Build call for deleteClusterNodeGroup
-     * @param clusterId Уникальный идентификатор кластера (required)
-     * @param groupId Уникальный идентификатор группы (required)
+     * @param clusterId ID кластера (required)
+     * @param groupId ID группы (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -791,8 +791,8 @@ public class KubernetesApi {
     /**
      * Удаление группы нод
      * Чтобы удалить группу нод, отправьте DELETE-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/groups/{group_id}&#x60;.
-     * @param clusterId Уникальный идентификатор кластера (required)
-     * @param groupId Уникальный идентификатор группы (required)
+     * @param clusterId ID кластера (required)
+     * @param groupId ID группы (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -813,8 +813,8 @@ public class KubernetesApi {
     /**
      * Удаление группы нод
      * Чтобы удалить группу нод, отправьте DELETE-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/groups/{group_id}&#x60;.
-     * @param clusterId Уникальный идентификатор кластера (required)
-     * @param groupId Уникальный идентификатор группы (required)
+     * @param clusterId ID кластера (required)
+     * @param groupId ID группы (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -837,8 +837,8 @@ public class KubernetesApi {
     /**
      * Удаление группы нод (asynchronously)
      * Чтобы удалить группу нод, отправьте DELETE-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/groups/{group_id}&#x60;.
-     * @param clusterId Уникальный идентификатор кластера (required)
-     * @param groupId Уникальный идентификатор группы (required)
+     * @param clusterId ID кластера (required)
+     * @param groupId ID группы (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -862,7 +862,7 @@ public class KubernetesApi {
     }
     /**
      * Build call for getCluster
-     * @param clusterId Уникальный идентификатор кластера (required)
+     * @param clusterId ID кластера (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -937,7 +937,7 @@ public class KubernetesApi {
     /**
      * Получение информации о кластере
      * Чтобы получить информацию о кластере, отправьте GET-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}&#x60;
-     * @param clusterId Уникальный идентификатор кластера (required)
+     * @param clusterId ID кластера (required)
      * @return ClusterResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -960,7 +960,7 @@ public class KubernetesApi {
     /**
      * Получение информации о кластере
      * Чтобы получить информацию о кластере, отправьте GET-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}&#x60;
-     * @param clusterId Уникальный идентификатор кластера (required)
+     * @param clusterId ID кластера (required)
      * @return ApiResponse&lt;ClusterResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -984,7 +984,7 @@ public class KubernetesApi {
     /**
      * Получение информации о кластере (asynchronously)
      * Чтобы получить информацию о кластере, отправьте GET-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}&#x60;
-     * @param clusterId Уникальный идентификатор кластера (required)
+     * @param clusterId ID кластера (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1009,7 +1009,7 @@ public class KubernetesApi {
     }
     /**
      * Build call for getClusterKubeconfig
-     * @param clusterId Уникальный идентификатор кластера (required)
+     * @param clusterId ID кластера (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1085,7 +1085,7 @@ public class KubernetesApi {
     /**
      * Получение файла kubeconfig
      * Чтобы получить файл kubeconfig, отправьте GET-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/kubeconfig&#x60;.
-     * @param clusterId Уникальный идентификатор кластера (required)
+     * @param clusterId ID кластера (required)
      * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1108,7 +1108,7 @@ public class KubernetesApi {
     /**
      * Получение файла kubeconfig
      * Чтобы получить файл kubeconfig, отправьте GET-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/kubeconfig&#x60;.
-     * @param clusterId Уникальный идентификатор кластера (required)
+     * @param clusterId ID кластера (required)
      * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1132,7 +1132,7 @@ public class KubernetesApi {
     /**
      * Получение файла kubeconfig (asynchronously)
      * Чтобы получить файл kubeconfig, отправьте GET-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/kubeconfig&#x60;.
-     * @param clusterId Уникальный идентификатор кластера (required)
+     * @param clusterId ID кластера (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1157,8 +1157,8 @@ public class KubernetesApi {
     }
     /**
      * Build call for getClusterNodeGroup
-     * @param clusterId Уникальный идентификатор кластера (required)
-     * @param groupId Уникальный идентификатор группы (required)
+     * @param clusterId ID кластера (required)
+     * @param groupId ID группы (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1239,8 +1239,8 @@ public class KubernetesApi {
     /**
      * Получение информации о группе нод
      * Чтобы получить информацию о группе нод, отправьте GET-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/groups/{group_id}&#x60;.
-     * @param clusterId Уникальный идентификатор кластера (required)
-     * @param groupId Уникальный идентификатор группы (required)
+     * @param clusterId ID кластера (required)
+     * @param groupId ID группы (required)
      * @return NodeGroupResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1263,8 +1263,8 @@ public class KubernetesApi {
     /**
      * Получение информации о группе нод
      * Чтобы получить информацию о группе нод, отправьте GET-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/groups/{group_id}&#x60;.
-     * @param clusterId Уникальный идентификатор кластера (required)
-     * @param groupId Уникальный идентификатор группы (required)
+     * @param clusterId ID кластера (required)
+     * @param groupId ID группы (required)
      * @return ApiResponse&lt;NodeGroupResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1288,8 +1288,8 @@ public class KubernetesApi {
     /**
      * Получение информации о группе нод (asynchronously)
      * Чтобы получить информацию о группе нод, отправьте GET-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/groups/{group_id}&#x60;.
-     * @param clusterId Уникальный идентификатор кластера (required)
-     * @param groupId Уникальный идентификатор группы (required)
+     * @param clusterId ID кластера (required)
+     * @param groupId ID группы (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1314,7 +1314,7 @@ public class KubernetesApi {
     }
     /**
      * Build call for getClusterNodeGroups
-     * @param clusterId Уникальный идентификатор кластера (required)
+     * @param clusterId ID кластера (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1389,7 +1389,7 @@ public class KubernetesApi {
     /**
      * Получение групп нод кластера
      * Чтобы получить группы нод кластера, отправьте GET-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/groups&#x60;.
-     * @param clusterId Уникальный идентификатор кластера (required)
+     * @param clusterId ID кластера (required)
      * @return NodeGroupsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1412,7 +1412,7 @@ public class KubernetesApi {
     /**
      * Получение групп нод кластера
      * Чтобы получить группы нод кластера, отправьте GET-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/groups&#x60;.
-     * @param clusterId Уникальный идентификатор кластера (required)
+     * @param clusterId ID кластера (required)
      * @return ApiResponse&lt;NodeGroupsResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1436,7 +1436,7 @@ public class KubernetesApi {
     /**
      * Получение групп нод кластера (asynchronously)
      * Чтобы получить группы нод кластера, отправьте GET-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/groups&#x60;.
-     * @param clusterId Уникальный идентификатор кластера (required)
+     * @param clusterId ID кластера (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1461,7 +1461,7 @@ public class KubernetesApi {
     }
     /**
      * Build call for getClusterNodes
-     * @param clusterId Уникальный идентификатор кластера (required)
+     * @param clusterId ID кластера (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1536,7 +1536,7 @@ public class KubernetesApi {
     /**
      * Получение списка нод
      * Чтобы получить список нод, отправьте GET-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/nodes&#x60;.
-     * @param clusterId Уникальный идентификатор кластера (required)
+     * @param clusterId ID кластера (required)
      * @return NodesResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1559,7 +1559,7 @@ public class KubernetesApi {
     /**
      * Получение списка нод
      * Чтобы получить список нод, отправьте GET-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/nodes&#x60;.
-     * @param clusterId Уникальный идентификатор кластера (required)
+     * @param clusterId ID кластера (required)
      * @return ApiResponse&lt;NodesResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1583,7 +1583,7 @@ public class KubernetesApi {
     /**
      * Получение списка нод (asynchronously)
      * Чтобы получить список нод, отправьте GET-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/nodes&#x60;.
-     * @param clusterId Уникальный идентификатор кластера (required)
+     * @param clusterId ID кластера (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1608,8 +1608,8 @@ public class KubernetesApi {
     }
     /**
      * Build call for getClusterNodesFromGroup
-     * @param clusterId Уникальный идентификатор кластера (required)
-     * @param groupId Уникальный идентификатор группы (required)
+     * @param clusterId ID кластера (required)
+     * @param groupId ID группы (required)
      * @param limit Обозначает количество записей, которое необходимо вернуть. (optional, default to 100)
      * @param offset Указывает на смещение, относительно начала списка. (optional, default to 0)
      * @param _callback Callback for upload/download progress
@@ -1700,8 +1700,8 @@ public class KubernetesApi {
     /**
      * Получение списка нод, принадлежащих группе
      * Чтобы получить список нод принадлежащих группе, отправьте GET-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/groups/{group_id}/nodes&#x60;.
-     * @param clusterId Уникальный идентификатор кластера (required)
-     * @param groupId Уникальный идентификатор группы (required)
+     * @param clusterId ID кластера (required)
+     * @param groupId ID группы (required)
      * @param limit Обозначает количество записей, которое необходимо вернуть. (optional, default to 100)
      * @param offset Указывает на смещение, относительно начала списка. (optional, default to 0)
      * @return NodesResponse
@@ -1726,8 +1726,8 @@ public class KubernetesApi {
     /**
      * Получение списка нод, принадлежащих группе
      * Чтобы получить список нод принадлежащих группе, отправьте GET-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/groups/{group_id}/nodes&#x60;.
-     * @param clusterId Уникальный идентификатор кластера (required)
-     * @param groupId Уникальный идентификатор группы (required)
+     * @param clusterId ID кластера (required)
+     * @param groupId ID группы (required)
      * @param limit Обозначает количество записей, которое необходимо вернуть. (optional, default to 100)
      * @param offset Указывает на смещение, относительно начала списка. (optional, default to 0)
      * @return ApiResponse&lt;NodesResponse&gt;
@@ -1753,8 +1753,8 @@ public class KubernetesApi {
     /**
      * Получение списка нод, принадлежащих группе (asynchronously)
      * Чтобы получить список нод принадлежащих группе, отправьте GET-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/groups/{group_id}/nodes&#x60;.
-     * @param clusterId Уникальный идентификатор кластера (required)
-     * @param groupId Уникальный идентификатор группы (required)
+     * @param clusterId ID кластера (required)
+     * @param groupId ID группы (required)
      * @param limit Обозначает количество записей, которое необходимо вернуть. (optional, default to 100)
      * @param offset Указывает на смещение, относительно начала списка. (optional, default to 0)
      * @param _callback The callback to be executed when the API call finishes
@@ -1781,7 +1781,7 @@ public class KubernetesApi {
     }
     /**
      * Build call for getClusterResources
-     * @param clusterId Уникальный идентификатор кластера (required)
+     * @param clusterId ID кластера (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1859,7 +1859,7 @@ public class KubernetesApi {
     /**
      * Получение ресурсов кластера
      * Устаревший метод, работает только для старых кластеров. \\  Чтобы получить ресурсы кластера, отправьте GET-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/resources&#x60;.
-     * @param clusterId Уникальный идентификатор кластера (required)
+     * @param clusterId ID кластера (required)
      * @return ResourcesResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1884,7 +1884,7 @@ public class KubernetesApi {
     /**
      * Получение ресурсов кластера
      * Устаревший метод, работает только для старых кластеров. \\  Чтобы получить ресурсы кластера, отправьте GET-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/resources&#x60;.
-     * @param clusterId Уникальный идентификатор кластера (required)
+     * @param clusterId ID кластера (required)
      * @return ApiResponse&lt;ResourcesResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1910,7 +1910,7 @@ public class KubernetesApi {
     /**
      * Получение ресурсов кластера (asynchronously)
      * Устаревший метод, работает только для старых кластеров. \\  Чтобы получить ресурсы кластера, отправьте GET-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/resources&#x60;.
-     * @param clusterId Уникальный идентификатор кластера (required)
+     * @param clusterId ID кластера (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2469,8 +2469,8 @@ public class KubernetesApi {
     }
     /**
      * Build call for increaseCountOfNodesInGroup
-     * @param clusterId Уникальный идентификатор кластера (required)
-     * @param groupId Уникальный идентификатор группы (required)
+     * @param clusterId ID кластера (required)
+     * @param groupId ID группы (required)
      * @param nodeCount  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2558,8 +2558,8 @@ public class KubernetesApi {
     /**
      * Увеличение количества нод в группе на указанное количество
      * Чтобы увеличить количество нод в группе на указанное значение, отправьте POST-запрос на &#x60;/api/v1/k8s/clusters/{cluster_id}/groups/{group_id}/nodes&#x60;
-     * @param clusterId Уникальный идентификатор кластера (required)
-     * @param groupId Уникальный идентификатор группы (required)
+     * @param clusterId ID кластера (required)
+     * @param groupId ID группы (required)
      * @param nodeCount  (required)
      * @return NodesResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2583,8 +2583,8 @@ public class KubernetesApi {
     /**
      * Увеличение количества нод в группе на указанное количество
      * Чтобы увеличить количество нод в группе на указанное значение, отправьте POST-запрос на &#x60;/api/v1/k8s/clusters/{cluster_id}/groups/{group_id}/nodes&#x60;
-     * @param clusterId Уникальный идентификатор кластера (required)
-     * @param groupId Уникальный идентификатор группы (required)
+     * @param clusterId ID кластера (required)
+     * @param groupId ID группы (required)
      * @param nodeCount  (required)
      * @return ApiResponse&lt;NodesResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2609,8 +2609,8 @@ public class KubernetesApi {
     /**
      * Увеличение количества нод в группе на указанное количество (asynchronously)
      * Чтобы увеличить количество нод в группе на указанное значение, отправьте POST-запрос на &#x60;/api/v1/k8s/clusters/{cluster_id}/groups/{group_id}/nodes&#x60;
-     * @param clusterId Уникальный идентификатор кластера (required)
-     * @param groupId Уникальный идентификатор группы (required)
+     * @param clusterId ID кластера (required)
+     * @param groupId ID группы (required)
      * @param nodeCount  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2636,8 +2636,8 @@ public class KubernetesApi {
     }
     /**
      * Build call for reduceCountOfNodesInGroup
-     * @param clusterId Уникальный идентификатор кластера (required)
-     * @param groupId Уникальный идентификатор группы (required)
+     * @param clusterId ID кластера (required)
+     * @param groupId ID группы (required)
      * @param nodeCount  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2725,8 +2725,8 @@ public class KubernetesApi {
     /**
      * Уменьшение количества нод в группе на указанное количество
      * Чтобы уменьшить количество нод в группе на указанное значение, отправьте DELETE-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/groups/{group_id}/nodes&#x60;.
-     * @param clusterId Уникальный идентификатор кластера (required)
-     * @param groupId Уникальный идентификатор группы (required)
+     * @param clusterId ID кластера (required)
+     * @param groupId ID группы (required)
      * @param nodeCount  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2748,8 +2748,8 @@ public class KubernetesApi {
     /**
      * Уменьшение количества нод в группе на указанное количество
      * Чтобы уменьшить количество нод в группе на указанное значение, отправьте DELETE-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/groups/{group_id}/nodes&#x60;.
-     * @param clusterId Уникальный идентификатор кластера (required)
-     * @param groupId Уникальный идентификатор группы (required)
+     * @param clusterId ID кластера (required)
+     * @param groupId ID группы (required)
      * @param nodeCount  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2773,8 +2773,8 @@ public class KubernetesApi {
     /**
      * Уменьшение количества нод в группе на указанное количество (asynchronously)
      * Чтобы уменьшить количество нод в группе на указанное значение, отправьте DELETE-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/groups/{group_id}/nodes&#x60;.
-     * @param clusterId Уникальный идентификатор кластера (required)
-     * @param groupId Уникальный идентификатор группы (required)
+     * @param clusterId ID кластера (required)
+     * @param groupId ID группы (required)
      * @param nodeCount  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2799,7 +2799,7 @@ public class KubernetesApi {
     }
     /**
      * Build call for updateCluster
-     * @param clusterId Уникальный идентификатор кластера (required)
+     * @param clusterId ID кластера (required)
      * @param clusterEdit  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2881,7 +2881,7 @@ public class KubernetesApi {
     /**
      * Обновление информации о кластере
      * Чтобы обновить информацию о кластере, отправьте PATCH-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}&#x60;
-     * @param clusterId Уникальный идентификатор кластера (required)
+     * @param clusterId ID кластера (required)
      * @param clusterEdit  (required)
      * @return ClusterResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2905,7 +2905,7 @@ public class KubernetesApi {
     /**
      * Обновление информации о кластере
      * Чтобы обновить информацию о кластере, отправьте PATCH-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}&#x60;
-     * @param clusterId Уникальный идентификатор кластера (required)
+     * @param clusterId ID кластера (required)
      * @param clusterEdit  (required)
      * @return ApiResponse&lt;ClusterResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2930,7 +2930,7 @@ public class KubernetesApi {
     /**
      * Обновление информации о кластере (asynchronously)
      * Чтобы обновить информацию о кластере, отправьте PATCH-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}&#x60;
-     * @param clusterId Уникальный идентификатор кластера (required)
+     * @param clusterId ID кластера (required)
      * @param clusterEdit  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

@@ -111,7 +111,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     ApiKeysApi apiInstance = new ApiKeysApi(defaultClient);
-    UUID tokenId = UUID.randomUUID(); // UUID | Идентификатор токена
+    UUID tokenId = UUID.randomUUID(); // UUID | ID токена
     try {
       apiInstance.deleteToken(tokenId);
     } catch (ApiException e) {
@@ -129,7 +129,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **tokenId** | **UUID**| Идентификатор токена | |
+| **tokenId** | **UUID**| ID токена | |
 
 ### Return type
 
@@ -251,7 +251,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     ApiKeysApi apiInstance = new ApiKeysApi(defaultClient);
-    UUID tokenId = UUID.randomUUID(); // UUID | Идентификатор токена
+    UUID tokenId = UUID.randomUUID(); // UUID | ID токена
     RefreshApiKey refreshApiKey = new RefreshApiKey(); // RefreshApiKey | 
     try {
       CreateToken201Response result = apiInstance.reissueToken(tokenId, refreshApiKey);
@@ -271,7 +271,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **tokenId** | **UUID**| Идентификатор токена | |
+| **tokenId** | **UUID**| ID токена | |
 | **refreshApiKey** | [**RefreshApiKey**](RefreshApiKey.md)|  | |
 
 ### Return type
@@ -326,7 +326,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     ApiKeysApi apiInstance = new ApiKeysApi(defaultClient);
-    UUID tokenId = UUID.randomUUID(); // UUID | Идентификатор токена
+    UUID tokenId = UUID.randomUUID(); // UUID | ID токена
     EditApiKey editApiKey = new EditApiKey(); // EditApiKey | 
     try {
       UpdateToken200Response result = apiInstance.updateToken(tokenId, editApiKey);
@@ -346,7 +346,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **tokenId** | **UUID**| Идентификатор токена | |
+| **tokenId** | **UUID**| ID токена | |
 | **editApiKey** | [**EditApiKey**](EditApiKey.md)|  | |
 
 ### Return type

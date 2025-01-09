@@ -125,7 +125,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     S3Api apiInstance = new S3Api(defaultClient);
-    Integer bucketId = 1051; // Integer | Уникальный идентификатор хранилища.
+    Integer bucketId = 1051; // Integer | ID хранилища.
     AddStorageSubdomainsRequest addStorageSubdomainsRequest = new AddStorageSubdomainsRequest(); // AddStorageSubdomainsRequest | 
     try {
       AddStorageSubdomains200Response result = apiInstance.addStorageSubdomains(bucketId, addStorageSubdomainsRequest);
@@ -145,7 +145,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **bucketId** | **Integer**| Уникальный идентификатор хранилища. | |
+| **bucketId** | **Integer**| ID хранилища. | |
 | **addStorageSubdomainsRequest** | [**AddStorageSubdomainsRequest**](AddStorageSubdomainsRequest.md)|  | |
 
 ### Return type
@@ -200,7 +200,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     S3Api apiInstance = new S3Api(defaultClient);
-    Integer bucketId = 1051; // Integer | Уникальный идентификатор хранилища.
+    Integer bucketId = 1051; // Integer | ID хранилища.
     CopyStorageFileRequest copyStorageFileRequest = new CopyStorageFileRequest(); // CopyStorageFileRequest | 
     try {
       apiInstance.copyStorageFile(bucketId, copyStorageFileRequest);
@@ -219,7 +219,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **bucketId** | **Integer**| Уникальный идентификатор хранилища. | |
+| **bucketId** | **Integer**| ID хранилища. | |
 | **copyStorageFileRequest** | [**CopyStorageFileRequest**](CopyStorageFileRequest.md)|  | |
 
 ### Return type
@@ -274,7 +274,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     S3Api apiInstance = new S3Api(defaultClient);
-    Integer bucketId = 1051; // Integer | Уникальный идентификатор хранилища.
+    Integer bucketId = 1051; // Integer | ID хранилища.
     CreateFolderInStorageRequest createFolderInStorageRequest = new CreateFolderInStorageRequest(); // CreateFolderInStorageRequest | 
     try {
       apiInstance.createFolderInStorage(bucketId, createFolderInStorageRequest);
@@ -293,7 +293,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **bucketId** | **Integer**| Уникальный идентификатор хранилища. | |
+| **bucketId** | **Integer**| ID хранилища. | |
 | **createFolderInStorageRequest** | [**CreateFolderInStorageRequest**](CreateFolderInStorageRequest.md)|  | |
 
 ### Return type
@@ -422,7 +422,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     S3Api apiInstance = new S3Api(defaultClient);
-    Integer bucketId = 1051; // Integer | Уникальный идентификатор хранилища.
+    Integer bucketId = 1051; // Integer | ID хранилища.
     String hash = "15095f25-aac3-4d60-a788-96cb5136f186"; // String | Хеш, который совместно с кодом авторизации надо отправить для удаления, если включено подтверждение удаления сервисов через Телеграм.
     String code = "0000"; // String | Код подтверждения, который придет к вам в Телеграм, после запроса удаления, если включено подтверждение удаления сервисов.  При помощи API токена сервисы можно удалять без подтверждения, если параметр токена `is_able_to_delete` установлен в значение `true`
     try {
@@ -443,7 +443,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **bucketId** | **Integer**| Уникальный идентификатор хранилища. | |
+| **bucketId** | **Integer**| ID хранилища. | |
 | **hash** | **String**| Хеш, который совместно с кодом авторизации надо отправить для удаления, если включено подтверждение удаления сервисов через Телеграм. | [optional] |
 | **code** | **String**| Код подтверждения, который придет к вам в Телеграм, после запроса удаления, если включено подтверждение удаления сервисов.  При помощи API токена сервисы можно удалять без подтверждения, если параметр токена &#x60;is_able_to_delete&#x60; установлен в значение &#x60;true&#x60; | [optional] |
 
@@ -500,7 +500,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     S3Api apiInstance = new S3Api(defaultClient);
-    Integer bucketId = 1051; // Integer | Уникальный идентификатор хранилища.
+    Integer bucketId = 1051; // Integer | ID хранилища.
     DeleteStorageFileRequest deleteStorageFileRequest = new DeleteStorageFileRequest(); // DeleteStorageFileRequest | 
     Boolean isMultipart = true; // Boolean | Это логическое значение, которое используется для обозначения multipart-загрузки.
     try {
@@ -520,7 +520,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **bucketId** | **Integer**| Уникальный идентификатор хранилища. | |
+| **bucketId** | **Integer**| ID хранилища. | |
 | **deleteStorageFileRequest** | [**DeleteStorageFileRequest**](DeleteStorageFileRequest.md)|  | |
 | **isMultipart** | **Boolean**| Это логическое значение, которое используется для обозначения multipart-загрузки. | [optional] |
 
@@ -576,7 +576,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     S3Api apiInstance = new S3Api(defaultClient);
-    Integer bucketId = 1051; // Integer | Уникальный идентификатор хранилища.
+    Integer bucketId = 1051; // Integer | ID хранилища.
     AddStorageSubdomainsRequest addStorageSubdomainsRequest = new AddStorageSubdomainsRequest(); // AddStorageSubdomainsRequest | 
     try {
       AddStorageSubdomains200Response result = apiInstance.deleteStorageSubdomains(bucketId, addStorageSubdomainsRequest);
@@ -596,7 +596,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **bucketId** | **Integer**| Уникальный идентификатор хранилища. | |
+| **bucketId** | **Integer**| ID хранилища. | |
 | **addStorageSubdomainsRequest** | [**AddStorageSubdomainsRequest**](AddStorageSubdomainsRequest.md)|  | |
 
 ### Return type
@@ -651,7 +651,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     S3Api apiInstance = new S3Api(defaultClient);
-    Integer bucketId = 1051; // Integer | Уникальный идентификатор хранилища.
+    Integer bucketId = 1051; // Integer | ID хранилища.
     String prefix = "example"; // String | Префикс для поиска файла.
     Boolean isMultipart = true; // Boolean | Это логическое значение, которое используется для обозначения multipart-загрузки.
     try {
@@ -672,7 +672,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **bucketId** | **Integer**| Уникальный идентификатор хранилища. | |
+| **bucketId** | **Integer**| ID хранилища. | |
 | **prefix** | **String**| Префикс для поиска файла. | [optional] |
 | **isMultipart** | **Boolean**| Это логическое значение, которое используется для обозначения multipart-загрузки. | [optional] |
 
@@ -728,7 +728,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     S3Api apiInstance = new S3Api(defaultClient);
-    Integer bucketId = 1051; // Integer | Уникальный идентификатор хранилища.
+    Integer bucketId = 1051; // Integer | ID хранилища.
     try {
       GetStorageSubdomains200Response result = apiInstance.getStorageSubdomains(bucketId);
       System.out.println(result);
@@ -747,7 +747,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **bucketId** | **Integer**| Уникальный идентификатор хранилища. | |
+| **bucketId** | **Integer**| ID хранилища. | |
 
 ### Return type
 
@@ -801,7 +801,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     S3Api apiInstance = new S3Api(defaultClient);
-    Integer bucketId = 1051; // Integer | Уникальный идентификатор хранилища.
+    Integer bucketId = 1051; // Integer | ID хранилища.
     try {
       GetStorageTransferStatus200Response result = apiInstance.getStorageTransferStatus(bucketId);
       System.out.println(result);
@@ -820,7 +820,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **bucketId** | **Integer**| Уникальный идентификатор хранилища. | |
+| **bucketId** | **Integer**| ID хранилища. | |
 
 ### Return type
 
@@ -1081,7 +1081,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     S3Api apiInstance = new S3Api(defaultClient);
-    Integer bucketId = 1051; // Integer | Уникальный идентификатор хранилища.
+    Integer bucketId = 1051; // Integer | ID хранилища.
     RenameStorageFileRequest renameStorageFileRequest = new RenameStorageFileRequest(); // RenameStorageFileRequest | 
     try {
       apiInstance.renameStorageFile(bucketId, renameStorageFileRequest);
@@ -1100,7 +1100,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **bucketId** | **Integer**| Уникальный идентификатор хранилища. | |
+| **bucketId** | **Integer**| ID хранилища. | |
 | **renameStorageFileRequest** | [**RenameStorageFileRequest**](RenameStorageFileRequest.md)|  | |
 
 ### Return type
@@ -1227,7 +1227,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     S3Api apiInstance = new S3Api(defaultClient);
-    Integer bucketId = 1051; // Integer | Уникальный идентификатор хранилища.
+    Integer bucketId = 1051; // Integer | ID хранилища.
     UpdateStorageRequest updateStorageRequest = new UpdateStorageRequest(); // UpdateStorageRequest | 
     try {
       CreateStorage201Response result = apiInstance.updateStorage(bucketId, updateStorageRequest);
@@ -1247,7 +1247,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **bucketId** | **Integer**| Уникальный идентификатор хранилища. | |
+| **bucketId** | **Integer**| ID хранилища. | |
 | **updateStorageRequest** | [**UpdateStorageRequest**](UpdateStorageRequest.md)|  | |
 
 ### Return type
@@ -1302,7 +1302,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     S3Api apiInstance = new S3Api(defaultClient);
-    Integer userId = 1051; // Integer | Уникальный идентификатор пользователя хранилища.
+    Integer userId = 1051; // Integer | ID пользователя хранилища.
     UpdateStorageUserRequest updateStorageUserRequest = new UpdateStorageUserRequest(); // UpdateStorageUserRequest | 
     try {
       UpdateStorageUser200Response result = apiInstance.updateStorageUser(userId, updateStorageUserRequest);
@@ -1322,7 +1322,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **userId** | **Integer**| Уникальный идентификатор пользователя хранилища. | |
+| **userId** | **Integer**| ID пользователя хранилища. | |
 | **updateStorageUserRequest** | [**UpdateStorageUserRequest**](UpdateStorageUserRequest.md)|  | |
 
 ### Return type
@@ -1377,7 +1377,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     S3Api apiInstance = new S3Api(defaultClient);
-    Integer bucketId = 1051; // Integer | Уникальный идентификатор хранилища.
+    Integer bucketId = 1051; // Integer | ID хранилища.
     List<File> files = Arrays.asList(); // List<File> | 
     String path = "test1/tes2"; // String | Путь до директории в хранилище
     try {
@@ -1397,7 +1397,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **bucketId** | **Integer**| Уникальный идентификатор хранилища. | |
+| **bucketId** | **Integer**| ID хранилища. | |
 | **files** | **List&lt;File&gt;**|  | |
 | **path** | **String**| Путь до директории в хранилище | [optional] |
 

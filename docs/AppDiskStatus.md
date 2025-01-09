@@ -10,7 +10,7 @@
 |------------ | ------------- | ------------- | -------------|
 |**used** | **BigDecimal** | Использованное пространство диска. |  [optional] |
 |**size** | **BigDecimal** | Размер диска. |  [optional] |
-|**diskId** | **BigDecimal** | Идентификатор диска. |  [optional] |
+|**diskId** | **BigDecimal** | ID диска. |  [optional] |
 
 
 

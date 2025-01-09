@@ -7,19 +7,41 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**id** | **Integer** | Уникальный идентификатор кластера |  |
+|**id** | **Integer** | ID кластера |  |
 |**name** | **String** | Название |  |
 |**createdAt** | **OffsetDateTime** | Дата и время создания кластера в формате ISO8601 |  |
 |**status** | **String** | Статус |  |
 |**description** | **String** | Описание |  |
-|**ha** | **Boolean** | Описание появится позже |  |
 |**k8sVersion** | **String** | Версия Kubernetes |  |
-|**networkDriver** | **String** | Используемый сетевой драйвер |  |
+|**networkDriver** | [**NetworkDriverEnum**](#NetworkDriverEnum) | Используемый сетевой драйвер |  |
 |**ingress** | **Boolean** | Логическое значение, показывающее, включен ли Ingress |  |
-|**presetId** | **Integer** | Идентификатор тарифа мастер-ноды |  |
+|**presetId** | **Integer** | ID тарифа мастер-ноды |  |
 |**cpu** | **Integer** | Общее количество ядер |  [optional] |
 |**ram** | **Integer** | Общее количество памяти |  [optional] |
 |**disk** | **Integer** | Общее дисковое пространство |  [optional] |
+|**availabilityZone** | [**AvailabilityZoneEnum**](#AvailabilityZoneEnum) | Зона доступности |  [optional] |
+|**projectId** | **Integer** | Идентификатор проекта |  [optional] |
+
+
+
+## Enum: NetworkDriverEnum
+
+| Name | Value |
+|---- | -----|
+| KUBEROUTER | &quot;kuberouter&quot; |
+| CALICO | &quot;calico&quot; |
+| FLANNEL | &quot;flannel&quot; |
+| CILIUM | &quot;cilium&quot; |
+
+
+
+## Enum: AvailabilityZoneEnum
+
+| Name | Value |
+|---- | -----|
+| SPB_3 | &quot;spb-3&quot; |
+| MSK_1 | &quot;msk-1&quot; |
+| AMS_1 | &quot;ams-1&quot; |
 
 
 

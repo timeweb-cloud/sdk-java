@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**resourceId** | **BigDecimal** | Уникальный идентификатор сервиса. |  |
+|**resourceId** | **BigDecimal** | ID сервиса. |  |
 |**resourceType** | [**ResourceTypeEnum**](#ResourceTypeEnum) | Тип ресурса. |  |
 |**ip** | **String** | IP-адрес сервиса. |  [optional] |
 |**availabilityZone** | **AvailabilityZone** |  |  |

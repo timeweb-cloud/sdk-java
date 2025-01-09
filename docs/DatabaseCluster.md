@@ -8,7 +8,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**id** | **BigDecimal** | Уникальный идентификатор для каждого экземпляра базы данных. Автоматически генерируется при создании. |  |
+|**id** | **BigDecimal** | ID для каждого экземпляра базы данных. Автоматически генерируется при создании. |  |
 |**createdAt** | **String** | Значение времени, указанное в комбинированном формате даты и времени ISO8601, которое представляет, когда была создана база данных. |  |
 |**location** | [**LocationEnum**](#LocationEnum) | Локация сервера. |  |
 |**name** | **String** | Название кластера базы данных. |  |
@@ -17,7 +17,7 @@
 |**hashType** | [**HashTypeEnum**](#HashTypeEnum) | Тип хеширования кластера базы данных (mysql5 | mysql | postgres). |  |
 |**port** | **Integer** | Порт |  |
 |**status** | [**StatusEnum**](#StatusEnum) | Текущий статус кластера базы данных. |  |
-|**presetId** | **Integer** | Идентификатор тарифа. |  |
+|**presetId** | **Integer** | ID тарифа. |  |
 |**diskStats** | [**DatabaseClusterDiskStats**](DatabaseClusterDiskStats.md) |  |  |
 |**configParameters** | [**ConfigParameters**](ConfigParameters.md) |  |  |
 |**isEnabledPublicNetwork** | **Boolean** | Доступность публичного IP-адреса |  |

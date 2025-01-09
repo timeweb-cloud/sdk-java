@@ -137,7 +137,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     DatabasesApi apiInstance = new DatabasesApi(defaultClient);
-    Integer dbId = 56; // Integer | Идентификатор базы данных
+    Integer dbId = 56; // Integer | ID базы данных
     try {
       CreateDatabaseBackup201Response result = apiInstance.createDatabaseBackup(dbId);
       System.out.println(result);
@@ -156,7 +156,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **dbId** | **Integer**| Идентификатор базы данных | |
+| **dbId** | **Integer**| ID базы данных | |
 
 ### Return type
 
@@ -284,7 +284,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     DatabasesApi apiInstance = new DatabasesApi(defaultClient);
-    Integer dbClusterId = 56; // Integer | Идентификатор кластера базы данных
+    Integer dbClusterId = 56; // Integer | ID кластера базы данных
     CreateInstance createInstance = new CreateInstance(); // CreateInstance | 
     try {
       CreateDatabaseInstance201Response result = apiInstance.createDatabaseInstance(dbClusterId, createInstance);
@@ -304,7 +304,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **dbClusterId** | **Integer**| Идентификатор кластера базы данных | |
+| **dbClusterId** | **Integer**| ID кластера базы данных | |
 | **createInstance** | [**CreateInstance**](CreateInstance.md)|  | |
 
 ### Return type
@@ -359,7 +359,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     DatabasesApi apiInstance = new DatabasesApi(defaultClient);
-    Integer dbClusterId = 56; // Integer | Идентификатор кластера базы данных
+    Integer dbClusterId = 56; // Integer | ID кластера базы данных
     CreateAdmin createAdmin = new CreateAdmin(); // CreateAdmin | 
     try {
       CreateDatabaseUser201Response result = apiInstance.createDatabaseUser(dbClusterId, createAdmin);
@@ -379,7 +379,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **dbClusterId** | **Integer**| Идентификатор кластера базы данных | |
+| **dbClusterId** | **Integer**| ID кластера базы данных | |
 | **createAdmin** | [**CreateAdmin**](CreateAdmin.md)|  | |
 
 ### Return type
@@ -434,7 +434,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     DatabasesApi apiInstance = new DatabasesApi(defaultClient);
-    Integer dbId = 56; // Integer | Идентификатор базы данных
+    Integer dbId = 56; // Integer | ID базы данных
     String hash = "15095f25-aac3-4d60-a788-96cb5136f186"; // String | Хеш, который совместно с кодом авторизации надо отправить для удаления, если включено подтверждение удаления сервисов через Телеграм.
     String code = "0000"; // String | Код подтверждения, который придет к вам в Телеграм, после запроса удаления, если включено подтверждение удаления сервисов.  При помощи API токена сервисы можно удалять без подтверждения, если параметр токена `is_able_to_delete` установлен в значение `true`
     try {
@@ -455,7 +455,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **dbId** | **Integer**| Идентификатор базы данных | |
+| **dbId** | **Integer**| ID базы данных | |
 | **hash** | **String**| Хеш, который совместно с кодом авторизации надо отправить для удаления, если включено подтверждение удаления сервисов через Телеграм. | [optional] |
 | **code** | **String**| Код подтверждения, который придет к вам в Телеграм, после запроса удаления, если включено подтверждение удаления сервисов.  При помощи API токена сервисы можно удалять без подтверждения, если параметр токена &#x60;is_able_to_delete&#x60; установлен в значение &#x60;true&#x60; | [optional] |
 
@@ -512,8 +512,8 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     DatabasesApi apiInstance = new DatabasesApi(defaultClient);
-    Integer dbId = 56; // Integer | Идентификатор базы данных
-    Integer backupId = 56; // Integer | Идентификатор резевной копии
+    Integer dbId = 56; // Integer | ID базы данных
+    Integer backupId = 56; // Integer | ID резевной копии
     try {
       apiInstance.deleteDatabaseBackup(dbId, backupId);
     } catch (ApiException e) {
@@ -531,8 +531,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **dbId** | **Integer**| Идентификатор базы данных | |
-| **backupId** | **Integer**| Идентификатор резевной копии | |
+| **dbId** | **Integer**| ID базы данных | |
+| **backupId** | **Integer**| ID резевной копии | |
 
 ### Return type
 
@@ -586,7 +586,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     DatabasesApi apiInstance = new DatabasesApi(defaultClient);
-    Integer dbClusterId = 56; // Integer | Идентификатор кластера базы данных
+    Integer dbClusterId = 56; // Integer | ID кластера базы данных
     String hash = "15095f25-aac3-4d60-a788-96cb5136f186"; // String | Хеш, который совместно с кодом авторизации надо отправить для удаления, если включено подтверждение удаления сервисов через Телеграм.
     String code = "0000"; // String | Код подтверждения, который придет к вам в Телеграм, после запроса удаления, если включено подтверждение удаления сервисов.  При помощи API токена сервисы можно удалять без подтверждения, если параметр токена `is_able_to_delete` установлен в значение `true`
     try {
@@ -607,7 +607,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **dbClusterId** | **Integer**| Идентификатор кластера базы данных | |
+| **dbClusterId** | **Integer**| ID кластера базы данных | |
 | **hash** | **String**| Хеш, который совместно с кодом авторизации надо отправить для удаления, если включено подтверждение удаления сервисов через Телеграм. | [optional] |
 | **code** | **String**| Код подтверждения, который придет к вам в Телеграм, после запроса удаления, если включено подтверждение удаления сервисов.  При помощи API токена сервисы можно удалять без подтверждения, если параметр токена &#x60;is_able_to_delete&#x60; установлен в значение &#x60;true&#x60; | [optional] |
 
@@ -664,8 +664,8 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     DatabasesApi apiInstance = new DatabasesApi(defaultClient);
-    Integer dbClusterId = 56; // Integer | Идентификатор кластера базы данных
-    Integer instanceId = 56; // Integer | Идентификатор инстанса базы данных
+    Integer dbClusterId = 56; // Integer | ID кластера базы данных
+    Integer instanceId = 56; // Integer | ID инстанса базы данных
     try {
       apiInstance.deleteDatabaseInstance(dbClusterId, instanceId);
     } catch (ApiException e) {
@@ -683,8 +683,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **dbClusterId** | **Integer**| Идентификатор кластера базы данных | |
-| **instanceId** | **Integer**| Идентификатор инстанса базы данных | |
+| **dbClusterId** | **Integer**| ID кластера базы данных | |
+| **instanceId** | **Integer**| ID инстанса базы данных | |
 
 ### Return type
 
@@ -738,8 +738,8 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     DatabasesApi apiInstance = new DatabasesApi(defaultClient);
-    Integer dbClusterId = 56; // Integer | Идентификатор кластера базы данных
-    Integer adminId = 56; // Integer | Идентификатор пользователя базы данных
+    Integer dbClusterId = 56; // Integer | ID кластера базы данных
+    Integer adminId = 56; // Integer | ID пользователя базы данных
     try {
       apiInstance.deleteDatabaseUser(dbClusterId, adminId);
     } catch (ApiException e) {
@@ -757,8 +757,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **dbClusterId** | **Integer**| Идентификатор кластера базы данных | |
-| **adminId** | **Integer**| Идентификатор пользователя базы данных | |
+| **dbClusterId** | **Integer**| ID кластера базы данных | |
+| **adminId** | **Integer**| ID пользователя базы данных | |
 
 ### Return type
 
@@ -812,7 +812,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     DatabasesApi apiInstance = new DatabasesApi(defaultClient);
-    Integer dbId = 56; // Integer | Идентификатор базы данных
+    Integer dbId = 56; // Integer | ID базы данных
     try {
       CreateDatabase201Response result = apiInstance.getDatabase(dbId);
       System.out.println(result);
@@ -831,7 +831,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **dbId** | **Integer**| Идентификатор базы данных | |
+| **dbId** | **Integer**| ID базы данных | |
 
 ### Return type
 
@@ -885,7 +885,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     DatabasesApi apiInstance = new DatabasesApi(defaultClient);
-    Integer dbId = 56; // Integer | Идентификатор базы данных
+    Integer dbId = 56; // Integer | ID базы данных
     try {
       GetDatabaseAutoBackupsSettings200Response result = apiInstance.getDatabaseAutoBackupsSettings(dbId);
       System.out.println(result);
@@ -904,7 +904,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **dbId** | **Integer**| Идентификатор базы данных | |
+| **dbId** | **Integer**| ID базы данных | |
 
 ### Return type
 
@@ -958,8 +958,8 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     DatabasesApi apiInstance = new DatabasesApi(defaultClient);
-    Integer dbId = 56; // Integer | Идентификатор базы данных
-    Integer backupId = 56; // Integer | Идентификатор резевной копии
+    Integer dbId = 56; // Integer | ID базы данных
+    Integer backupId = 56; // Integer | ID резевной копии
     try {
       CreateDatabaseBackup201Response result = apiInstance.getDatabaseBackup(dbId, backupId);
       System.out.println(result);
@@ -978,8 +978,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **dbId** | **Integer**| Идентификатор базы данных | |
-| **backupId** | **Integer**| Идентификатор резевной копии | |
+| **dbId** | **Integer**| ID базы данных | |
+| **backupId** | **Integer**| ID резевной копии | |
 
 ### Return type
 
@@ -1033,7 +1033,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     DatabasesApi apiInstance = new DatabasesApi(defaultClient);
-    Integer dbId = 56; // Integer | Идентификатор базы данных
+    Integer dbId = 56; // Integer | ID базы данных
     Integer limit = 100; // Integer | Обозначает количество записей, которое необходимо вернуть.
     Integer offset = 0; // Integer | Указывает на смещение относительно начала списка.
     try {
@@ -1054,7 +1054,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **dbId** | **Integer**| Идентификатор базы данных | |
+| **dbId** | **Integer**| ID базы данных | |
 | **limit** | **Integer**| Обозначает количество записей, которое необходимо вернуть. | [optional] [default to 100] |
 | **offset** | **Integer**| Указывает на смещение относительно начала списка. | [optional] [default to 0] |
 
@@ -1110,7 +1110,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     DatabasesApi apiInstance = new DatabasesApi(defaultClient);
-    Integer dbClusterId = 56; // Integer | Идентификатор кластера базы данных
+    Integer dbClusterId = 56; // Integer | ID кластера базы данных
     try {
       CreateDatabaseCluster201Response result = apiInstance.getDatabaseCluster(dbClusterId);
       System.out.println(result);
@@ -1129,7 +1129,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **dbClusterId** | **Integer**| Идентификатор кластера базы данных | |
+| **dbClusterId** | **Integer**| ID кластера базы данных | |
 
 ### Return type
 
@@ -1327,8 +1327,8 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     DatabasesApi apiInstance = new DatabasesApi(defaultClient);
-    Integer dbClusterId = 56; // Integer | Идентификатор кластера базы данных
-    Integer instanceId = 56; // Integer | Идентификатор инстанса базы данных
+    Integer dbClusterId = 56; // Integer | ID кластера базы данных
+    Integer instanceId = 56; // Integer | ID инстанса базы данных
     try {
       CreateDatabaseInstance201Response result = apiInstance.getDatabaseInstance(dbClusterId, instanceId);
       System.out.println(result);
@@ -1347,8 +1347,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **dbClusterId** | **Integer**| Идентификатор кластера базы данных | |
-| **instanceId** | **Integer**| Идентификатор инстанса базы данных | |
+| **dbClusterId** | **Integer**| ID кластера базы данных | |
+| **instanceId** | **Integer**| ID инстанса базы данных | |
 
 ### Return type
 
@@ -1402,7 +1402,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     DatabasesApi apiInstance = new DatabasesApi(defaultClient);
-    Integer dbClusterId = 56; // Integer | Идентификатор кластера базы данных
+    Integer dbClusterId = 56; // Integer | ID кластера базы данных
     try {
       GetDatabaseInstances200Response result = apiInstance.getDatabaseInstances(dbClusterId);
       System.out.println(result);
@@ -1421,7 +1421,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **dbClusterId** | **Integer**| Идентификатор кластера базы данных | |
+| **dbClusterId** | **Integer**| ID кластера базы данных | |
 
 ### Return type
 
@@ -1544,8 +1544,8 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     DatabasesApi apiInstance = new DatabasesApi(defaultClient);
-    Integer dbClusterId = 56; // Integer | Идентификатор кластера базы данных
-    Integer adminId = 56; // Integer | Идентификатор пользователя базы данных
+    Integer dbClusterId = 56; // Integer | ID кластера базы данных
+    Integer adminId = 56; // Integer | ID пользователя базы данных
     try {
       CreateDatabaseUser201Response result = apiInstance.getDatabaseUser(dbClusterId, adminId);
       System.out.println(result);
@@ -1564,8 +1564,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **dbClusterId** | **Integer**| Идентификатор кластера базы данных | |
-| **adminId** | **Integer**| Идентификатор пользователя базы данных | |
+| **dbClusterId** | **Integer**| ID кластера базы данных | |
+| **adminId** | **Integer**| ID пользователя базы данных | |
 
 ### Return type
 
@@ -1619,7 +1619,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     DatabasesApi apiInstance = new DatabasesApi(defaultClient);
-    Integer dbClusterId = 56; // Integer | Идентификатор кластера базы данных
+    Integer dbClusterId = 56; // Integer | ID кластера базы данных
     try {
       GetDatabaseUsers200Response result = apiInstance.getDatabaseUsers(dbClusterId);
       System.out.println(result);
@@ -1638,7 +1638,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **dbClusterId** | **Integer**| Идентификатор кластера базы данных | |
+| **dbClusterId** | **Integer**| ID кластера базы данных | |
 
 ### Return type
 
@@ -1836,8 +1836,8 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     DatabasesApi apiInstance = new DatabasesApi(defaultClient);
-    Integer dbId = 56; // Integer | Идентификатор базы данных
-    Integer backupId = 56; // Integer | Идентификатор резевной копии
+    Integer dbId = 56; // Integer | ID базы данных
+    Integer backupId = 56; // Integer | ID резевной копии
     try {
       apiInstance.restoreDatabaseFromBackup(dbId, backupId);
     } catch (ApiException e) {
@@ -1855,8 +1855,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **dbId** | **Integer**| Идентификатор базы данных | |
-| **backupId** | **Integer**| Идентификатор резевной копии | |
+| **dbId** | **Integer**| ID базы данных | |
+| **backupId** | **Integer**| ID резевной копии | |
 
 ### Return type
 
@@ -1911,7 +1911,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     DatabasesApi apiInstance = new DatabasesApi(defaultClient);
-    Integer dbId = 56; // Integer | Идентификатор базы данных
+    Integer dbId = 56; // Integer | ID базы данных
     UpdateDb updateDb = new UpdateDb(); // UpdateDb | 
     try {
       CreateDatabase201Response result = apiInstance.updateDatabase(dbId, updateDb);
@@ -1931,7 +1931,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **dbId** | **Integer**| Идентификатор базы данных | |
+| **dbId** | **Integer**| ID базы данных | |
 | **updateDb** | [**UpdateDb**](UpdateDb.md)|  | |
 
 ### Return type
@@ -1986,7 +1986,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     DatabasesApi apiInstance = new DatabasesApi(defaultClient);
-    Integer dbId = 56; // Integer | Идентификатор базы данных
+    Integer dbId = 56; // Integer | ID базы данных
     AutoBackup autoBackup = new AutoBackup(); // AutoBackup | При значении `is_enabled`: `true`, поля `copy_count`, `creation_start_at`, `interval` являются обязательными
     try {
       GetDatabaseAutoBackupsSettings200Response result = apiInstance.updateDatabaseAutoBackupsSettings(dbId, autoBackup);
@@ -2006,7 +2006,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **dbId** | **Integer**| Идентификатор базы данных | |
+| **dbId** | **Integer**| ID базы данных | |
 | **autoBackup** | [**AutoBackup**](AutoBackup.md)| При значении &#x60;is_enabled&#x60;: &#x60;true&#x60;, поля &#x60;copy_count&#x60;, &#x60;creation_start_at&#x60;, &#x60;interval&#x60; являются обязательными | [optional] |
 
 ### Return type
@@ -2061,7 +2061,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     DatabasesApi apiInstance = new DatabasesApi(defaultClient);
-    Integer dbClusterId = 56; // Integer | Идентификатор кластера базы данных
+    Integer dbClusterId = 56; // Integer | ID кластера базы данных
     UpdateCluster updateCluster = new UpdateCluster(); // UpdateCluster | 
     try {
       CreateDatabaseCluster201Response result = apiInstance.updateDatabaseCluster(dbClusterId, updateCluster);
@@ -2081,7 +2081,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **dbClusterId** | **Integer**| Идентификатор кластера базы данных | |
+| **dbClusterId** | **Integer**| ID кластера базы данных | |
 | **updateCluster** | [**UpdateCluster**](UpdateCluster.md)|  | |
 
 ### Return type
@@ -2136,7 +2136,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     DatabasesApi apiInstance = new DatabasesApi(defaultClient);
-    Integer dbClusterId = 56; // Integer | Идентификатор кластера базы данных
+    Integer dbClusterId = 56; // Integer | ID кластера базы данных
     UpdateInstance updateInstance = new UpdateInstance(); // UpdateInstance | 
     try {
       CreateDatabaseInstance201Response result = apiInstance.updateDatabaseInstance(dbClusterId, updateInstance);
@@ -2156,7 +2156,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **dbClusterId** | **Integer**| Идентификатор кластера базы данных | |
+| **dbClusterId** | **Integer**| ID кластера базы данных | |
 | **updateInstance** | [**UpdateInstance**](UpdateInstance.md)|  | |
 
 ### Return type
@@ -2211,8 +2211,8 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     DatabasesApi apiInstance = new DatabasesApi(defaultClient);
-    Integer dbClusterId = 56; // Integer | Идентификатор кластера базы данных
-    Integer adminId = 56; // Integer | Идентификатор пользователя базы данных
+    Integer dbClusterId = 56; // Integer | ID кластера базы данных
+    Integer adminId = 56; // Integer | ID пользователя базы данных
     UpdateAdmin updateAdmin = new UpdateAdmin(); // UpdateAdmin | 
     try {
       CreateDatabaseUser201Response result = apiInstance.updateDatabaseUser(dbClusterId, adminId, updateAdmin);
@@ -2232,8 +2232,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **dbClusterId** | **Integer**| Идентификатор кластера базы данных | |
-| **adminId** | **Integer**| Идентификатор пользователя базы данных | |
+| **dbClusterId** | **Integer**| ID кластера базы данных | |
+| **adminId** | **Integer**| ID пользователя базы данных | |
 | **updateAdmin** | [**UpdateAdmin**](UpdateAdmin.md)|  | |
 
 ### Return type

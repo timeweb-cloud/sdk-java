@@ -114,7 +114,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     DedicatedServersApi apiInstance = new DedicatedServersApi(defaultClient);
-    Integer dedicatedId = 1051; // Integer | Уникальный идентификатор выделенного сервера.
+    Integer dedicatedId = 1051; // Integer | ID выделенного сервера.
     try {
       apiInstance.deleteDedicatedServer(dedicatedId);
     } catch (ApiException e) {
@@ -132,7 +132,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **dedicatedId** | **Integer**| Уникальный идентификатор выделенного сервера. | |
+| **dedicatedId** | **Integer**| ID выделенного сервера. | |
 
 ### Return type
 
@@ -186,7 +186,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     DedicatedServersApi apiInstance = new DedicatedServersApi(defaultClient);
-    Integer dedicatedId = 1051; // Integer | Уникальный идентификатор выделенного сервера.
+    Integer dedicatedId = 1051; // Integer | ID выделенного сервера.
     try {
       CreateDedicatedServer201Response result = apiInstance.getDedicatedServer(dedicatedId);
       System.out.println(result);
@@ -205,7 +205,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **dedicatedId** | **Integer**| Уникальный идентификатор выделенного сервера. | |
+| **dedicatedId** | **Integer**| ID выделенного сервера. | |
 
 ### Return type
 
@@ -259,7 +259,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     DedicatedServersApi apiInstance = new DedicatedServersApi(defaultClient);
-    Integer presetId = 1051; // Integer | Уникальный идентификатор тарифа выделенного сервера.
+    Integer presetId = 1051; // Integer | ID тарифа выделенного сервера.
     try {
       GetDedicatedServerPresetAdditionalServices200Response result = apiInstance.getDedicatedServerPresetAdditionalServices(presetId);
       System.out.println(result);
@@ -278,7 +278,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **presetId** | **Integer**| Уникальный идентификатор тарифа выделенного сервера. | |
+| **presetId** | **Integer**| ID тарифа выделенного сервера. | |
 
 ### Return type
 
@@ -474,7 +474,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     DedicatedServersApi apiInstance = new DedicatedServersApi(defaultClient);
-    Integer dedicatedId = 1051; // Integer | Уникальный идентификатор выделенного сервера.
+    Integer dedicatedId = 1051; // Integer | ID выделенного сервера.
     UpdateDedicatedServerRequest updateDedicatedServerRequest = new UpdateDedicatedServerRequest(); // UpdateDedicatedServerRequest | 
     try {
       CreateDedicatedServer201Response result = apiInstance.updateDedicatedServer(dedicatedId, updateDedicatedServerRequest);
@@ -494,7 +494,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **dedicatedId** | **Integer**| Уникальный идентификатор выделенного сервера. | |
+| **dedicatedId** | **Integer**| ID выделенного сервера. | |
 | **updateDedicatedServerRequest** | [**UpdateDedicatedServerRequest**](UpdateDedicatedServerRequest.md)|  | [optional] |
 
 ### Return type

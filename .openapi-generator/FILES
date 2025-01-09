@@ -324,6 +324,7 @@ docs/NetworkDriversResponse.md
 docs/NetworkDrivesApi.md
 docs/NodeCount.md
 docs/NodeGroupIn.md
+docs/NodeGroupInConfiguration.md
 docs/NodeGroupOut.md
 docs/NodeGroupResponse.md
 docs/NodeGroupsResponse.md
@@ -375,6 +376,7 @@ docs/ServersOsRequirements.md
 docs/ServersPreset.md
 docs/ServersSoftware.md
 docs/ServersSoftwareRequirements.md
+docs/SetLabels.md
 docs/SettingCondition.md
 docs/SpamFilterIsDisabled.md
 docs/SpamFilterIsEnabled.md
@@ -793,6 +795,7 @@ src/main/java/org/openapitools/client/model/NetworkDriveServiceListInner.java
 src/main/java/org/openapitools/client/model/NetworkDriversResponse.java
 src/main/java/org/openapitools/client/model/NodeCount.java
 src/main/java/org/openapitools/client/model/NodeGroupIn.java
+src/main/java/org/openapitools/client/model/NodeGroupInConfiguration.java
 src/main/java/org/openapitools/client/model/NodeGroupOut.java
 src/main/java/org/openapitools/client/model/NodeGroupResponse.java
 src/main/java/org/openapitools/client/model/NodeGroupsResponse.java
@@ -841,6 +844,7 @@ src/main/java/org/openapitools/client/model/ServersOsRequirements.java
 src/main/java/org/openapitools/client/model/ServersPreset.java
 src/main/java/org/openapitools/client/model/ServersSoftware.java
 src/main/java/org/openapitools/client/model/ServersSoftwareRequirements.java
+src/main/java/org/openapitools/client/model/SetLabels.java
 src/main/java/org/openapitools/client/model/SettingCondition.java
 src/main/java/org/openapitools/client/model/SpamFilterIsDisabled.java
 src/main/java/org/openapitools/client/model/SpamFilterIsEnabled.java
@@ -1229,6 +1233,7 @@ src/test/java/org/openapitools/client/model/NetworkDriveTest.java
 src/test/java/org/openapitools/client/model/NetworkDriversResponseTest.java
 src/test/java/org/openapitools/client/model/NetworkTest.java
 src/test/java/org/openapitools/client/model/NodeCountTest.java
+src/test/java/org/openapitools/client/model/NodeGroupInConfigurationTest.java
 src/test/java/org/openapitools/client/model/NodeGroupInTest.java
 src/test/java/org/openapitools/client/model/NodeGroupOutTest.java
 src/test/java/org/openapitools/client/model/NodeGroupResponseTest.java
@@ -1278,6 +1283,7 @@ src/test/java/org/openapitools/client/model/ServersOsTest.java
 src/test/java/org/openapitools/client/model/ServersPresetTest.java
 src/test/java/org/openapitools/client/model/ServersSoftwareRequirementsTest.java
 src/test/java/org/openapitools/client/model/ServersSoftwareTest.java
+src/test/java/org/openapitools/client/model/SetLabelsTest.java
 src/test/java/org/openapitools/client/model/SettingConditionTest.java
 src/test/java/org/openapitools/client/model/SpamFilterIsDisabledTest.java
 src/test/java/org/openapitools/client/model/SpamFilterIsEnabledTest.java

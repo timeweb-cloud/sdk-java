@@ -72,7 +72,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     ServersApi apiInstance = new ServersApi(defaultClient);
-    Integer serverId = 1051; // Integer | Уникальный идентификатор облачного сервера.
+    Integer serverId = 1051; // Integer | ID облачного сервера.
     AddServerIPRequest addServerIPRequest = new AddServerIPRequest(); // AddServerIPRequest | 
     try {
       AddServerIP201Response result = apiInstance.addServerIP(serverId, addServerIPRequest);
@@ -92,7 +92,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **serverId** | **Integer**| Уникальный идентификатор облачного сервера. | |
+| **serverId** | **Integer**| ID облачного сервера. | |
 | **addServerIPRequest** | [**AddServerIPRequest**](AddServerIPRequest.md)|  | |
 
 ### Return type
@@ -148,7 +148,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     ServersApi apiInstance = new ServersApi(defaultClient);
-    Integer serverId = 1051; // Integer | Уникальный идентификатор облачного сервера.
+    Integer serverId = 1051; // Integer | ID облачного сервера.
     try {
       CreateServer201Response result = apiInstance.cloneServer(serverId);
       System.out.println(result);
@@ -167,7 +167,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **serverId** | **Integer**| Уникальный идентификатор облачного сервера. | |
+| **serverId** | **Integer**| ID облачного сервера. | |
 
 ### Return type
 
@@ -294,7 +294,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     ServersApi apiInstance = new ServersApi(defaultClient);
-    Integer serverId = 1051; // Integer | Уникальный идентификатор облачного сервера.
+    Integer serverId = 1051; // Integer | ID облачного сервера.
     CreateServerDiskRequest createServerDiskRequest = new CreateServerDiskRequest(); // CreateServerDiskRequest | 
     try {
       CreateServerDisk201Response result = apiInstance.createServerDisk(serverId, createServerDiskRequest);
@@ -314,7 +314,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **serverId** | **Integer**| Уникальный идентификатор облачного сервера. | |
+| **serverId** | **Integer**| ID облачного сервера. | |
 | **createServerDiskRequest** | [**CreateServerDiskRequest**](CreateServerDiskRequest.md)|  | [optional] |
 
 ### Return type
@@ -370,8 +370,8 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     ServersApi apiInstance = new ServersApi(defaultClient);
-    Integer serverId = 1051; // Integer | Уникальный идентификатор облачного сервера.
-    Integer diskId = 1051; // Integer | Уникальный идентификатор диска сервера.
+    Integer serverId = 1051; // Integer | ID облачного сервера.
+    Integer diskId = 1051; // Integer | ID диска сервера.
     CreateServerDiskBackupRequest createServerDiskBackupRequest = new CreateServerDiskBackupRequest(); // CreateServerDiskBackupRequest | 
     try {
       CreateServerDiskBackup201Response result = apiInstance.createServerDiskBackup(serverId, diskId, createServerDiskBackupRequest);
@@ -391,8 +391,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **serverId** | **Integer**| Уникальный идентификатор облачного сервера. | |
-| **diskId** | **Integer**| Уникальный идентификатор диска сервера. | |
+| **serverId** | **Integer**| ID облачного сервера. | |
+| **diskId** | **Integer**| ID диска сервера. | |
 | **createServerDiskBackupRequest** | [**CreateServerDiskBackupRequest**](CreateServerDiskBackupRequest.md)|  | [optional] |
 
 ### Return type
@@ -447,7 +447,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     ServersApi apiInstance = new ServersApi(defaultClient);
-    Integer serverId = 1051; // Integer | Уникальный идентификатор облачного сервера.
+    Integer serverId = 1051; // Integer | ID облачного сервера.
     String hash = "15095f25-aac3-4d60-a788-96cb5136f186"; // String | Хеш, который совместно с кодом авторизации надо отправить для удаления, если включено подтверждение удаления сервисов через Телеграм.
     String code = "0000"; // String | Код подтверждения, который придет к вам в Телеграм, после запроса удаления, если включено подтверждение удаления сервисов.  При помощи API токена сервисы можно удалять без подтверждения, если параметр токена `is_able_to_delete` установлен в значение `true`
     try {
@@ -468,7 +468,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **serverId** | **Integer**| Уникальный идентификатор облачного сервера. | |
+| **serverId** | **Integer**| ID облачного сервера. | |
 | **hash** | **String**| Хеш, который совместно с кодом авторизации надо отправить для удаления, если включено подтверждение удаления сервисов через Телеграм. | [optional] |
 | **code** | **String**| Код подтверждения, который придет к вам в Телеграм, после запроса удаления, если включено подтверждение удаления сервисов.  При помощи API токена сервисы можно удалять без подтверждения, если параметр токена &#x60;is_able_to_delete&#x60; установлен в значение &#x60;true&#x60; | [optional] |
 
@@ -526,8 +526,8 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     ServersApi apiInstance = new ServersApi(defaultClient);
-    Integer serverId = 1051; // Integer | Уникальный идентификатор облачного сервера.
-    Integer diskId = 1051; // Integer | Уникальный идентификатор диска сервера.
+    Integer serverId = 1051; // Integer | ID облачного сервера.
+    Integer diskId = 1051; // Integer | ID диска сервера.
     try {
       apiInstance.deleteServerDisk(serverId, diskId);
     } catch (ApiException e) {
@@ -545,8 +545,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **serverId** | **Integer**| Уникальный идентификатор облачного сервера. | |
-| **diskId** | **Integer**| Уникальный идентификатор диска сервера. | |
+| **serverId** | **Integer**| ID облачного сервера. | |
+| **diskId** | **Integer**| ID диска сервера. | |
 
 ### Return type
 
@@ -601,9 +601,9 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     ServersApi apiInstance = new ServersApi(defaultClient);
-    Integer serverId = 1051; // Integer | Уникальный идентификатор облачного сервера.
-    Integer diskId = 1051; // Integer | Уникальный идентификатор диска сервера.
-    Integer backupId = 1051; // Integer | Уникальный идентификатор бэкапа сервера.
+    Integer serverId = 1051; // Integer | ID облачного сервера.
+    Integer diskId = 1051; // Integer | ID диска сервера.
+    Integer backupId = 1051; // Integer | ID бэкапа сервера.
     try {
       apiInstance.deleteServerDiskBackup(serverId, diskId, backupId);
     } catch (ApiException e) {
@@ -621,9 +621,9 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **serverId** | **Integer**| Уникальный идентификатор облачного сервера. | |
-| **diskId** | **Integer**| Уникальный идентификатор диска сервера. | |
-| **backupId** | **Integer**| Уникальный идентификатор бэкапа сервера. | |
+| **serverId** | **Integer**| ID облачного сервера. | |
+| **diskId** | **Integer**| ID диска сервера. | |
+| **backupId** | **Integer**| ID бэкапа сервера. | |
 
 ### Return type
 
@@ -678,7 +678,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     ServersApi apiInstance = new ServersApi(defaultClient);
-    Integer serverId = 1051; // Integer | Уникальный идентификатор облачного сервера.
+    Integer serverId = 1051; // Integer | ID облачного сервера.
     DeleteServerIPRequest deleteServerIPRequest = new DeleteServerIPRequest(); // DeleteServerIPRequest | 
     try {
       apiInstance.deleteServerIP(serverId, deleteServerIPRequest);
@@ -697,7 +697,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **serverId** | **Integer**| Уникальный идентификатор облачного сервера. | |
+| **serverId** | **Integer**| ID облачного сервера. | |
 | **deleteServerIPRequest** | [**DeleteServerIPRequest**](DeleteServerIPRequest.md)|  | |
 
 ### Return type
@@ -890,7 +890,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     ServersApi apiInstance = new ServersApi(defaultClient);
-    Integer serverId = 1051; // Integer | Уникальный идентификатор облачного сервера.
+    Integer serverId = 1051; // Integer | ID облачного сервера.
     try {
       CreateServer201Response result = apiInstance.getServer(serverId);
       System.out.println(result);
@@ -909,7 +909,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **serverId** | **Integer**| Уникальный идентификатор облачного сервера. | |
+| **serverId** | **Integer**| ID облачного сервера. | |
 
 ### Return type
 
@@ -964,8 +964,8 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     ServersApi apiInstance = new ServersApi(defaultClient);
-    Integer serverId = 1051; // Integer | Уникальный идентификатор облачного сервера.
-    Integer diskId = 1051; // Integer | Уникальный идентификатор диска сервера.
+    Integer serverId = 1051; // Integer | ID облачного сервера.
+    Integer diskId = 1051; // Integer | ID диска сервера.
     try {
       CreateServerDisk201Response result = apiInstance.getServerDisk(serverId, diskId);
       System.out.println(result);
@@ -984,8 +984,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **serverId** | **Integer**| Уникальный идентификатор облачного сервера. | |
-| **diskId** | **Integer**| Уникальный идентификатор диска сервера. | |
+| **serverId** | **Integer**| ID облачного сервера. | |
+| **diskId** | **Integer**| ID диска сервера. | |
 
 ### Return type
 
@@ -1040,8 +1040,8 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     ServersApi apiInstance = new ServersApi(defaultClient);
-    Integer serverId = 1051; // Integer | Уникальный идентификатор облачного сервера.
-    Integer diskId = 1051; // Integer | Уникальный идентификатор диска сервера.
+    Integer serverId = 1051; // Integer | ID облачного сервера.
+    Integer diskId = 1051; // Integer | ID диска сервера.
     try {
       GetServerDiskAutoBackupSettings200Response result = apiInstance.getServerDiskAutoBackupSettings(serverId, diskId);
       System.out.println(result);
@@ -1060,8 +1060,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **serverId** | **Integer**| Уникальный идентификатор облачного сервера. | |
-| **diskId** | **Integer**| Уникальный идентификатор диска сервера. | |
+| **serverId** | **Integer**| ID облачного сервера. | |
+| **diskId** | **Integer**| ID диска сервера. | |
 
 ### Return type
 
@@ -1115,9 +1115,9 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     ServersApi apiInstance = new ServersApi(defaultClient);
-    Integer serverId = 1051; // Integer | Уникальный идентификатор облачного сервера.
-    Integer diskId = 1051; // Integer | Уникальный идентификатор диска сервера.
-    Integer backupId = 1051; // Integer | Уникальный идентификатор бэкапа сервера.
+    Integer serverId = 1051; // Integer | ID облачного сервера.
+    Integer diskId = 1051; // Integer | ID диска сервера.
+    Integer backupId = 1051; // Integer | ID бэкапа сервера.
     try {
       GetServerDiskBackup200Response result = apiInstance.getServerDiskBackup(serverId, diskId, backupId);
       System.out.println(result);
@@ -1136,9 +1136,9 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **serverId** | **Integer**| Уникальный идентификатор облачного сервера. | |
-| **diskId** | **Integer**| Уникальный идентификатор диска сервера. | |
-| **backupId** | **Integer**| Уникальный идентификатор бэкапа сервера. | |
+| **serverId** | **Integer**| ID облачного сервера. | |
+| **diskId** | **Integer**| ID диска сервера. | |
+| **backupId** | **Integer**| ID бэкапа сервера. | |
 
 ### Return type
 
@@ -1192,8 +1192,8 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     ServersApi apiInstance = new ServersApi(defaultClient);
-    Integer serverId = 1051; // Integer | Уникальный идентификатор облачного сервера.
-    Integer diskId = 1051; // Integer | Уникальный идентификатор диска сервера.
+    Integer serverId = 1051; // Integer | ID облачного сервера.
+    Integer diskId = 1051; // Integer | ID диска сервера.
     try {
       GetServerDiskBackups200Response result = apiInstance.getServerDiskBackups(serverId, diskId);
       System.out.println(result);
@@ -1212,8 +1212,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **serverId** | **Integer**| Уникальный идентификатор облачного сервера. | |
-| **diskId** | **Integer**| Уникальный идентификатор диска сервера. | |
+| **serverId** | **Integer**| ID облачного сервера. | |
+| **diskId** | **Integer**| ID диска сервера. | |
 
 ### Return type
 
@@ -1267,7 +1267,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     ServersApi apiInstance = new ServersApi(defaultClient);
-    Integer serverId = 1051; // Integer | Уникальный идентификатор облачного сервера.
+    Integer serverId = 1051; // Integer | ID облачного сервера.
     try {
       GetServerDisks200Response result = apiInstance.getServerDisks(serverId);
       System.out.println(result);
@@ -1286,7 +1286,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **serverId** | **Integer**| Уникальный идентификатор облачного сервера. | |
+| **serverId** | **Integer**| ID облачного сервера. | |
 
 ### Return type
 
@@ -1341,7 +1341,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     ServersApi apiInstance = new ServersApi(defaultClient);
-    Integer serverId = 1051; // Integer | Уникальный идентификатор облачного сервера.
+    Integer serverId = 1051; // Integer | ID облачного сервера.
     try {
       GetServerIPs200Response result = apiInstance.getServerIPs(serverId);
       System.out.println(result);
@@ -1360,7 +1360,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **serverId** | **Integer**| Уникальный идентификатор облачного сервера. | |
+| **serverId** | **Integer**| ID облачного сервера. | |
 
 ### Return type
 
@@ -1415,7 +1415,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     ServersApi apiInstance = new ServersApi(defaultClient);
-    Integer serverId = 1051; // Integer | Уникальный идентификатор облачного сервера.
+    Integer serverId = 1051; // Integer | ID облачного сервера.
     Integer limit = 100; // Integer | Обозначает количество записей, которое необходимо вернуть.
     Integer offset = 0; // Integer | Указывает на смещение относительно начала списка.
     String order = "asc"; // String | Сортировка элементов по дате
@@ -1437,7 +1437,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **serverId** | **Integer**| Уникальный идентификатор облачного сервера. | |
+| **serverId** | **Integer**| ID облачного сервера. | |
 | **limit** | **Integer**| Обозначает количество записей, которое необходимо вернуть. | [optional] [default to 100] |
 | **offset** | **Integer**| Указывает на смещение относительно начала списка. | [optional] [default to 0] |
 | **order** | **String**| Сортировка элементов по дате | [optional] [default to asc] [enum: asc, desc] |
@@ -1495,7 +1495,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     ServersApi apiInstance = new ServersApi(defaultClient);
-    Integer serverId = 1051; // Integer | Уникальный идентификатор облачного сервера.
+    Integer serverId = 1051; // Integer | ID облачного сервера.
     String dateFrom = "dateFrom_example"; // String | Дата начала сбора статистики. Строка в формате ISO 8061, закодированная в ASCII, пример: `2023-05-25%202023-05-25T14%3A35%3A38`
     String dateTo = "dateTo_example"; // String | Дата окончания сбора статистики. Строка в формате ISO 8061, закодированная в ASCII, пример: `2023-05-26%202023-05-25T14%3A35%3A38`
     try {
@@ -1516,7 +1516,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **serverId** | **Integer**| Уникальный идентификатор облачного сервера. | |
+| **serverId** | **Integer**| ID облачного сервера. | |
 | **dateFrom** | **String**| Дата начала сбора статистики. Строка в формате ISO 8061, закодированная в ASCII, пример: &#x60;2023-05-25%202023-05-25T14%3A35%3A38&#x60; | |
 | **dateTo** | **String**| Дата окончания сбора статистики. Строка в формате ISO 8061, закодированная в ASCII, пример: &#x60;2023-05-26%202023-05-25T14%3A35%3A38&#x60; | |
 
@@ -1785,7 +1785,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     ServersApi apiInstance = new ServersApi(defaultClient);
-    Integer serverId = 1051; // Integer | Уникальный идентификатор облачного сервера.
+    Integer serverId = 1051; // Integer | ID облачного сервера.
     try {
       apiInstance.hardShutdownServer(serverId);
     } catch (ApiException e) {
@@ -1803,7 +1803,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **serverId** | **Integer**| Уникальный идентификатор облачного сервера. | |
+| **serverId** | **Integer**| ID облачного сервера. | |
 
 ### Return type
 
@@ -1857,7 +1857,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     ServersApi apiInstance = new ServersApi(defaultClient);
-    Integer serverId = 1051; // Integer | Уникальный идентификатор облачного сервера.
+    Integer serverId = 1051; // Integer | ID облачного сервера.
     try {
       apiInstance.imageUnmountAndServerReload(serverId);
     } catch (ApiException e) {
@@ -1875,7 +1875,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **serverId** | **Integer**| Уникальный идентификатор облачного сервера. | |
+| **serverId** | **Integer**| ID облачного сервера. | |
 
 ### Return type
 
@@ -1928,9 +1928,9 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     ServersApi apiInstance = new ServersApi(defaultClient);
-    Integer serverId = 1051; // Integer | Уникальный идентификатор облачного сервера.
-    Integer diskId = 1051; // Integer | Уникальный идентификатор диска сервера.
-    Integer backupId = 1051; // Integer | Уникальный идентификатор бэкапа сервера.
+    Integer serverId = 1051; // Integer | ID облачного сервера.
+    Integer diskId = 1051; // Integer | ID диска сервера.
+    Integer backupId = 1051; // Integer | ID бэкапа сервера.
     PerformActionOnBackupRequest performActionOnBackupRequest = new PerformActionOnBackupRequest(); // PerformActionOnBackupRequest | 
     try {
       apiInstance.performActionOnBackup(serverId, diskId, backupId, performActionOnBackupRequest);
@@ -1949,9 +1949,9 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **serverId** | **Integer**| Уникальный идентификатор облачного сервера. | |
-| **diskId** | **Integer**| Уникальный идентификатор диска сервера. | |
-| **backupId** | **Integer**| Уникальный идентификатор бэкапа сервера. | |
+| **serverId** | **Integer**| ID облачного сервера. | |
+| **diskId** | **Integer**| ID диска сервера. | |
+| **backupId** | **Integer**| ID бэкапа сервера. | |
 | **performActionOnBackupRequest** | [**PerformActionOnBackupRequest**](PerformActionOnBackupRequest.md)|  | [optional] |
 
 ### Return type
@@ -2007,7 +2007,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     ServersApi apiInstance = new ServersApi(defaultClient);
-    Integer serverId = 1051; // Integer | Уникальный идентификатор облачного сервера.
+    Integer serverId = 1051; // Integer | ID облачного сервера.
     PerformActionOnServerRequest performActionOnServerRequest = new PerformActionOnServerRequest(); // PerformActionOnServerRequest | 
     try {
       apiInstance.performActionOnServer(serverId, performActionOnServerRequest);
@@ -2026,7 +2026,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **serverId** | **Integer**| Уникальный идентификатор облачного сервера. | |
+| **serverId** | **Integer**| ID облачного сервера. | |
 | **performActionOnServerRequest** | [**PerformActionOnServerRequest**](PerformActionOnServerRequest.md)|  | [optional] |
 
 ### Return type
@@ -2082,7 +2082,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     ServersApi apiInstance = new ServersApi(defaultClient);
-    Integer serverId = 1051; // Integer | Уникальный идентификатор облачного сервера.
+    Integer serverId = 1051; // Integer | ID облачного сервера.
     try {
       apiInstance.rebootServer(serverId);
     } catch (ApiException e) {
@@ -2100,7 +2100,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **serverId** | **Integer**| Уникальный идентификатор облачного сервера. | |
+| **serverId** | **Integer**| ID облачного сервера. | |
 
 ### Return type
 
@@ -2154,7 +2154,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     ServersApi apiInstance = new ServersApi(defaultClient);
-    Integer serverId = 1051; // Integer | Уникальный идентификатор облачного сервера.
+    Integer serverId = 1051; // Integer | ID облачного сервера.
     try {
       apiInstance.resetServerPassword(serverId);
     } catch (ApiException e) {
@@ -2172,7 +2172,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **serverId** | **Integer**| Уникальный идентификатор облачного сервера. | |
+| **serverId** | **Integer**| ID облачного сервера. | |
 
 ### Return type
 
@@ -2225,7 +2225,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     ServersApi apiInstance = new ServersApi(defaultClient);
-    Integer serverId = 1051; // Integer | Уникальный идентификатор облачного сервера.
+    Integer serverId = 1051; // Integer | ID облачного сервера.
     try {
       apiInstance.shutdownServer(serverId);
     } catch (ApiException e) {
@@ -2243,7 +2243,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **serverId** | **Integer**| Уникальный идентификатор облачного сервера. | |
+| **serverId** | **Integer**| ID облачного сервера. | |
 
 ### Return type
 
@@ -2297,7 +2297,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     ServersApi apiInstance = new ServersApi(defaultClient);
-    Integer serverId = 1051; // Integer | Уникальный идентификатор облачного сервера.
+    Integer serverId = 1051; // Integer | ID облачного сервера.
     try {
       apiInstance.startServer(serverId);
     } catch (ApiException e) {
@@ -2315,7 +2315,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **serverId** | **Integer**| Уникальный идентификатор облачного сервера. | |
+| **serverId** | **Integer**| ID облачного сервера. | |
 
 ### Return type
 
@@ -2368,7 +2368,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     ServersApi apiInstance = new ServersApi(defaultClient);
-    Integer serverId = 1051; // Integer | Уникальный идентификатор облачного сервера.
+    Integer serverId = 1051; // Integer | ID облачного сервера.
     UpdateServer updateServer = new UpdateServer(); // UpdateServer | 
     try {
       CreateServer201Response result = apiInstance.updateServer(serverId, updateServer);
@@ -2388,7 +2388,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **serverId** | **Integer**| Уникальный идентификатор облачного сервера. | |
+| **serverId** | **Integer**| ID облачного сервера. | |
 | **updateServer** | [**UpdateServer**](UpdateServer.md)|  | |
 
 ### Return type
@@ -2444,8 +2444,8 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     ServersApi apiInstance = new ServersApi(defaultClient);
-    Integer serverId = 1051; // Integer | Уникальный идентификатор облачного сервера.
-    Integer diskId = 1051; // Integer | Уникальный идентификатор диска сервера.
+    Integer serverId = 1051; // Integer | ID облачного сервера.
+    Integer diskId = 1051; // Integer | ID диска сервера.
     UpdateServerDiskRequest updateServerDiskRequest = new UpdateServerDiskRequest(); // UpdateServerDiskRequest | 
     try {
       CreateServerDisk201Response result = apiInstance.updateServerDisk(serverId, diskId, updateServerDiskRequest);
@@ -2465,8 +2465,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **serverId** | **Integer**| Уникальный идентификатор облачного сервера. | |
-| **diskId** | **Integer**| Уникальный идентификатор диска сервера. | |
+| **serverId** | **Integer**| ID облачного сервера. | |
+| **diskId** | **Integer**| ID диска сервера. | |
 | **updateServerDiskRequest** | [**UpdateServerDiskRequest**](UpdateServerDiskRequest.md)|  | [optional] |
 
 ### Return type
@@ -2522,8 +2522,8 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     ServersApi apiInstance = new ServersApi(defaultClient);
-    Integer serverId = 1051; // Integer | Уникальный идентификатор облачного сервера.
-    Integer diskId = 1051; // Integer | Уникальный идентификатор диска сервера.
+    Integer serverId = 1051; // Integer | ID облачного сервера.
+    Integer diskId = 1051; // Integer | ID диска сервера.
     AutoBackup autoBackup = new AutoBackup(); // AutoBackup | При значении `is_enabled`: `true`, поля `copy_count`, `creation_start_at`, `interval` являются обязательными
     try {
       GetServerDiskAutoBackupSettings200Response result = apiInstance.updateServerDiskAutoBackupSettings(serverId, diskId, autoBackup);
@@ -2543,8 +2543,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **serverId** | **Integer**| Уникальный идентификатор облачного сервера. | |
-| **diskId** | **Integer**| Уникальный идентификатор диска сервера. | |
+| **serverId** | **Integer**| ID облачного сервера. | |
+| **diskId** | **Integer**| ID диска сервера. | |
 | **autoBackup** | [**AutoBackup**](AutoBackup.md)| При значении &#x60;is_enabled&#x60;: &#x60;true&#x60;, поля &#x60;copy_count&#x60;, &#x60;creation_start_at&#x60;, &#x60;interval&#x60; являются обязательными | [optional] |
 
 ### Return type
@@ -2599,9 +2599,9 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     ServersApi apiInstance = new ServersApi(defaultClient);
-    Integer serverId = 1051; // Integer | Уникальный идентификатор облачного сервера.
-    Integer diskId = 1051; // Integer | Уникальный идентификатор диска сервера.
-    Integer backupId = 1051; // Integer | Уникальный идентификатор бэкапа сервера.
+    Integer serverId = 1051; // Integer | ID облачного сервера.
+    Integer diskId = 1051; // Integer | ID диска сервера.
+    Integer backupId = 1051; // Integer | ID бэкапа сервера.
     UpdateServerDiskBackupRequest updateServerDiskBackupRequest = new UpdateServerDiskBackupRequest(); // UpdateServerDiskBackupRequest | 
     try {
       GetServerDiskBackup200Response result = apiInstance.updateServerDiskBackup(serverId, diskId, backupId, updateServerDiskBackupRequest);
@@ -2621,9 +2621,9 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **serverId** | **Integer**| Уникальный идентификатор облачного сервера. | |
-| **diskId** | **Integer**| Уникальный идентификатор диска сервера. | |
-| **backupId** | **Integer**| Уникальный идентификатор бэкапа сервера. | |
+| **serverId** | **Integer**| ID облачного сервера. | |
+| **diskId** | **Integer**| ID диска сервера. | |
+| **backupId** | **Integer**| ID бэкапа сервера. | |
 | **updateServerDiskBackupRequest** | [**UpdateServerDiskBackupRequest**](UpdateServerDiskBackupRequest.md)|  | [optional] |
 
 ### Return type
@@ -2678,7 +2678,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     ServersApi apiInstance = new ServersApi(defaultClient);
-    Integer serverId = 1051; // Integer | Уникальный идентификатор облачного сервера.
+    Integer serverId = 1051; // Integer | ID облачного сервера.
     UpdateServerIPRequest updateServerIPRequest = new UpdateServerIPRequest(); // UpdateServerIPRequest | 
     try {
       AddServerIP201Response result = apiInstance.updateServerIP(serverId, updateServerIPRequest);
@@ -2698,7 +2698,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **serverId** | **Integer**| Уникальный идентификатор облачного сервера. | |
+| **serverId** | **Integer**| ID облачного сервера. | |
 | **updateServerIPRequest** | [**UpdateServerIPRequest**](UpdateServerIPRequest.md)|  | |
 
 ### Return type
@@ -2754,7 +2754,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     ServersApi apiInstance = new ServersApi(defaultClient);
-    Integer serverId = 1051; // Integer | Уникальный идентификатор облачного сервера.
+    Integer serverId = 1051; // Integer | ID облачного сервера.
     UpdateServerNATRequest updateServerNATRequest = new UpdateServerNATRequest(); // UpdateServerNATRequest | 
     try {
       apiInstance.updateServerNAT(serverId, updateServerNATRequest);
@@ -2773,7 +2773,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **serverId** | **Integer**| Уникальный идентификатор облачного сервера. | |
+| **serverId** | **Integer**| ID облачного сервера. | |
 | **updateServerNATRequest** | [**UpdateServerNATRequest**](UpdateServerNATRequest.md)|  | [optional] |
 
 ### Return type
@@ -2829,7 +2829,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     ServersApi apiInstance = new ServersApi(defaultClient);
-    Integer serverId = 1051; // Integer | Уникальный идентификатор облачного сервера.
+    Integer serverId = 1051; // Integer | ID облачного сервера.
     UpdateServerOSBootModeRequest updateServerOSBootModeRequest = new UpdateServerOSBootModeRequest(); // UpdateServerOSBootModeRequest | 
     try {
       apiInstance.updateServerOSBootMode(serverId, updateServerOSBootModeRequest);
@@ -2848,7 +2848,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **serverId** | **Integer**| Уникальный идентификатор облачного сервера. | |
+| **serverId** | **Integer**| ID облачного сервера. | |
 | **updateServerOSBootModeRequest** | [**UpdateServerOSBootModeRequest**](UpdateServerOSBootModeRequest.md)|  | [optional] |
 
 ### Return type

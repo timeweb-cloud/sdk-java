@@ -5,12 +5,12 @@ All URIs are relative to *https://api.timeweb.cloud*
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
 | [**createVPC**](VpcApi.md#createVPC) | **POST** /api/v2/vpcs | Создание VPC |
-| [**deleteVPC**](VpcApi.md#deleteVPC) | **DELETE** /api/v1/vpcs/{vpc_id} | Удаление VPC по идентификатору сети |
+| [**deleteVPC**](VpcApi.md#deleteVPC) | **DELETE** /api/v1/vpcs/{vpc_id} | Удаление VPC по ID сети |
 | [**getVPC**](VpcApi.md#getVPC) | **GET** /api/v2/vpcs/{vpc_id} | Получение VPC |
 | [**getVPCPorts**](VpcApi.md#getVPCPorts) | **GET** /api/v1/vpcs/{vpc_id}/ports | Получение списка портов для VPC |
 | [**getVPCServices**](VpcApi.md#getVPCServices) | **GET** /api/v2/vpcs/{vpc_id}/services | Получение списка сервисов в VPC |
 | [**getVPCs**](VpcApi.md#getVPCs) | **GET** /api/v2/vpcs | Получение списка VPCs |
-| [**updateVPCs**](VpcApi.md#updateVPCs) | **PATCH** /api/v2/vpcs/{vpc_id} | Изменение VPC по идентификатору сети |
+| [**updateVPCs**](VpcApi.md#updateVPCs) | **PATCH** /api/v2/vpcs/{vpc_id} | Изменение VPC по ID сети |
 
 
 <a id="createVPC"></a>
@@ -90,7 +90,7 @@ public class Example {
 # **deleteVPC**
 > CreateVPC201Response deleteVPC(vpcId)
 
-Удаление VPC по идентификатору сети
+Удаление VPC по ID сети
 
 Чтобы удалить VPC, отправьте DELETE-запрос на &#x60;/api/v1/vpcs/{vpc_id}&#x60;
 
@@ -114,7 +114,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     VpcApi apiInstance = new VpcApi(defaultClient);
-    String vpcId = "network-1234567890"; // String | Идентификатор сети
+    String vpcId = "network-1234567890"; // String | ID сети
     try {
       CreateVPC201Response result = apiInstance.deleteVPC(vpcId);
       System.out.println(result);
@@ -133,7 +133,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **vpcId** | **String**| Идентификатор сети | |
+| **vpcId** | **String**| ID сети | |
 
 ### Return type
 
@@ -187,7 +187,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     VpcApi apiInstance = new VpcApi(defaultClient);
-    String vpcId = "network-1234567890"; // String | Идентификатор сети
+    String vpcId = "network-1234567890"; // String | ID сети
     try {
       CreateVPC201Response result = apiInstance.getVPC(vpcId);
       System.out.println(result);
@@ -206,7 +206,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **vpcId** | **String**| Идентификатор сети | |
+| **vpcId** | **String**| ID сети | |
 
 ### Return type
 
@@ -260,7 +260,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     VpcApi apiInstance = new VpcApi(defaultClient);
-    String vpcId = "network-1234567890"; // String | Идентификатор сети
+    String vpcId = "network-1234567890"; // String | ID сети
     try {
       GetVPCPorts200Response result = apiInstance.getVPCPorts(vpcId);
       System.out.println(result);
@@ -279,7 +279,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **vpcId** | **String**| Идентификатор сети | |
+| **vpcId** | **String**| ID сети | |
 
 ### Return type
 
@@ -333,7 +333,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     VpcApi apiInstance = new VpcApi(defaultClient);
-    String vpcId = "network-1234567890"; // String | Идентификатор сети
+    String vpcId = "network-1234567890"; // String | ID сети
     try {
       GetVPCServices200Response result = apiInstance.getVPCServices(vpcId);
       System.out.println(result);
@@ -352,7 +352,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **vpcId** | **String**| Идентификатор сети | |
+| **vpcId** | **String**| ID сети | |
 
 ### Return type
 
@@ -451,7 +451,7 @@ This endpoint does not need any parameter.
 # **updateVPCs**
 > CreateVPC201Response updateVPCs(vpcId, updateVpc)
 
-Изменение VPC по идентификатору сети
+Изменение VPC по ID сети
 
 Чтобы изменить VPC, отправьте PATCH-запрос на &#x60;/api/v2/vpcs/{vpc_id}&#x60;
 
@@ -475,7 +475,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     VpcApi apiInstance = new VpcApi(defaultClient);
-    String vpcId = "network-1234567890"; // String | Идентификатор сети
+    String vpcId = "network-1234567890"; // String | ID сети
     UpdateVpc updateVpc = new UpdateVpc(); // UpdateVpc | 
     try {
       CreateVPC201Response result = apiInstance.updateVPCs(vpcId, updateVpc);
@@ -495,7 +495,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **vpcId** | **String**| Идентификатор сети | |
+| **vpcId** | **String**| ID сети | |
 | **updateVpc** | [**UpdateVpc**](UpdateVpc.md)|  | |
 
 ### Return type

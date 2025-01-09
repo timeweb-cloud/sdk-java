@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**id** | **Integer** | Уникальный идентификатор тарифа |  |
+|**id** | **Integer** | ID тарифа |  |
 |**description** | **String** | Описание тарифа |  |
 |**descriptionShort** | **String** | Краткое описание тарифа |  |
 |**price** | **BigDecimal** | Стоимость |  |

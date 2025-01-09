@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**providerId** | **UUID** | Идентификатор провайдера. |  |
+|**providerId** | **UUID** | ID провайдера. |  |
 |**login** | **String** | Логин пользователя. |  |
 |**providerType** | **Providers** |  |  |
 

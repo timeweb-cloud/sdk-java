@@ -8,7 +8,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**id** | **BigDecimal** | Уникальный идентификатор диска. |  |
+|**id** | **BigDecimal** | ID диска. |  |
 |**loggedAt** | **OffsetDateTime** | Дата лога. |  |
 |**event** | **String** | Событие сервера. |  |
 

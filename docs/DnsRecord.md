@@ -9,7 +9,7 @@ DNS-запись.
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**type** | [**TypeEnum**](#TypeEnum) | Тип DNS-записи. |  |
-|**id** | **BigDecimal** | Идентификатор DNS-записи. |  [optional] |
+|**id** | **BigDecimal** | ID DNS-записи. |  [optional] |
 |**data** | [**DnsRecordData**](DnsRecordData.md) |  |  |
 
 

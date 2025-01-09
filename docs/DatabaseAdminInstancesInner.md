@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**instanceId** | **BigDecimal** | Уникальный идентификатор базы данных |  |
+|**instanceId** | **BigDecimal** | ID базы данных |  |
 |**privileges** | [**List&lt;PrivilegesEnum&gt;**](#List&lt;PrivilegesEnum&gt;) | Список привилегий пользователя базы данных |  |
 
 

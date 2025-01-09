@@ -18,7 +18,7 @@
 |**framework** | **Frameworks** |  |  [optional] |
 |**name** | **String** | Имя приложения. |  [optional] |
 |**comment** | **String** | Комментарий к приложению. |  [optional] |
-|**presetId** | **BigDecimal** | Идентификатор тарифа. |  [optional] |
+|**presetId** | **BigDecimal** | ID тарифа. |  [optional] |
 
 
 

@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**id** | **BigDecimal** | Уникальный идентификатор конфигуратора сервера. |  |
+|**id** | **BigDecimal** | ID конфигуратора сервера. |  |
 |**location** | [**LocationEnum**](#LocationEnum) | Локация сервера. |  |
 |**diskType** | [**DiskTypeEnum**](#DiskTypeEnum) | Тип диска. |  |
 |**isAllowedLocalNetwork** | **Boolean** | Есть возможность подключения локальной сети |  |

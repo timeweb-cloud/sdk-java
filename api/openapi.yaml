@@ -49,19 +49,18 @@ info:
     оторый содержит вспомогательную информацию о ресурсе. Чаще всего будет встреча\
     ться при запросе коллекций и содержать поле `total`, которое будет указывать н\
     а количество элементов в коллекции.|\n|response_id|string|Опционально. В больш\
-    инстве случаев в ответе будет содержаться уникальный идентификатор ответа в фо\
-    рмате UUIDv4, который однозначно указывает на ваш запрос внутри нашей системы\
-    . Если вам потребуется задать вопрос нашей поддержке, приложите к вопросу этот\
-    \ идентификатор — так мы сможем найти ответ на него намного быстрее. Также вы\
-    \ можете использовать этот идентификатор, чтобы убедиться, что это новый ответ\
-    \ на запрос и результат не был получен из кэша.|\n\nПример запроса на получени\
-    е списка SSH-ключей:\n```\n    HTTP/2.0 200 OK\n    {\n      \"ssh_keys\":[\n\
-    \          {\n            \"body\":\"ssh-rsa AAAAB3NzaC1sdfghjkOAsBwWhs= example@device.local\"\
-    ,\n            \"created_at\":\"2021-09-15T19:52:27Z\",\n            \"expired_at\"\
-    :null,\n            \"id\":5297,\n            \"is_default\":false,\n        \
-    \    \"name\":\"example@device.local\",\n            \"used_at\":null,\n     \
-    \       \"used_by\":[]\n          }\n      ],\n      \"meta\":{\n          \"\
-    total\":1\n      },\n      \"response_id\":\"94608d15-8672-4eed-8ab6-28bd6fa3cdf7\"\
+    инстве случаев в ответе будет содержаться ID ответа в формате UUIDv4, который\
+    \ однозначно указывает на ваш запрос внутри нашей системы. Если вам потребуетс\
+    я задать вопрос нашей поддержке, приложите к вопросу этот ID— так мы сможем на\
+    йти ответ на него намного быстрее. Также вы можете использовать этот ID, чтобы\
+    \ убедиться, что это новый ответ на запрос и результат не был получен из кэша\
+    .|\n\nПример запроса на получение списка SSH-ключей:\n```\n    HTTP/2.0 200 OK\n\
+    \    {\n      \"ssh_keys\":[\n          {\n            \"body\":\"ssh-rsa AAAAB3NzaC1sdfghjkOAsBwWhs=\
+    \ example@device.local\",\n            \"created_at\":\"2021-09-15T19:52:27Z\"\
+    ,\n            \"expired_at\":null,\n            \"id\":5297,\n            \"\
+    is_default\":false,\n            \"name\":\"example@device.local\",\n        \
+    \    \"used_at\":null,\n            \"used_by\":[]\n          }\n      ],\n  \
+    \    \"meta\":{\n          \"total\":1\n      },\n      \"response_id\":\"94608d15-8672-4eed-8ab6-28bd6fa3cdf7\"\
     \n    }\n```\n\n### Структура ответа с ошибкой\n|Название поля|Тип|Описание|\n\
     |--- |--- |--- |\n|status_code|number|Короткий числовой идентификатор ошибки.|\n\
     |error_code|string|Короткий текстовый идентификатор ошибки, который уточняет ч\
@@ -70,29 +69,28 @@ info:
     о. В большинстве случаев в ответе будет содержаться человекочитаемое подробное\
     \ описание ошибки или ошибок, которые помогут понять, что нужно исправить.|\n\
     |response_id|string|Опционально. В большинстве случае в ответе будет содержать\
-    ся уникальный идентификатор ответа в формате UUIDv4, который однозначно указыв\
-    ает на ваш запрос внутри нашей системы. Если вам потребуется задать вопрос наш\
-    ей поддержке, приложите к вопросу этот идентификатор — так мы сможем найти отв\
-    ет на него намного быстрее.|\n\nПример:\n```\n    HTTP/2.0 403 Forbidden\n   \
-    \ {\n      \"status_code\": 403,\n      \"error_code\":  \"forbidden\",\n    \
-    \  \"message\":     \"You do not have access for the attempted action\",\n   \
-    \   \"response_id\": \"94608d15-8672-4eed-8ab6-28bd6fa3cdf7\"\n    }\n```\n\n\
-    ## Статусы ресурсов\nВажно учесть, что при создании большинства ресурсов внутр\
-    и платформы вам будет сразу возвращен ответ от сервера со статусом `200 OK` ил\
-    и `201 Created` и идентификатором созданного ресурса в теле ответа, но при это\
-    м этот ресурс может быть ещё в *состоянии запуска*.\n\nДля того чтобы понять,\
-    \ в каком состоянии сейчас находится ваш ресурс, мы добавили поле `status` в о\
-    твет на получение информации о ресурсе.\n\nСписок статусов будет отличаться в\
-    \ зависимости от типа ресурса. Увидеть поддерживаемый список статусов вы сможе\
-    те в описании каждого конкретного ресурса.\n\n \n\n## Ограничение скорости зап\
-    росов (Rate Limiting)\nЧтобы обеспечить стабильность для всех пользователей, Timeweb\
-    \ Cloud защищает API от всплесков входящего трафика, анализируя количество зап\
-    росов c каждого аккаунта к каждой конечной точке.\n\nЕсли ваше приложение отпр\
-    авляет более 20 запросов в секунду на одну конечную точку, то для этого запрос\
-    а API может вернуть код состояния HTTP `429 Too Many Requests`.\n\n\n## Аутент\
-    ификация\nДоступ к API осуществляется с помощью JWT-токена. Токенами можно упр\
-    авлять внутри панели управления Timeweb Cloud в разделе *API и Terraform*.\n\n\
-    Токен необходимо передавать в заголовке каждого запроса в формате:\n```\n  Authorization:\
+    ся ID ответа в формате UUIDv4, который однозначно указывает на ваш запрос внут\
+    ри нашей системы. Если вам потребуется задать вопрос нашей поддержке, приложит\
+    е к вопросу этот ID — так мы сможем найти ответ на него намного быстрее.|\n\nП\
+    ример:\n```\n    HTTP/2.0 403 Forbidden\n    {\n      \"status_code\": 403,\n\
+    \      \"error_code\":  \"forbidden\",\n      \"message\":     \"You do not have\
+    \ access for the attempted action\",\n      \"response_id\": \"94608d15-8672-4eed-8ab6-28bd6fa3cdf7\"\
+    \n    }\n```\n\n## Статусы ресурсов\nВажно учесть, что при создании большинств\
+    а ресурсов внутри платформы вам будет сразу возвращен ответ от сервера со стат\
+    усом `200 OK` или `201 Created` и ID созданного ресурса в теле ответа, но при\
+    \ этом этот ресурс может быть ещё в *состоянии запуска*.\n\nДля того чтобы пон\
+    ять, в каком состоянии сейчас находится ваш ресурс, мы добавили поле `status`\
+    \ в ответ на получение информации о ресурсе.\n\nСписок статусов будет отличать\
+    ся в зависимости от типа ресурса. Увидеть поддерживаемый список статусов вы см\
+    ожете в описании каждого конкретного ресурса.\n\n \n\n## Ограничение скорости\
+    \ запросов (Rate Limiting)\nЧтобы обеспечить стабильность для всех пользовател\
+    ей, Timeweb Cloud защищает API от всплесков входящего трафика, анализируя коли\
+    чество запросов c каждого аккаунта к каждой конечной точке.\n\nЕсли ваше прило\
+    жение отправляет более 20 запросов в секунду на одну конечную точку, то для эт\
+    ого запроса API может вернуть код состояния HTTP `429 Too Many Requests`.\n\n\n\
+    ## Аутентификация\nДоступ к API осуществляется с помощью JWT-токена. Токенами\
+    \ можно управлять внутри панели управления Timeweb Cloud в разделе *API и Terraform*.\n\
+    \nТокен необходимо передавать в заголовке каждого запроса в формате:\n```\n  Authorization:\
     \ Bearer $TIMEWEB_CLOUD_TOKEN\n```\n\n## Формат примеров API\nПримеры в этой д\
     окументации описаны с помощью `curl`, HTTP-клиента командной строки. На компью\
     терах `Linux` и `macOS` обычно по умолчанию установлен `curl`, и он доступен д\
@@ -110,14 +108,14 @@ info:
     оли. Например, на `Linux` это можно сделать с помощью команды:\n\n```\nTIMEWEB_CLOUD_TOKEN=\"\
     token\"\n```\n\nПосле этого токен будет автоматически подставляться в ваши зап\
     росы.\n\nОбратите внимание, что все значения в этой документации являются прим\
-    ерами. Не полагайтесь на идентификаторы операционных систем, тарифов и т.д., и\
-    спользуемые в примерах. Используйте соответствующую конечную точку для получен\
-    ия значений перед созданием ресурсов.\n\n\n## Версионирование\nAPI построено с\
-    огласно принципам [семантического версионирования](https://semver.org/lang/ru).\
-    \ Это значит, что мы гарантируем обратную совместимость всех изменений в преде\
-    лах одной мажорной версии.\n\nМажорная версия каждой конечной точки обозначает\
-    ся в пути запроса, например, запрос `/api/v1/servers` указывает, что этот мето\
-    д имеет версию 1."
+    ерами. Не полагайтесь на IDы операционных систем, тарифов и т.д., используемые\
+    \ в примерах. Используйте соответствующую конечную точку для получения значени\
+    й перед созданием ресурсов.\n\n\n## Версионирование\nAPI построено согласно пр\
+    инципам [семантического версионирования](https://semver.org/lang/ru). Это знач\
+    ит, что мы гарантируем обратную совместимость всех изменений в пределах одной\
+    \ мажорной версии.\n\nМажорная версия каждой конечной точки обозначается в пут\
+    и запроса, например, запрос `/api/v1/servers` указывает, что этот метод имеет\
+    \ версию 1."
   title: Timeweb Cloud API
   version: 1.0.0
 servers:
@@ -1146,13 +1144,13 @@ paths:
       description: "Чтобы удалить образ, отправьте запрос DELETE в `/api/v1/images/{image_id}`."
       operationId: deleteImage
       parameters:
-      - description: Идентификатор образа
+      - description: ID образа
         explode: false
         in: path
         name: image_id
         required: true
         schema:
-          description: Идентификатор образа
+          description: ID образа
           title: Image Id
           type: string
         style: simple
@@ -1266,13 +1264,13 @@ paths:
       description: "Чтобы получить образ, отправьте запрос GET в `/api/v1/images/{image_id}`."
       operationId: getImage
       parameters:
-      - description: Идентификатор образа
+      - description: ID образа
         explode: false
         in: path
         name: image_id
         required: true
         schema:
-          description: Идентификатор образа
+          description: ID образа
           title: Image Id
           type: string
         style: simple
@@ -1410,13 +1408,13 @@ paths:
         \ запрос PATCH в `/api/v1/images/{image_id}`."
       operationId: updateImage
       parameters:
-      - description: Идентификатор образа
+      - description: ID образа
         explode: false
         in: path
         name: image_id
         required: true
         schema:
-          description: Идентификатор образа
+          description: ID образа
           title: Image Id
           type: string
         style: simple
@@ -1771,13 +1769,13 @@ paths:
         равьте запрос GET в `/api/v1/images/{image_id}/download-url`."
       operationId: getImageDownloadURLs
       parameters:
-      - description: Идентификатор образа
+      - description: ID образа
         explode: false
         in: path
         name: image_id
         required: true
         schema:
-          description: Идентификатор образа
+          description: ID образа
           title: Image Id
           type: string
         style: simple
@@ -1934,13 +1932,13 @@ paths:
         \ в `/api/v1/images/{image_id}/download-url`."
       operationId: createImageDownloadUrl
       parameters:
-      - description: Идентификатор образа
+      - description: ID образа
         explode: false
         in: path
         name: image_id
         required: true
         schema:
-          description: Идентификатор образа
+          description: ID образа
           title: Image Id
           type: string
         style: simple
@@ -2149,23 +2147,23 @@ paths:
       description: "Чтобы удалить ссылку на образ, отправьте DELETE запрос в `/api/v1/images/{image_id}/download-url/{image_url_id}`."
       operationId: deleteImageDownloadURL
       parameters:
-      - description: Идентификатор образа
+      - description: ID образа
         explode: false
         in: path
         name: image_id
         required: true
         schema:
-          description: Идентификатор образа
+          description: ID образа
           title: Image Id
           type: string
         style: simple
-      - description: Идентификатор ссылки
+      - description: ID ссылки
         explode: false
         in: path
         name: image_url_id
         required: true
         schema:
-          description: Идентификатор ссылки
+          description: ID ссылки
           title: Image Url Id
           type: string
         style: simple
@@ -2283,23 +2281,23 @@ paths:
         вьте запрос GET в `/api/v1/images/{image_id}/download-url/{image_url_id}`."
       operationId: getImageDownloadURL
       parameters:
-      - description: Идентификатор образа
+      - description: ID образа
         explode: false
         in: path
         name: image_id
         required: true
         schema:
-          description: Идентификатор образа
+          description: ID образа
           title: Image Id
           type: string
         style: simple
-      - description: Идентификатор ссылки
+      - description: ID ссылки
         explode: false
         in: path
         name: image_url_id
         required: true
         schema:
-          description: Идентификатор ссылки
+          description: ID ссылки
           title: Image Url Id
           type: string
         style: simple
@@ -2775,13 +2773,13 @@ paths:
       description: "Чтобы удалить группу правил, отправьте DELETE запрос на `/api/v1/firewall/groups/{group_id}`"
       operationId: deleteGroup
       parameters:
-      - description: Идентификатор группы правил
+      - description: ID группы правил
         explode: false
         in: path
         name: group_id
         required: true
         schema:
-          description: Идентификатор группы правил
+          description: ID группы правил
           title: Group Id
           type: string
         style: simple
@@ -2907,13 +2905,13 @@ paths:
         с на `/api/v1/firewall/groups/{group_id}`"
       operationId: getGroup
       parameters:
-      - description: Идентификатор группы правил
+      - description: ID группы правил
         explode: false
         in: path
         name: group_id
         required: true
         schema:
-          description: Идентификатор группы правил
+          description: ID группы правил
           title: Group Id
           type: string
         style: simple
@@ -3049,13 +3047,13 @@ paths:
       description: "Чтобы изменить группу правил, отправьте PATCH запрос на `/api/v1/firewall/groups/{group_id}`"
       operationId: updateGroup
       parameters:
-      - description: Идентификатор группы правил
+      - description: ID группы правил
         explode: false
         in: path
         name: group_id
         required: true
         schema:
-          description: Идентификатор группы правил
+          description: ID группы правил
           title: Group Id
           type: string
         style: simple
@@ -3234,13 +3232,13 @@ paths:
         ьте GET запрос на `/api/v1/firewall/groups/{group_id}/resources`"
       operationId: getGroupResources
       parameters:
-      - description: Идентификатор группы правил
+      - description: ID группы правил
         explode: false
         in: path
         name: group_id
         required: true
         schema:
-          description: Идентификатор группы правил
+          description: ID группы правил
           title: Group Id
           type: string
         style: simple
@@ -3397,23 +3395,23 @@ paths:
         прос на `/api/v1/firewall/groups/{group_id}/resources/{resource_id}`"
       operationId: deleteResourceFromGroup
       parameters:
-      - description: Идентификатор группы правил
+      - description: ID группы правил
         explode: false
         in: path
         name: group_id
         required: true
         schema:
-          description: Идентификатор группы правил
+          description: ID группы правил
           title: Group Id
           type: string
         style: simple
-      - description: Идентификатор ресурса
+      - description: ID ресурса
         explode: false
         in: path
         name: resource_id
         required: true
         schema:
-          description: Идентификатор ресурса
+          description: ID ресурса
           title: Resource Id
           type: string
         style: simple
@@ -3546,23 +3544,23 @@ paths:
         с на `/api/v1/firewall/groups/{group_id}/resources/{resource_id}`"
       operationId: addResourceToGroup
       parameters:
-      - description: Идентификатор группы правил
+      - description: ID группы правил
         explode: false
         in: path
         name: group_id
         required: true
         schema:
-          description: Идентификатор группы правил
+          description: ID группы правил
           title: Group Id
           type: string
         style: simple
-      - description: Идентификатор ресурса
+      - description: ID ресурса
         explode: false
         in: path
         name: resource_id
         required: true
         schema:
-          description: Идентификатор ресурса
+          description: ID ресурса
           title: Resource Id
           type: string
         style: simple
@@ -3703,13 +3701,13 @@ paths:
         \ `/api/v1/firewall/groups/{group_id}/rules`"
       operationId: getGroupRules
       parameters:
-      - description: Идентификатор группы правил
+      - description: ID группы правил
         explode: false
         in: path
         name: group_id
         required: true
         schema:
-          description: Идентификатор группы правил
+          description: ID группы правил
           title: Group Id
           type: string
         style: simple
@@ -3889,13 +3887,13 @@ paths:
       description: "Чтобы создать правило в группе, отправьте POST запрос на `/api/v1/firewall/groups/{group_id}/rules`"
       operationId: createGroupRule
       parameters:
-      - description: Идентификатор группы правил
+      - description: ID группы правил
         explode: false
         in: path
         name: group_id
         required: true
         schema:
-          description: Идентификатор группы правил
+          description: ID группы правил
           title: Group Id
           type: string
         style: simple
@@ -4078,23 +4076,23 @@ paths:
       description: "Чтобы удалить правило, отправьте DELETE запрос на `/api/v1/firewall/groups/{group_id}/rules/{rule_id}`"
       operationId: deleteGroupRule
       parameters:
-      - description: Идентификатор группы правил
+      - description: ID группы правил
         explode: false
         in: path
         name: group_id
         required: true
         schema:
-          description: Идентификатор группы правил
+          description: ID группы правил
           title: Group Id
           type: string
         style: simple
-      - description: Идентификатор правила
+      - description: ID правила
         explode: false
         in: path
         name: rule_id
         required: true
         schema:
-          description: Идентификатор правила
+          description: ID правила
           title: Rule Id
           type: string
         style: simple
@@ -4219,23 +4217,23 @@ paths:
       description: "Чтобы получить инфомрацию о правиле, отправьте GET запрос на `/api/v1/firewall/groups/{group_id}/rules/{rule_id}`"
       operationId: getGroupRule
       parameters:
-      - description: Идентификатор правила
+      - description: ID правила
         explode: false
         in: path
         name: rule_id
         required: true
         schema:
-          description: Идентификатор правила
+          description: ID правила
           title: Rule Id
           type: string
         style: simple
-      - description: Идентификатор группы правил
+      - description: ID группы правил
         explode: false
         in: path
         name: group_id
         required: true
         schema:
-          description: Идентификатор группы правил
+          description: ID группы правил
           title: Group Id
           type: string
         style: simple
@@ -4373,23 +4371,23 @@ paths:
       description: "Чтобы изменить правило, отправьте PATCH запрос на `/api/v1/firewall/groups/{group_id}/rules/{rule_id}`"
       operationId: updateGroupRule
       parameters:
-      - description: Идентификатор группы правил
+      - description: ID группы правил
         explode: false
         in: path
         name: group_id
         required: true
         schema:
-          description: Идентификатор группы правил
+          description: ID группы правил
           title: Group Id
           type: string
         style: simple
-      - description: Идентификатор правила
+      - description: ID правила
         explode: false
         in: path
         name: rule_id
         required: true
         schema:
-          description: Идентификатор правила
+          description: ID правила
           title: Rule Id
           type: string
         style: simple
@@ -6969,7 +6967,7 @@ paths:
         \ `/api/v1/databases/{db_cluster_id}`."
       operationId: deleteDatabaseCluster
       parameters:
-      - description: Идентификатор кластера базы данных
+      - description: ID кластера базы данных
         explode: false
         in: path
         name: db_cluster_id
@@ -7131,7 +7129,7 @@ paths:
         е GET-запрос на `/api/v1/databases/{db_cluster_id}`."
       operationId: getDatabaseCluster
       parameters:
-      - description: Идентификатор кластера базы данных
+      - description: ID кластера базы данных
         explode: false
         in: path
         name: db_cluster_id
@@ -7267,7 +7265,7 @@ paths:
         е PATCH-запрос на `/api/v1/databases/{db_cluster_id}`."
       operationId: updateDatabaseCluster
       parameters:
-      - description: Идентификатор кластера базы данных
+      - description: ID кластера базы данных
         explode: false
         in: path
         name: db_cluster_id
@@ -7449,7 +7447,7 @@ paths:
         нте, отправьте GET-запрос на `/api/v1/databases/{db_cluster_id}/admins`."
       operationId: getDatabaseUsers
       parameters:
-      - description: Идентификатор кластера базы данных
+      - description: ID кластера базы данных
         explode: false
         in: path
         name: db_cluster_id
@@ -7585,7 +7583,7 @@ paths:
         \ на `/api/v1/databases/{db_cluster_id}/admins`."
       operationId: createDatabaseUser
       parameters:
-      - description: Идентификатор кластера базы данных
+      - description: ID кластера базы данных
         explode: false
         in: path
         name: db_cluster_id
@@ -7785,7 +7783,7 @@ paths:
         авьте DELETE-запрос на `/api/v1/databases/{db_cluster_id}/admins/{admin_id}`."
       operationId: deleteDatabaseUser
       parameters:
-      - description: Идентификатор кластера базы данных
+      - description: ID кластера базы данных
         explode: false
         in: path
         name: db_cluster_id
@@ -7793,7 +7791,7 @@ paths:
         schema:
           type: integer
         style: simple
-      - description: Идентификатор пользователя базы данных
+      - description: ID пользователя базы данных
         explode: false
         in: path
         name: admin_id
@@ -7926,7 +7924,7 @@ paths:
         равьте GET-запрос на `/api/v1/databases/{db_cluster_id}/admins/{admin_id}`."
       operationId: getDatabaseUser
       parameters:
-      - description: Идентификатор кластера базы данных
+      - description: ID кластера базы данных
         explode: false
         in: path
         name: db_cluster_id
@@ -7934,7 +7932,7 @@ paths:
         schema:
           type: integer
         style: simple
-      - description: Идентификатор пользователя базы данных
+      - description: ID пользователя базы данных
         explode: false
         in: path
         name: admin_id
@@ -8070,7 +8068,7 @@ paths:
         равьте PATCH-запрос на `/api/v1/databases/{db_cluster_id}/admins/{admin_id}`."
       operationId: updateDatabaseUser
       parameters:
-      - description: Идентификатор кластера базы данных
+      - description: ID кластера базы данных
         explode: false
         in: path
         name: db_cluster_id
@@ -8078,7 +8076,7 @@ paths:
         schema:
           type: integer
         style: simple
-      - description: Идентификатор пользователя базы данных
+      - description: ID пользователя базы данных
         explode: false
         in: path
         name: admin_id
@@ -8269,7 +8267,7 @@ paths:
         \ GET-запрос на `/api/v1/databases/{db_cluster_id}/instances`."
       operationId: getDatabaseInstances
       parameters:
-      - description: Идентификатор кластера базы данных
+      - description: ID кластера базы данных
         explode: false
         in: path
         name: db_cluster_id
@@ -8408,7 +8406,7 @@ paths:
         ьзователя</a> "
       operationId: createDatabaseInstance
       parameters:
-      - description: Идентификатор кластера базы данных
+      - description: ID кластера базы данных
         explode: false
         in: path
         name: db_cluster_id
@@ -8585,7 +8583,7 @@ paths:
         \ `/api/v1/databases/{db_cluster_id}/instances/{instance_id}`."
       operationId: deleteDatabaseInstance
       parameters:
-      - description: Идентификатор кластера базы данных
+      - description: ID кластера базы данных
         explode: false
         in: path
         name: db_cluster_id
@@ -8593,7 +8591,7 @@ paths:
         schema:
           type: integer
         style: simple
-      - description: Идентификатор инстанса базы данных
+      - description: ID инстанса базы данных
         explode: false
         in: path
         name: instance_id
@@ -8725,7 +8723,7 @@ paths:
       description: "Чтобы получить инстанс базы данных, отправьте GET-запрос на `/api/v1/databases/{db_cluster_id}/instances/{instance_id}`."
       operationId: getDatabaseInstance
       parameters:
-      - description: Идентификатор кластера базы данных
+      - description: ID кластера базы данных
         explode: false
         in: path
         name: db_cluster_id
@@ -8733,7 +8731,7 @@ paths:
         schema:
           type: integer
         style: simple
-      - description: Идентификатор инстанса базы данных
+      - description: ID инстанса базы данных
         explode: false
         in: path
         name: instance_id
@@ -8869,7 +8867,7 @@ paths:
         \ `/api/v1/databases/{db_cluster_id}/instances/{instance_id}`."
       operationId: updateDatabaseInstance
       parameters:
-      - description: Идентификатор кластера базы данных
+      - description: ID кластера базы данных
         explode: false
         in: path
         name: db_cluster_id
@@ -9600,7 +9598,7 @@ paths:
         Чтобы удалить базу данных, отправьте запрос DELETE в `api/v1/dbs/{db_id}`.
       operationId: deleteDatabase
       parameters:
-      - description: Идентификатор базы данных
+      - description: ID базы данных
         explode: false
         in: path
         name: db_id
@@ -9763,7 +9761,7 @@ paths:
         Чтобы отобразить информацию об отдельной базе данных, отправьте запрос GET на `api/v1/dbs/{db_id}`.
       operationId: getDatabase
       parameters:
-      - description: Идентификатор базы данных
+      - description: ID базы данных
         explode: false
         in: path
         name: db_id
@@ -9900,7 +9898,7 @@ paths:
         Чтобы обновить только определенные атрибуты базы данных, отправьте запрос PATCH в `api/v1/dbs/{db_id}`.
       operationId: updateDatabase
       parameters:
-      - description: Идентификатор базы данных
+      - description: ID базы данных
         explode: false
         in: path
         name: db_id
@@ -10058,7 +10056,7 @@ paths:
         ьте запрос GET в `api/v1/dbs/{db_id}/auto-backups`"
       operationId: getDatabaseAutoBackupsSettings
       parameters:
-      - description: Идентификатор базы данных
+      - description: ID базы данных
         explode: false
         in: path
         name: db_id
@@ -10194,7 +10192,7 @@ paths:
         ьте запрос PATCH в `api/v1/dbs/{db_id}/auto-backups`"
       operationId: updateDatabaseAutoBackupsSettings
       parameters:
-      - description: Идентификатор базы данных
+      - description: ID базы данных
         explode: false
         in: path
         name: db_id
@@ -10376,7 +10374,7 @@ paths:
         Чтобы получить список бэкапов базы данных, отправьте запрос GET в `api/v1/dbs/{db_id}/backups`.
       operationId: getDatabaseBackups
       parameters:
-      - description: Идентификатор базы данных
+      - description: ID базы данных
         explode: false
         in: path
         name: db_id
@@ -10530,7 +10528,7 @@ paths:
         Чтобы создать бэкап базы данных, отправьте запрос POST в `api/v1/dbs/{db_id}/backups`.
       operationId: createDatabaseBackup
       parameters:
-      - description: Идентификатор базы данных
+      - description: ID базы данных
         explode: false
         in: path
         name: db_id
@@ -10678,7 +10676,7 @@ paths:
         Чтобы удалить бэкап базы данных, отправьте запрос DELETE в `api/v1/dbs/{db_id}/backups/{backup_id}`.
       operationId: deleteDatabaseBackup
       parameters:
-      - description: Идентификатор базы данных
+      - description: ID базы данных
         explode: false
         in: path
         name: db_id
@@ -10686,7 +10684,7 @@ paths:
         schema:
           type: integer
         style: simple
-      - description: Идентификатор резевной копии
+      - description: ID резевной копии
         explode: false
         in: path
         name: backup_id
@@ -10819,7 +10817,7 @@ paths:
         Чтобы получить бэкап базы данных, отправьте запрос GET в `api/v1/dbs/{db_id}/backups/{backup_id}`.
       operationId: getDatabaseBackup
       parameters:
-      - description: Идентификатор базы данных
+      - description: ID базы данных
         explode: false
         in: path
         name: db_id
@@ -10827,7 +10825,7 @@ paths:
         schema:
           type: integer
         style: simple
-      - description: Идентификатор резевной копии
+      - description: ID резевной копии
         explode: false
         in: path
         name: backup_id
@@ -10963,7 +10961,7 @@ paths:
         Чтобы восстановить базу данных из бэкапа, отправьте запрос PUT в `api/v1/dbs/{db_id}/backups/{backup_id}`.
       operationId: restoreDatabaseFromBackup
       parameters:
-      - description: Идентификатор базы данных
+      - description: ID базы данных
         explode: false
         in: path
         name: db_id
@@ -10971,7 +10969,7 @@ paths:
         schema:
           type: integer
         style: simple
-      - description: Идентификатор резевной копии
+      - description: ID резевной копии
         explode: false
         in: path
         name: backup_id
@@ -11573,7 +11571,7 @@ paths:
         Чтобы удалить выделенный сервер, отправьте запрос DELETE в `api/v1/dedicated-servers/{dedicated_id}`.
       operationId: deleteDedicatedServer
       parameters:
-      - description: Уникальный идентификатор выделенного сервера.
+      - description: ID выделенного сервера.
         explode: false
         in: path
         name: dedicated_id
@@ -11708,7 +11706,7 @@ paths:
         Чтобы отобразить информацию об отдельном выделенном сервере, отправьте запрос GET на `api/v1/dedicated-servers/{dedicated_id}`.
       operationId: getDedicatedServer
       parameters:
-      - description: Уникальный идентификатор выделенного сервера.
+      - description: ID выделенного сервера.
         explode: false
         in: path
         name: dedicated_id
@@ -11846,7 +11844,7 @@ paths:
         Чтобы обновить только определенные атрибуты выделенного сервера, отправьте запрос PATCH в `api/v1/dedicated-servers/{dedicated_id}`.
       operationId: updateDedicatedServer
       parameters:
-      - description: Уникальный идентификатор выделенного сервера.
+      - description: ID выделенного сервера.
         explode: false
         in: path
         name: dedicated_id
@@ -12162,7 +12160,7 @@ paths:
         \ серверов, отправьте GET-запрос на `/api/v1/presets/dedicated-servers/{preset_id}/additional-services`."
       operationId: getDedicatedServerPresetAdditionalServices
       parameters:
-      - description: Уникальный идентификатор тарифа выделенного сервера.
+      - description: ID тарифа выделенного сервера.
         explode: false
         in: path
         name: preset_id
@@ -12472,13 +12470,13 @@ paths:
                 response_id: 2b71e17b-2118-4f81-90d8-c8c4b9e8e4e3
                 cluster:
                   id: 18685
-                  name: Кластер 18685
+                  availability_zone: spb-3
+                  name: Friendly Wiles
                   created_at: 2023-01-13T10:10:29.742918
                   status: active
-                  description: Описание кластера
-                  ha: false
-                  k8s_version: v1.22.16
-                  network_driver: canal
+                  description: Новый кластер кубернетес
+                  k8s_version: v1.30.2+k0s.0
+                  network_driver: kuberouter
                   ingress: true
                   preset_id: 403
                   cpu: 1
@@ -12657,13 +12655,13 @@ paths:
       description: "Чтобы удалить кластер, отправьте DELETE-запрос в `/api/v1/k8s/clusters/{cluster_id}`"
       operationId: deleteCluster
       parameters:
-      - description: Уникальный идентификатор кластера
+      - description: ID кластера
         explode: false
         in: path
         name: cluster_id
         required: true
         schema:
-          description: Уникальный идентификатор кластера
+          description: ID кластера
           title: Cluster Id
           type: integer
         style: simple
@@ -12820,13 +12818,13 @@ paths:
       description: "Чтобы получить информацию о кластере, отправьте GET-запрос в `/api/v1/k8s/clusters/{cluster_id}`"
       operationId: getCluster
       parameters:
-      - description: Уникальный идентификатор кластера
+      - description: ID кластера
         explode: false
         in: path
         name: cluster_id
         required: true
         schema:
-          description: Уникальный идентификатор кластера
+          description: ID кластера
           title: Cluster Id
           type: integer
         style: simple
@@ -12974,13 +12972,13 @@ paths:
         \ `/api/v1/k8s/clusters/{cluster_id}`"
       operationId: updateCluster
       parameters:
-      - description: Уникальный идентификатор кластера
+      - description: ID кластера
         explode: false
         in: path
         name: cluster_id
         required: true
         schema:
-          description: Уникальный идентификатор кластера
+          description: ID кластера
           title: Cluster Id
           type: integer
         style: simple
@@ -13161,13 +13159,13 @@ paths:
          Чтобы получить ресурсы кластера, отправьте GET-запрос в `/api/v1/k8s/clusters/{cluster_id}/resources`.
       operationId: getClusterResources
       parameters:
-      - description: Уникальный идентификатор кластера
+      - description: ID кластера
         explode: false
         in: path
         name: cluster_id
         required: true
         schema:
-          description: Уникальный идентификатор кластера
+          description: ID кластера
           title: Cluster Id
           type: integer
         style: simple
@@ -13318,13 +13316,13 @@ paths:
       description: "Чтобы получить файл kubeconfig, отправьте GET-запрос в `/api/v1/k8s/clusters/{cluster_id}/kubeconfig`."
       operationId: getClusterKubeconfig
       parameters:
-      - description: Уникальный идентификатор кластера
+      - description: ID кластера
         explode: false
         in: path
         name: cluster_id
         required: true
         schema:
-          description: Уникальный идентификатор кластера
+          description: ID кластера
           title: Cluster Id
           type: integer
         style: simple
@@ -13465,13 +13463,13 @@ paths:
       description: "Чтобы получить группы нод кластера, отправьте GET-запрос в `/api/v1/k8s/clusters/{cluster_id}/groups`."
       operationId: getClusterNodeGroups
       parameters:
-      - description: Уникальный идентификатор кластера
+      - description: ID кластера
         explode: false
         in: path
         name: cluster_id
         required: true
         schema:
-          description: Уникальный идентификатор кластера
+          description: ID кластера
           title: Cluster Id
           type: integer
         style: simple
@@ -13622,13 +13620,13 @@ paths:
       description: "Чтобы создать группу нод кластера, отправьте POST-запрос в `/api/v1/k8s/clusters/{cluster_id}/groups`."
       operationId: createClusterNodeGroup
       parameters:
-      - description: Уникальный идентификатор кластера
+      - description: ID кластера
         explode: false
         in: path
         name: cluster_id
         required: true
         schema:
-          description: Уникальный идентификатор кластера
+          description: ID кластера
           title: Cluster Id
           type: integer
         style: simple
@@ -13646,7 +13644,7 @@ paths:
                 response_id: 89e6b1c9-14b2-443e-b5c5-84914346ea79
                 node_group:
                   id: 1509
-                  name: Группа нод 1509
+                  name: Новая группа нод
                   created_at: 2023-01-13T10:10:29.753638
                   preset_id: 399
                   node_count: 8
@@ -13806,23 +13804,23 @@ paths:
       description: "Чтобы удалить группу нод, отправьте DELETE-запрос в `/api/v1/k8s/clusters/{cluster_id}/groups/{group_id}`."
       operationId: deleteClusterNodeGroup
       parameters:
-      - description: Уникальный идентификатор кластера
+      - description: ID кластера
         explode: false
         in: path
         name: cluster_id
         required: true
         schema:
-          description: Уникальный идентификатор кластера
+          description: ID кластера
           title: Cluster Id
           type: integer
         style: simple
-      - description: Уникальный идентификатор группы
+      - description: ID группы
         explode: false
         in: path
         name: group_id
         required: true
         schema:
-          description: Уникальный идентификатор группы
+          description: ID группы
           title: Group Id
           type: integer
         style: simple
@@ -13951,23 +13949,23 @@ paths:
         \ `/api/v1/k8s/clusters/{cluster_id}/groups/{group_id}`."
       operationId: getClusterNodeGroup
       parameters:
-      - description: Уникальный идентификатор кластера
+      - description: ID кластера
         explode: false
         in: path
         name: cluster_id
         required: true
         schema:
-          description: Уникальный идентификатор кластера
+          description: ID кластера
           title: Cluster Id
           type: integer
         style: simple
-      - description: Уникальный идентификатор группы
+      - description: ID группы
         explode: false
         in: path
         name: group_id
         required: true
         schema:
-          description: Уникальный идентификатор группы
+          description: ID группы
           title: Group Id
           type: integer
         style: simple
@@ -14108,23 +14106,23 @@ paths:
         , отправьте DELETE-запрос в `/api/v1/k8s/clusters/{cluster_id}/groups/{group_id}/nodes`."
       operationId: reduceCountOfNodesInGroup
       parameters:
-      - description: Уникальный идентификатор кластера
+      - description: ID кластера
         explode: false
         in: path
         name: cluster_id
         required: true
         schema:
-          description: Уникальный идентификатор кластера
+          description: ID кластера
           title: Cluster Id
           type: integer
         style: simple
-      - description: Уникальный идентификатор группы
+      - description: ID группы
         explode: false
         in: path
         name: group_id
         required: true
         schema:
-          description: Уникальный идентификатор группы
+          description: ID группы
           title: Group Id
           type: integer
         style: simple
@@ -14279,23 +14277,23 @@ paths:
         апрос в `/api/v1/k8s/clusters/{cluster_id}/groups/{group_id}/nodes`."
       operationId: getClusterNodesFromGroup
       parameters:
-      - description: Уникальный идентификатор кластера
+      - description: ID кластера
         explode: false
         in: path
         name: cluster_id
         required: true
         schema:
-          description: Уникальный идентификатор кластера
+          description: ID кластера
           title: Cluster Id
           type: integer
         style: simple
-      - description: Уникальный идентификатор группы
+      - description: ID группы
         explode: false
         in: path
         name: group_id
         required: true
         schema:
-          description: Уникальный идентификатор группы
+          description: ID группы
           title: Group Id
           type: integer
         style: simple
@@ -14487,23 +14485,23 @@ paths:
         , отправьте POST-запрос на `/api/v1/k8s/clusters/{cluster_id}/groups/{group_id}/nodes`"
       operationId: increaseCountOfNodesInGroup
       parameters:
-      - description: Уникальный идентификатор кластера
+      - description: ID кластера
         explode: false
         in: path
         name: cluster_id
         required: true
         schema:
-          description: Уникальный идентификатор кластера
+          description: ID кластера
           title: Cluster Id
           type: integer
         style: simple
-      - description: Уникальный идентификатор группы
+      - description: ID группы
         explode: false
         in: path
         name: group_id
         required: true
         schema:
-          description: Уникальный идентификатор группы
+          description: ID группы
           title: Group Id
           type: integer
         style: simple
@@ -14700,13 +14698,13 @@ paths:
       description: "Чтобы получить список нод, отправьте GET-запрос в `/api/v1/k8s/clusters/{cluster_id}/nodes`."
       operationId: getClusterNodes
       parameters:
-      - description: Уникальный идентификатор кластера
+      - description: ID кластера
         explode: false
         in: path
         name: cluster_id
         required: true
         schema:
-          description: Уникальный идентификатор кластера
+          description: ID кластера
           title: Cluster Id
           type: integer
         style: simple
@@ -14873,23 +14871,23 @@ paths:
       description: "Чтобы удалить ноду, отправьте DELETE-запрос в `/api/v1/k8s/clusters/{cluster_id}/nodes/{node_id}`."
       operationId: deleteClusterNode
       parameters:
-      - description: Уникальный идентификатор кластера
+      - description: ID кластера
         explode: false
         in: path
         name: cluster_id
         required: true
         schema:
-          description: Уникальный идентификатор кластера
+          description: ID кластера
           title: Cluster Id
           type: integer
         style: simple
-      - description: Уникальный идентификатор группы нод
+      - description: ID группы нод
         explode: false
         in: path
         name: node_id
         required: true
         schema:
-          description: Уникальный идентификатор группы нод
+          description: ID группы нод
           title: Node Id
           type: integer
         style: simple
@@ -15708,7 +15706,7 @@ paths:
          Обратите внимание, если на аккаунте включено удаление серверов по смс, то вернется ошибка 423.
       operationId: deleteServer
       parameters:
-      - description: Уникальный идентификатор облачного сервера.
+      - description: ID облачного сервера.
         explode: false
         in: path
         name: server_id
@@ -15877,7 +15875,7 @@ paths:
       description: "Чтобы получить сервер, отправьте запрос GET в `/api/v1/servers/{server_id}`."
       operationId: getServer
       parameters:
-      - description: Уникальный идентификатор облачного сервера.
+      - description: ID облачного сервера.
         explode: false
         in: path
         name: server_id
@@ -16021,7 +16019,7 @@ paths:
         \ запрос PATCH в `/api/v1/servers/{server_id}`."
       operationId: updateServer
       parameters:
-      - description: Уникальный идентификатор облачного сервера.
+      - description: ID облачного сервера.
         explode: false
         in: path
         name: server_id
@@ -16221,7 +16219,7 @@ paths:
         а `/api/v1/servers/{server_id}/action`."
       operationId: performActionOnServer
       parameters:
-      - description: Уникальный идентификатор облачного сервера.
+      - description: ID облачного сервера.
         explode: false
         in: path
         name: server_id
@@ -16396,7 +16394,7 @@ paths:
       description: "Чтобы клонировать сервер, отправьте POST-запрос на `/api/v1/servers/{server_id}/clone`."
       operationId: cloneServer
       parameters:
-      - description: Уникальный идентификатор облачного сервера.
+      - description: ID облачного сервера.
         explode: false
         in: path
         name: server_id
@@ -16540,7 +16538,7 @@ paths:
         апрос на `/api/v1/servers/{server_id}/hard-shutdown`."
       operationId: hardShutdownServer
       parameters:
-      - description: Уникальный идентификатор облачного сервера.
+      - description: ID облачного сервера.
         explode: false
         in: path
         name: server_id
@@ -16679,7 +16677,7 @@ paths:
       description: "Чтобы выключить сервер, отправьте POST-запрос на `/api/v1/servers/{server_id}/shutdown`."
       operationId: shutdownServer
       parameters:
-      - description: Уникальный идентификатор облачного сервера.
+      - description: ID облачного сервера.
         explode: false
         in: path
         name: server_id
@@ -16818,7 +16816,7 @@ paths:
       description: "Чтобы сбросить пароль сервера, отправьте POST-запрос на `/api/v1/servers/{server_id}/reset-password`."
       operationId: resetServerPassword
       parameters:
-      - description: Уникальный идентификатор облачного сервера.
+      - description: ID облачного сервера.
         explode: false
         in: path
         name: server_id
@@ -16951,7 +16949,7 @@ paths:
       description: "Чтобы запустить сервер, отправьте POST-запрос на `/api/v1/servers/{server_id}/start`."
       operationId: startServer
       parameters:
-      - description: Уникальный идентификатор облачного сервера.
+      - description: ID облачного сервера.
         explode: false
         in: path
         name: server_id
@@ -17084,7 +17082,7 @@ paths:
       description: "Чтобы перезагрузить сервер, отправьте POST-запрос на `/api/v1/servers/{server_id}/reboot`."
       operationId: rebootServer
       parameters:
-      - description: Уникальный идентификатор облачного сервера.
+      - description: ID облачного сервера.
         explode: false
         in: path
         name: server_id
@@ -17223,7 +17221,7 @@ paths:
       description: "Чтобы получить статистику сервера, отправьте GET-запрос на `/api/v1/servers/{server_id}/statistics`."
       operationId: getServerStatistics
       parameters:
-      - description: Уникальный идентификатор облачного сервера.
+      - description: ID облачного сервера.
         explode: false
         in: path
         name: server_id
@@ -17895,7 +17893,7 @@ paths:
          После смены типа загрузки сервер будет перезапущен.
       operationId: updateServerOSBootMode
       parameters:
-      - description: Уникальный идентификатор облачного сервера.
+      - description: ID облачного сервера.
         explode: false
         in: path
         name: server_id
@@ -18068,7 +18066,7 @@ paths:
         \ отправьте PATCH-запрос на `/api/v1/servers/{server_id}/local-networks/nat-mode`."
       operationId: updateServerNAT
       parameters:
-      - description: Уникальный идентификатор облачного сервера.
+      - description: ID облачного сервера.
         explode: false
         in: path
         name: server_id
@@ -18241,7 +18239,7 @@ paths:
         \ Нельзя удалить основной IP-адрес"
       operationId: deleteServerIP
       parameters:
-      - description: Уникальный идентификатор облачного сервера.
+      - description: ID облачного сервера.
         explode: false
         in: path
         name: server_id
@@ -18417,7 +18415,7 @@ paths:
          На данный момент IPv6 доступны только для локации `ru-1`.
       operationId: getServerIPs
       parameters:
-      - description: Уникальный идентификатор облачного сервера.
+      - description: ID облачного сервера.
         explode: false
         in: path
         name: server_id
@@ -18560,7 +18558,7 @@ paths:
       description: "Чтобы изменить IP-адрес сервера, отправьте POST-запрос на `/api/v1/servers/{server_id}/ips`."
       operationId: updateServerIP
       parameters:
-      - description: Уникальный идентификатор облачного сервера.
+      - description: ID облачного сервера.
         explode: false
         in: path
         name: server_id
@@ -18741,7 +18739,7 @@ paths:
          На данный момент IPv6 доступны только для серверов с локацией `ru-1`.
       operationId: addServerIP
       parameters:
-      - description: Уникальный идентификатор облачного сервера.
+      - description: ID облачного сервера.
         explode: false
         in: path
         name: server_id
@@ -18920,7 +18918,7 @@ paths:
       description: "Чтобы получить список логов сервера, отправьте GET-запрос на `/api/v1/servers/{server_id}/logs`."
       operationId: getServerLogs
       parameters:
-      - description: Уникальный идентификатор облачного сервера.
+      - description: ID облачного сервера.
         explode: false
         in: path
         name: server_id
@@ -19095,7 +19093,7 @@ paths:
         \ `/api/v1/servers/{server_id}/disks`."
       operationId: getServerDisks
       parameters:
-      - description: Уникальный идентификатор облачного сервера.
+      - description: ID облачного сервера.
         explode: false
         in: path
         name: server_id
@@ -19239,7 +19237,7 @@ paths:
         \ Системный диск создать нельзя."
       operationId: createServerDisk
       parameters:
-      - description: Уникальный идентификатор облачного сервера.
+      - description: ID облачного сервера.
         explode: false
         in: path
         name: server_id
@@ -19416,7 +19414,7 @@ paths:
         \ Нельзя удалять системный диск."
       operationId: deleteServerDisk
       parameters:
-      - description: Уникальный идентификатор облачного сервера.
+      - description: ID облачного сервера.
         explode: false
         in: path
         name: server_id
@@ -19426,7 +19424,7 @@ paths:
           minimum: 1
           type: integer
         style: simple
-      - description: Уникальный идентификатор диска сервера.
+      - description: ID диска сервера.
         explode: false
         in: path
         name: disk_id
@@ -19566,7 +19564,7 @@ paths:
       description: "Чтобы получить диск сервера, отправьте GET-запрос на `/api/v1/servers/{server_id}/disks/{disk_id}`."
       operationId: getServerDisk
       parameters:
-      - description: Уникальный идентификатор облачного сервера.
+      - description: ID облачного сервера.
         explode: false
         in: path
         name: server_id
@@ -19576,7 +19574,7 @@ paths:
           minimum: 1
           type: integer
         style: simple
-      - description: Уникальный идентификатор диска сервера.
+      - description: ID диска сервера.
         explode: false
         in: path
         name: disk_id
@@ -19720,7 +19718,7 @@ paths:
         \ на `/api/v1/servers/{server_id}/disks/{disk_id}`."
       operationId: updateServerDisk
       parameters:
-      - description: Уникальный идентификатор облачного сервера.
+      - description: ID облачного сервера.
         explode: false
         in: path
         name: server_id
@@ -19730,7 +19728,7 @@ paths:
           minimum: 1
           type: integer
         style: simple
-      - description: Уникальный идентификатор диска сервера.
+      - description: ID диска сервера.
         explode: false
         in: path
         name: disk_id
@@ -19907,7 +19905,7 @@ paths:
         е GET-запрос на `/api/v1/servers/{server_id}/disks/{disk_id}/auto-backups`."
       operationId: getServerDiskAutoBackupSettings
       parameters:
-      - description: Уникальный идентификатор облачного сервера.
+      - description: ID облачного сервера.
         explode: false
         in: path
         name: server_id
@@ -19917,7 +19915,7 @@ paths:
           minimum: 1
           type: integer
         style: simple
-      - description: Уникальный идентификатор диска сервера.
+      - description: ID диска сервера.
         explode: false
         in: path
         name: disk_id
@@ -20055,7 +20053,7 @@ paths:
         \ PATCH-запрос на `/api/v1/servers/{server_id}/disks/{disk_id}/auto-backups`."
       operationId: updateServerDiskAutoBackupSettings
       parameters:
-      - description: Уникальный идентификатор облачного сервера.
+      - description: ID облачного сервера.
         explode: false
         in: path
         name: server_id
@@ -20065,7 +20063,7 @@ paths:
           minimum: 1
           type: integer
         style: simple
-      - description: Уникальный идентификатор диска сервера.
+      - description: ID диска сервера.
         explode: false
         in: path
         name: disk_id
@@ -20251,7 +20249,7 @@ paths:
          Тело ответа будет представлять собой объект JSON с ключом `backups`.
       operationId: getServerDiskBackups
       parameters:
-      - description: Уникальный идентификатор облачного сервера.
+      - description: ID облачного сервера.
         explode: false
         in: path
         name: server_id
@@ -20261,7 +20259,7 @@ paths:
           minimum: 1
           type: integer
         style: simple
-      - description: Уникальный идентификатор диска сервера.
+      - description: ID диска сервера.
         explode: false
         in: path
         name: disk_id
@@ -20401,7 +20399,7 @@ paths:
          Тело ответа будет представлять собой объект JSON с ключом `backup`.
       operationId: createServerDiskBackup
       parameters:
-      - description: Уникальный идентификатор облачного сервера.
+      - description: ID облачного сервера.
         explode: false
         in: path
         name: server_id
@@ -20411,7 +20409,7 @@ paths:
           minimum: 1
           type: integer
         style: simple
-      - description: Уникальный идентификатор диска сервера.
+      - description: ID диска сервера.
         explode: false
         in: path
         name: disk_id
@@ -20583,7 +20581,7 @@ paths:
         \ `/api/v1/servers/{server_id}/disks/{disk_id}/backups/{backup_id}`."
       operationId: deleteServerDiskBackup
       parameters:
-      - description: Уникальный идентификатор облачного сервера.
+      - description: ID облачного сервера.
         explode: false
         in: path
         name: server_id
@@ -20593,7 +20591,7 @@ paths:
           minimum: 1
           type: integer
         style: simple
-      - description: Уникальный идентификатор диска сервера.
+      - description: ID диска сервера.
         explode: false
         in: path
         name: disk_id
@@ -20603,7 +20601,7 @@ paths:
           minimum: 1
           type: integer
         style: simple
-      - description: Уникальный идентификатор бэкапа сервера.
+      - description: ID бэкапа сервера.
         explode: false
         in: path
         name: backup_id
@@ -20746,7 +20744,7 @@ paths:
          Тело ответа будет представлять собой объект JSON с ключом `backup`.
       operationId: getServerDiskBackup
       parameters:
-      - description: Уникальный идентификатор облачного сервера.
+      - description: ID облачного сервера.
         explode: false
         in: path
         name: server_id
@@ -20756,7 +20754,7 @@ paths:
           minimum: 1
           type: integer
         style: simple
-      - description: Уникальный идентификатор диска сервера.
+      - description: ID диска сервера.
         explode: false
         in: path
         name: disk_id
@@ -20766,7 +20764,7 @@ paths:
           minimum: 1
           type: integer
         style: simple
-      - description: Уникальный идентификатор бэкапа сервера.
+      - description: ID бэкапа сервера.
         explode: false
         in: path
         name: backup_id
@@ -20904,7 +20902,7 @@ paths:
         \ `/api/v1/servers/{server_id}/disks/{disk_id}/backups/{backup_id}`."
       operationId: updateServerDiskBackup
       parameters:
-      - description: Уникальный идентификатор облачного сервера.
+      - description: ID облачного сервера.
         explode: false
         in: path
         name: server_id
@@ -20914,7 +20912,7 @@ paths:
           minimum: 1
           type: integer
         style: simple
-      - description: Уникальный идентификатор диска сервера.
+      - description: ID диска сервера.
         explode: false
         in: path
         name: disk_id
@@ -20924,7 +20922,7 @@ paths:
           minimum: 1
           type: integer
         style: simple
-      - description: Уникальный идентификатор бэкапа сервера.
+      - description: ID бэкапа сервера.
         explode: false
         in: path
         name: backup_id
@@ -21095,7 +21093,7 @@ paths:
         \ POST-запрос на `/api/v1/servers/{server_id}/disks/{disk_id}/backups/{backup_id}/action`."
       operationId: performActionOnBackup
       parameters:
-      - description: Уникальный идентификатор облачного сервера.
+      - description: ID облачного сервера.
         explode: false
         in: path
         name: server_id
@@ -21105,7 +21103,7 @@ paths:
           minimum: 1
           type: integer
         style: simple
-      - description: Уникальный идентификатор диска сервера.
+      - description: ID диска сервера.
         explode: false
         in: path
         name: disk_id
@@ -21115,7 +21113,7 @@ paths:
           minimum: 1
           type: integer
         style: simple
-      - description: Уникальный идентификатор бэкапа сервера.
+      - description: ID бэкапа сервера.
         explode: false
         in: path
         name: backup_id
@@ -21292,7 +21290,7 @@ paths:
         е POST-запрос на `/api/v1/servers/{server_id}/image-unmount`."
       operationId: imageUnmountAndServerReload
       parameters:
-      - description: Уникальный идентификатор облачного сервера.
+      - description: ID облачного сервера.
         explode: false
         in: path
         name: server_id
@@ -21698,7 +21696,7 @@ paths:
       description: "Чтобы удалить проект, отправьте запрос DELETE в `api/v1/projects/{project_id}`."
       operationId: deleteProject
       parameters:
-      - description: Уникальный идентификатор проекта.
+      - description: ID проекта.
         explode: false
         in: path
         name: project_id
@@ -21829,11 +21827,10 @@ paths:
           \t}\n}\n"
       x-accepts: application/json
     get:
-      description: "Чтобы получить проект по идентификатору, отправьте GET-запрос\
-        \ на `/api/v1/projects/{project_id}`."
+      description: "Чтобы получить проект по ID, отправьте GET-запрос на `/api/v1/projects/{project_id}`."
       operationId: getProject
       parameters:
-      - description: Уникальный идентификатор проекта.
+      - description: ID проекта.
         explode: false
         in: path
         name: project_id
@@ -21886,7 +21883,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/getFinances_500_response'
           description: Внутренняя ошибка сервера
-      summary: Получение проекта по идентификатору
+      summary: Получение проекта по ID
       tags:
       - Projects
       x-codeSamples:
@@ -21970,7 +21967,7 @@ paths:
       description: "Чтобы изменить проект, отправьте запрос PUT в `api/v1/projects/{project_id}`."
       operationId: updateProject
       parameters:
-      - description: Уникальный идентификатор проекта.
+      - description: ID проекта.
         explode: false
         in: path
         name: project_id
@@ -22141,7 +22138,7 @@ paths:
         апрос на `/api/v1/projects/{project_id}/resources/balancers`."
       operationId: getProjectBalancers
       parameters:
-      - description: Уникальный идентификатор проекта.
+      - description: ID проекта.
         explode: false
         in: path
         name: project_id
@@ -22281,7 +22278,7 @@ paths:
         Балансировщик будет добавлен в указанный проект. Тело ответа будет содержать объект JSON с информацией о добавленном балансировщике.
       operationId: addBalancerToProject
       parameters:
-      - description: Уникальный идентификатор проекта.
+      - description: ID проекта.
         explode: false
         in: path
         name: project_id
@@ -22452,7 +22449,7 @@ paths:
         а `/api/v1/projects/{project_id}/resources/buckets`."
       operationId: getProjectStorages
       parameters:
-      - description: Уникальный идентификатор проекта.
+      - description: ID проекта.
         explode: false
         in: path
         name: project_id
@@ -22592,7 +22589,7 @@ paths:
         Хранилище будет добавлено в указанный проект. Тело ответа будет содержать объект JSON с информацией о добавленном хранилище.
       operationId: addStorageToProject
       parameters:
-      - description: Уникальный идентификатор проекта.
+      - description: ID проекта.
         explode: false
         in: path
         name: project_id
@@ -22763,7 +22760,7 @@ paths:
         \ на `/api/v1/projects/{project_id}/resources/clusters`."
       operationId: getProjectClusters
       parameters:
-      - description: Уникальный идентификатор проекта.
+      - description: ID проекта.
         explode: false
         in: path
         name: project_id
@@ -22903,7 +22900,7 @@ paths:
         Кластер будет добавлен в указанный проект. Тело ответа будет содержать объект JSON с информацией о добавленном кластере.
       operationId: addClusterToProject
       parameters:
-      - description: Уникальный идентификатор проекта.
+      - description: ID проекта.
         explode: false
         in: path
         name: project_id
@@ -23074,7 +23071,7 @@ paths:
         а `/api/v1/projects/{project_id}/resources/servers`."
       operationId: getProjectServers
       parameters:
-      - description: Уникальный идентификатор проекта.
+      - description: ID проекта.
         explode: false
         in: path
         name: project_id
@@ -23214,7 +23211,7 @@ paths:
         Сервер будет добавлен в указанный проект. Тело ответа будет содержать объект JSON с информацией о добавленном сервере.
       operationId: addServerToProject
       parameters:
-      - description: Уникальный идентификатор проекта.
+      - description: ID проекта.
         explode: false
         in: path
         name: project_id
@@ -23385,7 +23382,7 @@ paths:
         \ на `/api/v1/projects/{project_id}/resources/databases`."
       operationId: getProjectDatabases
       parameters:
-      - description: Уникальный идентификатор проекта.
+      - description: ID проекта.
         explode: false
         in: path
         name: project_id
@@ -23525,7 +23522,7 @@ paths:
         База данных будет добавлена в указанный проект. Тело ответа будет содержать объект JSON с информацией о добавленной базе данных.
       operationId: addDatabaseToProject
       parameters:
-      - description: Уникальный идентификатор проекта.
+      - description: ID проекта.
         explode: false
         in: path
         name: project_id
@@ -23696,7 +23693,7 @@ paths:
         апрос на `/api/v1/projects/{project_id}/resources/dedicated`."
       operationId: getProjectDedicatedServers
       parameters:
-      - description: Уникальный идентификатор проекта.
+      - description: ID проекта.
         explode: false
         in: path
         name: project_id
@@ -23836,7 +23833,7 @@ paths:
         Выделенный сервер будет добавлен в указанный проект. Тело ответа будет содержать объект JSON с информацией о добавленном выделенном сервере.
       operationId: addDedicatedServerToProject
       parameters:
-      - description: Уникальный идентификатор проекта.
+      - description: ID проекта.
         explode: false
         in: path
         name: project_id
@@ -24006,7 +24003,7 @@ paths:
       description: "Чтобы получить все ресурсы проекта, отправьте GET-запрос на `/api/v1/projects/{project_id}/resources`."
       operationId: getAllProjectResources
       parameters:
-      - description: Уникальный идентификатор проекта.
+      - description: ID проекта.
         explode: false
         in: path
         name: project_id
@@ -24842,7 +24839,7 @@ paths:
         Чтобы перенести ресурс в другой проект, отправьте запрос PUT в `api/v1/projects/{project_id}/resources/transfer`.
       operationId: transferResourceToAnotherProject
       parameters:
-      - description: Уникальный идентификатор проекта.
+      - description: ID проекта.
         explode: false
         in: path
         name: project_id
@@ -25312,7 +25309,7 @@ paths:
       description: "Чтобы удалить хранилище, отправьте DELETE-запрос на `/api/v1/storages/buckets/{bucket_id}`."
       operationId: deleteStorage
       parameters:
-      - description: Уникальный идентификатор хранилища.
+      - description: ID хранилища.
         explode: false
         in: path
         name: bucket_id
@@ -25475,7 +25472,7 @@ paths:
       description: "Чтобы изменить хранилище, отправьте PATCH-запрос на `/api/v1/storages/buckets/{bucket_id}`."
       operationId: updateStorage
       parameters:
-      - description: Уникальный идентификатор хранилища.
+      - description: ID хранилища.
         explode: false
         in: path
         name: bucket_id
@@ -25904,7 +25901,7 @@ paths:
         тправьте POST-запрос на `/api/v1/storages/users/{user_id}`."
       operationId: updateStorageUser
       parameters:
-      - description: Уникальный идентификатор пользователя хранилища.
+      - description: ID пользователя хранилища.
         explode: false
         in: path
         name: user_id
@@ -26075,7 +26072,7 @@ paths:
         \ Cloud, отправьте GET-запрос на `/api/v1/storages/buckets/{bucket_id}/transfer-status`."
       operationId: getStorageTransferStatus
       parameters:
-      - description: Уникальный идентификатор хранилища.
+      - description: ID хранилища.
         explode: false
         in: path
         name: bucket_id
@@ -26393,7 +26390,7 @@ paths:
         \ `/api/v1/storages/buckets/{bucket_id}/subdomains`."
       operationId: deleteStorageSubdomains
       parameters:
-      - description: Уникальный идентификатор хранилища.
+      - description: ID хранилища.
         explode: false
         in: path
         name: bucket_id
@@ -26567,7 +26564,7 @@ paths:
         ос на `/api/v1/storages/buckets/{bucket_id}/subdomains`."
       operationId: getStorageSubdomains
       parameters:
-      - description: Уникальный идентификатор хранилища.
+      - description: ID хранилища.
         explode: false
         in: path
         name: bucket_id
@@ -26705,7 +26702,7 @@ paths:
         \ на `/api/v1/storages/buckets/{bucket_id}/subdomains`."
       operationId: addStorageSubdomains
       parameters:
-      - description: Уникальный идентификатор хранилища.
+      - description: ID хранилища.
         explode: false
         in: path
         name: bucket_id
@@ -26883,7 +26880,7 @@ paths:
         е GET-запрос на `/api/v1/storages/buckets/{bucket_id}/object-manager/list`."
       operationId: getStorageFilesList
       parameters:
-      - description: Уникальный идентификатор хранилища.
+      - description: ID хранилища.
         explode: false
         in: path
         name: bucket_id
@@ -27041,7 +27038,7 @@ paths:
         апрос на `/api/v1/storages/buckets/{bucket_id}/object-manager/rename`."
       operationId: renameStorageFile
       parameters:
-      - description: Уникальный идентификатор хранилища.
+      - description: ID хранилища.
         explode: false
         in: path
         name: bucket_id
@@ -27220,7 +27217,7 @@ paths:
         апрос на `/api/v1/storages/buckets/{bucket_id}/object-manager/remove`."
       operationId: deleteStorageFile
       parameters:
-      - description: Уникальный идентификатор хранилища.
+      - description: ID хранилища.
         explode: false
         in: path
         name: bucket_id
@@ -27408,7 +27405,7 @@ paths:
         \ POST-запрос на `/api/v1/storages/buckets/{bucket_id}/object-manager/copy`."
       operationId: copyStorageFile
       parameters:
-      - description: Уникальный идентификатор хранилища.
+      - description: ID хранилища.
         explode: false
         in: path
         name: bucket_id
@@ -27592,7 +27589,7 @@ paths:
       description: "Чтобы загрузить файлы в хранилище, отправьте POST-запрос на `/api/v1/storages/buckets/{bucket_id}/object-manager/upload`."
       operationId: uploadFileToStorage
       parameters:
-      - description: Уникальный идентификатор хранилища.
+      - description: ID хранилища.
         explode: false
         in: path
         name: bucket_id
@@ -27777,7 +27774,7 @@ paths:
         \ `/api/v1/storages/buckets/{bucket_id}/object-manager/mkdir`."
       operationId: createFolderInStorage
       parameters:
-      - description: Уникальный идентификатор хранилища.
+      - description: ID хранилища.
         explode: false
         in: path
         name: bucket_id
@@ -28395,7 +28392,7 @@ paths:
       description: "Чтобы удалить токен, отправьте DELETE-запрос на `/api/v1/auth/api-keys/{token_id}`."
       operationId: deleteToken
       parameters:
-      - description: Идентификатор токена
+      - description: ID токена
         explode: false
         in: path
         name: token_id
@@ -28532,7 +28529,7 @@ paths:
         \ задав необходимые атрибуты."
       operationId: updateToken
       parameters:
-      - description: Идентификатор токена
+      - description: ID токена
         explode: false
         in: path
         name: token_id
@@ -28713,7 +28710,7 @@ paths:
         \ задав необходимые атрибуты."
       operationId: reissueToken
       parameters:
-      - description: Идентификатор токена
+      - description: ID токена
         explode: false
         in: path
         name: token_id
@@ -32645,7 +32642,7 @@ paths:
           example: somedomain.ru
           type: string
         style: simple
-      - description: Идентификатор DNS-записи домена или поддомена.
+      - description: ID DNS-записи домена или поддомена.
         explode: false
         in: path
         name: record_id
@@ -32784,7 +32781,7 @@ paths:
           example: somedomain.ru
           type: string
         style: simple
-      - description: Идентификатор DNS-записи домена или поддомена.
+      - description: ID DNS-записи домена или поддомена.
         explode: false
         in: path
         name: record_id
@@ -33722,8 +33719,7 @@ paths:
         \ домена, отправьте запрос GET на `/api/v1/domains-requests`."
       operationId: getDomainRequests
       parameters:
-      - description: "Идентификатор администратора, на которого зарегистрирован до\
-          мен."
+      - description: "ID администратора, на которого зарегистрирован домен."
         explode: true
         in: query
         name: person_id
@@ -34019,7 +34015,7 @@ paths:
         , отправьте запрос GET на `/api/v1/domains-requests/{request_id}`."
       operationId: getDomainRequest
       parameters:
-      - description: Идентификатор заявки на регистрацию/продление/трансфер домена.
+      - description: ID заявки на регистрацию/продление/трансфер домена.
         explode: false
         in: path
         name: request_id
@@ -34152,7 +34148,7 @@ paths:
         Заявка будет обновлена с использованием предоставленной информации. Тело ответа будет содержать объект JSON с информацией о обновленной заявке.
       operationId: updateDomainRequest
       parameters:
-      - description: Идентификатор заявки на регистрацию/продление/трансфер домена.
+      - description: ID заявки на регистрацию/продление/трансфер домена.
         explode: false
         in: path
         name: request_id
@@ -34455,11 +34451,11 @@ paths:
       x-accepts: application/json
   /api/v1/tlds/{tld_id}:
     get:
-      description: "Чтобы получить информацию о доменной зоне по идентификатору, о\
-        тправьте запрос GET на `/api/v1/tlds/{tld_id}`."
+      description: "Чтобы получить информацию о доменной зоне по ID, отправьте зап\
+        рос GET на `/api/v1/tlds/{tld_id}`."
       operationId: getTLD
       parameters:
-      - description: Идентификатор доменной зоны.
+      - description: ID доменной зоны.
         explode: false
         in: path
         name: tld_id
@@ -34505,7 +34501,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/getFinances_500_response'
           description: Внутренняя ошибка сервера
-      summary: Получить информацию о доменной зоне по идентификатору
+      summary: Получить информацию о доменной зоне по ID
       tags:
       - Domains
       x-codeSamples:
@@ -35139,13 +35135,13 @@ paths:
         \ GET на `api/v2/vpcs/{vpc_id}`."
       operationId: getVPC
       parameters:
-      - description: Идентификатор сети
+      - description: ID сети
         explode: false
         in: path
         name: vpc_id
         required: true
         schema:
-          description: Идентификатор сети
+          description: ID сети
           example: network-1234567890
           type: string
         style: simple
@@ -35276,13 +35272,13 @@ paths:
       description: "Чтобы изменить VPC, отправьте PATCH-запрос на `/api/v2/vpcs/{vpc_id}`"
       operationId: updateVPCs
       parameters:
-      - description: Идентификатор сети
+      - description: ID сети
         explode: false
         in: path
         name: vpc_id
         required: true
         schema:
-          description: Идентификатор сети
+          description: ID сети
           example: network-1234567890
           type: string
         style: simple
@@ -35335,7 +35331,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/getFinances_500_response'
           description: Внутренняя ошибка сервера
-      summary: Изменение VPC по идентификатору сети
+      summary: Изменение VPC по ID сети
       tags:
       - VPC
       x-codeSamples:
@@ -35446,13 +35442,13 @@ paths:
       description: "Чтобы получить список сервисов, отправьте GET-запрос на `/api/v2/vpcs/{vpc_id}/services`."
       operationId: getVPCServices
       parameters:
-      - description: Идентификатор сети
+      - description: ID сети
         explode: false
         in: path
         name: vpc_id
         required: true
         schema:
-          description: Идентификатор сети
+          description: ID сети
           example: network-1234567890
           type: string
         style: simple
@@ -35584,13 +35580,13 @@ paths:
       description: "Чтобы удалить VPC, отправьте DELETE-запрос на `/api/v1/vpcs/{vpc_id}`"
       operationId: deleteVPC
       parameters:
-      - description: Идентификатор сети
+      - description: ID сети
         explode: false
         in: path
         name: vpc_id
         required: true
         schema:
-          description: Идентификатор сети
+          description: ID сети
           example: network-1234567890
           type: string
         style: simple
@@ -35637,7 +35633,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/getFinances_500_response'
           description: Внутренняя ошибка сервера
-      summary: Удаление VPC по идентификатору сети
+      summary: Удаление VPC по ID сети
       tags:
       - VPC
       x-codeSamples:
@@ -35724,13 +35720,13 @@ paths:
         \ `/api/v1/vpcs/{vpc_id}/ports`."
       operationId: getVPCPorts
       parameters:
-      - description: Идентификатор сети
+      - description: ID сети
         explode: false
         in: path
         name: vpc_id
         required: true
         schema:
-          description: Идентификатор сети
+          description: ID сети
           example: network-1234567890
           type: string
         style: simple
@@ -36163,7 +36159,7 @@ paths:
       description: "Чтобы удалить SSH-ключ, отправьте DELETE-запрос на `/api/v1/ssh-keys/{ssh_key_id}`"
       operationId: deleteKey
       parameters:
-      - description: Уникальный идентификатор SSH-ключа
+      - description: ID SSH-ключа
         explode: false
         in: path
         name: ssh_key_id
@@ -36297,7 +36293,7 @@ paths:
       description: "Чтобы получить SSH-ключ, отправьте GET-запрос на `/api/v1/ssh-keys/{ssh_key_id}`"
       operationId: getKey
       parameters:
-      - description: Уникальный идентификатор SSH-ключа
+      - description: ID SSH-ключа
         explode: false
         in: path
         name: ssh_key_id
@@ -36434,7 +36430,7 @@ paths:
       description: "Чтобы изменить SSH-ключ, отправьте PATCH-запрос на `/api/v1/ssh-keys/{ssh_key_id}`"
       operationId: updateKey
       parameters:
-      - description: Уникальный идентификатор SSH-ключа
+      - description: ID SSH-ключа
         explode: false
         in: path
         name: ssh_key_id
@@ -36603,7 +36599,7 @@ paths:
       description: "Чтобы добавить SSH-ключи на сервер, отправьте POST-запрос на `/api/v1/servers/{server_id}/ssh-keys`"
       operationId: addKeyToServer
       parameters:
-      - description: Уникальный идентификатор облачного сервера.
+      - description: ID облачного сервера.
         explode: false
         in: path
         name: server_id
@@ -36777,7 +36773,7 @@ paths:
       description: "Чтобы удалить SSH-ключ с сервера, отправьте DELETE-запрос на `/api/v1/servers/{server_id}/ssh-keys/{ssh_key_id}`"
       operationId: deleteKeyFromServer
       parameters:
-      - description: Уникальный идентификатор облачного сервера.
+      - description: ID облачного сервера.
         explode: false
         in: path
         name: server_id
@@ -36787,7 +36783,7 @@ paths:
           minimum: 1
           type: integer
         style: simple
-      - description: Уникальный идентификатор SSH-ключа
+      - description: ID SSH-ключа
         explode: false
         in: path
         name: ssh_key_id
@@ -42706,7 +42702,7 @@ components:
         type: integer
       style: simple
     database-cluster-id:
-      description: Идентификатор кластера базы данных
+      description: ID кластера базы данных
       explode: false
       in: path
       name: db_cluster_id
@@ -42715,7 +42711,7 @@ components:
         type: integer
       style: simple
     admin-id:
-      description: Идентификатор пользователя базы данных
+      description: ID пользователя базы данных
       explode: false
       in: path
       name: admin_id
@@ -42724,7 +42720,7 @@ components:
         type: integer
       style: simple
     instance-id:
-      description: Идентификатор инстанса базы данных
+      description: ID инстанса базы данных
       explode: false
       in: path
       name: instance_id
@@ -42733,7 +42729,7 @@ components:
         type: integer
       style: simple
     dbs-id:
-      description: Идентификатор базы данных
+      description: ID базы данных
       explode: false
       in: path
       name: db_id
@@ -42742,7 +42738,7 @@ components:
         type: integer
       style: simple
     backup-id:
-      description: Идентификатор резевной копии
+      description: ID резевной копии
       explode: false
       in: path
       name: backup_id
@@ -42751,7 +42747,7 @@ components:
         type: integer
       style: simple
     dedicated-id:
-      description: Уникальный идентификатор выделенного сервера.
+      description: ID выделенного сервера.
       explode: false
       in: path
       name: dedicated_id
@@ -42762,7 +42758,7 @@ components:
         type: integer
       style: simple
     preset-id:
-      description: Уникальный идентификатор тарифа выделенного сервера.
+      description: ID тарифа выделенного сервера.
       explode: false
       in: path
       name: preset_id
@@ -42773,7 +42769,7 @@ components:
         type: integer
       style: simple
     server-id:
-      description: Уникальный идентификатор облачного сервера.
+      description: ID облачного сервера.
       explode: false
       in: path
       name: server_id
@@ -42784,7 +42780,7 @@ components:
         type: integer
       style: simple
     disk-id:
-      description: Уникальный идентификатор диска сервера.
+      description: ID диска сервера.
       explode: false
       in: path
       name: disk_id
@@ -42795,7 +42791,7 @@ components:
         type: integer
       style: simple
     server-backup-id:
-      description: Уникальный идентификатор бэкапа сервера.
+      description: ID бэкапа сервера.
       explode: false
       in: path
       name: backup_id
@@ -42806,7 +42802,7 @@ components:
         type: integer
       style: simple
     project-id:
-      description: Уникальный идентификатор проекта.
+      description: ID проекта.
       explode: false
       in: path
       name: project_id
@@ -42817,7 +42813,7 @@ components:
         type: integer
       style: simple
     bucket-id:
-      description: Уникальный идентификатор хранилища.
+      description: ID хранилища.
       explode: false
       in: path
       name: bucket_id
@@ -42828,7 +42824,7 @@ components:
         type: integer
       style: simple
     user-id:
-      description: Уникальный идентификатор пользователя хранилища.
+      description: ID пользователя хранилища.
       explode: false
       in: path
       name: user_id
@@ -42870,7 +42866,7 @@ components:
         type: string
       style: form
     api-key-id:
-      description: Идентификатор токена
+      description: ID токена
       explode: false
       in: path
       name: token_id
@@ -42974,7 +42970,7 @@ components:
         type: string
       style: simple
     record-id:
-      description: Идентификатор DNS-записи домена или поддомена.
+      description: ID DNS-записи домена или поддомена.
       explode: false
       in: path
       name: record_id
@@ -42994,8 +42990,7 @@ components:
         type: string
       style: simple
     person-id:
-      description: "Идентификатор администратора, на которого зарегистрирован доме\
-        н."
+      description: "ID администратора, на которого зарегистрирован домен."
       explode: true
       in: query
       name: person_id
@@ -43005,7 +43000,7 @@ components:
         type: integer
       style: form
     request-id:
-      description: Идентификатор заявки на регистрацию/продление/трансфер домена.
+      description: ID заявки на регистрацию/продление/трансфер домена.
       explode: false
       in: path
       name: request_id
@@ -43037,7 +43032,7 @@ components:
         type: boolean
       style: form
     tld-id:
-      description: Идентификатор доменной зоны.
+      description: ID доменной зоны.
       explode: false
       in: path
       name: tld_id
@@ -43047,18 +43042,18 @@ components:
         type: integer
       style: simple
     vpc-id:
-      description: Идентификатор сети
+      description: ID сети
       explode: false
       in: path
       name: vpc_id
       required: true
       schema:
-        description: Идентификатор сети
+        description: ID сети
         example: network-1234567890
         type: string
       style: simple
     ssh-key-id:
-      description: Уникальный идентификатор SSH-ключа
+      description: ID SSH-ключа
       explode: false
       in: path
       name: ssh_key_id
@@ -43149,8 +43144,8 @@ components:
       description: Внутренняя ошибка сервера
   schemas:
     response_id:
-      description: "Идентификатор запроса, который можно указывать при обращении в\
-        \ службу технической поддержки, чтобы помочь определить проблему."
+      description: "ID запроса, который можно указывать при обращении в службу тех\
+        нической поддержки, чтобы помочь определить проблему."
       example: 15095f25-aac3-4d60-a788-96cb5136f186
       format: uuid
       type: string
@@ -43267,7 +43262,7 @@ components:
           example: 2021-02-25T11:04:15Z
           type: string
         ym_client_id:
-          description: Идентификатор аккаунта для яндекс метрики.
+          description: ID аккаунта для яндекс метрики.
           nullable: true
           type: string
           example: null
@@ -43676,7 +43671,7 @@ components:
         status: null
       properties:
         id:
-          description: Идентификатор ссылки
+          description: ID ссылки
           title: Id
           type: string
         created_at:
@@ -43685,7 +43680,7 @@ components:
           title: Created At
           type: string
         image:
-          description: Идентификатор образа
+          description: ID образа
           title: Image
           type: string
         type:
@@ -43734,7 +43729,7 @@ components:
           total: 0
       properties:
         response_id:
-          description: Идентификатор запроса
+          description: ID запроса
           title: Response Id
           type: string
         meta:
@@ -43808,7 +43803,7 @@ components:
         response_id: response_id
       properties:
         response_id:
-          description: Идентификатор запроса
+          description: ID запроса
           title: Response Id
           type: string
         download:
@@ -44186,8 +44181,8 @@ components:
         server_proto: https
       properties:
         id:
-          description: Уникальный идентификатор для каждого экземпляра правила для
-            балансировщика. Автоматически генерируется при создании.
+          description: ID для каждого экземпляра правила для балансировщика. Автоматически
+            генерируется при создании.
           example: 1
           type: number
         balancer_proto:
@@ -44274,8 +44269,8 @@ components:
         status: started
       properties:
         id:
-          description: Уникальный идентификатор для каждого экземпляра балансировщика.
-            Автоматически генерируется при создании.
+          description: ID для каждого экземпляра балансировщика. Автоматически генерируется
+            при создании.
           example: 1
           type: number
         algo:
@@ -44343,7 +44338,7 @@ components:
           example: 2
           type: number
         preset_id:
-          description: Идентификатор тарифа.
+          description: ID тарифа.
           example: 5
           type: number
         is_ssl:
@@ -44421,7 +44416,7 @@ components:
     network:
       properties:
         id:
-          description: Уникальный идентификатор сети.
+          description: ID сети.
           example: network-1234567890
           type: string
         floating_ip:
@@ -44685,8 +44680,7 @@ components:
         id: 2377
       properties:
         id:
-          description: Уникальный идентификатор для каждого экземпляра тарифа базы
-            данных.
+          description: ID для каждого экземпляра тарифа базы данных.
           example: 2377
           type: number
         description:
@@ -44984,8 +44978,8 @@ components:
         status: started
       properties:
         id:
-          description: Уникальный идентификатор для каждого экземпляра базы данных.
-            Автоматически генерируется при создании.
+          description: ID для каждого экземпляра базы данных. Автоматически генерируется
+            при создании.
           example: 1
           type: number
         created_at:
@@ -45039,7 +45033,7 @@ components:
           example: started
           type: string
         preset_id:
-          description: Идентификатор тарифа.
+          description: ID тарифа.
           example: 5
           type: integer
         disk_stats:
@@ -45119,7 +45113,7 @@ components:
           example: caching_sha2
           type: string
         preset_id:
-          description: Идентификатор тарифа.
+          description: ID тарифа.
           example: 5
           type: integer
         config_parameters:
@@ -45147,7 +45141,7 @@ components:
           example: default_db
           type: string
         preset_id:
-          description: Идентификатор тарифа.
+          description: ID тарифа.
           example: 5
           type: integer
         description:
@@ -45179,8 +45173,8 @@ components:
         login: default_login
       properties:
         id:
-          description: Уникальный идентификатор для каждого экземпляра пользователя
-            базы данных. Автоматически генерируется при создании.
+          description: ID для каждого экземпляра пользователя базы данных. Автоматически
+            генерируется при создании.
           example: 1
           type: number
         created_at:
@@ -45234,10 +45228,9 @@ components:
           example: '%'
           type: string
         instance_id:
-          description: "Уникальный идентификатор инстанса базы данных для приминен\
-            ия привилегий. В данных момент поле доступно только для кластеров MySQL.\
-            \ Если поле не передано, то привилегии будут применены ко всем инстанс\
-            ам"
+          description: "ID инстанса базы данных для приминения привилегий. В данны\
+            х момент поле доступно только для кластеров MySQL. Если поле не переда\
+            но, то привилегии будут применены ко всем инстансам"
           example: 1476
           type: number
         privileges:
@@ -45316,10 +45309,9 @@ components:
           example: description
           type: string
         instance_id:
-          description: "Уникальный идентификатор инстанса базы данных для приминен\
-            ия привилегий. В данных момент поле доступно только для кластеров MySQL.\
-            \ Если поле не передано, то привилегии будут применены ко всем инстанс\
-            ам"
+          description: "ID инстанса базы данных для приминения привилегий. В данны\
+            х момент поле доступно только для кластеров MySQL. Если поле не переда\
+            но, то привилегии будут применены ко всем инстансам"
           example: 1476
           type: number
       type: object
@@ -45332,8 +45324,8 @@ components:
         id: 1
       properties:
         id:
-          description: Уникальный идентификатор для каждого экземпляра базы данных.
-            Автоматически генерируется при создании.
+          description: ID для каждого экземпляра базы данных. Автоматически генерируется
+            при создании.
           example: 1
           type: number
         created_at:
@@ -45469,8 +45461,8 @@ components:
         status: started
       properties:
         id:
-          description: Уникальный идентификатор для каждого экземпляра базы данных.
-            Автоматически генерируется при создании.
+          description: ID для каждого экземпляра базы данных. Автоматически генерируется
+            при создании.
           example: 1
           type: number
         created_at:
@@ -45480,7 +45472,7 @@ components:
           example: 2021-02-25T11:04:15Z
           type: string
         account_id:
-          description: Идентификатор пользователя.
+          description: ID пользователя.
           example: cp78562
           type: string
         login:
@@ -45546,7 +45538,7 @@ components:
           example: started
           type: string
         preset_id:
-          description: Идентификатор тарифа.
+          description: ID тарифа.
           example: 5
           type: integer
         disk_stats:
@@ -45604,7 +45596,7 @@ components:
           example: caching_sha2
           type: string
         preset_id:
-          description: Идентификатор тарифа.
+          description: ID тарифа.
           example: 5
           type: integer
         config_parameters:
@@ -45629,7 +45621,7 @@ components:
           example: default_db
           type: string
         preset_id:
-          description: Идентификатор тарифа.
+          description: ID тарифа.
           example: 5
           type: integer
         config_parameters:
@@ -45690,7 +45682,7 @@ components:
         status: recover
       properties:
         id:
-          description: Идентификатор резервной копии.
+          description: ID резервной копии.
           example: 1
           type: integer
         name:
@@ -45747,8 +45739,8 @@ components:
       - type
       type: object
     response-id_response_id:
-      description: "Идентификатор запроса, который можно указывать при обращении в\
-        \ службу технической поддержки, чтобы помочь определить проблему."
+      description: "ID запроса, который можно указывать при обращении в службу тех\
+        нической поддержки, чтобы помочь определить проблему."
       example: 15095f25-aac3-4d60-a788-96cb5136f186
       format: uuid
       type: string
@@ -45765,8 +45757,7 @@ components:
         ram: 8
       properties:
         id:
-          description: Уникальный идентификатор для каждого экземпляра тарифа базы
-            данных.
+          description: ID для каждого экземпляра тарифа базы данных.
           example: 2377
           type: number
         description:
@@ -45836,8 +45827,8 @@ components:
         status: installing
       properties:
         id:
-          description: Уникальный идентификатор для каждого экземпляра выделенного
-            сервера. Автоматически генерируется при создании.
+          description: ID для каждого экземпляра выделенного сервера. Автоматически
+            генерируется при создании.
           example: 1
           type: number
         cpu_description:
@@ -45888,7 +45879,7 @@ components:
           nullable: true
           type: string
         node_id:
-          description: Внутренний дополнительный идентификатор сервера.
+          description: Внутренний дополнительный ID сервера.
           example: 68
           nullable: true
           type: number
@@ -45916,26 +45907,24 @@ components:
           example: installing
           type: string
         os_id:
-          description: "Уникальный идентификатор операционной системы, установленн\
-            ой на выделенный сервер."
+          description: "ID операционной системы, установленной на выделенный серве\
+            р."
           example: 44
           nullable: true
           type: number
         cp_id:
-          description: "Уникальный идентификатор панели управления, установленной\
-            \ на выделенный сервер."
+          description: "ID панели управления, установленной на выделенный сервер."
           example: 16
           nullable: true
           type: number
         bandwidth_id:
-          description: "Уникальный идентификатор интернет-канала, установленного н\
-            а выделенный сервер."
+          description: "ID интернет-канала, установленного на выделенный сервер."
           example: 11
           nullable: true
           type: number
         network_drive_id:
-          description: "Массив уникальных идентификаторов сетевых дисков, подключе\
-            нных к выделенному серверу."
+          description: "Массив уникальных ID сетевых дисков, подключенных к выделе\
+            нному серверу."
           example:
           - 12
           - 11
@@ -45944,8 +45933,8 @@ components:
           nullable: true
           type: array
         additional_ip_addr_id:
-          description: "Массив уникальных идентификаторов дополнительных IP-адресо\
-            в, подключенных к выделенному серверу."
+          description: "Массив уникальных ID дополнительных IP-адресов, подключенн\
+            ых к выделенному серверу."
           example:
           - 2
           - 7
@@ -45954,8 +45943,7 @@ components:
           nullable: true
           type: array
         plan_id:
-          description: Уникальный идентификатор списка дополнительных услуг выделенного
-            сервера.
+          description: ID списка дополнительных услуг выделенного сервера.
           example: 2377
           nullable: true
           type: number
@@ -46005,39 +45993,38 @@ components:
     create-dedicated-server:
       properties:
         plan_id:
-          description: Уникальный идентификатор списка дополнительных услуг выделенного
-            сервера.
+          description: ID списка дополнительных услуг выделенного сервера.
           example: 2377
           type: number
         preset_id:
-          description: Уникальный идентификатор тарифа выделенного сервера.
+          description: ID тарифа выделенного сервера.
           example: 81
           type: number
         os_id:
-          description: "Уникальный идентификатор операционной системы, которая буд\
-            ет установлена на выделенный сервер."
+          description: "ID операционной системы, которая будет установлена на выде\
+            ленный сервер."
           example: 188
           nullable: true
           type: number
         cp_id:
-          description: "Уникальный идентификатор панели управления, которая будет\
-            \ установлена на выделенный сервер."
+          description: "ID панели управления, которая будет установлена на выделен\
+            ный сервер."
           example: 199
           nullable: true
           type: number
         bandwidth_id:
-          description: "Уникальный идентификатор интернет-канала, который будет ус\
-            тановлен на выделенный сервер."
+          description: "ID интернет-канала, который будет установлен на выделенный\
+            \ сервер."
           example: 483
           type: number
         network_drive_id:
-          description: "Уникальный идентификатор сетевого диска, который будет уст\
-            ановлен на выделенный сервер."
+          description: "ID сетевого диска, который будет установлен на выделенный\
+            \ сервер."
           example: 483
           type: number
         additional_ip_addr_id:
-          description: "Уникальный идентификатор дополнительного IP-адреса, которы\
-            й будет установлен на выделенный сервер."
+          description: "ID дополнительного IP-адреса, который будет установлен на\
+            \ выделенный сервер."
           example: 1
           nullable: true
           type: number
@@ -46090,7 +46077,7 @@ components:
         id: 3017
       properties:
         id:
-          description: Уникальный идентификатор тарифа выделенного сервера.
+          description: ID тарифа выделенного сервера.
           example: 3017
           type: number
         description:
@@ -46141,8 +46128,7 @@ components:
         id: 27
       properties:
         id:
-          description: Уникальный идентификатор дополнительной услуги для выделенного
-            сервера.
+          description: ID дополнительной услуги для выделенного сервера.
           example: 27
           type: number
         price:
@@ -46183,22 +46169,23 @@ components:
       type: object
     ClusterOut:
       example:
+        availability_zone: spb-3
         created_at: 2000-01-23T04:56:07.000+00:00
         description: description
         cpu: 1
-        network_driver: network_driver
+        network_driver: kuberouter
         ingress: true
         disk: 5
         k8s_version: k8s_version
         preset_id: 6
+        project_id: 2
         name: name
-        ha: true
         id: 0
         status: status
         ram: 5
       properties:
         id:
-          description: Уникальный идентификатор кластера
+          description: ID кластера
           title: Id
           type: integer
         name:
@@ -46218,16 +46205,17 @@ components:
           description: Описание
           title: Description
           type: string
-        ha:
-          description: Описание появится позже
-          title: Ha
-          type: boolean
         k8s_version:
           description: Версия Kubernetes
           title: K8S Version
           type: string
         network_driver:
           description: Используемый сетевой драйвер
+          enum:
+          - kuberouter
+          - calico
+          - flannel
+          - cilium
           title: Network Driver
           type: string
         ingress:
@@ -46235,7 +46223,7 @@ components:
           title: Ingress
           type: boolean
         preset_id:
-          description: Идентификатор тарифа мастер-ноды
+          description: ID тарифа мастер-ноды
           title: Preset Id
           type: integer
         cpu:
@@ -46253,10 +46241,19 @@ components:
           description: Общее дисковое пространство
           title: Disk
           type: integer
+        availability_zone:
+          description: Зона доступности
+          enum:
+          - spb-3
+          - msk-1
+          - ams-1
+          type: string
+        project_id:
+          description: Идентификатор проекта
+          type: integer
       required:
       - created_at
       - description
-      - ha
       - id
       - ingress
       - k8s_version
@@ -46272,29 +46269,31 @@ components:
         meta:
           total: 0
         clusters:
-        - created_at: 2000-01-23T04:56:07.000+00:00
+        - availability_zone: spb-3
+          created_at: 2000-01-23T04:56:07.000+00:00
           description: description
           cpu: 1
-          network_driver: network_driver
+          network_driver: kuberouter
           ingress: true
           disk: 5
           k8s_version: k8s_version
           preset_id: 6
+          project_id: 2
           name: name
-          ha: true
           id: 0
           status: status
           ram: 5
-        - created_at: 2000-01-23T04:56:07.000+00:00
+        - availability_zone: spb-3
+          created_at: 2000-01-23T04:56:07.000+00:00
           description: description
           cpu: 1
-          network_driver: network_driver
+          network_driver: kuberouter
           ingress: true
           disk: 5
           k8s_version: k8s_version
           preset_id: 6
+          project_id: 2
           name: name
-          ha: true
           id: 0
           status: status
           ram: 5
@@ -46316,83 +46315,130 @@ components:
       - meta
       title: ClustersResponse
       type: object
+    SetLabels:
+      description: Лейбл для группы нод
+      properties:
+        key:
+          description: Ключ
+          type: string
+        value:
+          description: Значение
+          type: string
+      required:
+      - key
+      - value
+      type: object
     NodeGroupIn:
       example:
         name: Новая группа нод
         preset_id: 399
-        node_count: 1
+        node_count: 8
       properties:
         name:
           description: Название группы
-          title: Name
           type: string
         preset_id:
-          description: Идентификатор тарифа воркер-ноды
-          title: Preset Id
+          description: Идентификатор тарифа воркер-ноды. Нельзя передавать вместе
+            с `configuration`. Локация воркер-нод должна совпадать с локацией кластера
           type: integer
+        configuration:
+          $ref: '#/components/schemas/NodeGroupIn_configuration'
         node_count:
           description: Количество нод в группе
+          maximum: 100
           minimum: 1
-          title: Node Count
+          type: integer
+        labels:
+          description: Лейблы для группы нод
+          items:
+            $ref: '#/components/schemas/SetLabels'
+          type: array
+        is_autoscaling:
+          description: Автомасштабирование. Автоматическое увеличение и уменьшение
+            количества нод в группе в зависимости от текущей нагрузки
+          type: boolean
+        min-size:
+          description: Минимальное количество нод. Передавать в связке с параметрами
+            `is_autoscaling` и `max_size`
+          minimum: 2
+          type: integer
+        max-size:
+          description: Максимальное количество нод. Передавать в связке с параметрами
+            `is_autoscaling` и `min_size`. Максимальное количество нод ограничено
+            тарифом кластера
+          minimum: 2
           type: integer
       required:
       - name
       - node_count
-      - preset_id
-      title: NodeGroupIn
       type: object
     ClusterIn:
       example:
         name: Friendly Wiles
         description: Новый кластер кубернетес
-        ha: false
-        k8s_version: v1.22.16
-        network_driver: canal
-        ingress: true
+        k8s_version: v1.30.2+k0s.0
+        network_driver: kuberouter
+        is_ingress: true
+        is_k8s_dashboard: true
         preset_id: 403
         worker_groups:
         - name: Новая группа нод
           preset_id: 399
           node_count: 1
+          labels:
+            key: новая группа
+            value: группа
+          is_autoscaling: true
+          min_size: 2
+          max_size: 10
       properties:
         name:
           description: Название кластера
-          title: Name
           type: string
         description:
           description: Описание кластера
-          title: Description
           type: string
-        ha:
-          description: Описание появится позднее
-          title: Ha
-          type: boolean
         k8s_version:
           description: Версия Kubernetes
-          title: K8S Version
+          type: string
+        availability_zone:
+          description: Зона доступности
+          enum:
+          - spb-3
+          - msk-1
+          - ams-1
           type: string
         network_driver:
           description: Тип используемого сетевого драйвера в кластере
-          title: Network Driver
+          enum:
+          - kuberouter
+          - calico
+          - flannel
+          - cilium
           type: string
-        ingress:
+        is_ingress:
           description: "Логическое значение, которое показывает, использовать ли Ingress\
             \ в кластере"
-          title: Ingress
+          type: boolean
+        is_k8s_dashboard:
+          description: "Логическое значение, которое показывает, использовать ли Kubernetes\
+            \ Dashboard в кластере"
           type: boolean
         preset_id:
-          description: Идентификатор тарифа мастер-ноды
-          title: Preset Id
+          description: ID тарифа мастер-ноды
           type: integer
         worker_groups:
           description: Группы воркеров в кластере
           items:
             $ref: '#/components/schemas/NodeGroupIn'
-          title: Worker Groups
           type: array
+        network_id:
+          description: ID приватной сети
+          type: string
+        project_id:
+          description: ID проекта
+          type: integer
       required:
-      - ha
-      - ingress
       - k8s_version
       - name
       - network_driver
@@ -46402,16 +46448,17 @@ components:
     ClusterResponse:
       example:
         cluster:
+          availability_zone: spb-3
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
           cpu: 1
-          network_driver: network_driver
+          network_driver: kuberouter
           ingress: true
           disk: 5
           k8s_version: k8s_version
           preset_id: 6
+          project_id: 2
           name: name
-          ha: true
           id: 0
           status: status
           ram: 5
@@ -46539,7 +46586,7 @@ components:
         node_count: 1
       properties:
         id:
-          description: Уникальный идентификатор группы
+          description: ID группы
           title: Id
           type: integer
         name:
@@ -46636,7 +46683,7 @@ components:
         network: 7
       properties:
         id:
-          description: Уникальный идентификатор ноды
+          description: ID ноды
           title: Id
           type: integer
         created_at:
@@ -46819,7 +46866,7 @@ components:
         network: 2
       properties:
         id:
-          description: Уникальный идентификатор тарифа
+          description: ID тарифа
           title: Id
           type: integer
         description:
@@ -46871,7 +46918,7 @@ components:
     MasterPresetOutApi:
       properties:
         id:
-          description: Уникальный идентификатор тарифа
+          description: ID тарифа
           title: Id
           type: integer
         description:
@@ -47048,8 +47095,8 @@ components:
         status: "on"
       properties:
         id:
-          description: Уникальный идентификатор для каждого экземпляра сервера. Автоматически
-            генерируется при создании.
+          description: ID для каждого экземпляра сервера. Автоматически генерируется
+            при создании.
           example: 1
           type: number
         name:
@@ -47069,7 +47116,7 @@ components:
         software:
           $ref: '#/components/schemas/vds_software'
         preset_id:
-          description: Уникальный идентификатор тарифа сервера.
+          description: ID тарифа сервера.
           example: 11
           nullable: true
           type: number
@@ -47083,7 +47130,7 @@ components:
           example: ru-1
           type: string
         configurator_id:
-          description: Уникальный идентификатор конфигуратора сервера.
+          description: ID конфигуратора сервера.
           example: 11
           nullable: true
           type: number
@@ -47148,8 +47195,8 @@ components:
             $ref: '#/components/schemas/vds_disks_inner'
           type: array
         avatar_id:
-          description: Уникальный идентификатор аватара сервера. Описание методов
-            работы с аватарами появится позднее.
+          description: ID аватара сервера. Описание методов работы с аватарами появится
+            позднее.
           example: avatar
           nullable: true
           type: string
@@ -47219,22 +47266,21 @@ components:
           example: true
           type: boolean
         os_id:
-          description: "Уникальный идентификатор операционной системы, которая буд\
-            ет установлена на облачный сервер. Нельзя передавать вместе с `image_id`."
+          description: "ID операционной системы, которая будет установлена на обла\
+            чный сервер. Нельзя передавать вместе с `image_id`."
           example: 188
           type: number
         image_id:
-          description: "Уникальный идентификатор образа, который будет установлен\
-            \ на облачный сервер. Нельзя передавать вместе с `os_id`."
+          description: "ID образа, который будет установлен на облачный сервер. Не\
+            льзя передавать вместе с `os_id`."
           format: uuid
           type: string
         software_id:
-          description: Уникальный идентификатор программного обеспечения сервера.
+          description: ID программного обеспечения сервера.
           example: 199
           type: number
         preset_id:
-          description: Уникальный идентификатор тарифа сервера. Нельзя передавать
-            вместе с ключом `configurator`.
+          description: ID тарифа сервера. Нельзя передавать вместе с ключом `configurator`.
           example: 81
           type: number
         bandwidth:
@@ -47249,8 +47295,8 @@ components:
           maxLength: 255
           type: string
         avatar_id:
-          description: Уникальный идентификатор аватара сервера. Описание методов
-            работы с аватарами появится позднее.
+          description: ID аватара сервера. Описание методов работы с аватарами появится
+            позднее.
           example: avatar
           type: string
         comment:
@@ -47286,17 +47332,16 @@ components:
         configurator:
           $ref: '#/components/schemas/update_server_configurator'
         os_id:
-          description: "Уникальный идентификатор операционной системы, которая буд\
-            ет установлена на облачный сервер."
+          description: "ID операционной системы, которая будет установлена на обла\
+            чный сервер."
           example: 188
           type: number
         software_id:
-          description: Уникальный идентификатор программного обеспечения сервера.
+          description: ID программного обеспечения сервера.
           example: 199
           type: number
         preset_id:
-          description: Уникальный идентификатор тарифа сервера. Нельзя передавать
-            вместе с ключом `configurator`.
+          description: ID тарифа сервера. Нельзя передавать вместе с ключом `configurator`.
           example: 81
           type: number
         bandwidth:
@@ -47311,8 +47356,8 @@ components:
           maxLength: 255
           type: string
         avatar_id:
-          description: Уникальный идентификатор аватара сервера. Описание методов
-            работы с аватарами появится позднее.
+          description: ID аватара сервера. Описание методов работы с аватарами появится
+            позднее.
           example: avatar
           type: string
         comment:
@@ -47321,8 +47366,8 @@ components:
           maxLength: 255
           type: string
         image_id:
-          description: "Уникальный идентификатор образа, который будет установлен\
-            \ на облачный сервер. Нельзя передавать вместе с `os_id`."
+          description: "ID образа, который будет установлен на облачный сервер. Не\
+            льзя передавать вместе с `os_id`."
           format: uuid
           type: string
         cloud_init:
@@ -47344,7 +47389,7 @@ components:
         version: "6.0"
       properties:
         id:
-          description: Уникальный идентификатор операционной системы.
+          description: ID операционной системы.
           example: 2377
           type: number
         family:
@@ -47388,7 +47433,7 @@ components:
         is_allowed_local_network: false
       properties:
         id:
-          description: Уникальный идентификатор тарифа сервера.
+          description: ID тарифа сервера.
           example: 2377
           type: number
         location:
@@ -47484,7 +47529,7 @@ components:
         is_allowed_local_network: true
       properties:
         id:
-          description: Уникальный идентификатор конфигуратора сервера.
+          description: ID конфигуратора сервера.
           example: 3
           type: number
         location:
@@ -47536,7 +47581,7 @@ components:
         id: 2377
       properties:
         id:
-          description: Уникальный идентификатор ПО из маркетплейса.
+          description: ID ПО из маркетплейса.
           example: 2377
           type: number
         name:
@@ -47601,7 +47646,7 @@ components:
         event: install
       properties:
         id:
-          description: Уникальный идентификатор диска.
+          description: ID диска.
           example: 1
           type: number
         logged_at:
@@ -47631,7 +47676,7 @@ components:
         status: done
       properties:
         id:
-          description: Уникальный идентификатор диска.
+          description: ID диска.
           example: 1
           type: number
         size:
@@ -47684,7 +47729,7 @@ components:
         status: create
       properties:
         id:
-          description: Уникальный идентификатор бэкапа сервера.
+          description: ID бэкапа сервера.
           example: 3
           type: number
         name:
@@ -47750,17 +47795,16 @@ components:
         is_default: true
       properties:
         id:
-          description: Уникальный идентификатор для каждого проекта. Автоматически
-            генерируется при создании.
+          description: ID для каждого проекта. Автоматически генерируется при создании.
           example: 1
           type: number
         account_id:
-          description: Идентификатор пользователя.
+          description: ID пользователя.
           example: cp78562
           type: string
         avatar_id:
-          description: Идентификатор аватара пользователя. Описание методов работы
-            с аватарами появится позднее.
+          description: ID аватара пользователя. Описание методов работы с аватарами
+            появится позднее.
           example: "1664446660062"
           nullable: true
           type: string
@@ -47843,8 +47887,8 @@ components:
         type: server
       properties:
         id:
-          description: Уникальный идентификатор для каждого ресурса проекта. Автоматически
-            генерируется при создании.
+          description: ID для каждого ресурса проекта. Автоматически генерируется
+            при создании.
           example: 1
           type: number
         created_at:
@@ -47895,8 +47939,8 @@ components:
         status: created
       properties:
         id:
-          description: Уникальный идентификатор для каждого экземпляра хранилища.
-            Автоматически генерируется при создании.
+          description: ID для каждого экземпляра хранилища. Автоматически генерируется
+            при создании.
           example: 1
           type: number
         name:
@@ -47913,7 +47957,7 @@ components:
           example: public
           type: string
         preset_id:
-          description: Идентификатор тарифа хранилища.
+          description: ID тарифа хранилища.
           example: 389
           nullable: true
           type: number
@@ -47976,8 +48020,8 @@ components:
         ram: 1024
       properties:
         id:
-          description: Уникальный идентификатор для каждого экземпляра крастера. Автоматически
-            генерируется при создании.
+          description: ID для каждого экземпляра кластера. Автоматически генерируется
+            при создании.
           example: 1
           type: number
         name:
@@ -48087,7 +48131,7 @@ components:
         id: 2377
       properties:
         id:
-          description: Уникальный идентификатор для каждого экземпляра тарифа хранилища.
+          description: ID для каждого экземпляра тарифа хранилища.
           example: 2377
           type: number
         description:
@@ -48130,7 +48174,7 @@ components:
         id: 1
       properties:
         id:
-          description: Уникальный идентификатор пользователя.
+          description: ID пользователя.
           example: 1
           type: number
         access_key:
@@ -48212,7 +48256,7 @@ components:
         status: ssl_released
       properties:
         id:
-          description: Уникальный идентификатор поддомена.
+          description: ID поддомена.
           example: 1
           type: number
         subdomain:
@@ -48332,7 +48376,7 @@ components:
         expired_at: 2022-10-25T15:15:45Z
       properties:
         id:
-          description: Уникальный идентификатор токена.
+          description: ID токена.
           example: 913a3a06-1eb9-4e9c-bc63-6ca6944e883b
           format: uuid
           type: string
@@ -48487,7 +48531,7 @@ components:
             димо сохранить."
           type: string
         id:
-          description: Уникальный идентификатор токена.
+          description: ID токена.
           example: 913a3a06-1eb9-4e9c-bc63-6ca6944e883b
           format: uuid
           type: string
@@ -48973,7 +49017,7 @@ components:
           example: sub.somedomain.ru
           type: string
         id:
-          description: Уникальный идентификатор поддомена.
+          description: ID поддомена.
           example: 123
           type: number
         linked_ip:
@@ -49053,7 +49097,7 @@ components:
           example: somedomain.ru
           type: string
         id:
-          description: Уникальный идентификатор домена.
+          description: ID домена.
           example: 123
           type: number
         is_autoprolong_enabled:
@@ -49095,8 +49139,7 @@ components:
           nullable: true
           type: string
         person_id:
-          description: "Идентификатор администратора, на которого зарегистрирован\
-            \ домен."
+          description: "ID администратора, на которого зарегистрирован домен."
           example: 123
           nullable: true
           type: number
@@ -49106,7 +49149,7 @@ components:
           type: number
           example: null
         provider:
-          description: Идентификатор регистратора домена.
+          description: ID регистратора домена.
           example: TimewebVirtreg
           nullable: true
           type: string
@@ -49129,7 +49172,7 @@ components:
             $ref: '#/components/schemas/subdomain'
           type: array
         tld_id:
-          description: Идентификатор доменной зоны.
+          description: ID доменной зоны.
           example: 2365
           nullable: true
           type: number
@@ -49189,7 +49232,7 @@ components:
           example: A
           type: string
         id:
-          description: Идентификатор DNS-записи.
+          description: ID DNS-записи.
           example: 123
           nullable: true
           type: number
@@ -49310,7 +49353,7 @@ components:
         person_id: 123
       properties:
         account_id:
-          description: Идентификатор пользователя
+          description: ID пользователя
           example: cp78562
           type: string
         auth_code:
@@ -49339,11 +49382,11 @@ components:
           example: somedomain.com
           type: string
         group_id:
-          description: Идентификатор группы доменных зон.
+          description: ID группы доменных зон.
           example: 123
           type: number
         id:
-          description: Идентификатор заявки.
+          description: ID заявки.
           example: 123
           type: number
         is_antispam_enabled:
@@ -49450,8 +49493,7 @@ components:
         period:
           $ref: '#/components/schemas/domain-payment-period'
         person_id:
-          description: "Идентификатор администратора, на которого регистрируется д\
-            омен."
+          description: "ID администратора, на которого регистрируется домен."
           example: 123
           type: number
       required:
@@ -49492,8 +49534,7 @@ components:
         period:
           $ref: '#/components/schemas/domain-payment-period'
         person_id:
-          description: "Идентификатор администратора, на которого зарегистрирован\
-            \ домен."
+          description: "ID администратора, на которого зарегистрирован домен."
           example: 123
           type: number
         prime:
@@ -49536,8 +49577,7 @@ components:
           example: use
           type: string
         person_id:
-          description: "Идентификатор администратора, на которого зарегистрирован\
-            \ домен."
+          description: "ID администратора, на которого зарегистрирован домен."
           example: 123
           type: number
       required:
@@ -49555,8 +49595,7 @@ components:
           example: invoice
           type: string
         person_id:
-          description: "Идентификатор администратора, на которого зарегистрирован\
-            \ домен."
+          description: "ID администратора, на которого зарегистрирован домен."
           example: 123
           type: number
         payment_type:
@@ -49595,8 +49634,7 @@ components:
           example: free
           type: string
         person_id:
-          description: "Идентификатор администратора, на которого зарегистрирован\
-            \ домен."
+          description: "ID администратора, на которого зарегистрирован домен."
           example: 123
           type: number
         auth_code:
@@ -49618,12 +49656,11 @@ components:
           example: bonus
           type: string
         person_id:
-          description: "Идентификатор администратора, на которого зарегистрирован\
-            \ домен."
+          description: "ID администратора, на которого зарегистрирован домен."
           example: 123
           type: number
         bonus_id:
-          description: Идентификатор бонуса.
+          description: ID бонуса.
           example: 123
           type: number
       required:
@@ -49671,7 +49708,7 @@ components:
           example: 30
           type: number
         id:
-          description: Идентификатор доменной зоны.
+          description: ID доменной зоны.
           example: 123
           type: number
         is_published:
@@ -49753,7 +49790,7 @@ components:
         id: network-1234567890
       properties:
         id:
-          description: Идентификатор сети.
+          description: ID сети.
           example: network-1234567890
           type: string
         name:
@@ -49835,7 +49872,7 @@ components:
         type: server
       properties:
         id:
-          description: Идентификатор сервисв.
+          description: ID сервисв.
           example: 560
           type: number
         name:
@@ -49876,7 +49913,7 @@ components:
         mac: 51:43:35:c3:aa:fa
       properties:
         id:
-          description: Идентификатор порта.
+          description: ID порта.
           example: d05673e4-1c74-46g4-b98f-aa3d42a99079
           type: string
         nat_mode:
@@ -49918,7 +49955,7 @@ components:
           id: 3
       properties:
         id:
-          description: Уникальный идентификатор SSH-ключа
+          description: ID SSH-ключа
           example: 2
           type: number
         name:
@@ -50129,7 +50166,7 @@ components:
         url: https://github.com/example-repo/app-example-express
       properties:
         id:
-          description: Идентификатор репозитория.
+          description: ID репозитория.
           example: eb4e1796-78ce-4232-a824-3c3f4dfaf98f
           format: uuid
           type: string
@@ -50210,8 +50247,8 @@ components:
         status: active
       properties:
         id:
-          description: Уникальный идентификатор для каждого экземпляра приложения.
-            Автоматически генерируется при создании.
+          description: ID для каждого экземпляра приложения. Автоматически генерируется
+            при создании.
           example: 1
           type: number
         type:
@@ -50289,7 +50326,7 @@ components:
           example: example comment
           type: string
         preset_id:
-          description: Идентификатор тарифа.
+          description: ID тарифа.
           example: 42
           type: number
         index_dir:
@@ -50356,7 +50393,7 @@ components:
     create-app:
       properties:
         provider_id:
-          description: Уникальный идентификатор провайдера.
+          description: ID провайдера.
           example: b392b624-ee80-496e-8b61-47276acac2da
           format: uuid
           type: string
@@ -50368,7 +50405,7 @@ components:
           example: backend
           type: string
         repository_id:
-          description: Уникальный идентификатор репозитория.
+          description: ID репозитория.
           example: eb4e1796-78ce-4232-a824-3c3f4dfaf98f
           format: uuid
           type: string
@@ -50403,7 +50440,7 @@ components:
           example: example comment
           type: string
         preset_id:
-          description: Идентификатор тарифа.
+          description: ID тарифа.
           example: 42
           type: number
         env_version:
@@ -50485,7 +50522,7 @@ components:
           example: example comment
           type: string
         preset_id:
-          description: Идентификатор тарифа.
+          description: ID тарифа.
           example: 42
           type: number
     provider:
@@ -50495,7 +50532,7 @@ components:
         login: timeweb-cloud
       properties:
         provider_id:
-          description: Идентификатор провайдера.
+          description: ID провайдера.
           example: ec23f4b1-3b7b-4b7b-8b7b-3b7b4b7b8b7b
           format: uuid
           type: string
@@ -50667,7 +50704,7 @@ components:
         commit_msg: Initial commit
       properties:
         app_id:
-          description: Идентификатор приложения.
+          description: ID приложения.
           example: "1"
           type: string
         commit_sha:
@@ -50675,7 +50712,7 @@ components:
           example: 7d3a6dcca79d2c29e3fe7456ca1598e70d484d7c
           type: string
         id:
-          description: Идентификатор.
+          description: ID.
           example: 123e4567-e89b-12d3-a456-426614174000
           format: uuid
           type: string
@@ -50947,7 +50984,7 @@ components:
         resource_id: 1
       properties:
         resource_id:
-          description: Уникальный идентификатор сервиса.
+          description: ID сервиса.
           example: 1
           type: number
         resource_type:
@@ -50984,7 +51021,7 @@ components:
           max: 15000
       properties:
         id:
-          description: Уникальный идентификатор тарифа.
+          description: ID тарифа.
           example: 1
           type: number
         cost_per_gb:
@@ -51061,8 +51098,8 @@ components:
           example: bad_request
           type: string
         response_id:
-          description: "Идентификатор запроса, который можно указывать при обращен\
-            ии в службу технической поддержки, чтобы помочь определить проблему."
+          description: "ID запроса, который можно указывать при обращении в службу\
+            \ технической поддержки, чтобы помочь определить проблему."
           example: 15095f25-aac3-4d60-a788-96cb5136f186
           format: uuid
           type: string
@@ -51089,8 +51126,8 @@ components:
           example: unauthorized
           type: string
         response_id:
-          description: "Идентификатор запроса, который можно указывать при обращен\
-            ии в службу технической поддержки, чтобы помочь определить проблему."
+          description: "ID запроса, который можно указывать при обращении в службу\
+            \ технической поддержки, чтобы помочь определить проблему."
           example: 15095f25-aac3-4d60-a788-96cb5136f186
           format: uuid
           type: string
@@ -51117,8 +51154,8 @@ components:
           example: forbidden
           type: string
         response_id:
-          description: "Идентификатор запроса, который можно указывать при обращен\
-            ии в службу технической поддержки, чтобы помочь определить проблему."
+          description: "ID запроса, который можно указывать при обращении в службу\
+            \ технической поддержки, чтобы помочь определить проблему."
           example: 15095f25-aac3-4d60-a788-96cb5136f186
           format: uuid
           type: string
@@ -51145,8 +51182,8 @@ components:
           example: too_many_requests
           type: string
         response_id:
-          description: "Идентификатор запроса, который можно указывать при обращен\
-            ии в службу технической поддержки, чтобы помочь определить проблему."
+          description: "ID запроса, который можно указывать при обращении в службу\
+            \ технической поддержки, чтобы помочь определить проблему."
           example: 15095f25-aac3-4d60-a788-96cb5136f186
           format: uuid
           type: string
@@ -51173,8 +51210,8 @@ components:
           example: internal_server_error
           type: string
         response_id:
-          description: "Идентификатор запроса, который можно указывать при обращен\
-            ии в службу технической поддержки, чтобы помочь определить проблему."
+          description: "ID запроса, который можно указывать при обращении в службу\
+            \ технической поддержки, чтобы помочь определить проблему."
           example: 15095f25-aac3-4d60-a788-96cb5136f186
           format: uuid
           type: string
@@ -51283,8 +51320,8 @@ components:
           example: not_found
           type: string
         response_id:
-          description: "Идентификатор запроса, который можно указывать при обращен\
-            ии в службу технической поддержки, чтобы помочь определить проблему."
+          description: "ID запроса, который можно указывать при обращении в службу\
+            \ технической поддержки, чтобы помочь определить проблему."
           example: 15095f25-aac3-4d60-a788-96cb5136f186
           format: uuid
           type: string
@@ -52143,8 +52180,8 @@ components:
           example: conflict
           type: string
         response_id:
-          description: "Идентификатор запроса, который можно указывать при обращен\
-            ии в службу технической поддержки, чтобы помочь определить проблему."
+          description: "ID запроса, который можно указывать при обращении в службу\
+            \ технической поддержки, чтобы помочь определить проблему."
           example: 15095f25-aac3-4d60-a788-96cb5136f186
           format: uuid
           type: string
@@ -53445,7 +53482,7 @@ components:
     addBalancerToProject_request:
       properties:
         resource_id:
-          description: Идентификатор добавляемого балансировщика.
+          description: ID добавляемого балансировщика.
           example: 1
           type: number
       required:
@@ -54444,7 +54481,7 @@ components:
           example: private
           type: string
         preset_id:
-          description: Идентификатор тарифа.
+          description: ID тарифа.
           example: 1
           type: number
       required:
@@ -54487,7 +54524,7 @@ components:
     updateStorage_request:
       properties:
         preset_id:
-          description: Идентификатор тарифа.
+          description: ID тарифа.
           example: 1
           type: number
         bucket_type:
@@ -54594,7 +54631,7 @@ components:
     transferStorage_request:
       properties:
         access_key:
-          description: Идентификатор доступа стороннего S3-хранилища.
+          description: ID доступа стороннего S3-хранилища.
           example: access_key
           type: string
         secret_key:
@@ -56577,7 +56614,7 @@ components:
         id: 0
       properties:
         id:
-          description: Идентификатор компании.
+          description: ID компании.
           example: 0
           type: number
         name:
@@ -56737,7 +56774,7 @@ components:
         instance_id: 0.8008281904610115
       properties:
         instance_id:
-          description: Уникальный идентификатор базы данных
+          description: ID базы данных
           type: number
         privileges:
           description: Список привилегий пользователя базы данных
@@ -56879,6 +56916,28 @@ components:
       - description
       - size
       type: object
+    NodeGroupIn_configuration:
+      description: Параметры конфигурации воркер-ноды. Нельзя передавать вместе с
+        `preset_id`. Локация воркер-нод должна совпадать с локацией кластера
+      properties:
+        configurator_id:
+          description: ID конфигуратора кластера
+          type: integer
+        disk:
+          description: Размер диска в МБ
+          type: integer
+        cpu:
+          description: Количество ядер процессора
+          type: integer
+        ram:
+          description: Размер ОЗУ сервера в МБ
+          type: integer
+      required:
+      - configurator_id
+      - cpu
+      - disk
+      - ram
+      type: object
     vds_os:
       description: Операционная система сервера.
       example:
@@ -56887,7 +56946,7 @@ components:
         version: "18.04"
       properties:
         id:
-          description: Уникальный идентификатор операционной системы.
+          description: ID операционной системы.
           example: 1
           type: number
         name:
@@ -56922,7 +56981,7 @@ components:
       nullable: true
       properties:
         id:
-          description: Уникальный идентификатор ПО из маркетплейса.
+          description: ID ПО из маркетплейса.
           example: 1
           type: number
         name:
@@ -56942,7 +57001,7 @@ components:
         status: done
       properties:
         id:
-          description: Уникальный идентификатор диска.
+          description: ID диска.
           example: 1
           type: number
         size:
@@ -56991,7 +57050,7 @@ components:
       nullable: true
       properties:
         id:
-          description: Уникальный идентификатор образа сервера.
+          description: ID образа сервера.
           example: 550e8400-e29b-41d4-a716-446655440000
           type: string
         name:
@@ -57055,7 +57114,7 @@ components:
         is_ddos_guard: false
       properties:
         id:
-          description: Уникальный идентификатор сети. Есть только у приватных сетей.
+          description: ID сети. Есть только у приватных сетей.
           example: network-1a627c44a3b34e10b6c19f72e50ce843
           type: string
         type:
@@ -57095,7 +57154,7 @@ components:
       description: Параметры конфигурации сервера. Нельзя передавать вместе с `preset_id`.
       properties:
         configurator_id:
-          description: Уникальный идентификатор конфигуратора сервера.
+          description: ID конфигуратора сервера.
           example: 11
           type: number
         disk:
@@ -57120,7 +57179,7 @@ components:
       description: Параметры конфигурации сервера. Нельзя передавать вместе с `preset_id`.
       properties:
         configurator_id:
-          description: Уникальный идентификатор конфигуратора сервера.
+          description: ID конфигуратора сервера.
           example: 11
           type: number
         disk:
@@ -57304,7 +57363,7 @@ components:
         display_name: display_name
       properties:
         id:
-          description: Идентификатор владельца файла.
+          description: ID владельца файла.
           type: string
         display_name:
           description: Имя владельца файла.
@@ -57526,7 +57585,7 @@ components:
         type: server
       properties:
         id:
-          description: Идентификатор сервиса.
+          description: ID сервиса.
           example: 1
           type: integer
         type:
@@ -57552,7 +57611,7 @@ components:
         id: 3
       properties:
         id:
-          description: Уникальный идентификатор сервера
+          description: ID сервера
           example: 3
           type: number
         name:
@@ -57569,7 +57628,7 @@ components:
         type: github
       properties:
         id:
-          description: Уникальный идентификатор провайдера.
+          description: ID провайдера.
           example: 826e9a9d-40cd-49b1-b547-0c439834498b
           format: uuid
           type: string
@@ -57642,7 +57701,7 @@ components:
           example: 15360
           type: number
         disk_id:
-          description: Идентификатор диска.
+          description: ID диска.
           example: 19769639
           type: number
       type: object
@@ -57659,7 +57718,7 @@ components:
         ram: 1024
       properties:
         id:
-          description: Идентификатор пресета.
+          description: ID пресета.
           example: 568
           type: integer
         description:
@@ -57714,7 +57773,7 @@ components:
         requests: 200
       properties:
         id:
-          description: Идентификатор пресета.
+          description: ID пресета.
           example: 584
           type: integer
         description:
@@ -57860,7 +57919,7 @@ components:
         resource_id: 1
       properties:
         resource_id:
-          description: Уникальный идентификатор сервиса.
+          description: ID сервиса.
           example: 1
           type: number
         resource_type:

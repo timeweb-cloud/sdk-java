@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**id** | **String** | Уникальный идентификатор сети. Есть только у приватных сетей. |  [optional] |
+|**id** | **String** | ID сети. Есть только у приватных сетей. |  [optional] |
 |**type** | [**TypeEnum**](#TypeEnum) | Тип сети. |  |
 |**natMode** | [**NatModeEnum**](#NatModeEnum) | Тип преобразования сетевых адресов. |  [optional] |
 |**bandwidth** | **BigDecimal** | Пропускная способность сети. |  [optional] |

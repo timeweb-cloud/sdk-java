@@ -7,9 +7,9 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**appId** | **String** | Идентификатор приложения. |  |
+|**appId** | **String** | ID приложения. |  |
 |**commitSha** | **String** | Хэш коммита. |  |
-|**id** | **UUID** | Идентификатор. |  |
+|**id** | **UUID** | ID. |  |
 |**startedAt** | **OffsetDateTime** | Время запуска деплоя. |  |
 |**endedAt** | **OffsetDateTime** | Время окончания деплоя. Определено для завершенных деплоев |  |
 |**status** | **DeployStatus** |  |  |

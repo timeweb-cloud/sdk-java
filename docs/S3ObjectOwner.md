@@ -8,7 +8,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**id** | **String** | Идентификатор владельца файла. |  [optional] |
+|**id** | **String** | ID владельца файла. |  [optional] |
 |**displayName** | **String** | Имя владельца файла. |  [optional] |
 
 

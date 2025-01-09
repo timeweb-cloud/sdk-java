@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**id** | **BigDecimal** | Уникальный идентификатор SSH-ключа |  |
+|**id** | **BigDecimal** | ID SSH-ключа |  |
 |**name** | **String** | Название SSH-ключа |  |
 |**body** | **String** | Тело SSH-ключа |  |
 |**createdAt** | **OffsetDateTime** | Дата создания ключа |  |

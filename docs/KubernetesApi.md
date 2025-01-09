@@ -124,7 +124,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     KubernetesApi apiInstance = new KubernetesApi(defaultClient);
-    Integer clusterId = 56; // Integer | Уникальный идентификатор кластера
+    Integer clusterId = 56; // Integer | ID кластера
     NodeGroupIn nodeGroupIn = new NodeGroupIn(); // NodeGroupIn | 
     try {
       NodeGroupResponse result = apiInstance.createClusterNodeGroup(clusterId, nodeGroupIn);
@@ -144,7 +144,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **clusterId** | **Integer**| Уникальный идентификатор кластера | |
+| **clusterId** | **Integer**| ID кластера | |
 | **nodeGroupIn** | [**NodeGroupIn**](NodeGroupIn.md)|  | |
 
 ### Return type
@@ -199,7 +199,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     KubernetesApi apiInstance = new KubernetesApi(defaultClient);
-    Integer clusterId = 56; // Integer | Уникальный идентификатор кластера
+    Integer clusterId = 56; // Integer | ID кластера
     String hash = "15095f25-aac3-4d60-a788-96cb5136f186"; // String | Хеш, который совместно с кодом авторизации надо отправить для удаления, если включено подтверждение удаления сервисов через Телеграм.
     String code = "0000"; // String | Код подтверждения, который придет к вам в Телеграм, после запроса удаления, если включено подтверждение удаления сервисов.  При помощи API токена сервисы можно удалять без подтверждения, если параметр токена `is_able_to_delete` установлен в значение `true`
     try {
@@ -220,7 +220,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **clusterId** | **Integer**| Уникальный идентификатор кластера | |
+| **clusterId** | **Integer**| ID кластера | |
 | **hash** | **String**| Хеш, который совместно с кодом авторизации надо отправить для удаления, если включено подтверждение удаления сервисов через Телеграм. | [optional] |
 | **code** | **String**| Код подтверждения, который придет к вам в Телеграм, после запроса удаления, если включено подтверждение удаления сервисов.  При помощи API токена сервисы можно удалять без подтверждения, если параметр токена &#x60;is_able_to_delete&#x60; установлен в значение &#x60;true&#x60; | [optional] |
 
@@ -277,8 +277,8 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     KubernetesApi apiInstance = new KubernetesApi(defaultClient);
-    Integer clusterId = 56; // Integer | Уникальный идентификатор кластера
-    Integer nodeId = 56; // Integer | Уникальный идентификатор группы нод
+    Integer clusterId = 56; // Integer | ID кластера
+    Integer nodeId = 56; // Integer | ID группы нод
     try {
       apiInstance.deleteClusterNode(clusterId, nodeId);
     } catch (ApiException e) {
@@ -296,8 +296,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **clusterId** | **Integer**| Уникальный идентификатор кластера | |
-| **nodeId** | **Integer**| Уникальный идентификатор группы нод | |
+| **clusterId** | **Integer**| ID кластера | |
+| **nodeId** | **Integer**| ID группы нод | |
 
 ### Return type
 
@@ -351,8 +351,8 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     KubernetesApi apiInstance = new KubernetesApi(defaultClient);
-    Integer clusterId = 56; // Integer | Уникальный идентификатор кластера
-    Integer groupId = 56; // Integer | Уникальный идентификатор группы
+    Integer clusterId = 56; // Integer | ID кластера
+    Integer groupId = 56; // Integer | ID группы
     try {
       apiInstance.deleteClusterNodeGroup(clusterId, groupId);
     } catch (ApiException e) {
@@ -370,8 +370,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **clusterId** | **Integer**| Уникальный идентификатор кластера | |
-| **groupId** | **Integer**| Уникальный идентификатор группы | |
+| **clusterId** | **Integer**| ID кластера | |
+| **groupId** | **Integer**| ID группы | |
 
 ### Return type
 
@@ -425,7 +425,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     KubernetesApi apiInstance = new KubernetesApi(defaultClient);
-    Integer clusterId = 56; // Integer | Уникальный идентификатор кластера
+    Integer clusterId = 56; // Integer | ID кластера
     try {
       ClusterResponse result = apiInstance.getCluster(clusterId);
       System.out.println(result);
@@ -444,7 +444,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **clusterId** | **Integer**| Уникальный идентификатор кластера | |
+| **clusterId** | **Integer**| ID кластера | |
 
 ### Return type
 
@@ -498,7 +498,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     KubernetesApi apiInstance = new KubernetesApi(defaultClient);
-    Integer clusterId = 56; // Integer | Уникальный идентификатор кластера
+    Integer clusterId = 56; // Integer | ID кластера
     try {
       String result = apiInstance.getClusterKubeconfig(clusterId);
       System.out.println(result);
@@ -517,7 +517,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **clusterId** | **Integer**| Уникальный идентификатор кластера | |
+| **clusterId** | **Integer**| ID кластера | |
 
 ### Return type
 
@@ -571,8 +571,8 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     KubernetesApi apiInstance = new KubernetesApi(defaultClient);
-    Integer clusterId = 56; // Integer | Уникальный идентификатор кластера
-    Integer groupId = 56; // Integer | Уникальный идентификатор группы
+    Integer clusterId = 56; // Integer | ID кластера
+    Integer groupId = 56; // Integer | ID группы
     try {
       NodeGroupResponse result = apiInstance.getClusterNodeGroup(clusterId, groupId);
       System.out.println(result);
@@ -591,8 +591,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **clusterId** | **Integer**| Уникальный идентификатор кластера | |
-| **groupId** | **Integer**| Уникальный идентификатор группы | |
+| **clusterId** | **Integer**| ID кластера | |
+| **groupId** | **Integer**| ID группы | |
 
 ### Return type
 
@@ -646,7 +646,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     KubernetesApi apiInstance = new KubernetesApi(defaultClient);
-    Integer clusterId = 56; // Integer | Уникальный идентификатор кластера
+    Integer clusterId = 56; // Integer | ID кластера
     try {
       NodeGroupsResponse result = apiInstance.getClusterNodeGroups(clusterId);
       System.out.println(result);
@@ -665,7 +665,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **clusterId** | **Integer**| Уникальный идентификатор кластера | |
+| **clusterId** | **Integer**| ID кластера | |
 
 ### Return type
 
@@ -719,7 +719,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     KubernetesApi apiInstance = new KubernetesApi(defaultClient);
-    Integer clusterId = 56; // Integer | Уникальный идентификатор кластера
+    Integer clusterId = 56; // Integer | ID кластера
     try {
       NodesResponse result = apiInstance.getClusterNodes(clusterId);
       System.out.println(result);
@@ -738,7 +738,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **clusterId** | **Integer**| Уникальный идентификатор кластера | |
+| **clusterId** | **Integer**| ID кластера | |
 
 ### Return type
 
@@ -792,8 +792,8 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     KubernetesApi apiInstance = new KubernetesApi(defaultClient);
-    Integer clusterId = 56; // Integer | Уникальный идентификатор кластера
-    Integer groupId = 56; // Integer | Уникальный идентификатор группы
+    Integer clusterId = 56; // Integer | ID кластера
+    Integer groupId = 56; // Integer | ID группы
     Integer limit = 100; // Integer | Обозначает количество записей, которое необходимо вернуть.
     Integer offset = 0; // Integer | Указывает на смещение, относительно начала списка.
     try {
@@ -814,8 +814,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **clusterId** | **Integer**| Уникальный идентификатор кластера | |
-| **groupId** | **Integer**| Уникальный идентификатор группы | |
+| **clusterId** | **Integer**| ID кластера | |
+| **groupId** | **Integer**| ID группы | |
 | **limit** | **Integer**| Обозначает количество записей, которое необходимо вернуть. | [optional] [default to 100] |
 | **offset** | **Integer**| Указывает на смещение, относительно начала списка. | [optional] [default to 0] |
 
@@ -871,7 +871,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     KubernetesApi apiInstance = new KubernetesApi(defaultClient);
-    Integer clusterId = 56; // Integer | Уникальный идентификатор кластера
+    Integer clusterId = 56; // Integer | ID кластера
     try {
       ResourcesResponse result = apiInstance.getClusterResources(clusterId);
       System.out.println(result);
@@ -890,7 +890,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **clusterId** | **Integer**| Уникальный идентификатор кластера | |
+| **clusterId** | **Integer**| ID кластера | |
 
 ### Return type
 
@@ -1218,8 +1218,8 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     KubernetesApi apiInstance = new KubernetesApi(defaultClient);
-    Integer clusterId = 56; // Integer | Уникальный идентификатор кластера
-    Integer groupId = 56; // Integer | Уникальный идентификатор группы
+    Integer clusterId = 56; // Integer | ID кластера
+    Integer groupId = 56; // Integer | ID группы
     NodeCount nodeCount = new NodeCount(); // NodeCount | 
     try {
       NodesResponse result = apiInstance.increaseCountOfNodesInGroup(clusterId, groupId, nodeCount);
@@ -1239,8 +1239,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **clusterId** | **Integer**| Уникальный идентификатор кластера | |
-| **groupId** | **Integer**| Уникальный идентификатор группы | |
+| **clusterId** | **Integer**| ID кластера | |
+| **groupId** | **Integer**| ID группы | |
 | **nodeCount** | [**NodeCount**](NodeCount.md)|  | |
 
 ### Return type
@@ -1295,8 +1295,8 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     KubernetesApi apiInstance = new KubernetesApi(defaultClient);
-    Integer clusterId = 56; // Integer | Уникальный идентификатор кластера
-    Integer groupId = 56; // Integer | Уникальный идентификатор группы
+    Integer clusterId = 56; // Integer | ID кластера
+    Integer groupId = 56; // Integer | ID группы
     NodeCount nodeCount = new NodeCount(); // NodeCount | 
     try {
       apiInstance.reduceCountOfNodesInGroup(clusterId, groupId, nodeCount);
@@ -1315,8 +1315,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **clusterId** | **Integer**| Уникальный идентификатор кластера | |
-| **groupId** | **Integer**| Уникальный идентификатор группы | |
+| **clusterId** | **Integer**| ID кластера | |
+| **groupId** | **Integer**| ID группы | |
 | **nodeCount** | [**NodeCount**](NodeCount.md)|  | |
 
 ### Return type
@@ -1371,7 +1371,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     KubernetesApi apiInstance = new KubernetesApi(defaultClient);
-    Integer clusterId = 56; // Integer | Уникальный идентификатор кластера
+    Integer clusterId = 56; // Integer | ID кластера
     ClusterEdit clusterEdit = new ClusterEdit(); // ClusterEdit | 
     try {
       ClusterResponse result = apiInstance.updateCluster(clusterId, clusterEdit);
@@ -1391,7 +1391,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **clusterId** | **Integer**| Уникальный идентификатор кластера | |
+| **clusterId** | **Integer**| ID кластера | |
 | **clusterEdit** | [**ClusterEdit**](ClusterEdit.md)|  | |
 
 ### Return type

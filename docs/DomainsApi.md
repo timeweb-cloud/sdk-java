@@ -19,7 +19,7 @@ All URIs are relative to *https://api.timeweb.cloud*
 | [**getDomainRequest**](DomainsApi.md#getDomainRequest) | **GET** /api/v1/domains-requests/{request_id} | Получение заявки на регистрацию/продление/трансфер домена |
 | [**getDomainRequests**](DomainsApi.md#getDomainRequests) | **GET** /api/v1/domains-requests | Получение списка заявок на регистрацию/продление/трансфер домена |
 | [**getDomains**](DomainsApi.md#getDomains) | **GET** /api/v1/domains | Получение списка всех доменов |
-| [**getTLD**](DomainsApi.md#getTLD) | **GET** /api/v1/tlds/{tld_id} | Получить информацию о доменной зоне по идентификатору |
+| [**getTLD**](DomainsApi.md#getTLD) | **GET** /api/v1/tlds/{tld_id} | Получить информацию о доменной зоне по ID |
 | [**getTLDs**](DomainsApi.md#getTLDs) | **GET** /api/v1/tlds | Получить информацию о доменных зонах |
 | [**updateDomainAutoProlongation**](DomainsApi.md#updateDomainAutoProlongation) | **PATCH** /api/v1/domains/{fqdn} | Включение/выключение автопродления домена |
 | [**updateDomainDNSRecord**](DomainsApi.md#updateDomainDNSRecord) | **PATCH** /api/v1/domains/{fqdn}/dns-records/{record_id} | Обновить информацию о DNS-записи домена или поддомена |
@@ -490,7 +490,7 @@ public class Example {
 
     DomainsApi apiInstance = new DomainsApi(defaultClient);
     String fqdn = "somedomain.ru"; // String | Полное имя домена или поддомена.
-    Integer recordId = 123; // Integer | Идентификатор DNS-записи домена или поддомена.
+    Integer recordId = 123; // Integer | ID DNS-записи домена или поддомена.
     try {
       apiInstance.deleteDomainDNSRecord(fqdn, recordId);
     } catch (ApiException e) {
@@ -509,7 +509,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **fqdn** | **String**| Полное имя домена или поддомена. | |
-| **recordId** | **Integer**| Идентификатор DNS-записи домена или поддомена. | |
+| **recordId** | **Integer**| ID DNS-записи домена или поддомена. | |
 
 ### Return type
 
@@ -932,7 +932,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     DomainsApi apiInstance = new DomainsApi(defaultClient);
-    Integer requestId = 123; // Integer | Идентификатор заявки на регистрацию/продление/трансфер домена.
+    Integer requestId = 123; // Integer | ID заявки на регистрацию/продление/трансфер домена.
     try {
       CreateDomainRequest201Response result = apiInstance.getDomainRequest(requestId);
       System.out.println(result);
@@ -951,7 +951,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **requestId** | **Integer**| Идентификатор заявки на регистрацию/продление/трансфер домена. | |
+| **requestId** | **Integer**| ID заявки на регистрацию/продление/трансфер домена. | |
 
 ### Return type
 
@@ -1004,7 +1004,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     DomainsApi apiInstance = new DomainsApi(defaultClient);
-    Integer personId = 123; // Integer | Идентификатор администратора, на которого зарегистрирован домен.
+    Integer personId = 123; // Integer | ID администратора, на которого зарегистрирован домен.
     try {
       GetDomainRequests200Response result = apiInstance.getDomainRequests(personId);
       System.out.println(result);
@@ -1023,7 +1023,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **personId** | **Integer**| Идентификатор администратора, на которого зарегистрирован домен. | [optional] |
+| **personId** | **Integer**| ID администратора, на которого зарегистрирован домен. | [optional] |
 
 ### Return type
 
@@ -1132,9 +1132,9 @@ public class Example {
 # **getTLD**
 > GetTLD200Response getTLD(tldId)
 
-Получить информацию о доменной зоне по идентификатору
+Получить информацию о доменной зоне по ID
 
-Чтобы получить информацию о доменной зоне по идентификатору, отправьте запрос GET на &#x60;/api/v1/tlds/{tld_id}&#x60;.
+Чтобы получить информацию о доменной зоне по ID, отправьте запрос GET на &#x60;/api/v1/tlds/{tld_id}&#x60;.
 
 ### Example
 ```java
@@ -1156,7 +1156,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     DomainsApi apiInstance = new DomainsApi(defaultClient);
-    Integer tldId = 123; // Integer | Идентификатор доменной зоны.
+    Integer tldId = 123; // Integer | ID доменной зоны.
     try {
       GetTLD200Response result = apiInstance.getTLD(tldId);
       System.out.println(result);
@@ -1175,7 +1175,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **tldId** | **Integer**| Идентификатор доменной зоны. | |
+| **tldId** | **Integer**| ID доменной зоны. | |
 
 ### Return type
 
@@ -1377,7 +1377,7 @@ public class Example {
 
     DomainsApi apiInstance = new DomainsApi(defaultClient);
     String fqdn = "somedomain.ru"; // String | Полное имя домена или поддомена.
-    Integer recordId = 123; // Integer | Идентификатор DNS-записи домена или поддомена.
+    Integer recordId = 123; // Integer | ID DNS-записи домена или поддомена.
     CreateDns createDns = new CreateDns(); // CreateDns | 
     try {
       CreateDomainDNSRecord201Response result = apiInstance.updateDomainDNSRecord(fqdn, recordId, createDns);
@@ -1398,7 +1398,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **fqdn** | **String**| Полное имя домена или поддомена. | |
-| **recordId** | **Integer**| Идентификатор DNS-записи домена или поддомена. | |
+| **recordId** | **Integer**| ID DNS-записи домена или поддомена. | |
 | **createDns** | [**CreateDns**](CreateDns.md)|  | |
 
 ### Return type
@@ -1526,7 +1526,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     DomainsApi apiInstance = new DomainsApi(defaultClient);
-    Integer requestId = 123; // Integer | Идентификатор заявки на регистрацию/продление/трансфер домена.
+    Integer requestId = 123; // Integer | ID заявки на регистрацию/продление/трансфер домена.
     Use use = new Use(); // Use | 
     try {
       CreateDomainRequest201Response result = apiInstance.updateDomainRequest(requestId, use);
@@ -1546,7 +1546,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **requestId** | **Integer**| Идентификатор заявки на регистрацию/продление/трансфер домена. | |
+| **requestId** | **Integer**| ID заявки на регистрацию/продление/трансфер домена. | |
 | **use** | [**Use**](Use.md)|  | |
 
 ### Return type

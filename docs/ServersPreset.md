@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**id** | **BigDecimal** | Уникальный идентификатор тарифа сервера. |  |
+|**id** | **BigDecimal** | ID тарифа сервера. |  |
 |**location** | [**LocationEnum**](#LocationEnum) | Локация сервера. |  |
 |**price** | **BigDecimal** | Стоимость в рублях. |  |
 |**cpu** | **BigDecimal** | Количество ядер процессора. |  |

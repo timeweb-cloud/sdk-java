@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**id** | **BigDecimal** | Уникальный идентификатор для каждого экземпляра тарифа базы данных. |  [optional] |
+|**id** | **BigDecimal** | ID для каждого экземпляра тарифа базы данных. |  [optional] |
 |**description** | **String** | Описание тарифа. |  [optional] |
 |**descriptionShort** | **String** | Краткое описание тарифа. |  [optional] |
 |**cpu** | **BigDecimal** | Описание процессора тарифа. |  [optional] |

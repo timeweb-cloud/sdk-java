@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**id** | **Integer** | Идентификатор пресета. |  |
+|**id** | **Integer** | ID пресета. |  |
 |**description** | **String** | Описание пресета. |  [optional] |
 |**descriptionShort** | **String** | Краткое описание пресета. |  |
 |**price** | **Integer** | Цена пресета. |  |

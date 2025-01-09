@@ -41,7 +41,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     SshApi apiInstance = new SshApi(defaultClient);
-    Integer serverId = 1051; // Integer | Уникальный идентификатор облачного сервера.
+    Integer serverId = 1051; // Integer | ID облачного сервера.
     AddKeyToServerRequest addKeyToServerRequest = new AddKeyToServerRequest(); // AddKeyToServerRequest | 
     try {
       apiInstance.addKeyToServer(serverId, addKeyToServerRequest);
@@ -60,7 +60,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **serverId** | **Integer**| Уникальный идентификатор облачного сервера. | |
+| **serverId** | **Integer**| ID облачного сервера. | |
 | **addKeyToServerRequest** | [**AddKeyToServerRequest**](AddKeyToServerRequest.md)|  | |
 
 ### Return type
@@ -188,7 +188,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     SshApi apiInstance = new SshApi(defaultClient);
-    Integer sshKeyId = 1051; // Integer | Уникальный идентификатор SSH-ключа
+    Integer sshKeyId = 1051; // Integer | ID SSH-ключа
     try {
       apiInstance.deleteKey(sshKeyId);
     } catch (ApiException e) {
@@ -206,7 +206,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **sshKeyId** | **Integer**| Уникальный идентификатор SSH-ключа | |
+| **sshKeyId** | **Integer**| ID SSH-ключа | |
 
 ### Return type
 
@@ -260,8 +260,8 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     SshApi apiInstance = new SshApi(defaultClient);
-    Integer serverId = 1051; // Integer | Уникальный идентификатор облачного сервера.
-    Integer sshKeyId = 1051; // Integer | Уникальный идентификатор SSH-ключа
+    Integer serverId = 1051; // Integer | ID облачного сервера.
+    Integer sshKeyId = 1051; // Integer | ID SSH-ключа
     try {
       apiInstance.deleteKeyFromServer(serverId, sshKeyId);
     } catch (ApiException e) {
@@ -279,8 +279,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **serverId** | **Integer**| Уникальный идентификатор облачного сервера. | |
-| **sshKeyId** | **Integer**| Уникальный идентификатор SSH-ключа | |
+| **serverId** | **Integer**| ID облачного сервера. | |
+| **sshKeyId** | **Integer**| ID SSH-ключа | |
 
 ### Return type
 
@@ -334,7 +334,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     SshApi apiInstance = new SshApi(defaultClient);
-    Integer sshKeyId = 1051; // Integer | Уникальный идентификатор SSH-ключа
+    Integer sshKeyId = 1051; // Integer | ID SSH-ключа
     try {
       GetKey200Response result = apiInstance.getKey(sshKeyId);
       System.out.println(result);
@@ -353,7 +353,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **sshKeyId** | **Integer**| Уникальный идентификатор SSH-ключа | |
+| **sshKeyId** | **Integer**| ID SSH-ключа | |
 
 ### Return type
 
@@ -476,7 +476,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     SshApi apiInstance = new SshApi(defaultClient);
-    Integer sshKeyId = 1051; // Integer | Уникальный идентификатор SSH-ключа
+    Integer sshKeyId = 1051; // Integer | ID SSH-ключа
     UpdateKeyRequest updateKeyRequest = new UpdateKeyRequest(); // UpdateKeyRequest | 
     try {
       GetKey200Response result = apiInstance.updateKey(sshKeyId, updateKeyRequest);
@@ -496,7 +496,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **sshKeyId** | **Integer**| Уникальный идентификатор SSH-ключа | |
+| **sshKeyId** | **Integer**| ID SSH-ключа | |
 | **updateKeyRequest** | [**UpdateKeyRequest**](UpdateKeyRequest.md)|  | |
 
 ### Return type

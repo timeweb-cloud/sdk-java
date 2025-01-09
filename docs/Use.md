@@ -9,7 +9,7 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**moneySource** | [**MoneySourceEnum**](#MoneySourceEnum) | Тип создаваемой заявки. |  |
-|**personId** | **BigDecimal** | Идентификатор администратора, на которого зарегистрирован домен. |  [optional] |
+|**personId** | **BigDecimal** | ID администратора, на которого зарегистрирован домен. |  [optional] |
 
 
 

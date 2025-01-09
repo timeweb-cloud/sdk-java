@@ -1,6 +1,6 @@
 /*
  * Timeweb Cloud API
- * # Введение API Timeweb Cloud позволяет вам управлять ресурсами в облаке программным способом с использованием обычных HTTP-запросов.  Множество функций, которые доступны в панели управления Timeweb Cloud, также доступны через API, что позволяет вам автоматизировать ваши собственные сценарии.  В этой документации сперва будет описан общий дизайн и принципы работы API, а после этого конкретные конечные точки. Также будут приведены примеры запросов к ним.   ## Запросы Запросы должны выполняться по протоколу `HTTPS`, чтобы гарантировать шифрование транзакций. Поддерживаются следующие методы запроса: |Метод|Применение| |--- |--- | |GET|Извлекает данные о коллекциях и отдельных ресурсах.| |POST|Для коллекций создает новый ресурс этого типа. Также используется для выполнения действий с конкретным ресурсом.| |PUT|Обновляет существующий ресурс.| |PATCH|Некоторые ресурсы поддерживают частичное обновление, то есть обновление только части атрибутов ресурса, в этом случае вместо метода PUT будет использован PATCH.| |DELETE|Удаляет ресурс.|  Методы `POST`, `PUT` и `PATCH` могут включать объект в тело запроса с типом содержимого `application/json`.  ### Параметры в запросах Некоторые коллекции поддерживают пагинацию, поиск или сортировку в запросах. В параметрах запроса требуется передать: - `limit` — обозначает количество записей, которое необходимо вернуть  - `offset` — указывает на смещение, относительно начала списка  - `search` — позволяет указать набор символов для поиска  - `sort` — можно задать правило сортировки коллекции  ## Ответы Запросы вернут один из следующих кодов состояния ответа HTTP:  |Статус|Описание| |--- |--- | |200 OK|Действие с ресурсом было выполнено успешно.| |201 Created|Ресурс был успешно создан. При этом ресурс может быть как уже готовым к использованию, так и находиться в процессе запуска.| |204 No Content|Действие с ресурсом было выполнено успешно, и ответ не содержит дополнительной информации в теле.| |400 Bad Request|Был отправлен неверный запрос, например, в нем отсутствуют обязательные параметры и т. д. Тело ответа будет содержать дополнительную информацию об ошибке.| |401 Unauthorized|Ошибка аутентификации.| |403 Forbidden|Аутентификация прошла успешно, но недостаточно прав для выполнения действия.| |404 Not Found|Запрашиваемый ресурс не найден.| |409 Conflict|Запрос конфликтует с текущим состоянием.| |423 Locked|Ресурс из запроса заблокирован от применения к нему указанного метода.| |429 Too Many Requests|Был достигнут лимит по количеству запросов в единицу времени.| |500 Internal Server Error|При выполнении запроса произошла какая-то внутренняя ошибка. Чтобы решить эту проблему, лучше всего создать тикет в панели управления.|  ### Структура успешного ответа Все конечные точки будут возвращать данные в формате `JSON`. Ответы на `GET`-запросы будут иметь на верхнем уровне следующую структуру атрибутов:  |Название поля|Тип|Описание| |--- |--- |--- | |[entity_name]|object, object[], string[], number[], boolean|Динамическое поле, которое будет меняться в зависимости от запрашиваемого ресурса и будет содержать все атрибуты, необходимые для описания этого ресурса. Например, при запросе списка баз данных будет возвращаться поле `dbs`, а при запросе конкретного облачного сервера `server`. Для некоторых конечных точек в ответе может возвращаться сразу несколько ресурсов.| |meta|object|Опционально. Объект, который содержит вспомогательную информацию о ресурсе. Чаще всего будет встречаться при запросе коллекций и содержать поле `total`, которое будет указывать на количество элементов в коллекции.| |response_id|string|Опционально. В большинстве случаев в ответе будет содержаться уникальный идентификатор ответа в формате UUIDv4, который однозначно указывает на ваш запрос внутри нашей системы. Если вам потребуется задать вопрос нашей поддержке, приложите к вопросу этот идентификатор — так мы сможем найти ответ на него намного быстрее. Также вы можете использовать этот идентификатор, чтобы убедиться, что это новый ответ на запрос и результат не был получен из кэша.|  Пример запроса на получение списка SSH-ключей: ```     HTTP/2.0 200 OK     {       \"ssh_keys\":[           {             \"body\":\"ssh-rsa AAAAB3NzaC1sdfghjkOAsBwWhs= example@device.local\",             \"created_at\":\"2021-09-15T19:52:27Z\",             \"expired_at\":null,             \"id\":5297,             \"is_default\":false,             \"name\":\"example@device.local\",             \"used_at\":null,             \"used_by\":[]           }       ],       \"meta\":{           \"total\":1       },       \"response_id\":\"94608d15-8672-4eed-8ab6-28bd6fa3cdf7\"     } ```  ### Структура ответа с ошибкой |Название поля|Тип|Описание| |--- |--- |--- | |status_code|number|Короткий числовой идентификатор ошибки.| |error_code|string|Короткий текстовый идентификатор ошибки, который уточняет числовой идентификатор и удобен для программной обработки. Самый простой пример — это код `not_found` для ошибки 404.| |message|string, string[]|Опционально. В большинстве случаев в ответе будет содержаться человекочитаемое подробное описание ошибки или ошибок, которые помогут понять, что нужно исправить.| |response_id|string|Опционально. В большинстве случае в ответе будет содержаться уникальный идентификатор ответа в формате UUIDv4, который однозначно указывает на ваш запрос внутри нашей системы. Если вам потребуется задать вопрос нашей поддержке, приложите к вопросу этот идентификатор — так мы сможем найти ответ на него намного быстрее.|  Пример: ```     HTTP/2.0 403 Forbidden     {       \"status_code\": 403,       \"error_code\":  \"forbidden\",       \"message\":     \"You do not have access for the attempted action\",       \"response_id\": \"94608d15-8672-4eed-8ab6-28bd6fa3cdf7\"     } ```  ## Статусы ресурсов Важно учесть, что при создании большинства ресурсов внутри платформы вам будет сразу возвращен ответ от сервера со статусом `200 OK` или `201 Created` и идентификатором созданного ресурса в теле ответа, но при этом этот ресурс может быть ещё в *состоянии запуска*.  Для того чтобы понять, в каком состоянии сейчас находится ваш ресурс, мы добавили поле `status` в ответ на получение информации о ресурсе.  Список статусов будет отличаться в зависимости от типа ресурса. Увидеть поддерживаемый список статусов вы сможете в описании каждого конкретного ресурса.     ## Ограничение скорости запросов (Rate Limiting) Чтобы обеспечить стабильность для всех пользователей, Timeweb Cloud защищает API от всплесков входящего трафика, анализируя количество запросов c каждого аккаунта к каждой конечной точке.  Если ваше приложение отправляет более 20 запросов в секунду на одну конечную точку, то для этого запроса API может вернуть код состояния HTTP `429 Too Many Requests`.   ## Аутентификация Доступ к API осуществляется с помощью JWT-токена. Токенами можно управлять внутри панели управления Timeweb Cloud в разделе *API и Terraform*.  Токен необходимо передавать в заголовке каждого запроса в формате: ```   Authorization: Bearer $TIMEWEB_CLOUD_TOKEN ```  ## Формат примеров API Примеры в этой документации описаны с помощью `curl`, HTTP-клиента командной строки. На компьютерах `Linux` и `macOS` обычно по умолчанию установлен `curl`, и он доступен для загрузки на всех популярных платформах, включая `Windows`.  Каждый пример разделен на несколько строк символом `\\`, который совместим с `bash`. Типичный пример выглядит так: ```   curl -X PATCH      -H \"Content-Type: application/json\"      -H \"Authorization: Bearer $TIMEWEB_CLOUD_TOKEN\"      -d '{\"name\":\"Cute Corvus\",\"comment\":\"Development Server\"}'      \"https://api.timeweb.cloud/api/v1/dedicated/1051\" ``` - Параметр `-X` задает метод запроса. Для согласованности метод будет указан во всех примерах, даже если он явно не требуется для методов `GET`. - Строки `-H` задают требуемые HTTP-заголовки. - Примеры, для которых требуется объект JSON в теле запроса, передают требуемые данные через параметр `-d`.  Чтобы использовать приведенные примеры, не подставляя каждый раз в них свой токен, вы можете добавить токен один раз в переменные окружения в вашей консоли. Например, на `Linux` это можно сделать с помощью команды:  ``` TIMEWEB_CLOUD_TOKEN=\"token\" ```  После этого токен будет автоматически подставляться в ваши запросы.  Обратите внимание, что все значения в этой документации являются примерами. Не полагайтесь на идентификаторы операционных систем, тарифов и т.д., используемые в примерах. Используйте соответствующую конечную точку для получения значений перед созданием ресурсов.   ## Версионирование API построено согласно принципам [семантического версионирования](https://semver.org/lang/ru). Это значит, что мы гарантируем обратную совместимость всех изменений в пределах одной мажорной версии.  Мажорная версия каждой конечной точки обозначается в пути запроса, например, запрос `/api/v1/servers` указывает, что этот метод имеет версию 1.
+ * # Введение API Timeweb Cloud позволяет вам управлять ресурсами в облаке программным способом с использованием обычных HTTP-запросов.  Множество функций, которые доступны в панели управления Timeweb Cloud, также доступны через API, что позволяет вам автоматизировать ваши собственные сценарии.  В этой документации сперва будет описан общий дизайн и принципы работы API, а после этого конкретные конечные точки. Также будут приведены примеры запросов к ним.   ## Запросы Запросы должны выполняться по протоколу `HTTPS`, чтобы гарантировать шифрование транзакций. Поддерживаются следующие методы запроса: |Метод|Применение| |--- |--- | |GET|Извлекает данные о коллекциях и отдельных ресурсах.| |POST|Для коллекций создает новый ресурс этого типа. Также используется для выполнения действий с конкретным ресурсом.| |PUT|Обновляет существующий ресурс.| |PATCH|Некоторые ресурсы поддерживают частичное обновление, то есть обновление только части атрибутов ресурса, в этом случае вместо метода PUT будет использован PATCH.| |DELETE|Удаляет ресурс.|  Методы `POST`, `PUT` и `PATCH` могут включать объект в тело запроса с типом содержимого `application/json`.  ### Параметры в запросах Некоторые коллекции поддерживают пагинацию, поиск или сортировку в запросах. В параметрах запроса требуется передать: - `limit` — обозначает количество записей, которое необходимо вернуть  - `offset` — указывает на смещение, относительно начала списка  - `search` — позволяет указать набор символов для поиска  - `sort` — можно задать правило сортировки коллекции  ## Ответы Запросы вернут один из следующих кодов состояния ответа HTTP:  |Статус|Описание| |--- |--- | |200 OK|Действие с ресурсом было выполнено успешно.| |201 Created|Ресурс был успешно создан. При этом ресурс может быть как уже готовым к использованию, так и находиться в процессе запуска.| |204 No Content|Действие с ресурсом было выполнено успешно, и ответ не содержит дополнительной информации в теле.| |400 Bad Request|Был отправлен неверный запрос, например, в нем отсутствуют обязательные параметры и т. д. Тело ответа будет содержать дополнительную информацию об ошибке.| |401 Unauthorized|Ошибка аутентификации.| |403 Forbidden|Аутентификация прошла успешно, но недостаточно прав для выполнения действия.| |404 Not Found|Запрашиваемый ресурс не найден.| |409 Conflict|Запрос конфликтует с текущим состоянием.| |423 Locked|Ресурс из запроса заблокирован от применения к нему указанного метода.| |429 Too Many Requests|Был достигнут лимит по количеству запросов в единицу времени.| |500 Internal Server Error|При выполнении запроса произошла какая-то внутренняя ошибка. Чтобы решить эту проблему, лучше всего создать тикет в панели управления.|  ### Структура успешного ответа Все конечные точки будут возвращать данные в формате `JSON`. Ответы на `GET`-запросы будут иметь на верхнем уровне следующую структуру атрибутов:  |Название поля|Тип|Описание| |--- |--- |--- | |[entity_name]|object, object[], string[], number[], boolean|Динамическое поле, которое будет меняться в зависимости от запрашиваемого ресурса и будет содержать все атрибуты, необходимые для описания этого ресурса. Например, при запросе списка баз данных будет возвращаться поле `dbs`, а при запросе конкретного облачного сервера `server`. Для некоторых конечных точек в ответе может возвращаться сразу несколько ресурсов.| |meta|object|Опционально. Объект, который содержит вспомогательную информацию о ресурсе. Чаще всего будет встречаться при запросе коллекций и содержать поле `total`, которое будет указывать на количество элементов в коллекции.| |response_id|string|Опционально. В большинстве случаев в ответе будет содержаться ID ответа в формате UUIDv4, который однозначно указывает на ваш запрос внутри нашей системы. Если вам потребуется задать вопрос нашей поддержке, приложите к вопросу этот ID— так мы сможем найти ответ на него намного быстрее. Также вы можете использовать этот ID, чтобы убедиться, что это новый ответ на запрос и результат не был получен из кэша.|  Пример запроса на получение списка SSH-ключей: ```     HTTP/2.0 200 OK     {       \"ssh_keys\":[           {             \"body\":\"ssh-rsa AAAAB3NzaC1sdfghjkOAsBwWhs= example@device.local\",             \"created_at\":\"2021-09-15T19:52:27Z\",             \"expired_at\":null,             \"id\":5297,             \"is_default\":false,             \"name\":\"example@device.local\",             \"used_at\":null,             \"used_by\":[]           }       ],       \"meta\":{           \"total\":1       },       \"response_id\":\"94608d15-8672-4eed-8ab6-28bd6fa3cdf7\"     } ```  ### Структура ответа с ошибкой |Название поля|Тип|Описание| |--- |--- |--- | |status_code|number|Короткий числовой идентификатор ошибки.| |error_code|string|Короткий текстовый идентификатор ошибки, который уточняет числовой идентификатор и удобен для программной обработки. Самый простой пример — это код `not_found` для ошибки 404.| |message|string, string[]|Опционально. В большинстве случаев в ответе будет содержаться человекочитаемое подробное описание ошибки или ошибок, которые помогут понять, что нужно исправить.| |response_id|string|Опционально. В большинстве случае в ответе будет содержаться ID ответа в формате UUIDv4, который однозначно указывает на ваш запрос внутри нашей системы. Если вам потребуется задать вопрос нашей поддержке, приложите к вопросу этот ID — так мы сможем найти ответ на него намного быстрее.|  Пример: ```     HTTP/2.0 403 Forbidden     {       \"status_code\": 403,       \"error_code\":  \"forbidden\",       \"message\":     \"You do not have access for the attempted action\",       \"response_id\": \"94608d15-8672-4eed-8ab6-28bd6fa3cdf7\"     } ```  ## Статусы ресурсов Важно учесть, что при создании большинства ресурсов внутри платформы вам будет сразу возвращен ответ от сервера со статусом `200 OK` или `201 Created` и ID созданного ресурса в теле ответа, но при этом этот ресурс может быть ещё в *состоянии запуска*.  Для того чтобы понять, в каком состоянии сейчас находится ваш ресурс, мы добавили поле `status` в ответ на получение информации о ресурсе.  Список статусов будет отличаться в зависимости от типа ресурса. Увидеть поддерживаемый список статусов вы сможете в описании каждого конкретного ресурса.     ## Ограничение скорости запросов (Rate Limiting) Чтобы обеспечить стабильность для всех пользователей, Timeweb Cloud защищает API от всплесков входящего трафика, анализируя количество запросов c каждого аккаунта к каждой конечной точке.  Если ваше приложение отправляет более 20 запросов в секунду на одну конечную точку, то для этого запроса API может вернуть код состояния HTTP `429 Too Many Requests`.   ## Аутентификация Доступ к API осуществляется с помощью JWT-токена. Токенами можно управлять внутри панели управления Timeweb Cloud в разделе *API и Terraform*.  Токен необходимо передавать в заголовке каждого запроса в формате: ```   Authorization: Bearer $TIMEWEB_CLOUD_TOKEN ```  ## Формат примеров API Примеры в этой документации описаны с помощью `curl`, HTTP-клиента командной строки. На компьютерах `Linux` и `macOS` обычно по умолчанию установлен `curl`, и он доступен для загрузки на всех популярных платформах, включая `Windows`.  Каждый пример разделен на несколько строк символом `\\`, который совместим с `bash`. Типичный пример выглядит так: ```   curl -X PATCH      -H \"Content-Type: application/json\"      -H \"Authorization: Bearer $TIMEWEB_CLOUD_TOKEN\"      -d '{\"name\":\"Cute Corvus\",\"comment\":\"Development Server\"}'      \"https://api.timeweb.cloud/api/v1/dedicated/1051\" ``` - Параметр `-X` задает метод запроса. Для согласованности метод будет указан во всех примерах, даже если он явно не требуется для методов `GET`. - Строки `-H` задают требуемые HTTP-заголовки. - Примеры, для которых требуется объект JSON в теле запроса, передают требуемые данные через параметр `-d`.  Чтобы использовать приведенные примеры, не подставляя каждый раз в них свой токен, вы можете добавить токен один раз в переменные окружения в вашей консоли. Например, на `Linux` это можно сделать с помощью команды:  ``` TIMEWEB_CLOUD_TOKEN=\"token\" ```  После этого токен будет автоматически подставляться в ваши запросы.  Обратите внимание, что все значения в этой документации являются примерами. Не полагайтесь на IDы операционных систем, тарифов и т.д., используемые в примерах. Используйте соответствующую конечную точку для получения значений перед созданием ресурсов.   ## Версионирование API построено согласно принципам [семантического версионирования](https://semver.org/lang/ru). Это значит, что мы гарантируем обратную совместимость всех изменений в пределах одной мажорной версии.  Мажорная версия каждой конечной точки обозначается в пути запроса, например, запрос `/api/v1/servers` указывает, что этот метод имеет версию 1.
  *
  * The version of the OpenAPI document: 1.0.0
  * Contact: info@timeweb.cloud
@@ -260,7 +260,7 @@ public class DatabasesApi {
     }
     /**
      * Build call for createDatabaseBackup
-     * @param dbId Идентификатор базы данных (required)
+     * @param dbId ID базы данных (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -336,7 +336,7 @@ public class DatabasesApi {
     /**
      * Создание бэкапа базы данных
      * Чтобы создать бэкап базы данных, отправьте запрос POST в &#x60;api/v1/dbs/{db_id}/backups&#x60;. 
-     * @param dbId Идентификатор базы данных (required)
+     * @param dbId ID базы данных (required)
      * @return CreateDatabaseBackup201Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -360,7 +360,7 @@ public class DatabasesApi {
     /**
      * Создание бэкапа базы данных
      * Чтобы создать бэкап базы данных, отправьте запрос POST в &#x60;api/v1/dbs/{db_id}/backups&#x60;. 
-     * @param dbId Идентификатор базы данных (required)
+     * @param dbId ID базы данных (required)
      * @return ApiResponse&lt;CreateDatabaseBackup201Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -385,7 +385,7 @@ public class DatabasesApi {
     /**
      * Создание бэкапа базы данных (asynchronously)
      * Чтобы создать бэкап базы данных, отправьте запрос POST в &#x60;api/v1/dbs/{db_id}/backups&#x60;. 
-     * @param dbId Идентификатор базы данных (required)
+     * @param dbId ID базы данных (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -558,7 +558,7 @@ public class DatabasesApi {
     }
     /**
      * Build call for createDatabaseInstance
-     * @param dbClusterId Идентификатор кластера базы данных (required)
+     * @param dbClusterId ID кластера базы данных (required)
      * @param createInstance  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -640,7 +640,7 @@ public class DatabasesApi {
     /**
      * Создание инстанса базы данных
      * Чтобы создать инстанс базы данных, отправьте POST-запрос на &#x60;/api/v1/databases/{db_cluster_id}/instances&#x60;.\\    Существующие пользователи не будут иметь доступа к новой базе данных после создания. Вы можете изменить привилегии для пользователя через &lt;a href&#x3D;&#39;#tag/Bazy-dannyh/operation/updateDatabaseUser&#39;&gt;метод изменения пользователя&lt;/a&gt; 
-     * @param dbClusterId Идентификатор кластера базы данных (required)
+     * @param dbClusterId ID кластера базы данных (required)
      * @param createInstance  (required)
      * @return CreateDatabaseInstance201Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -664,7 +664,7 @@ public class DatabasesApi {
     /**
      * Создание инстанса базы данных
      * Чтобы создать инстанс базы данных, отправьте POST-запрос на &#x60;/api/v1/databases/{db_cluster_id}/instances&#x60;.\\    Существующие пользователи не будут иметь доступа к новой базе данных после создания. Вы можете изменить привилегии для пользователя через &lt;a href&#x3D;&#39;#tag/Bazy-dannyh/operation/updateDatabaseUser&#39;&gt;метод изменения пользователя&lt;/a&gt; 
-     * @param dbClusterId Идентификатор кластера базы данных (required)
+     * @param dbClusterId ID кластера базы данных (required)
      * @param createInstance  (required)
      * @return ApiResponse&lt;CreateDatabaseInstance201Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -689,7 +689,7 @@ public class DatabasesApi {
     /**
      * Создание инстанса базы данных (asynchronously)
      * Чтобы создать инстанс базы данных, отправьте POST-запрос на &#x60;/api/v1/databases/{db_cluster_id}/instances&#x60;.\\    Существующие пользователи не будут иметь доступа к новой базе данных после создания. Вы можете изменить привилегии для пользователя через &lt;a href&#x3D;&#39;#tag/Bazy-dannyh/operation/updateDatabaseUser&#39;&gt;метод изменения пользователя&lt;/a&gt; 
-     * @param dbClusterId Идентификатор кластера базы данных (required)
+     * @param dbClusterId ID кластера базы данных (required)
      * @param createInstance  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -715,7 +715,7 @@ public class DatabasesApi {
     }
     /**
      * Build call for createDatabaseUser
-     * @param dbClusterId Идентификатор кластера базы данных (required)
+     * @param dbClusterId ID кластера базы данных (required)
      * @param createAdmin  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -797,7 +797,7 @@ public class DatabasesApi {
     /**
      * Создание пользователя базы данных
      * Чтобы создать пользователя базы данных, отправьте POST-запрос на &#x60;/api/v1/databases/{db_cluster_id}/admins&#x60;.
-     * @param dbClusterId Идентификатор кластера базы данных (required)
+     * @param dbClusterId ID кластера базы данных (required)
      * @param createAdmin  (required)
      * @return CreateDatabaseUser201Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -821,7 +821,7 @@ public class DatabasesApi {
     /**
      * Создание пользователя базы данных
      * Чтобы создать пользователя базы данных, отправьте POST-запрос на &#x60;/api/v1/databases/{db_cluster_id}/admins&#x60;.
-     * @param dbClusterId Идентификатор кластера базы данных (required)
+     * @param dbClusterId ID кластера базы данных (required)
      * @param createAdmin  (required)
      * @return ApiResponse&lt;CreateDatabaseUser201Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -846,7 +846,7 @@ public class DatabasesApi {
     /**
      * Создание пользователя базы данных (asynchronously)
      * Чтобы создать пользователя базы данных, отправьте POST-запрос на &#x60;/api/v1/databases/{db_cluster_id}/admins&#x60;.
-     * @param dbClusterId Идентификатор кластера базы данных (required)
+     * @param dbClusterId ID кластера базы данных (required)
      * @param createAdmin  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -872,7 +872,7 @@ public class DatabasesApi {
     }
     /**
      * Build call for deleteDatabase
-     * @param dbId Идентификатор базы данных (required)
+     * @param dbId ID базы данных (required)
      * @param hash Хеш, который совместно с кодом авторизации надо отправить для удаления, если включено подтверждение удаления сервисов через Телеграм. (optional)
      * @param code Код подтверждения, который придет к вам в Телеграм, после запроса удаления, если включено подтверждение удаления сервисов.  При помощи API токена сервисы можно удалять без подтверждения, если параметр токена &#x60;is_able_to_delete&#x60; установлен в значение &#x60;true&#x60; (optional)
      * @param _callback Callback for upload/download progress
@@ -961,7 +961,7 @@ public class DatabasesApi {
     /**
      * Удаление базы данных
      * Чтобы удалить базу данных, отправьте запрос DELETE в &#x60;api/v1/dbs/{db_id}&#x60;. 
-     * @param dbId Идентификатор базы данных (required)
+     * @param dbId ID базы данных (required)
      * @param hash Хеш, который совместно с кодом авторизации надо отправить для удаления, если включено подтверждение удаления сервисов через Телеграм. (optional)
      * @param code Код подтверждения, который придет к вам в Телеграм, после запроса удаления, если включено подтверждение удаления сервисов.  При помощи API токена сервисы можно удалять без подтверждения, если параметр токена &#x60;is_able_to_delete&#x60; установлен в значение &#x60;true&#x60; (optional)
      * @return DeleteDatabase200Response
@@ -989,7 +989,7 @@ public class DatabasesApi {
     /**
      * Удаление базы данных
      * Чтобы удалить базу данных, отправьте запрос DELETE в &#x60;api/v1/dbs/{db_id}&#x60;. 
-     * @param dbId Идентификатор базы данных (required)
+     * @param dbId ID базы данных (required)
      * @param hash Хеш, который совместно с кодом авторизации надо отправить для удаления, если включено подтверждение удаления сервисов через Телеграм. (optional)
      * @param code Код подтверждения, который придет к вам в Телеграм, после запроса удаления, если включено подтверждение удаления сервисов.  При помощи API токена сервисы можно удалять без подтверждения, если параметр токена &#x60;is_able_to_delete&#x60; установлен в значение &#x60;true&#x60; (optional)
      * @return ApiResponse&lt;DeleteDatabase200Response&gt;
@@ -1018,7 +1018,7 @@ public class DatabasesApi {
     /**
      * Удаление базы данных (asynchronously)
      * Чтобы удалить базу данных, отправьте запрос DELETE в &#x60;api/v1/dbs/{db_id}&#x60;. 
-     * @param dbId Идентификатор базы данных (required)
+     * @param dbId ID базы данных (required)
      * @param hash Хеш, который совместно с кодом авторизации надо отправить для удаления, если включено подтверждение удаления сервисов через Телеграм. (optional)
      * @param code Код подтверждения, который придет к вам в Телеграм, после запроса удаления, если включено подтверждение удаления сервисов.  При помощи API токена сервисы можно удалять без подтверждения, если параметр токена &#x60;is_able_to_delete&#x60; установлен в значение &#x60;true&#x60; (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -1048,8 +1048,8 @@ public class DatabasesApi {
     }
     /**
      * Build call for deleteDatabaseBackup
-     * @param dbId Идентификатор базы данных (required)
-     * @param backupId Идентификатор резевной копии (required)
+     * @param dbId ID базы данных (required)
+     * @param backupId ID резевной копии (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1130,8 +1130,8 @@ public class DatabasesApi {
     /**
      * Удаление бэкапа базы данных
      * Чтобы удалить бэкап базы данных, отправьте запрос DELETE в &#x60;api/v1/dbs/{db_id}/backups/{backup_id}&#x60;. 
-     * @param dbId Идентификатор базы данных (required)
-     * @param backupId Идентификатор резевной копии (required)
+     * @param dbId ID базы данных (required)
+     * @param backupId ID резевной копии (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1152,8 +1152,8 @@ public class DatabasesApi {
     /**
      * Удаление бэкапа базы данных
      * Чтобы удалить бэкап базы данных, отправьте запрос DELETE в &#x60;api/v1/dbs/{db_id}/backups/{backup_id}&#x60;. 
-     * @param dbId Идентификатор базы данных (required)
-     * @param backupId Идентификатор резевной копии (required)
+     * @param dbId ID базы данных (required)
+     * @param backupId ID резевной копии (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1176,8 +1176,8 @@ public class DatabasesApi {
     /**
      * Удаление бэкапа базы данных (asynchronously)
      * Чтобы удалить бэкап базы данных, отправьте запрос DELETE в &#x60;api/v1/dbs/{db_id}/backups/{backup_id}&#x60;. 
-     * @param dbId Идентификатор базы данных (required)
-     * @param backupId Идентификатор резевной копии (required)
+     * @param dbId ID базы данных (required)
+     * @param backupId ID резевной копии (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1201,7 +1201,7 @@ public class DatabasesApi {
     }
     /**
      * Build call for deleteDatabaseCluster
-     * @param dbClusterId Идентификатор кластера базы данных (required)
+     * @param dbClusterId ID кластера базы данных (required)
      * @param hash Хеш, который совместно с кодом авторизации надо отправить для удаления, если включено подтверждение удаления сервисов через Телеграм. (optional)
      * @param code Код подтверждения, который придет к вам в Телеграм, после запроса удаления, если включено подтверждение удаления сервисов.  При помощи API токена сервисы можно удалять без подтверждения, если параметр токена &#x60;is_able_to_delete&#x60; установлен в значение &#x60;true&#x60; (optional)
      * @param _callback Callback for upload/download progress
@@ -1287,7 +1287,7 @@ public class DatabasesApi {
     /**
      * Удаление кластера базы данных
      * Чтобы удалить кластер базы данных, отправьте DELETE-запрос на &#x60;/api/v1/databases/{db_cluster_id}&#x60;.
-     * @param dbClusterId Идентификатор кластера базы данных (required)
+     * @param dbClusterId ID кластера базы данных (required)
      * @param hash Хеш, который совместно с кодом авторизации надо отправить для удаления, если включено подтверждение удаления сервисов через Телеграм. (optional)
      * @param code Код подтверждения, который придет к вам в Телеграм, после запроса удаления, если включено подтверждение удаления сервисов.  При помощи API токена сервисы можно удалять без подтверждения, если параметр токена &#x60;is_able_to_delete&#x60; установлен в значение &#x60;true&#x60; (optional)
      * @return DeleteDatabaseCluster200Response
@@ -1313,7 +1313,7 @@ public class DatabasesApi {
     /**
      * Удаление кластера базы данных
      * Чтобы удалить кластер базы данных, отправьте DELETE-запрос на &#x60;/api/v1/databases/{db_cluster_id}&#x60;.
-     * @param dbClusterId Идентификатор кластера базы данных (required)
+     * @param dbClusterId ID кластера базы данных (required)
      * @param hash Хеш, который совместно с кодом авторизации надо отправить для удаления, если включено подтверждение удаления сервисов через Телеграм. (optional)
      * @param code Код подтверждения, который придет к вам в Телеграм, после запроса удаления, если включено подтверждение удаления сервисов.  При помощи API токена сервисы можно удалять без подтверждения, если параметр токена &#x60;is_able_to_delete&#x60; установлен в значение &#x60;true&#x60; (optional)
      * @return ApiResponse&lt;DeleteDatabaseCluster200Response&gt;
@@ -1340,7 +1340,7 @@ public class DatabasesApi {
     /**
      * Удаление кластера базы данных (asynchronously)
      * Чтобы удалить кластер базы данных, отправьте DELETE-запрос на &#x60;/api/v1/databases/{db_cluster_id}&#x60;.
-     * @param dbClusterId Идентификатор кластера базы данных (required)
+     * @param dbClusterId ID кластера базы данных (required)
      * @param hash Хеш, который совместно с кодом авторизации надо отправить для удаления, если включено подтверждение удаления сервисов через Телеграм. (optional)
      * @param code Код подтверждения, который придет к вам в Телеграм, после запроса удаления, если включено подтверждение удаления сервисов.  При помощи API токена сервисы можно удалять без подтверждения, если параметр токена &#x60;is_able_to_delete&#x60; установлен в значение &#x60;true&#x60; (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -1368,8 +1368,8 @@ public class DatabasesApi {
     }
     /**
      * Build call for deleteDatabaseInstance
-     * @param dbClusterId Идентификатор кластера базы данных (required)
-     * @param instanceId Идентификатор инстанса базы данных (required)
+     * @param dbClusterId ID кластера базы данных (required)
+     * @param instanceId ID инстанса базы данных (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1450,8 +1450,8 @@ public class DatabasesApi {
     /**
      * Удаление инстанса базы данных
      * Чтобы удалить инстанс базы данных, отправьте DELETE-запрос на &#x60;/api/v1/databases/{db_cluster_id}/instances/{instance_id}&#x60;.
-     * @param dbClusterId Идентификатор кластера базы данных (required)
-     * @param instanceId Идентификатор инстанса базы данных (required)
+     * @param dbClusterId ID кластера базы данных (required)
+     * @param instanceId ID инстанса базы данных (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1472,8 +1472,8 @@ public class DatabasesApi {
     /**
      * Удаление инстанса базы данных
      * Чтобы удалить инстанс базы данных, отправьте DELETE-запрос на &#x60;/api/v1/databases/{db_cluster_id}/instances/{instance_id}&#x60;.
-     * @param dbClusterId Идентификатор кластера базы данных (required)
-     * @param instanceId Идентификатор инстанса базы данных (required)
+     * @param dbClusterId ID кластера базы данных (required)
+     * @param instanceId ID инстанса базы данных (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1496,8 +1496,8 @@ public class DatabasesApi {
     /**
      * Удаление инстанса базы данных (asynchronously)
      * Чтобы удалить инстанс базы данных, отправьте DELETE-запрос на &#x60;/api/v1/databases/{db_cluster_id}/instances/{instance_id}&#x60;.
-     * @param dbClusterId Идентификатор кластера базы данных (required)
-     * @param instanceId Идентификатор инстанса базы данных (required)
+     * @param dbClusterId ID кластера базы данных (required)
+     * @param instanceId ID инстанса базы данных (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1521,8 +1521,8 @@ public class DatabasesApi {
     }
     /**
      * Build call for deleteDatabaseUser
-     * @param dbClusterId Идентификатор кластера базы данных (required)
-     * @param adminId Идентификатор пользователя базы данных (required)
+     * @param dbClusterId ID кластера базы данных (required)
+     * @param adminId ID пользователя базы данных (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1603,8 +1603,8 @@ public class DatabasesApi {
     /**
      * Удаление пользователя базы данных
      * Чтобы удалить пользователя базы данных на вашем аккаунте, отправьте DELETE-запрос на &#x60;/api/v1/databases/{db_cluster_id}/admins/{admin_id}&#x60;.
-     * @param dbClusterId Идентификатор кластера базы данных (required)
-     * @param adminId Идентификатор пользователя базы данных (required)
+     * @param dbClusterId ID кластера базы данных (required)
+     * @param adminId ID пользователя базы данных (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1625,8 +1625,8 @@ public class DatabasesApi {
     /**
      * Удаление пользователя базы данных
      * Чтобы удалить пользователя базы данных на вашем аккаунте, отправьте DELETE-запрос на &#x60;/api/v1/databases/{db_cluster_id}/admins/{admin_id}&#x60;.
-     * @param dbClusterId Идентификатор кластера базы данных (required)
-     * @param adminId Идентификатор пользователя базы данных (required)
+     * @param dbClusterId ID кластера базы данных (required)
+     * @param adminId ID пользователя базы данных (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1649,8 +1649,8 @@ public class DatabasesApi {
     /**
      * Удаление пользователя базы данных (asynchronously)
      * Чтобы удалить пользователя базы данных на вашем аккаунте, отправьте DELETE-запрос на &#x60;/api/v1/databases/{db_cluster_id}/admins/{admin_id}&#x60;.
-     * @param dbClusterId Идентификатор кластера базы данных (required)
-     * @param adminId Идентификатор пользователя базы данных (required)
+     * @param dbClusterId ID кластера базы данных (required)
+     * @param adminId ID пользователя базы данных (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1674,7 +1674,7 @@ public class DatabasesApi {
     }
     /**
      * Build call for getDatabase
-     * @param dbId Идентификатор базы данных (required)
+     * @param dbId ID базы данных (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1752,7 +1752,7 @@ public class DatabasesApi {
     /**
      * Получение базы данных
      * Чтобы отобразить информацию об отдельной базе данных, отправьте запрос GET на &#x60;api/v1/dbs/{db_id}&#x60;. 
-     * @param dbId Идентификатор базы данных (required)
+     * @param dbId ID базы данных (required)
      * @return CreateDatabase201Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1777,7 +1777,7 @@ public class DatabasesApi {
     /**
      * Получение базы данных
      * Чтобы отобразить информацию об отдельной базе данных, отправьте запрос GET на &#x60;api/v1/dbs/{db_id}&#x60;. 
-     * @param dbId Идентификатор базы данных (required)
+     * @param dbId ID базы данных (required)
      * @return ApiResponse&lt;CreateDatabase201Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1803,7 +1803,7 @@ public class DatabasesApi {
     /**
      * Получение базы данных (asynchronously)
      * Чтобы отобразить информацию об отдельной базе данных, отправьте запрос GET на &#x60;api/v1/dbs/{db_id}&#x60;. 
-     * @param dbId Идентификатор базы данных (required)
+     * @param dbId ID базы данных (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1830,7 +1830,7 @@ public class DatabasesApi {
     }
     /**
      * Build call for getDatabaseAutoBackupsSettings
-     * @param dbId Идентификатор базы данных (required)
+     * @param dbId ID базы данных (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1905,7 +1905,7 @@ public class DatabasesApi {
     /**
      * Получение настроек автобэкапов базы данных
      * Чтобы получить список настроек автобэкапов базы данных, отправьте запрос GET в &#x60;api/v1/dbs/{db_id}/auto-backups&#x60;
-     * @param dbId Идентификатор базы данных (required)
+     * @param dbId ID базы данных (required)
      * @return GetDatabaseAutoBackupsSettings200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1928,7 +1928,7 @@ public class DatabasesApi {
     /**
      * Получение настроек автобэкапов базы данных
      * Чтобы получить список настроек автобэкапов базы данных, отправьте запрос GET в &#x60;api/v1/dbs/{db_id}/auto-backups&#x60;
-     * @param dbId Идентификатор базы данных (required)
+     * @param dbId ID базы данных (required)
      * @return ApiResponse&lt;GetDatabaseAutoBackupsSettings200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1952,7 +1952,7 @@ public class DatabasesApi {
     /**
      * Получение настроек автобэкапов базы данных (asynchronously)
      * Чтобы получить список настроек автобэкапов базы данных, отправьте запрос GET в &#x60;api/v1/dbs/{db_id}/auto-backups&#x60;
-     * @param dbId Идентификатор базы данных (required)
+     * @param dbId ID базы данных (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1977,8 +1977,8 @@ public class DatabasesApi {
     }
     /**
      * Build call for getDatabaseBackup
-     * @param dbId Идентификатор базы данных (required)
-     * @param backupId Идентификатор резевной копии (required)
+     * @param dbId ID базы данных (required)
+     * @param backupId ID резевной копии (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2059,8 +2059,8 @@ public class DatabasesApi {
     /**
      * Получение бэкапа базы данных
      * Чтобы получить бэкап базы данных, отправьте запрос GET в &#x60;api/v1/dbs/{db_id}/backups/{backup_id}&#x60;. 
-     * @param dbId Идентификатор базы данных (required)
-     * @param backupId Идентификатор резевной копии (required)
+     * @param dbId ID базы данных (required)
+     * @param backupId ID резевной копии (required)
      * @return CreateDatabaseBackup201Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2083,8 +2083,8 @@ public class DatabasesApi {
     /**
      * Получение бэкапа базы данных
      * Чтобы получить бэкап базы данных, отправьте запрос GET в &#x60;api/v1/dbs/{db_id}/backups/{backup_id}&#x60;. 
-     * @param dbId Идентификатор базы данных (required)
-     * @param backupId Идентификатор резевной копии (required)
+     * @param dbId ID базы данных (required)
+     * @param backupId ID резевной копии (required)
      * @return ApiResponse&lt;CreateDatabaseBackup201Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2108,8 +2108,8 @@ public class DatabasesApi {
     /**
      * Получение бэкапа базы данных (asynchronously)
      * Чтобы получить бэкап базы данных, отправьте запрос GET в &#x60;api/v1/dbs/{db_id}/backups/{backup_id}&#x60;. 
-     * @param dbId Идентификатор базы данных (required)
-     * @param backupId Идентификатор резевной копии (required)
+     * @param dbId ID базы данных (required)
+     * @param backupId ID резевной копии (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2134,7 +2134,7 @@ public class DatabasesApi {
     }
     /**
      * Build call for getDatabaseBackups
-     * @param dbId Идентификатор базы данных (required)
+     * @param dbId ID базы данных (required)
      * @param limit Обозначает количество записей, которое необходимо вернуть. (optional, default to 100)
      * @param offset Указывает на смещение относительно начала списка. (optional, default to 0)
      * @param _callback Callback for upload/download progress
@@ -2219,7 +2219,7 @@ public class DatabasesApi {
     /**
      * Список бэкапов базы данных
      * Чтобы получить список бэкапов базы данных, отправьте запрос GET в &#x60;api/v1/dbs/{db_id}/backups&#x60;. 
-     * @param dbId Идентификатор базы данных (required)
+     * @param dbId ID базы данных (required)
      * @param limit Обозначает количество записей, которое необходимо вернуть. (optional, default to 100)
      * @param offset Указывает на смещение относительно начала списка. (optional, default to 0)
      * @return GetDatabaseBackups200Response
@@ -2244,7 +2244,7 @@ public class DatabasesApi {
     /**
      * Список бэкапов базы данных
      * Чтобы получить список бэкапов базы данных, отправьте запрос GET в &#x60;api/v1/dbs/{db_id}/backups&#x60;. 
-     * @param dbId Идентификатор базы данных (required)
+     * @param dbId ID базы данных (required)
      * @param limit Обозначает количество записей, которое необходимо вернуть. (optional, default to 100)
      * @param offset Указывает на смещение относительно начала списка. (optional, default to 0)
      * @return ApiResponse&lt;GetDatabaseBackups200Response&gt;
@@ -2270,7 +2270,7 @@ public class DatabasesApi {
     /**
      * Список бэкапов базы данных (asynchronously)
      * Чтобы получить список бэкапов базы данных, отправьте запрос GET в &#x60;api/v1/dbs/{db_id}/backups&#x60;. 
-     * @param dbId Идентификатор базы данных (required)
+     * @param dbId ID базы данных (required)
      * @param limit Обозначает количество записей, которое необходимо вернуть. (optional, default to 100)
      * @param offset Указывает на смещение относительно начала списка. (optional, default to 0)
      * @param _callback The callback to be executed when the API call finishes
@@ -2297,7 +2297,7 @@ public class DatabasesApi {
     }
     /**
      * Build call for getDatabaseCluster
-     * @param dbClusterId Идентификатор кластера базы данных (required)
+     * @param dbClusterId ID кластера базы данных (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2372,7 +2372,7 @@ public class DatabasesApi {
     /**
      * Получение кластера базы данных
      * Чтобы получить кластер базы данных на вашем аккаунте, отправьте GET-запрос на &#x60;/api/v1/databases/{db_cluster_id}&#x60;.
-     * @param dbClusterId Идентификатор кластера базы данных (required)
+     * @param dbClusterId ID кластера базы данных (required)
      * @return CreateDatabaseCluster201Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2395,7 +2395,7 @@ public class DatabasesApi {
     /**
      * Получение кластера базы данных
      * Чтобы получить кластер базы данных на вашем аккаунте, отправьте GET-запрос на &#x60;/api/v1/databases/{db_cluster_id}&#x60;.
-     * @param dbClusterId Идентификатор кластера базы данных (required)
+     * @param dbClusterId ID кластера базы данных (required)
      * @return ApiResponse&lt;CreateDatabaseCluster201Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2419,7 +2419,7 @@ public class DatabasesApi {
     /**
      * Получение кластера базы данных (asynchronously)
      * Чтобы получить кластер базы данных на вашем аккаунте, отправьте GET-запрос на &#x60;/api/v1/databases/{db_cluster_id}&#x60;.
-     * @param dbClusterId Идентификатор кластера базы данных (required)
+     * @param dbClusterId ID кластера базы данных (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2734,8 +2734,8 @@ public class DatabasesApi {
     }
     /**
      * Build call for getDatabaseInstance
-     * @param dbClusterId Идентификатор кластера базы данных (required)
-     * @param instanceId Идентификатор инстанса базы данных (required)
+     * @param dbClusterId ID кластера базы данных (required)
+     * @param instanceId ID инстанса базы данных (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2816,8 +2816,8 @@ public class DatabasesApi {
     /**
      * Получение инстанса базы данных
      * Чтобы получить инстанс базы данных, отправьте GET-запрос на &#x60;/api/v1/databases/{db_cluster_id}/instances/{instance_id}&#x60;.
-     * @param dbClusterId Идентификатор кластера базы данных (required)
-     * @param instanceId Идентификатор инстанса базы данных (required)
+     * @param dbClusterId ID кластера базы данных (required)
+     * @param instanceId ID инстанса базы данных (required)
      * @return CreateDatabaseInstance201Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2840,8 +2840,8 @@ public class DatabasesApi {
     /**
      * Получение инстанса базы данных
      * Чтобы получить инстанс базы данных, отправьте GET-запрос на &#x60;/api/v1/databases/{db_cluster_id}/instances/{instance_id}&#x60;.
-     * @param dbClusterId Идентификатор кластера базы данных (required)
-     * @param instanceId Идентификатор инстанса базы данных (required)
+     * @param dbClusterId ID кластера базы данных (required)
+     * @param instanceId ID инстанса базы данных (required)
      * @return ApiResponse&lt;CreateDatabaseInstance201Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2865,8 +2865,8 @@ public class DatabasesApi {
     /**
      * Получение инстанса базы данных (asynchronously)
      * Чтобы получить инстанс базы данных, отправьте GET-запрос на &#x60;/api/v1/databases/{db_cluster_id}/instances/{instance_id}&#x60;.
-     * @param dbClusterId Идентификатор кластера базы данных (required)
-     * @param instanceId Идентификатор инстанса базы данных (required)
+     * @param dbClusterId ID кластера базы данных (required)
+     * @param instanceId ID инстанса базы данных (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2891,7 +2891,7 @@ public class DatabasesApi {
     }
     /**
      * Build call for getDatabaseInstances
-     * @param dbClusterId Идентификатор кластера базы данных (required)
+     * @param dbClusterId ID кластера базы данных (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2966,7 +2966,7 @@ public class DatabasesApi {
     /**
      * Получение списка инстансов баз данных
      * Чтобы получить список баз данных на вашем аккаунте, отправьте GET-запрос на &#x60;/api/v1/databases/{db_cluster_id}/instances&#x60;.
-     * @param dbClusterId Идентификатор кластера базы данных (required)
+     * @param dbClusterId ID кластера базы данных (required)
      * @return GetDatabaseInstances200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2989,7 +2989,7 @@ public class DatabasesApi {
     /**
      * Получение списка инстансов баз данных
      * Чтобы получить список баз данных на вашем аккаунте, отправьте GET-запрос на &#x60;/api/v1/databases/{db_cluster_id}/instances&#x60;.
-     * @param dbClusterId Идентификатор кластера базы данных (required)
+     * @param dbClusterId ID кластера базы данных (required)
      * @return ApiResponse&lt;GetDatabaseInstances200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3013,7 +3013,7 @@ public class DatabasesApi {
     /**
      * Получение списка инстансов баз данных (asynchronously)
      * Чтобы получить список баз данных на вашем аккаунте, отправьте GET-запрос на &#x60;/api/v1/databases/{db_cluster_id}/instances&#x60;.
-     * @param dbClusterId Идентификатор кластера базы данных (required)
+     * @param dbClusterId ID кластера базы данных (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3175,8 +3175,8 @@ public class DatabasesApi {
     }
     /**
      * Build call for getDatabaseUser
-     * @param dbClusterId Идентификатор кластера базы данных (required)
-     * @param adminId Идентификатор пользователя базы данных (required)
+     * @param dbClusterId ID кластера базы данных (required)
+     * @param adminId ID пользователя базы данных (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3257,8 +3257,8 @@ public class DatabasesApi {
     /**
      * Получение пользователя базы данных
      * Чтобы получить пользователя базы данных на вашем аккаунте, отправьте GET-запрос на &#x60;/api/v1/databases/{db_cluster_id}/admins/{admin_id}&#x60;.
-     * @param dbClusterId Идентификатор кластера базы данных (required)
-     * @param adminId Идентификатор пользователя базы данных (required)
+     * @param dbClusterId ID кластера базы данных (required)
+     * @param adminId ID пользователя базы данных (required)
      * @return CreateDatabaseUser201Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3281,8 +3281,8 @@ public class DatabasesApi {
     /**
      * Получение пользователя базы данных
      * Чтобы получить пользователя базы данных на вашем аккаунте, отправьте GET-запрос на &#x60;/api/v1/databases/{db_cluster_id}/admins/{admin_id}&#x60;.
-     * @param dbClusterId Идентификатор кластера базы данных (required)
-     * @param adminId Идентификатор пользователя базы данных (required)
+     * @param dbClusterId ID кластера базы данных (required)
+     * @param adminId ID пользователя базы данных (required)
      * @return ApiResponse&lt;CreateDatabaseUser201Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3306,8 +3306,8 @@ public class DatabasesApi {
     /**
      * Получение пользователя базы данных (asynchronously)
      * Чтобы получить пользователя базы данных на вашем аккаунте, отправьте GET-запрос на &#x60;/api/v1/databases/{db_cluster_id}/admins/{admin_id}&#x60;.
-     * @param dbClusterId Идентификатор кластера базы данных (required)
-     * @param adminId Идентификатор пользователя базы данных (required)
+     * @param dbClusterId ID кластера базы данных (required)
+     * @param adminId ID пользователя базы данных (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3332,7 +3332,7 @@ public class DatabasesApi {
     }
     /**
      * Build call for getDatabaseUsers
-     * @param dbClusterId Идентификатор кластера базы данных (required)
+     * @param dbClusterId ID кластера базы данных (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3407,7 +3407,7 @@ public class DatabasesApi {
     /**
      * Получение списка пользователей базы данных
      * Чтобы получить список пользователей базы данных на вашем аккаунте, отправьте GET-запрос на &#x60;/api/v1/databases/{db_cluster_id}/admins&#x60;.
-     * @param dbClusterId Идентификатор кластера базы данных (required)
+     * @param dbClusterId ID кластера базы данных (required)
      * @return GetDatabaseUsers200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3430,7 +3430,7 @@ public class DatabasesApi {
     /**
      * Получение списка пользователей базы данных
      * Чтобы получить список пользователей базы данных на вашем аккаунте, отправьте GET-запрос на &#x60;/api/v1/databases/{db_cluster_id}/admins&#x60;.
-     * @param dbClusterId Идентификатор кластера базы данных (required)
+     * @param dbClusterId ID кластера базы данных (required)
      * @return ApiResponse&lt;GetDatabaseUsers200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3454,7 +3454,7 @@ public class DatabasesApi {
     /**
      * Получение списка пользователей базы данных (asynchronously)
      * Чтобы получить список пользователей базы данных на вашем аккаунте, отправьте GET-запрос на &#x60;/api/v1/databases/{db_cluster_id}/admins&#x60;.
-     * @param dbClusterId Идентификатор кластера базы данных (required)
+     * @param dbClusterId ID кластера базы данных (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3778,8 +3778,8 @@ public class DatabasesApi {
     }
     /**
      * Build call for restoreDatabaseFromBackup
-     * @param dbId Идентификатор базы данных (required)
-     * @param backupId Идентификатор резевной копии (required)
+     * @param dbId ID базы данных (required)
+     * @param backupId ID резевной копии (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3861,8 +3861,8 @@ public class DatabasesApi {
     /**
      * Восстановление базы данных из бэкапа
      * Чтобы восстановить базу данных из бэкапа, отправьте запрос PUT в &#x60;api/v1/dbs/{db_id}/backups/{backup_id}&#x60;. 
-     * @param dbId Идентификатор базы данных (required)
-     * @param backupId Идентификатор резевной копии (required)
+     * @param dbId ID базы данных (required)
+     * @param backupId ID резевной копии (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -3884,8 +3884,8 @@ public class DatabasesApi {
     /**
      * Восстановление базы данных из бэкапа
      * Чтобы восстановить базу данных из бэкапа, отправьте запрос PUT в &#x60;api/v1/dbs/{db_id}/backups/{backup_id}&#x60;. 
-     * @param dbId Идентификатор базы данных (required)
-     * @param backupId Идентификатор резевной копии (required)
+     * @param dbId ID базы данных (required)
+     * @param backupId ID резевной копии (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3909,8 +3909,8 @@ public class DatabasesApi {
     /**
      * Восстановление базы данных из бэкапа (asynchronously)
      * Чтобы восстановить базу данных из бэкапа, отправьте запрос PUT в &#x60;api/v1/dbs/{db_id}/backups/{backup_id}&#x60;. 
-     * @param dbId Идентификатор базы данных (required)
-     * @param backupId Идентификатор резевной копии (required)
+     * @param dbId ID базы данных (required)
+     * @param backupId ID резевной копии (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3935,7 +3935,7 @@ public class DatabasesApi {
     }
     /**
      * Build call for updateDatabase
-     * @param dbId Идентификатор базы данных (required)
+     * @param dbId ID базы данных (required)
      * @param updateDb  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -4020,7 +4020,7 @@ public class DatabasesApi {
     /**
      * Обновление базы данных
      * Чтобы обновить только определенные атрибуты базы данных, отправьте запрос PATCH в &#x60;api/v1/dbs/{db_id}&#x60;. 
-     * @param dbId Идентификатор базы данных (required)
+     * @param dbId ID базы данных (required)
      * @param updateDb  (required)
      * @return CreateDatabase201Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4046,7 +4046,7 @@ public class DatabasesApi {
     /**
      * Обновление базы данных
      * Чтобы обновить только определенные атрибуты базы данных, отправьте запрос PATCH в &#x60;api/v1/dbs/{db_id}&#x60;. 
-     * @param dbId Идентификатор базы данных (required)
+     * @param dbId ID базы данных (required)
      * @param updateDb  (required)
      * @return ApiResponse&lt;CreateDatabase201Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4073,7 +4073,7 @@ public class DatabasesApi {
     /**
      * Обновление базы данных (asynchronously)
      * Чтобы обновить только определенные атрибуты базы данных, отправьте запрос PATCH в &#x60;api/v1/dbs/{db_id}&#x60;. 
-     * @param dbId Идентификатор базы данных (required)
+     * @param dbId ID базы данных (required)
      * @param updateDb  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -4101,7 +4101,7 @@ public class DatabasesApi {
     }
     /**
      * Build call for updateDatabaseAutoBackupsSettings
-     * @param dbId Идентификатор базы данных (required)
+     * @param dbId ID базы данных (required)
      * @param autoBackup При значении &#x60;is_enabled&#x60;: &#x60;true&#x60;, поля &#x60;copy_count&#x60;, &#x60;creation_start_at&#x60;, &#x60;interval&#x60; являются обязательными (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -4178,7 +4178,7 @@ public class DatabasesApi {
     /**
      * Изменение настроек автобэкапов базы данных
      * Чтобы изменить список настроек автобэкапов базы данных, отправьте запрос PATCH в &#x60;api/v1/dbs/{db_id}/auto-backups&#x60;
-     * @param dbId Идентификатор базы данных (required)
+     * @param dbId ID базы данных (required)
      * @param autoBackup При значении &#x60;is_enabled&#x60;: &#x60;true&#x60;, поля &#x60;copy_count&#x60;, &#x60;creation_start_at&#x60;, &#x60;interval&#x60; являются обязательными (optional)
      * @return GetDatabaseAutoBackupsSettings200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4202,7 +4202,7 @@ public class DatabasesApi {
     /**
      * Изменение настроек автобэкапов базы данных
      * Чтобы изменить список настроек автобэкапов базы данных, отправьте запрос PATCH в &#x60;api/v1/dbs/{db_id}/auto-backups&#x60;
-     * @param dbId Идентификатор базы данных (required)
+     * @param dbId ID базы данных (required)
      * @param autoBackup При значении &#x60;is_enabled&#x60;: &#x60;true&#x60;, поля &#x60;copy_count&#x60;, &#x60;creation_start_at&#x60;, &#x60;interval&#x60; являются обязательными (optional)
      * @return ApiResponse&lt;GetDatabaseAutoBackupsSettings200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4227,7 +4227,7 @@ public class DatabasesApi {
     /**
      * Изменение настроек автобэкапов базы данных (asynchronously)
      * Чтобы изменить список настроек автобэкапов базы данных, отправьте запрос PATCH в &#x60;api/v1/dbs/{db_id}/auto-backups&#x60;
-     * @param dbId Идентификатор базы данных (required)
+     * @param dbId ID базы данных (required)
      * @param autoBackup При значении &#x60;is_enabled&#x60;: &#x60;true&#x60;, поля &#x60;copy_count&#x60;, &#x60;creation_start_at&#x60;, &#x60;interval&#x60; являются обязательными (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -4253,7 +4253,7 @@ public class DatabasesApi {
     }
     /**
      * Build call for updateDatabaseCluster
-     * @param dbClusterId Идентификатор кластера базы данных (required)
+     * @param dbClusterId ID кластера базы данных (required)
      * @param updateCluster  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -4335,7 +4335,7 @@ public class DatabasesApi {
     /**
      * Изменение кластера базы данных
      * Чтобы изменить кластер базы данных на вашем аккаунте, отправьте PATCH-запрос на &#x60;/api/v1/databases/{db_cluster_id}&#x60;.
-     * @param dbClusterId Идентификатор кластера базы данных (required)
+     * @param dbClusterId ID кластера базы данных (required)
      * @param updateCluster  (required)
      * @return CreateDatabaseCluster201Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4359,7 +4359,7 @@ public class DatabasesApi {
     /**
      * Изменение кластера базы данных
      * Чтобы изменить кластер базы данных на вашем аккаунте, отправьте PATCH-запрос на &#x60;/api/v1/databases/{db_cluster_id}&#x60;.
-     * @param dbClusterId Идентификатор кластера базы данных (required)
+     * @param dbClusterId ID кластера базы данных (required)
      * @param updateCluster  (required)
      * @return ApiResponse&lt;CreateDatabaseCluster201Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4384,7 +4384,7 @@ public class DatabasesApi {
     /**
      * Изменение кластера базы данных (asynchronously)
      * Чтобы изменить кластер базы данных на вашем аккаунте, отправьте PATCH-запрос на &#x60;/api/v1/databases/{db_cluster_id}&#x60;.
-     * @param dbClusterId Идентификатор кластера базы данных (required)
+     * @param dbClusterId ID кластера базы данных (required)
      * @param updateCluster  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -4410,7 +4410,7 @@ public class DatabasesApi {
     }
     /**
      * Build call for updateDatabaseInstance
-     * @param dbClusterId Идентификатор кластера базы данных (required)
+     * @param dbClusterId ID кластера базы данных (required)
      * @param updateInstance  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -4492,7 +4492,7 @@ public class DatabasesApi {
     /**
      * Изменение инстанса базы данных
      * Чтобы изменить инстанс базы данных, отправьте PATCH-запрос на &#x60;/api/v1/databases/{db_cluster_id}/instances/{instance_id}&#x60;.
-     * @param dbClusterId Идентификатор кластера базы данных (required)
+     * @param dbClusterId ID кластера базы данных (required)
      * @param updateInstance  (required)
      * @return CreateDatabaseInstance201Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4516,7 +4516,7 @@ public class DatabasesApi {
     /**
      * Изменение инстанса базы данных
      * Чтобы изменить инстанс базы данных, отправьте PATCH-запрос на &#x60;/api/v1/databases/{db_cluster_id}/instances/{instance_id}&#x60;.
-     * @param dbClusterId Идентификатор кластера базы данных (required)
+     * @param dbClusterId ID кластера базы данных (required)
      * @param updateInstance  (required)
      * @return ApiResponse&lt;CreateDatabaseInstance201Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4541,7 +4541,7 @@ public class DatabasesApi {
     /**
      * Изменение инстанса базы данных (asynchronously)
      * Чтобы изменить инстанс базы данных, отправьте PATCH-запрос на &#x60;/api/v1/databases/{db_cluster_id}/instances/{instance_id}&#x60;.
-     * @param dbClusterId Идентификатор кластера базы данных (required)
+     * @param dbClusterId ID кластера базы данных (required)
      * @param updateInstance  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -4567,8 +4567,8 @@ public class DatabasesApi {
     }
     /**
      * Build call for updateDatabaseUser
-     * @param dbClusterId Идентификатор кластера базы данных (required)
-     * @param adminId Идентификатор пользователя базы данных (required)
+     * @param dbClusterId ID кластера базы данных (required)
+     * @param adminId ID пользователя базы данных (required)
      * @param updateAdmin  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -4656,8 +4656,8 @@ public class DatabasesApi {
     /**
      * Изменение пользователя базы данных
      * Чтобы изменить пользователя базы данных на вашем аккаунте, отправьте PATCH-запрос на &#x60;/api/v1/databases/{db_cluster_id}/admins/{admin_id}&#x60;.
-     * @param dbClusterId Идентификатор кластера базы данных (required)
-     * @param adminId Идентификатор пользователя базы данных (required)
+     * @param dbClusterId ID кластера базы данных (required)
+     * @param adminId ID пользователя базы данных (required)
      * @param updateAdmin  (required)
      * @return CreateDatabaseUser201Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4681,8 +4681,8 @@ public class DatabasesApi {
     /**
      * Изменение пользователя базы данных
      * Чтобы изменить пользователя базы данных на вашем аккаунте, отправьте PATCH-запрос на &#x60;/api/v1/databases/{db_cluster_id}/admins/{admin_id}&#x60;.
-     * @param dbClusterId Идентификатор кластера базы данных (required)
-     * @param adminId Идентификатор пользователя базы данных (required)
+     * @param dbClusterId ID кластера базы данных (required)
+     * @param adminId ID пользователя базы данных (required)
      * @param updateAdmin  (required)
      * @return ApiResponse&lt;CreateDatabaseUser201Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4707,8 +4707,8 @@ public class DatabasesApi {
     /**
      * Изменение пользователя базы данных (asynchronously)
      * Чтобы изменить пользователя базы данных на вашем аккаунте, отправьте PATCH-запрос на &#x60;/api/v1/databases/{db_cluster_id}/admins/{admin_id}&#x60;.
-     * @param dbClusterId Идентификатор кластера базы данных (required)
-     * @param adminId Идентификатор пользователя базы данных (required)
+     * @param dbClusterId ID кластера базы данных (required)
+     * @param adminId ID пользователя базы данных (required)
      * @param updateAdmin  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**presetId** | **BigDecimal** | Идентификатор тарифа. |  [optional] |
+|**presetId** | **BigDecimal** | ID тарифа. |  [optional] |
 |**bucketType** | [**BucketTypeEnum**](#BucketTypeEnum) | Тип хранилища. |  [optional] |
 
 

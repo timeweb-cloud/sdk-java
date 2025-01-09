@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**id** | **BigDecimal** | Идентификатор сервисв. |  |
+|**id** | **BigDecimal** | ID сервисв. |  |
 |**name** | **String** | Имя сервиса. |  |
 |**publicIp** | **String** | Публичный IP-адрес сервиса |  [optional] |
 |**localIp** | **String** | Приватный IP-адрес сервиса |  [optional] |

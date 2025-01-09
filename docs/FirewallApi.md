@@ -48,8 +48,8 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     FirewallApi apiInstance = new FirewallApi(defaultClient);
-    String groupId = "groupId_example"; // String | Идентификатор группы правил
-    String resourceId = "resourceId_example"; // String | Идентификатор ресурса
+    String groupId = "groupId_example"; // String | ID группы правил
+    String resourceId = "resourceId_example"; // String | ID ресурса
     ResourceType resourceType = ResourceType.fromValue("server"); // ResourceType | 
     try {
       FirewallGroupResourceOutResponse result = apiInstance.addResourceToGroup(groupId, resourceId, resourceType);
@@ -69,8 +69,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **groupId** | **String**| Идентификатор группы правил | |
-| **resourceId** | **String**| Идентификатор ресурса | |
+| **groupId** | **String**| ID группы правил | |
+| **resourceId** | **String**| ID ресурса | |
 | **resourceType** | [**ResourceType**](.md)|  | [optional] [enum: server] |
 
 ### Return type
@@ -196,7 +196,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     FirewallApi apiInstance = new FirewallApi(defaultClient);
-    String groupId = "groupId_example"; // String | Идентификатор группы правил
+    String groupId = "groupId_example"; // String | ID группы правил
     FirewallRuleInAPI firewallRuleInAPI = new FirewallRuleInAPI(); // FirewallRuleInAPI | 
     try {
       FirewallRuleOutResponse result = apiInstance.createGroupRule(groupId, firewallRuleInAPI);
@@ -216,7 +216,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **groupId** | **String**| Идентификатор группы правил | |
+| **groupId** | **String**| ID группы правил | |
 | **firewallRuleInAPI** | [**FirewallRuleInAPI**](FirewallRuleInAPI.md)|  | |
 
 ### Return type
@@ -269,7 +269,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     FirewallApi apiInstance = new FirewallApi(defaultClient);
-    String groupId = "groupId_example"; // String | Идентификатор группы правил
+    String groupId = "groupId_example"; // String | ID группы правил
     try {
       apiInstance.deleteGroup(groupId);
     } catch (ApiException e) {
@@ -287,7 +287,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **groupId** | **String**| Идентификатор группы правил | |
+| **groupId** | **String**| ID группы правил | |
 
 ### Return type
 
@@ -340,8 +340,8 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     FirewallApi apiInstance = new FirewallApi(defaultClient);
-    String groupId = "groupId_example"; // String | Идентификатор группы правил
-    String ruleId = "ruleId_example"; // String | Идентификатор правила
+    String groupId = "groupId_example"; // String | ID группы правил
+    String ruleId = "ruleId_example"; // String | ID правила
     try {
       apiInstance.deleteGroupRule(groupId, ruleId);
     } catch (ApiException e) {
@@ -359,8 +359,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **groupId** | **String**| Идентификатор группы правил | |
-| **ruleId** | **String**| Идентификатор правила | |
+| **groupId** | **String**| ID группы правил | |
+| **ruleId** | **String**| ID правила | |
 
 ### Return type
 
@@ -413,8 +413,8 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     FirewallApi apiInstance = new FirewallApi(defaultClient);
-    String groupId = "groupId_example"; // String | Идентификатор группы правил
-    String resourceId = "resourceId_example"; // String | Идентификатор ресурса
+    String groupId = "groupId_example"; // String | ID группы правил
+    String resourceId = "resourceId_example"; // String | ID ресурса
     ResourceType resourceType = ResourceType.fromValue("server"); // ResourceType | 
     try {
       apiInstance.deleteResourceFromGroup(groupId, resourceId, resourceType);
@@ -433,8 +433,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **groupId** | **String**| Идентификатор группы правил | |
-| **resourceId** | **String**| Идентификатор ресурса | |
+| **groupId** | **String**| ID группы правил | |
+| **resourceId** | **String**| ID ресурса | |
 | **resourceType** | [**ResourceType**](.md)|  | [optional] [enum: server] |
 
 ### Return type
@@ -488,7 +488,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     FirewallApi apiInstance = new FirewallApi(defaultClient);
-    String groupId = "groupId_example"; // String | Идентификатор группы правил
+    String groupId = "groupId_example"; // String | ID группы правил
     try {
       FirewallGroupOutResponse result = apiInstance.getGroup(groupId);
       System.out.println(result);
@@ -507,7 +507,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **groupId** | **String**| Идентификатор группы правил | |
+| **groupId** | **String**| ID группы правил | |
 
 ### Return type
 
@@ -560,7 +560,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     FirewallApi apiInstance = new FirewallApi(defaultClient);
-    String groupId = "groupId_example"; // String | Идентификатор группы правил
+    String groupId = "groupId_example"; // String | ID группы правил
     Integer limit = 100; // Integer | Обозначает количество записей, которое необходимо вернуть.
     Integer offset = 0; // Integer | Указывает на смещение относительно начала списка.
     try {
@@ -581,7 +581,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **groupId** | **String**| Идентификатор группы правил | |
+| **groupId** | **String**| ID группы правил | |
 | **limit** | **Integer**| Обозначает количество записей, которое необходимо вернуть. | [optional] [default to 100] |
 | **offset** | **Integer**| Указывает на смещение относительно начала списка. | [optional] [default to 0] |
 
@@ -635,8 +635,8 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     FirewallApi apiInstance = new FirewallApi(defaultClient);
-    String ruleId = "ruleId_example"; // String | Идентификатор правила
-    String groupId = "groupId_example"; // String | Идентификатор группы правил
+    String ruleId = "ruleId_example"; // String | ID правила
+    String groupId = "groupId_example"; // String | ID группы правил
     try {
       FirewallRuleOutResponse result = apiInstance.getGroupRule(ruleId, groupId);
       System.out.println(result);
@@ -655,8 +655,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **ruleId** | **String**| Идентификатор правила | |
-| **groupId** | **String**| Идентификатор группы правил | |
+| **ruleId** | **String**| ID правила | |
+| **groupId** | **String**| ID группы правил | |
 
 ### Return type
 
@@ -709,7 +709,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     FirewallApi apiInstance = new FirewallApi(defaultClient);
-    String groupId = "groupId_example"; // String | Идентификатор группы правил
+    String groupId = "groupId_example"; // String | ID группы правил
     Integer limit = 100; // Integer | Обозначает количество записей, которое необходимо вернуть.
     Integer offset = 0; // Integer | Указывает на смещение относительно начала списка.
     try {
@@ -730,7 +730,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **groupId** | **String**| Идентификатор группы правил | |
+| **groupId** | **String**| ID группы правил | |
 | **limit** | **Integer**| Обозначает количество записей, которое необходимо вернуть. | [optional] [default to 100] |
 | **offset** | **Integer**| Указывает на смещение относительно начала списка. | [optional] [default to 0] |
 
@@ -934,7 +934,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     FirewallApi apiInstance = new FirewallApi(defaultClient);
-    String groupId = "groupId_example"; // String | Идентификатор группы правил
+    String groupId = "groupId_example"; // String | ID группы правил
     FirewallGroupInAPI firewallGroupInAPI = new FirewallGroupInAPI(); // FirewallGroupInAPI | 
     try {
       FirewallGroupOutResponse result = apiInstance.updateGroup(groupId, firewallGroupInAPI);
@@ -954,7 +954,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **groupId** | **String**| Идентификатор группы правил | |
+| **groupId** | **String**| ID группы правил | |
 | **firewallGroupInAPI** | [**FirewallGroupInAPI**](FirewallGroupInAPI.md)|  | |
 
 ### Return type
@@ -1008,8 +1008,8 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     FirewallApi apiInstance = new FirewallApi(defaultClient);
-    String groupId = "groupId_example"; // String | Идентификатор группы правил
-    String ruleId = "ruleId_example"; // String | Идентификатор правила
+    String groupId = "groupId_example"; // String | ID группы правил
+    String ruleId = "ruleId_example"; // String | ID правила
     FirewallRuleInAPI firewallRuleInAPI = new FirewallRuleInAPI(); // FirewallRuleInAPI | 
     try {
       FirewallRuleOutResponse result = apiInstance.updateGroupRule(groupId, ruleId, firewallRuleInAPI);
@@ -1029,8 +1029,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **groupId** | **String**| Идентификатор группы правил | |
-| **ruleId** | **String**| Идентификатор правила | |
+| **groupId** | **String**| ID группы правил | |
+| **ruleId** | **String**| ID правила | |
 | **firewallRuleInAPI** | [**FirewallRuleInAPI**](FirewallRuleInAPI.md)|  | |
 
 ### Return type
