@@ -105,6 +105,9 @@ docs/CreateFolderInStorageRequest.md
 docs/CreateInstance.md
 docs/CreateKey201Response.md
 docs/CreateKeyRequest.md
+docs/CreateMultipleDomainMailboxes201Response.md
+docs/CreateMultipleDomainMailboxesRequest.md
+docs/CreateMultipleDomainMailboxesRequestMailboxesInner.md
 docs/CreateNetworkDrive.md
 docs/CreateNetworkDrive201Response.md
 docs/CreateProject.md
@@ -235,10 +238,10 @@ docs/GetFinances200Response.md
 docs/GetFinances400Response.md
 docs/GetFinances401Response.md
 docs/GetFinances403Response.md
-docs/GetFinances404Response.md
 docs/GetFinances429Response.md
 docs/GetFinances500Response.md
 docs/GetFloatingIps200Response.md
+docs/GetImage404Response.md
 docs/GetKey200Response.md
 docs/GetKeys200Response.md
 docs/GetLocations200Response.md
@@ -581,6 +584,9 @@ src/main/java/org/openapitools/client/model/CreateFolderInStorageRequest.java
 src/main/java/org/openapitools/client/model/CreateInstance.java
 src/main/java/org/openapitools/client/model/CreateKey201Response.java
 src/main/java/org/openapitools/client/model/CreateKeyRequest.java
+src/main/java/org/openapitools/client/model/CreateMultipleDomainMailboxes201Response.java
+src/main/java/org/openapitools/client/model/CreateMultipleDomainMailboxesRequest.java
+src/main/java/org/openapitools/client/model/CreateMultipleDomainMailboxesRequestMailboxesInner.java
 src/main/java/org/openapitools/client/model/CreateNetworkDrive.java
 src/main/java/org/openapitools/client/model/CreateNetworkDrive201Response.java
 src/main/java/org/openapitools/client/model/CreateProject.java
@@ -706,10 +712,10 @@ src/main/java/org/openapitools/client/model/GetFinances200Response.java
 src/main/java/org/openapitools/client/model/GetFinances400Response.java
 src/main/java/org/openapitools/client/model/GetFinances401Response.java
 src/main/java/org/openapitools/client/model/GetFinances403Response.java
-src/main/java/org/openapitools/client/model/GetFinances404Response.java
 src/main/java/org/openapitools/client/model/GetFinances429Response.java
 src/main/java/org/openapitools/client/model/GetFinances500Response.java
 src/main/java/org/openapitools/client/model/GetFloatingIps200Response.java
+src/main/java/org/openapitools/client/model/GetImage404Response.java
 src/main/java/org/openapitools/client/model/GetKey200Response.java
 src/main/java/org/openapitools/client/model/GetKeys200Response.java
 src/main/java/org/openapitools/client/model/GetLocations200Response.java
@@ -1015,6 +1021,9 @@ src/test/java/org/openapitools/client/model/CreateFolderInStorageRequestTest.jav
 src/test/java/org/openapitools/client/model/CreateInstanceTest.java
 src/test/java/org/openapitools/client/model/CreateKey201ResponseTest.java
 src/test/java/org/openapitools/client/model/CreateKeyRequestTest.java
+src/test/java/org/openapitools/client/model/CreateMultipleDomainMailboxes201ResponseTest.java
+src/test/java/org/openapitools/client/model/CreateMultipleDomainMailboxesRequestMailboxesInnerTest.java
+src/test/java/org/openapitools/client/model/CreateMultipleDomainMailboxesRequestTest.java
 src/test/java/org/openapitools/client/model/CreateNetworkDrive201ResponseTest.java
 src/test/java/org/openapitools/client/model/CreateNetworkDriveTest.java
 src/test/java/org/openapitools/client/model/CreateProject201ResponseTest.java
@@ -1140,10 +1149,10 @@ src/test/java/org/openapitools/client/model/GetFinances200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetFinances400ResponseTest.java
 src/test/java/org/openapitools/client/model/GetFinances401ResponseTest.java
 src/test/java/org/openapitools/client/model/GetFinances403ResponseTest.java
-src/test/java/org/openapitools/client/model/GetFinances404ResponseTest.java
 src/test/java/org/openapitools/client/model/GetFinances429ResponseTest.java
 src/test/java/org/openapitools/client/model/GetFinances500ResponseTest.java
 src/test/java/org/openapitools/client/model/GetFloatingIps200ResponseTest.java
+src/test/java/org/openapitools/client/model/GetImage404ResponseTest.java
 src/test/java/org/openapitools/client/model/GetKey200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetKeys200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetLocations200ResponseTest.java

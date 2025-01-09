@@ -29,11 +29,15 @@ import java.io.IOException;
 
 import org.openapitools.client.model.CreateDomainMailbox201Response;
 import org.openapitools.client.model.CreateDomainMailboxRequest;
+import org.openapitools.client.model.CreateMultipleDomainMailboxes201Response;
+import org.openapitools.client.model.CreateMultipleDomainMailboxesRequest;
 import org.openapitools.client.model.GetDomainMailInfo200Response;
 import org.openapitools.client.model.GetFinances400Response;
 import org.openapitools.client.model.GetFinances401Response;
+import org.openapitools.client.model.GetFinances403Response;
 import org.openapitools.client.model.GetFinances429Response;
 import org.openapitools.client.model.GetFinances500Response;
+import org.openapitools.client.model.GetImage404Response;
 import org.openapitools.client.model.GetMailQuota200Response;
 import org.openapitools.client.model.GetMailboxes200Response;
 import org.openapitools.client.model.UpdateDomainMailInfoRequest;
@@ -96,6 +100,8 @@ public class MailApi {
         <tr><td> 201 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;mailbox&#x60;. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -175,6 +181,8 @@ public class MailApi {
         <tr><td> 201 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;mailbox&#x60;. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -197,6 +205,8 @@ public class MailApi {
         <tr><td> 201 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;mailbox&#x60;. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -221,6 +231,8 @@ public class MailApi {
         <tr><td> 201 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;mailbox&#x60;. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -229,6 +241,163 @@ public class MailApi {
 
         okhttp3.Call localVarCall = createDomainMailboxValidateBeforeCall(domain, createDomainMailboxRequest, _callback);
         Type localVarReturnType = new TypeToken<CreateDomainMailbox201Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createMultipleDomainMailboxes
+     * @param domain Полное имя домена (required)
+     * @param createMultipleDomainMailboxesRequest  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;mailboxes&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createMultipleDomainMailboxesCall(String domain, CreateMultipleDomainMailboxesRequest createMultipleDomainMailboxesRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = createMultipleDomainMailboxesRequest;
+
+        // create path and map variables
+        String localVarPath = "/api/v1/mail/domains/{domain}/batch"
+            .replace("{" + "domain" + "}", localVarApiClient.escapeString(domain.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "Bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createMultipleDomainMailboxesValidateBeforeCall(String domain, CreateMultipleDomainMailboxesRequest createMultipleDomainMailboxesRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'domain' is set
+        if (domain == null) {
+            throw new ApiException("Missing the required parameter 'domain' when calling createMultipleDomainMailboxes(Async)");
+        }
+
+        // verify the required parameter 'createMultipleDomainMailboxesRequest' is set
+        if (createMultipleDomainMailboxesRequest == null) {
+            throw new ApiException("Missing the required parameter 'createMultipleDomainMailboxesRequest' when calling createMultipleDomainMailboxes(Async)");
+        }
+
+        return createMultipleDomainMailboxesCall(domain, createMultipleDomainMailboxesRequest, _callback);
+
+    }
+
+    /**
+     * Множественное создание почтовых ящиков
+     * Чтобы создать почтовый ящики, отправьте POST-запрос на &#x60;/api/v1/mail/domains/{domain}/batch&#x60;.
+     * @param domain Полное имя домена (required)
+     * @param createMultipleDomainMailboxesRequest  (required)
+     * @return CreateMultipleDomainMailboxes201Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;mailboxes&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateMultipleDomainMailboxes201Response createMultipleDomainMailboxes(String domain, CreateMultipleDomainMailboxesRequest createMultipleDomainMailboxesRequest) throws ApiException {
+        ApiResponse<CreateMultipleDomainMailboxes201Response> localVarResp = createMultipleDomainMailboxesWithHttpInfo(domain, createMultipleDomainMailboxesRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Множественное создание почтовых ящиков
+     * Чтобы создать почтовый ящики, отправьте POST-запрос на &#x60;/api/v1/mail/domains/{domain}/batch&#x60;.
+     * @param domain Полное имя домена (required)
+     * @param createMultipleDomainMailboxesRequest  (required)
+     * @return ApiResponse&lt;CreateMultipleDomainMailboxes201Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;mailboxes&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateMultipleDomainMailboxes201Response> createMultipleDomainMailboxesWithHttpInfo(String domain, CreateMultipleDomainMailboxesRequest createMultipleDomainMailboxesRequest) throws ApiException {
+        okhttp3.Call localVarCall = createMultipleDomainMailboxesValidateBeforeCall(domain, createMultipleDomainMailboxesRequest, null);
+        Type localVarReturnType = new TypeToken<CreateMultipleDomainMailboxes201Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Множественное создание почтовых ящиков (asynchronously)
+     * Чтобы создать почтовый ящики, отправьте POST-запрос на &#x60;/api/v1/mail/domains/{domain}/batch&#x60;.
+     * @param domain Полное имя домена (required)
+     * @param createMultipleDomainMailboxesRequest  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;mailboxes&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createMultipleDomainMailboxesAsync(String domain, CreateMultipleDomainMailboxesRequest createMultipleDomainMailboxesRequest, final ApiCallback<CreateMultipleDomainMailboxes201Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createMultipleDomainMailboxesValidateBeforeCall(domain, createMultipleDomainMailboxesRequest, _callback);
+        Type localVarReturnType = new TypeToken<CreateMultipleDomainMailboxes201Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -245,6 +414,8 @@ public class MailApi {
         <tr><td> 204 </td><td> Успешное удаление почтового ящика </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -323,6 +494,8 @@ public class MailApi {
         <tr><td> 204 </td><td> Успешное удаление почтового ящика </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -344,6 +517,8 @@ public class MailApi {
         <tr><td> 204 </td><td> Успешное удаление почтового ящика </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -367,6 +542,8 @@ public class MailApi {
         <tr><td> 204 </td><td> Успешное удаление почтового ящика </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -389,6 +566,8 @@ public class MailApi {
         <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;domain_info&#x60;. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -461,6 +640,8 @@ public class MailApi {
         <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;domain_info&#x60;. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -482,6 +663,8 @@ public class MailApi {
         <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;domain_info&#x60;. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -505,6 +688,8 @@ public class MailApi {
         <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;domain_info&#x60;. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -531,6 +716,8 @@ public class MailApi {
         <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;mailboxes&#x60;. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -618,6 +805,8 @@ public class MailApi {
         <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;mailboxes&#x60;. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -642,6 +831,8 @@ public class MailApi {
         <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;mailboxes&#x60;. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -668,6 +859,8 @@ public class MailApi {
         <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;mailboxes&#x60;. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -690,6 +883,7 @@ public class MailApi {
         <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;quota&#x60;. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -755,6 +949,7 @@ public class MailApi {
         <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;quota&#x60;. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -775,6 +970,7 @@ public class MailApi {
         <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;quota&#x60;. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -797,6 +993,7 @@ public class MailApi {
         <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;quota&#x60;. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -821,6 +1018,8 @@ public class MailApi {
         <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;mailbox&#x60;. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -900,6 +1099,8 @@ public class MailApi {
         <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;mailbox&#x60;. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -922,6 +1123,8 @@ public class MailApi {
         <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;mailbox&#x60;. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -946,6 +1149,8 @@ public class MailApi {
         <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;mailbox&#x60;. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -971,6 +1176,7 @@ public class MailApi {
         <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;mailboxes&#x60;. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -1051,6 +1257,7 @@ public class MailApi {
         <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;mailboxes&#x60;. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -1074,6 +1281,7 @@ public class MailApi {
         <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;mailboxes&#x60;. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -1099,6 +1307,7 @@ public class MailApi {
         <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;mailboxes&#x60;. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -1123,6 +1332,8 @@ public class MailApi {
         <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;domain_info&#x60;. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -1202,6 +1413,8 @@ public class MailApi {
         <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;domain_info&#x60;. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -1224,6 +1437,8 @@ public class MailApi {
         <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;domain_info&#x60;. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -1248,6 +1463,8 @@ public class MailApi {
         <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;domain_info&#x60;. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -1271,6 +1488,7 @@ public class MailApi {
         <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;quota&#x60;. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -1343,6 +1561,7 @@ public class MailApi {
         <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;quota&#x60;. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -1364,6 +1583,7 @@ public class MailApi {
         <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;quota&#x60;. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -1387,6 +1607,7 @@ public class MailApi {
         <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;quota&#x60;. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -1412,6 +1633,8 @@ public class MailApi {
         <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;mailbox&#x60;. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -1498,6 +1721,8 @@ public class MailApi {
         <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;mailbox&#x60;. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -1521,6 +1746,8 @@ public class MailApi {
         <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;mailbox&#x60;. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -1546,6 +1773,8 @@ public class MailApi {
         <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;mailbox&#x60;. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>

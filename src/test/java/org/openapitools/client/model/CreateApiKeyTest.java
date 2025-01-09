@@ -19,7 +19,11 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -59,6 +63,22 @@ public class CreateApiKeyTest {
     @Test
     public void isAbleToDeleteTest() {
         // TODO: test isAbleToDelete
+    }
+
+    /**
+     * Test the property 'roles'
+     */
+    @Test
+    public void rolesTest() {
+        // TODO: test roles
+    }
+
+    /**
+     * Test the property 'projects'
+     */
+    @Test
+    public void projectsTest() {
+        // TODO: test projects
     }
 
 }

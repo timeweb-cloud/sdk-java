@@ -40,9 +40,9 @@ import org.openapitools.client.model.GetAllProjectResources200Response;
 import org.openapitools.client.model.GetFinances400Response;
 import org.openapitools.client.model.GetFinances401Response;
 import org.openapitools.client.model.GetFinances403Response;
-import org.openapitools.client.model.GetFinances404Response;
 import org.openapitools.client.model.GetFinances429Response;
 import org.openapitools.client.model.GetFinances500Response;
+import org.openapitools.client.model.GetImage404Response;
 import org.openapitools.client.model.GetProjectBalancers200Response;
 import org.openapitools.client.model.GetProjectClusters200Response;
 import org.openapitools.client.model.GetProjectDatabases200Response;
@@ -109,6 +109,7 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;resource&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -189,6 +190,7 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;resource&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -212,6 +214,7 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;resource&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -237,6 +240,7 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;resource&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -262,6 +266,7 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;resource&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -342,6 +347,7 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;resource&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -365,6 +371,7 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;resource&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -390,6 +397,7 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;resource&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -415,6 +423,7 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;resource&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -495,6 +504,7 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;resource&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -518,6 +528,7 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;resource&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -543,6 +554,7 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;resource&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -568,6 +580,7 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;resource&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -648,6 +661,7 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;resource&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -671,6 +685,7 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;resource&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -696,6 +711,7 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;resource&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -721,6 +737,7 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;resource&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -801,6 +818,7 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;resource&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -824,6 +842,7 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;resource&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -849,6 +868,7 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;resource&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -874,6 +894,7 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;resource&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -954,6 +975,7 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;resource&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -977,6 +999,7 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;resource&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -1002,6 +1025,7 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;resource&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -1026,6 +1050,7 @@ public class ProjectsApi {
         <tr><td> 201 </td><td> Объект JSON c ключом &#x60;project&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -1098,6 +1123,7 @@ public class ProjectsApi {
         <tr><td> 201 </td><td> Объект JSON c ключом &#x60;project&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -1119,6 +1145,7 @@ public class ProjectsApi {
         <tr><td> 201 </td><td> Объект JSON c ключом &#x60;project&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -1142,6 +1169,7 @@ public class ProjectsApi {
         <tr><td> 201 </td><td> Объект JSON c ключом &#x60;project&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -1165,6 +1193,7 @@ public class ProjectsApi {
         <tr><td> 204 </td><td> Проект успешно удален </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -1237,6 +1266,7 @@ public class ProjectsApi {
         <tr><td> 204 </td><td> Проект успешно удален </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -1258,6 +1288,7 @@ public class ProjectsApi {
         <tr><td> 204 </td><td> Проект успешно удален </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -1281,6 +1312,7 @@ public class ProjectsApi {
         <tr><td> 204 </td><td> Проект успешно удален </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -1303,7 +1335,6 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;balancers&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -1369,7 +1400,6 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;balancers&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -1390,7 +1420,6 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;balancers&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -1413,7 +1442,6 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;balancers&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -1436,7 +1464,6 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;clusters&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -1502,7 +1529,6 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;clusters&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -1523,7 +1549,6 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;clusters&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -1546,7 +1571,6 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;clusters&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -1569,7 +1593,6 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;databases&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -1635,7 +1658,6 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;databases&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -1656,7 +1678,6 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;databases&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -1679,7 +1700,6 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;databases&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -1702,7 +1722,6 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;dedicated_servers&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -1768,7 +1787,6 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;dedicated_servers&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -1789,7 +1807,6 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;dedicated_servers&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -1812,7 +1829,6 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;dedicated_servers&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -1835,7 +1851,6 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;servers&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -1901,7 +1916,6 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;servers&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -1922,7 +1936,6 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;servers&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -1945,7 +1958,6 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;servers&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -1968,7 +1980,6 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;buckets&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -2034,7 +2045,6 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;buckets&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -2055,7 +2065,6 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;buckets&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -2078,7 +2087,6 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;buckets&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -2102,6 +2110,7 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключами: &#x60;servers&#x60;, &#x60;balancers&#x60;, &#x60;buckets&#x60;, &#x60;clusters&#x60;, &#x60;databases&#x60;, &#x60;dedicated_servers&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -2175,6 +2184,7 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключами: &#x60;servers&#x60;, &#x60;balancers&#x60;, &#x60;buckets&#x60;, &#x60;clusters&#x60;, &#x60;databases&#x60;, &#x60;dedicated_servers&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -2197,6 +2207,7 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключами: &#x60;servers&#x60;, &#x60;balancers&#x60;, &#x60;buckets&#x60;, &#x60;clusters&#x60;, &#x60;databases&#x60;, &#x60;dedicated_servers&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -2221,6 +2232,7 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключами: &#x60;servers&#x60;, &#x60;balancers&#x60;, &#x60;buckets&#x60;, &#x60;clusters&#x60;, &#x60;databases&#x60;, &#x60;dedicated_servers&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -2245,6 +2257,7 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;project&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -2318,6 +2331,7 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;project&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -2340,6 +2354,7 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;project&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -2364,6 +2379,7 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;project&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -2388,6 +2404,7 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;balancers&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -2461,6 +2478,7 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;balancers&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -2483,6 +2501,7 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;balancers&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -2507,6 +2526,7 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;balancers&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -2531,6 +2551,7 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;clusters&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -2604,6 +2625,7 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;clusters&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -2626,6 +2648,7 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;clusters&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -2650,6 +2673,7 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;clusters&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -2674,6 +2698,7 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;databases&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -2747,6 +2772,7 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;databases&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -2769,6 +2795,7 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;databases&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -2793,6 +2820,7 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;databases&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -2817,6 +2845,7 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;dedicated_servers&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -2890,6 +2919,7 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;dedicated_servers&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -2912,6 +2942,7 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;dedicated_servers&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -2936,6 +2967,7 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;dedicated_servers&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -2960,6 +2992,7 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;servers&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -3033,6 +3066,7 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;servers&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -3055,6 +3089,7 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;servers&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -3079,6 +3114,7 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;servers&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -3103,6 +3139,7 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;buckets&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -3176,6 +3213,7 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;buckets&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -3198,6 +3236,7 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;buckets&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -3222,6 +3261,7 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;buckets&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -3533,6 +3573,7 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;project&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -3613,6 +3654,7 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;project&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -3636,6 +3678,7 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;project&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -3661,6 +3704,7 @@ public class ProjectsApi {
         <tr><td> 200 </td><td> Объект JSON c ключом &#x60;project&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>

@@ -21,7 +21,11 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -51,7 +55,7 @@ import org.openapitools.client.JSON;
 /**
  * CreateApiKey
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-12-25T16:56:49.033312Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T09:34:42.684953Z[Etc/UTC]")
 public class CreateApiKey {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -64,6 +68,121 @@ public class CreateApiKey {
   public static final String SERIALIZED_NAME_IS_ABLE_TO_DELETE = "is_able_to_delete";
   @SerializedName(SERIALIZED_NAME_IS_ABLE_TO_DELETE)
   private Boolean isAbleToDelete;
+
+  /**
+   * Gets or Sets roles
+   */
+  @JsonAdapter(RolesEnum.Adapter.class)
+  public enum RolesEnum {
+    SERVERS_READ("servers:read"),
+    
+    SERVERS_WRITE("servers:write"),
+    
+    DATABASES_READ("databases:read"),
+    
+    DATABASES_WRITE("databases:write"),
+    
+    BALANCERS_READ("balancers:read"),
+    
+    BALANCERS_WRITE("balancers:write"),
+    
+    STORAGES_READ("storages:read"),
+    
+    STORAGES_WRITE("storages:write"),
+    
+    DEDICATED_READ("dedicated:read"),
+    
+    DEDICATED_WRITE("dedicated:write"),
+    
+    CLUSTERS_READ("clusters:read"),
+    
+    CLUSTERS_WRITE("clusters:write"),
+    
+    VPC_READ("vpc:read"),
+    
+    VPC_WRITE("vpc:write"),
+    
+    FLOATING_IPS_READ("floating-ips:read"),
+    
+    FLOATING_IPS_WRITE("floating-ips:write"),
+    
+    DOMAINS_READ("domains:read"),
+    
+    DOMAINS_WRITE("domains:write"),
+    
+    ADMINISTRATORS_WRITE("administrators:write"),
+    
+    FIREWALL_READ("firewall:read"),
+    
+    FIREWALL_READ("firewall:read"),
+    
+    FINANCES_WRITE("finances:write"),
+    
+    SUPPORT_READ("support:read"),
+    
+    SUPPORT_WRITE("support:write"),
+    
+    VPN_READ("vpn:read"),
+    
+    VPN_WRITE("vpn:write"),
+    
+    MAIL_READ("mail:read"),
+    
+    MAIL_WRITE("mail:write"),
+    
+    APPS_READ("apps:read"),
+    
+    APPS_WRITE("apps:write"),
+    
+    NETWORK_DRIVES_READ("network-drives:read"),
+    
+    NETWORK_DRIVES_WRITE("network-drives:write");
+
+    private String value;
+
+    RolesEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static RolesEnum fromValue(String value) {
+      for (RolesEnum b : RolesEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<RolesEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final RolesEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public RolesEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return RolesEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_ROLES = "roles";
+  @SerializedName(SERIALIZED_NAME_ROLES)
+  private List<RolesEnum> roles;
+
+  public static final String SERIALIZED_NAME_PROJECTS = "projects";
+  @SerializedName(SERIALIZED_NAME_PROJECTS)
+  private List<BigDecimal> projects;
 
   public CreateApiKey() {
   }
@@ -131,6 +250,64 @@ public class CreateApiKey {
   }
 
 
+  public CreateApiKey roles(List<RolesEnum> roles) {
+    
+    this.roles = roles;
+    return this;
+  }
+
+  public CreateApiKey addRolesItem(RolesEnum rolesItem) {
+    if (this.roles == null) {
+      this.roles = new ArrayList<>();
+    }
+    this.roles.add(rolesItem);
+    return this;
+  }
+
+   /**
+   * Роли, которые могут быть назначены токену.
+   * @return roles
+  **/
+  @javax.annotation.Nullable
+  public List<RolesEnum> getRoles() {
+    return roles;
+  }
+
+
+  public void setRoles(List<RolesEnum> roles) {
+    this.roles = roles;
+  }
+
+
+  public CreateApiKey projects(List<BigDecimal> projects) {
+    
+    this.projects = projects;
+    return this;
+  }
+
+  public CreateApiKey addProjectsItem(BigDecimal projectsItem) {
+    if (this.projects == null) {
+      this.projects = new ArrayList<>();
+    }
+    this.projects.add(projectsItem);
+    return this;
+  }
+
+   /**
+   * Список идентификаторов проектов, к которым привязан токен. Если передан null - доступ к проектам не ограничен.
+   * @return projects
+  **/
+  @javax.annotation.Nullable
+  public List<BigDecimal> getProjects() {
+    return projects;
+  }
+
+
+  public void setProjects(List<BigDecimal> projects) {
+    this.projects = projects;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -143,12 +320,25 @@ public class CreateApiKey {
     CreateApiKey createApiKey = (CreateApiKey) o;
     return Objects.equals(this.name, createApiKey.name) &&
         Objects.equals(this.expire, createApiKey.expire) &&
-        Objects.equals(this.isAbleToDelete, createApiKey.isAbleToDelete);
+        Objects.equals(this.isAbleToDelete, createApiKey.isAbleToDelete) &&
+        Objects.equals(this.roles, createApiKey.roles) &&
+        Objects.equals(this.projects, createApiKey.projects);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, expire, isAbleToDelete);
+    return Objects.hash(name, expire, isAbleToDelete, roles, projects);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -158,6 +348,8 @@ public class CreateApiKey {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    expire: ").append(toIndentedString(expire)).append("\n");
     sb.append("    isAbleToDelete: ").append(toIndentedString(isAbleToDelete)).append("\n");
+    sb.append("    roles: ").append(toIndentedString(roles)).append("\n");
+    sb.append("    projects: ").append(toIndentedString(projects)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -183,6 +375,8 @@ public class CreateApiKey {
     openapiFields.add("name");
     openapiFields.add("expire");
     openapiFields.add("is_able_to_delete");
+    openapiFields.add("roles");
+    openapiFields.add("projects");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -219,6 +413,14 @@ public class CreateApiKey {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("roles") != null && !jsonObj.get("roles").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `roles` to be an array in the JSON string but got `%s`", jsonObj.get("roles").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("projects") != null && !jsonObj.get("projects").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `projects` to be an array in the JSON string but got `%s`", jsonObj.get("projects").toString()));
       }
   }
 

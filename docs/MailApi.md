@@ -5,6 +5,7 @@ All URIs are relative to *https://api.timeweb.cloud*
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
 | [**createDomainMailbox**](MailApi.md#createDomainMailbox) | **POST** /api/v1/mail/domains/{domain} | Создание почтового ящика |
+| [**createMultipleDomainMailboxes**](MailApi.md#createMultipleDomainMailboxes) | **POST** /api/v1/mail/domains/{domain}/batch | Множественное создание почтовых ящиков |
 | [**deleteMailbox**](MailApi.md#deleteMailbox) | **DELETE** /api/v1/mail/domains/{domain}/mailboxes/{mailbox} | Удаление почтового ящика |
 | [**getDomainMailInfo**](MailApi.md#getDomainMailInfo) | **GET** /api/v1/mail/domains/{domain}/info | Получение почтовой информации о домене |
 | [**getDomainMailboxes**](MailApi.md#getDomainMailboxes) | **GET** /api/v1/mail/domains/{domain} | Получение списка почтовых ящиков домена |
@@ -86,6 +87,83 @@ public class Example {
 | **201** | Ответ будет представлять собой объект JSON c ключом &#x60;mailbox&#x60;. |  -  |
 | **400** | Некорректный запрос |  -  |
 | **401** | Не авторизован |  -  |
+| **403** | Запрещено |  -  |
+| **404** | Не найдено |  -  |
+| **429** | Слишком много запросов |  -  |
+| **500** | Внутренняя ошибка сервера |  -  |
+
+<a id="createMultipleDomainMailboxes"></a>
+# **createMultipleDomainMailboxes**
+> CreateMultipleDomainMailboxes201Response createMultipleDomainMailboxes(domain, createMultipleDomainMailboxesRequest)
+
+Множественное создание почтовых ящиков
+
+Чтобы создать почтовый ящики, отправьте POST-запрос на &#x60;/api/v1/mail/domains/{domain}/batch&#x60;.
+
+### Example
+```java
+// Import classes:
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.MailApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.timeweb.cloud");
+    
+    // Configure HTTP bearer authorization: Bearer
+    HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
+    Bearer.setBearerToken("BEARER TOKEN");
+
+    MailApi apiInstance = new MailApi(defaultClient);
+    String domain = "somedomain.ru"; // String | Полное имя домена
+    CreateMultipleDomainMailboxesRequest createMultipleDomainMailboxesRequest = new CreateMultipleDomainMailboxesRequest(); // CreateMultipleDomainMailboxesRequest | 
+    try {
+      CreateMultipleDomainMailboxes201Response result = apiInstance.createMultipleDomainMailboxes(domain, createMultipleDomainMailboxesRequest);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling MailApi#createMultipleDomainMailboxes");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **domain** | **String**| Полное имя домена | |
+| **createMultipleDomainMailboxesRequest** | [**CreateMultipleDomainMailboxesRequest**](CreateMultipleDomainMailboxesRequest.md)|  | |
+
+### Return type
+
+[**CreateMultipleDomainMailboxes201Response**](CreateMultipleDomainMailboxes201Response.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Ответ будет представлять собой объект JSON c ключом &#x60;mailboxes&#x60;. |  -  |
+| **400** | Некорректный запрос |  -  |
+| **401** | Не авторизован |  -  |
+| **403** | Запрещено |  -  |
+| **404** | Не найдено |  -  |
 | **429** | Слишком много запросов |  -  |
 | **500** | Внутренняя ошибка сервера |  -  |
 
@@ -158,6 +236,8 @@ null (empty response body)
 | **204** | Успешное удаление почтового ящика |  -  |
 | **400** | Некорректный запрос |  -  |
 | **401** | Не авторизован |  -  |
+| **403** | Запрещено |  -  |
+| **404** | Не найдено |  -  |
 | **429** | Слишком много запросов |  -  |
 | **500** | Внутренняя ошибка сервера |  -  |
 
@@ -229,6 +309,8 @@ public class Example {
 | **200** | Ответ будет представлять собой объект JSON c ключом &#x60;domain_info&#x60;. |  -  |
 | **400** | Некорректный запрос |  -  |
 | **401** | Не авторизован |  -  |
+| **403** | Запрещено |  -  |
+| **404** | Не найдено |  -  |
 | **429** | Слишком много запросов |  -  |
 | **500** | Внутренняя ошибка сервера |  -  |
 
@@ -306,6 +388,8 @@ public class Example {
 | **200** | Ответ будет представлять собой объект JSON c ключом &#x60;mailboxes&#x60;. |  -  |
 | **400** | Некорректный запрос |  -  |
 | **401** | Не авторизован |  -  |
+| **403** | Запрещено |  -  |
+| **404** | Не найдено |  -  |
 | **429** | Слишком много запросов |  -  |
 | **500** | Внутренняя ошибка сервера |  -  |
 
@@ -373,6 +457,7 @@ This endpoint does not need any parameter.
 | **200** | Ответ будет представлять собой объект JSON c ключом &#x60;quota&#x60;. |  -  |
 | **400** | Некорректный запрос |  -  |
 | **401** | Не авторизован |  -  |
+| **403** | Запрещено |  -  |
 | **429** | Слишком много запросов |  -  |
 | **500** | Внутренняя ошибка сервера |  -  |
 
@@ -446,6 +531,8 @@ public class Example {
 | **200** | Ответ будет представлять собой объект JSON c ключом &#x60;mailbox&#x60;. |  -  |
 | **400** | Некорректный запрос |  -  |
 | **401** | Не авторизован |  -  |
+| **403** | Запрещено |  -  |
+| **404** | Не найдено |  -  |
 | **429** | Слишком много запросов |  -  |
 | **500** | Внутренняя ошибка сервера |  -  |
 
@@ -521,6 +608,7 @@ public class Example {
 | **200** | Ответ будет представлять собой объект JSON c ключом &#x60;mailboxes&#x60;. |  -  |
 | **400** | Некорректный запрос |  -  |
 | **401** | Не авторизован |  -  |
+| **403** | Запрещено |  -  |
 | **429** | Слишком много запросов |  -  |
 | **500** | Внутренняя ошибка сервера |  -  |
 
@@ -594,6 +682,8 @@ public class Example {
 | **200** | Ответ будет представлять собой объект JSON c ключом &#x60;domain_info&#x60;. |  -  |
 | **400** | Некорректный запрос |  -  |
 | **401** | Не авторизован |  -  |
+| **403** | Запрещено |  -  |
+| **404** | Не найдено |  -  |
 | **429** | Слишком много запросов |  -  |
 | **500** | Внутренняя ошибка сервера |  -  |
 
@@ -665,6 +755,7 @@ public class Example {
 | **200** | Ответ будет представлять собой объект JSON c ключом &#x60;quota&#x60;. |  -  |
 | **400** | Некорректный запрос |  -  |
 | **401** | Не авторизован |  -  |
+| **403** | Запрещено |  -  |
 | **429** | Слишком много запросов |  -  |
 | **500** | Внутренняя ошибка сервера |  -  |
 
@@ -740,6 +831,8 @@ public class Example {
 | **200** | Ответ будет представлять собой объект JSON c ключом &#x60;mailbox&#x60;. |  -  |
 | **400** | Некорректный запрос |  -  |
 | **401** | Не авторизован |  -  |
+| **403** | Запрещено |  -  |
+| **404** | Не найдено |  -  |
 | **429** | Слишком много запросов |  -  |
 | **500** | Внутренняя ошибка сервера |  -  |
 

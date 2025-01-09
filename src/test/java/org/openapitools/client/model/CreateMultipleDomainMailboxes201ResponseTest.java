@@ -13,299 +13,38 @@
 
 package org.openapitools.client.model;
 
-import java.util.Objects;
-import java.util.Arrays;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
-import java.util.UUID;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
-import java.lang.reflect.Type;
-import java.util.HashMap;
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-
-import org.openapitools.client.JSON;
+import org.openapitools.client.model.Mailbox;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 /**
- * GetFinances404Response
+ * Model tests for CreateMultipleDomainMailboxes201Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-12-25T16:56:49.033312Z[Etc/UTC]")
-public class GetFinances404Response {
-  public static final String SERIALIZED_NAME_STATUS_CODE = "status_code";
-  @SerializedName(SERIALIZED_NAME_STATUS_CODE)
-  private BigDecimal statusCode;
+public class CreateMultipleDomainMailboxes201ResponseTest {
+    private final CreateMultipleDomainMailboxes201Response model = new CreateMultipleDomainMailboxes201Response();
 
-  public static final String SERIALIZED_NAME_MESSAGE = "message";
-  @SerializedName(SERIALIZED_NAME_MESSAGE)
-  private String message;
-
-  public static final String SERIALIZED_NAME_ERROR_CODE = "error_code";
-  @SerializedName(SERIALIZED_NAME_ERROR_CODE)
-  private String errorCode;
-
-  public static final String SERIALIZED_NAME_RESPONSE_ID = "response_id";
-  @SerializedName(SERIALIZED_NAME_RESPONSE_ID)
-  private UUID responseId;
-
-  public GetFinances404Response() {
-  }
-
-  public GetFinances404Response statusCode(BigDecimal statusCode) {
-    
-    this.statusCode = statusCode;
-    return this;
-  }
-
-   /**
-   * Короткий идентификатор, соответствующий возвращаемому коду состояния HTTP.
-   * @return statusCode
-  **/
-  @javax.annotation.Nonnull
-  public BigDecimal getStatusCode() {
-    return statusCode;
-  }
-
-
-  public void setStatusCode(BigDecimal statusCode) {
-    this.statusCode = statusCode;
-  }
-
-
-  public GetFinances404Response message(String message) {
-    
-    this.message = message;
-    return this;
-  }
-
-   /**
-   * Сообщение, предоставляющее дополнительную информацию об ошибке, в том числе сведения, помогающие устранить ее, когда это возможно.
-   * @return message
-  **/
-  @javax.annotation.Nullable
-  public String getMessage() {
-    return message;
-  }
-
-
-  public void setMessage(String message) {
-    this.message = message;
-  }
-
-
-  public GetFinances404Response errorCode(String errorCode) {
-    
-    this.errorCode = errorCode;
-    return this;
-  }
-
-   /**
-   * Краткое описание ошибки HTTP на основе статуса.
-   * @return errorCode
-  **/
-  @javax.annotation.Nonnull
-  public String getErrorCode() {
-    return errorCode;
-  }
-
-
-  public void setErrorCode(String errorCode) {
-    this.errorCode = errorCode;
-  }
-
-
-  public GetFinances404Response responseId(UUID responseId) {
-    
-    this.responseId = responseId;
-    return this;
-  }
-
-   /**
-   * Идентификатор запроса, который можно указывать при обращении в службу технической поддержки, чтобы помочь определить проблему.
-   * @return responseId
-  **/
-  @javax.annotation.Nonnull
-  public UUID getResponseId() {
-    return responseId;
-  }
-
-
-  public void setResponseId(UUID responseId) {
-    this.responseId = responseId;
-  }
-
-
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+    /**
+     * Model tests for CreateMultipleDomainMailboxes201Response
+     */
+    @Test
+    public void testCreateMultipleDomainMailboxes201Response() {
+        // TODO: test CreateMultipleDomainMailboxes201Response
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    /**
+     * Test the property 'mailboxes'
+     */
+    @Test
+    public void mailboxesTest() {
+        // TODO: test mailboxes
     }
-    GetFinances404Response getFinances404Response = (GetFinances404Response) o;
-    return Objects.equals(this.statusCode, getFinances404Response.statusCode) &&
-        Objects.equals(this.message, getFinances404Response.message) &&
-        Objects.equals(this.errorCode, getFinances404Response.errorCode) &&
-        Objects.equals(this.responseId, getFinances404Response.responseId);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(statusCode, message, errorCode, responseId);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class GetFinances404Response {\n");
-    sb.append("    statusCode: ").append(toIndentedString(statusCode)).append("\n");
-    sb.append("    message: ").append(toIndentedString(message)).append("\n");
-    sb.append("    errorCode: ").append(toIndentedString(errorCode)).append("\n");
-    sb.append("    responseId: ").append(toIndentedString(responseId)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("status_code");
-    openapiFields.add("message");
-    openapiFields.add("error_code");
-    openapiFields.add("response_id");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("status_code");
-    openapiRequiredFields.add("error_code");
-    openapiRequiredFields.add("response_id");
-  }
-
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to GetFinances404Response
-  */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!GetFinances404Response.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in GetFinances404Response is not found in the empty JSON string", GetFinances404Response.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!GetFinances404Response.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `GetFinances404Response` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : GetFinances404Response.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("message") != null && !jsonObj.get("message").isJsonNull()) && !jsonObj.get("message").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `message` to be a primitive type in the JSON string but got `%s`", jsonObj.get("message").toString()));
-      }
-      if (!jsonObj.get("error_code").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `error_code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("error_code").toString()));
-      }
-      if (!jsonObj.get("response_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `response_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("response_id").toString()));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!GetFinances404Response.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'GetFinances404Response' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<GetFinances404Response> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(GetFinances404Response.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<GetFinances404Response>() {
-           @Override
-           public void write(JsonWriter out, GetFinances404Response value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public GetFinances404Response read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
-    }
-  }
-
- /**
-  * Create an instance of GetFinances404Response given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of GetFinances404Response
-  * @throws IOException if the JSON string is invalid with respect to GetFinances404Response
-  */
-  public static GetFinances404Response fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, GetFinances404Response.class);
-  }
-
- /**
-  * Convert an instance of GetFinances404Response to an JSON string
-  *
-  * @return JSON string
-  */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
-

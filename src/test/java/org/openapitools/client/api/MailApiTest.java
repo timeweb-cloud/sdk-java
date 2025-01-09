@@ -16,11 +16,15 @@ package org.openapitools.client.api;
 import org.openapitools.client.ApiException;
 import org.openapitools.client.model.CreateDomainMailbox201Response;
 import org.openapitools.client.model.CreateDomainMailboxRequest;
+import org.openapitools.client.model.CreateMultipleDomainMailboxes201Response;
+import org.openapitools.client.model.CreateMultipleDomainMailboxesRequest;
 import org.openapitools.client.model.GetDomainMailInfo200Response;
 import org.openapitools.client.model.GetFinances400Response;
 import org.openapitools.client.model.GetFinances401Response;
+import org.openapitools.client.model.GetFinances403Response;
 import org.openapitools.client.model.GetFinances429Response;
 import org.openapitools.client.model.GetFinances500Response;
+import org.openapitools.client.model.GetImage404Response;
 import org.openapitools.client.model.GetMailQuota200Response;
 import org.openapitools.client.model.GetMailboxes200Response;
 import org.openapitools.client.model.UpdateDomainMailInfoRequest;
@@ -54,6 +58,21 @@ public class MailApiTest {
         String domain = null;
         CreateDomainMailboxRequest createDomainMailboxRequest = null;
         CreateDomainMailbox201Response response = api.createDomainMailbox(domain, createDomainMailboxRequest);
+        // TODO: test validations
+    }
+
+    /**
+     * Множественное создание почтовых ящиков
+     *
+     * Чтобы создать почтовый ящики, отправьте POST-запрос на &#x60;/api/v1/mail/domains/{domain}/batch&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void createMultipleDomainMailboxesTest() throws ApiException {
+        String domain = null;
+        CreateMultipleDomainMailboxesRequest createMultipleDomainMailboxesRequest = null;
+        CreateMultipleDomainMailboxes201Response response = api.createMultipleDomainMailboxes(domain, createMultipleDomainMailboxesRequest);
         // TODO: test validations
     }
 

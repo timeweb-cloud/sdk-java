@@ -2,7 +2,7 @@
 
 Timeweb Cloud API
 - API version: 1.0.0
-  - Build date: 2024-12-25T16:56:49.033312Z[Etc/UTC]
+  - Build date: 2025-01-09T09:34:42.684953Z[Etc/UTC]
 
 # Введение
 API Timeweb Cloud позволяет вам управлять ресурсами в облаке программным способом с использованием обычных HTTP-запросов.
@@ -426,6 +426,7 @@ Class | Method | HTTP request | Description
 *KubernetesApi* | [**updateCluster**](docs/KubernetesApi.md#updateCluster) | **PATCH** /api/v1/k8s/clusters/{cluster_id} | Обновление информации о кластере
 *LocationsApi* | [**getLocations**](docs/LocationsApi.md#getLocations) | **GET** /api/v2/locations | Получение списка локаций
 *MailApi* | [**createDomainMailbox**](docs/MailApi.md#createDomainMailbox) | **POST** /api/v1/mail/domains/{domain} | Создание почтового ящика
+*MailApi* | [**createMultipleDomainMailboxes**](docs/MailApi.md#createMultipleDomainMailboxes) | **POST** /api/v1/mail/domains/{domain}/batch | Множественное создание почтовых ящиков
 *MailApi* | [**deleteMailbox**](docs/MailApi.md#deleteMailbox) | **DELETE** /api/v1/mail/domains/{domain}/mailboxes/{mailbox} | Удаление почтового ящика
 *MailApi* | [**getDomainMailInfo**](docs/MailApi.md#getDomainMailInfo) | **GET** /api/v1/mail/domains/{domain}/info | Получение почтовой информации о домене
 *MailApi* | [**getDomainMailboxes**](docs/MailApi.md#getDomainMailboxes) | **GET** /api/v1/mail/domains/{domain} | Получение списка почтовых ящиков домена
@@ -639,6 +640,9 @@ Class | Method | HTTP request | Description
  - [CreateInstance](docs/CreateInstance.md)
  - [CreateKey201Response](docs/CreateKey201Response.md)
  - [CreateKeyRequest](docs/CreateKeyRequest.md)
+ - [CreateMultipleDomainMailboxes201Response](docs/CreateMultipleDomainMailboxes201Response.md)
+ - [CreateMultipleDomainMailboxesRequest](docs/CreateMultipleDomainMailboxesRequest.md)
+ - [CreateMultipleDomainMailboxesRequestMailboxesInner](docs/CreateMultipleDomainMailboxesRequestMailboxesInner.md)
  - [CreateNetworkDrive](docs/CreateNetworkDrive.md)
  - [CreateNetworkDrive201Response](docs/CreateNetworkDrive201Response.md)
  - [CreateProject](docs/CreateProject.md)
@@ -764,10 +768,10 @@ Class | Method | HTTP request | Description
  - [GetFinances400Response](docs/GetFinances400Response.md)
  - [GetFinances401Response](docs/GetFinances401Response.md)
  - [GetFinances403Response](docs/GetFinances403Response.md)
- - [GetFinances404Response](docs/GetFinances404Response.md)
  - [GetFinances429Response](docs/GetFinances429Response.md)
  - [GetFinances500Response](docs/GetFinances500Response.md)
  - [GetFloatingIps200Response](docs/GetFloatingIps200Response.md)
+ - [GetImage404Response](docs/GetImage404Response.md)
  - [GetKey200Response](docs/GetKey200Response.md)
  - [GetKeys200Response](docs/GetKeys200Response.md)
  - [GetLocations200Response](docs/GetLocations200Response.md)
