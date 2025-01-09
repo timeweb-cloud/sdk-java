@@ -2,7 +2,7 @@
 
 Timeweb Cloud API
 - API version: 1.0.0
-  - Build date: 2025-01-09T10:12:31.892103Z[Etc/UTC]
+  - Build date: 2025-01-09T16:09:23.451331Z[Etc/UTC]
 
 # Введение
 API Timeweb Cloud позволяет вам управлять ресурсами в облаке программным способом с использованием обычных HTTP-запросов.
@@ -390,11 +390,11 @@ Class | Method | HTTP request | Description
 *FirewallApi* | [**updateGroupRule**](docs/FirewallApi.md#updateGroupRule) | **PATCH** /api/v1/firewall/groups/{group_id}/rules/{rule_id} | Обновление firewall правила
 *FloatingIpApi* | [**bindFloatingIp**](docs/FloatingIpApi.md#bindFloatingIp) | **POST** /api/v1/floating-ips/{floating_ip_id}/bind | Привязать IP к сервису
 *FloatingIpApi* | [**createFloatingIp**](docs/FloatingIpApi.md#createFloatingIp) | **POST** /api/v1/floating-ips | Создание плавающего IP
-*FloatingIpApi* | [**deleteFloatingIP**](docs/FloatingIpApi.md#deleteFloatingIP) | **DELETE** /api/v1/floating-ips/{floating_ip_id} | Удаление плавающего IP по идентификатору
+*FloatingIpApi* | [**deleteFloatingIP**](docs/FloatingIpApi.md#deleteFloatingIP) | **DELETE** /api/v1/floating-ips/{floating_ip_id} | Удаление плавающего IP по ID
 *FloatingIpApi* | [**getFloatingIp**](docs/FloatingIpApi.md#getFloatingIp) | **GET** /api/v1/floating-ips/{floating_ip_id} | Получение плавающего IP
 *FloatingIpApi* | [**getFloatingIps**](docs/FloatingIpApi.md#getFloatingIps) | **GET** /api/v1/floating-ips | Получение списка плавающих IP
 *FloatingIpApi* | [**unbindFloatingIp**](docs/FloatingIpApi.md#unbindFloatingIp) | **POST** /api/v1/floating-ips/{floating_ip_id}/unbind | Отвязать IP от сервиса
-*FloatingIpApi* | [**updateFloatingIP**](docs/FloatingIpApi.md#updateFloatingIP) | **PATCH** /api/v1/floating-ips/{floating_ip_id} | Изменение плавающего IP по идентификатору
+*FloatingIpApi* | [**updateFloatingIP**](docs/FloatingIpApi.md#updateFloatingIP) | **PATCH** /api/v1/floating-ips/{floating_ip_id} | Изменение плавающего IP по ID
 *ImagesApi* | [**createImage**](docs/ImagesApi.md#createImage) | **POST** /api/v1/images | Создание образа
 *ImagesApi* | [**createImageDownloadUrl**](docs/ImagesApi.md#createImageDownloadUrl) | **POST** /api/v1/images/{image_id}/download-url | Создание ссылки на скачивание образа
 *ImagesApi* | [**deleteImage**](docs/ImagesApi.md#deleteImage) | **DELETE** /api/v1/images/{image_id} | Удаление образа
@@ -444,7 +444,7 @@ Class | Method | HTTP request | Description
 *NetworkDrivesApi* | [**getNetworkDrivesPresets**](docs/NetworkDrivesApi.md#getNetworkDrivesPresets) | **GET** /api/v1/presets/network-drives | Получение списка доступных тарифов для сетевого диска
 *NetworkDrivesApi* | [**mountNetworkDrive**](docs/NetworkDrivesApi.md#mountNetworkDrive) | **POST** /api/v1/network-drives/{network_drive_id}/bind | Подключить сетевой диск к сервису
 *NetworkDrivesApi* | [**unmountNetworkDrive**](docs/NetworkDrivesApi.md#unmountNetworkDrive) | **POST** /api/v1/network-drives/{network_drive_id}/unbind | Отключить сетевой диск от сервиса
-*NetworkDrivesApi* | [**updateNetworkDrive**](docs/NetworkDrivesApi.md#updateNetworkDrive) | **PATCH** /api/v1/network-drives/{network_drive_id} | Изменение сетевого диска по идентификатору
+*NetworkDrivesApi* | [**updateNetworkDrive**](docs/NetworkDrivesApi.md#updateNetworkDrive) | **PATCH** /api/v1/network-drives/{network_drive_id} | Изменение сетевого диска по ID
 *ProjectsApi* | [**addBalancerToProject**](docs/ProjectsApi.md#addBalancerToProject) | **POST** /api/v1/projects/{project_id}/resources/balancers | Добавление балансировщика в проект
 *ProjectsApi* | [**addClusterToProject**](docs/ProjectsApi.md#addClusterToProject) | **POST** /api/v1/projects/{project_id}/resources/clusters | Добавление кластера в проект
 *ProjectsApi* | [**addDatabaseToProject**](docs/ProjectsApi.md#addDatabaseToProject) | **POST** /api/v1/projects/{project_id}/resources/databases | Добавление базы данных в проект
@@ -529,11 +529,11 @@ Class | Method | HTTP request | Description
 *ServersApi* | [**updateServerOSBootMode**](docs/ServersApi.md#updateServerOSBootMode) | **POST** /api/v1/servers/{server_id}/boot-mode | Выбор типа загрузки операционной системы сервера
 *SshApi* | [**addKeyToServer**](docs/SshApi.md#addKeyToServer) | **POST** /api/v1/servers/{server_id}/ssh-keys | Добавление SSH-ключей на сервер
 *SshApi* | [**createKey**](docs/SshApi.md#createKey) | **POST** /api/v1/ssh-keys | Создание SSH-ключа
-*SshApi* | [**deleteKey**](docs/SshApi.md#deleteKey) | **DELETE** /api/v1/ssh-keys/{ssh_key_id} | Удаление SSH-ключа по уникальному идентификатору
+*SshApi* | [**deleteKey**](docs/SshApi.md#deleteKey) | **DELETE** /api/v1/ssh-keys/{ssh_key_id} | Удаление SSH-ключа по ID
 *SshApi* | [**deleteKeyFromServer**](docs/SshApi.md#deleteKeyFromServer) | **DELETE** /api/v1/servers/{server_id}/ssh-keys/{ssh_key_id} | Удаление SSH-ключей с сервера
-*SshApi* | [**getKey**](docs/SshApi.md#getKey) | **GET** /api/v1/ssh-keys/{ssh_key_id} | Получение SSH-ключа по уникальному идентификатору
+*SshApi* | [**getKey**](docs/SshApi.md#getKey) | **GET** /api/v1/ssh-keys/{ssh_key_id} | Получение SSH-ключа по ID
 *SshApi* | [**getKeys**](docs/SshApi.md#getKeys) | **GET** /api/v1/ssh-keys | Получение списка SSH-ключей
-*SshApi* | [**updateKey**](docs/SshApi.md#updateKey) | **PATCH** /api/v1/ssh-keys/{ssh_key_id} | Изменение SSH-ключа по уникальному идентификатору
+*SshApi* | [**updateKey**](docs/SshApi.md#updateKey) | **PATCH** /api/v1/ssh-keys/{ssh_key_id} | Изменение SSH-ключа по ID
 *VpcApi* | [**createVPC**](docs/VpcApi.md#createVPC) | **POST** /api/v2/vpcs | Создание VPC
 *VpcApi* | [**deleteVPC**](docs/VpcApi.md#deleteVPC) | **DELETE** /api/v1/vpcs/{vpc_id} | Удаление VPC по ID сети
 *VpcApi* | [**getVPC**](docs/VpcApi.md#getVPC) | **GET** /api/v2/vpcs/{vpc_id} | Получение VPC
@@ -605,6 +605,7 @@ Class | Method | HTTP request | Description
  - [Clusterk8s](docs/Clusterk8s.md)
  - [ClustersResponse](docs/ClustersResponse.md)
  - [Commit](docs/Commit.md)
+ - [ComponentsSchemasBaseError](docs/ComponentsSchemasBaseError.md)
  - [ConfigParameters](docs/ConfigParameters.md)
  - [CopyStorageFileRequest](docs/CopyStorageFileRequest.md)
  - [CreateAdmin](docs/CreateAdmin.md)
@@ -710,16 +711,16 @@ Class | Method | HTTP request | Description
  - [DomainTransfer](docs/DomainTransfer.md)
  - [EditApiKey](docs/EditApiKey.md)
  - [Finances](docs/Finances.md)
+ - [FirewallGroup](docs/FirewallGroup.md)
  - [FirewallGroupInAPI](docs/FirewallGroupInAPI.md)
- - [FirewallGroupOutAPI](docs/FirewallGroupOutAPI.md)
  - [FirewallGroupOutResponse](docs/FirewallGroupOutResponse.md)
- - [FirewallGroupResourceOutAPI](docs/FirewallGroupResourceOutAPI.md)
+ - [FirewallGroupResource](docs/FirewallGroupResource.md)
  - [FirewallGroupResourceOutResponse](docs/FirewallGroupResourceOutResponse.md)
  - [FirewallGroupResourcesOutResponse](docs/FirewallGroupResourcesOutResponse.md)
  - [FirewallGroupsOutResponse](docs/FirewallGroupsOutResponse.md)
+ - [FirewallRule](docs/FirewallRule.md)
  - [FirewallRuleDirection](docs/FirewallRuleDirection.md)
  - [FirewallRuleInAPI](docs/FirewallRuleInAPI.md)
- - [FirewallRuleOutAPI](docs/FirewallRuleOutAPI.md)
  - [FirewallRuleOutResponse](docs/FirewallRuleOutResponse.md)
  - [FirewallRuleProtocol](docs/FirewallRuleProtocol.md)
  - [FirewallRulesOutResponse](docs/FirewallRulesOutResponse.md)
@@ -816,11 +817,11 @@ Class | Method | HTTP request | Description
  - [GetVPCPorts200Response](docs/GetVPCPorts200Response.md)
  - [GetVPCServices200Response](docs/GetVPCServices200Response.md)
  - [GetVPCs200Response](docs/GetVPCs200Response.md)
- - [ImageDownloadAPI](docs/ImageDownloadAPI.md)
+ - [Image](docs/Image.md)
+ - [ImageDownload](docs/ImageDownload.md)
  - [ImageDownloadResponse](docs/ImageDownloadResponse.md)
  - [ImageDownloadsResponse](docs/ImageDownloadsResponse.md)
  - [ImageInAPI](docs/ImageInAPI.md)
- - [ImageOutAPI](docs/ImageOutAPI.md)
  - [ImageOutResponse](docs/ImageOutResponse.md)
  - [ImageStatus](docs/ImageStatus.md)
  - [ImageUpdateAPI](docs/ImageUpdateAPI.md)
@@ -887,6 +888,7 @@ Class | Method | HTTP request | Description
  - [S3ObjectOwner](docs/S3ObjectOwner.md)
  - [S3Subdomain](docs/S3Subdomain.md)
  - [SchemasBaseError](docs/SchemasBaseError.md)
+ - [SchemasMeta](docs/SchemasMeta.md)
  - [ServerBackup](docs/ServerBackup.md)
  - [ServerDisk](docs/ServerDisk.md)
  - [ServerIp](docs/ServerIp.md)

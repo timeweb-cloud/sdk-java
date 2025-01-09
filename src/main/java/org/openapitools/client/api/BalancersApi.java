@@ -91,7 +91,7 @@ public class BalancersApi {
 
     /**
      * Build call for addIPsToBalancer
-     * @param balancerId Идентификатор балансировщика (required)
+     * @param balancerId ID балансировщика (required)
      * @param addIPsToBalancerRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -173,7 +173,7 @@ public class BalancersApi {
     /**
      * Добавление IP-адресов к балансировщику
      * Чтобы добавить &#x60;IP&#x60;-адреса к балансировщику, отправьте запрос POST в &#x60;api/v1/balancers/{balancer_id}/ips&#x60;. 
-     * @param balancerId Идентификатор балансировщика (required)
+     * @param balancerId ID балансировщика (required)
      * @param addIPsToBalancerRequest  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -195,7 +195,7 @@ public class BalancersApi {
     /**
      * Добавление IP-адресов к балансировщику
      * Чтобы добавить &#x60;IP&#x60;-адреса к балансировщику, отправьте запрос POST в &#x60;api/v1/balancers/{balancer_id}/ips&#x60;. 
-     * @param balancerId Идентификатор балансировщика (required)
+     * @param balancerId ID балансировщика (required)
      * @param addIPsToBalancerRequest  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -219,7 +219,7 @@ public class BalancersApi {
     /**
      * Добавление IP-адресов к балансировщику (asynchronously)
      * Чтобы добавить &#x60;IP&#x60;-адреса к балансировщику, отправьте запрос POST в &#x60;api/v1/balancers/{balancer_id}/ips&#x60;. 
-     * @param balancerId Идентификатор балансировщика (required)
+     * @param balancerId ID балансировщика (required)
      * @param addIPsToBalancerRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -391,7 +391,7 @@ public class BalancersApi {
     }
     /**
      * Build call for createBalancerRule
-     * @param balancerId Идентификатор балансировщика (required)
+     * @param balancerId ID балансировщика (required)
      * @param createRule  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -473,7 +473,7 @@ public class BalancersApi {
     /**
      * Создание правила для балансировщика
      * Чтобы создать правило для балансировщика, отправьте запрос POST в &#x60;api/v1/balancers/{balancer_id}/rules&#x60;. 
-     * @param balancerId Идентификатор балансировщика (required)
+     * @param balancerId ID балансировщика (required)
      * @param createRule  (required)
      * @return CreateBalancerRule200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -497,7 +497,7 @@ public class BalancersApi {
     /**
      * Создание правила для балансировщика
      * Чтобы создать правило для балансировщика, отправьте запрос POST в &#x60;api/v1/balancers/{balancer_id}/rules&#x60;. 
-     * @param balancerId Идентификатор балансировщика (required)
+     * @param balancerId ID балансировщика (required)
      * @param createRule  (required)
      * @return ApiResponse&lt;CreateBalancerRule200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -522,7 +522,7 @@ public class BalancersApi {
     /**
      * Создание правила для балансировщика (asynchronously)
      * Чтобы создать правило для балансировщика, отправьте запрос POST в &#x60;api/v1/balancers/{balancer_id}/rules&#x60;. 
-     * @param balancerId Идентификатор балансировщика (required)
+     * @param balancerId ID балансировщика (required)
      * @param createRule  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -548,7 +548,7 @@ public class BalancersApi {
     }
     /**
      * Build call for deleteBalancer
-     * @param balancerId Идентификатор балансировщика (required)
+     * @param balancerId ID балансировщика (required)
      * @param hash Хеш, который совместно с кодом авторизации надо отправить для удаления, если включено подтверждение удаления сервисов через Телеграм. (optional)
      * @param code Код подтверждения, который придет к вам в Телеграм, после запроса удаления, если включено подтверждение удаления сервисов.  При помощи API токена сервисы можно удалять без подтверждения, если параметр токена &#x60;is_able_to_delete&#x60; установлен в значение &#x60;true&#x60; (optional)
      * @param _callback Callback for upload/download progress
@@ -634,7 +634,7 @@ public class BalancersApi {
     /**
      * Удаление балансировщика
      * Чтобы удалить балансировщик, отправьте запрос DELETE в &#x60;api/v1/balancers/{balancer_id}&#x60;. 
-     * @param balancerId Идентификатор балансировщика (required)
+     * @param balancerId ID балансировщика (required)
      * @param hash Хеш, который совместно с кодом авторизации надо отправить для удаления, если включено подтверждение удаления сервисов через Телеграм. (optional)
      * @param code Код подтверждения, который придет к вам в Телеграм, после запроса удаления, если включено подтверждение удаления сервисов.  При помощи API токена сервисы можно удалять без подтверждения, если параметр токена &#x60;is_able_to_delete&#x60; установлен в значение &#x60;true&#x60; (optional)
      * @return DeleteBalancer200Response
@@ -660,7 +660,7 @@ public class BalancersApi {
     /**
      * Удаление балансировщика
      * Чтобы удалить балансировщик, отправьте запрос DELETE в &#x60;api/v1/balancers/{balancer_id}&#x60;. 
-     * @param balancerId Идентификатор балансировщика (required)
+     * @param balancerId ID балансировщика (required)
      * @param hash Хеш, который совместно с кодом авторизации надо отправить для удаления, если включено подтверждение удаления сервисов через Телеграм. (optional)
      * @param code Код подтверждения, который придет к вам в Телеграм, после запроса удаления, если включено подтверждение удаления сервисов.  При помощи API токена сервисы можно удалять без подтверждения, если параметр токена &#x60;is_able_to_delete&#x60; установлен в значение &#x60;true&#x60; (optional)
      * @return ApiResponse&lt;DeleteBalancer200Response&gt;
@@ -687,7 +687,7 @@ public class BalancersApi {
     /**
      * Удаление балансировщика (asynchronously)
      * Чтобы удалить балансировщик, отправьте запрос DELETE в &#x60;api/v1/balancers/{balancer_id}&#x60;. 
-     * @param balancerId Идентификатор балансировщика (required)
+     * @param balancerId ID балансировщика (required)
      * @param hash Хеш, который совместно с кодом авторизации надо отправить для удаления, если включено подтверждение удаления сервисов через Телеграм. (optional)
      * @param code Код подтверждения, который придет к вам в Телеграм, после запроса удаления, если включено подтверждение удаления сервисов.  При помощи API токена сервисы можно удалять без подтверждения, если параметр токена &#x60;is_able_to_delete&#x60; установлен в значение &#x60;true&#x60; (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -715,8 +715,8 @@ public class BalancersApi {
     }
     /**
      * Build call for deleteBalancerRule
-     * @param balancerId Идентификатор балансировщика (required)
-     * @param ruleId Идентификатор правила для балансировщика (required)
+     * @param balancerId ID балансировщика (required)
+     * @param ruleId ID правила для балансировщика (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -797,8 +797,8 @@ public class BalancersApi {
     /**
      * Удаление правила для балансировщика
      * Чтобы удалить правило для балансировщика, отправьте запрос DELETE в &#x60;api/v1/balancers/{balancer_id}/rules/{rule_id}&#x60;. 
-     * @param balancerId Идентификатор балансировщика (required)
-     * @param ruleId Идентификатор правила для балансировщика (required)
+     * @param balancerId ID балансировщика (required)
+     * @param ruleId ID правила для балансировщика (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -819,8 +819,8 @@ public class BalancersApi {
     /**
      * Удаление правила для балансировщика
      * Чтобы удалить правило для балансировщика, отправьте запрос DELETE в &#x60;api/v1/balancers/{balancer_id}/rules/{rule_id}&#x60;. 
-     * @param balancerId Идентификатор балансировщика (required)
-     * @param ruleId Идентификатор правила для балансировщика (required)
+     * @param balancerId ID балансировщика (required)
+     * @param ruleId ID правила для балансировщика (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -843,8 +843,8 @@ public class BalancersApi {
     /**
      * Удаление правила для балансировщика (asynchronously)
      * Чтобы удалить правило для балансировщика, отправьте запрос DELETE в &#x60;api/v1/balancers/{balancer_id}/rules/{rule_id}&#x60;. 
-     * @param balancerId Идентификатор балансировщика (required)
-     * @param ruleId Идентификатор правила для балансировщика (required)
+     * @param balancerId ID балансировщика (required)
+     * @param ruleId ID правила для балансировщика (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -868,7 +868,7 @@ public class BalancersApi {
     }
     /**
      * Build call for deleteIPsFromBalancer
-     * @param balancerId Идентификатор балансировщика (required)
+     * @param balancerId ID балансировщика (required)
      * @param addIPsToBalancerRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -950,7 +950,7 @@ public class BalancersApi {
     /**
      * Удаление IP-адресов из балансировщика
      * Чтобы удалить &#x60;IP&#x60;-адреса из балансировщика, отправьте запрос DELETE в &#x60;api/v1/balancers/{balancer_id}/ips&#x60;. 
-     * @param balancerId Идентификатор балансировщика (required)
+     * @param balancerId ID балансировщика (required)
      * @param addIPsToBalancerRequest  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -972,7 +972,7 @@ public class BalancersApi {
     /**
      * Удаление IP-адресов из балансировщика
      * Чтобы удалить &#x60;IP&#x60;-адреса из балансировщика, отправьте запрос DELETE в &#x60;api/v1/balancers/{balancer_id}/ips&#x60;. 
-     * @param balancerId Идентификатор балансировщика (required)
+     * @param balancerId ID балансировщика (required)
      * @param addIPsToBalancerRequest  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -996,7 +996,7 @@ public class BalancersApi {
     /**
      * Удаление IP-адресов из балансировщика (asynchronously)
      * Чтобы удалить &#x60;IP&#x60;-адреса из балансировщика, отправьте запрос DELETE в &#x60;api/v1/balancers/{balancer_id}/ips&#x60;. 
-     * @param balancerId Идентификатор балансировщика (required)
+     * @param balancerId ID балансировщика (required)
      * @param addIPsToBalancerRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1021,7 +1021,7 @@ public class BalancersApi {
     }
     /**
      * Build call for getBalancer
-     * @param balancerId Идентификатор балансировщика (required)
+     * @param balancerId ID балансировщика (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1096,7 +1096,7 @@ public class BalancersApi {
     /**
      * Получение бaлансировщика
      * Чтобы отобразить информацию об отдельном балансировщике, отправьте запрос GET на &#x60;api/v1/balancers/{balancer_id}&#x60;. 
-     * @param balancerId Идентификатор балансировщика (required)
+     * @param balancerId ID балансировщика (required)
      * @return CreateBalancer200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1119,7 +1119,7 @@ public class BalancersApi {
     /**
      * Получение бaлансировщика
      * Чтобы отобразить информацию об отдельном балансировщике, отправьте запрос GET на &#x60;api/v1/balancers/{balancer_id}&#x60;. 
-     * @param balancerId Идентификатор балансировщика (required)
+     * @param balancerId ID балансировщика (required)
      * @return ApiResponse&lt;CreateBalancer200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1143,7 +1143,7 @@ public class BalancersApi {
     /**
      * Получение бaлансировщика (asynchronously)
      * Чтобы отобразить информацию об отдельном балансировщике, отправьте запрос GET на &#x60;api/v1/balancers/{balancer_id}&#x60;. 
-     * @param balancerId Идентификатор балансировщика (required)
+     * @param balancerId ID балансировщика (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1168,7 +1168,7 @@ public class BalancersApi {
     }
     /**
      * Build call for getBalancerIPs
-     * @param balancerId Идентификатор балансировщика (required)
+     * @param balancerId ID балансировщика (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1243,7 +1243,7 @@ public class BalancersApi {
     /**
      * Получение списка IP-адресов балансировщика
      * Чтобы добавить &#x60;IP&#x60;-адреса к балансировщику, отправьте запрос GET в &#x60;api/v1/balancers/{balancer_id}/ips&#x60;. 
-     * @param balancerId Идентификатор балансировщика (required)
+     * @param balancerId ID балансировщика (required)
      * @return GetBalancerIPs200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1266,7 +1266,7 @@ public class BalancersApi {
     /**
      * Получение списка IP-адресов балансировщика
      * Чтобы добавить &#x60;IP&#x60;-адреса к балансировщику, отправьте запрос GET в &#x60;api/v1/balancers/{balancer_id}/ips&#x60;. 
-     * @param balancerId Идентификатор балансировщика (required)
+     * @param balancerId ID балансировщика (required)
      * @return ApiResponse&lt;GetBalancerIPs200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1290,7 +1290,7 @@ public class BalancersApi {
     /**
      * Получение списка IP-адресов балансировщика (asynchronously)
      * Чтобы добавить &#x60;IP&#x60;-адреса к балансировщику, отправьте запрос GET в &#x60;api/v1/balancers/{balancer_id}/ips&#x60;. 
-     * @param balancerId Идентификатор балансировщика (required)
+     * @param balancerId ID балансировщика (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1315,7 +1315,7 @@ public class BalancersApi {
     }
     /**
      * Build call for getBalancerRules
-     * @param balancerId Идентификатор балансировщика (required)
+     * @param balancerId ID балансировщика (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1390,7 +1390,7 @@ public class BalancersApi {
     /**
      * Получение правил балансировщика
      * Чтобы получить правила балансировщика, отправьте запрос GET в &#x60;api/v1/balancers/{balancer_id}/rules&#x60;. 
-     * @param balancerId Идентификатор балансировщика (required)
+     * @param balancerId ID балансировщика (required)
      * @return GetBalancerRules200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1413,7 +1413,7 @@ public class BalancersApi {
     /**
      * Получение правил балансировщика
      * Чтобы получить правила балансировщика, отправьте запрос GET в &#x60;api/v1/balancers/{balancer_id}/rules&#x60;. 
-     * @param balancerId Идентификатор балансировщика (required)
+     * @param balancerId ID балансировщика (required)
      * @return ApiResponse&lt;GetBalancerRules200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1437,7 +1437,7 @@ public class BalancersApi {
     /**
      * Получение правил балансировщика (asynchronously)
      * Чтобы получить правила балансировщика, отправьте запрос GET в &#x60;api/v1/balancers/{balancer_id}/rules&#x60;. 
-     * @param balancerId Идентификатор балансировщика (required)
+     * @param balancerId ID балансировщика (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1752,7 +1752,7 @@ public class BalancersApi {
     }
     /**
      * Build call for updateBalancer
-     * @param balancerId Идентификатор балансировщика (required)
+     * @param balancerId ID балансировщика (required)
      * @param updateBalancer  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1834,7 +1834,7 @@ public class BalancersApi {
     /**
      * Обновление балансировщика
      * Чтобы обновить только определенные атрибуты балансировщика, отправьте запрос PATCH в &#x60;api/v1/balancers/{balancer_id}&#x60;. 
-     * @param balancerId Идентификатор балансировщика (required)
+     * @param balancerId ID балансировщика (required)
      * @param updateBalancer  (required)
      * @return CreateBalancer200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1858,7 +1858,7 @@ public class BalancersApi {
     /**
      * Обновление балансировщика
      * Чтобы обновить только определенные атрибуты балансировщика, отправьте запрос PATCH в &#x60;api/v1/balancers/{balancer_id}&#x60;. 
-     * @param balancerId Идентификатор балансировщика (required)
+     * @param balancerId ID балансировщика (required)
      * @param updateBalancer  (required)
      * @return ApiResponse&lt;CreateBalancer200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1883,7 +1883,7 @@ public class BalancersApi {
     /**
      * Обновление балансировщика (asynchronously)
      * Чтобы обновить только определенные атрибуты балансировщика, отправьте запрос PATCH в &#x60;api/v1/balancers/{balancer_id}&#x60;. 
-     * @param balancerId Идентификатор балансировщика (required)
+     * @param balancerId ID балансировщика (required)
      * @param updateBalancer  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1909,8 +1909,8 @@ public class BalancersApi {
     }
     /**
      * Build call for updateBalancerRule
-     * @param balancerId Идентификатор балансировщика (required)
-     * @param ruleId Идентификатор правила для балансировщика (required)
+     * @param balancerId ID балансировщика (required)
+     * @param ruleId ID правила для балансировщика (required)
      * @param updateRule  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1998,8 +1998,8 @@ public class BalancersApi {
     /**
      * Обновление правила для балансировщика
      * Чтобы обновить правило для балансировщика, отправьте запрос PATCH в &#x60;api/v1/balancers/{balancer_id}/rules/{rule_id}&#x60;. 
-     * @param balancerId Идентификатор балансировщика (required)
-     * @param ruleId Идентификатор правила для балансировщика (required)
+     * @param balancerId ID балансировщика (required)
+     * @param ruleId ID правила для балансировщика (required)
      * @param updateRule  (required)
      * @return CreateBalancerRule200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2023,8 +2023,8 @@ public class BalancersApi {
     /**
      * Обновление правила для балансировщика
      * Чтобы обновить правило для балансировщика, отправьте запрос PATCH в &#x60;api/v1/balancers/{balancer_id}/rules/{rule_id}&#x60;. 
-     * @param balancerId Идентификатор балансировщика (required)
-     * @param ruleId Идентификатор правила для балансировщика (required)
+     * @param balancerId ID балансировщика (required)
+     * @param ruleId ID правила для балансировщика (required)
      * @param updateRule  (required)
      * @return ApiResponse&lt;CreateBalancerRule200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2049,8 +2049,8 @@ public class BalancersApi {
     /**
      * Обновление правила для балансировщика (asynchronously)
      * Чтобы обновить правило для балансировщика, отправьте запрос PATCH в &#x60;api/v1/balancers/{balancer_id}/rules/{rule_id}&#x60;. 
-     * @param balancerId Идентификатор балансировщика (required)
-     * @param ruleId Идентификатор правила для балансировщика (required)
+     * @param balancerId ID балансировщика (required)
+     * @param ruleId ID правила для балансировщика (required)
      * @param updateRule  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

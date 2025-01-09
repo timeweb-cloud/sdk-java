@@ -21,8 +21,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import org.openapitools.client.model.FirewallRuleDirection;
-import org.openapitools.client.model.FirewallRuleProtocol;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -50,185 +48,35 @@ import java.util.Set;
 import org.openapitools.client.JSON;
 
 /**
- * FirewallRuleOutAPI
+ * SchemasMeta
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T10:12:31.892103Z[Etc/UTC]")
-public class FirewallRuleOutAPI {
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
-  private String id;
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T16:09:23.451331Z[Etc/UTC]")
+public class SchemasMeta {
+  public static final String SERIALIZED_NAME_TOTAL = "total";
+  @SerializedName(SERIALIZED_NAME_TOTAL)
+  private Integer total;
 
-  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
-  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
-  private String description;
-
-  public static final String SERIALIZED_NAME_DIRECTION = "direction";
-  @SerializedName(SERIALIZED_NAME_DIRECTION)
-  private FirewallRuleDirection direction;
-
-  public static final String SERIALIZED_NAME_PROTOCOL = "protocol";
-  @SerializedName(SERIALIZED_NAME_PROTOCOL)
-  private FirewallRuleProtocol protocol;
-
-  public static final String SERIALIZED_NAME_PORT = "port";
-  @SerializedName(SERIALIZED_NAME_PORT)
-  private String port;
-
-  public static final String SERIALIZED_NAME_CIDR = "cidr";
-  @SerializedName(SERIALIZED_NAME_CIDR)
-  private String cidr;
-
-  public static final String SERIALIZED_NAME_GROUP_ID = "group_id";
-  @SerializedName(SERIALIZED_NAME_GROUP_ID)
-  private String groupId;
-
-  public FirewallRuleOutAPI() {
+  public SchemasMeta() {
   }
 
-  public FirewallRuleOutAPI id(String id) {
+  public SchemasMeta total(Integer total) {
     
-    this.id = id;
+    this.total = total;
     return this;
   }
 
    /**
-   * Идентификатор правила
-   * @return id
+   * Число элементов в результате
+   * @return total
   **/
   @javax.annotation.Nonnull
-  public String getId() {
-    return id;
+  public Integer getTotal() {
+    return total;
   }
 
 
-  public void setId(String id) {
-    this.id = id;
-  }
-
-
-  public FirewallRuleOutAPI description(String description) {
-    
-    this.description = description;
-    return this;
-  }
-
-   /**
-   * Описание правила
-   * @return description
-  **/
-  @javax.annotation.Nonnull
-  public String getDescription() {
-    return description;
-  }
-
-
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-
-  public FirewallRuleOutAPI direction(FirewallRuleDirection direction) {
-    
-    this.direction = direction;
-    return this;
-  }
-
-   /**
-   * Get direction
-   * @return direction
-  **/
-  @javax.annotation.Nonnull
-  public FirewallRuleDirection getDirection() {
-    return direction;
-  }
-
-
-  public void setDirection(FirewallRuleDirection direction) {
-    this.direction = direction;
-  }
-
-
-  public FirewallRuleOutAPI protocol(FirewallRuleProtocol protocol) {
-    
-    this.protocol = protocol;
-    return this;
-  }
-
-   /**
-   * Get protocol
-   * @return protocol
-  **/
-  @javax.annotation.Nonnull
-  public FirewallRuleProtocol getProtocol() {
-    return protocol;
-  }
-
-
-  public void setProtocol(FirewallRuleProtocol protocol) {
-    this.protocol = protocol;
-  }
-
-
-  public FirewallRuleOutAPI port(String port) {
-    
-    this.port = port;
-    return this;
-  }
-
-   /**
-   * Порт или диапазон портов, в случае tcp или udp
-   * @return port
-  **/
-  @javax.annotation.Nullable
-  public String getPort() {
-    return port;
-  }
-
-
-  public void setPort(String port) {
-    this.port = port;
-  }
-
-
-  public FirewallRuleOutAPI cidr(String cidr) {
-    
-    this.cidr = cidr;
-    return this;
-  }
-
-   /**
-   * Сетевой адрес или подсеть. Поддерживаются протоколы IPv4  и IPv6
-   * @return cidr
-  **/
-  @javax.annotation.Nullable
-  public String getCidr() {
-    return cidr;
-  }
-
-
-  public void setCidr(String cidr) {
-    this.cidr = cidr;
-  }
-
-
-  public FirewallRuleOutAPI groupId(String groupId) {
-    
-    this.groupId = groupId;
-    return this;
-  }
-
-   /**
-   * Идентификатор группы правил
-   * @return groupId
-  **/
-  @javax.annotation.Nonnull
-  public String getGroupId() {
-    return groupId;
-  }
-
-
-  public void setGroupId(String groupId) {
-    this.groupId = groupId;
+  public void setTotal(Integer total) {
+    this.total = total;
   }
 
 
@@ -241,32 +89,20 @@ public class FirewallRuleOutAPI {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    FirewallRuleOutAPI firewallRuleOutAPI = (FirewallRuleOutAPI) o;
-    return Objects.equals(this.id, firewallRuleOutAPI.id) &&
-        Objects.equals(this.description, firewallRuleOutAPI.description) &&
-        Objects.equals(this.direction, firewallRuleOutAPI.direction) &&
-        Objects.equals(this.protocol, firewallRuleOutAPI.protocol) &&
-        Objects.equals(this.port, firewallRuleOutAPI.port) &&
-        Objects.equals(this.cidr, firewallRuleOutAPI.cidr) &&
-        Objects.equals(this.groupId, firewallRuleOutAPI.groupId);
+    SchemasMeta schemasMeta = (SchemasMeta) o;
+    return Objects.equals(this.total, schemasMeta.total);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, description, direction, protocol, port, cidr, groupId);
+    return Objects.hash(total);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class FirewallRuleOutAPI {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    direction: ").append(toIndentedString(direction)).append("\n");
-    sb.append("    protocol: ").append(toIndentedString(protocol)).append("\n");
-    sb.append("    port: ").append(toIndentedString(port)).append("\n");
-    sb.append("    cidr: ").append(toIndentedString(cidr)).append("\n");
-    sb.append("    groupId: ").append(toIndentedString(groupId)).append("\n");
+    sb.append("class SchemasMeta {\n");
+    sb.append("    total: ").append(toIndentedString(total)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -289,88 +125,63 @@ public class FirewallRuleOutAPI {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("id");
-    openapiFields.add("description");
-    openapiFields.add("direction");
-    openapiFields.add("protocol");
-    openapiFields.add("port");
-    openapiFields.add("cidr");
-    openapiFields.add("group_id");
+    openapiFields.add("total");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("id");
-    openapiRequiredFields.add("description");
-    openapiRequiredFields.add("direction");
-    openapiRequiredFields.add("protocol");
-    openapiRequiredFields.add("group_id");
+    openapiRequiredFields.add("total");
   }
 
  /**
   * Validates the JSON Element and throws an exception if issues found
   *
   * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to FirewallRuleOutAPI
+  * @throws IOException if the JSON Element is invalid with respect to SchemasMeta
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!FirewallRuleOutAPI.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in FirewallRuleOutAPI is not found in the empty JSON string", FirewallRuleOutAPI.openapiRequiredFields.toString()));
+        if (!SchemasMeta.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in SchemasMeta is not found in the empty JSON string", SchemasMeta.openapiRequiredFields.toString()));
         }
       }
 
       Set<Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Entry<String, JsonElement> entry : entries) {
-        if (!FirewallRuleOutAPI.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `FirewallRuleOutAPI` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!SchemasMeta.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `SchemasMeta` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : FirewallRuleOutAPI.openapiRequiredFields) {
+      for (String requiredField : SchemasMeta.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
-      }
-      if (!jsonObj.get("description").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
-      }
-      if ((jsonObj.get("port") != null && !jsonObj.get("port").isJsonNull()) && !jsonObj.get("port").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `port` to be a primitive type in the JSON string but got `%s`", jsonObj.get("port").toString()));
-      }
-      if ((jsonObj.get("cidr") != null && !jsonObj.get("cidr").isJsonNull()) && !jsonObj.get("cidr").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `cidr` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cidr").toString()));
-      }
-      if (!jsonObj.get("group_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `group_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("group_id").toString()));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!FirewallRuleOutAPI.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'FirewallRuleOutAPI' and its subtypes
+       if (!SchemasMeta.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'SchemasMeta' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<FirewallRuleOutAPI> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(FirewallRuleOutAPI.class));
+       final TypeAdapter<SchemasMeta> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(SchemasMeta.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<FirewallRuleOutAPI>() {
+       return (TypeAdapter<T>) new TypeAdapter<SchemasMeta>() {
            @Override
-           public void write(JsonWriter out, FirewallRuleOutAPI value) throws IOException {
+           public void write(JsonWriter out, SchemasMeta value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public FirewallRuleOutAPI read(JsonReader in) throws IOException {
+           public SchemasMeta read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -381,18 +192,18 @@ public class FirewallRuleOutAPI {
   }
 
  /**
-  * Create an instance of FirewallRuleOutAPI given an JSON string
+  * Create an instance of SchemasMeta given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of FirewallRuleOutAPI
-  * @throws IOException if the JSON string is invalid with respect to FirewallRuleOutAPI
+  * @return An instance of SchemasMeta
+  * @throws IOException if the JSON string is invalid with respect to SchemasMeta
   */
-  public static FirewallRuleOutAPI fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, FirewallRuleOutAPI.class);
+  public static SchemasMeta fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, SchemasMeta.class);
   }
 
  /**
-  * Convert an instance of FirewallRuleOutAPI to an JSON string
+  * Convert an instance of SchemasMeta to an JSON string
   *
   * @return JSON string
   */

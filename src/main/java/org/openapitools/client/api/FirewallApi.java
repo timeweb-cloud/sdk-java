@@ -87,7 +87,7 @@ public class FirewallApi {
 
     /**
      * Build call for addResourceToGroup
-     * @param groupId ID группы правил (required)
+     * @param groupId ID группы правил. (required)
      * @param resourceId ID ресурса (required)
      * @param resourceType  (optional)
      * @param _callback Callback for upload/download progress
@@ -96,7 +96,7 @@ public class FirewallApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Ресурс добавлен к группе </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Объект JSON c ключом &#x60;resources&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
@@ -172,7 +172,7 @@ public class FirewallApi {
     /**
      * Линковка ресурса в firewall group
      * Чтобы слинковать ресурс с группой правил, отправьте POST запрос на &#x60;/api/v1/firewall/groups/{group_id}/resources/{resource_id}&#x60;
-     * @param groupId ID группы правил (required)
+     * @param groupId ID группы правил. (required)
      * @param resourceId ID ресурса (required)
      * @param resourceType  (optional)
      * @return FirewallGroupResourceOutResponse
@@ -180,7 +180,7 @@ public class FirewallApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Ресурс добавлен к группе </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Объект JSON c ключом &#x60;resources&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
@@ -195,7 +195,7 @@ public class FirewallApi {
     /**
      * Линковка ресурса в firewall group
      * Чтобы слинковать ресурс с группой правил, отправьте POST запрос на &#x60;/api/v1/firewall/groups/{group_id}/resources/{resource_id}&#x60;
-     * @param groupId ID группы правил (required)
+     * @param groupId ID группы правил. (required)
      * @param resourceId ID ресурса (required)
      * @param resourceType  (optional)
      * @return ApiResponse&lt;FirewallGroupResourceOutResponse&gt;
@@ -203,7 +203,7 @@ public class FirewallApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Ресурс добавлен к группе </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Объект JSON c ключом &#x60;resources&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
@@ -219,7 +219,7 @@ public class FirewallApi {
     /**
      * Линковка ресурса в firewall group (asynchronously)
      * Чтобы слинковать ресурс с группой правил, отправьте POST запрос на &#x60;/api/v1/firewall/groups/{group_id}/resources/{resource_id}&#x60;
-     * @param groupId ID группы правил (required)
+     * @param groupId ID группы правил. (required)
      * @param resourceId ID ресурса (required)
      * @param resourceType  (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -228,7 +228,7 @@ public class FirewallApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Ресурс добавлен к группе </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Объект JSON c ключом &#x60;resources&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
@@ -245,14 +245,14 @@ public class FirewallApi {
     /**
      * Build call for createGroup
      * @param firewallGroupInAPI  (required)
-     * @param policy Тип группы правил (optional)
+     * @param policy Тип группы правил. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Группа правил создана </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Объект JSON c ключом &#x60;group&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
@@ -323,13 +323,13 @@ public class FirewallApi {
      * Создание группы правил
      * Чтобы создать группу правил, отправьте POST запрос на &#x60;/api/v1/firewall/groups&#x60;
      * @param firewallGroupInAPI  (required)
-     * @param policy Тип группы правил (optional)
+     * @param policy Тип группы правил. (optional)
      * @return FirewallGroupOutResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Группа правил создана </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Объект JSON c ключом &#x60;group&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
@@ -345,13 +345,13 @@ public class FirewallApi {
      * Создание группы правил
      * Чтобы создать группу правил, отправьте POST запрос на &#x60;/api/v1/firewall/groups&#x60;
      * @param firewallGroupInAPI  (required)
-     * @param policy Тип группы правил (optional)
+     * @param policy Тип группы правил. (optional)
      * @return ApiResponse&lt;FirewallGroupOutResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Группа правил создана </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Объект JSON c ключом &#x60;group&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
@@ -368,14 +368,14 @@ public class FirewallApi {
      * Создание группы правил (asynchronously)
      * Чтобы создать группу правил, отправьте POST запрос на &#x60;/api/v1/firewall/groups&#x60;
      * @param firewallGroupInAPI  (required)
-     * @param policy Тип группы правил (optional)
+     * @param policy Тип группы правил. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Группа правил создана </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Объект JSON c ключом &#x60;group&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
@@ -391,7 +391,7 @@ public class FirewallApi {
     }
     /**
      * Build call for createGroupRule
-     * @param groupId ID группы правил (required)
+     * @param groupId ID группы правил. (required)
      * @param firewallRuleInAPI  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -399,7 +399,7 @@ public class FirewallApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Правило создано </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Объект JSON c ключом &#x60;rule&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
@@ -471,14 +471,14 @@ public class FirewallApi {
     /**
      * Создание firewall правила
      * Чтобы создать правило в группе, отправьте POST запрос на &#x60;/api/v1/firewall/groups/{group_id}/rules&#x60;
-     * @param groupId ID группы правил (required)
+     * @param groupId ID группы правил. (required)
      * @param firewallRuleInAPI  (required)
      * @return FirewallRuleOutResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Правило создано </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Объект JSON c ключом &#x60;rule&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
@@ -493,14 +493,14 @@ public class FirewallApi {
     /**
      * Создание firewall правила
      * Чтобы создать правило в группе, отправьте POST запрос на &#x60;/api/v1/firewall/groups/{group_id}/rules&#x60;
-     * @param groupId ID группы правил (required)
+     * @param groupId ID группы правил. (required)
      * @param firewallRuleInAPI  (required)
      * @return ApiResponse&lt;FirewallRuleOutResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Правило создано </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Объект JSON c ключом &#x60;rule&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
@@ -516,7 +516,7 @@ public class FirewallApi {
     /**
      * Создание firewall правила (asynchronously)
      * Чтобы создать правило в группе, отправьте POST запрос на &#x60;/api/v1/firewall/groups/{group_id}/rules&#x60;
-     * @param groupId ID группы правил (required)
+     * @param groupId ID группы правил. (required)
      * @param firewallRuleInAPI  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -524,7 +524,7 @@ public class FirewallApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Правило создано </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Объект JSON c ключом &#x60;rule&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
@@ -540,7 +540,7 @@ public class FirewallApi {
     }
     /**
      * Build call for deleteGroup
-     * @param groupId ID группы правил (required)
+     * @param groupId ID группы правил. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -614,7 +614,7 @@ public class FirewallApi {
     /**
      * Удаление группы правил
      * Чтобы удалить группу правил, отправьте DELETE запрос на &#x60;/api/v1/firewall/groups/{group_id}&#x60;
-     * @param groupId ID группы правил (required)
+     * @param groupId ID группы правил. (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -634,7 +634,7 @@ public class FirewallApi {
     /**
      * Удаление группы правил
      * Чтобы удалить группу правил, отправьте DELETE запрос на &#x60;/api/v1/firewall/groups/{group_id}&#x60;
-     * @param groupId ID группы правил (required)
+     * @param groupId ID группы правил. (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -656,7 +656,7 @@ public class FirewallApi {
     /**
      * Удаление группы правил (asynchronously)
      * Чтобы удалить группу правил, отправьте DELETE запрос на &#x60;/api/v1/firewall/groups/{group_id}&#x60;
-     * @param groupId ID группы правил (required)
+     * @param groupId ID группы правил. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -679,7 +679,7 @@ public class FirewallApi {
     }
     /**
      * Build call for deleteGroupRule
-     * @param groupId ID группы правил (required)
+     * @param groupId ID группы правил. (required)
      * @param ruleId ID правила (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -760,7 +760,7 @@ public class FirewallApi {
     /**
      * Удаление firewall правила
      * Чтобы удалить правило, отправьте DELETE запрос на &#x60;/api/v1/firewall/groups/{group_id}/rules/{rule_id}&#x60;
-     * @param groupId ID группы правил (required)
+     * @param groupId ID группы правил. (required)
      * @param ruleId ID правила (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -781,7 +781,7 @@ public class FirewallApi {
     /**
      * Удаление firewall правила
      * Чтобы удалить правило, отправьте DELETE запрос на &#x60;/api/v1/firewall/groups/{group_id}/rules/{rule_id}&#x60;
-     * @param groupId ID группы правил (required)
+     * @param groupId ID группы правил. (required)
      * @param ruleId ID правила (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -804,7 +804,7 @@ public class FirewallApi {
     /**
      * Удаление firewall правила (asynchronously)
      * Чтобы удалить правило, отправьте DELETE запрос на &#x60;/api/v1/firewall/groups/{group_id}/rules/{rule_id}&#x60;
-     * @param groupId ID группы правил (required)
+     * @param groupId ID группы правил. (required)
      * @param ruleId ID правила (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -828,7 +828,7 @@ public class FirewallApi {
     }
     /**
      * Build call for deleteResourceFromGroup
-     * @param groupId ID группы правил (required)
+     * @param groupId ID группы правил. (required)
      * @param resourceId ID ресурса (required)
      * @param resourceType  (optional)
      * @param _callback Callback for upload/download progress
@@ -914,7 +914,7 @@ public class FirewallApi {
     /**
      * Отлинковка ресурса из firewall group
      * Чтобы отлинковать ресурс от группы правил, отправьте DELETE запрос на &#x60;/api/v1/firewall/groups/{group_id}/resources/{resource_id}&#x60;
-     * @param groupId ID группы правил (required)
+     * @param groupId ID группы правил. (required)
      * @param resourceId ID ресурса (required)
      * @param resourceType  (optional)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -936,7 +936,7 @@ public class FirewallApi {
     /**
      * Отлинковка ресурса из firewall group
      * Чтобы отлинковать ресурс от группы правил, отправьте DELETE запрос на &#x60;/api/v1/firewall/groups/{group_id}/resources/{resource_id}&#x60;
-     * @param groupId ID группы правил (required)
+     * @param groupId ID группы правил. (required)
      * @param resourceId ID ресурса (required)
      * @param resourceType  (optional)
      * @return ApiResponse&lt;Void&gt;
@@ -960,7 +960,7 @@ public class FirewallApi {
     /**
      * Отлинковка ресурса из firewall group (asynchronously)
      * Чтобы отлинковать ресурс от группы правил, отправьте DELETE запрос на &#x60;/api/v1/firewall/groups/{group_id}/resources/{resource_id}&#x60;
-     * @param groupId ID группы правил (required)
+     * @param groupId ID группы правил. (required)
      * @param resourceId ID ресурса (required)
      * @param resourceType  (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -985,14 +985,14 @@ public class FirewallApi {
     }
     /**
      * Build call for getGroup
-     * @param groupId ID группы правил (required)
+     * @param groupId ID группы правил. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Информация о группе правил </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;group&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
@@ -1059,13 +1059,13 @@ public class FirewallApi {
     /**
      * Получение информации о группе правил
      * Чтобы получить информацию о группе правил, отправьте GET запрос на &#x60;/api/v1/firewall/groups/{group_id}&#x60;
-     * @param groupId ID группы правил (required)
+     * @param groupId ID группы правил. (required)
      * @return FirewallGroupOutResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Информация о группе правил </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;group&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
@@ -1081,13 +1081,13 @@ public class FirewallApi {
     /**
      * Получение информации о группе правил
      * Чтобы получить информацию о группе правил, отправьте GET запрос на &#x60;/api/v1/firewall/groups/{group_id}&#x60;
-     * @param groupId ID группы правил (required)
+     * @param groupId ID группы правил. (required)
      * @return ApiResponse&lt;FirewallGroupOutResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Информация о группе правил </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;group&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
@@ -1104,14 +1104,14 @@ public class FirewallApi {
     /**
      * Получение информации о группе правил (asynchronously)
      * Чтобы получить информацию о группе правил, отправьте GET запрос на &#x60;/api/v1/firewall/groups/{group_id}&#x60;
-     * @param groupId ID группы правил (required)
+     * @param groupId ID группы правил. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Информация о группе правил </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;group&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
@@ -1128,7 +1128,7 @@ public class FirewallApi {
     }
     /**
      * Build call for getGroupResources
-     * @param groupId ID группы правил (required)
+     * @param groupId ID группы правил. (required)
      * @param limit Обозначает количество записей, которое необходимо вернуть. (optional, default to 100)
      * @param offset Указывает на смещение относительно начала списка. (optional, default to 0)
      * @param _callback Callback for upload/download progress
@@ -1137,7 +1137,7 @@ public class FirewallApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Список слинкованных ресурсов </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;resources&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
@@ -1211,7 +1211,7 @@ public class FirewallApi {
     /**
      * Получение слинкованных ресурсов
      * Чтобы получить слинкованных ресурсов для группы правил, отправьте GET запрос на &#x60;/api/v1/firewall/groups/{group_id}/resources&#x60;
-     * @param groupId ID группы правил (required)
+     * @param groupId ID группы правил. (required)
      * @param limit Обозначает количество записей, которое необходимо вернуть. (optional, default to 100)
      * @param offset Указывает на смещение относительно начала списка. (optional, default to 0)
      * @return FirewallGroupResourcesOutResponse
@@ -1219,7 +1219,7 @@ public class FirewallApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Список слинкованных ресурсов </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;resources&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
@@ -1234,7 +1234,7 @@ public class FirewallApi {
     /**
      * Получение слинкованных ресурсов
      * Чтобы получить слинкованных ресурсов для группы правил, отправьте GET запрос на &#x60;/api/v1/firewall/groups/{group_id}/resources&#x60;
-     * @param groupId ID группы правил (required)
+     * @param groupId ID группы правил. (required)
      * @param limit Обозначает количество записей, которое необходимо вернуть. (optional, default to 100)
      * @param offset Указывает на смещение относительно начала списка. (optional, default to 0)
      * @return ApiResponse&lt;FirewallGroupResourcesOutResponse&gt;
@@ -1242,7 +1242,7 @@ public class FirewallApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Список слинкованных ресурсов </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;resources&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
@@ -1258,7 +1258,7 @@ public class FirewallApi {
     /**
      * Получение слинкованных ресурсов (asynchronously)
      * Чтобы получить слинкованных ресурсов для группы правил, отправьте GET запрос на &#x60;/api/v1/firewall/groups/{group_id}/resources&#x60;
-     * @param groupId ID группы правил (required)
+     * @param groupId ID группы правил. (required)
      * @param limit Обозначает количество записей, которое необходимо вернуть. (optional, default to 100)
      * @param offset Указывает на смещение относительно начала списка. (optional, default to 0)
      * @param _callback The callback to be executed when the API call finishes
@@ -1267,7 +1267,7 @@ public class FirewallApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Список слинкованных ресурсов </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;resources&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
@@ -1283,15 +1283,15 @@ public class FirewallApi {
     }
     /**
      * Build call for getGroupRule
-     * @param ruleId ID правила (required)
-     * @param groupId ID группы правил (required)
+     * @param ruleId ID правила. (required)
+     * @param groupId ID группы правил. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Информация о правиле </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;rule&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
@@ -1364,14 +1364,14 @@ public class FirewallApi {
     /**
      * Получение информации о правиле
      * Чтобы получить инфомрацию о правиле, отправьте GET запрос на &#x60;/api/v1/firewall/groups/{group_id}/rules/{rule_id}&#x60;
-     * @param ruleId ID правила (required)
-     * @param groupId ID группы правил (required)
+     * @param ruleId ID правила. (required)
+     * @param groupId ID группы правил. (required)
      * @return FirewallRuleOutResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Информация о правиле </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;rule&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
@@ -1387,14 +1387,14 @@ public class FirewallApi {
     /**
      * Получение информации о правиле
      * Чтобы получить инфомрацию о правиле, отправьте GET запрос на &#x60;/api/v1/firewall/groups/{group_id}/rules/{rule_id}&#x60;
-     * @param ruleId ID правила (required)
-     * @param groupId ID группы правил (required)
+     * @param ruleId ID правила. (required)
+     * @param groupId ID группы правил. (required)
      * @return ApiResponse&lt;FirewallRuleOutResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Информация о правиле </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;rule&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
@@ -1411,15 +1411,15 @@ public class FirewallApi {
     /**
      * Получение информации о правиле (asynchronously)
      * Чтобы получить инфомрацию о правиле, отправьте GET запрос на &#x60;/api/v1/firewall/groups/{group_id}/rules/{rule_id}&#x60;
-     * @param ruleId ID правила (required)
-     * @param groupId ID группы правил (required)
+     * @param ruleId ID правила. (required)
+     * @param groupId ID группы правил. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Информация о правиле </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;rule&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
@@ -1436,7 +1436,7 @@ public class FirewallApi {
     }
     /**
      * Build call for getGroupRules
-     * @param groupId ID группы правил (required)
+     * @param groupId ID группы правил. (required)
      * @param limit Обозначает количество записей, которое необходимо вернуть. (optional, default to 100)
      * @param offset Указывает на смещение относительно начала списка. (optional, default to 0)
      * @param _callback Callback for upload/download progress
@@ -1445,7 +1445,7 @@ public class FirewallApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Список правил </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;rules&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
@@ -1519,7 +1519,7 @@ public class FirewallApi {
     /**
      * Получение списка правил
      * Чтобы получить список правил в группе, отправьте GET запрос на &#x60;/api/v1/firewall/groups/{group_id}/rules&#x60;
-     * @param groupId ID группы правил (required)
+     * @param groupId ID группы правил. (required)
      * @param limit Обозначает количество записей, которое необходимо вернуть. (optional, default to 100)
      * @param offset Указывает на смещение относительно начала списка. (optional, default to 0)
      * @return FirewallRulesOutResponse
@@ -1527,7 +1527,7 @@ public class FirewallApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Список правил </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;rules&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
@@ -1542,7 +1542,7 @@ public class FirewallApi {
     /**
      * Получение списка правил
      * Чтобы получить список правил в группе, отправьте GET запрос на &#x60;/api/v1/firewall/groups/{group_id}/rules&#x60;
-     * @param groupId ID группы правил (required)
+     * @param groupId ID группы правил. (required)
      * @param limit Обозначает количество записей, которое необходимо вернуть. (optional, default to 100)
      * @param offset Указывает на смещение относительно начала списка. (optional, default to 0)
      * @return ApiResponse&lt;FirewallRulesOutResponse&gt;
@@ -1550,7 +1550,7 @@ public class FirewallApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Список правил </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;rules&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
@@ -1566,7 +1566,7 @@ public class FirewallApi {
     /**
      * Получение списка правил (asynchronously)
      * Чтобы получить список правил в группе, отправьте GET запрос на &#x60;/api/v1/firewall/groups/{group_id}/rules&#x60;
-     * @param groupId ID группы правил (required)
+     * @param groupId ID группы правил. (required)
      * @param limit Обозначает количество записей, которое необходимо вернуть. (optional, default to 100)
      * @param offset Указывает на смещение относительно начала списка. (optional, default to 0)
      * @param _callback The callback to be executed when the API call finishes
@@ -1575,7 +1575,7 @@ public class FirewallApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Список правил </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;rules&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
@@ -1599,7 +1599,7 @@ public class FirewallApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Список групп правил </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;groups&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
@@ -1674,7 +1674,7 @@ public class FirewallApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Список групп правил </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;groups&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
@@ -1696,7 +1696,7 @@ public class FirewallApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Список групп правил </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;groups&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
@@ -1720,7 +1720,7 @@ public class FirewallApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Список групп правил </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;groups&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
@@ -1736,7 +1736,7 @@ public class FirewallApi {
     }
     /**
      * Build call for getRulesForResource
-     * @param resourceId Идентификатор ресурса (required)
+     * @param resourceId ID ресурса (required)
      * @param resourceType  (required)
      * @param limit Обозначает количество записей, которое необходимо вернуть. (optional, default to 100)
      * @param offset Указывает на смещение относительно начала списка. (optional, default to 0)
@@ -1746,7 +1746,7 @@ public class FirewallApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Список групп правил </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;groups&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
@@ -1826,7 +1826,7 @@ public class FirewallApi {
     /**
      * Получение групп правил для ресурса
      * Чтобы получить список групп правил, с которыми слинкован ресурс, отправьте GET запрос на &#x60;/api/v1/firewall/service/{resource_type}/{resource_id}&#x60;
-     * @param resourceId Идентификатор ресурса (required)
+     * @param resourceId ID ресурса (required)
      * @param resourceType  (required)
      * @param limit Обозначает количество записей, которое необходимо вернуть. (optional, default to 100)
      * @param offset Указывает на смещение относительно начала списка. (optional, default to 0)
@@ -1835,7 +1835,7 @@ public class FirewallApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Список групп правил </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;groups&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
@@ -1850,7 +1850,7 @@ public class FirewallApi {
     /**
      * Получение групп правил для ресурса
      * Чтобы получить список групп правил, с которыми слинкован ресурс, отправьте GET запрос на &#x60;/api/v1/firewall/service/{resource_type}/{resource_id}&#x60;
-     * @param resourceId Идентификатор ресурса (required)
+     * @param resourceId ID ресурса (required)
      * @param resourceType  (required)
      * @param limit Обозначает количество записей, которое необходимо вернуть. (optional, default to 100)
      * @param offset Указывает на смещение относительно начала списка. (optional, default to 0)
@@ -1859,7 +1859,7 @@ public class FirewallApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Список групп правил </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;groups&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
@@ -1875,7 +1875,7 @@ public class FirewallApi {
     /**
      * Получение групп правил для ресурса (asynchronously)
      * Чтобы получить список групп правил, с которыми слинкован ресурс, отправьте GET запрос на &#x60;/api/v1/firewall/service/{resource_type}/{resource_id}&#x60;
-     * @param resourceId Идентификатор ресурса (required)
+     * @param resourceId ID ресурса (required)
      * @param resourceType  (required)
      * @param limit Обозначает количество записей, которое необходимо вернуть. (optional, default to 100)
      * @param offset Указывает на смещение относительно начала списка. (optional, default to 0)
@@ -1885,7 +1885,7 @@ public class FirewallApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Список групп правил </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;groups&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
@@ -1901,7 +1901,7 @@ public class FirewallApi {
     }
     /**
      * Build call for updateGroup
-     * @param groupId ID группы правил (required)
+     * @param groupId ID группы правил. (required)
      * @param firewallGroupInAPI  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1909,7 +1909,7 @@ public class FirewallApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Группа правил обновлена </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Объект JSON c ключом &#x60;group&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
@@ -1982,14 +1982,14 @@ public class FirewallApi {
     /**
      * Обновление группы правил
      * Чтобы изменить группу правил, отправьте PATCH запрос на &#x60;/api/v1/firewall/groups/{group_id}&#x60;
-     * @param groupId ID группы правил (required)
+     * @param groupId ID группы правил. (required)
      * @param firewallGroupInAPI  (required)
      * @return FirewallGroupOutResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Группа правил обновлена </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Объект JSON c ключом &#x60;group&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
@@ -2005,14 +2005,14 @@ public class FirewallApi {
     /**
      * Обновление группы правил
      * Чтобы изменить группу правил, отправьте PATCH запрос на &#x60;/api/v1/firewall/groups/{group_id}&#x60;
-     * @param groupId ID группы правил (required)
+     * @param groupId ID группы правил. (required)
      * @param firewallGroupInAPI  (required)
      * @return ApiResponse&lt;FirewallGroupOutResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Группа правил обновлена </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Объект JSON c ключом &#x60;group&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
@@ -2029,7 +2029,7 @@ public class FirewallApi {
     /**
      * Обновление группы правил (asynchronously)
      * Чтобы изменить группу правил, отправьте PATCH запрос на &#x60;/api/v1/firewall/groups/{group_id}&#x60;
-     * @param groupId ID группы правил (required)
+     * @param groupId ID группы правил. (required)
      * @param firewallGroupInAPI  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2037,7 +2037,7 @@ public class FirewallApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Группа правил обновлена </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Объект JSON c ключом &#x60;group&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
@@ -2054,7 +2054,7 @@ public class FirewallApi {
     }
     /**
      * Build call for updateGroupRule
-     * @param groupId ID группы правил (required)
+     * @param groupId ID группы правил. (required)
      * @param ruleId ID правила (required)
      * @param firewallRuleInAPI  (required)
      * @param _callback Callback for upload/download progress
@@ -2063,7 +2063,7 @@ public class FirewallApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Правило обновлено </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Объект JSON c ключом &#x60;rule&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
@@ -2142,7 +2142,7 @@ public class FirewallApi {
     /**
      * Обновление firewall правила
      * Чтобы изменить правило, отправьте PATCH запрос на &#x60;/api/v1/firewall/groups/{group_id}/rules/{rule_id}&#x60;
-     * @param groupId ID группы правил (required)
+     * @param groupId ID группы правил. (required)
      * @param ruleId ID правила (required)
      * @param firewallRuleInAPI  (required)
      * @return FirewallRuleOutResponse
@@ -2150,7 +2150,7 @@ public class FirewallApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Правило обновлено </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Объект JSON c ключом &#x60;rule&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
@@ -2166,7 +2166,7 @@ public class FirewallApi {
     /**
      * Обновление firewall правила
      * Чтобы изменить правило, отправьте PATCH запрос на &#x60;/api/v1/firewall/groups/{group_id}/rules/{rule_id}&#x60;
-     * @param groupId ID группы правил (required)
+     * @param groupId ID группы правил. (required)
      * @param ruleId ID правила (required)
      * @param firewallRuleInAPI  (required)
      * @return ApiResponse&lt;FirewallRuleOutResponse&gt;
@@ -2174,7 +2174,7 @@ public class FirewallApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Правило обновлено </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Объект JSON c ключом &#x60;rule&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
@@ -2191,7 +2191,7 @@ public class FirewallApi {
     /**
      * Обновление firewall правила (asynchronously)
      * Чтобы изменить правило, отправьте PATCH запрос на &#x60;/api/v1/firewall/groups/{group_id}/rules/{rule_id}&#x60;
-     * @param groupId ID группы правил (required)
+     * @param groupId ID группы правил. (required)
      * @param ruleId ID правила (required)
      * @param firewallRuleInAPI  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -2200,7 +2200,7 @@ public class FirewallApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Правило обновлено </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Объект JSON c ключом &#x60;rule&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>

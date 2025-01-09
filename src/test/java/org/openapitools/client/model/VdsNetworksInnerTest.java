@@ -89,4 +89,20 @@ public class VdsNetworksInnerTest {
         // TODO: test isDdosGuard
     }
 
+    /**
+     * Test the property 'isImageMounted'
+     */
+    @Test
+    public void isImageMountedTest() {
+        // TODO: test isImageMounted
+    }
+
+    /**
+     * Test the property 'blockedPorts'
+     */
+    @Test
+    public void blockedPortsTest() {
+        // TODO: test blockedPorts
+    }
+
 }

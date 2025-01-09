@@ -32,6 +32,7 @@
 |**price** | **BigDecimal** | Стоимость выделенного сервера. |  |
 |**location** | [**LocationEnum**](#LocationEnum) | Локация сервера. |  |
 |**autoinstallReady** | **BigDecimal** | Количество готовых к автоматической выдаче серверов. Если значение равно 0, сервер будет установлен через инженеров. |  |
+|**password** | **String** | Пароль root сервера или пароль Администратора для серверов Windows. |  |
 
 
 
@@ -53,6 +54,11 @@
 | RU_1 | &quot;ru-1&quot; |
 | PL_1 | &quot;pl-1&quot; |
 | KZ_1 | &quot;kz-1&quot; |
+| NL_1 | &quot;nl-1&quot; |
+| TR_1 | &quot;tr-1&quot; |
+| US_2 | &quot;us-2&quot; |
+| DE_1 | &quot;de-1&quot; |
+| FI_1 | &quot;fi-1&quot; |
 
 
 

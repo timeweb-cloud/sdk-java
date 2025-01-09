@@ -19,23 +19,22 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.time.OffsetDateTime;
-import org.openapitools.client.model.Policy;
+import org.openapitools.client.model.ResourceType;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
- * Model tests for FirewallGroupOutAPI
+ * Model tests for FirewallGroupResource
  */
-public class FirewallGroupOutAPITest {
-    private final FirewallGroupOutAPI model = new FirewallGroupOutAPI();
+public class FirewallGroupResourceTest {
+    private final FirewallGroupResource model = new FirewallGroupResource();
 
     /**
-     * Model tests for FirewallGroupOutAPI
+     * Model tests for FirewallGroupResource
      */
     @Test
-    public void testFirewallGroupOutAPI() {
-        // TODO: test FirewallGroupOutAPI
+    public void testFirewallGroupResource() {
+        // TODO: test FirewallGroupResource
     }
 
     /**
@@ -47,43 +46,11 @@ public class FirewallGroupOutAPITest {
     }
 
     /**
-     * Test the property 'createdAt'
+     * Test the property 'type'
      */
     @Test
-    public void createdAtTest() {
-        // TODO: test createdAt
-    }
-
-    /**
-     * Test the property 'updatedAt'
-     */
-    @Test
-    public void updatedAtTest() {
-        // TODO: test updatedAt
-    }
-
-    /**
-     * Test the property 'name'
-     */
-    @Test
-    public void nameTest() {
-        // TODO: test name
-    }
-
-    /**
-     * Test the property 'description'
-     */
-    @Test
-    public void descriptionTest() {
-        // TODO: test description
-    }
-
-    /**
-     * Test the property 'policy'
-     */
-    @Test
-    public void policyTest() {
-        // TODO: test policy
+    public void typeTest() {
+        // TODO: test type
     }
 
 }

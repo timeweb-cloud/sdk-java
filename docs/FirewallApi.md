@@ -48,7 +48,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     FirewallApi apiInstance = new FirewallApi(defaultClient);
-    String groupId = "groupId_example"; // String | ID группы правил
+    String groupId = "groupId_example"; // String | ID группы правил.
     String resourceId = "resourceId_example"; // String | ID ресурса
     ResourceType resourceType = ResourceType.fromValue("server"); // ResourceType | 
     try {
@@ -69,7 +69,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **groupId** | **String**| ID группы правил | |
+| **groupId** | **String**| ID группы правил. | |
 | **resourceId** | **String**| ID ресурса | |
 | **resourceType** | [**ResourceType**](.md)|  | [optional] [enum: server] |
 
@@ -89,7 +89,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **201** | Ресурс добавлен к группе |  -  |
+| **201** | Объект JSON c ключом &#x60;resources&#x60; |  -  |
 | **400** | Некорректный запрос |  -  |
 | **401** | Не авторизован |  -  |
 | **429** | Слишком много запросов |  -  |
@@ -124,7 +124,7 @@ public class Example {
 
     FirewallApi apiInstance = new FirewallApi(defaultClient);
     FirewallGroupInAPI firewallGroupInAPI = new FirewallGroupInAPI(); // FirewallGroupInAPI | 
-    String policy = "DROP"; // String | Тип группы правил
+    String policy = "DROP"; // String | Тип группы правил.
     try {
       FirewallGroupOutResponse result = apiInstance.createGroup(firewallGroupInAPI, policy);
       System.out.println(result);
@@ -144,7 +144,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **firewallGroupInAPI** | [**FirewallGroupInAPI**](FirewallGroupInAPI.md)|  | |
-| **policy** | **String**| Тип группы правил | [optional] [enum: DROP, ACCEPT] |
+| **policy** | **String**| Тип группы правил. | [optional] [enum: DROP, ACCEPT] |
 
 ### Return type
 
@@ -162,7 +162,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **201** | Группа правил создана |  -  |
+| **201** | Объект JSON c ключом &#x60;group&#x60; |  -  |
 | **400** | Некорректный запрос |  -  |
 | **401** | Не авторизован |  -  |
 | **429** | Слишком много запросов |  -  |
@@ -196,7 +196,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     FirewallApi apiInstance = new FirewallApi(defaultClient);
-    String groupId = "groupId_example"; // String | ID группы правил
+    String groupId = "groupId_example"; // String | ID группы правил.
     FirewallRuleInAPI firewallRuleInAPI = new FirewallRuleInAPI(); // FirewallRuleInAPI | 
     try {
       FirewallRuleOutResponse result = apiInstance.createGroupRule(groupId, firewallRuleInAPI);
@@ -216,7 +216,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **groupId** | **String**| ID группы правил | |
+| **groupId** | **String**| ID группы правил. | |
 | **firewallRuleInAPI** | [**FirewallRuleInAPI**](FirewallRuleInAPI.md)|  | |
 
 ### Return type
@@ -235,7 +235,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **201** | Правило создано |  -  |
+| **201** | Объект JSON c ключом &#x60;rule&#x60; |  -  |
 | **400** | Некорректный запрос |  -  |
 | **401** | Не авторизован |  -  |
 | **429** | Слишком много запросов |  -  |
@@ -269,7 +269,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     FirewallApi apiInstance = new FirewallApi(defaultClient);
-    String groupId = "groupId_example"; // String | ID группы правил
+    String groupId = "groupId_example"; // String | ID группы правил.
     try {
       apiInstance.deleteGroup(groupId);
     } catch (ApiException e) {
@@ -287,7 +287,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **groupId** | **String**| ID группы правил | |
+| **groupId** | **String**| ID группы правил. | |
 
 ### Return type
 
@@ -340,7 +340,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     FirewallApi apiInstance = new FirewallApi(defaultClient);
-    String groupId = "groupId_example"; // String | ID группы правил
+    String groupId = "groupId_example"; // String | ID группы правил.
     String ruleId = "ruleId_example"; // String | ID правила
     try {
       apiInstance.deleteGroupRule(groupId, ruleId);
@@ -359,7 +359,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **groupId** | **String**| ID группы правил | |
+| **groupId** | **String**| ID группы правил. | |
 | **ruleId** | **String**| ID правила | |
 
 ### Return type
@@ -413,7 +413,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     FirewallApi apiInstance = new FirewallApi(defaultClient);
-    String groupId = "groupId_example"; // String | ID группы правил
+    String groupId = "groupId_example"; // String | ID группы правил.
     String resourceId = "resourceId_example"; // String | ID ресурса
     ResourceType resourceType = ResourceType.fromValue("server"); // ResourceType | 
     try {
@@ -433,7 +433,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **groupId** | **String**| ID группы правил | |
+| **groupId** | **String**| ID группы правил. | |
 | **resourceId** | **String**| ID ресурса | |
 | **resourceType** | [**ResourceType**](.md)|  | [optional] [enum: server] |
 
@@ -488,7 +488,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     FirewallApi apiInstance = new FirewallApi(defaultClient);
-    String groupId = "groupId_example"; // String | ID группы правил
+    String groupId = "groupId_example"; // String | ID группы правил.
     try {
       FirewallGroupOutResponse result = apiInstance.getGroup(groupId);
       System.out.println(result);
@@ -507,7 +507,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **groupId** | **String**| ID группы правил | |
+| **groupId** | **String**| ID группы правил. | |
 
 ### Return type
 
@@ -525,7 +525,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Информация о группе правил |  -  |
+| **200** | Объект JSON c ключом &#x60;group&#x60; |  -  |
 | **400** | Некорректный запрос |  -  |
 | **401** | Не авторизован |  -  |
 | **404** | Не найдено |  -  |
@@ -560,7 +560,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     FirewallApi apiInstance = new FirewallApi(defaultClient);
-    String groupId = "groupId_example"; // String | ID группы правил
+    String groupId = "groupId_example"; // String | ID группы правил.
     Integer limit = 100; // Integer | Обозначает количество записей, которое необходимо вернуть.
     Integer offset = 0; // Integer | Указывает на смещение относительно начала списка.
     try {
@@ -581,7 +581,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **groupId** | **String**| ID группы правил | |
+| **groupId** | **String**| ID группы правил. | |
 | **limit** | **Integer**| Обозначает количество записей, которое необходимо вернуть. | [optional] [default to 100] |
 | **offset** | **Integer**| Указывает на смещение относительно начала списка. | [optional] [default to 0] |
 
@@ -601,7 +601,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Список слинкованных ресурсов |  -  |
+| **200** | Объект JSON c ключом &#x60;resources&#x60; |  -  |
 | **400** | Некорректный запрос |  -  |
 | **401** | Не авторизован |  -  |
 | **429** | Слишком много запросов |  -  |
@@ -635,8 +635,8 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     FirewallApi apiInstance = new FirewallApi(defaultClient);
-    String ruleId = "ruleId_example"; // String | ID правила
-    String groupId = "groupId_example"; // String | ID группы правил
+    String ruleId = "ruleId_example"; // String | ID правила.
+    String groupId = "groupId_example"; // String | ID группы правил.
     try {
       FirewallRuleOutResponse result = apiInstance.getGroupRule(ruleId, groupId);
       System.out.println(result);
@@ -655,8 +655,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **ruleId** | **String**| ID правила | |
-| **groupId** | **String**| ID группы правил | |
+| **ruleId** | **String**| ID правила. | |
+| **groupId** | **String**| ID группы правил. | |
 
 ### Return type
 
@@ -674,7 +674,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Информация о правиле |  -  |
+| **200** | Объект JSON c ключом &#x60;rule&#x60; |  -  |
 | **400** | Некорректный запрос |  -  |
 | **401** | Не авторизован |  -  |
 | **404** | Не найдено |  -  |
@@ -709,7 +709,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     FirewallApi apiInstance = new FirewallApi(defaultClient);
-    String groupId = "groupId_example"; // String | ID группы правил
+    String groupId = "groupId_example"; // String | ID группы правил.
     Integer limit = 100; // Integer | Обозначает количество записей, которое необходимо вернуть.
     Integer offset = 0; // Integer | Указывает на смещение относительно начала списка.
     try {
@@ -730,7 +730,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **groupId** | **String**| ID группы правил | |
+| **groupId** | **String**| ID группы правил. | |
 | **limit** | **Integer**| Обозначает количество записей, которое необходимо вернуть. | [optional] [default to 100] |
 | **offset** | **Integer**| Указывает на смещение относительно начала списка. | [optional] [default to 0] |
 
@@ -750,7 +750,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Список правил |  -  |
+| **200** | Объект JSON c ключом &#x60;rules&#x60; |  -  |
 | **400** | Некорректный запрос |  -  |
 | **401** | Не авторизован |  -  |
 | **429** | Слишком много запросов |  -  |
@@ -823,7 +823,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Список групп правил |  -  |
+| **200** | Объект JSON c ключом &#x60;groups&#x60; |  -  |
 | **400** | Некорректный запрос |  -  |
 | **401** | Не авторизован |  -  |
 | **429** | Слишком много запросов |  -  |
@@ -857,7 +857,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     FirewallApi apiInstance = new FirewallApi(defaultClient);
-    String resourceId = "resourceId_example"; // String | Идентификатор ресурса
+    String resourceId = "resourceId_example"; // String | ID ресурса
     ResourceType resourceType = ResourceType.fromValue("server"); // ResourceType | 
     Integer limit = 100; // Integer | Обозначает количество записей, которое необходимо вернуть.
     Integer offset = 0; // Integer | Указывает на смещение относительно начала списка.
@@ -879,7 +879,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **resourceId** | **String**| Идентификатор ресурса | |
+| **resourceId** | **String**| ID ресурса | |
 | **resourceType** | [**ResourceType**](.md)|  | [enum: server] |
 | **limit** | **Integer**| Обозначает количество записей, которое необходимо вернуть. | [optional] [default to 100] |
 | **offset** | **Integer**| Указывает на смещение относительно начала списка. | [optional] [default to 0] |
@@ -900,7 +900,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Список групп правил |  -  |
+| **200** | Объект JSON c ключом &#x60;groups&#x60; |  -  |
 | **400** | Некорректный запрос |  -  |
 | **401** | Не авторизован |  -  |
 | **429** | Слишком много запросов |  -  |
@@ -934,7 +934,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     FirewallApi apiInstance = new FirewallApi(defaultClient);
-    String groupId = "groupId_example"; // String | ID группы правил
+    String groupId = "groupId_example"; // String | ID группы правил.
     FirewallGroupInAPI firewallGroupInAPI = new FirewallGroupInAPI(); // FirewallGroupInAPI | 
     try {
       FirewallGroupOutResponse result = apiInstance.updateGroup(groupId, firewallGroupInAPI);
@@ -954,7 +954,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **groupId** | **String**| ID группы правил | |
+| **groupId** | **String**| ID группы правил. | |
 | **firewallGroupInAPI** | [**FirewallGroupInAPI**](FirewallGroupInAPI.md)|  | |
 
 ### Return type
@@ -973,7 +973,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **201** | Группа правил обновлена |  -  |
+| **201** | Объект JSON c ключом &#x60;group&#x60; |  -  |
 | **400** | Некорректный запрос |  -  |
 | **401** | Не авторизован |  -  |
 | **404** | Не найдено |  -  |
@@ -1008,7 +1008,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     FirewallApi apiInstance = new FirewallApi(defaultClient);
-    String groupId = "groupId_example"; // String | ID группы правил
+    String groupId = "groupId_example"; // String | ID группы правил.
     String ruleId = "ruleId_example"; // String | ID правила
     FirewallRuleInAPI firewallRuleInAPI = new FirewallRuleInAPI(); // FirewallRuleInAPI | 
     try {
@@ -1029,7 +1029,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **groupId** | **String**| ID группы правил | |
+| **groupId** | **String**| ID группы правил. | |
 | **ruleId** | **String**| ID правила | |
 | **firewallRuleInAPI** | [**FirewallRuleInAPI**](FirewallRuleInAPI.md)|  | |
 
@@ -1049,7 +1049,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **201** | Правило обновлено |  -  |
+| **201** | Объект JSON c ключом &#x60;rule&#x60; |  -  |
 | **400** | Некорректный запрос |  -  |
 | **401** | Не авторизован |  -  |
 | **404** | Не найдено |  -  |

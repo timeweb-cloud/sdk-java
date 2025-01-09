@@ -88,7 +88,7 @@ public class Example {
 
 <a id="deleteVPC"></a>
 # **deleteVPC**
-> CreateVPC201Response deleteVPC(vpcId)
+> deleteVPC(vpcId)
 
 Удаление VPC по ID сети
 
@@ -116,8 +116,7 @@ public class Example {
     VpcApi apiInstance = new VpcApi(defaultClient);
     String vpcId = "network-1234567890"; // String | ID сети
     try {
-      CreateVPC201Response result = apiInstance.deleteVPC(vpcId);
-      System.out.println(result);
+      apiInstance.deleteVPC(vpcId);
     } catch (ApiException e) {
       System.err.println("Exception when calling VpcApi#deleteVPC");
       System.err.println("Status code: " + e.getCode());
@@ -137,7 +136,7 @@ public class Example {
 
 ### Return type
 
-[**CreateVPC201Response**](CreateVPC201Response.md)
+null (empty response body)
 
 ### Authorization
 
@@ -151,7 +150,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **204** | Объект JSON c ключом &#x60;vpc&#x60; |  -  |
+| **204** | Успешное выполнение действия |  -  |
 | **400** | Некорректный запрос |  -  |
 | **401** | Не авторизован |  -  |
 | **403** | Запрещено |  -  |

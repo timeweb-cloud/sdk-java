@@ -7,9 +7,9 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**responseId** | **String** | Идентификатор запроса |  [optional] |
+|**responseId** | **String** | ID запроса. |  [optional] |
 |**meta** | [**Meta**](Meta.md) |  |  |
-|**resources** | [**List&lt;FirewallGroupResourceOutAPI&gt;**](FirewallGroupResourceOutAPI.md) |  |  |
+|**resources** | [**List&lt;FirewallGroupResource&gt;**](FirewallGroupResource.md) |  |  |
 
 
 

@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**responseId** | **String** | Идентификатор запроса |  [optional] |
+|**responseId** | **String** | ID запроса |  [optional] |
 |**nodeGroup** | [**NodeGroupOut**](NodeGroupOut.md) |  |  |
 
 

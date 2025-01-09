@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**sshKeyIds** | **List&lt;BigDecimal&gt;** | Массив уникальных идентификаторов SSH-ключей |  |
+|**sshKeyIds** | **List&lt;BigDecimal&gt;** | Массив ID SSH-ключей |  |
 
 
 

@@ -7,9 +7,9 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**responseId** | **String** | Идентификатор запроса |  [optional] |
+|**responseId** | **String** | ID запроса. |  [optional] |
 |**meta** | [**Meta**](Meta.md) |  |  |
-|**rules** | [**List&lt;FirewallRuleOutAPI&gt;**](FirewallRuleOutAPI.md) | Массив объектов Firewall правил |  |
+|**rules** | [**List&lt;FirewallRule&gt;**](FirewallRule.md) |  |  |
 
 
 

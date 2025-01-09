@@ -12,7 +12,7 @@ All URIs are relative to *https://api.timeweb.cloud*
 | [**getNetworkDrivesPresets**](NetworkDrivesApi.md#getNetworkDrivesPresets) | **GET** /api/v1/presets/network-drives | Получение списка доступных тарифов для сетевого диска |
 | [**mountNetworkDrive**](NetworkDrivesApi.md#mountNetworkDrive) | **POST** /api/v1/network-drives/{network_drive_id}/bind | Подключить сетевой диск к сервису |
 | [**unmountNetworkDrive**](NetworkDrivesApi.md#unmountNetworkDrive) | **POST** /api/v1/network-drives/{network_drive_id}/unbind | Отключить сетевой диск от сервиса |
-| [**updateNetworkDrive**](NetworkDrivesApi.md#updateNetworkDrive) | **PATCH** /api/v1/network-drives/{network_drive_id} | Изменение сетевого диска по идентификатору |
+| [**updateNetworkDrive**](NetworkDrivesApi.md#updateNetworkDrive) | **PATCH** /api/v1/network-drives/{network_drive_id} | Изменение сетевого диска по ID |
 
 
 <a id="createNetworkDrive"></a>
@@ -116,7 +116,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     NetworkDrivesApi apiInstance = new NetworkDrivesApi(defaultClient);
-    String networkDriveId = "87fa289f-1513-4c4d-8d49-5707f411f14b"; // String | Идентификатор сетевого диска
+    String networkDriveId = "87fa289f-1513-4c4d-8d49-5707f411f14b"; // String | ID сетевого диска
     try {
       apiInstance.deleteNetworkDrive(networkDriveId);
     } catch (ApiException e) {
@@ -134,7 +134,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **networkDriveId** | **String**| Идентификатор сетевого диска | |
+| **networkDriveId** | **String**| ID сетевого диска | |
 
 ### Return type
 
@@ -188,7 +188,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     NetworkDrivesApi apiInstance = new NetworkDrivesApi(defaultClient);
-    String networkDriveId = "87fa289f-1513-4c4d-8d49-5707f411f14b"; // String | Идентификатор сетевого диска
+    String networkDriveId = "87fa289f-1513-4c4d-8d49-5707f411f14b"; // String | ID сетевого диска
     try {
       CreateNetworkDrive201Response result = apiInstance.getNetworkDrive(networkDriveId);
       System.out.println(result);
@@ -207,7 +207,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **networkDriveId** | **String**| Идентификатор сетевого диска | |
+| **networkDriveId** | **String**| ID сетевого диска | |
 
 ### Return type
 
@@ -468,7 +468,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     NetworkDrivesApi apiInstance = new NetworkDrivesApi(defaultClient);
-    String networkDriveId = "87fa289f-1513-4c4d-8d49-5707f411f14b"; // String | Идентификатор сетевого диска
+    String networkDriveId = "87fa289f-1513-4c4d-8d49-5707f411f14b"; // String | ID сетевого диска
     MountNetworkDrive mountNetworkDrive = new MountNetworkDrive(); // MountNetworkDrive | 
     try {
       apiInstance.mountNetworkDrive(networkDriveId, mountNetworkDrive);
@@ -487,7 +487,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **networkDriveId** | **String**| Идентификатор сетевого диска | |
+| **networkDriveId** | **String**| ID сетевого диска | |
 | **mountNetworkDrive** | [**MountNetworkDrive**](MountNetworkDrive.md)|  | |
 
 ### Return type
@@ -542,7 +542,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     NetworkDrivesApi apiInstance = new NetworkDrivesApi(defaultClient);
-    String networkDriveId = "87fa289f-1513-4c4d-8d49-5707f411f14b"; // String | Идентификатор сетевого диска
+    String networkDriveId = "87fa289f-1513-4c4d-8d49-5707f411f14b"; // String | ID сетевого диска
     try {
       apiInstance.unmountNetworkDrive(networkDriveId);
     } catch (ApiException e) {
@@ -560,7 +560,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **networkDriveId** | **String**| Идентификатор сетевого диска | |
+| **networkDriveId** | **String**| ID сетевого диска | |
 
 ### Return type
 
@@ -590,7 +590,7 @@ null (empty response body)
 # **updateNetworkDrive**
 > CreateNetworkDrive201Response updateNetworkDrive(networkDriveId, updateNetworkDrive)
 
-Изменение сетевого диска по идентификатору
+Изменение сетевого диска по ID
 
 Чтобы изменить сетевой диск, отправьте PATCH-запрос на &#x60;/api/v1/network-drives/{network_drive_id}&#x60;
 
@@ -614,7 +614,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     NetworkDrivesApi apiInstance = new NetworkDrivesApi(defaultClient);
-    String networkDriveId = "87fa289f-1513-4c4d-8d49-5707f411f14b"; // String | Идентификатор сетевого диска
+    String networkDriveId = "87fa289f-1513-4c4d-8d49-5707f411f14b"; // String | ID сетевого диска
     UpdateNetworkDrive updateNetworkDrive = new UpdateNetworkDrive(); // UpdateNetworkDrive | 
     try {
       CreateNetworkDrive201Response result = apiInstance.updateNetworkDrive(networkDriveId, updateNetworkDrive);
@@ -634,7 +634,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **networkDriveId** | **String**| Идентификатор сетевого диска | |
+| **networkDriveId** | **String**| ID сетевого диска | |
 | **updateNetworkDrive** | [**UpdateNetworkDrive**](UpdateNetworkDrive.md)|  | |
 
 ### Return type

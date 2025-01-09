@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * Параметры конфигурации сервера. Нельзя передавать вместе с &#x60;preset_id&#x60;.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T10:12:31.892103Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T16:09:23.451331Z[Etc/UTC]")
 public class CreateServerConfiguration {
   public static final String SERIALIZED_NAME_CONFIGURATOR_ID = "configurator_id";
   @SerializedName(SERIALIZED_NAME_CONFIGURATOR_ID)
@@ -68,6 +68,10 @@ public class CreateServerConfiguration {
   public static final String SERIALIZED_NAME_RAM = "ram";
   @SerializedName(SERIALIZED_NAME_RAM)
   private BigDecimal ram;
+
+  public static final String SERIALIZED_NAME_GPU = "gpu";
+  @SerializedName(SERIALIZED_NAME_GPU)
+  private BigDecimal gpu;
 
   public CreateServerConfiguration() {
   }
@@ -156,6 +160,27 @@ public class CreateServerConfiguration {
   }
 
 
+  public CreateServerConfiguration gpu(BigDecimal gpu) {
+    
+    this.gpu = gpu;
+    return this;
+  }
+
+   /**
+   * Количество видеокарт.
+   * @return gpu
+  **/
+  @javax.annotation.Nullable
+  public BigDecimal getGpu() {
+    return gpu;
+  }
+
+
+  public void setGpu(BigDecimal gpu) {
+    this.gpu = gpu;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -169,12 +194,13 @@ public class CreateServerConfiguration {
     return Objects.equals(this.configuratorId, createServerConfiguration.configuratorId) &&
         Objects.equals(this.disk, createServerConfiguration.disk) &&
         Objects.equals(this.cpu, createServerConfiguration.cpu) &&
-        Objects.equals(this.ram, createServerConfiguration.ram);
+        Objects.equals(this.ram, createServerConfiguration.ram) &&
+        Objects.equals(this.gpu, createServerConfiguration.gpu);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(configuratorId, disk, cpu, ram);
+    return Objects.hash(configuratorId, disk, cpu, ram, gpu);
   }
 
   @Override
@@ -185,6 +211,7 @@ public class CreateServerConfiguration {
     sb.append("    disk: ").append(toIndentedString(disk)).append("\n");
     sb.append("    cpu: ").append(toIndentedString(cpu)).append("\n");
     sb.append("    ram: ").append(toIndentedString(ram)).append("\n");
+    sb.append("    gpu: ").append(toIndentedString(gpu)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -211,6 +238,7 @@ public class CreateServerConfiguration {
     openapiFields.add("disk");
     openapiFields.add("cpu");
     openapiFields.add("ram");
+    openapiFields.add("gpu");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

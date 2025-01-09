@@ -155,7 +155,7 @@ public class NetworkDrivesApiTest {
     }
 
     /**
-     * Изменение сетевого диска по идентификатору
+     * Изменение сетевого диска по ID
      *
      * Чтобы изменить сетевой диск, отправьте PATCH-запрос на &#x60;/api/v1/network-drives/{network_drive_id}&#x60;
      *

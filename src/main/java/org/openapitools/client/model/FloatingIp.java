@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * FloatingIp
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T10:12:31.892103Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T16:09:23.451331Z[Etc/UTC]")
 public class FloatingIp {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -147,7 +147,7 @@ public class FloatingIp {
   }
 
    /**
-   * Идентификатор IP.
+   * ID IP.
    * @return id
   **/
   @javax.annotation.Nonnull

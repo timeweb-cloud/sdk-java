@@ -72,7 +72,7 @@ public class FloatingIpApiTest {
     }
 
     /**
-     * Удаление плавающего IP по идентификатору
+     * Удаление плавающего IP по ID
      *
      * Чтобы удалить плавающий IP, отправьте DELETE-запрос на &#x60;/api/v1/floating-ips/{floating_ip_id}&#x60;
      *
@@ -127,7 +127,7 @@ public class FloatingIpApiTest {
     }
 
     /**
-     * Изменение плавающего IP по идентификатору
+     * Изменение плавающего IP по ID
      *
      * Чтобы изменить плавающий IP, отправьте PATCH-запрос на &#x60;/api/v1/floating-ips/{floating_ip_id}&#x60;
      *

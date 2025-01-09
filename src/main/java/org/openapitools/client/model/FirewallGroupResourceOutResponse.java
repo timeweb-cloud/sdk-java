@@ -21,7 +21,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import org.openapitools.client.model.FirewallGroupResourceOutAPI;
+import org.openapitools.client.model.FirewallGroupResource;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * FirewallGroupResourceOutResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T10:12:31.892103Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T16:09:23.451331Z[Etc/UTC]")
 public class FirewallGroupResourceOutResponse {
   public static final String SERIALIZED_NAME_RESPONSE_ID = "response_id";
   @SerializedName(SERIALIZED_NAME_RESPONSE_ID)
@@ -59,7 +59,7 @@ public class FirewallGroupResourceOutResponse {
 
   public static final String SERIALIZED_NAME_RESOURCE = "resource";
   @SerializedName(SERIALIZED_NAME_RESOURCE)
-  private FirewallGroupResourceOutAPI resource;
+  private FirewallGroupResource resource;
 
   public FirewallGroupResourceOutResponse() {
   }
@@ -71,7 +71,7 @@ public class FirewallGroupResourceOutResponse {
   }
 
    /**
-   * Идентификатор запроса
+   * ID запроса.
    * @return responseId
   **/
   @javax.annotation.Nullable
@@ -85,7 +85,7 @@ public class FirewallGroupResourceOutResponse {
   }
 
 
-  public FirewallGroupResourceOutResponse resource(FirewallGroupResourceOutAPI resource) {
+  public FirewallGroupResourceOutResponse resource(FirewallGroupResource resource) {
     
     this.resource = resource;
     return this;
@@ -96,12 +96,12 @@ public class FirewallGroupResourceOutResponse {
    * @return resource
   **/
   @javax.annotation.Nonnull
-  public FirewallGroupResourceOutAPI getResource() {
+  public FirewallGroupResource getResource() {
     return resource;
   }
 
 
-  public void setResource(FirewallGroupResourceOutAPI resource) {
+  public void setResource(FirewallGroupResource resource) {
     this.resource = resource;
   }
 
@@ -193,7 +193,7 @@ public class FirewallGroupResourceOutResponse {
         throw new IllegalArgumentException(String.format("Expected the field `response_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("response_id").toString()));
       }
       // validate the required field `resource`
-      FirewallGroupResourceOutAPI.validateJsonElement(jsonObj.get("resource"));
+      FirewallGroupResource.validateJsonElement(jsonObj.get("resource"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

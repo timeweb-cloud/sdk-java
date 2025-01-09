@@ -21,7 +21,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import org.openapitools.client.model.ImageDownloadAPI;
+import org.openapitools.client.model.ImageDownload;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * ImageDownloadResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T10:12:31.892103Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T16:09:23.451331Z[Etc/UTC]")
 public class ImageDownloadResponse {
   public static final String SERIALIZED_NAME_RESPONSE_ID = "response_id";
   @SerializedName(SERIALIZED_NAME_RESPONSE_ID)
@@ -59,7 +59,7 @@ public class ImageDownloadResponse {
 
   public static final String SERIALIZED_NAME_DOWNLOAD = "download";
   @SerializedName(SERIALIZED_NAME_DOWNLOAD)
-  private ImageDownloadAPI download;
+  private ImageDownload download;
 
   public ImageDownloadResponse() {
   }
@@ -71,7 +71,7 @@ public class ImageDownloadResponse {
   }
 
    /**
-   * ID запроса
+   * ID запроса.
    * @return responseId
   **/
   @javax.annotation.Nullable
@@ -85,7 +85,7 @@ public class ImageDownloadResponse {
   }
 
 
-  public ImageDownloadResponse download(ImageDownloadAPI download) {
+  public ImageDownloadResponse download(ImageDownload download) {
     
     this.download = download;
     return this;
@@ -96,12 +96,12 @@ public class ImageDownloadResponse {
    * @return download
   **/
   @javax.annotation.Nonnull
-  public ImageDownloadAPI getDownload() {
+  public ImageDownload getDownload() {
     return download;
   }
 
 
-  public void setDownload(ImageDownloadAPI download) {
+  public void setDownload(ImageDownload download) {
     this.download = download;
   }
 
@@ -193,7 +193,7 @@ public class ImageDownloadResponse {
         throw new IllegalArgumentException(String.format("Expected the field `response_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("response_id").toString()));
       }
       // validate the required field `download`
-      ImageDownloadAPI.validateJsonElement(jsonObj.get("download"));
+      ImageDownload.validateJsonElement(jsonObj.get("download"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

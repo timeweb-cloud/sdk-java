@@ -23,7 +23,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import org.openapitools.client.model.FirewallGroupOutAPI;
+import org.openapitools.client.model.FirewallGroup;
 import org.openapitools.client.model.Meta;
 
 import com.google.gson.Gson;
@@ -54,7 +54,7 @@ import org.openapitools.client.JSON;
 /**
  * FirewallGroupsOutResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T10:12:31.892103Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T16:09:23.451331Z[Etc/UTC]")
 public class FirewallGroupsOutResponse {
   public static final String SERIALIZED_NAME_RESPONSE_ID = "response_id";
   @SerializedName(SERIALIZED_NAME_RESPONSE_ID)
@@ -66,7 +66,7 @@ public class FirewallGroupsOutResponse {
 
   public static final String SERIALIZED_NAME_GROUPS = "groups";
   @SerializedName(SERIALIZED_NAME_GROUPS)
-  private List<FirewallGroupOutAPI> groups = new ArrayList<>();
+  private List<FirewallGroup> groups = new ArrayList<>();
 
   public FirewallGroupsOutResponse() {
   }
@@ -78,7 +78,7 @@ public class FirewallGroupsOutResponse {
   }
 
    /**
-   * Идентификатор запроса
+   * ID запроса.
    * @return responseId
   **/
   @javax.annotation.Nullable
@@ -113,13 +113,13 @@ public class FirewallGroupsOutResponse {
   }
 
 
-  public FirewallGroupsOutResponse groups(List<FirewallGroupOutAPI> groups) {
+  public FirewallGroupsOutResponse groups(List<FirewallGroup> groups) {
     
     this.groups = groups;
     return this;
   }
 
-  public FirewallGroupsOutResponse addGroupsItem(FirewallGroupOutAPI groupsItem) {
+  public FirewallGroupsOutResponse addGroupsItem(FirewallGroup groupsItem) {
     if (this.groups == null) {
       this.groups = new ArrayList<>();
     }
@@ -128,16 +128,16 @@ public class FirewallGroupsOutResponse {
   }
 
    /**
-   * Массив объектов Групп правил
+   * Get groups
    * @return groups
   **/
   @javax.annotation.Nonnull
-  public List<FirewallGroupOutAPI> getGroups() {
+  public List<FirewallGroup> getGroups() {
     return groups;
   }
 
 
-  public void setGroups(List<FirewallGroupOutAPI> groups) {
+  public void setGroups(List<FirewallGroup> groups) {
     this.groups = groups;
   }
 
@@ -242,7 +242,7 @@ public class FirewallGroupsOutResponse {
       JsonArray jsonArraygroups = jsonObj.getAsJsonArray("groups");
       // validate the required field `groups` (array)
       for (int i = 0; i < jsonArraygroups.size(); i++) {
-        FirewallGroupOutAPI.validateJsonElement(jsonArraygroups.get(i));
+        FirewallGroup.validateJsonElement(jsonArraygroups.get(i));
       };
   }
 

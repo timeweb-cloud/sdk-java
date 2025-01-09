@@ -234,7 +234,7 @@ public class NetworkDrivesApi {
     }
     /**
      * Build call for deleteNetworkDrive
-     * @param networkDriveId Идентификатор сетевого диска (required)
+     * @param networkDriveId ID сетевого диска (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -309,7 +309,7 @@ public class NetworkDrivesApi {
     /**
      * Удаление сетевого диска по идентификатору
      * Чтобы удалить сетевой диск, отправьте DELETE-запрос на &#x60;/api/v1/network-drives/{network_drive_id}&#x60;
-     * @param networkDriveId Идентификатор сетевого диска (required)
+     * @param networkDriveId ID сетевого диска (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -330,7 +330,7 @@ public class NetworkDrivesApi {
     /**
      * Удаление сетевого диска по идентификатору
      * Чтобы удалить сетевой диск, отправьте DELETE-запрос на &#x60;/api/v1/network-drives/{network_drive_id}&#x60;
-     * @param networkDriveId Идентификатор сетевого диска (required)
+     * @param networkDriveId ID сетевого диска (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -353,7 +353,7 @@ public class NetworkDrivesApi {
     /**
      * Удаление сетевого диска по идентификатору (asynchronously)
      * Чтобы удалить сетевой диск, отправьте DELETE-запрос на &#x60;/api/v1/network-drives/{network_drive_id}&#x60;
-     * @param networkDriveId Идентификатор сетевого диска (required)
+     * @param networkDriveId ID сетевого диска (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -377,7 +377,7 @@ public class NetworkDrivesApi {
     }
     /**
      * Build call for getNetworkDrive
-     * @param networkDriveId Идентификатор сетевого диска (required)
+     * @param networkDriveId ID сетевого диска (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -452,7 +452,7 @@ public class NetworkDrivesApi {
     /**
      * Получение сетевого диска
      * Чтобы отобразить информацию об отдельном сетевом диске, отправьте запрос GET на &#x60;api/v1/network-drives/{network_drive_id}&#x60;.
-     * @param networkDriveId Идентификатор сетевого диска (required)
+     * @param networkDriveId ID сетевого диска (required)
      * @return CreateNetworkDrive201Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -475,7 +475,7 @@ public class NetworkDrivesApi {
     /**
      * Получение сетевого диска
      * Чтобы отобразить информацию об отдельном сетевом диске, отправьте запрос GET на &#x60;api/v1/network-drives/{network_drive_id}&#x60;.
-     * @param networkDriveId Идентификатор сетевого диска (required)
+     * @param networkDriveId ID сетевого диска (required)
      * @return ApiResponse&lt;CreateNetworkDrive201Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -499,7 +499,7 @@ public class NetworkDrivesApi {
     /**
      * Получение сетевого диска (asynchronously)
      * Чтобы отобразить информацию об отдельном сетевом диске, отправьте запрос GET на &#x60;api/v1/network-drives/{network_drive_id}&#x60;.
-     * @param networkDriveId Идентификатор сетевого диска (required)
+     * @param networkDriveId ID сетевого диска (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -935,7 +935,7 @@ public class NetworkDrivesApi {
     }
     /**
      * Build call for mountNetworkDrive
-     * @param networkDriveId Идентификатор сетевого диска (required)
+     * @param networkDriveId ID сетевого диска (required)
      * @param mountNetworkDrive  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1017,7 +1017,7 @@ public class NetworkDrivesApi {
     /**
      * Подключить сетевой диск к сервису
      * Чтобы подключить сетевой диск к сервису, отправьте POST-запрос на &#x60;/api/v1/network-drives/{network_drive_id}/mount&#x60;.
-     * @param networkDriveId Идентификатор сетевого диска (required)
+     * @param networkDriveId ID сетевого диска (required)
      * @param mountNetworkDrive  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1039,7 +1039,7 @@ public class NetworkDrivesApi {
     /**
      * Подключить сетевой диск к сервису
      * Чтобы подключить сетевой диск к сервису, отправьте POST-запрос на &#x60;/api/v1/network-drives/{network_drive_id}/mount&#x60;.
-     * @param networkDriveId Идентификатор сетевого диска (required)
+     * @param networkDriveId ID сетевого диска (required)
      * @param mountNetworkDrive  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1063,7 +1063,7 @@ public class NetworkDrivesApi {
     /**
      * Подключить сетевой диск к сервису (asynchronously)
      * Чтобы подключить сетевой диск к сервису, отправьте POST-запрос на &#x60;/api/v1/network-drives/{network_drive_id}/mount&#x60;.
-     * @param networkDriveId Идентификатор сетевого диска (required)
+     * @param networkDriveId ID сетевого диска (required)
      * @param mountNetworkDrive  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1088,7 +1088,7 @@ public class NetworkDrivesApi {
     }
     /**
      * Build call for unmountNetworkDrive
-     * @param networkDriveId Идентификатор сетевого диска (required)
+     * @param networkDriveId ID сетевого диска (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1163,7 +1163,7 @@ public class NetworkDrivesApi {
     /**
      * Отключить сетевой диск от сервиса
      * Чтобы отключить сетевой диск от сервиса, отправьте POST-запрос на &#x60;/api/v1/network-drives/{network_drive_id}/unmount&#x60;.
-     * @param networkDriveId Идентификатор сетевого диска (required)
+     * @param networkDriveId ID сетевого диска (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1184,7 +1184,7 @@ public class NetworkDrivesApi {
     /**
      * Отключить сетевой диск от сервиса
      * Чтобы отключить сетевой диск от сервиса, отправьте POST-запрос на &#x60;/api/v1/network-drives/{network_drive_id}/unmount&#x60;.
-     * @param networkDriveId Идентификатор сетевого диска (required)
+     * @param networkDriveId ID сетевого диска (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1207,7 +1207,7 @@ public class NetworkDrivesApi {
     /**
      * Отключить сетевой диск от сервиса (asynchronously)
      * Чтобы отключить сетевой диск от сервиса, отправьте POST-запрос на &#x60;/api/v1/network-drives/{network_drive_id}/unmount&#x60;.
-     * @param networkDriveId Идентификатор сетевого диска (required)
+     * @param networkDriveId ID сетевого диска (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1231,7 +1231,7 @@ public class NetworkDrivesApi {
     }
     /**
      * Build call for updateNetworkDrive
-     * @param networkDriveId Идентификатор сетевого диска (required)
+     * @param networkDriveId ID сетевого диска (required)
      * @param updateNetworkDrive  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1311,9 +1311,9 @@ public class NetworkDrivesApi {
     }
 
     /**
-     * Изменение сетевого диска по идентификатору
+     * Изменение сетевого диска по ID
      * Чтобы изменить сетевой диск, отправьте PATCH-запрос на &#x60;/api/v1/network-drives/{network_drive_id}&#x60;
-     * @param networkDriveId Идентификатор сетевого диска (required)
+     * @param networkDriveId ID сетевого диска (required)
      * @param updateNetworkDrive  (required)
      * @return CreateNetworkDrive201Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1335,9 +1335,9 @@ public class NetworkDrivesApi {
     }
 
     /**
-     * Изменение сетевого диска по идентификатору
+     * Изменение сетевого диска по ID
      * Чтобы изменить сетевой диск, отправьте PATCH-запрос на &#x60;/api/v1/network-drives/{network_drive_id}&#x60;
-     * @param networkDriveId Идентификатор сетевого диска (required)
+     * @param networkDriveId ID сетевого диска (required)
      * @param updateNetworkDrive  (required)
      * @return ApiResponse&lt;CreateNetworkDrive201Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1360,9 +1360,9 @@ public class NetworkDrivesApi {
     }
 
     /**
-     * Изменение сетевого диска по идентификатору (asynchronously)
+     * Изменение сетевого диска по ID (asynchronously)
      * Чтобы изменить сетевой диск, отправьте PATCH-запрос на &#x60;/api/v1/network-drives/{network_drive_id}&#x60;
-     * @param networkDriveId Идентификатор сетевого диска (required)
+     * @param networkDriveId ID сетевого диска (required)
      * @param updateNetworkDrive  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

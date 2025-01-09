@@ -9,8 +9,8 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**id** | **BigDecimal** | ID для каждого экземпляра сервера. Автоматически генерируется при создании. |  |
-|**name** | **String** | Удобочитаемое имя, установленное для выделенного сервера. |  |
-|**comment** | **String** | Комментарий к выделенному серверу. |  |
+|**name** | **String** | Удобочитаемое имя, установленное для сервера. |  |
+|**comment** | **String** | Комментарий к серверу. |  |
 |**createdAt** | **String** | Дата создания сервера в формате ISO8061. |  |
 |**os** | [**VdsOs**](VdsOs.md) |  |  |
 |**software** | [**VdsSoftware**](VdsSoftware.md) |  |  |
@@ -21,6 +21,9 @@
 |**status** | [**StatusEnum**](#StatusEnum) | Статус сервера. |  |
 |**startAt** | **OffsetDateTime** | Значение времени, указанное в комбинированном формате даты и времени ISO8601, которое представляет, когда был запущен сервер. |  |
 |**isDdosGuard** | **Boolean** | Это логическое значение, которое показывает, включена ли защита от DDoS у данного сервера. |  |
+|**isMasterSsh** | **Boolean** | Это логическое значение, которое показывает, доступно ли подключение по SSH для поддержки. |  |
+|**isDedicatedCpu** | **Boolean** | Это логическое значение, которое показывает, является ли CPU выделенным. |  |
+|**gpu** | **BigDecimal** | Количество видеокарт сервера. |  |
 |**cpu** | **BigDecimal** | Количество ядер процессора сервера. |  |
 |**cpuFrequency** | **String** | Частота ядер процессора сервера. |  |
 |**ram** | **BigDecimal** | Размер (в Мб) ОЗУ сервера. |  |
@@ -31,7 +34,7 @@
 |**image** | [**VdsImage**](VdsImage.md) |  |  |
 |**networks** | [**List&lt;VdsNetworksInner&gt;**](VdsNetworksInner.md) | Список сетей сервера. |  |
 |**cloudInit** | **String** | Cloud-init скрипт. |  |
-|**isQemuAgent** | **Boolean** | Включен ли QEMU-agent на сервере. |  [optional] |
+|**isQemuAgent** | **Boolean** | Это логическое значение, которое показывает, включен ли QEMU-agent на сервере. |  |
 |**availabilityZone** | **AvailabilityZone** |  |  |
 
 
@@ -42,8 +45,10 @@
 |---- | -----|
 | RU_1 | &quot;ru-1&quot; |
 | RU_2 | &quot;ru-2&quot; |
+| RU_3 | &quot;ru-3&quot; |
 | PL_1 | &quot;pl-1&quot; |
 | KZ_1 | &quot;kz-1&quot; |
+| NL_1 | &quot;nl-1&quot; |
 
 
 

@@ -21,7 +21,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import org.openapitools.client.model.ImageOutAPI;
+import org.openapitools.client.model.Image;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * ImageOutResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T10:12:31.892103Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T16:09:23.451331Z[Etc/UTC]")
 public class ImageOutResponse {
   public static final String SERIALIZED_NAME_RESPONSE_ID = "response_id";
   @SerializedName(SERIALIZED_NAME_RESPONSE_ID)
@@ -59,7 +59,7 @@ public class ImageOutResponse {
 
   public static final String SERIALIZED_NAME_IMAGE = "image";
   @SerializedName(SERIALIZED_NAME_IMAGE)
-  private ImageOutAPI image;
+  private Image image;
 
   public ImageOutResponse() {
   }
@@ -71,7 +71,7 @@ public class ImageOutResponse {
   }
 
    /**
-   * Идентификатор запроса
+   * ID запроса.
    * @return responseId
   **/
   @javax.annotation.Nullable
@@ -85,7 +85,7 @@ public class ImageOutResponse {
   }
 
 
-  public ImageOutResponse image(ImageOutAPI image) {
+  public ImageOutResponse image(Image image) {
     
     this.image = image;
     return this;
@@ -96,12 +96,12 @@ public class ImageOutResponse {
    * @return image
   **/
   @javax.annotation.Nonnull
-  public ImageOutAPI getImage() {
+  public Image getImage() {
     return image;
   }
 
 
-  public void setImage(ImageOutAPI image) {
+  public void setImage(Image image) {
     this.image = image;
   }
 
@@ -193,7 +193,7 @@ public class ImageOutResponse {
         throw new IllegalArgumentException(String.format("Expected the field `response_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("response_id").toString()));
       }
       // validate the required field `image`
-      ImageOutAPI.validateJsonElement(jsonObj.get("image"));
+      Image.validateJsonElement(jsonObj.get("image"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

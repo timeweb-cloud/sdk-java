@@ -6,11 +6,11 @@ All URIs are relative to *https://api.timeweb.cloud*
 |------------- | ------------- | -------------|
 | [**addKeyToServer**](SshApi.md#addKeyToServer) | **POST** /api/v1/servers/{server_id}/ssh-keys | Добавление SSH-ключей на сервер |
 | [**createKey**](SshApi.md#createKey) | **POST** /api/v1/ssh-keys | Создание SSH-ключа |
-| [**deleteKey**](SshApi.md#deleteKey) | **DELETE** /api/v1/ssh-keys/{ssh_key_id} | Удаление SSH-ключа по уникальному идентификатору |
+| [**deleteKey**](SshApi.md#deleteKey) | **DELETE** /api/v1/ssh-keys/{ssh_key_id} | Удаление SSH-ключа по ID |
 | [**deleteKeyFromServer**](SshApi.md#deleteKeyFromServer) | **DELETE** /api/v1/servers/{server_id}/ssh-keys/{ssh_key_id} | Удаление SSH-ключей с сервера |
-| [**getKey**](SshApi.md#getKey) | **GET** /api/v1/ssh-keys/{ssh_key_id} | Получение SSH-ключа по уникальному идентификатору |
+| [**getKey**](SshApi.md#getKey) | **GET** /api/v1/ssh-keys/{ssh_key_id} | Получение SSH-ключа по ID |
 | [**getKeys**](SshApi.md#getKeys) | **GET** /api/v1/ssh-keys | Получение списка SSH-ключей |
-| [**updateKey**](SshApi.md#updateKey) | **PATCH** /api/v1/ssh-keys/{ssh_key_id} | Изменение SSH-ключа по уникальному идентификатору |
+| [**updateKey**](SshApi.md#updateKey) | **PATCH** /api/v1/ssh-keys/{ssh_key_id} | Изменение SSH-ключа по ID |
 
 
 <a id="addKeyToServer"></a>
@@ -164,7 +164,7 @@ public class Example {
 # **deleteKey**
 > deleteKey(sshKeyId)
 
-Удаление SSH-ключа по уникальному идентификатору
+Удаление SSH-ключа по ID
 
 Чтобы удалить SSH-ключ, отправьте DELETE-запрос на &#x60;/api/v1/ssh-keys/{ssh_key_id}&#x60;
 
@@ -188,7 +188,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     SshApi apiInstance = new SshApi(defaultClient);
-    Integer sshKeyId = 1051; // Integer | ID SSH-ключа
+    Integer sshKeyId = 1051; // Integer | ID SSH-ключа.
     try {
       apiInstance.deleteKey(sshKeyId);
     } catch (ApiException e) {
@@ -206,7 +206,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **sshKeyId** | **Integer**| ID SSH-ключа | |
+| **sshKeyId** | **Integer**| ID SSH-ключа. | |
 
 ### Return type
 
@@ -261,7 +261,7 @@ public class Example {
 
     SshApi apiInstance = new SshApi(defaultClient);
     Integer serverId = 1051; // Integer | ID облачного сервера.
-    Integer sshKeyId = 1051; // Integer | ID SSH-ключа
+    Integer sshKeyId = 1051; // Integer | ID SSH-ключа.
     try {
       apiInstance.deleteKeyFromServer(serverId, sshKeyId);
     } catch (ApiException e) {
@@ -280,7 +280,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **serverId** | **Integer**| ID облачного сервера. | |
-| **sshKeyId** | **Integer**| ID SSH-ключа | |
+| **sshKeyId** | **Integer**| ID SSH-ключа. | |
 
 ### Return type
 
@@ -310,7 +310,7 @@ null (empty response body)
 # **getKey**
 > GetKey200Response getKey(sshKeyId)
 
-Получение SSH-ключа по уникальному идентификатору
+Получение SSH-ключа по ID
 
 Чтобы получить SSH-ключ, отправьте GET-запрос на &#x60;/api/v1/ssh-keys/{ssh_key_id}&#x60;
 
@@ -334,7 +334,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     SshApi apiInstance = new SshApi(defaultClient);
-    Integer sshKeyId = 1051; // Integer | ID SSH-ключа
+    Integer sshKeyId = 1051; // Integer | ID SSH-ключа.
     try {
       GetKey200Response result = apiInstance.getKey(sshKeyId);
       System.out.println(result);
@@ -353,7 +353,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **sshKeyId** | **Integer**| ID SSH-ключа | |
+| **sshKeyId** | **Integer**| ID SSH-ключа. | |
 
 ### Return type
 
@@ -452,7 +452,7 @@ This endpoint does not need any parameter.
 # **updateKey**
 > GetKey200Response updateKey(sshKeyId, updateKeyRequest)
 
-Изменение SSH-ключа по уникальному идентификатору
+Изменение SSH-ключа по ID
 
 Чтобы изменить SSH-ключ, отправьте PATCH-запрос на &#x60;/api/v1/ssh-keys/{ssh_key_id}&#x60;
 
@@ -476,7 +476,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     SshApi apiInstance = new SshApi(defaultClient);
-    Integer sshKeyId = 1051; // Integer | ID SSH-ключа
+    Integer sshKeyId = 1051; // Integer | ID SSH-ключа.
     UpdateKeyRequest updateKeyRequest = new UpdateKeyRequest(); // UpdateKeyRequest | 
     try {
       GetKey200Response result = apiInstance.updateKey(sshKeyId, updateKeyRequest);
@@ -496,7 +496,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **sshKeyId** | **Integer**| ID SSH-ключа | |
+| **sshKeyId** | **Integer**| ID SSH-ключа. | |
 | **updateKeyRequest** | [**UpdateKeyRequest**](UpdateKeyRequest.md)|  | |
 
 ### Return type

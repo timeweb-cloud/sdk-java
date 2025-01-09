@@ -7,12 +7,12 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**name** | **String** | Имя образа |  [optional] |
-|**description** | **String** | Описание образа |  [optional] |
-|**diskId** | **Integer** | Идентификатор диска, для которого создается образ |  [optional] |
-|**uploadUrl** | **URI** | Cсылка для загрузки образа |  [optional] |
-|**location** | **Location** |  |  [optional] |
-|**os** | **OS** |  |  [optional] |
+|**name** | **String** | Имя образа. |  [optional] |
+|**description** | **String** | Описание образа. |  [optional] |
+|**diskId** | **Integer** | ID диска, для которого создается образ. |  [optional] |
+|**uploadUrl** | **URI** | Ссылка для загрузки образа. |  [optional] |
+|**location** | **Location** |  |  |
+|**os** | **OS** |  |  |
 
 
 

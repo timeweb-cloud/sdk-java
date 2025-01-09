@@ -53,7 +53,7 @@ import org.openapitools.client.JSON;
 /**
  * ImageInAPI
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T10:12:31.892103Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T16:09:23.451331Z[Etc/UTC]")
 public class ImageInAPI {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -89,7 +89,7 @@ public class ImageInAPI {
   }
 
    /**
-   * Имя образа
+   * Имя образа.
    * @return name
   **/
   @javax.annotation.Nullable
@@ -110,7 +110,7 @@ public class ImageInAPI {
   }
 
    /**
-   * Описание образа
+   * Описание образа.
    * @return description
   **/
   @javax.annotation.Nullable
@@ -131,7 +131,7 @@ public class ImageInAPI {
   }
 
    /**
-   * Идентификатор диска, для которого создается образ
+   * ID диска, для которого создается образ.
    * @return diskId
   **/
   @javax.annotation.Nullable
@@ -152,7 +152,7 @@ public class ImageInAPI {
   }
 
    /**
-   * Cсылка для загрузки образа
+   * Ссылка для загрузки образа.
    * @return uploadUrl
   **/
   @javax.annotation.Nullable
@@ -176,7 +176,7 @@ public class ImageInAPI {
    * Get location
    * @return location
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public Location getLocation() {
     return location;
   }
@@ -197,7 +197,7 @@ public class ImageInAPI {
    * Get os
    * @return os
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public OS getOs() {
     return os;
   }
@@ -272,6 +272,8 @@ public class ImageInAPI {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("location");
+    openapiRequiredFields.add("os");
   }
 
  /**
@@ -292,6 +294,13 @@ public class ImageInAPI {
       for (Entry<String, JsonElement> entry : entries) {
         if (!ImageInAPI.openapiFields.contains(entry.getKey())) {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ImageInAPI` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        }
+      }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : ImageInAPI.openapiRequiredFields) {
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();

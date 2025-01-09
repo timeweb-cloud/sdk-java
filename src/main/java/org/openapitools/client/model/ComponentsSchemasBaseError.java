@@ -21,9 +21,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.time.OffsetDateTime;
-import org.openapitools.client.model.ImageStatus;
-import org.openapitools.client.model.OS;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -51,310 +48,110 @@ import java.util.Set;
 import org.openapitools.client.JSON;
 
 /**
- * ImageOutAPI
+ * ComponentsSchemasBaseError
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T10:12:31.892103Z[Etc/UTC]")
-public class ImageOutAPI {
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
-  private String id;
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T16:09:23.451331Z[Etc/UTC]")
+public class ComponentsSchemasBaseError {
+  public static final String SERIALIZED_NAME_STATUS_CODE = "status_code";
+  @SerializedName(SERIALIZED_NAME_STATUS_CODE)
+  private Integer statusCode;
 
-  public static final String SERIALIZED_NAME_STATUS = "status";
-  @SerializedName(SERIALIZED_NAME_STATUS)
-  private ImageStatus status;
+  public static final String SERIALIZED_NAME_ERROR_CODE = "error_code";
+  @SerializedName(SERIALIZED_NAME_ERROR_CODE)
+  private String errorCode;
 
-  public static final String SERIALIZED_NAME_CREATED_AT = "created_at";
-  @SerializedName(SERIALIZED_NAME_CREATED_AT)
-  private OffsetDateTime createdAt;
+  public static final String SERIALIZED_NAME_MESSAGE = "message";
+  @SerializedName(SERIALIZED_NAME_MESSAGE)
+  private String message;
 
-  public static final String SERIALIZED_NAME_DELETED_AT = "deleted_at";
-  @SerializedName(SERIALIZED_NAME_DELETED_AT)
-  private OffsetDateTime deletedAt;
+  public static final String SERIALIZED_NAME_RESPONSE_ID = "response_id";
+  @SerializedName(SERIALIZED_NAME_RESPONSE_ID)
+  private String responseId;
 
-  public static final String SERIALIZED_NAME_SIZE = "size";
-  @SerializedName(SERIALIZED_NAME_SIZE)
-  private Integer size;
-
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
-
-  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
-  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
-  private String description;
-
-  public static final String SERIALIZED_NAME_DISK_ID = "disk_id";
-  @SerializedName(SERIALIZED_NAME_DISK_ID)
-  private Integer diskId;
-
-  public static final String SERIALIZED_NAME_LOCATION = "location";
-  @SerializedName(SERIALIZED_NAME_LOCATION)
-  private String location;
-
-  public static final String SERIALIZED_NAME_OS = "os";
-  @SerializedName(SERIALIZED_NAME_OS)
-  private OS os;
-
-  public static final String SERIALIZED_NAME_PROGRESS = "progress";
-  @SerializedName(SERIALIZED_NAME_PROGRESS)
-  private Integer progress;
-
-  public static final String SERIALIZED_NAME_IS_CUSTOM = "is_custom";
-  @SerializedName(SERIALIZED_NAME_IS_CUSTOM)
-  private Boolean isCustom;
-
-  public ImageOutAPI() {
+  public ComponentsSchemasBaseError() {
   }
 
-  public ImageOutAPI id(String id) {
+  public ComponentsSchemasBaseError statusCode(Integer statusCode) {
     
-    this.id = id;
+    this.statusCode = statusCode;
     return this;
   }
 
    /**
-   * Идентификатор образа
-   * @return id
+   * Get statusCode
+   * @return statusCode
   **/
   @javax.annotation.Nonnull
-  public String getId() {
-    return id;
+  public Integer getStatusCode() {
+    return statusCode;
   }
 
 
-  public void setId(String id) {
-    this.id = id;
+  public void setStatusCode(Integer statusCode) {
+    this.statusCode = statusCode;
   }
 
 
-  public ImageOutAPI status(ImageStatus status) {
+  public ComponentsSchemasBaseError errorCode(String errorCode) {
     
-    this.status = status;
+    this.errorCode = errorCode;
     return this;
   }
 
    /**
-   * Get status
-   * @return status
+   * Get errorCode
+   * @return errorCode
   **/
   @javax.annotation.Nonnull
-  public ImageStatus getStatus() {
-    return status;
+  public String getErrorCode() {
+    return errorCode;
   }
 
 
-  public void setStatus(ImageStatus status) {
-    this.status = status;
+  public void setErrorCode(String errorCode) {
+    this.errorCode = errorCode;
   }
 
 
-  public ImageOutAPI createdAt(OffsetDateTime createdAt) {
+  public ComponentsSchemasBaseError message(String message) {
     
-    this.createdAt = createdAt;
+    this.message = message;
     return this;
   }
 
    /**
-   * Дата и время создания
-   * @return createdAt
+   * Get message
+   * @return message
   **/
   @javax.annotation.Nonnull
-  public OffsetDateTime getCreatedAt() {
-    return createdAt;
+  public String getMessage() {
+    return message;
   }
 
 
-  public void setCreatedAt(OffsetDateTime createdAt) {
-    this.createdAt = createdAt;
+  public void setMessage(String message) {
+    this.message = message;
   }
 
 
-  public ImageOutAPI deletedAt(OffsetDateTime deletedAt) {
+  public ComponentsSchemasBaseError responseId(String responseId) {
     
-    this.deletedAt = deletedAt;
+    this.responseId = responseId;
     return this;
   }
 
    /**
-   * Дата и время удаления
-   * @return deletedAt
-  **/
-  @javax.annotation.Nonnull
-  public OffsetDateTime getDeletedAt() {
-    return deletedAt;
-  }
-
-
-  public void setDeletedAt(OffsetDateTime deletedAt) {
-    this.deletedAt = deletedAt;
-  }
-
-
-  public ImageOutAPI size(Integer size) {
-    
-    this.size = size;
-    return this;
-  }
-
-   /**
-   * Размер в мегабайтах
-   * @return size
-  **/
-  @javax.annotation.Nonnull
-  public Integer getSize() {
-    return size;
-  }
-
-
-  public void setSize(Integer size) {
-    this.size = size;
-  }
-
-
-  public ImageOutAPI name(String name) {
-    
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * Имя образа
-   * @return name
-  **/
-  @javax.annotation.Nonnull
-  public String getName() {
-    return name;
-  }
-
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-
-  public ImageOutAPI description(String description) {
-    
-    this.description = description;
-    return this;
-  }
-
-   /**
-   * Описание образа
-   * @return description
-  **/
-  @javax.annotation.Nonnull
-  public String getDescription() {
-    return description;
-  }
-
-
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-
-  public ImageOutAPI diskId(Integer diskId) {
-    
-    this.diskId = diskId;
-    return this;
-  }
-
-   /**
-   * Идентификатор связанного с образом диска
-   * @return diskId
-  **/
-  @javax.annotation.Nonnull
-  public Integer getDiskId() {
-    return diskId;
-  }
-
-
-  public void setDiskId(Integer diskId) {
-    this.diskId = diskId;
-  }
-
-
-  public ImageOutAPI location(String location) {
-    
-    this.location = location;
-    return this;
-  }
-
-   /**
-   * Локация, в которой создан образ
-   * @return location
+   * Get responseId
+   * @return responseId
   **/
   @javax.annotation.Nullable
-  public String getLocation() {
-    return location;
+  public String getResponseId() {
+    return responseId;
   }
 
 
-  public void setLocation(String location) {
-    this.location = location;
-  }
-
-
-  public ImageOutAPI os(OS os) {
-    
-    this.os = os;
-    return this;
-  }
-
-   /**
-   * Get os
-   * @return os
-  **/
-  @javax.annotation.Nonnull
-  public OS getOs() {
-    return os;
-  }
-
-
-  public void setOs(OS os) {
-    this.os = os;
-  }
-
-
-  public ImageOutAPI progress(Integer progress) {
-    
-    this.progress = progress;
-    return this;
-  }
-
-   /**
-   * Процент создания образа
-   * @return progress
-  **/
-  @javax.annotation.Nonnull
-  public Integer getProgress() {
-    return progress;
-  }
-
-
-  public void setProgress(Integer progress) {
-    this.progress = progress;
-  }
-
-
-  public ImageOutAPI isCustom(Boolean isCustom) {
-    
-    this.isCustom = isCustom;
-    return this;
-  }
-
-   /**
-   * Признак указывающий на то является ли образ кастомным
-   * @return isCustom
-  **/
-  @javax.annotation.Nonnull
-  public Boolean getIsCustom() {
-    return isCustom;
-  }
-
-
-  public void setIsCustom(Boolean isCustom) {
-    this.isCustom = isCustom;
+  public void setResponseId(String responseId) {
+    this.responseId = responseId;
   }
 
 
@@ -367,42 +164,26 @@ public class ImageOutAPI {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ImageOutAPI imageOutAPI = (ImageOutAPI) o;
-    return Objects.equals(this.id, imageOutAPI.id) &&
-        Objects.equals(this.status, imageOutAPI.status) &&
-        Objects.equals(this.createdAt, imageOutAPI.createdAt) &&
-        Objects.equals(this.deletedAt, imageOutAPI.deletedAt) &&
-        Objects.equals(this.size, imageOutAPI.size) &&
-        Objects.equals(this.name, imageOutAPI.name) &&
-        Objects.equals(this.description, imageOutAPI.description) &&
-        Objects.equals(this.diskId, imageOutAPI.diskId) &&
-        Objects.equals(this.location, imageOutAPI.location) &&
-        Objects.equals(this.os, imageOutAPI.os) &&
-        Objects.equals(this.progress, imageOutAPI.progress) &&
-        Objects.equals(this.isCustom, imageOutAPI.isCustom);
+    ComponentsSchemasBaseError componentsSchemasBaseError = (ComponentsSchemasBaseError) o;
+    return Objects.equals(this.statusCode, componentsSchemasBaseError.statusCode) &&
+        Objects.equals(this.errorCode, componentsSchemasBaseError.errorCode) &&
+        Objects.equals(this.message, componentsSchemasBaseError.message) &&
+        Objects.equals(this.responseId, componentsSchemasBaseError.responseId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, status, createdAt, deletedAt, size, name, description, diskId, location, os, progress, isCustom);
+    return Objects.hash(statusCode, errorCode, message, responseId);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ImageOutAPI {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
-    sb.append("    deletedAt: ").append(toIndentedString(deletedAt)).append("\n");
-    sb.append("    size: ").append(toIndentedString(size)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    diskId: ").append(toIndentedString(diskId)).append("\n");
-    sb.append("    location: ").append(toIndentedString(location)).append("\n");
-    sb.append("    os: ").append(toIndentedString(os)).append("\n");
-    sb.append("    progress: ").append(toIndentedString(progress)).append("\n");
-    sb.append("    isCustom: ").append(toIndentedString(isCustom)).append("\n");
+    sb.append("class ComponentsSchemasBaseError {\n");
+    sb.append("    statusCode: ").append(toIndentedString(statusCode)).append("\n");
+    sb.append("    errorCode: ").append(toIndentedString(errorCode)).append("\n");
+    sb.append("    message: ").append(toIndentedString(message)).append("\n");
+    sb.append("    responseId: ").append(toIndentedString(responseId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -425,73 +206,54 @@ public class ImageOutAPI {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("id");
-    openapiFields.add("status");
-    openapiFields.add("created_at");
-    openapiFields.add("deleted_at");
-    openapiFields.add("size");
-    openapiFields.add("name");
-    openapiFields.add("description");
-    openapiFields.add("disk_id");
-    openapiFields.add("location");
-    openapiFields.add("os");
-    openapiFields.add("progress");
-    openapiFields.add("is_custom");
+    openapiFields.add("status_code");
+    openapiFields.add("error_code");
+    openapiFields.add("message");
+    openapiFields.add("response_id");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("id");
-    openapiRequiredFields.add("status");
-    openapiRequiredFields.add("created_at");
-    openapiRequiredFields.add("deleted_at");
-    openapiRequiredFields.add("size");
-    openapiRequiredFields.add("name");
-    openapiRequiredFields.add("description");
-    openapiRequiredFields.add("disk_id");
-    openapiRequiredFields.add("os");
-    openapiRequiredFields.add("progress");
-    openapiRequiredFields.add("is_custom");
+    openapiRequiredFields.add("status_code");
+    openapiRequiredFields.add("error_code");
+    openapiRequiredFields.add("message");
   }
 
  /**
   * Validates the JSON Element and throws an exception if issues found
   *
   * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to ImageOutAPI
+  * @throws IOException if the JSON Element is invalid with respect to ComponentsSchemasBaseError
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!ImageOutAPI.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ImageOutAPI is not found in the empty JSON string", ImageOutAPI.openapiRequiredFields.toString()));
+        if (!ComponentsSchemasBaseError.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in ComponentsSchemasBaseError is not found in the empty JSON string", ComponentsSchemasBaseError.openapiRequiredFields.toString()));
         }
       }
 
       Set<Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Entry<String, JsonElement> entry : entries) {
-        if (!ImageOutAPI.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ImageOutAPI` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!ComponentsSchemasBaseError.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ComponentsSchemasBaseError` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ImageOutAPI.openapiRequiredFields) {
+      for (String requiredField : ComponentsSchemasBaseError.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      if (!jsonObj.get("error_code").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `error_code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("error_code").toString()));
       }
-      if (!jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      if (!jsonObj.get("message").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `message` to be a primitive type in the JSON string but got `%s`", jsonObj.get("message").toString()));
       }
-      if (!jsonObj.get("description").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
-      }
-      if ((jsonObj.get("location") != null && !jsonObj.get("location").isJsonNull()) && !jsonObj.get("location").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `location` to be a primitive type in the JSON string but got `%s`", jsonObj.get("location").toString()));
+      if ((jsonObj.get("response_id") != null && !jsonObj.get("response_id").isJsonNull()) && !jsonObj.get("response_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `response_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("response_id").toString()));
       }
   }
 
@@ -499,22 +261,22 @@ public class ImageOutAPI {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!ImageOutAPI.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'ImageOutAPI' and its subtypes
+       if (!ComponentsSchemasBaseError.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ComponentsSchemasBaseError' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<ImageOutAPI> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(ImageOutAPI.class));
+       final TypeAdapter<ComponentsSchemasBaseError> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ComponentsSchemasBaseError.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<ImageOutAPI>() {
+       return (TypeAdapter<T>) new TypeAdapter<ComponentsSchemasBaseError>() {
            @Override
-           public void write(JsonWriter out, ImageOutAPI value) throws IOException {
+           public void write(JsonWriter out, ComponentsSchemasBaseError value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public ImageOutAPI read(JsonReader in) throws IOException {
+           public ComponentsSchemasBaseError read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -525,18 +287,18 @@ public class ImageOutAPI {
   }
 
  /**
-  * Create an instance of ImageOutAPI given an JSON string
+  * Create an instance of ComponentsSchemasBaseError given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of ImageOutAPI
-  * @throws IOException if the JSON string is invalid with respect to ImageOutAPI
+  * @return An instance of ComponentsSchemasBaseError
+  * @throws IOException if the JSON string is invalid with respect to ComponentsSchemasBaseError
   */
-  public static ImageOutAPI fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, ImageOutAPI.class);
+  public static ComponentsSchemasBaseError fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ComponentsSchemasBaseError.class);
   }
 
  /**
-  * Convert an instance of ImageOutAPI to an JSON string
+  * Convert an instance of ComponentsSchemasBaseError to an JSON string
   *
   * @return JSON string
   */

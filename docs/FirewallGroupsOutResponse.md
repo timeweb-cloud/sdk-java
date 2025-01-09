@@ -7,9 +7,9 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**responseId** | **String** | Идентификатор запроса |  [optional] |
+|**responseId** | **String** | ID запроса. |  [optional] |
 |**meta** | [**Meta**](Meta.md) |  |  |
-|**groups** | [**List&lt;FirewallGroupOutAPI&gt;**](FirewallGroupOutAPI.md) | Массив объектов Групп правил |  |
+|**groups** | [**List&lt;FirewallGroup&gt;**](FirewallGroup.md) |  |  |
 
 
 

@@ -7,9 +7,9 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**responseId** | **String** | Идентификатор запроса |  [optional] |
+|**responseId** | **String** | ID запроса. |  [optional] |
 |**meta** | [**Meta**](Meta.md) |  |  |
-|**images** | [**List&lt;ImageOutAPI&gt;**](ImageOutAPI.md) | Массив объектов Образ |  |
+|**images** | [**List&lt;Image&gt;**](Image.md) |  |  |
 
 
 

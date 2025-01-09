@@ -386,7 +386,7 @@ public class SshApi {
     }
     /**
      * Build call for deleteKey
-     * @param sshKeyId ID SSH-ключа (required)
+     * @param sshKeyId ID SSH-ключа. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -459,9 +459,9 @@ public class SshApi {
     }
 
     /**
-     * Удаление SSH-ключа по уникальному идентификатору
+     * Удаление SSH-ключа по ID
      * Чтобы удалить SSH-ключ, отправьте DELETE-запрос на &#x60;/api/v1/ssh-keys/{ssh_key_id}&#x60;
-     * @param sshKeyId ID SSH-ключа (required)
+     * @param sshKeyId ID SSH-ключа. (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -480,9 +480,9 @@ public class SshApi {
     }
 
     /**
-     * Удаление SSH-ключа по уникальному идентификатору
+     * Удаление SSH-ключа по ID
      * Чтобы удалить SSH-ключ, отправьте DELETE-запрос на &#x60;/api/v1/ssh-keys/{ssh_key_id}&#x60;
-     * @param sshKeyId ID SSH-ключа (required)
+     * @param sshKeyId ID SSH-ключа. (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -503,9 +503,9 @@ public class SshApi {
     }
 
     /**
-     * Удаление SSH-ключа по уникальному идентификатору (asynchronously)
+     * Удаление SSH-ключа по ID (asynchronously)
      * Чтобы удалить SSH-ключ, отправьте DELETE-запрос на &#x60;/api/v1/ssh-keys/{ssh_key_id}&#x60;
-     * @param sshKeyId ID SSH-ключа (required)
+     * @param sshKeyId ID SSH-ключа. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -530,7 +530,7 @@ public class SshApi {
     /**
      * Build call for deleteKeyFromServer
      * @param serverId ID облачного сервера. (required)
-     * @param sshKeyId ID SSH-ключа (required)
+     * @param sshKeyId ID SSH-ключа. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -612,7 +612,7 @@ public class SshApi {
      * Удаление SSH-ключей с сервера
      * Чтобы удалить SSH-ключ с сервера, отправьте DELETE-запрос на &#x60;/api/v1/servers/{server_id}/ssh-keys/{ssh_key_id}&#x60;
      * @param serverId ID облачного сервера. (required)
-     * @param sshKeyId ID SSH-ключа (required)
+     * @param sshKeyId ID SSH-ключа. (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -634,7 +634,7 @@ public class SshApi {
      * Удаление SSH-ключей с сервера
      * Чтобы удалить SSH-ключ с сервера, отправьте DELETE-запрос на &#x60;/api/v1/servers/{server_id}/ssh-keys/{ssh_key_id}&#x60;
      * @param serverId ID облачного сервера. (required)
-     * @param sshKeyId ID SSH-ключа (required)
+     * @param sshKeyId ID SSH-ключа. (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -658,7 +658,7 @@ public class SshApi {
      * Удаление SSH-ключей с сервера (asynchronously)
      * Чтобы удалить SSH-ключ с сервера, отправьте DELETE-запрос на &#x60;/api/v1/servers/{server_id}/ssh-keys/{ssh_key_id}&#x60;
      * @param serverId ID облачного сервера. (required)
-     * @param sshKeyId ID SSH-ключа (required)
+     * @param sshKeyId ID SSH-ключа. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -682,7 +682,7 @@ public class SshApi {
     }
     /**
      * Build call for getKey
-     * @param sshKeyId ID SSH-ключа (required)
+     * @param sshKeyId ID SSH-ключа. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -755,9 +755,9 @@ public class SshApi {
     }
 
     /**
-     * Получение SSH-ключа по уникальному идентификатору
+     * Получение SSH-ключа по ID
      * Чтобы получить SSH-ключ, отправьте GET-запрос на &#x60;/api/v1/ssh-keys/{ssh_key_id}&#x60;
-     * @param sshKeyId ID SSH-ключа (required)
+     * @param sshKeyId ID SSH-ключа. (required)
      * @return GetKey200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -778,9 +778,9 @@ public class SshApi {
     }
 
     /**
-     * Получение SSH-ключа по уникальному идентификатору
+     * Получение SSH-ключа по ID
      * Чтобы получить SSH-ключ, отправьте GET-запрос на &#x60;/api/v1/ssh-keys/{ssh_key_id}&#x60;
-     * @param sshKeyId ID SSH-ключа (required)
+     * @param sshKeyId ID SSH-ключа. (required)
      * @return ApiResponse&lt;GetKey200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -802,9 +802,9 @@ public class SshApi {
     }
 
     /**
-     * Получение SSH-ключа по уникальному идентификатору (asynchronously)
+     * Получение SSH-ключа по ID (asynchronously)
      * Чтобы получить SSH-ключ, отправьте GET-запрос на &#x60;/api/v1/ssh-keys/{ssh_key_id}&#x60;
-     * @param sshKeyId ID SSH-ключа (required)
+     * @param sshKeyId ID SSH-ключа. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -966,7 +966,7 @@ public class SshApi {
     }
     /**
      * Build call for updateKey
-     * @param sshKeyId ID SSH-ключа (required)
+     * @param sshKeyId ID SSH-ключа. (required)
      * @param updateKeyRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1046,9 +1046,9 @@ public class SshApi {
     }
 
     /**
-     * Изменение SSH-ключа по уникальному идентификатору
+     * Изменение SSH-ключа по ID
      * Чтобы изменить SSH-ключ, отправьте PATCH-запрос на &#x60;/api/v1/ssh-keys/{ssh_key_id}&#x60;
-     * @param sshKeyId ID SSH-ключа (required)
+     * @param sshKeyId ID SSH-ключа. (required)
      * @param updateKeyRequest  (required)
      * @return GetKey200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1070,9 +1070,9 @@ public class SshApi {
     }
 
     /**
-     * Изменение SSH-ключа по уникальному идентификатору
+     * Изменение SSH-ключа по ID
      * Чтобы изменить SSH-ключ, отправьте PATCH-запрос на &#x60;/api/v1/ssh-keys/{ssh_key_id}&#x60;
-     * @param sshKeyId ID SSH-ключа (required)
+     * @param sshKeyId ID SSH-ключа. (required)
      * @param updateKeyRequest  (required)
      * @return ApiResponse&lt;GetKey200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1095,9 +1095,9 @@ public class SshApi {
     }
 
     /**
-     * Изменение SSH-ключа по уникальному идентификатору (asynchronously)
+     * Изменение SSH-ключа по ID (asynchronously)
      * Чтобы изменить SSH-ключ, отправьте PATCH-запрос на &#x60;/api/v1/ssh-keys/{ssh_key_id}&#x60;
-     * @param sshKeyId ID SSH-ключа (required)
+     * @param sshKeyId ID SSH-ключа. (required)
      * @param updateKeyRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

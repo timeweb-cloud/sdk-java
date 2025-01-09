@@ -69,4 +69,12 @@ public class UpdateServerConfiguratorTest {
         // TODO: test ram
     }
 
+    /**
+     * Test the property 'gpu'
+     */
+    @Test
+    public void gpuTest() {
+        // TODO: test gpu
+    }
+
 }

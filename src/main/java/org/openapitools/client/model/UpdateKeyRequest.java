@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * UpdateKeyRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T10:12:31.892103Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T16:09:23.451331Z[Etc/UTC]")
 public class UpdateKeyRequest {
   public static final String SERIALIZED_NAME_BODY = "body";
   @SerializedName(SERIALIZED_NAME_BODY)
@@ -74,7 +74,7 @@ public class UpdateKeyRequest {
   }
 
    /**
-   * Тело SSH-ключа
+   * Тело SSH-ключа.
    * @return body
   **/
   @javax.annotation.Nullable
@@ -95,7 +95,7 @@ public class UpdateKeyRequest {
   }
 
    /**
-   * Будет ли выбираться SSH-ключ по умолчанию при создании сервера
+   * Будет ли выбираться SSH-ключ по умолчанию при создании сервера.
    * @return isDefault
   **/
   @javax.annotation.Nullable
@@ -116,7 +116,7 @@ public class UpdateKeyRequest {
   }
 
    /**
-   * Название SSH-ключа
+   * Название SSH-ключа.
    * @return name
   **/
   @javax.annotation.Nullable

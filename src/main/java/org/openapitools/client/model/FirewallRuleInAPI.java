@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * FirewallRuleInAPI
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T10:12:31.892103Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T16:09:23.451331Z[Etc/UTC]")
 public class FirewallRuleInAPI {
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
@@ -84,7 +84,7 @@ public class FirewallRuleInAPI {
   }
 
    /**
-   * Описание правила
+   * Описание правила.
    * @return description
   **/
   @javax.annotation.Nullable
@@ -126,7 +126,7 @@ public class FirewallRuleInAPI {
   }
 
    /**
-   * Порт или диапазон портов, в случае tcp или udp
+   * Порт или диапазон портов, в случае tcp или udp.
    * @return port
   **/
   @javax.annotation.Nullable
@@ -168,7 +168,7 @@ public class FirewallRuleInAPI {
   }
 
    /**
-   * Сетевой адрес или подсеть. Поддерживаются протоколы IPv4  и IPv6
+   * Сетевой адрес или подсеть. Поддерживаются протоколы IPv4  и IPv.6
    * @return cidr
   **/
   @javax.annotation.Nullable

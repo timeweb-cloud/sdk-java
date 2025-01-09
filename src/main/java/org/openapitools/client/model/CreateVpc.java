@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * CreateVpc
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T10:12:31.892103Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T16:09:23.451331Z[Etc/UTC]")
 public class CreateVpc {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -68,7 +68,11 @@ public class CreateVpc {
   public enum LocationEnum {
     RU_1("ru-1"),
     
-    PL_1("pl-1");
+    RU_2("ru-2"),
+    
+    PL_1("pl-1"),
+    
+    NL_1("nl-1");
 
     private String value;
 

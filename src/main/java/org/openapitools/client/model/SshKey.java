@@ -55,7 +55,7 @@ import org.openapitools.client.JSON;
 /**
  * SshKey
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T10:12:31.892103Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T16:09:23.451331Z[Etc/UTC]")
 public class SshKey {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -91,7 +91,7 @@ public class SshKey {
   }
 
    /**
-   * ID SSH-ключа
+   * ID SSH-ключа.
    * @return id
   **/
   @javax.annotation.Nonnull
@@ -112,7 +112,7 @@ public class SshKey {
   }
 
    /**
-   * Название SSH-ключа
+   * Название SSH-ключа.
    * @return name
   **/
   @javax.annotation.Nonnull
@@ -133,7 +133,7 @@ public class SshKey {
   }
 
    /**
-   * Тело SSH-ключа
+   * Тело SSH-ключа.
    * @return body
   **/
   @javax.annotation.Nonnull
@@ -154,7 +154,7 @@ public class SshKey {
   }
 
    /**
-   * Дата создания ключа
+   * Значение времени, указанное в комбинированном формате даты и времени ISO8601, которое представляет, когда был создан SSH-ключ.
    * @return createdAt
   **/
   @javax.annotation.Nonnull
@@ -183,7 +183,7 @@ public class SshKey {
   }
 
    /**
-   * Список серверов, которые используют SSH-ключ
+   * Список серверов, которые используют SSH-ключ.
    * @return usedBy
   **/
   @javax.annotation.Nonnull
@@ -204,7 +204,7 @@ public class SshKey {
   }
 
    /**
-   * Будет ли выбираться SSh-ключ по умолчанию при создании сервера
+   * Это логическое значение, которое показывает, будет ли выбираться SSH-ключ по умолчанию при создании сервера.
    * @return isDefault
   **/
   @javax.annotation.Nullable

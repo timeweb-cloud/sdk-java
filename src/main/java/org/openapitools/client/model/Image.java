@@ -21,7 +21,8 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import org.openapitools.client.model.ResourceType;
+import org.openapitools.client.model.ImageStatus;
+import org.openapitools.client.model.OS;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -49,59 +50,459 @@ import java.util.Set;
 import org.openapitools.client.JSON;
 
 /**
- * FirewallGroupResourceOutAPI
+ * Image
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T10:12:31.892103Z[Etc/UTC]")
-public class FirewallGroupResourceOutAPI {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T16:09:23.451331Z[Etc/UTC]")
+public class Image {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private String id;
+
+  public static final String SERIALIZED_NAME_STATUS = "status";
+  @SerializedName(SERIALIZED_NAME_STATUS)
+  private ImageStatus status;
+
+  public static final String SERIALIZED_NAME_CREATED_AT = "created_at";
+  @SerializedName(SERIALIZED_NAME_CREATED_AT)
+  private String createdAt;
+
+  public static final String SERIALIZED_NAME_DELETED_AT = "deleted_at";
+  @SerializedName(SERIALIZED_NAME_DELETED_AT)
+  private String deletedAt;
+
+  public static final String SERIALIZED_NAME_SIZE = "size";
+  @SerializedName(SERIALIZED_NAME_SIZE)
+  private Integer size;
+
+  public static final String SERIALIZED_NAME_VIRTUAL_SIZE = "virtual_size";
+  @SerializedName(SERIALIZED_NAME_VIRTUAL_SIZE)
+  private Integer virtualSize;
+
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  private String name;
+
+  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
+  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  private String description;
+
+  public static final String SERIALIZED_NAME_DISK_ID = "disk_id";
+  @SerializedName(SERIALIZED_NAME_DISK_ID)
+  private Integer diskId;
+
+  /**
+   * Локация образа.
+   */
+  @JsonAdapter(LocationEnum.Adapter.class)
+  public enum LocationEnum {
+    RU_1("ru-1"),
+    
+    RU_2("ru-2"),
+    
+    PL_1("pl-1"),
+    
+    KZ_1("kz-1"),
+    
+    NL_1("nl-1");
+
+    private String value;
+
+    LocationEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static LocationEnum fromValue(String value) {
+      for (LocationEnum b : LocationEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<LocationEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final LocationEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public LocationEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return LocationEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_LOCATION = "location";
+  @SerializedName(SERIALIZED_NAME_LOCATION)
+  private LocationEnum location;
+
+  public static final String SERIALIZED_NAME_OS = "os";
+  @SerializedName(SERIALIZED_NAME_OS)
+  private OS os;
+
+  public static final String SERIALIZED_NAME_PROGRESS = "progress";
+  @SerializedName(SERIALIZED_NAME_PROGRESS)
+  private Integer progress;
+
+  public static final String SERIALIZED_NAME_IS_CUSTOM = "is_custom";
+  @SerializedName(SERIALIZED_NAME_IS_CUSTOM)
+  private Boolean isCustom;
+
+  /**
+   * Тип образа.
+   */
+  @JsonAdapter(TypeEnum.Adapter.class)
+  public enum TypeEnum {
+    QCOW2("qcow2"),
+    
+    ISO("iso");
+
+    private String value;
+
+    TypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static TypeEnum fromValue(String value) {
+      for (TypeEnum b : TypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<TypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public TypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return TypeEnum.fromValue(value);
+      }
+    }
+  }
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
-  private ResourceType type;
+  private TypeEnum type;
 
-  public FirewallGroupResourceOutAPI() {
+  public Image() {
   }
 
-  public FirewallGroupResourceOutAPI id(Integer id) {
+  public Image id(String id) {
     
     this.id = id;
     return this;
   }
 
    /**
-   * resource id
+   * ID образа.
    * @return id
   **/
   @javax.annotation.Nonnull
-  public Integer getId() {
+  public String getId() {
     return id;
   }
 
 
-  public void setId(Integer id) {
+  public void setId(String id) {
     this.id = id;
   }
 
 
-  public FirewallGroupResourceOutAPI type(ResourceType type) {
+  public Image status(ImageStatus status) {
+    
+    this.status = status;
+    return this;
+  }
+
+   /**
+   * Get status
+   * @return status
+  **/
+  @javax.annotation.Nonnull
+  public ImageStatus getStatus() {
+    return status;
+  }
+
+
+  public void setStatus(ImageStatus status) {
+    this.status = status;
+  }
+
+
+  public Image createdAt(String createdAt) {
+    
+    this.createdAt = createdAt;
+    return this;
+  }
+
+   /**
+   * Значение времени, указанное в комбинированном формате даты и времени ISO8601, которое представляет, когда был создан образ.
+   * @return createdAt
+  **/
+  @javax.annotation.Nonnull
+  public String getCreatedAt() {
+    return createdAt;
+  }
+
+
+  public void setCreatedAt(String createdAt) {
+    this.createdAt = createdAt;
+  }
+
+
+  public Image deletedAt(String deletedAt) {
+    
+    this.deletedAt = deletedAt;
+    return this;
+  }
+
+   /**
+   * Значение времени, указанное в комбинированном формате даты и времени ISO8601, которое представляет, когда был удален образ.
+   * @return deletedAt
+  **/
+  @javax.annotation.Nonnull
+  public String getDeletedAt() {
+    return deletedAt;
+  }
+
+
+  public void setDeletedAt(String deletedAt) {
+    this.deletedAt = deletedAt;
+  }
+
+
+  public Image size(Integer size) {
+    
+    this.size = size;
+    return this;
+  }
+
+   /**
+   * Размер физического диска в мегабайтах.
+   * @return size
+  **/
+  @javax.annotation.Nonnull
+  public Integer getSize() {
+    return size;
+  }
+
+
+  public void setSize(Integer size) {
+    this.size = size;
+  }
+
+
+  public Image virtualSize(Integer virtualSize) {
+    
+    this.virtualSize = virtualSize;
+    return this;
+  }
+
+   /**
+   * Размер виртуального диска в мегабайтах.
+   * @return virtualSize
+  **/
+  @javax.annotation.Nonnull
+  public Integer getVirtualSize() {
+    return virtualSize;
+  }
+
+
+  public void setVirtualSize(Integer virtualSize) {
+    this.virtualSize = virtualSize;
+  }
+
+
+  public Image name(String name) {
+    
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * Имя образа.
+   * @return name
+  **/
+  @javax.annotation.Nonnull
+  public String getName() {
+    return name;
+  }
+
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+
+  public Image description(String description) {
+    
+    this.description = description;
+    return this;
+  }
+
+   /**
+   * Описание образа.
+   * @return description
+  **/
+  @javax.annotation.Nonnull
+  public String getDescription() {
+    return description;
+  }
+
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+
+  public Image diskId(Integer diskId) {
+    
+    this.diskId = diskId;
+    return this;
+  }
+
+   /**
+   * ID связанного с образом диска.
+   * @return diskId
+  **/
+  @javax.annotation.Nonnull
+  public Integer getDiskId() {
+    return diskId;
+  }
+
+
+  public void setDiskId(Integer diskId) {
+    this.diskId = diskId;
+  }
+
+
+  public Image location(LocationEnum location) {
+    
+    this.location = location;
+    return this;
+  }
+
+   /**
+   * Локация образа.
+   * @return location
+  **/
+  @javax.annotation.Nonnull
+  public LocationEnum getLocation() {
+    return location;
+  }
+
+
+  public void setLocation(LocationEnum location) {
+    this.location = location;
+  }
+
+
+  public Image os(OS os) {
+    
+    this.os = os;
+    return this;
+  }
+
+   /**
+   * Get os
+   * @return os
+  **/
+  @javax.annotation.Nonnull
+  public OS getOs() {
+    return os;
+  }
+
+
+  public void setOs(OS os) {
+    this.os = os;
+  }
+
+
+  public Image progress(Integer progress) {
+    
+    this.progress = progress;
+    return this;
+  }
+
+   /**
+   * Процент создания образа.
+   * @return progress
+  **/
+  @javax.annotation.Nonnull
+  public Integer getProgress() {
+    return progress;
+  }
+
+
+  public void setProgress(Integer progress) {
+    this.progress = progress;
+  }
+
+
+  public Image isCustom(Boolean isCustom) {
+    
+    this.isCustom = isCustom;
+    return this;
+  }
+
+   /**
+   * Логическое значение, которое показывает, является ли образ кастомным.
+   * @return isCustom
+  **/
+  @javax.annotation.Nonnull
+  public Boolean getIsCustom() {
+    return isCustom;
+  }
+
+
+  public void setIsCustom(Boolean isCustom) {
+    this.isCustom = isCustom;
+  }
+
+
+  public Image type(TypeEnum type) {
     
     this.type = type;
     return this;
   }
 
    /**
-   * Get type
+   * Тип образа.
    * @return type
   **/
   @javax.annotation.Nonnull
-  public ResourceType getType() {
+  public TypeEnum getType() {
     return type;
   }
 
 
-  public void setType(ResourceType type) {
+  public void setType(TypeEnum type) {
     this.type = type;
   }
 
@@ -115,21 +516,45 @@ public class FirewallGroupResourceOutAPI {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    FirewallGroupResourceOutAPI firewallGroupResourceOutAPI = (FirewallGroupResourceOutAPI) o;
-    return Objects.equals(this.id, firewallGroupResourceOutAPI.id) &&
-        Objects.equals(this.type, firewallGroupResourceOutAPI.type);
+    Image image = (Image) o;
+    return Objects.equals(this.id, image.id) &&
+        Objects.equals(this.status, image.status) &&
+        Objects.equals(this.createdAt, image.createdAt) &&
+        Objects.equals(this.deletedAt, image.deletedAt) &&
+        Objects.equals(this.size, image.size) &&
+        Objects.equals(this.virtualSize, image.virtualSize) &&
+        Objects.equals(this.name, image.name) &&
+        Objects.equals(this.description, image.description) &&
+        Objects.equals(this.diskId, image.diskId) &&
+        Objects.equals(this.location, image.location) &&
+        Objects.equals(this.os, image.os) &&
+        Objects.equals(this.progress, image.progress) &&
+        Objects.equals(this.isCustom, image.isCustom) &&
+        Objects.equals(this.type, image.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, type);
+    return Objects.hash(id, status, createdAt, deletedAt, size, virtualSize, name, description, diskId, location, os, progress, isCustom, type);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class FirewallGroupResourceOutAPI {\n");
+    sb.append("class Image {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    deletedAt: ").append(toIndentedString(deletedAt)).append("\n");
+    sb.append("    size: ").append(toIndentedString(size)).append("\n");
+    sb.append("    virtualSize: ").append(toIndentedString(virtualSize)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    diskId: ").append(toIndentedString(diskId)).append("\n");
+    sb.append("    location: ").append(toIndentedString(location)).append("\n");
+    sb.append("    os: ").append(toIndentedString(os)).append("\n");
+    sb.append("    progress: ").append(toIndentedString(progress)).append("\n");
+    sb.append("    isCustom: ").append(toIndentedString(isCustom)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -154,11 +579,35 @@ public class FirewallGroupResourceOutAPI {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("id");
+    openapiFields.add("status");
+    openapiFields.add("created_at");
+    openapiFields.add("deleted_at");
+    openapiFields.add("size");
+    openapiFields.add("virtual_size");
+    openapiFields.add("name");
+    openapiFields.add("description");
+    openapiFields.add("disk_id");
+    openapiFields.add("location");
+    openapiFields.add("os");
+    openapiFields.add("progress");
+    openapiFields.add("is_custom");
     openapiFields.add("type");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("id");
+    openapiRequiredFields.add("status");
+    openapiRequiredFields.add("created_at");
+    openapiRequiredFields.add("deleted_at");
+    openapiRequiredFields.add("size");
+    openapiRequiredFields.add("virtual_size");
+    openapiRequiredFields.add("name");
+    openapiRequiredFields.add("description");
+    openapiRequiredFields.add("disk_id");
+    openapiRequiredFields.add("location");
+    openapiRequiredFields.add("os");
+    openapiRequiredFields.add("progress");
+    openapiRequiredFields.add("is_custom");
     openapiRequiredFields.add("type");
   }
 
@@ -166,52 +615,73 @@ public class FirewallGroupResourceOutAPI {
   * Validates the JSON Element and throws an exception if issues found
   *
   * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to FirewallGroupResourceOutAPI
+  * @throws IOException if the JSON Element is invalid with respect to Image
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!FirewallGroupResourceOutAPI.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in FirewallGroupResourceOutAPI is not found in the empty JSON string", FirewallGroupResourceOutAPI.openapiRequiredFields.toString()));
+        if (!Image.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in Image is not found in the empty JSON string", Image.openapiRequiredFields.toString()));
         }
       }
 
       Set<Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Entry<String, JsonElement> entry : entries) {
-        if (!FirewallGroupResourceOutAPI.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `FirewallGroupResourceOutAPI` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!Image.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Image` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : FirewallGroupResourceOutAPI.openapiRequiredFields) {
+      for (String requiredField : Image.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if (!jsonObj.get("id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      }
+      if (!jsonObj.get("created_at").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `created_at` to be a primitive type in the JSON string but got `%s`", jsonObj.get("created_at").toString()));
+      }
+      if (!jsonObj.get("deleted_at").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `deleted_at` to be a primitive type in the JSON string but got `%s`", jsonObj.get("deleted_at").toString()));
+      }
+      if (!jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      if (!jsonObj.get("description").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
+      }
+      if (!jsonObj.get("location").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `location` to be a primitive type in the JSON string but got `%s`", jsonObj.get("location").toString()));
+      }
+      if (!jsonObj.get("type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!FirewallGroupResourceOutAPI.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'FirewallGroupResourceOutAPI' and its subtypes
+       if (!Image.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'Image' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<FirewallGroupResourceOutAPI> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(FirewallGroupResourceOutAPI.class));
+       final TypeAdapter<Image> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(Image.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<FirewallGroupResourceOutAPI>() {
+       return (TypeAdapter<T>) new TypeAdapter<Image>() {
            @Override
-           public void write(JsonWriter out, FirewallGroupResourceOutAPI value) throws IOException {
+           public void write(JsonWriter out, Image value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public FirewallGroupResourceOutAPI read(JsonReader in) throws IOException {
+           public Image read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -222,18 +692,18 @@ public class FirewallGroupResourceOutAPI {
   }
 
  /**
-  * Create an instance of FirewallGroupResourceOutAPI given an JSON string
+  * Create an instance of Image given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of FirewallGroupResourceOutAPI
-  * @throws IOException if the JSON string is invalid with respect to FirewallGroupResourceOutAPI
+  * @return An instance of Image
+  * @throws IOException if the JSON string is invalid with respect to Image
   */
-  public static FirewallGroupResourceOutAPI fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, FirewallGroupResourceOutAPI.class);
+  public static Image fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, Image.class);
   }
 
  /**
-  * Convert an instance of FirewallGroupResourceOutAPI to an JSON string
+  * Convert an instance of Image to an JSON string
   *
   * @return JSON string
   */

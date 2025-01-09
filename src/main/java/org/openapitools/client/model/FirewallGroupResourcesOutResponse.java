@@ -23,7 +23,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import org.openapitools.client.model.FirewallGroupResourceOutAPI;
+import org.openapitools.client.model.FirewallGroupResource;
 import org.openapitools.client.model.Meta;
 
 import com.google.gson.Gson;
@@ -54,7 +54,7 @@ import org.openapitools.client.JSON;
 /**
  * FirewallGroupResourcesOutResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T10:12:31.892103Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T16:09:23.451331Z[Etc/UTC]")
 public class FirewallGroupResourcesOutResponse {
   public static final String SERIALIZED_NAME_RESPONSE_ID = "response_id";
   @SerializedName(SERIALIZED_NAME_RESPONSE_ID)
@@ -66,7 +66,7 @@ public class FirewallGroupResourcesOutResponse {
 
   public static final String SERIALIZED_NAME_RESOURCES = "resources";
   @SerializedName(SERIALIZED_NAME_RESOURCES)
-  private List<FirewallGroupResourceOutAPI> resources = new ArrayList<>();
+  private List<FirewallGroupResource> resources = new ArrayList<>();
 
   public FirewallGroupResourcesOutResponse() {
   }
@@ -78,7 +78,7 @@ public class FirewallGroupResourcesOutResponse {
   }
 
    /**
-   * Идентификатор запроса
+   * ID запроса.
    * @return responseId
   **/
   @javax.annotation.Nullable
@@ -113,13 +113,13 @@ public class FirewallGroupResourcesOutResponse {
   }
 
 
-  public FirewallGroupResourcesOutResponse resources(List<FirewallGroupResourceOutAPI> resources) {
+  public FirewallGroupResourcesOutResponse resources(List<FirewallGroupResource> resources) {
     
     this.resources = resources;
     return this;
   }
 
-  public FirewallGroupResourcesOutResponse addResourcesItem(FirewallGroupResourceOutAPI resourcesItem) {
+  public FirewallGroupResourcesOutResponse addResourcesItem(FirewallGroupResource resourcesItem) {
     if (this.resources == null) {
       this.resources = new ArrayList<>();
     }
@@ -132,12 +132,12 @@ public class FirewallGroupResourcesOutResponse {
    * @return resources
   **/
   @javax.annotation.Nonnull
-  public List<FirewallGroupResourceOutAPI> getResources() {
+  public List<FirewallGroupResource> getResources() {
     return resources;
   }
 
 
-  public void setResources(List<FirewallGroupResourceOutAPI> resources) {
+  public void setResources(List<FirewallGroupResource> resources) {
     this.resources = resources;
   }
 
@@ -242,7 +242,7 @@ public class FirewallGroupResourcesOutResponse {
       JsonArray jsonArrayresources = jsonObj.getAsJsonArray("resources");
       // validate the required field `resources` (array)
       for (int i = 0; i < jsonArrayresources.size(); i++) {
-        FirewallGroupResourceOutAPI.validateJsonElement(jsonArrayresources.get(i));
+        FirewallGroupResource.validateJsonElement(jsonArrayresources.get(i));
       };
   }
 

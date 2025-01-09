@@ -12,6 +12,7 @@
 |**disk** | **BigDecimal** | Размер диска в МБ. |  [optional] |
 |**cpu** | **BigDecimal** | Количество ядер процессора. |  [optional] |
 |**ram** | **BigDecimal** | Размер ОЗУ сервера в МБ. |  [optional] |
+|**gpu** | **BigDecimal** | Количество видеокарт. |  [optional] |
 
 
 

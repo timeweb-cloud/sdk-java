@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * Vpc
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T10:12:31.892103Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T16:09:23.451331Z[Etc/UTC]")
 public class Vpc {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -73,7 +73,11 @@ public class Vpc {
   public enum LocationEnum {
     RU_1("ru-1"),
     
-    PL_1("pl-1");
+    RU_2("ru-2"),
+    
+    PL_1("pl-1"),
+    
+    NL_1("nl-1");
 
     private String value;
 
@@ -128,6 +132,61 @@ public class Vpc {
   public static final String SERIALIZED_NAME_AVAILABILITY_ZONE = "availability_zone";
   @SerializedName(SERIALIZED_NAME_AVAILABILITY_ZONE)
   private AvailabilityZone availabilityZone;
+
+  public static final String SERIALIZED_NAME_PUBLIC_IP = "public_ip";
+  @SerializedName(SERIALIZED_NAME_PUBLIC_IP)
+  private String publicIp;
+
+  /**
+   * Тип сети.
+   */
+  @JsonAdapter(TypeEnum.Adapter.class)
+  public enum TypeEnum {
+    BGP("bgp"),
+    
+    OVN("ovn");
+
+    private String value;
+
+    TypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static TypeEnum fromValue(String value) {
+      for (TypeEnum b : TypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<TypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public TypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return TypeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  private TypeEnum type;
 
   public Vpc() {
   }
@@ -247,7 +306,7 @@ public class Vpc {
    * Описание.
    * @return description
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getDescription() {
     return description;
   }
@@ -279,6 +338,48 @@ public class Vpc {
   }
 
 
+  public Vpc publicIp(String publicIp) {
+    
+    this.publicIp = publicIp;
+    return this;
+  }
+
+   /**
+   * Публичный IP-адрес сети.
+   * @return publicIp
+  **/
+  @javax.annotation.Nullable
+  public String getPublicIp() {
+    return publicIp;
+  }
+
+
+  public void setPublicIp(String publicIp) {
+    this.publicIp = publicIp;
+  }
+
+
+  public Vpc type(TypeEnum type) {
+    
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * Тип сети.
+   * @return type
+  **/
+  @javax.annotation.Nonnull
+  public TypeEnum getType() {
+    return type;
+  }
+
+
+  public void setType(TypeEnum type) {
+    this.type = type;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -295,12 +396,14 @@ public class Vpc {
         Objects.equals(this.location, vpc.location) &&
         Objects.equals(this.createdAt, vpc.createdAt) &&
         Objects.equals(this.description, vpc.description) &&
-        Objects.equals(this.availabilityZone, vpc.availabilityZone);
+        Objects.equals(this.availabilityZone, vpc.availabilityZone) &&
+        Objects.equals(this.publicIp, vpc.publicIp) &&
+        Objects.equals(this.type, vpc.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, subnetV4, location, createdAt, description, availabilityZone);
+    return Objects.hash(id, name, subnetV4, location, createdAt, description, availabilityZone, publicIp, type);
   }
 
   @Override
@@ -314,6 +417,8 @@ public class Vpc {
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    availabilityZone: ").append(toIndentedString(availabilityZone)).append("\n");
+    sb.append("    publicIp: ").append(toIndentedString(publicIp)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -343,6 +448,8 @@ public class Vpc {
     openapiFields.add("created_at");
     openapiFields.add("description");
     openapiFields.add("availability_zone");
+    openapiFields.add("public_ip");
+    openapiFields.add("type");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -351,7 +458,10 @@ public class Vpc {
     openapiRequiredFields.add("subnet_v4");
     openapiRequiredFields.add("location");
     openapiRequiredFields.add("created_at");
+    openapiRequiredFields.add("description");
     openapiRequiredFields.add("availability_zone");
+    openapiRequiredFields.add("public_ip");
+    openapiRequiredFields.add("type");
   }
 
  /**
@@ -394,8 +504,14 @@ public class Vpc {
       if (!jsonObj.get("location").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `location` to be a primitive type in the JSON string but got `%s`", jsonObj.get("location").toString()));
       }
-      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
+      if (!jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
+      }
+      if ((jsonObj.get("public_ip") != null && !jsonObj.get("public_ip").isJsonNull()) && !jsonObj.get("public_ip").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `public_ip` to be a primitive type in the JSON string but got `%s`", jsonObj.get("public_ip").toString()));
+      }
+      if (!jsonObj.get("type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
   }
 

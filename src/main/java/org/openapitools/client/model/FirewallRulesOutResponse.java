@@ -23,7 +23,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import org.openapitools.client.model.FirewallRuleOutAPI;
+import org.openapitools.client.model.FirewallRule;
 import org.openapitools.client.model.Meta;
 
 import com.google.gson.Gson;
@@ -54,7 +54,7 @@ import org.openapitools.client.JSON;
 /**
  * FirewallRulesOutResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T10:12:31.892103Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T16:09:23.451331Z[Etc/UTC]")
 public class FirewallRulesOutResponse {
   public static final String SERIALIZED_NAME_RESPONSE_ID = "response_id";
   @SerializedName(SERIALIZED_NAME_RESPONSE_ID)
@@ -66,7 +66,7 @@ public class FirewallRulesOutResponse {
 
   public static final String SERIALIZED_NAME_RULES = "rules";
   @SerializedName(SERIALIZED_NAME_RULES)
-  private List<FirewallRuleOutAPI> rules = new ArrayList<>();
+  private List<FirewallRule> rules = new ArrayList<>();
 
   public FirewallRulesOutResponse() {
   }
@@ -78,7 +78,7 @@ public class FirewallRulesOutResponse {
   }
 
    /**
-   * Идентификатор запроса
+   * ID запроса.
    * @return responseId
   **/
   @javax.annotation.Nullable
@@ -113,13 +113,13 @@ public class FirewallRulesOutResponse {
   }
 
 
-  public FirewallRulesOutResponse rules(List<FirewallRuleOutAPI> rules) {
+  public FirewallRulesOutResponse rules(List<FirewallRule> rules) {
     
     this.rules = rules;
     return this;
   }
 
-  public FirewallRulesOutResponse addRulesItem(FirewallRuleOutAPI rulesItem) {
+  public FirewallRulesOutResponse addRulesItem(FirewallRule rulesItem) {
     if (this.rules == null) {
       this.rules = new ArrayList<>();
     }
@@ -128,16 +128,16 @@ public class FirewallRulesOutResponse {
   }
 
    /**
-   * Массив объектов Firewall правил
+   * Get rules
    * @return rules
   **/
   @javax.annotation.Nonnull
-  public List<FirewallRuleOutAPI> getRules() {
+  public List<FirewallRule> getRules() {
     return rules;
   }
 
 
-  public void setRules(List<FirewallRuleOutAPI> rules) {
+  public void setRules(List<FirewallRule> rules) {
     this.rules = rules;
   }
 
@@ -242,7 +242,7 @@ public class FirewallRulesOutResponse {
       JsonArray jsonArrayrules = jsonObj.getAsJsonArray("rules");
       // validate the required field `rules` (array)
       for (int i = 0; i < jsonArrayrules.size(); i++) {
-        FirewallRuleOutAPI.validateJsonElement(jsonArrayrules.get(i));
+        FirewallRule.validateJsonElement(jsonArrayrules.get(i));
       };
   }
 

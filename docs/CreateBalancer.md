@@ -20,7 +20,7 @@
 |**timeout** | **BigDecimal** | Таймаут ответа балансировщика. |  |
 |**fall** | **BigDecimal** | Порог количества ошибок. |  |
 |**rise** | **BigDecimal** | Порог количества успешных ответов. |  |
-|**presetId** | **BigDecimal** | Идентификатор тарифа. |  |
+|**presetId** | **BigDecimal** | ID тарифа. |  |
 |**network** | [**Network**](Network.md) |  |  [optional] |
 |**availabilityZone** | **AvailabilityZone** |  |  [optional] |
 

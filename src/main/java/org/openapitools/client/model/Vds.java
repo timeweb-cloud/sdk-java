@@ -60,7 +60,7 @@ import org.openapitools.client.JSON;
 /**
  * Сервер
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T10:12:31.892103Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T16:09:23.451331Z[Etc/UTC]")
 public class Vds {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -99,9 +99,13 @@ public class Vds {
     
     RU_2("ru-2"),
     
+    RU_3("ru-3"),
+    
     PL_1("pl-1"),
     
-    KZ_1("kz-1");
+    KZ_1("kz-1"),
+    
+    NL_1("nl-1");
 
     private String value;
 
@@ -293,6 +297,18 @@ public class Vds {
   @SerializedName(SERIALIZED_NAME_IS_DDOS_GUARD)
   private Boolean isDdosGuard;
 
+  public static final String SERIALIZED_NAME_IS_MASTER_SSH = "is_master_ssh";
+  @SerializedName(SERIALIZED_NAME_IS_MASTER_SSH)
+  private Boolean isMasterSsh;
+
+  public static final String SERIALIZED_NAME_IS_DEDICATED_CPU = "is_dedicated_cpu";
+  @SerializedName(SERIALIZED_NAME_IS_DEDICATED_CPU)
+  private Boolean isDedicatedCpu;
+
+  public static final String SERIALIZED_NAME_GPU = "gpu";
+  @SerializedName(SERIALIZED_NAME_GPU)
+  private BigDecimal gpu;
+
   public static final String SERIALIZED_NAME_CPU = "cpu";
   @SerializedName(SERIALIZED_NAME_CPU)
   private BigDecimal cpu;
@@ -372,7 +388,7 @@ public class Vds {
   }
 
    /**
-   * Удобочитаемое имя, установленное для выделенного сервера.
+   * Удобочитаемое имя, установленное для сервера.
    * @return name
   **/
   @javax.annotation.Nonnull
@@ -393,7 +409,7 @@ public class Vds {
   }
 
    /**
-   * Комментарий к выделенному серверу.
+   * Комментарий к серверу.
    * @return comment
   **/
   @javax.annotation.Nonnull
@@ -614,6 +630,69 @@ public class Vds {
 
   public void setIsDdosGuard(Boolean isDdosGuard) {
     this.isDdosGuard = isDdosGuard;
+  }
+
+
+  public Vds isMasterSsh(Boolean isMasterSsh) {
+    
+    this.isMasterSsh = isMasterSsh;
+    return this;
+  }
+
+   /**
+   * Это логическое значение, которое показывает, доступно ли подключение по SSH для поддержки.
+   * @return isMasterSsh
+  **/
+  @javax.annotation.Nonnull
+  public Boolean getIsMasterSsh() {
+    return isMasterSsh;
+  }
+
+
+  public void setIsMasterSsh(Boolean isMasterSsh) {
+    this.isMasterSsh = isMasterSsh;
+  }
+
+
+  public Vds isDedicatedCpu(Boolean isDedicatedCpu) {
+    
+    this.isDedicatedCpu = isDedicatedCpu;
+    return this;
+  }
+
+   /**
+   * Это логическое значение, которое показывает, является ли CPU выделенным.
+   * @return isDedicatedCpu
+  **/
+  @javax.annotation.Nonnull
+  public Boolean getIsDedicatedCpu() {
+    return isDedicatedCpu;
+  }
+
+
+  public void setIsDedicatedCpu(Boolean isDedicatedCpu) {
+    this.isDedicatedCpu = isDedicatedCpu;
+  }
+
+
+  public Vds gpu(BigDecimal gpu) {
+    
+    this.gpu = gpu;
+    return this;
+  }
+
+   /**
+   * Количество видеокарт сервера.
+   * @return gpu
+  **/
+  @javax.annotation.Nonnull
+  public BigDecimal getGpu() {
+    return gpu;
+  }
+
+
+  public void setGpu(BigDecimal gpu) {
+    this.gpu = gpu;
   }
 
 
@@ -850,10 +929,10 @@ public class Vds {
   }
 
    /**
-   * Включен ли QEMU-agent на сервере.
+   * Это логическое значение, которое показывает, включен ли QEMU-agent на сервере.
    * @return isQemuAgent
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public Boolean getIsQemuAgent() {
     return isQemuAgent;
   }
@@ -908,6 +987,9 @@ public class Vds {
         Objects.equals(this.status, vds.status) &&
         Objects.equals(this.startAt, vds.startAt) &&
         Objects.equals(this.isDdosGuard, vds.isDdosGuard) &&
+        Objects.equals(this.isMasterSsh, vds.isMasterSsh) &&
+        Objects.equals(this.isDedicatedCpu, vds.isDedicatedCpu) &&
+        Objects.equals(this.gpu, vds.gpu) &&
         Objects.equals(this.cpu, vds.cpu) &&
         Objects.equals(this.cpuFrequency, vds.cpuFrequency) &&
         Objects.equals(this.ram, vds.ram) &&
@@ -924,7 +1006,7 @@ public class Vds {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, comment, createdAt, os, software, presetId, location, configuratorId, bootMode, status, startAt, isDdosGuard, cpu, cpuFrequency, ram, disks, avatarId, vncPass, rootPass, image, networks, cloudInit, isQemuAgent, availabilityZone);
+    return Objects.hash(id, name, comment, createdAt, os, software, presetId, location, configuratorId, bootMode, status, startAt, isDdosGuard, isMasterSsh, isDedicatedCpu, gpu, cpu, cpuFrequency, ram, disks, avatarId, vncPass, rootPass, image, networks, cloudInit, isQemuAgent, availabilityZone);
   }
 
   @Override
@@ -944,6 +1026,9 @@ public class Vds {
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    startAt: ").append(toIndentedString(startAt)).append("\n");
     sb.append("    isDdosGuard: ").append(toIndentedString(isDdosGuard)).append("\n");
+    sb.append("    isMasterSsh: ").append(toIndentedString(isMasterSsh)).append("\n");
+    sb.append("    isDedicatedCpu: ").append(toIndentedString(isDedicatedCpu)).append("\n");
+    sb.append("    gpu: ").append(toIndentedString(gpu)).append("\n");
     sb.append("    cpu: ").append(toIndentedString(cpu)).append("\n");
     sb.append("    cpuFrequency: ").append(toIndentedString(cpuFrequency)).append("\n");
     sb.append("    ram: ").append(toIndentedString(ram)).append("\n");
@@ -991,6 +1076,9 @@ public class Vds {
     openapiFields.add("status");
     openapiFields.add("start_at");
     openapiFields.add("is_ddos_guard");
+    openapiFields.add("is_master_ssh");
+    openapiFields.add("is_dedicated_cpu");
+    openapiFields.add("gpu");
     openapiFields.add("cpu");
     openapiFields.add("cpu_frequency");
     openapiFields.add("ram");
@@ -1019,6 +1107,9 @@ public class Vds {
     openapiRequiredFields.add("status");
     openapiRequiredFields.add("start_at");
     openapiRequiredFields.add("is_ddos_guard");
+    openapiRequiredFields.add("is_master_ssh");
+    openapiRequiredFields.add("is_dedicated_cpu");
+    openapiRequiredFields.add("gpu");
     openapiRequiredFields.add("cpu");
     openapiRequiredFields.add("cpu_frequency");
     openapiRequiredFields.add("ram");
@@ -1029,6 +1120,7 @@ public class Vds {
     openapiRequiredFields.add("image");
     openapiRequiredFields.add("networks");
     openapiRequiredFields.add("cloud_init");
+    openapiRequiredFields.add("is_qemu_agent");
     openapiRequiredFields.add("availability_zone");
   }
 

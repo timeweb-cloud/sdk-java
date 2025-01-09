@@ -94,7 +94,7 @@ public class ImagesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Образ создан </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Объект JSON c ключом &#x60;image&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
@@ -166,7 +166,7 @@ public class ImagesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Образ создан </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Объект JSON c ключом &#x60;image&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
@@ -187,7 +187,7 @@ public class ImagesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Образ создан </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Объект JSON c ключом &#x60;image&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
@@ -210,7 +210,7 @@ public class ImagesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Образ создан </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Объект JSON c ключом &#x60;image&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
@@ -226,7 +226,7 @@ public class ImagesApi {
     }
     /**
      * Build call for createImageDownloadUrl
-     * @param imageId ID образа (required)
+     * @param imageId ID образа. (required)
      * @param imageUrlIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -234,7 +234,7 @@ public class ImagesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Ссылка успешно создана </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Объект JSON c ключом &#x60;download&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
@@ -308,14 +308,14 @@ public class ImagesApi {
     /**
      * Создание ссылки на скачивание образа
      * Чтобы создать ссылку на скачивание образа, отправьте запрос POST в &#x60;/api/v1/images/{image_id}/download-url&#x60;.
-     * @param imageId ID образа (required)
+     * @param imageId ID образа. (required)
      * @param imageUrlIn  (required)
      * @return ImageDownloadResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Ссылка успешно создана </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Объект JSON c ключом &#x60;download&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
@@ -332,14 +332,14 @@ public class ImagesApi {
     /**
      * Создание ссылки на скачивание образа
      * Чтобы создать ссылку на скачивание образа, отправьте запрос POST в &#x60;/api/v1/images/{image_id}/download-url&#x60;.
-     * @param imageId ID образа (required)
+     * @param imageId ID образа. (required)
      * @param imageUrlIn  (required)
      * @return ApiResponse&lt;ImageDownloadResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Ссылка успешно создана </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Объект JSON c ключом &#x60;download&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
@@ -357,7 +357,7 @@ public class ImagesApi {
     /**
      * Создание ссылки на скачивание образа (asynchronously)
      * Чтобы создать ссылку на скачивание образа, отправьте запрос POST в &#x60;/api/v1/images/{image_id}/download-url&#x60;.
-     * @param imageId ID образа (required)
+     * @param imageId ID образа. (required)
      * @param imageUrlIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -365,7 +365,7 @@ public class ImagesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Ссылка успешно создана </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Объект JSON c ключом &#x60;download&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
@@ -383,7 +383,7 @@ public class ImagesApi {
     }
     /**
      * Build call for deleteImage
-     * @param imageId ID образа (required)
+     * @param imageId ID образа. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -456,7 +456,7 @@ public class ImagesApi {
     /**
      * Удаление образа
      * Чтобы удалить образ, отправьте запрос DELETE в &#x60;/api/v1/images/{image_id}&#x60;.
-     * @param imageId ID образа (required)
+     * @param imageId ID образа. (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -475,7 +475,7 @@ public class ImagesApi {
     /**
      * Удаление образа
      * Чтобы удалить образ, отправьте запрос DELETE в &#x60;/api/v1/images/{image_id}&#x60;.
-     * @param imageId ID образа (required)
+     * @param imageId ID образа. (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -496,7 +496,7 @@ public class ImagesApi {
     /**
      * Удаление образа (asynchronously)
      * Чтобы удалить образ, отправьте запрос DELETE в &#x60;/api/v1/images/{image_id}&#x60;.
-     * @param imageId ID образа (required)
+     * @param imageId ID образа. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -518,8 +518,8 @@ public class ImagesApi {
     }
     /**
      * Build call for deleteImageDownloadURL
-     * @param imageId ID образа (required)
-     * @param imageUrlId ID ссылки (required)
+     * @param imageId ID образа. (required)
+     * @param imageUrlId ID ссылки. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -598,8 +598,8 @@ public class ImagesApi {
     /**
      * Удаление ссылки на образ
      * Чтобы удалить ссылку на образ, отправьте DELETE запрос в &#x60;/api/v1/images/{image_id}/download-url/{image_url_id}&#x60;.
-     * @param imageId ID образа (required)
-     * @param imageUrlId ID ссылки (required)
+     * @param imageId ID образа. (required)
+     * @param imageUrlId ID ссылки. (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -618,8 +618,8 @@ public class ImagesApi {
     /**
      * Удаление ссылки на образ
      * Чтобы удалить ссылку на образ, отправьте DELETE запрос в &#x60;/api/v1/images/{image_id}/download-url/{image_url_id}&#x60;.
-     * @param imageId ID образа (required)
-     * @param imageUrlId ID ссылки (required)
+     * @param imageId ID образа. (required)
+     * @param imageUrlId ID ссылки. (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -640,8 +640,8 @@ public class ImagesApi {
     /**
      * Удаление ссылки на образ (asynchronously)
      * Чтобы удалить ссылку на образ, отправьте DELETE запрос в &#x60;/api/v1/images/{image_id}/download-url/{image_url_id}&#x60;.
-     * @param imageId ID образа (required)
-     * @param imageUrlId ID ссылки (required)
+     * @param imageId ID образа. (required)
+     * @param imageUrlId ID ссылки. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -663,14 +663,14 @@ public class ImagesApi {
     }
     /**
      * Build call for getImage
-     * @param imageId ID образа (required)
+     * @param imageId ID образа. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Информация о образе </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;image&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
@@ -737,13 +737,13 @@ public class ImagesApi {
     /**
      * Получение информации о образе
      * Чтобы получить образ, отправьте запрос GET в &#x60;/api/v1/images/{image_id}&#x60;.
-     * @param imageId ID образа (required)
+     * @param imageId ID образа. (required)
      * @return ImageOutResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Информация о образе </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;image&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
@@ -759,13 +759,13 @@ public class ImagesApi {
     /**
      * Получение информации о образе
      * Чтобы получить образ, отправьте запрос GET в &#x60;/api/v1/images/{image_id}&#x60;.
-     * @param imageId ID образа (required)
+     * @param imageId ID образа. (required)
      * @return ApiResponse&lt;ImageOutResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Информация о образе </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;image&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
@@ -782,14 +782,14 @@ public class ImagesApi {
     /**
      * Получение информации о образе (asynchronously)
      * Чтобы получить образ, отправьте запрос GET в &#x60;/api/v1/images/{image_id}&#x60;.
-     * @param imageId ID образа (required)
+     * @param imageId ID образа. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Информация о образе </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;image&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
@@ -806,15 +806,15 @@ public class ImagesApi {
     }
     /**
      * Build call for getImageDownloadURL
-     * @param imageId ID образа (required)
-     * @param imageUrlId ID ссылки (required)
+     * @param imageId ID образа. (required)
+     * @param imageUrlId ID ссылки. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Информация о ссылке на загрузку </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;download&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
@@ -887,14 +887,14 @@ public class ImagesApi {
     /**
      * Получение информации о ссылке на скачивание образа
      * Чтобы получить информацию о ссылке на скачивание образа, отправьте запрос GET в &#x60;/api/v1/images/{image_id}/download-url/{image_url_id}&#x60;.
-     * @param imageId ID образа (required)
-     * @param imageUrlId ID ссылки (required)
+     * @param imageId ID образа. (required)
+     * @param imageUrlId ID ссылки. (required)
      * @return ImageDownloadResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Информация о ссылке на загрузку </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;download&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
@@ -910,14 +910,14 @@ public class ImagesApi {
     /**
      * Получение информации о ссылке на скачивание образа
      * Чтобы получить информацию о ссылке на скачивание образа, отправьте запрос GET в &#x60;/api/v1/images/{image_id}/download-url/{image_url_id}&#x60;.
-     * @param imageId ID образа (required)
-     * @param imageUrlId ID ссылки (required)
+     * @param imageId ID образа. (required)
+     * @param imageUrlId ID ссылки. (required)
      * @return ApiResponse&lt;ImageDownloadResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Информация о ссылке на загрузку </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;download&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
@@ -934,15 +934,15 @@ public class ImagesApi {
     /**
      * Получение информации о ссылке на скачивание образа (asynchronously)
      * Чтобы получить информацию о ссылке на скачивание образа, отправьте запрос GET в &#x60;/api/v1/images/{image_id}/download-url/{image_url_id}&#x60;.
-     * @param imageId ID образа (required)
-     * @param imageUrlId ID ссылки (required)
+     * @param imageId ID образа. (required)
+     * @param imageUrlId ID ссылки. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Информация о ссылке на загрузку </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;download&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
@@ -959,7 +959,7 @@ public class ImagesApi {
     }
     /**
      * Build call for getImageDownloadURLs
-     * @param imageId ID образа (required)
+     * @param imageId ID образа. (required)
      * @param limit  (optional, default to 100)
      * @param offset  (optional, default to 0)
      * @param _callback Callback for upload/download progress
@@ -968,7 +968,7 @@ public class ImagesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Информация о ссылке на загрузку </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;downloads&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
@@ -1043,7 +1043,7 @@ public class ImagesApi {
     /**
      * Получение информации о ссылках на скачивание образов
      * Чтобы получить информацию о ссылках на скачивание образов, отправьте запрос GET в &#x60;/api/v1/images/{image_id}/download-url&#x60;.
-     * @param imageId ID образа (required)
+     * @param imageId ID образа. (required)
      * @param limit  (optional, default to 100)
      * @param offset  (optional, default to 0)
      * @return ImageDownloadsResponse
@@ -1051,7 +1051,7 @@ public class ImagesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Информация о ссылке на загрузку </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;downloads&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
@@ -1067,7 +1067,7 @@ public class ImagesApi {
     /**
      * Получение информации о ссылках на скачивание образов
      * Чтобы получить информацию о ссылках на скачивание образов, отправьте запрос GET в &#x60;/api/v1/images/{image_id}/download-url&#x60;.
-     * @param imageId ID образа (required)
+     * @param imageId ID образа. (required)
      * @param limit  (optional, default to 100)
      * @param offset  (optional, default to 0)
      * @return ApiResponse&lt;ImageDownloadsResponse&gt;
@@ -1075,7 +1075,7 @@ public class ImagesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Информация о ссылке на загрузку </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;downloads&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
@@ -1092,7 +1092,7 @@ public class ImagesApi {
     /**
      * Получение информации о ссылках на скачивание образов (asynchronously)
      * Чтобы получить информацию о ссылках на скачивание образов, отправьте запрос GET в &#x60;/api/v1/images/{image_id}/download-url&#x60;.
-     * @param imageId ID образа (required)
+     * @param imageId ID образа. (required)
      * @param limit  (optional, default to 100)
      * @param offset  (optional, default to 0)
      * @param _callback The callback to be executed when the API call finishes
@@ -1101,7 +1101,7 @@ public class ImagesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Информация о ссылке на загрузку </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;downloads&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
@@ -1126,7 +1126,7 @@ public class ImagesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Объект JSON c ключом images </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;images&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
@@ -1201,7 +1201,7 @@ public class ImagesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Объект JSON c ключом images </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;images&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
@@ -1223,7 +1223,7 @@ public class ImagesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Объект JSON c ключом images </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;images&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
@@ -1247,7 +1247,7 @@ public class ImagesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Объект JSON c ключом images </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;images&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
@@ -1263,7 +1263,7 @@ public class ImagesApi {
     }
     /**
      * Build call for updateImage
-     * @param imageId ID образа (required)
+     * @param imageId ID образа. (required)
      * @param imageUpdateAPI  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1271,7 +1271,7 @@ public class ImagesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Образ обновлен </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;image&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
@@ -1344,14 +1344,14 @@ public class ImagesApi {
     /**
      * Обновление информации о образе
      * Чтобы обновить только определенные атрибуты образа, отправьте запрос PATCH в &#x60;/api/v1/images/{image_id}&#x60;.
-     * @param imageId ID образа (required)
+     * @param imageId ID образа. (required)
      * @param imageUpdateAPI  (required)
      * @return ImageOutResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Образ обновлен </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;image&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
@@ -1367,14 +1367,14 @@ public class ImagesApi {
     /**
      * Обновление информации о образе
      * Чтобы обновить только определенные атрибуты образа, отправьте запрос PATCH в &#x60;/api/v1/images/{image_id}&#x60;.
-     * @param imageId ID образа (required)
+     * @param imageId ID образа. (required)
      * @param imageUpdateAPI  (required)
      * @return ApiResponse&lt;ImageOutResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Образ обновлен </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;image&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
@@ -1391,7 +1391,7 @@ public class ImagesApi {
     /**
      * Обновление информации о образе (asynchronously)
      * Чтобы обновить только определенные атрибуты образа, отправьте запрос PATCH в &#x60;/api/v1/images/{image_id}&#x60;.
-     * @param imageId ID образа (required)
+     * @param imageId ID образа. (required)
      * @param imageUpdateAPI  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1399,7 +1399,7 @@ public class ImagesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Образ обновлен </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;image&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
@@ -1424,7 +1424,7 @@ public class ImagesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Информация о загрузке </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;upload_successful&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
@@ -1501,7 +1501,7 @@ public class ImagesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Информация о загрузке </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;upload_successful&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
@@ -1523,7 +1523,7 @@ public class ImagesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Информация о загрузке </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;upload_successful&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
@@ -1547,7 +1547,7 @@ public class ImagesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Информация о загрузке </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;upload_successful&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>

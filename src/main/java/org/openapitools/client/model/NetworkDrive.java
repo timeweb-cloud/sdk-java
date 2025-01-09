@@ -55,7 +55,7 @@ import org.openapitools.client.JSON;
 /**
  * NetworkDrive
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T10:12:31.892103Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T16:09:23.451331Z[Etc/UTC]")
 public class NetworkDrive {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -248,7 +248,7 @@ public class NetworkDrive {
   }
 
    /**
-   * Идентификатор сетевого диска.
+   * ID сетевого диска.
    * @return id
   **/
   @javax.annotation.Nonnull
@@ -445,7 +445,7 @@ public class NetworkDrive {
   }
 
    /**
-   * Идентификатор тарифа.
+   * ID тарифа.
    * @return presetId
   **/
   @javax.annotation.Nonnull

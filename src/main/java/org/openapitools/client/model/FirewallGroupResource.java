@@ -13,126 +13,232 @@
 
 package org.openapitools.client.model;
 
+import java.util.Objects;
+import java.util.Arrays;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.time.OffsetDateTime;
-import org.openapitools.client.model.ImageStatus;
-import org.openapitools.client.model.OS;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import org.openapitools.client.model.ResourceType;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import org.openapitools.client.JSON;
 
 /**
- * Model tests for ImageOutAPI
+ * FirewallGroupResource
  */
-public class ImageOutAPITest {
-    private final ImageOutAPI model = new ImageOutAPI();
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T16:09:23.451331Z[Etc/UTC]")
+public class FirewallGroupResource {
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  private Integer id;
 
-    /**
-     * Model tests for ImageOutAPI
-     */
-    @Test
-    public void testImageOutAPI() {
-        // TODO: test ImageOutAPI
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  private ResourceType type;
+
+  public FirewallGroupResource() {
+  }
+
+  public FirewallGroupResource id(Integer id) {
+    
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * ID ресурса.
+   * @return id
+  **/
+  @javax.annotation.Nonnull
+  public Integer getId() {
+    return id;
+  }
+
+
+  public void setId(Integer id) {
+    this.id = id;
+  }
+
+
+  public FirewallGroupResource type(ResourceType type) {
+    
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * Get type
+   * @return type
+  **/
+  @javax.annotation.Nonnull
+  public ResourceType getType() {
+    return type;
+  }
+
+
+  public void setType(ResourceType type) {
+    this.type = type;
+  }
+
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
     }
-
-    /**
-     * Test the property 'id'
-     */
-    @Test
-    public void idTest() {
-        // TODO: test id
+    if (o == null || getClass() != o.getClass()) {
+      return false;
     }
+    FirewallGroupResource firewallGroupResource = (FirewallGroupResource) o;
+    return Objects.equals(this.id, firewallGroupResource.id) &&
+        Objects.equals(this.type, firewallGroupResource.type);
+  }
 
-    /**
-     * Test the property 'status'
-     */
-    @Test
-    public void statusTest() {
-        // TODO: test status
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, type);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class FirewallGroupResource {\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    if (o == null) {
+      return "null";
     }
+    return o.toString().replace("\n", "\n    ");
+  }
 
-    /**
-     * Test the property 'createdAt'
-     */
-    @Test
-    public void createdAtTest() {
-        // TODO: test createdAt
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("id");
+    openapiFields.add("type");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("id");
+    openapiRequiredFields.add("type");
+  }
+
+ /**
+  * Validates the JSON Element and throws an exception if issues found
+  *
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to FirewallGroupResource
+  */
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!FirewallGroupResource.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in FirewallGroupResource is not found in the empty JSON string", FirewallGroupResource.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!FirewallGroupResource.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `FirewallGroupResource` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        }
+      }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : FirewallGroupResource.openapiRequiredFields) {
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+        }
+      }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!FirewallGroupResource.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'FirewallGroupResource' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<FirewallGroupResource> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(FirewallGroupResource.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<FirewallGroupResource>() {
+           @Override
+           public void write(JsonWriter out, FirewallGroupResource value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public FirewallGroupResource read(JsonReader in) throws IOException {
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
+           }
+
+       }.nullSafe();
     }
+  }
 
-    /**
-     * Test the property 'deletedAt'
-     */
-    @Test
-    public void deletedAtTest() {
-        // TODO: test deletedAt
-    }
+ /**
+  * Create an instance of FirewallGroupResource given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of FirewallGroupResource
+  * @throws IOException if the JSON string is invalid with respect to FirewallGroupResource
+  */
+  public static FirewallGroupResource fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, FirewallGroupResource.class);
+  }
 
-    /**
-     * Test the property 'size'
-     */
-    @Test
-    public void sizeTest() {
-        // TODO: test size
-    }
-
-    /**
-     * Test the property 'name'
-     */
-    @Test
-    public void nameTest() {
-        // TODO: test name
-    }
-
-    /**
-     * Test the property 'description'
-     */
-    @Test
-    public void descriptionTest() {
-        // TODO: test description
-    }
-
-    /**
-     * Test the property 'diskId'
-     */
-    @Test
-    public void diskIdTest() {
-        // TODO: test diskId
-    }
-
-    /**
-     * Test the property 'location'
-     */
-    @Test
-    public void locationTest() {
-        // TODO: test location
-    }
-
-    /**
-     * Test the property 'os'
-     */
-    @Test
-    public void osTest() {
-        // TODO: test os
-    }
-
-    /**
-     * Test the property 'progress'
-     */
-    @Test
-    public void progressTest() {
-        // TODO: test progress
-    }
-
-    /**
-     * Test the property 'isCustom'
-     */
-    @Test
-    public void isCustomTest() {
-        // TODO: test isCustom
-    }
-
+ /**
+  * Convert an instance of FirewallGroupResource to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
+

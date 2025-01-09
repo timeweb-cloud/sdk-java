@@ -151,6 +151,30 @@ public class VdsTest {
     }
 
     /**
+     * Test the property 'isMasterSsh'
+     */
+    @Test
+    public void isMasterSshTest() {
+        // TODO: test isMasterSsh
+    }
+
+    /**
+     * Test the property 'isDedicatedCpu'
+     */
+    @Test
+    public void isDedicatedCpuTest() {
+        // TODO: test isDedicatedCpu
+    }
+
+    /**
+     * Test the property 'gpu'
+     */
+    @Test
+    public void gpuTest() {
+        // TODO: test gpu
+    }
+
+    /**
      * Test the property 'cpu'
      */
     @Test

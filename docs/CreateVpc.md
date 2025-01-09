@@ -20,7 +20,9 @@
 | Name | Value |
 |---- | -----|
 | RU_1 | &quot;ru-1&quot; |
+| RU_2 | &quot;ru-2&quot; |
 | PL_1 | &quot;pl-1&quot; |
+| NL_1 | &quot;nl-1&quot; |
 
 
 

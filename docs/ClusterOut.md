@@ -20,7 +20,7 @@
 |**ram** | **Integer** | Общее количество памяти |  [optional] |
 |**disk** | **Integer** | Общее дисковое пространство |  [optional] |
 |**availabilityZone** | [**AvailabilityZoneEnum**](#AvailabilityZoneEnum) | Зона доступности |  [optional] |
-|**projectId** | **Integer** | Идентификатор проекта |  [optional] |
+|**projectId** | **Integer** | ID проекта |  [optional] |
 
 
 

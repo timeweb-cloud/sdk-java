@@ -23,7 +23,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import org.openapitools.client.model.ImageOutAPI;
+import org.openapitools.client.model.Image;
 import org.openapitools.client.model.Meta;
 
 import com.google.gson.Gson;
@@ -54,7 +54,7 @@ import org.openapitools.client.JSON;
 /**
  * ImagesOutResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T10:12:31.892103Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T16:09:23.451331Z[Etc/UTC]")
 public class ImagesOutResponse {
   public static final String SERIALIZED_NAME_RESPONSE_ID = "response_id";
   @SerializedName(SERIALIZED_NAME_RESPONSE_ID)
@@ -66,7 +66,7 @@ public class ImagesOutResponse {
 
   public static final String SERIALIZED_NAME_IMAGES = "images";
   @SerializedName(SERIALIZED_NAME_IMAGES)
-  private List<ImageOutAPI> images = new ArrayList<>();
+  private List<Image> images = new ArrayList<>();
 
   public ImagesOutResponse() {
   }
@@ -78,7 +78,7 @@ public class ImagesOutResponse {
   }
 
    /**
-   * Идентификатор запроса
+   * ID запроса.
    * @return responseId
   **/
   @javax.annotation.Nullable
@@ -113,13 +113,13 @@ public class ImagesOutResponse {
   }
 
 
-  public ImagesOutResponse images(List<ImageOutAPI> images) {
+  public ImagesOutResponse images(List<Image> images) {
     
     this.images = images;
     return this;
   }
 
-  public ImagesOutResponse addImagesItem(ImageOutAPI imagesItem) {
+  public ImagesOutResponse addImagesItem(Image imagesItem) {
     if (this.images == null) {
       this.images = new ArrayList<>();
     }
@@ -128,16 +128,16 @@ public class ImagesOutResponse {
   }
 
    /**
-   * Массив объектов Образ
+   * Get images
    * @return images
   **/
   @javax.annotation.Nonnull
-  public List<ImageOutAPI> getImages() {
+  public List<Image> getImages() {
     return images;
   }
 
 
-  public void setImages(List<ImageOutAPI> images) {
+  public void setImages(List<Image> images) {
     this.images = images;
   }
 
@@ -242,7 +242,7 @@ public class ImagesOutResponse {
       JsonArray jsonArrayimages = jsonObj.getAsJsonArray("images");
       // validate the required field `images` (array)
       for (int i = 0; i < jsonArrayimages.size(); i++) {
-        ImageOutAPI.validateJsonElement(jsonArrayimages.get(i));
+        Image.validateJsonElement(jsonArrayimages.get(i));
       };
   }
 

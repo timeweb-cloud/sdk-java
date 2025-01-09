@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**id** | **String** | Идентификатор сетевого диска. |  |
+|**id** | **String** | ID сетевого диска. |  |
 |**name** | **String** | Название сетевого диска. |  |
 |**comment** | **String** | Комментарий |  |
 |**size** | **BigDecimal** | Размер диска в Гб |  |
@@ -16,7 +16,7 @@
 |**status** | [**StatusEnum**](#StatusEnum) | Статус сетевого диска. |  |
 |**availabilityZone** | **AvailabilityZone** |  |  |
 |**type** | [**TypeEnum**](#TypeEnum) | Тип сетевого диска. |  |
-|**presetId** | **Integer** | Идентификатор тарифа. |  |
+|**presetId** | **Integer** | ID тарифа. |  |
 
 
 

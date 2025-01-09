@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * NodeGroupOut
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T10:12:31.892103Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T16:09:23.451331Z[Etc/UTC]")
 public class NodeGroupOut {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -146,7 +146,7 @@ public class NodeGroupOut {
   }
 
    /**
-   * Идентификатор тарифа мастер-ноды
+   * ID тарифа мастер-ноды
    * @return presetId
   **/
   @javax.annotation.Nonnull

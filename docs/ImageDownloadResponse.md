@@ -7,8 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**responseId** | **String** | ID запроса |  [optional] |
-|**download** | [**ImageDownloadAPI**](ImageDownloadAPI.md) |  |  |
+|**responseId** | **String** | ID запроса. |  [optional] |
+|**download** | [**ImageDownload**](ImageDownload.md) |  |  |
 
 
 

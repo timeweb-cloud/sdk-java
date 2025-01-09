@@ -133,4 +133,28 @@ public class ServersConfiguratorRequirementsTest {
         // TODO: test networkBandwidthMax
     }
 
+    /**
+     * Test the property 'gpuMin'
+     */
+    @Test
+    public void gpuMinTest() {
+        // TODO: test gpuMin
+    }
+
+    /**
+     * Test the property 'gpuMax'
+     */
+    @Test
+    public void gpuMaxTest() {
+        // TODO: test gpuMax
+    }
+
+    /**
+     * Test the property 'gpuStep'
+     */
+    @Test
+    public void gpuStepTest() {
+        // TODO: test gpuStep
+    }
+
 }

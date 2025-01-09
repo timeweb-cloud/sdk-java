@@ -67,7 +67,7 @@ public class VpcApiTest {
     @Test
     public void deleteVPCTest() throws ApiException {
         String vpcId = null;
-        CreateVPC201Response response = api.deleteVPC(vpcId);
+        api.deleteVPC(vpcId);
         // TODO: test validations
     }
 

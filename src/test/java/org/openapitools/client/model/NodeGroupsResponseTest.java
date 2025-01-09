@@ -21,8 +21,8 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import org.openapitools.client.model.Meta;
 import org.openapitools.client.model.NodeGroupOut;
+import org.openapitools.client.model.SchemasMeta;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 

@@ -21,7 +21,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import org.openapitools.client.model.FirewallRuleOutAPI;
+import org.openapitools.client.model.FirewallRule;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * FirewallRuleOutResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T10:12:31.892103Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T16:09:23.451331Z[Etc/UTC]")
 public class FirewallRuleOutResponse {
   public static final String SERIALIZED_NAME_RESPONSE_ID = "response_id";
   @SerializedName(SERIALIZED_NAME_RESPONSE_ID)
@@ -59,7 +59,7 @@ public class FirewallRuleOutResponse {
 
   public static final String SERIALIZED_NAME_RULE = "rule";
   @SerializedName(SERIALIZED_NAME_RULE)
-  private FirewallRuleOutAPI rule;
+  private FirewallRule rule;
 
   public FirewallRuleOutResponse() {
   }
@@ -71,7 +71,7 @@ public class FirewallRuleOutResponse {
   }
 
    /**
-   * Идентификатор запроса
+   * ID запроса.
    * @return responseId
   **/
   @javax.annotation.Nullable
@@ -85,7 +85,7 @@ public class FirewallRuleOutResponse {
   }
 
 
-  public FirewallRuleOutResponse rule(FirewallRuleOutAPI rule) {
+  public FirewallRuleOutResponse rule(FirewallRule rule) {
     
     this.rule = rule;
     return this;
@@ -96,12 +96,12 @@ public class FirewallRuleOutResponse {
    * @return rule
   **/
   @javax.annotation.Nonnull
-  public FirewallRuleOutAPI getRule() {
+  public FirewallRule getRule() {
     return rule;
   }
 
 
-  public void setRule(FirewallRuleOutAPI rule) {
+  public void setRule(FirewallRule rule) {
     this.rule = rule;
   }
 
@@ -193,7 +193,7 @@ public class FirewallRuleOutResponse {
         throw new IllegalArgumentException(String.format("Expected the field `response_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("response_id").toString()));
       }
       // validate the required field `rule`
-      FirewallRuleOutAPI.validateJsonElement(jsonObj.get("rule"));
+      FirewallRule.validateJsonElement(jsonObj.get("rule"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

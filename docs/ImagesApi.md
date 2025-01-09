@@ -81,7 +81,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **201** | Образ создан |  -  |
+| **201** | Объект JSON c ключом &#x60;image&#x60; |  -  |
 | **400** | Некорректный запрос |  -  |
 | **401** | Не авторизован |  -  |
 | **429** | Слишком много запросов |  -  |
@@ -115,7 +115,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     ImagesApi apiInstance = new ImagesApi(defaultClient);
-    String imageId = "imageId_example"; // String | ID образа
+    String imageId = "imageId_example"; // String | ID образа.
     ImageUrlIn imageUrlIn = new ImageUrlIn(); // ImageUrlIn | 
     try {
       ImageDownloadResponse result = apiInstance.createImageDownloadUrl(imageId, imageUrlIn);
@@ -135,7 +135,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **imageId** | **String**| ID образа | |
+| **imageId** | **String**| ID образа. | |
 | **imageUrlIn** | [**ImageUrlIn**](ImageUrlIn.md)|  | |
 
 ### Return type
@@ -154,7 +154,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **201** | Ссылка успешно создана |  -  |
+| **201** | Объект JSON c ключом &#x60;download&#x60; |  -  |
 | **400** | Некорректный запрос |  -  |
 | **401** | Не авторизован |  -  |
 | **404** | Не найдено |  -  |
@@ -190,7 +190,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     ImagesApi apiInstance = new ImagesApi(defaultClient);
-    String imageId = "imageId_example"; // String | ID образа
+    String imageId = "imageId_example"; // String | ID образа.
     try {
       apiInstance.deleteImage(imageId);
     } catch (ApiException e) {
@@ -208,7 +208,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **imageId** | **String**| ID образа | |
+| **imageId** | **String**| ID образа. | |
 
 ### Return type
 
@@ -260,8 +260,8 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     ImagesApi apiInstance = new ImagesApi(defaultClient);
-    String imageId = "imageId_example"; // String | ID образа
-    String imageUrlId = "imageUrlId_example"; // String | ID ссылки
+    String imageId = "imageId_example"; // String | ID образа.
+    String imageUrlId = "imageUrlId_example"; // String | ID ссылки.
     try {
       apiInstance.deleteImageDownloadURL(imageId, imageUrlId);
     } catch (ApiException e) {
@@ -279,8 +279,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **imageId** | **String**| ID образа | |
-| **imageUrlId** | **String**| ID ссылки | |
+| **imageId** | **String**| ID образа. | |
+| **imageUrlId** | **String**| ID ссылки. | |
 
 ### Return type
 
@@ -332,7 +332,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     ImagesApi apiInstance = new ImagesApi(defaultClient);
-    String imageId = "imageId_example"; // String | ID образа
+    String imageId = "imageId_example"; // String | ID образа.
     try {
       ImageOutResponse result = apiInstance.getImage(imageId);
       System.out.println(result);
@@ -351,7 +351,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **imageId** | **String**| ID образа | |
+| **imageId** | **String**| ID образа. | |
 
 ### Return type
 
@@ -369,7 +369,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Информация о образе |  -  |
+| **200** | Объект JSON c ключом &#x60;image&#x60; |  -  |
 | **400** | Некорректный запрос |  -  |
 | **401** | Не авторизован |  -  |
 | **404** | Не найдено |  -  |
@@ -404,8 +404,8 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     ImagesApi apiInstance = new ImagesApi(defaultClient);
-    String imageId = "imageId_example"; // String | ID образа
-    String imageUrlId = "imageUrlId_example"; // String | ID ссылки
+    String imageId = "imageId_example"; // String | ID образа.
+    String imageUrlId = "imageUrlId_example"; // String | ID ссылки.
     try {
       ImageDownloadResponse result = apiInstance.getImageDownloadURL(imageId, imageUrlId);
       System.out.println(result);
@@ -424,8 +424,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **imageId** | **String**| ID образа | |
-| **imageUrlId** | **String**| ID ссылки | |
+| **imageId** | **String**| ID образа. | |
+| **imageUrlId** | **String**| ID ссылки. | |
 
 ### Return type
 
@@ -443,7 +443,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Информация о ссылке на загрузку |  -  |
+| **200** | Объект JSON c ключом &#x60;download&#x60; |  -  |
 | **400** | Некорректный запрос |  -  |
 | **401** | Не авторизован |  -  |
 | **404** | Не найдено |  -  |
@@ -478,7 +478,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     ImagesApi apiInstance = new ImagesApi(defaultClient);
-    String imageId = "imageId_example"; // String | ID образа
+    String imageId = "imageId_example"; // String | ID образа.
     Integer limit = 100; // Integer | 
     Integer offset = 0; // Integer | 
     try {
@@ -499,7 +499,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **imageId** | **String**| ID образа | |
+| **imageId** | **String**| ID образа. | |
 | **limit** | **Integer**|  | [optional] [default to 100] |
 | **offset** | **Integer**|  | [optional] [default to 0] |
 
@@ -519,7 +519,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Информация о ссылке на загрузку |  -  |
+| **200** | Объект JSON c ключом &#x60;downloads&#x60; |  -  |
 | **400** | Некорректный запрос |  -  |
 | **401** | Не авторизован |  -  |
 | **404** | Не найдено |  -  |
@@ -593,7 +593,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Объект JSON c ключом images |  -  |
+| **200** | Объект JSON c ключом &#x60;images&#x60; |  -  |
 | **400** | Некорректный запрос |  -  |
 | **401** | Не авторизован |  -  |
 | **429** | Слишком много запросов |  -  |
@@ -627,7 +627,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     ImagesApi apiInstance = new ImagesApi(defaultClient);
-    String imageId = "imageId_example"; // String | ID образа
+    String imageId = "imageId_example"; // String | ID образа.
     ImageUpdateAPI imageUpdateAPI = new ImageUpdateAPI(); // ImageUpdateAPI | 
     try {
       ImageOutResponse result = apiInstance.updateImage(imageId, imageUpdateAPI);
@@ -647,7 +647,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **imageId** | **String**| ID образа | |
+| **imageId** | **String**| ID образа. | |
 | **imageUpdateAPI** | [**ImageUpdateAPI**](ImageUpdateAPI.md)|  | |
 
 ### Return type
@@ -666,7 +666,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Образ обновлен |  -  |
+| **200** | Объект JSON c ключом &#x60;image&#x60; |  -  |
 | **400** | Некорректный запрос |  -  |
 | **401** | Не авторизован |  -  |
 | **404** | Не найдено |  -  |
@@ -740,7 +740,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Информация о загрузке |  -  |
+| **200** | Объект JSON c ключом &#x60;upload_successful&#x60; |  -  |
 | **400** | Некорректный запрос |  -  |
 | **401** | Не авторизован |  -  |
 | **429** | Слишком много запросов |  -  |

@@ -13,358 +13,86 @@
 
 package org.openapitools.client.model;
 
-import java.util.Objects;
-import java.util.Arrays;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.time.OffsetDateTime;
-import org.openapitools.client.model.Policy;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
-import java.lang.reflect.Type;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-
-import org.openapitools.client.JSON;
+import java.net.URI;
+import org.openapitools.client.model.URLType;
+import org.openapitools.client.model.UrlStatus;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 /**
- * FirewallGroupOutAPI
+ * Model tests for ImageDownload
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T10:12:31.892103Z[Etc/UTC]")
-public class FirewallGroupOutAPI {
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
-  private String id;
+public class ImageDownloadTest {
+    private final ImageDownload model = new ImageDownload();
 
-  public static final String SERIALIZED_NAME_CREATED_AT = "created_at";
-  @SerializedName(SERIALIZED_NAME_CREATED_AT)
-  private OffsetDateTime createdAt;
-
-  public static final String SERIALIZED_NAME_UPDATED_AT = "updated_at";
-  @SerializedName(SERIALIZED_NAME_UPDATED_AT)
-  private OffsetDateTime updatedAt;
-
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
-
-  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
-  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
-  private String description;
-
-  public static final String SERIALIZED_NAME_POLICY = "policy";
-  @SerializedName(SERIALIZED_NAME_POLICY)
-  private Policy policy;
-
-  public FirewallGroupOutAPI() {
-  }
-
-  public FirewallGroupOutAPI id(String id) {
-    
-    this.id = id;
-    return this;
-  }
-
-   /**
-   * Идентификатор группы правил
-   * @return id
-  **/
-  @javax.annotation.Nonnull
-  public String getId() {
-    return id;
-  }
-
-
-  public void setId(String id) {
-    this.id = id;
-  }
-
-
-  public FirewallGroupOutAPI createdAt(OffsetDateTime createdAt) {
-    
-    this.createdAt = createdAt;
-    return this;
-  }
-
-   /**
-   * Дата и время создания
-   * @return createdAt
-  **/
-  @javax.annotation.Nonnull
-  public OffsetDateTime getCreatedAt() {
-    return createdAt;
-  }
-
-
-  public void setCreatedAt(OffsetDateTime createdAt) {
-    this.createdAt = createdAt;
-  }
-
-
-  public FirewallGroupOutAPI updatedAt(OffsetDateTime updatedAt) {
-    
-    this.updatedAt = updatedAt;
-    return this;
-  }
-
-   /**
-   * Дата и время последнего обновления
-   * @return updatedAt
-  **/
-  @javax.annotation.Nonnull
-  public OffsetDateTime getUpdatedAt() {
-    return updatedAt;
-  }
-
-
-  public void setUpdatedAt(OffsetDateTime updatedAt) {
-    this.updatedAt = updatedAt;
-  }
-
-
-  public FirewallGroupOutAPI name(String name) {
-    
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * Имя группы правил
-   * @return name
-  **/
-  @javax.annotation.Nonnull
-  public String getName() {
-    return name;
-  }
-
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-
-  public FirewallGroupOutAPI description(String description) {
-    
-    this.description = description;
-    return this;
-  }
-
-   /**
-   * Описание группы правил
-   * @return description
-  **/
-  @javax.annotation.Nonnull
-  public String getDescription() {
-    return description;
-  }
-
-
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-
-  public FirewallGroupOutAPI policy(Policy policy) {
-    
-    this.policy = policy;
-    return this;
-  }
-
-   /**
-   * Get policy
-   * @return policy
-  **/
-  @javax.annotation.Nonnull
-  public Policy getPolicy() {
-    return policy;
-  }
-
-
-  public void setPolicy(Policy policy) {
-    this.policy = policy;
-  }
-
-
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+    /**
+     * Model tests for ImageDownload
+     */
+    @Test
+    public void testImageDownload() {
+        // TODO: test ImageDownload
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    /**
+     * Test the property 'id'
+     */
+    @Test
+    public void idTest() {
+        // TODO: test id
     }
-    FirewallGroupOutAPI firewallGroupOutAPI = (FirewallGroupOutAPI) o;
-    return Objects.equals(this.id, firewallGroupOutAPI.id) &&
-        Objects.equals(this.createdAt, firewallGroupOutAPI.createdAt) &&
-        Objects.equals(this.updatedAt, firewallGroupOutAPI.updatedAt) &&
-        Objects.equals(this.name, firewallGroupOutAPI.name) &&
-        Objects.equals(this.description, firewallGroupOutAPI.description) &&
-        Objects.equals(this.policy, firewallGroupOutAPI.policy);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(id, createdAt, updatedAt, name, description, policy);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class FirewallGroupOutAPI {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
-    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    policy: ").append(toIndentedString(policy)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
+    /**
+     * Test the property 'createdAt'
+     */
+    @Test
+    public void createdAtTest() {
+        // TODO: test createdAt
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("id");
-    openapiFields.add("created_at");
-    openapiFields.add("updated_at");
-    openapiFields.add("name");
-    openapiFields.add("description");
-    openapiFields.add("policy");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("id");
-    openapiRequiredFields.add("created_at");
-    openapiRequiredFields.add("updated_at");
-    openapiRequiredFields.add("name");
-    openapiRequiredFields.add("description");
-    openapiRequiredFields.add("policy");
-  }
-
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to FirewallGroupOutAPI
-  */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!FirewallGroupOutAPI.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in FirewallGroupOutAPI is not found in the empty JSON string", FirewallGroupOutAPI.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!FirewallGroupOutAPI.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `FirewallGroupOutAPI` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : FirewallGroupOutAPI.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
-      }
-      if (!jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
-      }
-      if (!jsonObj.get("description").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!FirewallGroupOutAPI.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'FirewallGroupOutAPI' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<FirewallGroupOutAPI> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(FirewallGroupOutAPI.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<FirewallGroupOutAPI>() {
-           @Override
-           public void write(JsonWriter out, FirewallGroupOutAPI value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public FirewallGroupOutAPI read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
+    /**
+     * Test the property 'image'
+     */
+    @Test
+    public void imageTest() {
+        // TODO: test image
     }
-  }
 
- /**
-  * Create an instance of FirewallGroupOutAPI given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of FirewallGroupOutAPI
-  * @throws IOException if the JSON string is invalid with respect to FirewallGroupOutAPI
-  */
-  public static FirewallGroupOutAPI fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, FirewallGroupOutAPI.class);
-  }
+    /**
+     * Test the property 'type'
+     */
+    @Test
+    public void typeTest() {
+        // TODO: test type
+    }
 
- /**
-  * Convert an instance of FirewallGroupOutAPI to an JSON string
-  *
-  * @return JSON string
-  */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
+    /**
+     * Test the property 'url'
+     */
+    @Test
+    public void urlTest() {
+        // TODO: test url
+    }
+
+    /**
+     * Test the property 'status'
+     */
+    @Test
+    public void statusTest() {
+        // TODO: test status
+    }
+
+    /**
+     * Test the property 'progress'
+     */
+    @Test
+    public void progressTest() {
+        // TODO: test progress
+    }
+
 }
-

@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * ServersConfiguratorRequirements
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T10:12:31.892103Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T16:09:23.451331Z[Etc/UTC]")
 public class ServersConfiguratorRequirements {
   public static final String SERIALIZED_NAME_CPU_MIN = "cpu_min";
   @SerializedName(SERIALIZED_NAME_CPU_MIN)
@@ -100,6 +100,18 @@ public class ServersConfiguratorRequirements {
   public static final String SERIALIZED_NAME_NETWORK_BANDWIDTH_MAX = "network_bandwidth_max";
   @SerializedName(SERIALIZED_NAME_NETWORK_BANDWIDTH_MAX)
   private BigDecimal networkBandwidthMax;
+
+  public static final String SERIALIZED_NAME_GPU_MIN = "gpu_min";
+  @SerializedName(SERIALIZED_NAME_GPU_MIN)
+  private BigDecimal gpuMin;
+
+  public static final String SERIALIZED_NAME_GPU_MAX = "gpu_max";
+  @SerializedName(SERIALIZED_NAME_GPU_MAX)
+  private BigDecimal gpuMax;
+
+  public static final String SERIALIZED_NAME_GPU_STEP = "gpu_step";
+  @SerializedName(SERIALIZED_NAME_GPU_STEP)
+  private BigDecimal gpuStep;
 
   public ServersConfiguratorRequirements() {
   }
@@ -356,6 +368,69 @@ public class ServersConfiguratorRequirements {
   }
 
 
+  public ServersConfiguratorRequirements gpuMin(BigDecimal gpuMin) {
+    
+    this.gpuMin = gpuMin;
+    return this;
+  }
+
+   /**
+   * Минимальное количество видеокарт
+   * @return gpuMin
+  **/
+  @javax.annotation.Nullable
+  public BigDecimal getGpuMin() {
+    return gpuMin;
+  }
+
+
+  public void setGpuMin(BigDecimal gpuMin) {
+    this.gpuMin = gpuMin;
+  }
+
+
+  public ServersConfiguratorRequirements gpuMax(BigDecimal gpuMax) {
+    
+    this.gpuMax = gpuMax;
+    return this;
+  }
+
+   /**
+   * Максимальное количество видеокарт
+   * @return gpuMax
+  **/
+  @javax.annotation.Nullable
+  public BigDecimal getGpuMax() {
+    return gpuMax;
+  }
+
+
+  public void setGpuMax(BigDecimal gpuMax) {
+    this.gpuMax = gpuMax;
+  }
+
+
+  public ServersConfiguratorRequirements gpuStep(BigDecimal gpuStep) {
+    
+    this.gpuStep = gpuStep;
+    return this;
+  }
+
+   /**
+   * Размер шага видеокарт
+   * @return gpuStep
+  **/
+  @javax.annotation.Nullable
+  public BigDecimal getGpuStep() {
+    return gpuStep;
+  }
+
+
+  public void setGpuStep(BigDecimal gpuStep) {
+    this.gpuStep = gpuStep;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -377,12 +452,15 @@ public class ServersConfiguratorRequirements {
         Objects.equals(this.diskMax, serversConfiguratorRequirements.diskMax) &&
         Objects.equals(this.networkBandwidthMin, serversConfiguratorRequirements.networkBandwidthMin) &&
         Objects.equals(this.networkBandwidthStep, serversConfiguratorRequirements.networkBandwidthStep) &&
-        Objects.equals(this.networkBandwidthMax, serversConfiguratorRequirements.networkBandwidthMax);
+        Objects.equals(this.networkBandwidthMax, serversConfiguratorRequirements.networkBandwidthMax) &&
+        Objects.equals(this.gpuMin, serversConfiguratorRequirements.gpuMin) &&
+        Objects.equals(this.gpuMax, serversConfiguratorRequirements.gpuMax) &&
+        Objects.equals(this.gpuStep, serversConfiguratorRequirements.gpuStep);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(cpuMin, cpuStep, cpuMax, ramMin, ramStep, ramMax, diskMin, diskStep, diskMax, networkBandwidthMin, networkBandwidthStep, networkBandwidthMax);
+    return Objects.hash(cpuMin, cpuStep, cpuMax, ramMin, ramStep, ramMax, diskMin, diskStep, diskMax, networkBandwidthMin, networkBandwidthStep, networkBandwidthMax, gpuMin, gpuMax, gpuStep);
   }
 
   @Override
@@ -401,6 +479,9 @@ public class ServersConfiguratorRequirements {
     sb.append("    networkBandwidthMin: ").append(toIndentedString(networkBandwidthMin)).append("\n");
     sb.append("    networkBandwidthStep: ").append(toIndentedString(networkBandwidthStep)).append("\n");
     sb.append("    networkBandwidthMax: ").append(toIndentedString(networkBandwidthMax)).append("\n");
+    sb.append("    gpuMin: ").append(toIndentedString(gpuMin)).append("\n");
+    sb.append("    gpuMax: ").append(toIndentedString(gpuMax)).append("\n");
+    sb.append("    gpuStep: ").append(toIndentedString(gpuStep)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -435,6 +516,9 @@ public class ServersConfiguratorRequirements {
     openapiFields.add("network_bandwidth_min");
     openapiFields.add("network_bandwidth_step");
     openapiFields.add("network_bandwidth_max");
+    openapiFields.add("gpu_min");
+    openapiFields.add("gpu_max");
+    openapiFields.add("gpu_step");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -450,6 +534,9 @@ public class ServersConfiguratorRequirements {
     openapiRequiredFields.add("network_bandwidth_min");
     openapiRequiredFields.add("network_bandwidth_step");
     openapiRequiredFields.add("network_bandwidth_max");
+    openapiRequiredFields.add("gpu_min");
+    openapiRequiredFields.add("gpu_max");
+    openapiRequiredFields.add("gpu_step");
   }
 
  /**

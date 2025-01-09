@@ -7,8 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**responseId** | **String** | Идентификатор запроса |  [optional] |
-|**rule** | [**FirewallRuleOutAPI**](FirewallRuleOutAPI.md) |  |  |
+|**responseId** | **String** | ID запроса. |  [optional] |
+|**rule** | [**FirewallRule**](FirewallRule.md) |  |  |
 
 
 

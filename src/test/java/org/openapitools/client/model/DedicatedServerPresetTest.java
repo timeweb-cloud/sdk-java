@@ -65,6 +65,14 @@ public class DedicatedServerPresetTest {
     }
 
     /**
+     * Test the property 'isPreInstalled'
+     */
+    @Test
+    public void isPreInstalledTest() {
+        // TODO: test isPreInstalled
+    }
+
+    /**
      * Test the property 'cpu'
      */
     @Test

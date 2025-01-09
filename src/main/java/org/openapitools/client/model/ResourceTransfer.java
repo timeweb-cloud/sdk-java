@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * ResourceTransfer
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T10:12:31.892103Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T16:09:23.451331Z[Etc/UTC]")
 public class ResourceTransfer {
   public static final String SERIALIZED_NAME_TO_PROJECT = "to_project";
   @SerializedName(SERIALIZED_NAME_TO_PROJECT)
@@ -130,7 +130,7 @@ public class ResourceTransfer {
   }
 
    /**
-   * Идентификатор проекта, куда переносится ресурс.
+   * ID проекта, куда переносится ресурс.
    * @return toProject
   **/
   @javax.annotation.Nonnull
@@ -151,7 +151,7 @@ public class ResourceTransfer {
   }
 
    /**
-   * Идентификатор перемещаемого ресурса (сервера, хранилища, кластера, балансировщика, базы данных или выделенного сервера).
+   * ID перемещаемого ресурса (сервера, хранилища, кластера, балансировщика, базы данных или выделенного сервера).
    * @return resourceId
   **/
   @javax.annotation.Nonnull

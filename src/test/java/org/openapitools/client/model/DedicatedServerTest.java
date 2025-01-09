@@ -232,4 +232,12 @@ public class DedicatedServerTest {
         // TODO: test autoinstallReady
     }
 
+    /**
+     * Test the property 'password'
+     */
+    @Test
+    public void passwordTest() {
+        // TODO: test password
+    }
+
 }

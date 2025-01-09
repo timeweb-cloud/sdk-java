@@ -55,7 +55,7 @@ import org.openapitools.client.JSON;
 /**
  * VdsNetworksInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T10:12:31.892103Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T16:09:23.451331Z[Etc/UTC]")
 public class VdsNetworksInner {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -176,6 +176,14 @@ public class VdsNetworksInner {
   public static final String SERIALIZED_NAME_IS_DDOS_GUARD = "is_ddos_guard";
   @SerializedName(SERIALIZED_NAME_IS_DDOS_GUARD)
   private Boolean isDdosGuard;
+
+  public static final String SERIALIZED_NAME_IS_IMAGE_MOUNTED = "is_image_mounted";
+  @SerializedName(SERIALIZED_NAME_IS_IMAGE_MOUNTED)
+  private Boolean isImageMounted;
+
+  public static final String SERIALIZED_NAME_BLOCKED_PORTS = "blocked_ports";
+  @SerializedName(SERIALIZED_NAME_BLOCKED_PORTS)
+  private List<Integer> blockedPorts;
 
   public VdsNetworksInner() {
   }
@@ -300,7 +308,7 @@ public class VdsNetworksInner {
   }
 
    /**
-   * Подключена ли DDoS-защита. Только для публичных сетей.
+   * Это логическое значение, которое показывает, подключена ли DDoS-защита. Только для публичных сетей.
    * @return isDdosGuard
   **/
   @javax.annotation.Nullable
@@ -311,6 +319,56 @@ public class VdsNetworksInner {
 
   public void setIsDdosGuard(Boolean isDdosGuard) {
     this.isDdosGuard = isDdosGuard;
+  }
+
+
+  public VdsNetworksInner isImageMounted(Boolean isImageMounted) {
+    
+    this.isImageMounted = isImageMounted;
+    return this;
+  }
+
+   /**
+   * Это логическое значение, которое показывает, примонтирован ли образ к серверу.
+   * @return isImageMounted
+  **/
+  @javax.annotation.Nullable
+  public Boolean getIsImageMounted() {
+    return isImageMounted;
+  }
+
+
+  public void setIsImageMounted(Boolean isImageMounted) {
+    this.isImageMounted = isImageMounted;
+  }
+
+
+  public VdsNetworksInner blockedPorts(List<Integer> blockedPorts) {
+    
+    this.blockedPorts = blockedPorts;
+    return this;
+  }
+
+  public VdsNetworksInner addBlockedPortsItem(Integer blockedPortsItem) {
+    if (this.blockedPorts == null) {
+      this.blockedPorts = new ArrayList<>();
+    }
+    this.blockedPorts.add(blockedPortsItem);
+    return this;
+  }
+
+   /**
+   * Список заблокированных портов на сервере.
+   * @return blockedPorts
+  **/
+  @javax.annotation.Nullable
+  public List<Integer> getBlockedPorts() {
+    return blockedPorts;
+  }
+
+
+  public void setBlockedPorts(List<Integer> blockedPorts) {
+    this.blockedPorts = blockedPorts;
   }
 
 
@@ -329,7 +387,9 @@ public class VdsNetworksInner {
         Objects.equals(this.natMode, vdsNetworksInner.natMode) &&
         Objects.equals(this.bandwidth, vdsNetworksInner.bandwidth) &&
         Objects.equals(this.ips, vdsNetworksInner.ips) &&
-        Objects.equals(this.isDdosGuard, vdsNetworksInner.isDdosGuard);
+        Objects.equals(this.isDdosGuard, vdsNetworksInner.isDdosGuard) &&
+        Objects.equals(this.isImageMounted, vdsNetworksInner.isImageMounted) &&
+        Objects.equals(this.blockedPorts, vdsNetworksInner.blockedPorts);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -338,7 +398,7 @@ public class VdsNetworksInner {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, type, natMode, bandwidth, ips, isDdosGuard);
+    return Objects.hash(id, type, natMode, bandwidth, ips, isDdosGuard, isImageMounted, blockedPorts);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -358,6 +418,8 @@ public class VdsNetworksInner {
     sb.append("    bandwidth: ").append(toIndentedString(bandwidth)).append("\n");
     sb.append("    ips: ").append(toIndentedString(ips)).append("\n");
     sb.append("    isDdosGuard: ").append(toIndentedString(isDdosGuard)).append("\n");
+    sb.append("    isImageMounted: ").append(toIndentedString(isImageMounted)).append("\n");
+    sb.append("    blockedPorts: ").append(toIndentedString(blockedPorts)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -386,6 +448,8 @@ public class VdsNetworksInner {
     openapiFields.add("bandwidth");
     openapiFields.add("ips");
     openapiFields.add("is_ddos_guard");
+    openapiFields.add("is_image_mounted");
+    openapiFields.add("blocked_ports");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -440,6 +504,10 @@ public class VdsNetworksInner {
       for (int i = 0; i < jsonArrayips.size(); i++) {
         VdsNetworksInnerIpsInner.validateJsonElement(jsonArrayips.get(i));
       };
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("blocked_ports") != null && !jsonObj.get("blocked_ports").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `blocked_ports` to be an array in the JSON string but got `%s`", jsonObj.get("blocked_ports").toString()));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

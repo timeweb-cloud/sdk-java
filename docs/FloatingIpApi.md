@@ -6,11 +6,11 @@ All URIs are relative to *https://api.timeweb.cloud*
 |------------- | ------------- | -------------|
 | [**bindFloatingIp**](FloatingIpApi.md#bindFloatingIp) | **POST** /api/v1/floating-ips/{floating_ip_id}/bind | Привязать IP к сервису |
 | [**createFloatingIp**](FloatingIpApi.md#createFloatingIp) | **POST** /api/v1/floating-ips | Создание плавающего IP |
-| [**deleteFloatingIP**](FloatingIpApi.md#deleteFloatingIP) | **DELETE** /api/v1/floating-ips/{floating_ip_id} | Удаление плавающего IP по идентификатору |
+| [**deleteFloatingIP**](FloatingIpApi.md#deleteFloatingIP) | **DELETE** /api/v1/floating-ips/{floating_ip_id} | Удаление плавающего IP по ID |
 | [**getFloatingIp**](FloatingIpApi.md#getFloatingIp) | **GET** /api/v1/floating-ips/{floating_ip_id} | Получение плавающего IP |
 | [**getFloatingIps**](FloatingIpApi.md#getFloatingIps) | **GET** /api/v1/floating-ips | Получение списка плавающих IP |
 | [**unbindFloatingIp**](FloatingIpApi.md#unbindFloatingIp) | **POST** /api/v1/floating-ips/{floating_ip_id}/unbind | Отвязать IP от сервиса |
-| [**updateFloatingIP**](FloatingIpApi.md#updateFloatingIP) | **PATCH** /api/v1/floating-ips/{floating_ip_id} | Изменение плавающего IP по идентификатору |
+| [**updateFloatingIP**](FloatingIpApi.md#updateFloatingIP) | **PATCH** /api/v1/floating-ips/{floating_ip_id} | Изменение плавающего IP по ID |
 
 
 <a id="bindFloatingIp"></a>
@@ -41,7 +41,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     FloatingIpApi apiInstance = new FloatingIpApi(defaultClient);
-    String floatingIpId = "87fa289f-1513-4c4d-8d49-5707f411f14b"; // String | Идентификатор плавающего IP
+    String floatingIpId = "87fa289f-1513-4c4d-8d49-5707f411f14b"; // String | ID плавающего IP
     BindFloatingIp bindFloatingIp = new BindFloatingIp(); // BindFloatingIp | 
     try {
       apiInstance.bindFloatingIp(floatingIpId, bindFloatingIp);
@@ -60,7 +60,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **floatingIpId** | **String**| Идентификатор плавающего IP | |
+| **floatingIpId** | **String**| ID плавающего IP | |
 | **bindFloatingIp** | [**BindFloatingIp**](BindFloatingIp.md)|  | |
 
 ### Return type
@@ -164,7 +164,7 @@ public class Example {
 # **deleteFloatingIP**
 > deleteFloatingIP(floatingIpId)
 
-Удаление плавающего IP по идентификатору
+Удаление плавающего IP по ID
 
 Чтобы удалить плавающий IP, отправьте DELETE-запрос на &#x60;/api/v1/floating-ips/{floating_ip_id}&#x60;
 
@@ -188,7 +188,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     FloatingIpApi apiInstance = new FloatingIpApi(defaultClient);
-    String floatingIpId = "87fa289f-1513-4c4d-8d49-5707f411f14b"; // String | Идентификатор плавающего IP
+    String floatingIpId = "87fa289f-1513-4c4d-8d49-5707f411f14b"; // String | ID плавающего IP
     try {
       apiInstance.deleteFloatingIP(floatingIpId);
     } catch (ApiException e) {
@@ -206,7 +206,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **floatingIpId** | **String**| Идентификатор плавающего IP | |
+| **floatingIpId** | **String**| ID плавающего IP | |
 
 ### Return type
 
@@ -260,7 +260,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     FloatingIpApi apiInstance = new FloatingIpApi(defaultClient);
-    String floatingIpId = "87fa289f-1513-4c4d-8d49-5707f411f14b"; // String | Идентификатор плавающего IP
+    String floatingIpId = "87fa289f-1513-4c4d-8d49-5707f411f14b"; // String | ID плавающего IP
     try {
       CreateFloatingIp201Response result = apiInstance.getFloatingIp(floatingIpId);
       System.out.println(result);
@@ -279,7 +279,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **floatingIpId** | **String**| Идентификатор плавающего IP | |
+| **floatingIpId** | **String**| ID плавающего IP | |
 
 ### Return type
 
@@ -402,7 +402,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     FloatingIpApi apiInstance = new FloatingIpApi(defaultClient);
-    String floatingIpId = "87fa289f-1513-4c4d-8d49-5707f411f14b"; // String | Идентификатор плавающего IP
+    String floatingIpId = "87fa289f-1513-4c4d-8d49-5707f411f14b"; // String | ID плавающего IP
     try {
       apiInstance.unbindFloatingIp(floatingIpId);
     } catch (ApiException e) {
@@ -420,7 +420,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **floatingIpId** | **String**| Идентификатор плавающего IP | |
+| **floatingIpId** | **String**| ID плавающего IP | |
 
 ### Return type
 
@@ -450,7 +450,7 @@ null (empty response body)
 # **updateFloatingIP**
 > CreateFloatingIp201Response updateFloatingIP(floatingIpId, updateFloatingIp)
 
-Изменение плавающего IP по идентификатору
+Изменение плавающего IP по ID
 
 Чтобы изменить плавающий IP, отправьте PATCH-запрос на &#x60;/api/v1/floating-ips/{floating_ip_id}&#x60;
 
@@ -474,7 +474,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     FloatingIpApi apiInstance = new FloatingIpApi(defaultClient);
-    String floatingIpId = "87fa289f-1513-4c4d-8d49-5707f411f14b"; // String | Идентификатор плавающего IP
+    String floatingIpId = "87fa289f-1513-4c4d-8d49-5707f411f14b"; // String | ID плавающего IP
     UpdateFloatingIp updateFloatingIp = new UpdateFloatingIp(); // UpdateFloatingIp | 
     try {
       CreateFloatingIp201Response result = apiInstance.updateFloatingIP(floatingIpId, updateFloatingIp);
@@ -494,7 +494,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **floatingIpId** | **String**| Идентификатор плавающего IP | |
+| **floatingIpId** | **String**| ID плавающего IP | |
 | **updateFloatingIp** | [**UpdateFloatingIp**](UpdateFloatingIp.md)|  | |
 
 ### Return type

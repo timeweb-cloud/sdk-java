@@ -23,8 +23,8 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import org.openapitools.client.model.Meta;
 import org.openapitools.client.model.NodeGroupOut;
+import org.openapitools.client.model.SchemasMeta;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -54,7 +54,7 @@ import org.openapitools.client.JSON;
 /**
  * NodeGroupsResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T10:12:31.892103Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T16:09:23.451331Z[Etc/UTC]")
 public class NodeGroupsResponse {
   public static final String SERIALIZED_NAME_RESPONSE_ID = "response_id";
   @SerializedName(SERIALIZED_NAME_RESPONSE_ID)
@@ -62,7 +62,7 @@ public class NodeGroupsResponse {
 
   public static final String SERIALIZED_NAME_META = "meta";
   @SerializedName(SERIALIZED_NAME_META)
-  private Meta meta;
+  private SchemasMeta meta;
 
   public static final String SERIALIZED_NAME_NODE_GROUPS = "node_groups";
   @SerializedName(SERIALIZED_NAME_NODE_GROUPS)
@@ -78,7 +78,7 @@ public class NodeGroupsResponse {
   }
 
    /**
-   * Идентификатор запроса
+   * ID запроса
    * @return responseId
   **/
   @javax.annotation.Nullable
@@ -92,7 +92,7 @@ public class NodeGroupsResponse {
   }
 
 
-  public NodeGroupsResponse meta(Meta meta) {
+  public NodeGroupsResponse meta(SchemasMeta meta) {
     
     this.meta = meta;
     return this;
@@ -103,12 +103,12 @@ public class NodeGroupsResponse {
    * @return meta
   **/
   @javax.annotation.Nonnull
-  public Meta getMeta() {
+  public SchemasMeta getMeta() {
     return meta;
   }
 
 
-  public void setMeta(Meta meta) {
+  public void setMeta(SchemasMeta meta) {
     this.meta = meta;
   }
 
@@ -233,7 +233,7 @@ public class NodeGroupsResponse {
         throw new IllegalArgumentException(String.format("Expected the field `response_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("response_id").toString()));
       }
       // validate the required field `meta`
-      Meta.validateJsonElement(jsonObj.get("meta"));
+      SchemasMeta.validateJsonElement(jsonObj.get("meta"));
       // ensure the json data is an array
       if (!jsonObj.get("node_groups").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `node_groups` to be an array in the JSON string but got `%s`", jsonObj.get("node_groups").toString()));

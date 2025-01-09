@@ -240,7 +240,7 @@ public class VpcApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Объект JSON c ключом &#x60;vpc&#x60; </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Успешное выполнение действия </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -309,12 +309,11 @@ public class VpcApi {
      * Удаление VPC по ID сети
      * Чтобы удалить VPC, отправьте DELETE-запрос на &#x60;/api/v1/vpcs/{vpc_id}&#x60;
      * @param vpcId ID сети (required)
-     * @return CreateVPC201Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Объект JSON c ключом &#x60;vpc&#x60; </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Успешное выполнение действия </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -323,21 +322,20 @@ public class VpcApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public CreateVPC201Response deleteVPC(String vpcId) throws ApiException {
-        ApiResponse<CreateVPC201Response> localVarResp = deleteVPCWithHttpInfo(vpcId);
-        return localVarResp.getData();
+    public void deleteVPC(String vpcId) throws ApiException {
+        deleteVPCWithHttpInfo(vpcId);
     }
 
     /**
      * Удаление VPC по ID сети
      * Чтобы удалить VPC, отправьте DELETE-запрос на &#x60;/api/v1/vpcs/{vpc_id}&#x60;
      * @param vpcId ID сети (required)
-     * @return ApiResponse&lt;CreateVPC201Response&gt;
+     * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Объект JSON c ключом &#x60;vpc&#x60; </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Успешное выполнение действия </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -346,10 +344,9 @@ public class VpcApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CreateVPC201Response> deleteVPCWithHttpInfo(String vpcId) throws ApiException {
+    public ApiResponse<Void> deleteVPCWithHttpInfo(String vpcId) throws ApiException {
         okhttp3.Call localVarCall = deleteVPCValidateBeforeCall(vpcId, null);
-        Type localVarReturnType = new TypeToken<CreateVPC201Response>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
+        return localVarApiClient.execute(localVarCall);
     }
 
     /**
@@ -362,7 +359,7 @@ public class VpcApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Объект JSON c ключом &#x60;vpc&#x60; </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Успешное выполнение действия </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -371,11 +368,10 @@ public class VpcApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteVPCAsync(String vpcId, final ApiCallback<CreateVPC201Response> _callback) throws ApiException {
+    public okhttp3.Call deleteVPCAsync(String vpcId, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteVPCValidateBeforeCall(vpcId, _callback);
-        Type localVarReturnType = new TypeToken<CreateVPC201Response>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**

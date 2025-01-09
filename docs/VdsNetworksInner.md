@@ -12,7 +12,9 @@
 |**natMode** | [**NatModeEnum**](#NatModeEnum) | Тип преобразования сетевых адресов. |  [optional] |
 |**bandwidth** | **BigDecimal** | Пропускная способность сети. |  [optional] |
 |**ips** | [**List&lt;VdsNetworksInnerIpsInner&gt;**](VdsNetworksInnerIpsInner.md) | Список IP-адресов сети. |  |
-|**isDdosGuard** | **Boolean** | Подключена ли DDoS-защита. Только для публичных сетей. |  [optional] |
+|**isDdosGuard** | **Boolean** | Это логическое значение, которое показывает, подключена ли DDoS-защита. Только для публичных сетей. |  [optional] |
+|**isImageMounted** | **Boolean** | Это логическое значение, которое показывает, примонтирован ли образ к серверу. |  [optional] |
+|**blockedPorts** | **List&lt;Integer&gt;** | Список заблокированных портов на сервере. |  [optional] |
 
 
 

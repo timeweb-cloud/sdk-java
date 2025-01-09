@@ -54,7 +54,7 @@ import org.openapitools.client.JSON;
 /**
  * Выделенный сервер
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T10:12:31.892103Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T16:09:23.451331Z[Etc/UTC]")
 public class DedicatedServerPreset {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -67,6 +67,10 @@ public class DedicatedServerPreset {
   public static final String SERIALIZED_NAME_IS_IPMI_ENABLED = "is_ipmi_enabled";
   @SerializedName(SERIALIZED_NAME_IS_IPMI_ENABLED)
   private Boolean isIpmiEnabled;
+
+  public static final String SERIALIZED_NAME_IS_PRE_INSTALLED = "is_pre_installed";
+  @SerializedName(SERIALIZED_NAME_IS_PRE_INSTALLED)
+  private Boolean isPreInstalled;
 
   public static final String SERIALIZED_NAME_CPU = "cpu";
   @SerializedName(SERIALIZED_NAME_CPU)
@@ -95,7 +99,17 @@ public class DedicatedServerPreset {
     
     KZ_1("kz-1"),
     
-    PL_1("pl-1");
+    PL_1("pl-1"),
+    
+    NL_1("nl-1"),
+    
+    US_2("us-2"),
+    
+    TR_1("tr-1"),
+    
+    DE_1("de-1"),
+    
+    FI_1("fi-1");
 
     private String value;
 
@@ -202,6 +216,27 @@ public class DedicatedServerPreset {
 
   public void setIsIpmiEnabled(Boolean isIpmiEnabled) {
     this.isIpmiEnabled = isIpmiEnabled;
+  }
+
+
+  public DedicatedServerPreset isPreInstalled(Boolean isPreInstalled) {
+    
+    this.isPreInstalled = isPreInstalled;
+    return this;
+  }
+
+   /**
+   * Это логическое значение, которое показывает, готов ли выделенный сервер к моментальной выдаче.
+   * @return isPreInstalled
+  **/
+  @javax.annotation.Nonnull
+  public Boolean getIsPreInstalled() {
+    return isPreInstalled;
+  }
+
+
+  public void setIsPreInstalled(Boolean isPreInstalled) {
+    this.isPreInstalled = isPreInstalled;
   }
 
 
@@ -323,6 +358,7 @@ public class DedicatedServerPreset {
     return Objects.equals(this.id, dedicatedServerPreset.id) &&
         Objects.equals(this.description, dedicatedServerPreset.description) &&
         Objects.equals(this.isIpmiEnabled, dedicatedServerPreset.isIpmiEnabled) &&
+        Objects.equals(this.isPreInstalled, dedicatedServerPreset.isPreInstalled) &&
         Objects.equals(this.cpu, dedicatedServerPreset.cpu) &&
         Objects.equals(this.disk, dedicatedServerPreset.disk) &&
         Objects.equals(this.price, dedicatedServerPreset.price) &&
@@ -332,7 +368,7 @@ public class DedicatedServerPreset {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, description, isIpmiEnabled, cpu, disk, price, memory, location);
+    return Objects.hash(id, description, isIpmiEnabled, isPreInstalled, cpu, disk, price, memory, location);
   }
 
   @Override
@@ -342,6 +378,7 @@ public class DedicatedServerPreset {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    isIpmiEnabled: ").append(toIndentedString(isIpmiEnabled)).append("\n");
+    sb.append("    isPreInstalled: ").append(toIndentedString(isPreInstalled)).append("\n");
     sb.append("    cpu: ").append(toIndentedString(cpu)).append("\n");
     sb.append("    disk: ").append(toIndentedString(disk)).append("\n");
     sb.append("    price: ").append(toIndentedString(price)).append("\n");
@@ -372,6 +409,7 @@ public class DedicatedServerPreset {
     openapiFields.add("id");
     openapiFields.add("description");
     openapiFields.add("is_ipmi_enabled");
+    openapiFields.add("is_pre_installed");
     openapiFields.add("cpu");
     openapiFields.add("disk");
     openapiFields.add("price");
@@ -383,6 +421,7 @@ public class DedicatedServerPreset {
     openapiRequiredFields.add("id");
     openapiRequiredFields.add("description");
     openapiRequiredFields.add("is_ipmi_enabled");
+    openapiRequiredFields.add("is_pre_installed");
     openapiRequiredFields.add("cpu");
     openapiRequiredFields.add("disk");
     openapiRequiredFields.add("memory");

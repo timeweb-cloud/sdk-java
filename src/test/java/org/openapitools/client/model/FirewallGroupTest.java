@@ -13,388 +13,77 @@
 
 package org.openapitools.client.model;
 
-import java.util.Objects;
-import java.util.Arrays;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.net.URI;
 import java.time.OffsetDateTime;
-import org.openapitools.client.model.URLType;
-import org.openapitools.client.model.UrlStatus;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
-import java.lang.reflect.Type;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-
-import org.openapitools.client.JSON;
+import org.openapitools.client.model.Policy;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 /**
- * ImageDownloadAPI
+ * Model tests for FirewallGroup
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T10:12:31.892103Z[Etc/UTC]")
-public class ImageDownloadAPI {
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
-  private String id;
+public class FirewallGroupTest {
+    private final FirewallGroup model = new FirewallGroup();
 
-  public static final String SERIALIZED_NAME_CREATED_AT = "created_at";
-  @SerializedName(SERIALIZED_NAME_CREATED_AT)
-  private OffsetDateTime createdAt;
-
-  public static final String SERIALIZED_NAME_IMAGE = "image";
-  @SerializedName(SERIALIZED_NAME_IMAGE)
-  private String image;
-
-  public static final String SERIALIZED_NAME_TYPE = "type";
-  @SerializedName(SERIALIZED_NAME_TYPE)
-  private URLType type;
-
-  public static final String SERIALIZED_NAME_URL = "url";
-  @SerializedName(SERIALIZED_NAME_URL)
-  private URI url;
-
-  public static final String SERIALIZED_NAME_STATUS = "status";
-  @SerializedName(SERIALIZED_NAME_STATUS)
-  private UrlStatus status;
-
-  public static final String SERIALIZED_NAME_PROGRESS = "progress";
-  @SerializedName(SERIALIZED_NAME_PROGRESS)
-  private Integer progress;
-
-  public ImageDownloadAPI() {
-  }
-
-  public ImageDownloadAPI id(String id) {
-    
-    this.id = id;
-    return this;
-  }
-
-   /**
-   * ID ссылки
-   * @return id
-  **/
-  @javax.annotation.Nonnull
-  public String getId() {
-    return id;
-  }
-
-
-  public void setId(String id) {
-    this.id = id;
-  }
-
-
-  public ImageDownloadAPI createdAt(OffsetDateTime createdAt) {
-    
-    this.createdAt = createdAt;
-    return this;
-  }
-
-   /**
-   * Дата и время создания ссылки
-   * @return createdAt
-  **/
-  @javax.annotation.Nonnull
-  public OffsetDateTime getCreatedAt() {
-    return createdAt;
-  }
-
-
-  public void setCreatedAt(OffsetDateTime createdAt) {
-    this.createdAt = createdAt;
-  }
-
-
-  public ImageDownloadAPI image(String image) {
-    
-    this.image = image;
-    return this;
-  }
-
-   /**
-   * ID образа
-   * @return image
-  **/
-  @javax.annotation.Nonnull
-  public String getImage() {
-    return image;
-  }
-
-
-  public void setImage(String image) {
-    this.image = image;
-  }
-
-
-  public ImageDownloadAPI type(URLType type) {
-    
-    this.type = type;
-    return this;
-  }
-
-   /**
-   * Get type
-   * @return type
-  **/
-  @javax.annotation.Nonnull
-  public URLType getType() {
-    return type;
-  }
-
-
-  public void setType(URLType type) {
-    this.type = type;
-  }
-
-
-  public ImageDownloadAPI url(URI url) {
-    
-    this.url = url;
-    return this;
-  }
-
-   /**
-   * Ссылка на скачивание
-   * @return url
-  **/
-  @javax.annotation.Nullable
-  public URI getUrl() {
-    return url;
-  }
-
-
-  public void setUrl(URI url) {
-    this.url = url;
-  }
-
-
-  public ImageDownloadAPI status(UrlStatus status) {
-    
-    this.status = status;
-    return this;
-  }
-
-   /**
-   * Get status
-   * @return status
-  **/
-  @javax.annotation.Nonnull
-  public UrlStatus getStatus() {
-    return status;
-  }
-
-
-  public void setStatus(UrlStatus status) {
-    this.status = status;
-  }
-
-
-  public ImageDownloadAPI progress(Integer progress) {
-    
-    this.progress = progress;
-    return this;
-  }
-
-   /**
-   * Прогресс загрузки образа
-   * @return progress
-  **/
-  @javax.annotation.Nonnull
-  public Integer getProgress() {
-    return progress;
-  }
-
-
-  public void setProgress(Integer progress) {
-    this.progress = progress;
-  }
-
-
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+    /**
+     * Model tests for FirewallGroup
+     */
+    @Test
+    public void testFirewallGroup() {
+        // TODO: test FirewallGroup
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    /**
+     * Test the property 'id'
+     */
+    @Test
+    public void idTest() {
+        // TODO: test id
     }
-    ImageDownloadAPI imageDownloadAPI = (ImageDownloadAPI) o;
-    return Objects.equals(this.id, imageDownloadAPI.id) &&
-        Objects.equals(this.createdAt, imageDownloadAPI.createdAt) &&
-        Objects.equals(this.image, imageDownloadAPI.image) &&
-        Objects.equals(this.type, imageDownloadAPI.type) &&
-        Objects.equals(this.url, imageDownloadAPI.url) &&
-        Objects.equals(this.status, imageDownloadAPI.status) &&
-        Objects.equals(this.progress, imageDownloadAPI.progress);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(id, createdAt, image, type, url, status, progress);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ImageDownloadAPI {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
-    sb.append("    image: ").append(toIndentedString(image)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    url: ").append(toIndentedString(url)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    progress: ").append(toIndentedString(progress)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
+    /**
+     * Test the property 'createdAt'
+     */
+    @Test
+    public void createdAtTest() {
+        // TODO: test createdAt
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("id");
-    openapiFields.add("created_at");
-    openapiFields.add("image");
-    openapiFields.add("type");
-    openapiFields.add("url");
-    openapiFields.add("status");
-    openapiFields.add("progress");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("id");
-    openapiRequiredFields.add("created_at");
-    openapiRequiredFields.add("image");
-    openapiRequiredFields.add("type");
-    openapiRequiredFields.add("status");
-    openapiRequiredFields.add("progress");
-  }
-
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to ImageDownloadAPI
-  */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!ImageDownloadAPI.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ImageDownloadAPI is not found in the empty JSON string", ImageDownloadAPI.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!ImageDownloadAPI.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ImageDownloadAPI` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ImageDownloadAPI.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
-      }
-      if (!jsonObj.get("image").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `image` to be a primitive type in the JSON string but got `%s`", jsonObj.get("image").toString()));
-      }
-      if ((jsonObj.get("url") != null && !jsonObj.get("url").isJsonNull()) && !jsonObj.get("url").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("url").toString()));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!ImageDownloadAPI.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'ImageDownloadAPI' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<ImageDownloadAPI> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(ImageDownloadAPI.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<ImageDownloadAPI>() {
-           @Override
-           public void write(JsonWriter out, ImageDownloadAPI value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public ImageDownloadAPI read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
+    /**
+     * Test the property 'updatedAt'
+     */
+    @Test
+    public void updatedAtTest() {
+        // TODO: test updatedAt
     }
-  }
 
- /**
-  * Create an instance of ImageDownloadAPI given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of ImageDownloadAPI
-  * @throws IOException if the JSON string is invalid with respect to ImageDownloadAPI
-  */
-  public static ImageDownloadAPI fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, ImageDownloadAPI.class);
-  }
+    /**
+     * Test the property 'name'
+     */
+    @Test
+    public void nameTest() {
+        // TODO: test name
+    }
 
- /**
-  * Convert an instance of ImageDownloadAPI to an JSON string
-  *
-  * @return JSON string
-  */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
+    /**
+     * Test the property 'description'
+     */
+    @Test
+    public void descriptionTest() {
+        // TODO: test description
+    }
+
+    /**
+     * Test the property 'policy'
+     */
+    @Test
+    public void policyTest() {
+        // TODO: test policy
+    }
+
 }
-

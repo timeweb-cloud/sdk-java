@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * SshKeyUsedByInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T10:12:31.892103Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T16:09:23.451331Z[Etc/UTC]")
 public class SshKeyUsedByInner {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -71,7 +71,7 @@ public class SshKeyUsedByInner {
   }
 
    /**
-   * ID сервера
+   * ID сервер.а
    * @return id
   **/
   @javax.annotation.Nonnull
@@ -92,7 +92,7 @@ public class SshKeyUsedByInner {
   }
 
    /**
-   * Название сервера
+   * Название сервера.
    * @return name
   **/
   @javax.annotation.Nonnull

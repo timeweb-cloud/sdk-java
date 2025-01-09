@@ -23,7 +23,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import org.openapitools.client.model.ImageDownloadAPI;
+import org.openapitools.client.model.ImageDownload;
 import org.openapitools.client.model.Meta;
 
 import com.google.gson.Gson;
@@ -54,7 +54,7 @@ import org.openapitools.client.JSON;
 /**
  * ImageDownloadsResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T10:12:31.892103Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T16:09:23.451331Z[Etc/UTC]")
 public class ImageDownloadsResponse {
   public static final String SERIALIZED_NAME_RESPONSE_ID = "response_id";
   @SerializedName(SERIALIZED_NAME_RESPONSE_ID)
@@ -66,7 +66,7 @@ public class ImageDownloadsResponse {
 
   public static final String SERIALIZED_NAME_DOWNLOADS = "downloads";
   @SerializedName(SERIALIZED_NAME_DOWNLOADS)
-  private List<ImageDownloadAPI> downloads = new ArrayList<>();
+  private List<ImageDownload> downloads = new ArrayList<>();
 
   public ImageDownloadsResponse() {
   }
@@ -78,7 +78,7 @@ public class ImageDownloadsResponse {
   }
 
    /**
-   * ID запроса
+   * ID запроса.
    * @return responseId
   **/
   @javax.annotation.Nullable
@@ -113,13 +113,13 @@ public class ImageDownloadsResponse {
   }
 
 
-  public ImageDownloadsResponse downloads(List<ImageDownloadAPI> downloads) {
+  public ImageDownloadsResponse downloads(List<ImageDownload> downloads) {
     
     this.downloads = downloads;
     return this;
   }
 
-  public ImageDownloadsResponse addDownloadsItem(ImageDownloadAPI downloadsItem) {
+  public ImageDownloadsResponse addDownloadsItem(ImageDownload downloadsItem) {
     if (this.downloads == null) {
       this.downloads = new ArrayList<>();
     }
@@ -128,16 +128,16 @@ public class ImageDownloadsResponse {
   }
 
    /**
-   * Массив объектов \&quot;Ссылка на загрузку\&quot;
+   * Get downloads
    * @return downloads
   **/
   @javax.annotation.Nonnull
-  public List<ImageDownloadAPI> getDownloads() {
+  public List<ImageDownload> getDownloads() {
     return downloads;
   }
 
 
-  public void setDownloads(List<ImageDownloadAPI> downloads) {
+  public void setDownloads(List<ImageDownload> downloads) {
     this.downloads = downloads;
   }
 
@@ -242,7 +242,7 @@ public class ImageDownloadsResponse {
       JsonArray jsonArraydownloads = jsonObj.getAsJsonArray("downloads");
       // validate the required field `downloads` (array)
       for (int i = 0; i < jsonArraydownloads.size(); i++) {
-        ImageDownloadAPI.validateJsonElement(jsonArraydownloads.get(i));
+        ImageDownload.validateJsonElement(jsonArraydownloads.get(i));
       };
   }
 

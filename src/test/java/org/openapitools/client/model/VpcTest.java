@@ -94,4 +94,20 @@ public class VpcTest {
         // TODO: test availabilityZone
     }
 
+    /**
+     * Test the property 'publicIp'
+     */
+    @Test
+    public void publicIpTest() {
+        // TODO: test publicIp
+    }
+
+    /**
+     * Test the property 'type'
+     */
+    @Test
+    public void typeTest() {
+        // TODO: test type
+    }
+
 }

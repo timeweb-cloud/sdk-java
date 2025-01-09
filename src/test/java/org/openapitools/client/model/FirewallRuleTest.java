@@ -19,25 +19,23 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.net.URI;
-import java.time.OffsetDateTime;
-import org.openapitools.client.model.URLType;
-import org.openapitools.client.model.UrlStatus;
+import org.openapitools.client.model.FirewallRuleDirection;
+import org.openapitools.client.model.FirewallRuleProtocol;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
- * Model tests for ImageDownloadAPI
+ * Model tests for FirewallRule
  */
-public class ImageDownloadAPITest {
-    private final ImageDownloadAPI model = new ImageDownloadAPI();
+public class FirewallRuleTest {
+    private final FirewallRule model = new FirewallRule();
 
     /**
-     * Model tests for ImageDownloadAPI
+     * Model tests for FirewallRule
      */
     @Test
-    public void testImageDownloadAPI() {
-        // TODO: test ImageDownloadAPI
+    public void testFirewallRule() {
+        // TODO: test FirewallRule
     }
 
     /**
@@ -49,51 +47,51 @@ public class ImageDownloadAPITest {
     }
 
     /**
-     * Test the property 'createdAt'
+     * Test the property 'description'
      */
     @Test
-    public void createdAtTest() {
-        // TODO: test createdAt
+    public void descriptionTest() {
+        // TODO: test description
     }
 
     /**
-     * Test the property 'image'
+     * Test the property 'direction'
      */
     @Test
-    public void imageTest() {
-        // TODO: test image
+    public void directionTest() {
+        // TODO: test direction
     }
 
     /**
-     * Test the property 'type'
+     * Test the property 'protocol'
      */
     @Test
-    public void typeTest() {
-        // TODO: test type
+    public void protocolTest() {
+        // TODO: test protocol
     }
 
     /**
-     * Test the property 'url'
+     * Test the property 'port'
      */
     @Test
-    public void urlTest() {
-        // TODO: test url
+    public void portTest() {
+        // TODO: test port
     }
 
     /**
-     * Test the property 'status'
+     * Test the property 'cidr'
      */
     @Test
-    public void statusTest() {
-        // TODO: test status
+    public void cidrTest() {
+        // TODO: test cidr
     }
 
     /**
-     * Test the property 'progress'
+     * Test the property 'groupId'
      */
     @Test
-    public void progressTest() {
-        // TODO: test progress
+    public void groupIdTest() {
+        // TODO: test groupId
     }
 
 }

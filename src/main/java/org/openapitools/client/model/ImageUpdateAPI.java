@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * ImageUpdateAPI
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T10:12:31.892103Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T16:09:23.451331Z[Etc/UTC]")
 public class ImageUpdateAPI {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -70,7 +70,7 @@ public class ImageUpdateAPI {
   }
 
    /**
-   * Имя образа
+   * Имя образа.
    * @return name
   **/
   @javax.annotation.Nullable
@@ -91,7 +91,7 @@ public class ImageUpdateAPI {
   }
 
    /**
-   * Описание образа
+   * Описание образа.
    * @return description
   **/
   @javax.annotation.Nullable

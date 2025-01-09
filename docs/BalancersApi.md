@@ -47,7 +47,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     BalancersApi apiInstance = new BalancersApi(defaultClient);
-    Integer balancerId = 56; // Integer | Идентификатор балансировщика
+    Integer balancerId = 56; // Integer | ID балансировщика
     AddIPsToBalancerRequest addIPsToBalancerRequest = new AddIPsToBalancerRequest(); // AddIPsToBalancerRequest | 
     try {
       apiInstance.addIPsToBalancer(balancerId, addIPsToBalancerRequest);
@@ -66,7 +66,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **balancerId** | **Integer**| Идентификатор балансировщика | |
+| **balancerId** | **Integer**| ID балансировщика | |
 | **addIPsToBalancerRequest** | [**AddIPsToBalancerRequest**](AddIPsToBalancerRequest.md)|  | |
 
 ### Return type
@@ -194,7 +194,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     BalancersApi apiInstance = new BalancersApi(defaultClient);
-    Integer balancerId = 56; // Integer | Идентификатор балансировщика
+    Integer balancerId = 56; // Integer | ID балансировщика
     CreateRule createRule = new CreateRule(); // CreateRule | 
     try {
       CreateBalancerRule200Response result = apiInstance.createBalancerRule(balancerId, createRule);
@@ -214,7 +214,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **balancerId** | **Integer**| Идентификатор балансировщика | |
+| **balancerId** | **Integer**| ID балансировщика | |
 | **createRule** | [**CreateRule**](CreateRule.md)|  | |
 
 ### Return type
@@ -269,7 +269,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     BalancersApi apiInstance = new BalancersApi(defaultClient);
-    Integer balancerId = 56; // Integer | Идентификатор балансировщика
+    Integer balancerId = 56; // Integer | ID балансировщика
     String hash = "15095f25-aac3-4d60-a788-96cb5136f186"; // String | Хеш, который совместно с кодом авторизации надо отправить для удаления, если включено подтверждение удаления сервисов через Телеграм.
     String code = "0000"; // String | Код подтверждения, который придет к вам в Телеграм, после запроса удаления, если включено подтверждение удаления сервисов.  При помощи API токена сервисы можно удалять без подтверждения, если параметр токена `is_able_to_delete` установлен в значение `true`
     try {
@@ -290,7 +290,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **balancerId** | **Integer**| Идентификатор балансировщика | |
+| **balancerId** | **Integer**| ID балансировщика | |
 | **hash** | **String**| Хеш, который совместно с кодом авторизации надо отправить для удаления, если включено подтверждение удаления сервисов через Телеграм. | [optional] |
 | **code** | **String**| Код подтверждения, который придет к вам в Телеграм, после запроса удаления, если включено подтверждение удаления сервисов.  При помощи API токена сервисы можно удалять без подтверждения, если параметр токена &#x60;is_able_to_delete&#x60; установлен в значение &#x60;true&#x60; | [optional] |
 
@@ -347,8 +347,8 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     BalancersApi apiInstance = new BalancersApi(defaultClient);
-    Integer balancerId = 56; // Integer | Идентификатор балансировщика
-    Integer ruleId = 56; // Integer | Идентификатор правила для балансировщика
+    Integer balancerId = 56; // Integer | ID балансировщика
+    Integer ruleId = 56; // Integer | ID правила для балансировщика
     try {
       apiInstance.deleteBalancerRule(balancerId, ruleId);
     } catch (ApiException e) {
@@ -366,8 +366,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **balancerId** | **Integer**| Идентификатор балансировщика | |
-| **ruleId** | **Integer**| Идентификатор правила для балансировщика | |
+| **balancerId** | **Integer**| ID балансировщика | |
+| **ruleId** | **Integer**| ID правила для балансировщика | |
 
 ### Return type
 
@@ -421,7 +421,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     BalancersApi apiInstance = new BalancersApi(defaultClient);
-    Integer balancerId = 56; // Integer | Идентификатор балансировщика
+    Integer balancerId = 56; // Integer | ID балансировщика
     AddIPsToBalancerRequest addIPsToBalancerRequest = new AddIPsToBalancerRequest(); // AddIPsToBalancerRequest | 
     try {
       apiInstance.deleteIPsFromBalancer(balancerId, addIPsToBalancerRequest);
@@ -440,7 +440,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **balancerId** | **Integer**| Идентификатор балансировщика | |
+| **balancerId** | **Integer**| ID балансировщика | |
 | **addIPsToBalancerRequest** | [**AddIPsToBalancerRequest**](AddIPsToBalancerRequest.md)|  | |
 
 ### Return type
@@ -495,7 +495,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     BalancersApi apiInstance = new BalancersApi(defaultClient);
-    Integer balancerId = 56; // Integer | Идентификатор балансировщика
+    Integer balancerId = 56; // Integer | ID балансировщика
     try {
       CreateBalancer200Response result = apiInstance.getBalancer(balancerId);
       System.out.println(result);
@@ -514,7 +514,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **balancerId** | **Integer**| Идентификатор балансировщика | |
+| **balancerId** | **Integer**| ID балансировщика | |
 
 ### Return type
 
@@ -568,7 +568,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     BalancersApi apiInstance = new BalancersApi(defaultClient);
-    Integer balancerId = 56; // Integer | Идентификатор балансировщика
+    Integer balancerId = 56; // Integer | ID балансировщика
     try {
       GetBalancerIPs200Response result = apiInstance.getBalancerIPs(balancerId);
       System.out.println(result);
@@ -587,7 +587,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **balancerId** | **Integer**| Идентификатор балансировщика | |
+| **balancerId** | **Integer**| ID балансировщика | |
 
 ### Return type
 
@@ -641,7 +641,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     BalancersApi apiInstance = new BalancersApi(defaultClient);
-    Integer balancerId = 56; // Integer | Идентификатор балансировщика
+    Integer balancerId = 56; // Integer | ID балансировщика
     try {
       GetBalancerRules200Response result = apiInstance.getBalancerRules(balancerId);
       System.out.println(result);
@@ -660,7 +660,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **balancerId** | **Integer**| Идентификатор балансировщика | |
+| **balancerId** | **Integer**| ID балансировщика | |
 
 ### Return type
 
@@ -858,7 +858,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     BalancersApi apiInstance = new BalancersApi(defaultClient);
-    Integer balancerId = 56; // Integer | Идентификатор балансировщика
+    Integer balancerId = 56; // Integer | ID балансировщика
     UpdateBalancer updateBalancer = new UpdateBalancer(); // UpdateBalancer | 
     try {
       CreateBalancer200Response result = apiInstance.updateBalancer(balancerId, updateBalancer);
@@ -878,7 +878,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **balancerId** | **Integer**| Идентификатор балансировщика | |
+| **balancerId** | **Integer**| ID балансировщика | |
 | **updateBalancer** | [**UpdateBalancer**](UpdateBalancer.md)|  | |
 
 ### Return type
@@ -933,8 +933,8 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     BalancersApi apiInstance = new BalancersApi(defaultClient);
-    Integer balancerId = 56; // Integer | Идентификатор балансировщика
-    Integer ruleId = 56; // Integer | Идентификатор правила для балансировщика
+    Integer balancerId = 56; // Integer | ID балансировщика
+    Integer ruleId = 56; // Integer | ID правила для балансировщика
     UpdateRule updateRule = new UpdateRule(); // UpdateRule | 
     try {
       CreateBalancerRule200Response result = apiInstance.updateBalancerRule(balancerId, ruleId, updateRule);
@@ -954,8 +954,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **balancerId** | **Integer**| Идентификатор балансировщика | |
-| **ruleId** | **Integer**| Идентификатор правила для балансировщика | |
+| **balancerId** | **Integer**| ID балансировщика | |
+| **ruleId** | **Integer**| ID правила для балансировщика | |
 | **updateRule** | [**UpdateRule**](UpdateRule.md)|  | |
 
 ### Return type

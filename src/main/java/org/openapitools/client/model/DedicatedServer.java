@@ -54,7 +54,7 @@ import org.openapitools.client.JSON;
 /**
  * Выделенный сервер
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T10:12:31.892103Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T16:09:23.451331Z[Etc/UTC]")
 public class DedicatedServer {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -204,7 +204,17 @@ public class DedicatedServer {
     
     PL_1("pl-1"),
     
-    KZ_1("kz-1");
+    KZ_1("kz-1"),
+    
+    NL_1("nl-1"),
+    
+    TR_1("tr-1"),
+    
+    US_2("us-2"),
+    
+    DE_1("de-1"),
+    
+    FI_1("fi-1");
 
     private String value;
 
@@ -251,6 +261,10 @@ public class DedicatedServer {
   public static final String SERIALIZED_NAME_AUTOINSTALL_READY = "autoinstall_ready";
   @SerializedName(SERIALIZED_NAME_AUTOINSTALL_READY)
   private BigDecimal autoinstallReady;
+
+  public static final String SERIALIZED_NAME_PASSWORD = "password";
+  @SerializedName(SERIALIZED_NAME_PASSWORD)
+  private String password;
 
   public DedicatedServer() {
   }
@@ -775,6 +789,27 @@ public class DedicatedServer {
   }
 
 
+  public DedicatedServer password(String password) {
+    
+    this.password = password;
+    return this;
+  }
+
+   /**
+   * Пароль root сервера или пароль Администратора для серверов Windows.
+   * @return password
+  **/
+  @javax.annotation.Nullable
+  public String getPassword() {
+    return password;
+  }
+
+
+  public void setPassword(String password) {
+    this.password = password;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -808,12 +843,13 @@ public class DedicatedServer {
         Objects.equals(this.planId, dedicatedServer.planId) &&
         Objects.equals(this.price, dedicatedServer.price) &&
         Objects.equals(this.location, dedicatedServer.location) &&
-        Objects.equals(this.autoinstallReady, dedicatedServer.autoinstallReady);
+        Objects.equals(this.autoinstallReady, dedicatedServer.autoinstallReady) &&
+        Objects.equals(this.password, dedicatedServer.password);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, cpuDescription, hddDescription, ramDescription, createdAt, ip, ipmiIp, ipmiLogin, ipmiPassword, ipv6, nodeId, name, comment, vncPass, status, osId, cpId, bandwidthId, networkDriveId, additionalIpAddrId, planId, price, location, autoinstallReady);
+    return Objects.hash(id, cpuDescription, hddDescription, ramDescription, createdAt, ip, ipmiIp, ipmiLogin, ipmiPassword, ipv6, nodeId, name, comment, vncPass, status, osId, cpId, bandwidthId, networkDriveId, additionalIpAddrId, planId, price, location, autoinstallReady, password);
   }
 
   @Override
@@ -844,6 +880,7 @@ public class DedicatedServer {
     sb.append("    price: ").append(toIndentedString(price)).append("\n");
     sb.append("    location: ").append(toIndentedString(location)).append("\n");
     sb.append("    autoinstallReady: ").append(toIndentedString(autoinstallReady)).append("\n");
+    sb.append("    password: ").append(toIndentedString(password)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -890,6 +927,7 @@ public class DedicatedServer {
     openapiFields.add("price");
     openapiFields.add("location");
     openapiFields.add("autoinstall_ready");
+    openapiFields.add("password");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -917,6 +955,7 @@ public class DedicatedServer {
     openapiRequiredFields.add("price");
     openapiRequiredFields.add("location");
     openapiRequiredFields.add("autoinstall_ready");
+    openapiRequiredFields.add("password");
   }
 
  /**
@@ -997,6 +1036,9 @@ public class DedicatedServer {
       }
       if (!jsonObj.get("location").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `location` to be a primitive type in the JSON string but got `%s`", jsonObj.get("location").toString()));
+      }
+      if ((jsonObj.get("password") != null && !jsonObj.get("password").isJsonNull()) && !jsonObj.get("password").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `password` to be a primitive type in the JSON string but got `%s`", jsonObj.get("password").toString()));
       }
   }
 

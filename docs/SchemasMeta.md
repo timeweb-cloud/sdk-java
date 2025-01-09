@@ -1,14 +1,13 @@
 
 
-# FirewallGroupResourceOutAPI
+# SchemasMeta
 
 
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**id** | **Integer** | resource id |  |
-|**type** | **ResourceType** |  |  |
+|**total** | **Integer** | Число элементов в результате |  |
 
 
 

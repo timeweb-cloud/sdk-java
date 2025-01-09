@@ -85,7 +85,7 @@ public class FloatingIpApi {
 
     /**
      * Build call for bindFloatingIp
-     * @param floatingIpId Идентификатор плавающего IP (required)
+     * @param floatingIpId ID плавающего IP (required)
      * @param bindFloatingIp  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -167,7 +167,7 @@ public class FloatingIpApi {
     /**
      * Привязать IP к сервису
      * Чтобы привязать IP к сервису, отправьте POST-запрос на &#x60;/api/v1/floating-ips/{floating_ip_id}/bind&#x60;.
-     * @param floatingIpId Идентификатор плавающего IP (required)
+     * @param floatingIpId ID плавающего IP (required)
      * @param bindFloatingIp  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -189,7 +189,7 @@ public class FloatingIpApi {
     /**
      * Привязать IP к сервису
      * Чтобы привязать IP к сервису, отправьте POST-запрос на &#x60;/api/v1/floating-ips/{floating_ip_id}/bind&#x60;.
-     * @param floatingIpId Идентификатор плавающего IP (required)
+     * @param floatingIpId ID плавающего IP (required)
      * @param bindFloatingIp  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -213,7 +213,7 @@ public class FloatingIpApi {
     /**
      * Привязать IP к сервису (asynchronously)
      * Чтобы привязать IP к сервису, отправьте POST-запрос на &#x60;/api/v1/floating-ips/{floating_ip_id}/bind&#x60;.
-     * @param floatingIpId Идентификатор плавающего IP (required)
+     * @param floatingIpId ID плавающего IP (required)
      * @param bindFloatingIp  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -385,7 +385,7 @@ public class FloatingIpApi {
     }
     /**
      * Build call for deleteFloatingIP
-     * @param floatingIpId Идентификатор плавающего IP (required)
+     * @param floatingIpId ID плавающего IP (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -458,9 +458,9 @@ public class FloatingIpApi {
     }
 
     /**
-     * Удаление плавающего IP по идентификатору
+     * Удаление плавающего IP по ID
      * Чтобы удалить плавающий IP, отправьте DELETE-запрос на &#x60;/api/v1/floating-ips/{floating_ip_id}&#x60;
-     * @param floatingIpId Идентификатор плавающего IP (required)
+     * @param floatingIpId ID плавающего IP (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -479,9 +479,9 @@ public class FloatingIpApi {
     }
 
     /**
-     * Удаление плавающего IP по идентификатору
+     * Удаление плавающего IP по ID
      * Чтобы удалить плавающий IP, отправьте DELETE-запрос на &#x60;/api/v1/floating-ips/{floating_ip_id}&#x60;
-     * @param floatingIpId Идентификатор плавающего IP (required)
+     * @param floatingIpId ID плавающего IP (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -502,9 +502,9 @@ public class FloatingIpApi {
     }
 
     /**
-     * Удаление плавающего IP по идентификатору (asynchronously)
+     * Удаление плавающего IP по ID (asynchronously)
      * Чтобы удалить плавающий IP, отправьте DELETE-запрос на &#x60;/api/v1/floating-ips/{floating_ip_id}&#x60;
-     * @param floatingIpId Идентификатор плавающего IP (required)
+     * @param floatingIpId ID плавающего IP (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -528,7 +528,7 @@ public class FloatingIpApi {
     }
     /**
      * Build call for getFloatingIp
-     * @param floatingIpId Идентификатор плавающего IP (required)
+     * @param floatingIpId ID плавающего IP (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -603,7 +603,7 @@ public class FloatingIpApi {
     /**
      * Получение плавающего IP
      * Чтобы отобразить информацию об отдельном плавающем IP, отправьте запрос GET на &#x60;api/v1/floating-ips/{floating_ip_id}&#x60;.
-     * @param floatingIpId Идентификатор плавающего IP (required)
+     * @param floatingIpId ID плавающего IP (required)
      * @return CreateFloatingIp201Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -626,7 +626,7 @@ public class FloatingIpApi {
     /**
      * Получение плавающего IP
      * Чтобы отобразить информацию об отдельном плавающем IP, отправьте запрос GET на &#x60;api/v1/floating-ips/{floating_ip_id}&#x60;.
-     * @param floatingIpId Идентификатор плавающего IP (required)
+     * @param floatingIpId ID плавающего IP (required)
      * @return ApiResponse&lt;CreateFloatingIp201Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -650,7 +650,7 @@ public class FloatingIpApi {
     /**
      * Получение плавающего IP (asynchronously)
      * Чтобы отобразить информацию об отдельном плавающем IP, отправьте запрос GET на &#x60;api/v1/floating-ips/{floating_ip_id}&#x60;.
-     * @param floatingIpId Идентификатор плавающего IP (required)
+     * @param floatingIpId ID плавающего IP (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -812,7 +812,7 @@ public class FloatingIpApi {
     }
     /**
      * Build call for unbindFloatingIp
-     * @param floatingIpId Идентификатор плавающего IP (required)
+     * @param floatingIpId ID плавающего IP (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -887,7 +887,7 @@ public class FloatingIpApi {
     /**
      * Отвязать IP от сервиса
      * Чтобы отвязать IP от сервиса, отправьте POST-запрос на &#x60;/api/v1/floating-ips/{floating_ip_id}/unbind&#x60;.
-     * @param floatingIpId Идентификатор плавающего IP (required)
+     * @param floatingIpId ID плавающего IP (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -908,7 +908,7 @@ public class FloatingIpApi {
     /**
      * Отвязать IP от сервиса
      * Чтобы отвязать IP от сервиса, отправьте POST-запрос на &#x60;/api/v1/floating-ips/{floating_ip_id}/unbind&#x60;.
-     * @param floatingIpId Идентификатор плавающего IP (required)
+     * @param floatingIpId ID плавающего IP (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -931,7 +931,7 @@ public class FloatingIpApi {
     /**
      * Отвязать IP от сервиса (asynchronously)
      * Чтобы отвязать IP от сервиса, отправьте POST-запрос на &#x60;/api/v1/floating-ips/{floating_ip_id}/unbind&#x60;.
-     * @param floatingIpId Идентификатор плавающего IP (required)
+     * @param floatingIpId ID плавающего IP (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -955,7 +955,7 @@ public class FloatingIpApi {
     }
     /**
      * Build call for updateFloatingIP
-     * @param floatingIpId Идентификатор плавающего IP (required)
+     * @param floatingIpId ID плавающего IP (required)
      * @param updateFloatingIp  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1035,9 +1035,9 @@ public class FloatingIpApi {
     }
 
     /**
-     * Изменение плавающего IP по идентификатору
+     * Изменение плавающего IP по ID
      * Чтобы изменить плавающий IP, отправьте PATCH-запрос на &#x60;/api/v1/floating-ips/{floating_ip_id}&#x60;
-     * @param floatingIpId Идентификатор плавающего IP (required)
+     * @param floatingIpId ID плавающего IP (required)
      * @param updateFloatingIp  (required)
      * @return CreateFloatingIp201Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1059,9 +1059,9 @@ public class FloatingIpApi {
     }
 
     /**
-     * Изменение плавающего IP по идентификатору
+     * Изменение плавающего IP по ID
      * Чтобы изменить плавающий IP, отправьте PATCH-запрос на &#x60;/api/v1/floating-ips/{floating_ip_id}&#x60;
-     * @param floatingIpId Идентификатор плавающего IP (required)
+     * @param floatingIpId ID плавающего IP (required)
      * @param updateFloatingIp  (required)
      * @return ApiResponse&lt;CreateFloatingIp201Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1084,9 +1084,9 @@ public class FloatingIpApi {
     }
 
     /**
-     * Изменение плавающего IP по идентификатору (asynchronously)
+     * Изменение плавающего IP по ID (asynchronously)
      * Чтобы изменить плавающий IP, отправьте PATCH-запрос на &#x60;/api/v1/floating-ips/{floating_ip_id}&#x60;
-     * @param floatingIpId Идентификатор плавающего IP (required)
+     * @param floatingIpId ID плавающего IP (required)
      * @param updateFloatingIp  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

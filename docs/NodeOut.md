@@ -10,9 +10,9 @@
 |**id** | **Integer** | ID ноды |  |
 |**createdAt** | **OffsetDateTime** | Дата и время создания ноды в формате ISO8601 |  |
 |**type** | **String** | Тип ноды |  |
-|**groupId** | **Integer** | Идентификатор группы нод |  |
+|**groupId** | **Integer** | ID группы нод |  |
 |**status** | **String** | Статус |  |
-|**presetId** | **Integer** | Идентификатор тарифа ноды |  |
+|**presetId** | **Integer** | ID тарифа ноды |  |
 |**cpu** | **Integer** | Количество ядер |  |
 |**ram** | **Integer** | Количество памяти |  |
 |**disk** | **Integer** | Количество пространства |  |

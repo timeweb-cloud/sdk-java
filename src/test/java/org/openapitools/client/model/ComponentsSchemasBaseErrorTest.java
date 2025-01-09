@@ -19,79 +19,53 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import org.openapitools.client.model.FirewallRuleDirection;
-import org.openapitools.client.model.FirewallRuleProtocol;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
- * Model tests for FirewallRuleOutAPI
+ * Model tests for ComponentsSchemasBaseError
  */
-public class FirewallRuleOutAPITest {
-    private final FirewallRuleOutAPI model = new FirewallRuleOutAPI();
+public class ComponentsSchemasBaseErrorTest {
+    private final ComponentsSchemasBaseError model = new ComponentsSchemasBaseError();
 
     /**
-     * Model tests for FirewallRuleOutAPI
+     * Model tests for ComponentsSchemasBaseError
      */
     @Test
-    public void testFirewallRuleOutAPI() {
-        // TODO: test FirewallRuleOutAPI
+    public void testComponentsSchemasBaseError() {
+        // TODO: test ComponentsSchemasBaseError
     }
 
     /**
-     * Test the property 'id'
+     * Test the property 'statusCode'
      */
     @Test
-    public void idTest() {
-        // TODO: test id
+    public void statusCodeTest() {
+        // TODO: test statusCode
     }
 
     /**
-     * Test the property 'description'
+     * Test the property 'errorCode'
      */
     @Test
-    public void descriptionTest() {
-        // TODO: test description
+    public void errorCodeTest() {
+        // TODO: test errorCode
     }
 
     /**
-     * Test the property 'direction'
+     * Test the property 'message'
      */
     @Test
-    public void directionTest() {
-        // TODO: test direction
+    public void messageTest() {
+        // TODO: test message
     }
 
     /**
-     * Test the property 'protocol'
+     * Test the property 'responseId'
      */
     @Test
-    public void protocolTest() {
-        // TODO: test protocol
-    }
-
-    /**
-     * Test the property 'port'
-     */
-    @Test
-    public void portTest() {
-        // TODO: test port
-    }
-
-    /**
-     * Test the property 'cidr'
-     */
-    @Test
-    public void cidrTest() {
-        // TODO: test cidr
-    }
-
-    /**
-     * Test the property 'groupId'
-     */
-    @Test
-    public void groupIdTest() {
-        // TODO: test groupId
+    public void responseIdTest() {
+        // TODO: test responseId
     }
 
 }

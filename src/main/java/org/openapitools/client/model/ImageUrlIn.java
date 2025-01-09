@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * ImageUrlIn
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T10:12:31.892103Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T16:09:23.451331Z[Etc/UTC]")
 public class ImageUrlIn {
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
@@ -97,7 +97,7 @@ public class ImageUrlIn {
   }
 
    /**
-   * Имя файла для загрузки в облачное хранилище
+   * Имя файла для загрузки в облачное хранилище.
    * @return filename
   **/
   @javax.annotation.Nullable
