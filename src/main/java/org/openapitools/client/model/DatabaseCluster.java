@@ -57,7 +57,7 @@ import org.openapitools.client.JSON;
 /**
  * Кластер базы данных
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T16:09:23.451331Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-22T11:27:19.940703Z[Etc/UTC]")
 public class DatabaseCluster {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -202,7 +202,21 @@ public class DatabaseCluster {
     
     STOPPED("stopped"),
     
-    NO_PAID("no_paid");
+    NO_PAID("no_paid"),
+    
+    LAN_TRANSFER("lan_transfer"),
+    
+    ERROR("error"),
+    
+    BLOCKED("blocked"),
+    
+    BACKUP_RECOVERY("backup_recovery"),
+    
+    REBOOTING("rebooting"),
+    
+    TURNING_OFF("turning_off"),
+    
+    TURNING_ON("turning_on");
 
     private String value;
 

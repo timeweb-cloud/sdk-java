@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * UpdeteSettings
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T16:09:23.451331Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-22T11:27:19.940703Z[Etc/UTC]")
 public class UpdeteSettings {
   public static final String SERIALIZED_NAME_IS_AUTO_DEPLOY = "is_auto_deploy";
   @SerializedName(SERIALIZED_NAME_IS_AUTO_DEPLOY)

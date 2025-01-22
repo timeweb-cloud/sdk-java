@@ -54,7 +54,7 @@ import org.openapitools.client.JSON;
 /**
  * An object consists of data and its descriptive metadata.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T16:09:23.451331Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-22T11:27:19.940703Z[Etc/UTC]")
 public class S3Object {
   public static final String SERIALIZED_NAME_KEY = "key";
   @SerializedName(SERIALIZED_NAME_KEY)

@@ -53,6 +53,13 @@
 | STARTING | &quot;starting&quot; |
 | STOPPED | &quot;stopped&quot; |
 | NO_PAID | &quot;no_paid&quot; |
+| LAN_TRANSFER | &quot;lan_transfer&quot; |
+| ERROR | &quot;error&quot; |
+| BLOCKED | &quot;blocked&quot; |
+| BACKUP_RECOVERY | &quot;backup_recovery&quot; |
+| REBOOTING | &quot;rebooting&quot; |
+| TURNING_OFF | &quot;turning_off&quot; |
+| TURNING_ON | &quot;turning_on&quot; |
 
 
 
