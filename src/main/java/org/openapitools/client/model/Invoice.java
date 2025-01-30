@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * Оплата заявки на продление/регистрацию домена при помощи платежной системы
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-22T11:27:19.940703Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-30T14:01:58.065950Z[Etc/UTC]")
 public class Invoice {
   /**
    * Тип создаваемой заявки.

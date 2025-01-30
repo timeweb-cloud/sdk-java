@@ -53,7 +53,7 @@ import org.openapitools.client.JSON;
 /**
  * DNS-запись.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-22T11:27:19.940703Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-30T14:01:58.065950Z[Etc/UTC]")
 public class DnsRecord {
   /**
    * Тип DNS-записи.
@@ -122,6 +122,10 @@ public class DnsRecord {
   @SerializedName(SERIALIZED_NAME_DATA)
   private DnsRecordData data;
 
+  public static final String SERIALIZED_NAME_TTL = "ttl";
+  @SerializedName(SERIALIZED_NAME_TTL)
+  private BigDecimal ttl;
+
   public DnsRecord() {
   }
 
@@ -188,6 +192,27 @@ public class DnsRecord {
   }
 
 
+  public DnsRecord ttl(BigDecimal ttl) {
+    
+    this.ttl = ttl;
+    return this;
+  }
+
+   /**
+   * Время жизни DNS-записи.
+   * @return ttl
+  **/
+  @javax.annotation.Nullable
+  public BigDecimal getTtl() {
+    return ttl;
+  }
+
+
+  public void setTtl(BigDecimal ttl) {
+    this.ttl = ttl;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -200,7 +225,8 @@ public class DnsRecord {
     DnsRecord dnsRecord = (DnsRecord) o;
     return Objects.equals(this.type, dnsRecord.type) &&
         Objects.equals(this.id, dnsRecord.id) &&
-        Objects.equals(this.data, dnsRecord.data);
+        Objects.equals(this.data, dnsRecord.data) &&
+        Objects.equals(this.ttl, dnsRecord.ttl);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -209,7 +235,7 @@ public class DnsRecord {
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, id, data);
+    return Objects.hash(type, id, data, ttl);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -226,6 +252,7 @@ public class DnsRecord {
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("    ttl: ").append(toIndentedString(ttl)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -251,6 +278,7 @@ public class DnsRecord {
     openapiFields.add("type");
     openapiFields.add("id");
     openapiFields.add("data");
+    openapiFields.add("ttl");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

@@ -11,6 +11,7 @@
 |**subdomain** | **String** | Полное имя поддомена. |  [optional] |
 |**type** | [**TypeEnum**](#TypeEnum) | Тип DNS-записи. |  |
 |**value** | **String** | Значение DNS-записи. |  |
+|**ttl** | **BigDecimal** | Время жизни DNS-записи. |  [optional] |
 
 
 

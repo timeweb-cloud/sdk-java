@@ -11,6 +11,7 @@ DNS-запись.
 |**type** | [**TypeEnum**](#TypeEnum) | Тип DNS-записи. |  |
 |**id** | **BigDecimal** | ID DNS-записи. |  [optional] |
 |**data** | [**DnsRecordData**](DnsRecordData.md) |  |  |
+|**ttl** | **BigDecimal** | Время жизни DNS-записи. |  [optional] |
 
 
 

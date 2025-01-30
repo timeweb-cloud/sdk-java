@@ -20,6 +20,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -67,6 +68,14 @@ public class CreateDnsTest {
     @Test
     public void valueTest() {
         // TODO: test value
+    }
+
+    /**
+     * Test the property 'ttl'
+     */
+    @Test
+    public void ttlTest() {
+        // TODO: test ttl
     }
 
 }

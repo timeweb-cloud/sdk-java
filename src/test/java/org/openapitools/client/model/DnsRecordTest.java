@@ -63,4 +63,12 @@ public class DnsRecordTest {
         // TODO: test data
     }
 
+    /**
+     * Test the property 'ttl'
+     */
+    @Test
+    public void ttlTest() {
+        // TODO: test ttl
+    }
+
 }
