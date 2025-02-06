@@ -39,7 +39,6 @@
 | DOMAINS_WRITE | &quot;domains:write&quot; |
 | ADMINISTRATORS_WRITE | &quot;administrators:write&quot; |
 | FIREWALL_READ | &quot;firewall:read&quot; |
-| FIREWALL_READ | &quot;firewall:read&quot; |
 | FINANCES_WRITE | &quot;finances:write&quot; |
 | SUPPORT_READ | &quot;support:read&quot; |
 | SUPPORT_WRITE | &quot;support:write&quot; |

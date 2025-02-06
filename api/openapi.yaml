@@ -48387,7 +48387,6 @@ components:
         - domains:write
         - administrators:write
         - firewall:read
-        - firewall:read
         - finances:write
         - support:read
         - support:write
@@ -48442,7 +48441,6 @@ components:
             - domains:read
             - domains:write
             - administrators:write
-            - firewall:read
             - firewall:read
             - finances:write
             - support:read
