@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * Требования к облачному серверу для установки операционной системы.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-06T12:41:21.580763Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-07T09:20:10.974128Z[Etc/UTC]")
 public class ServersOsRequirements {
   public static final String SERIALIZED_NAME_CPU_MIN = "cpu_min";
   @SerializedName(SERIALIZED_NAME_CPU_MIN)

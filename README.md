@@ -2,7 +2,7 @@
 
 Timeweb Cloud API
 - API version: 1.0.0
-  - Build date: 2025-02-06T12:41:21.580763Z[Etc/UTC]
+  - Build date: 2025-02-07T09:20:10.974128Z[Etc/UTC]
 
 # Введение
 API Timeweb Cloud позволяет вам управлять ресурсами в облаке программным способом с использованием обычных HTTP-запросов.
@@ -442,8 +442,8 @@ Class | Method | HTTP request | Description
 *NetworkDrivesApi* | [**getNetworkDrives**](docs/NetworkDrivesApi.md#getNetworkDrives) | **GET** /api/v1/network-drives | Получение списка cетевых дисков
 *NetworkDrivesApi* | [**getNetworkDrivesAvailableResources**](docs/NetworkDrivesApi.md#getNetworkDrivesAvailableResources) | **GET** /api/v1/network-drives/available-resources | Получение списка сервисов доступных для подключения диска
 *NetworkDrivesApi* | [**getNetworkDrivesPresets**](docs/NetworkDrivesApi.md#getNetworkDrivesPresets) | **GET** /api/v1/presets/network-drives | Получение списка доступных тарифов для сетевого диска
-*NetworkDrivesApi* | [**mountNetworkDrive**](docs/NetworkDrivesApi.md#mountNetworkDrive) | **POST** /api/v1/network-drives/{network_drive_id}/bind | Подключить сетевой диск к сервису
-*NetworkDrivesApi* | [**unmountNetworkDrive**](docs/NetworkDrivesApi.md#unmountNetworkDrive) | **POST** /api/v1/network-drives/{network_drive_id}/unbind | Отключить сетевой диск от сервиса
+*NetworkDrivesApi* | [**mountNetworkDrive**](docs/NetworkDrivesApi.md#mountNetworkDrive) | **POST** /api/v1/network-drives/{network_drive_id}/mount | Подключить сетевой диск к сервису
+*NetworkDrivesApi* | [**unmountNetworkDrive**](docs/NetworkDrivesApi.md#unmountNetworkDrive) | **POST** /api/v1/network-drives/{network_drive_id}/unmount | Отключить сетевой диск от сервиса
 *NetworkDrivesApi* | [**updateNetworkDrive**](docs/NetworkDrivesApi.md#updateNetworkDrive) | **PATCH** /api/v1/network-drives/{network_drive_id} | Изменение сетевого диска по ID
 *ProjectsApi* | [**addBalancerToProject**](docs/ProjectsApi.md#addBalancerToProject) | **POST** /api/v1/projects/{project_id}/resources/balancers | Добавление балансировщика в проект
 *ProjectsApi* | [**addClusterToProject**](docs/ProjectsApi.md#addClusterToProject) | **POST** /api/v1/projects/{project_id}/resources/clusters | Добавление кластера в проект

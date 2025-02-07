@@ -42026,7 +42026,7 @@ paths:
           \t}\n}\n"
       x-content-type: application/json
       x-accepts: application/json
-  /api/v1/network-drives/{network_drive_id}/bind:
+  /api/v1/network-drives/{network_drive_id}/mount:
     post:
       description: "Чтобы подключить сетевой диск к сервису, отправьте POST-запрос\
         \ на `/api/v1/network-drives/{network_drive_id}/mount`."
@@ -42173,7 +42173,7 @@ paths:
           \t}\n}\n"
       x-content-type: application/json
       x-accepts: application/json
-  /api/v1/network-drives/{network_drive_id}/unbind:
+  /api/v1/network-drives/{network_drive_id}/unmount:
     post:
       description: "Чтобы отключить сетевой диск от сервиса, отправьте POST-запрос\
         \ на `/api/v1/network-drives/{network_drive_id}/unmount`."

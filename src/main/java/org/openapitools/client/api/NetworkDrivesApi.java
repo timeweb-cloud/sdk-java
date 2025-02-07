@@ -969,7 +969,7 @@ public class NetworkDrivesApi {
         Object localVarPostBody = mountNetworkDrive;
 
         // create path and map variables
-        String localVarPath = "/api/v1/network-drives/{network_drive_id}/bind"
+        String localVarPath = "/api/v1/network-drives/{network_drive_id}/mount"
             .replace("{" + "network-drive-id" + "}", localVarApiClient.escapeString(networkDriveId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -1121,7 +1121,7 @@ public class NetworkDrivesApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/v1/network-drives/{network_drive_id}/unbind"
+        String localVarPath = "/api/v1/network-drives/{network_drive_id}/unmount"
             .replace("{" + "network-drive-id" + "}", localVarApiClient.escapeString(networkDriveId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
