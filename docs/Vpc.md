@@ -16,6 +16,7 @@
 |**availabilityZone** | **AvailabilityZone** |  |  |
 |**publicIp** | **String** | Публичный IP-адрес сети. |  |
 |**type** | [**TypeEnum**](#TypeEnum) | Тип сети. |  |
+|**busyAddress** | **List&lt;String&gt;** | Занятые адреса в сети |  |
 
 
 

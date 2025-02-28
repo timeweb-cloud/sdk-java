@@ -22,6 +22,8 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import org.openapitools.client.model.AvailabilityZone;
 
 import com.google.gson.Gson;
@@ -52,7 +54,7 @@ import org.openapitools.client.JSON;
 /**
  * Vpc
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-07T09:20:10.974128Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-28T13:24:02.229716Z[Etc/UTC]")
 public class Vpc {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -187,6 +189,10 @@ public class Vpc {
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
   private TypeEnum type;
+
+  public static final String SERIALIZED_NAME_BUSY_ADDRESS = "busy_address";
+  @SerializedName(SERIALIZED_NAME_BUSY_ADDRESS)
+  private List<String> busyAddress = new ArrayList<>();
 
   public Vpc() {
   }
@@ -380,6 +386,35 @@ public class Vpc {
   }
 
 
+  public Vpc busyAddress(List<String> busyAddress) {
+    
+    this.busyAddress = busyAddress;
+    return this;
+  }
+
+  public Vpc addBusyAddressItem(String busyAddressItem) {
+    if (this.busyAddress == null) {
+      this.busyAddress = new ArrayList<>();
+    }
+    this.busyAddress.add(busyAddressItem);
+    return this;
+  }
+
+   /**
+   * Занятые адреса в сети
+   * @return busyAddress
+  **/
+  @javax.annotation.Nonnull
+  public List<String> getBusyAddress() {
+    return busyAddress;
+  }
+
+
+  public void setBusyAddress(List<String> busyAddress) {
+    this.busyAddress = busyAddress;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -398,12 +433,13 @@ public class Vpc {
         Objects.equals(this.description, vpc.description) &&
         Objects.equals(this.availabilityZone, vpc.availabilityZone) &&
         Objects.equals(this.publicIp, vpc.publicIp) &&
-        Objects.equals(this.type, vpc.type);
+        Objects.equals(this.type, vpc.type) &&
+        Objects.equals(this.busyAddress, vpc.busyAddress);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, subnetV4, location, createdAt, description, availabilityZone, publicIp, type);
+    return Objects.hash(id, name, subnetV4, location, createdAt, description, availabilityZone, publicIp, type, busyAddress);
   }
 
   @Override
@@ -419,6 +455,7 @@ public class Vpc {
     sb.append("    availabilityZone: ").append(toIndentedString(availabilityZone)).append("\n");
     sb.append("    publicIp: ").append(toIndentedString(publicIp)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    busyAddress: ").append(toIndentedString(busyAddress)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -450,6 +487,7 @@ public class Vpc {
     openapiFields.add("availability_zone");
     openapiFields.add("public_ip");
     openapiFields.add("type");
+    openapiFields.add("busy_address");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -462,6 +500,7 @@ public class Vpc {
     openapiRequiredFields.add("availability_zone");
     openapiRequiredFields.add("public_ip");
     openapiRequiredFields.add("type");
+    openapiRequiredFields.add("busy_address");
   }
 
  /**
@@ -512,6 +551,12 @@ public class Vpc {
       }
       if (!jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+      }
+      // ensure the required json array is present
+      if (jsonObj.get("busy_address") == null) {
+        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+      } else if (!jsonObj.get("busy_address").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `busy_address` to be an array in the JSON string but got `%s`", jsonObj.get("busy_address").toString()));
       }
   }
 

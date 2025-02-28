@@ -53,6 +53,14 @@ public class NetworkTest {
     }
 
     /**
+     * Test the property 'localIp'
+     */
+    @Test
+    public void localIpTest() {
+        // TODO: test localIp
+    }
+
+    /**
      * Test the property 'ip'
      */
     @Test

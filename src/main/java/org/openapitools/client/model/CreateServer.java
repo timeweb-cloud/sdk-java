@@ -57,7 +57,7 @@ import org.openapitools.client.JSON;
 /**
  * CreateServer
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-07T09:20:10.974128Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-28T13:24:02.229716Z[Etc/UTC]")
 public class CreateServer {
   public static final String SERIALIZED_NAME_CONFIGURATION = "configuration";
   @SerializedName(SERIALIZED_NAME_CONFIGURATION)
@@ -154,7 +154,7 @@ public class CreateServer {
    * Защита от DDoS. Серверу выдается защищенный IP-адрес с защитой уровня L3 / L4. Для включения защиты уровня L7 необходимо создать тикет в техническую поддержку.
    * @return isDdosGuard
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Boolean getIsDdosGuard() {
     return isDdosGuard;
   }
@@ -259,7 +259,7 @@ public class CreateServer {
    * Пропускная способность тарифа. Доступные значения от 100 до 1000 с шагом 100.
    * @return bandwidth
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public BigDecimal getBandwidth() {
     return bandwidth;
   }
@@ -541,8 +541,6 @@ public class CreateServer {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("is_ddos_guard");
-    openapiRequiredFields.add("bandwidth");
     openapiRequiredFields.add("name");
   }
 
