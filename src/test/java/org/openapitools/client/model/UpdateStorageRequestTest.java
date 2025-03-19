@@ -53,4 +53,12 @@ public class UpdateStorageRequestTest {
         // TODO: test bucketType
     }
 
+    /**
+     * Test the property 'description'
+     */
+    @Test
+    public void descriptionTest() {
+        // TODO: test description
+    }
+
 }

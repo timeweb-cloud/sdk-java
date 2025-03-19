@@ -11,7 +11,7 @@
 |**type** | **DbType** |  |  |
 |**admin** | [**CreateClusterAdmin**](CreateClusterAdmin.md) |  |  [optional] |
 |**instance** | [**CreateClusterInstance**](CreateClusterInstance.md) |  |  [optional] |
-|**hashType** | [**HashTypeEnum**](#HashTypeEnum) | Тип хеширования базы данных (mysql5 | mysql | postgres). |  [optional] |
+|**hashType** | [**HashTypeEnum**](#HashTypeEnum) | Тип хеширования базы данных (mysql | postgres). |  [optional] |
 |**presetId** | **Integer** | ID тарифа. |  |
 |**configParameters** | [**ConfigParameters**](ConfigParameters.md) |  |  [optional] |
 |**network** | [**Network**](Network.md) |  |  [optional] |

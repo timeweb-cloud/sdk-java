@@ -31,7 +31,7 @@ public enum DbType {
   
   MYSQL("mysql"),
   
-  MYSQL5("mysql5"),
+  MYSQL8_4("mysql8_4"),
   
   POSTGRES14("postgres14"),
   
@@ -59,7 +59,11 @@ public enum DbType {
   
   RABBITMQ("rabbitmq"),
   
-  CLICKHOUSE("clickhouse");
+  CLICKHOUSE("clickhouse"),
+  
+  CLICKHOUSE24("clickhouse24"),
+  
+  CLICKHOUSE25("clickhouse25");
 
   private String value;
 

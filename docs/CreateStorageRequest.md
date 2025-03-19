@@ -8,6 +8,7 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**name** | **String** | Название хранилища. |  |
+|**description** | **String** | Комментарий к хранилищу. |  [optional] |
 |**type** | [**TypeEnum**](#TypeEnum) | Тип хранилища. |  |
 |**presetId** | **BigDecimal** | ID тарифа. |  |
 

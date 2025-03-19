@@ -46,6 +46,14 @@ public class CreateStorageRequestTest {
     }
 
     /**
+     * Test the property 'description'
+     */
+    @Test
+    public void descriptionTest() {
+        // TODO: test description
+    }
+
+    /**
      * Test the property 'type'
      */
     @Test

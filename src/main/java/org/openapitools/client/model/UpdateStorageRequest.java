@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * UpdateStorageRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-28T13:24:02.229716Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-03-19T13:53:53.966626Z[Etc/UTC]")
 public class UpdateStorageRequest {
   public static final String SERIALIZED_NAME_PRESET_ID = "preset_id";
   @SerializedName(SERIALIZED_NAME_PRESET_ID)
@@ -108,6 +108,10 @@ public class UpdateStorageRequest {
   @SerializedName(SERIALIZED_NAME_BUCKET_TYPE)
   private BucketTypeEnum bucketType;
 
+  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
+  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  private String description;
+
   public UpdateStorageRequest() {
   }
 
@@ -153,6 +157,27 @@ public class UpdateStorageRequest {
   }
 
 
+  public UpdateStorageRequest description(String description) {
+    
+    this.description = description;
+    return this;
+  }
+
+   /**
+   * Комментарий к хранилищу.
+   * @return description
+  **/
+  @javax.annotation.Nullable
+  public String getDescription() {
+    return description;
+  }
+
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -164,12 +189,13 @@ public class UpdateStorageRequest {
     }
     UpdateStorageRequest updateStorageRequest = (UpdateStorageRequest) o;
     return Objects.equals(this.presetId, updateStorageRequest.presetId) &&
-        Objects.equals(this.bucketType, updateStorageRequest.bucketType);
+        Objects.equals(this.bucketType, updateStorageRequest.bucketType) &&
+        Objects.equals(this.description, updateStorageRequest.description);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(presetId, bucketType);
+    return Objects.hash(presetId, bucketType, description);
   }
 
   @Override
@@ -178,6 +204,7 @@ public class UpdateStorageRequest {
     sb.append("class UpdateStorageRequest {\n");
     sb.append("    presetId: ").append(toIndentedString(presetId)).append("\n");
     sb.append("    bucketType: ").append(toIndentedString(bucketType)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -202,6 +229,7 @@ public class UpdateStorageRequest {
     openapiFields = new HashSet<String>();
     openapiFields.add("preset_id");
     openapiFields.add("bucket_type");
+    openapiFields.add("description");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -230,6 +258,9 @@ public class UpdateStorageRequest {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("bucket_type") != null && !jsonObj.get("bucket_type").isJsonNull()) && !jsonObj.get("bucket_type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `bucket_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("bucket_type").toString()));
+      }
+      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
   }
 

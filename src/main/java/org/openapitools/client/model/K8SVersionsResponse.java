@@ -53,7 +53,7 @@ import org.openapitools.client.JSON;
 /**
  * K8SVersionsResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-28T13:24:02.229716Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-03-19T13:53:53.966626Z[Etc/UTC]")
 public class K8SVersionsResponse {
   public static final String SERIALIZED_NAME_RESPONSE_ID = "response_id";
   @SerializedName(SERIALIZED_NAME_RESPONSE_ID)

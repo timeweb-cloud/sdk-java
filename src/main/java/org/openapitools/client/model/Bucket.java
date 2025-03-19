@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * Хранилище S3
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-28T13:24:02.229716Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-03-19T13:53:53.966626Z[Etc/UTC]")
 public class Bucket {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -61,6 +61,10 @@ public class Bucket {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
+
+  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
+  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  private String description;
 
   public static final String SERIALIZED_NAME_DISK_STATS = "disk_stats";
   @SerializedName(SERIALIZED_NAME_DISK_STATS)
@@ -236,6 +240,27 @@ public class Bucket {
 
   public void setName(String name) {
     this.name = name;
+  }
+
+
+  public Bucket description(String description) {
+    
+    this.description = description;
+    return this;
+  }
+
+   /**
+   * Комментарий к хранилищу.
+   * @return description
+  **/
+  @javax.annotation.Nullable
+  public String getDescription() {
+    return description;
+  }
+
+
+  public void setDescription(String description) {
+    this.description = description;
   }
 
 
@@ -440,6 +465,7 @@ public class Bucket {
     Bucket bucket = (Bucket) o;
     return Objects.equals(this.id, bucket.id) &&
         Objects.equals(this.name, bucket.name) &&
+        Objects.equals(this.description, bucket.description) &&
         Objects.equals(this.diskStats, bucket.diskStats) &&
         Objects.equals(this.type, bucket.type) &&
         Objects.equals(this.presetId, bucket.presetId) &&
@@ -453,7 +479,7 @@ public class Bucket {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, diskStats, type, presetId, status, objectAmount, location, hostname, accessKey, secretKey);
+    return Objects.hash(id, name, description, diskStats, type, presetId, status, objectAmount, location, hostname, accessKey, secretKey);
   }
 
   @Override
@@ -462,6 +488,7 @@ public class Bucket {
     sb.append("class Bucket {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    diskStats: ").append(toIndentedString(diskStats)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    presetId: ").append(toIndentedString(presetId)).append("\n");
@@ -495,6 +522,7 @@ public class Bucket {
     openapiFields = new HashSet<String>();
     openapiFields.add("id");
     openapiFields.add("name");
+    openapiFields.add("description");
     openapiFields.add("disk_stats");
     openapiFields.add("type");
     openapiFields.add("preset_id");
@@ -550,6 +578,9 @@ public class Bucket {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
       // validate the required field `disk_stats`
       BucketDiskStats.validateJsonElement(jsonObj.get("disk_stats"));

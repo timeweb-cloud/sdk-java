@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * Тип кластера базы данных
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-28T13:24:02.229716Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-03-19T13:53:53.966626Z[Etc/UTC]")
 public class DatabaseType {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -68,6 +68,10 @@ public class DatabaseType {
   public static final String SERIALIZED_NAME_IS_AVAILABLE_REPLICATION = "is_available_replication";
   @SerializedName(SERIALIZED_NAME_IS_AVAILABLE_REPLICATION)
   private Boolean isAvailableReplication;
+
+  public static final String SERIALIZED_NAME_IS_DEPRECATED = "is_deprecated";
+  @SerializedName(SERIALIZED_NAME_IS_DEPRECATED)
+  private Boolean isDeprecated;
 
   public static final String SERIALIZED_NAME_REQUIREMENTS = "requirements";
   @SerializedName(SERIALIZED_NAME_REQUIREMENTS)
@@ -160,6 +164,27 @@ public class DatabaseType {
   }
 
 
+  public DatabaseType isDeprecated(Boolean isDeprecated) {
+    
+    this.isDeprecated = isDeprecated;
+    return this;
+  }
+
+   /**
+   * Устарела ли версия базы.
+   * @return isDeprecated
+  **/
+  @javax.annotation.Nonnull
+  public Boolean getIsDeprecated() {
+    return isDeprecated;
+  }
+
+
+  public void setIsDeprecated(Boolean isDeprecated) {
+    this.isDeprecated = isDeprecated;
+  }
+
+
   public DatabaseType requirements(DatabaseTypeRequirements requirements) {
     
     this.requirements = requirements;
@@ -195,12 +220,13 @@ public class DatabaseType {
         Objects.equals(this.version, databaseType.version) &&
         Objects.equals(this.type, databaseType.type) &&
         Objects.equals(this.isAvailableReplication, databaseType.isAvailableReplication) &&
+        Objects.equals(this.isDeprecated, databaseType.isDeprecated) &&
         Objects.equals(this.requirements, databaseType.requirements);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, version, type, isAvailableReplication, requirements);
+    return Objects.hash(name, version, type, isAvailableReplication, isDeprecated, requirements);
   }
 
   @Override
@@ -211,6 +237,7 @@ public class DatabaseType {
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    isAvailableReplication: ").append(toIndentedString(isAvailableReplication)).append("\n");
+    sb.append("    isDeprecated: ").append(toIndentedString(isDeprecated)).append("\n");
     sb.append("    requirements: ").append(toIndentedString(requirements)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -238,6 +265,7 @@ public class DatabaseType {
     openapiFields.add("version");
     openapiFields.add("type");
     openapiFields.add("is_available_replication");
+    openapiFields.add("is_deprecated");
     openapiFields.add("requirements");
 
     // a set of required properties/fields (JSON key names)
@@ -246,6 +274,7 @@ public class DatabaseType {
     openapiRequiredFields.add("version");
     openapiRequiredFields.add("type");
     openapiRequiredFields.add("is_available_replication");
+    openapiRequiredFields.add("is_deprecated");
   }
 
  /**

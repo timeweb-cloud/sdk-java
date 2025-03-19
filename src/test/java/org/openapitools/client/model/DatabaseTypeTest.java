@@ -70,6 +70,14 @@ public class DatabaseTypeTest {
     }
 
     /**
+     * Test the property 'isDeprecated'
+     */
+    @Test
+    public void isDeprecatedTest() {
+        // TODO: test isDeprecated
+    }
+
+    /**
      * Test the property 'requirements'
      */
     @Test

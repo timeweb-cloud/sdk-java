@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * Объект с конфигурацией диска. Определен для приложений &#x60;type: backend&#x60;.Для приложений &#x60;type: frontend&#x60; всегда null.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-28T13:24:02.229716Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-03-19T13:53:53.966626Z[Etc/UTC]")
 public class AppDiskStatus {
   public static final String SERIALIZED_NAME_USED = "used";
   @SerializedName(SERIALIZED_NAME_USED)

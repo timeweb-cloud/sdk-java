@@ -51,11 +51,15 @@ import org.openapitools.client.JSON;
 /**
  * CreateStorageRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-28T13:24:02.229716Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-03-19T13:53:53.966626Z[Etc/UTC]")
 public class CreateStorageRequest {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
+
+  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
+  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  private String description;
 
   /**
    * Тип хранилища.
@@ -136,6 +140,27 @@ public class CreateStorageRequest {
   }
 
 
+  public CreateStorageRequest description(String description) {
+    
+    this.description = description;
+    return this;
+  }
+
+   /**
+   * Комментарий к хранилищу.
+   * @return description
+  **/
+  @javax.annotation.Nullable
+  public String getDescription() {
+    return description;
+  }
+
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+
   public CreateStorageRequest type(TypeEnum type) {
     
     this.type = type;
@@ -189,13 +214,14 @@ public class CreateStorageRequest {
     }
     CreateStorageRequest createStorageRequest = (CreateStorageRequest) o;
     return Objects.equals(this.name, createStorageRequest.name) &&
+        Objects.equals(this.description, createStorageRequest.description) &&
         Objects.equals(this.type, createStorageRequest.type) &&
         Objects.equals(this.presetId, createStorageRequest.presetId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, type, presetId);
+    return Objects.hash(name, description, type, presetId);
   }
 
   @Override
@@ -203,6 +229,7 @@ public class CreateStorageRequest {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateStorageRequest {\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    presetId: ").append(toIndentedString(presetId)).append("\n");
     sb.append("}");
@@ -228,6 +255,7 @@ public class CreateStorageRequest {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("name");
+    openapiFields.add("description");
     openapiFields.add("type");
     openapiFields.add("preset_id");
 
@@ -268,6 +296,9 @@ public class CreateStorageRequest {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
       if (!jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));

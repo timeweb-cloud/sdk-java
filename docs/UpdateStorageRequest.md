@@ -9,6 +9,7 @@
 |------------ | ------------- | ------------- | -------------|
 |**presetId** | **BigDecimal** | ID тарифа. |  [optional] |
 |**bucketType** | [**BucketTypeEnum**](#BucketTypeEnum) | Тип хранилища. |  [optional] |
+|**description** | **String** | Комментарий к хранилищу. |  [optional] |
 
 
 
