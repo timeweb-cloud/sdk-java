@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * UpdateStorageUserRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-03-25T12:12:19.747122Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-03-25T12:36:01.856546Z[Etc/UTC]")
 public class UpdateStorageUserRequest {
   public static final String SERIALIZED_NAME_SECRET_KEY = "secret_key";
   @SerializedName(SERIALIZED_NAME_SECRET_KEY)
