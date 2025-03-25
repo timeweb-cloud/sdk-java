@@ -44,4 +44,12 @@ public class DeleteServiceResponseTest {
         // TODO: test hash
     }
 
+    /**
+     * Test the property 'isMovedInQuarantine'
+     */
+    @Test
+    public void isMovedInQuarantineTest() {
+        // TODO: test isMovedInQuarantine
+    }
+
 }

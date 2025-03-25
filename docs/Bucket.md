@@ -14,12 +14,15 @@
 |**diskStats** | [**BucketDiskStats**](BucketDiskStats.md) |  |  |
 |**type** | [**TypeEnum**](#TypeEnum) | Тип хранилища. |  |
 |**presetId** | **BigDecimal** | ID тарифа хранилища. |  |
+|**configuratorId** | **BigDecimal** | ID конфигуратора хранилища. |  |
 |**status** | [**StatusEnum**](#StatusEnum) | Статус хранилища. |  |
 |**objectAmount** | **BigDecimal** | Количество файлов в хранилище. |  |
 |**location** | **String** | Регион хранилища. |  |
 |**hostname** | **String** | Адрес хранилища для подключения. |  |
 |**accessKey** | **String** | Ключ доступа от хранилища. |  |
 |**secretKey** | **String** | Секретный ключ доступа от хранилища. |  |
+|**movedInQuarantineAt** | **OffsetDateTime** | Дата перемещения в карантин. |  |
+|**storageClass** | [**StorageClassEnum**](#StorageClassEnum) | Класс хранилища. |  |
 
 
 
@@ -39,6 +42,15 @@
 | NO_PAID | &quot;no_paid&quot; |
 | CREATED | &quot;created&quot; |
 | TRANSFER | &quot;transfer&quot; |
+
+
+
+## Enum: StorageClassEnum
+
+| Name | Value |
+|---- | -----|
+| COLD | &quot;cold&quot; |
+| HOT | &quot;hot&quot; |
 
 
 

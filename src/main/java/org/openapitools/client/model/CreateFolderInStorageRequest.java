@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * CreateFolderInStorageRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-03-19T13:53:53.966626Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-03-25T12:12:19.747122Z[Etc/UTC]")
 public class CreateFolderInStorageRequest {
   public static final String SERIALIZED_NAME_DIR_NAME = "dir_name";
   @SerializedName(SERIALIZED_NAME_DIR_NAME)

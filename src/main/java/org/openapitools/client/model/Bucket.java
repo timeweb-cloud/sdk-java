@@ -22,6 +22,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.time.OffsetDateTime;
 import org.openapitools.client.model.BucketDiskStats;
 
 import com.google.gson.Gson;
@@ -52,7 +53,7 @@ import org.openapitools.client.JSON;
 /**
  * Хранилище S3
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-03-19T13:53:53.966626Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-03-25T12:12:19.747122Z[Etc/UTC]")
 public class Bucket {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -124,6 +125,10 @@ public class Bucket {
   public static final String SERIALIZED_NAME_PRESET_ID = "preset_id";
   @SerializedName(SERIALIZED_NAME_PRESET_ID)
   private BigDecimal presetId;
+
+  public static final String SERIALIZED_NAME_CONFIGURATOR_ID = "configurator_id";
+  @SerializedName(SERIALIZED_NAME_CONFIGURATOR_ID)
+  private BigDecimal configuratorId;
 
   /**
    * Статус хранилища.
@@ -197,6 +202,61 @@ public class Bucket {
   public static final String SERIALIZED_NAME_SECRET_KEY = "secret_key";
   @SerializedName(SERIALIZED_NAME_SECRET_KEY)
   private String secretKey;
+
+  public static final String SERIALIZED_NAME_MOVED_IN_QUARANTINE_AT = "moved_in_quarantine_at";
+  @SerializedName(SERIALIZED_NAME_MOVED_IN_QUARANTINE_AT)
+  private OffsetDateTime movedInQuarantineAt;
+
+  /**
+   * Класс хранилища.
+   */
+  @JsonAdapter(StorageClassEnum.Adapter.class)
+  public enum StorageClassEnum {
+    COLD("cold"),
+    
+    HOT("hot");
+
+    private String value;
+
+    StorageClassEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static StorageClassEnum fromValue(String value) {
+      for (StorageClassEnum b : StorageClassEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<StorageClassEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final StorageClassEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public StorageClassEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return StorageClassEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_STORAGE_CLASS = "storage_class";
+  @SerializedName(SERIALIZED_NAME_STORAGE_CLASS)
+  private StorageClassEnum storageClass;
 
   public Bucket() {
   }
@@ -327,6 +387,27 @@ public class Bucket {
   }
 
 
+  public Bucket configuratorId(BigDecimal configuratorId) {
+    
+    this.configuratorId = configuratorId;
+    return this;
+  }
+
+   /**
+   * ID конфигуратора хранилища.
+   * @return configuratorId
+  **/
+  @javax.annotation.Nonnull
+  public BigDecimal getConfiguratorId() {
+    return configuratorId;
+  }
+
+
+  public void setConfiguratorId(BigDecimal configuratorId) {
+    this.configuratorId = configuratorId;
+  }
+
+
   public Bucket status(StatusEnum status) {
     
     this.status = status;
@@ -453,6 +534,48 @@ public class Bucket {
   }
 
 
+  public Bucket movedInQuarantineAt(OffsetDateTime movedInQuarantineAt) {
+    
+    this.movedInQuarantineAt = movedInQuarantineAt;
+    return this;
+  }
+
+   /**
+   * Дата перемещения в карантин.
+   * @return movedInQuarantineAt
+  **/
+  @javax.annotation.Nonnull
+  public OffsetDateTime getMovedInQuarantineAt() {
+    return movedInQuarantineAt;
+  }
+
+
+  public void setMovedInQuarantineAt(OffsetDateTime movedInQuarantineAt) {
+    this.movedInQuarantineAt = movedInQuarantineAt;
+  }
+
+
+  public Bucket storageClass(StorageClassEnum storageClass) {
+    
+    this.storageClass = storageClass;
+    return this;
+  }
+
+   /**
+   * Класс хранилища.
+   * @return storageClass
+  **/
+  @javax.annotation.Nonnull
+  public StorageClassEnum getStorageClass() {
+    return storageClass;
+  }
+
+
+  public void setStorageClass(StorageClassEnum storageClass) {
+    this.storageClass = storageClass;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -469,17 +592,20 @@ public class Bucket {
         Objects.equals(this.diskStats, bucket.diskStats) &&
         Objects.equals(this.type, bucket.type) &&
         Objects.equals(this.presetId, bucket.presetId) &&
+        Objects.equals(this.configuratorId, bucket.configuratorId) &&
         Objects.equals(this.status, bucket.status) &&
         Objects.equals(this.objectAmount, bucket.objectAmount) &&
         Objects.equals(this.location, bucket.location) &&
         Objects.equals(this.hostname, bucket.hostname) &&
         Objects.equals(this.accessKey, bucket.accessKey) &&
-        Objects.equals(this.secretKey, bucket.secretKey);
+        Objects.equals(this.secretKey, bucket.secretKey) &&
+        Objects.equals(this.movedInQuarantineAt, bucket.movedInQuarantineAt) &&
+        Objects.equals(this.storageClass, bucket.storageClass);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, description, diskStats, type, presetId, status, objectAmount, location, hostname, accessKey, secretKey);
+    return Objects.hash(id, name, description, diskStats, type, presetId, configuratorId, status, objectAmount, location, hostname, accessKey, secretKey, movedInQuarantineAt, storageClass);
   }
 
   @Override
@@ -492,12 +618,15 @@ public class Bucket {
     sb.append("    diskStats: ").append(toIndentedString(diskStats)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    presetId: ").append(toIndentedString(presetId)).append("\n");
+    sb.append("    configuratorId: ").append(toIndentedString(configuratorId)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    objectAmount: ").append(toIndentedString(objectAmount)).append("\n");
     sb.append("    location: ").append(toIndentedString(location)).append("\n");
     sb.append("    hostname: ").append(toIndentedString(hostname)).append("\n");
     sb.append("    accessKey: ").append(toIndentedString(accessKey)).append("\n");
     sb.append("    secretKey: ").append(toIndentedString(secretKey)).append("\n");
+    sb.append("    movedInQuarantineAt: ").append(toIndentedString(movedInQuarantineAt)).append("\n");
+    sb.append("    storageClass: ").append(toIndentedString(storageClass)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -526,12 +655,15 @@ public class Bucket {
     openapiFields.add("disk_stats");
     openapiFields.add("type");
     openapiFields.add("preset_id");
+    openapiFields.add("configurator_id");
     openapiFields.add("status");
     openapiFields.add("object_amount");
     openapiFields.add("location");
     openapiFields.add("hostname");
     openapiFields.add("access_key");
     openapiFields.add("secret_key");
+    openapiFields.add("moved_in_quarantine_at");
+    openapiFields.add("storage_class");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -540,12 +672,15 @@ public class Bucket {
     openapiRequiredFields.add("disk_stats");
     openapiRequiredFields.add("type");
     openapiRequiredFields.add("preset_id");
+    openapiRequiredFields.add("configurator_id");
     openapiRequiredFields.add("status");
     openapiRequiredFields.add("object_amount");
     openapiRequiredFields.add("location");
     openapiRequiredFields.add("hostname");
     openapiRequiredFields.add("access_key");
     openapiRequiredFields.add("secret_key");
+    openapiRequiredFields.add("moved_in_quarantine_at");
+    openapiRequiredFields.add("storage_class");
   }
 
  /**
@@ -601,6 +736,9 @@ public class Bucket {
       }
       if (!jsonObj.get("secret_key").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `secret_key` to be a primitive type in the JSON string but got `%s`", jsonObj.get("secret_key").toString()));
+      }
+      if (!jsonObj.get("storage_class").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `storage_class` to be a primitive type in the JSON string but got `%s`", jsonObj.get("storage_class").toString()));
       }
   }
 

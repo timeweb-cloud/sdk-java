@@ -50,11 +50,15 @@ import org.openapitools.client.JSON;
 /**
  * DeleteServiceResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-03-19T13:53:53.966626Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-03-25T12:12:19.747122Z[Etc/UTC]")
 public class DeleteServiceResponse {
   public static final String SERIALIZED_NAME_HASH = "hash";
   @SerializedName(SERIALIZED_NAME_HASH)
   private String hash;
+
+  public static final String SERIALIZED_NAME_IS_MOVED_IN_QUARANTINE = "is_moved_in_quarantine";
+  @SerializedName(SERIALIZED_NAME_IS_MOVED_IN_QUARANTINE)
+  private Boolean isMovedInQuarantine;
 
   public DeleteServiceResponse() {
   }
@@ -69,7 +73,7 @@ public class DeleteServiceResponse {
    * Хеш, который совместно с кодом авторизации надо будет отправить для удаления.
    * @return hash
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getHash() {
     return hash;
   }
@@ -77,6 +81,27 @@ public class DeleteServiceResponse {
 
   public void setHash(String hash) {
     this.hash = hash;
+  }
+
+
+  public DeleteServiceResponse isMovedInQuarantine(Boolean isMovedInQuarantine) {
+    
+    this.isMovedInQuarantine = isMovedInQuarantine;
+    return this;
+  }
+
+   /**
+   * Флаг, указывающий на то, что сервис был перемещен в карантин или был удален немедленно.
+   * @return isMovedInQuarantine
+  **/
+  @javax.annotation.Nullable
+  public Boolean getIsMovedInQuarantine() {
+    return isMovedInQuarantine;
+  }
+
+
+  public void setIsMovedInQuarantine(Boolean isMovedInQuarantine) {
+    this.isMovedInQuarantine = isMovedInQuarantine;
   }
 
 
@@ -90,12 +115,13 @@ public class DeleteServiceResponse {
       return false;
     }
     DeleteServiceResponse deleteServiceResponse = (DeleteServiceResponse) o;
-    return Objects.equals(this.hash, deleteServiceResponse.hash);
+    return Objects.equals(this.hash, deleteServiceResponse.hash) &&
+        Objects.equals(this.isMovedInQuarantine, deleteServiceResponse.isMovedInQuarantine);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(hash);
+    return Objects.hash(hash, isMovedInQuarantine);
   }
 
   @Override
@@ -103,6 +129,7 @@ public class DeleteServiceResponse {
     StringBuilder sb = new StringBuilder();
     sb.append("class DeleteServiceResponse {\n");
     sb.append("    hash: ").append(toIndentedString(hash)).append("\n");
+    sb.append("    isMovedInQuarantine: ").append(toIndentedString(isMovedInQuarantine)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -126,10 +153,10 @@ public class DeleteServiceResponse {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("hash");
+    openapiFields.add("is_moved_in_quarantine");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("hash");
   }
 
  /**
@@ -152,15 +179,8 @@ public class DeleteServiceResponse {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `DeleteServiceResponse` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : DeleteServiceResponse.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("hash").isJsonPrimitive()) {
+      if ((jsonObj.get("hash") != null && !jsonObj.get("hash").isJsonNull()) && !jsonObj.get("hash").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `hash` to be a primitive type in the JSON string but got `%s`", jsonObj.get("hash").toString()));
       }
   }

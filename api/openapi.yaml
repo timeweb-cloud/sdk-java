@@ -25283,8 +25283,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/deleteStorage_200_response'
           description: Объект JSON c ключом `bucket_delete`
-        "204":
-          description: Хранилище успешно удалено
         "400":
           content:
             application/json:
@@ -44382,6 +44380,7 @@ components:
       type: object
     delete-service-response:
       example:
+        is_moved_in_quarantine: false
         hash: 15095f25-aac3-4d60-a788-96cb5136f186
       properties:
         hash:
@@ -44389,8 +44388,11 @@ components:
             авить для удаления."
           example: 15095f25-aac3-4d60-a788-96cb5136f186
           type: string
-      required:
-      - hash
+        is_moved_in_quarantine:
+          description: "Флаг, указывающий на то, что сервис был перемещен в карант\
+            ин или был удален немедленно."
+          example: false
+          type: boolean
       type: object
     update-balancer:
       properties:
@@ -47887,18 +47889,21 @@ components:
     bucket:
       description: Хранилище S3
       example:
+        storage_class: cold
+        moved_in_quarantine_at: 2025-01-01T12:00:00Z
+        description: Bucket of awesome cats
+        type: public
         secret_key: secret_key
-        hostname: s3.timeweb.com
+        hostname: s3.twcstorage.ru
         preset_id: 389
         disk_stats:
           size: 10485760
           used: 486.11328125
         access_key: access_key
         name: Cute Quail
-        description: Bucket of awesome cats
+        configurator_id: 55
         location: ru-1
         id: 1
-        type: public
         object_amount: 5
         status: created
       properties:
@@ -47929,6 +47934,10 @@ components:
           example: 389
           nullable: true
           type: number
+        configurator_id:
+          description: ID конфигуратора хранилища.
+          example: 55
+          type: number
         status:
           description: Статус хранилища.
           enum:
@@ -47947,7 +47956,7 @@ components:
           type: string
         hostname:
           description: Адрес хранилища для подключения.
-          example: s3.timeweb.com
+          example: s3.twcstorage.ru
           type: string
         access_key:
           description: Ключ доступа от хранилища.
@@ -47957,17 +47966,32 @@ components:
           description: Секретный ключ доступа от хранилища.
           example: secret_key
           type: string
+        moved_in_quarantine_at:
+          description: Дата перемещения в карантин.
+          example: 2025-01-01T12:00:00Z
+          format: date-time
+          type: string
+        storage_class:
+          description: Класс хранилища.
+          enum:
+          - cold
+          - hot
+          example: cold
+          type: string
       required:
       - access_key
+      - configurator_id
       - disk_stats
       - hostname
       - id
       - location
+      - moved_in_quarantine_at
       - name
       - object_amount
       - preset_id
       - secret_key
       - status
+      - storage_class
       - type
       type: object
     clusterk8s:
@@ -51463,6 +51487,7 @@ components:
     deleteBalancer_200_response:
       example:
         balancer_delete:
+          is_moved_in_quarantine: false
           hash: 15095f25-aac3-4d60-a788-96cb5136f186
       properties:
         balancer_delete:
@@ -52088,6 +52113,7 @@ components:
     deleteDatabase_200_response:
       example:
         database_delete:
+          is_moved_in_quarantine: false
           hash: 15095f25-aac3-4d60-a788-96cb5136f186
       properties:
         database_delete:
@@ -52442,6 +52468,7 @@ components:
     deleteCluster_200_response:
       example:
         cluster_delete:
+          is_moved_in_quarantine: false
           hash: 15095f25-aac3-4d60-a788-96cb5136f186
       properties:
         cluster_delete:
@@ -52735,6 +52762,7 @@ components:
     deleteServer_200_response:
       example:
         server_delete:
+          is_moved_in_quarantine: false
           hash: 15095f25-aac3-4d60-a788-96cb5136f186
       properties:
         server_delete:
@@ -53559,32 +53587,38 @@ components:
         meta:
           total: 10
         buckets:
-        - secret_key: secret_key
-          hostname: s3.timeweb.com
+        - storage_class: cold
+          moved_in_quarantine_at: 2025-01-01T12:00:00Z
+          description: Bucket of awesome cats
+          type: public
+          secret_key: secret_key
+          hostname: s3.twcstorage.ru
           preset_id: 389
           disk_stats:
             size: 10485760
             used: 486.11328125
           access_key: access_key
           name: Cute Quail
-          description: Bucket of awesome cats
+          configurator_id: 55
           location: ru-1
           id: 1
-          type: public
           object_amount: 5
           status: created
-        - secret_key: secret_key
-          hostname: s3.timeweb.com
+        - storage_class: cold
+          moved_in_quarantine_at: 2025-01-01T12:00:00Z
+          description: Bucket of awesome cats
+          type: public
+          secret_key: secret_key
+          hostname: s3.twcstorage.ru
           preset_id: 389
           disk_stats:
             size: 10485760
             used: 486.11328125
           access_key: access_key
           name: Cute Quail
-          description: Bucket of awesome cats
+          configurator_id: 55
           location: ru-1
           id: 1
-          type: public
           object_amount: 5
           status: created
       properties:
@@ -54405,32 +54439,38 @@ components:
         meta:
           total: 10
         buckets:
-        - secret_key: secret_key
-          hostname: s3.timeweb.com
+        - storage_class: cold
+          moved_in_quarantine_at: 2025-01-01T12:00:00Z
+          description: Bucket of awesome cats
+          type: public
+          secret_key: secret_key
+          hostname: s3.twcstorage.ru
           preset_id: 389
           disk_stats:
             size: 10485760
             used: 486.11328125
           access_key: access_key
           name: Cute Quail
-          description: Bucket of awesome cats
+          configurator_id: 55
           location: ru-1
           id: 1
-          type: public
           object_amount: 5
           status: created
-        - secret_key: secret_key
-          hostname: s3.timeweb.com
+        - storage_class: cold
+          moved_in_quarantine_at: 2025-01-01T12:00:00Z
+          description: Bucket of awesome cats
+          type: public
+          secret_key: secret_key
+          hostname: s3.twcstorage.ru
           preset_id: 389
           disk_stats:
             size: 10485760
             used: 486.11328125
           access_key: access_key
           name: Cute Quail
-          description: Bucket of awesome cats
+          configurator_id: 55
           location: ru-1
           id: 1
-          type: public
           object_amount: 5
           status: created
         dedicated_servers:
@@ -54588,18 +54628,21 @@ components:
     createStorage_201_response:
       example:
         bucket:
+          storage_class: cold
+          moved_in_quarantine_at: 2025-01-01T12:00:00Z
+          description: Bucket of awesome cats
+          type: public
           secret_key: secret_key
-          hostname: s3.timeweb.com
+          hostname: s3.twcstorage.ru
           preset_id: 389
           disk_stats:
             size: 10485760
             used: 486.11328125
           access_key: access_key
           name: Cute Quail
-          description: Bucket of awesome cats
+          configurator_id: 55
           location: ru-1
           id: 1
-          type: public
           object_amount: 5
           status: created
       properties:
@@ -54611,6 +54654,7 @@ components:
     deleteStorage_200_response:
       example:
         bucket_delete:
+          is_moved_in_quarantine: false
           hash: 15095f25-aac3-4d60-a788-96cb5136f186
       properties:
         bucket_delete:
@@ -54623,6 +54667,10 @@ components:
         preset_id:
           description: ID тарифа.
           example: 1
+          type: number
+        configurator_id:
+          description: ID конфигуратора хранилища.
+          example: 55
           type: number
         bucket_type:
           description: Тип хранилища.

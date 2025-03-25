@@ -51,11 +51,15 @@ import org.openapitools.client.JSON;
 /**
  * UpdateStorageRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-03-19T13:53:53.966626Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-03-25T12:12:19.747122Z[Etc/UTC]")
 public class UpdateStorageRequest {
   public static final String SERIALIZED_NAME_PRESET_ID = "preset_id";
   @SerializedName(SERIALIZED_NAME_PRESET_ID)
   private BigDecimal presetId;
+
+  public static final String SERIALIZED_NAME_CONFIGURATOR_ID = "configurator_id";
+  @SerializedName(SERIALIZED_NAME_CONFIGURATOR_ID)
+  private BigDecimal configuratorId;
 
   /**
    * Тип хранилища.
@@ -136,6 +140,27 @@ public class UpdateStorageRequest {
   }
 
 
+  public UpdateStorageRequest configuratorId(BigDecimal configuratorId) {
+    
+    this.configuratorId = configuratorId;
+    return this;
+  }
+
+   /**
+   * ID конфигуратора хранилища.
+   * @return configuratorId
+  **/
+  @javax.annotation.Nullable
+  public BigDecimal getConfiguratorId() {
+    return configuratorId;
+  }
+
+
+  public void setConfiguratorId(BigDecimal configuratorId) {
+    this.configuratorId = configuratorId;
+  }
+
+
   public UpdateStorageRequest bucketType(BucketTypeEnum bucketType) {
     
     this.bucketType = bucketType;
@@ -189,13 +214,14 @@ public class UpdateStorageRequest {
     }
     UpdateStorageRequest updateStorageRequest = (UpdateStorageRequest) o;
     return Objects.equals(this.presetId, updateStorageRequest.presetId) &&
+        Objects.equals(this.configuratorId, updateStorageRequest.configuratorId) &&
         Objects.equals(this.bucketType, updateStorageRequest.bucketType) &&
         Objects.equals(this.description, updateStorageRequest.description);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(presetId, bucketType, description);
+    return Objects.hash(presetId, configuratorId, bucketType, description);
   }
 
   @Override
@@ -203,6 +229,7 @@ public class UpdateStorageRequest {
     StringBuilder sb = new StringBuilder();
     sb.append("class UpdateStorageRequest {\n");
     sb.append("    presetId: ").append(toIndentedString(presetId)).append("\n");
+    sb.append("    configuratorId: ").append(toIndentedString(configuratorId)).append("\n");
     sb.append("    bucketType: ").append(toIndentedString(bucketType)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("}");
@@ -228,6 +255,7 @@ public class UpdateStorageRequest {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("preset_id");
+    openapiFields.add("configurator_id");
     openapiFields.add("bucket_type");
     openapiFields.add("description");
 

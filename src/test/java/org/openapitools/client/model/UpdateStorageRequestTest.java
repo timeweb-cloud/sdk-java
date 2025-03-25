@@ -46,6 +46,14 @@ public class UpdateStorageRequestTest {
     }
 
     /**
+     * Test the property 'configuratorId'
+     */
+    @Test
+    public void configuratorIdTest() {
+        // TODO: test configuratorId
+    }
+
+    /**
      * Test the property 'bucketType'
      */
     @Test

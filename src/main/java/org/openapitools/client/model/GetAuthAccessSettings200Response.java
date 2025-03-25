@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * GetAuthAccessSettings200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-03-19T13:53:53.966626Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-03-25T12:12:19.747122Z[Etc/UTC]")
 public class GetAuthAccessSettings200Response {
   public static final String SERIALIZED_NAME_IS_IP_RESTRICTIONS_ENABLED = "is_ip_restrictions_enabled";
   @SerializedName(SERIALIZED_NAME_IS_IP_RESTRICTIONS_ENABLED)

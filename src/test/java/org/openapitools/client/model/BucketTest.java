@@ -20,6 +20,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.time.OffsetDateTime;
 import org.openapitools.client.model.BucketDiskStats;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -87,6 +88,14 @@ public class BucketTest {
     }
 
     /**
+     * Test the property 'configuratorId'
+     */
+    @Test
+    public void configuratorIdTest() {
+        // TODO: test configuratorId
+    }
+
+    /**
      * Test the property 'status'
      */
     @Test
@@ -132,6 +141,22 @@ public class BucketTest {
     @Test
     public void secretKeyTest() {
         // TODO: test secretKey
+    }
+
+    /**
+     * Test the property 'movedInQuarantineAt'
+     */
+    @Test
+    public void movedInQuarantineAtTest() {
+        // TODO: test movedInQuarantineAt
+    }
+
+    /**
+     * Test the property 'storageClass'
+     */
+    @Test
+    public void storageClassTest() {
+        // TODO: test storageClass
     }
 
 }
