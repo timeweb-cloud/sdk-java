@@ -215,6 +215,14 @@ public class VdsTest {
     }
 
     /**
+     * Test the property 'avatarLink'
+     */
+    @Test
+    public void avatarLinkTest() {
+        // TODO: test avatarLink
+    }
+
+    /**
      * Test the property 'vncPass'
      */
     @Test

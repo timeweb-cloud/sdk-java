@@ -60,7 +60,7 @@ import org.openapitools.client.JSON;
 /**
  * Сервер
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-03-25T12:36:01.856546Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-01T12:50:24.480512Z[Etc/UTC]")
 public class Vds {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -326,8 +326,13 @@ public class Vds {
   private List<VdsDisksInner> disks = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_AVATAR_ID = "avatar_id";
+  @Deprecated
   @SerializedName(SERIALIZED_NAME_AVATAR_ID)
   private String avatarId;
+
+  public static final String SERIALIZED_NAME_AVATAR_LINK = "avatar_link";
+  @SerializedName(SERIALIZED_NAME_AVATAR_LINK)
+  private String avatarLink;
 
   public static final String SERIALIZED_NAME_VNC_PASS = "vnc_pass";
   @SerializedName(SERIALIZED_NAME_VNC_PASS)
@@ -788,6 +793,7 @@ public class Vds {
   }
 
 
+  @Deprecated
   public Vds avatarId(String avatarId) {
     
     this.avatarId = avatarId;
@@ -795,17 +801,41 @@ public class Vds {
   }
 
    /**
-   * ID аватара сервера. Описание методов работы с аватарами появится позднее.
+   * ID аватара сервера.
    * @return avatarId
+   * @deprecated
   **/
+  @Deprecated
   @javax.annotation.Nullable
   public String getAvatarId() {
     return avatarId;
   }
 
 
+  @Deprecated
   public void setAvatarId(String avatarId) {
     this.avatarId = avatarId;
+  }
+
+
+  public Vds avatarLink(String avatarLink) {
+    
+    this.avatarLink = avatarLink;
+    return this;
+  }
+
+   /**
+   * Ссылка на аватар сервера.
+   * @return avatarLink
+  **/
+  @javax.annotation.Nullable
+  public String getAvatarLink() {
+    return avatarLink;
+  }
+
+
+  public void setAvatarLink(String avatarLink) {
+    this.avatarLink = avatarLink;
   }
 
 
@@ -995,6 +1025,7 @@ public class Vds {
         Objects.equals(this.ram, vds.ram) &&
         Objects.equals(this.disks, vds.disks) &&
         Objects.equals(this.avatarId, vds.avatarId) &&
+        Objects.equals(this.avatarLink, vds.avatarLink) &&
         Objects.equals(this.vncPass, vds.vncPass) &&
         Objects.equals(this.rootPass, vds.rootPass) &&
         Objects.equals(this.image, vds.image) &&
@@ -1006,7 +1037,7 @@ public class Vds {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, comment, createdAt, os, software, presetId, location, configuratorId, bootMode, status, startAt, isDdosGuard, isMasterSsh, isDedicatedCpu, gpu, cpu, cpuFrequency, ram, disks, avatarId, vncPass, rootPass, image, networks, cloudInit, isQemuAgent, availabilityZone);
+    return Objects.hash(id, name, comment, createdAt, os, software, presetId, location, configuratorId, bootMode, status, startAt, isDdosGuard, isMasterSsh, isDedicatedCpu, gpu, cpu, cpuFrequency, ram, disks, avatarId, avatarLink, vncPass, rootPass, image, networks, cloudInit, isQemuAgent, availabilityZone);
   }
 
   @Override
@@ -1034,6 +1065,7 @@ public class Vds {
     sb.append("    ram: ").append(toIndentedString(ram)).append("\n");
     sb.append("    disks: ").append(toIndentedString(disks)).append("\n");
     sb.append("    avatarId: ").append(toIndentedString(avatarId)).append("\n");
+    sb.append("    avatarLink: ").append(toIndentedString(avatarLink)).append("\n");
     sb.append("    vncPass: ").append(toIndentedString(vncPass)).append("\n");
     sb.append("    rootPass: ").append(toIndentedString(rootPass)).append("\n");
     sb.append("    image: ").append(toIndentedString(image)).append("\n");
@@ -1084,6 +1116,7 @@ public class Vds {
     openapiFields.add("ram");
     openapiFields.add("disks");
     openapiFields.add("avatar_id");
+    openapiFields.add("avatar_link");
     openapiFields.add("vnc_pass");
     openapiFields.add("root_pass");
     openapiFields.add("image");
@@ -1115,6 +1148,7 @@ public class Vds {
     openapiRequiredFields.add("ram");
     openapiRequiredFields.add("disks");
     openapiRequiredFields.add("avatar_id");
+    openapiRequiredFields.add("avatar_link");
     openapiRequiredFields.add("vnc_pass");
     openapiRequiredFields.add("root_pass");
     openapiRequiredFields.add("image");
@@ -1189,6 +1223,9 @@ public class Vds {
       };
       if ((jsonObj.get("avatar_id") != null && !jsonObj.get("avatar_id").isJsonNull()) && !jsonObj.get("avatar_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `avatar_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("avatar_id").toString()));
+      }
+      if ((jsonObj.get("avatar_link") != null && !jsonObj.get("avatar_link").isJsonNull()) && !jsonObj.get("avatar_link").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `avatar_link` to be a primitive type in the JSON string but got `%s`", jsonObj.get("avatar_link").toString()));
       }
       if (!jsonObj.get("vnc_pass").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `vnc_pass` to be a primitive type in the JSON string but got `%s`", jsonObj.get("vnc_pass").toString()));

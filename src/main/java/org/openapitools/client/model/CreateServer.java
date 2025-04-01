@@ -57,7 +57,7 @@ import org.openapitools.client.JSON;
 /**
  * CreateServer
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-03-25T12:36:01.856546Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-01T12:50:24.480512Z[Etc/UTC]")
 public class CreateServer {
   public static final String SERIALIZED_NAME_CONFIGURATION = "configuration";
   @SerializedName(SERIALIZED_NAME_CONFIGURATION)
@@ -92,6 +92,7 @@ public class CreateServer {
   private String name;
 
   public static final String SERIALIZED_NAME_AVATAR_ID = "avatar_id";
+  @Deprecated
   @SerializedName(SERIALIZED_NAME_AVATAR_ID)
   private String avatarId;
 
@@ -291,6 +292,7 @@ public class CreateServer {
   }
 
 
+  @Deprecated
   public CreateServer avatarId(String avatarId) {
     
     this.avatarId = avatarId;
@@ -298,15 +300,18 @@ public class CreateServer {
   }
 
    /**
-   * ID аватара сервера. Описание методов работы с аватарами появится позднее.
+   * ID аватара сервера.
    * @return avatarId
+   * @deprecated
   **/
+  @Deprecated
   @javax.annotation.Nullable
   public String getAvatarId() {
     return avatarId;
   }
 
 
+  @Deprecated
   public void setAvatarId(String avatarId) {
     this.avatarId = avatarId;
   }
