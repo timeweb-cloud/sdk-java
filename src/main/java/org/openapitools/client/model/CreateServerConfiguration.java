@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * Параметры конфигурации сервера. Нельзя передавать вместе с &#x60;preset_id&#x60;.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-04T10:30:33.640412Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-04T12:26:31.913432Z[Etc/UTC]")
 public class CreateServerConfiguration {
   public static final String SERIALIZED_NAME_CONFIGURATOR_ID = "configurator_id";
   @SerializedName(SERIALIZED_NAME_CONFIGURATOR_ID)

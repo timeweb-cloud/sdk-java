@@ -25,7 +25,7 @@ import java.util.List;
 import java.util.UUID;
 import org.openapitools.client.model.AvailabilityZone;
 import org.openapitools.client.model.CreateServerConfiguration;
-import org.openapitools.client.model.Network;
+import org.openapitools.client.model.CreateServerNetwork;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 

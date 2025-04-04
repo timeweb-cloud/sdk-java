@@ -27,7 +27,7 @@ import java.util.List;
 import java.util.UUID;
 import org.openapitools.client.model.AvailabilityZone;
 import org.openapitools.client.model.CreateServerConfiguration;
-import org.openapitools.client.model.Network;
+import org.openapitools.client.model.CreateServerNetwork;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -57,7 +57,7 @@ import org.openapitools.client.JSON;
 /**
  * CreateServer
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-04T10:30:33.640412Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-04T12:26:31.913432Z[Etc/UTC]")
 public class CreateServer {
   public static final String SERIALIZED_NAME_CONFIGURATION = "configuration";
   @SerializedName(SERIALIZED_NAME_CONFIGURATION)
@@ -111,7 +111,7 @@ public class CreateServer {
 
   public static final String SERIALIZED_NAME_NETWORK = "network";
   @SerializedName(SERIALIZED_NAME_NETWORK)
-  private Network network;
+  private CreateServerNetwork network;
 
   public static final String SERIALIZED_NAME_CLOUD_INIT = "cloud_init";
   @SerializedName(SERIALIZED_NAME_CLOUD_INIT)
@@ -392,7 +392,7 @@ public class CreateServer {
   }
 
 
-  public CreateServer network(Network network) {
+  public CreateServer network(CreateServerNetwork network) {
     
     this.network = network;
     return this;
@@ -403,12 +403,12 @@ public class CreateServer {
    * @return network
   **/
   @javax.annotation.Nullable
-  public Network getNetwork() {
+  public CreateServerNetwork getNetwork() {
     return network;
   }
 
 
-  public void setNetwork(Network network) {
+  public void setNetwork(CreateServerNetwork network) {
     this.network = network;
   }
 
@@ -599,7 +599,7 @@ public class CreateServer {
       }
       // validate the optional field `network`
       if (jsonObj.get("network") != null && !jsonObj.get("network").isJsonNull()) {
-        Network.validateJsonElement(jsonObj.get("network"));
+        CreateServerNetwork.validateJsonElement(jsonObj.get("network"));
       }
       if ((jsonObj.get("cloud_init") != null && !jsonObj.get("cloud_init").isJsonNull()) && !jsonObj.get("cloud_init").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `cloud_init` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cloud_init").toString()));

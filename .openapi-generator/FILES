@@ -121,6 +121,7 @@ docs/CreateServerDisk201Response.md
 docs/CreateServerDiskBackup201Response.md
 docs/CreateServerDiskBackupRequest.md
 docs/CreateServerDiskRequest.md
+docs/CreateServerNetwork.md
 docs/CreateStorage201Response.md
 docs/CreateStorageRequest.md
 docs/CreateToken201Response.md
@@ -608,6 +609,7 @@ src/main/java/org/openapitools/client/model/CreateServerDisk201Response.java
 src/main/java/org/openapitools/client/model/CreateServerDiskBackup201Response.java
 src/main/java/org/openapitools/client/model/CreateServerDiskBackupRequest.java
 src/main/java/org/openapitools/client/model/CreateServerDiskRequest.java
+src/main/java/org/openapitools/client/model/CreateServerNetwork.java
 src/main/java/org/openapitools/client/model/CreateStorage201Response.java
 src/main/java/org/openapitools/client/model/CreateStorageRequest.java
 src/main/java/org/openapitools/client/model/CreateToken201Response.java
@@ -1052,6 +1054,7 @@ src/test/java/org/openapitools/client/model/CreateServerDisk201ResponseTest.java
 src/test/java/org/openapitools/client/model/CreateServerDiskBackup201ResponseTest.java
 src/test/java/org/openapitools/client/model/CreateServerDiskBackupRequestTest.java
 src/test/java/org/openapitools/client/model/CreateServerDiskRequestTest.java
+src/test/java/org/openapitools/client/model/CreateServerNetworkTest.java
 src/test/java/org/openapitools/client/model/CreateServerTest.java
 src/test/java/org/openapitools/client/model/CreateStorage201ResponseTest.java
 src/test/java/org/openapitools/client/model/CreateStorageRequestTest.java

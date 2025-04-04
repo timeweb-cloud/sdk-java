@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * CheckDomain200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-04T10:30:33.640412Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-04T12:26:31.913432Z[Etc/UTC]")
 public class CheckDomain200Response {
   public static final String SERIALIZED_NAME_IS_DOMAIN_AVAILABLE = "is_domain_available";
   @SerializedName(SERIALIZED_NAME_IS_DOMAIN_AVAILABLE)
