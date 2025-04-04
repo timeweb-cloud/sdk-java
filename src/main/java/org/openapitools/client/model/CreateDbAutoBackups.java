@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * База данных
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-01T12:50:24.480512Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-04T10:30:33.640412Z[Etc/UTC]")
 public class CreateDbAutoBackups {
   public static final String SERIALIZED_NAME_COPY_COUNT = "copy_count";
   @SerializedName(SERIALIZED_NAME_COPY_COUNT)

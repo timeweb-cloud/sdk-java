@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * ImageDownloadResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-01T12:50:24.480512Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-04T10:30:33.640412Z[Etc/UTC]")
 public class ImageDownloadResponse {
   public static final String SERIALIZED_NAME_RESPONSE_ID = "response_id";
   @SerializedName(SERIALIZED_NAME_RESPONSE_ID)

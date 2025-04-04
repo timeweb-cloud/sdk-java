@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * GetDomain200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-01T12:50:24.480512Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-04T10:30:33.640412Z[Etc/UTC]")
 public class GetDomain200Response {
   public static final String SERIALIZED_NAME_DOMAIN = "domain";
   @SerializedName(SERIALIZED_NAME_DOMAIN)

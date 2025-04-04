@@ -943,7 +943,7 @@ public class NetworkDrivesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Сетевой диск успешно подключен </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Сетевой диск успешно подключен </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -1023,7 +1023,7 @@ public class NetworkDrivesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Сетевой диск успешно подключен </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Сетевой диск успешно подключен </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -1046,7 +1046,7 @@ public class NetworkDrivesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Сетевой диск успешно подключен </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Сетевой диск успешно подключен </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -1071,7 +1071,7 @@ public class NetworkDrivesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Сетевой диск успешно подключен </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Сетевой диск успешно подключен </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -1095,7 +1095,7 @@ public class NetworkDrivesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Сетевой диск успешно отключен </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Сетевой диск успешно отключен </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -1168,7 +1168,7 @@ public class NetworkDrivesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Сетевой диск успешно отключен </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Сетевой диск успешно отключен </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -1190,7 +1190,7 @@ public class NetworkDrivesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Сетевой диск успешно отключен </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Сетевой диск успешно отключен </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -1214,7 +1214,7 @@ public class NetworkDrivesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Сетевой диск успешно отключен </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Сетевой диск успешно отключен </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>

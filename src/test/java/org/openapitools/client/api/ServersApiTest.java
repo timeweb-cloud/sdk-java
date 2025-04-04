@@ -41,6 +41,7 @@ import org.openapitools.client.model.GetServerDisks200Response;
 import org.openapitools.client.model.GetServerIPs200Response;
 import org.openapitools.client.model.GetServerLogs200Response;
 import org.openapitools.client.model.GetServerStatistics200Response;
+import org.openapitools.client.model.GetServerStatisticsNew200Response;
 import org.openapitools.client.model.GetServers200Response;
 import org.openapitools.client.model.GetServersPresets200Response;
 import org.openapitools.client.model.GetSoftware200Response;
@@ -363,6 +364,23 @@ public class ServersApiTest {
         String dateFrom = null;
         String dateTo = null;
         GetServerStatistics200Response response = api.getServerStatistics(serverId, dateFrom, dateTo);
+        // TODO: test validations
+    }
+
+    /**
+     * Получение статистики сервера
+     *
+     * Чтобы получить статистику сервера, отправьте GET-запрос на &#x60;/api/v1/servers/{server_id}/{time_from}/{period}/{keys}&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void getServerStatisticsNewTest() throws ApiException {
+        Integer serverId = null;
+        String timeFrom = null;
+        String period = null;
+        String keys = null;
+        GetServerStatisticsNew200Response response = api.getServerStatisticsNew(serverId, timeFrom, period, keys);
         // TODO: test validations
     }
 

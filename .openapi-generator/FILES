@@ -273,6 +273,7 @@ docs/GetServerStatistics200ResponseCpuInner.md
 docs/GetServerStatistics200ResponseDiskInner.md
 docs/GetServerStatistics200ResponseNetworkTrafficInner.md
 docs/GetServerStatistics200ResponseRamInner.md
+docs/GetServerStatisticsNew200Response.md
 docs/GetServers200Response.md
 docs/GetServersPresets200Response.md
 docs/GetSoftware200Response.md
@@ -378,6 +379,9 @@ docs/ServersOsRequirements.md
 docs/ServersPreset.md
 docs/ServersSoftware.md
 docs/ServersSoftwareRequirements.md
+docs/ServersStatistics.md
+docs/ServersStatisticsListInner.md
+docs/ServersStatisticsMeta.md
 docs/SetLabels.md
 docs/SettingCondition.md
 docs/SpamFilterIsDisabled.md
@@ -751,6 +755,7 @@ src/main/java/org/openapitools/client/model/GetServerStatistics200ResponseCpuInn
 src/main/java/org/openapitools/client/model/GetServerStatistics200ResponseDiskInner.java
 src/main/java/org/openapitools/client/model/GetServerStatistics200ResponseNetworkTrafficInner.java
 src/main/java/org/openapitools/client/model/GetServerStatistics200ResponseRamInner.java
+src/main/java/org/openapitools/client/model/GetServerStatisticsNew200Response.java
 src/main/java/org/openapitools/client/model/GetServers200Response.java
 src/main/java/org/openapitools/client/model/GetServersPresets200Response.java
 src/main/java/org/openapitools/client/model/GetSoftware200Response.java
@@ -848,6 +853,9 @@ src/main/java/org/openapitools/client/model/ServersOsRequirements.java
 src/main/java/org/openapitools/client/model/ServersPreset.java
 src/main/java/org/openapitools/client/model/ServersSoftware.java
 src/main/java/org/openapitools/client/model/ServersSoftwareRequirements.java
+src/main/java/org/openapitools/client/model/ServersStatistics.java
+src/main/java/org/openapitools/client/model/ServersStatisticsListInner.java
+src/main/java/org/openapitools/client/model/ServersStatisticsMeta.java
 src/main/java/org/openapitools/client/model/SetLabels.java
 src/main/java/org/openapitools/client/model/SettingCondition.java
 src/main/java/org/openapitools/client/model/SpamFilterIsDisabled.java
@@ -1192,6 +1200,7 @@ src/test/java/org/openapitools/client/model/GetServerStatistics200ResponseDiskIn
 src/test/java/org/openapitools/client/model/GetServerStatistics200ResponseNetworkTrafficInnerTest.java
 src/test/java/org/openapitools/client/model/GetServerStatistics200ResponseRamInnerTest.java
 src/test/java/org/openapitools/client/model/GetServerStatistics200ResponseTest.java
+src/test/java/org/openapitools/client/model/GetServerStatisticsNew200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetServers200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetServersPresets200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetSoftware200ResponseTest.java
@@ -1289,6 +1298,9 @@ src/test/java/org/openapitools/client/model/ServersOsTest.java
 src/test/java/org/openapitools/client/model/ServersPresetTest.java
 src/test/java/org/openapitools/client/model/ServersSoftwareRequirementsTest.java
 src/test/java/org/openapitools/client/model/ServersSoftwareTest.java
+src/test/java/org/openapitools/client/model/ServersStatisticsListInnerTest.java
+src/test/java/org/openapitools/client/model/ServersStatisticsMetaTest.java
+src/test/java/org/openapitools/client/model/ServersStatisticsTest.java
 src/test/java/org/openapitools/client/model/SetLabelsTest.java
 src/test/java/org/openapitools/client/model/SettingConditionTest.java
 src/test/java/org/openapitools/client/model/SpamFilterIsDisabledTest.java

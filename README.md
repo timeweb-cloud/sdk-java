@@ -2,7 +2,7 @@
 
 Timeweb Cloud API
 - API version: 1.0.0
-  - Build date: 2025-04-01T12:50:24.480512Z[Etc/UTC]
+  - Build date: 2025-04-04T10:30:33.640412Z[Etc/UTC]
 
 # Введение
 API Timeweb Cloud позволяет вам управлять ресурсами в облаке программным способом с использованием обычных HTTP-запросов.
@@ -509,6 +509,7 @@ Class | Method | HTTP request | Description
 *ServersApi* | [**getServerIPs**](docs/ServersApi.md#getServerIPs) | **GET** /api/v1/servers/{server_id}/ips | Получение списка IP-адресов сервера
 *ServersApi* | [**getServerLogs**](docs/ServersApi.md#getServerLogs) | **GET** /api/v1/servers/{server_id}/logs | Получение списка логов сервера
 *ServersApi* | [**getServerStatistics**](docs/ServersApi.md#getServerStatistics) | **GET** /api/v1/servers/{server_id}/statistics | Получение статистики сервера
+*ServersApi* | [**getServerStatisticsNew**](docs/ServersApi.md#getServerStatisticsNew) | **GET** /api/v1/servers/{server_id}/statistics/{time_from}/{period}/{keys} | Получение статистики сервера
 *ServersApi* | [**getServers**](docs/ServersApi.md#getServers) | **GET** /api/v1/servers | Получение списка серверов
 *ServersApi* | [**getServersPresets**](docs/ServersApi.md#getServersPresets) | **GET** /api/v1/presets/servers | Получение списка тарифов серверов
 *ServersApi* | [**getSoftware**](docs/ServersApi.md#getSoftware) | **GET** /api/v1/software/servers | Получение списка ПО из маркетплейса
@@ -803,6 +804,7 @@ Class | Method | HTTP request | Description
  - [GetServerStatistics200ResponseDiskInner](docs/GetServerStatistics200ResponseDiskInner.md)
  - [GetServerStatistics200ResponseNetworkTrafficInner](docs/GetServerStatistics200ResponseNetworkTrafficInner.md)
  - [GetServerStatistics200ResponseRamInner](docs/GetServerStatistics200ResponseRamInner.md)
+ - [GetServerStatisticsNew200Response](docs/GetServerStatisticsNew200Response.md)
  - [GetServers200Response](docs/GetServers200Response.md)
  - [GetServersPresets200Response](docs/GetServersPresets200Response.md)
  - [GetSoftware200Response](docs/GetSoftware200Response.md)
@@ -900,6 +902,9 @@ Class | Method | HTTP request | Description
  - [ServersPreset](docs/ServersPreset.md)
  - [ServersSoftware](docs/ServersSoftware.md)
  - [ServersSoftwareRequirements](docs/ServersSoftwareRequirements.md)
+ - [ServersStatistics](docs/ServersStatistics.md)
+ - [ServersStatisticsListInner](docs/ServersStatisticsListInner.md)
+ - [ServersStatisticsMeta](docs/ServersStatisticsMeta.md)
  - [SetLabels](docs/SetLabels.md)
  - [SettingCondition](docs/SettingCondition.md)
  - [SpamFilterIsDisabled](docs/SpamFilterIsDisabled.md)

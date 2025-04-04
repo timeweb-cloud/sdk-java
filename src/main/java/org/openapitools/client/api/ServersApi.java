@@ -54,6 +54,7 @@ import org.openapitools.client.model.GetServerDisks200Response;
 import org.openapitools.client.model.GetServerIPs200Response;
 import org.openapitools.client.model.GetServerLogs200Response;
 import org.openapitools.client.model.GetServerStatistics200Response;
+import org.openapitools.client.model.GetServerStatisticsNew200Response;
 import org.openapitools.client.model.GetServers200Response;
 import org.openapitools.client.model.GetServersPresets200Response;
 import org.openapitools.client.model.GetSoftware200Response;
@@ -3094,7 +3095,9 @@ public class ServersApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call getServerStatisticsCall(Integer serverId, String dateFrom, String dateTo, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -3148,6 +3151,7 @@ public class ServersApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getServerStatisticsValidateBeforeCall(Integer serverId, String dateFrom, String dateTo, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'serverId' is set
@@ -3189,7 +3193,9 @@ public class ServersApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public GetServerStatistics200Response getServerStatistics(Integer serverId, String dateFrom, String dateTo) throws ApiException {
         ApiResponse<GetServerStatistics200Response> localVarResp = getServerStatisticsWithHttpInfo(serverId, dateFrom, dateTo);
         return localVarResp.getData();
@@ -3215,7 +3221,9 @@ public class ServersApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<GetServerStatistics200Response> getServerStatisticsWithHttpInfo(Integer serverId, String dateFrom, String dateTo) throws ApiException {
         okhttp3.Call localVarCall = getServerStatisticsValidateBeforeCall(serverId, dateFrom, dateTo, null);
         Type localVarReturnType = new TypeToken<GetServerStatistics200Response>(){}.getType();
@@ -3243,11 +3251,194 @@ public class ServersApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call getServerStatisticsAsync(Integer serverId, String dateFrom, String dateTo, final ApiCallback<GetServerStatistics200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getServerStatisticsValidateBeforeCall(serverId, dateFrom, dateTo, _callback);
         Type localVarReturnType = new TypeToken<GetServerStatistics200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getServerStatisticsNew
+     * @param serverId ID облачного сервера. (required)
+     * @param timeFrom Дата начала сбора статистики. (required)
+     * @param period Количество часов за период которых нужна статистика. (required)
+     * @param keys Ключи выбираемых видов статистики. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;statistics&#x60; </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getServerStatisticsNewCall(Integer serverId, String timeFrom, String period, String keys, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/v1/servers/{server_id}/statistics/{time_from}/{period}/{keys}"
+            .replace("{" + "server_id" + "}", localVarApiClient.escapeString(serverId.toString()))
+            .replace("{" + "time_from" + "}", localVarApiClient.escapeString(timeFrom.toString()))
+            .replace("{" + "period" + "}", localVarApiClient.escapeString(period.toString()))
+            .replace("{" + "keys" + "}", localVarApiClient.escapeString(keys.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "Bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getServerStatisticsNewValidateBeforeCall(Integer serverId, String timeFrom, String period, String keys, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'serverId' is set
+        if (serverId == null) {
+            throw new ApiException("Missing the required parameter 'serverId' when calling getServerStatisticsNew(Async)");
+        }
+
+        // verify the required parameter 'timeFrom' is set
+        if (timeFrom == null) {
+            throw new ApiException("Missing the required parameter 'timeFrom' when calling getServerStatisticsNew(Async)");
+        }
+
+        // verify the required parameter 'period' is set
+        if (period == null) {
+            throw new ApiException("Missing the required parameter 'period' when calling getServerStatisticsNew(Async)");
+        }
+
+        // verify the required parameter 'keys' is set
+        if (keys == null) {
+            throw new ApiException("Missing the required parameter 'keys' when calling getServerStatisticsNew(Async)");
+        }
+
+        return getServerStatisticsNewCall(serverId, timeFrom, period, keys, _callback);
+
+    }
+
+    /**
+     * Получение статистики сервера
+     * Чтобы получить статистику сервера, отправьте GET-запрос на &#x60;/api/v1/servers/{server_id}/{time_from}/{period}/{keys}&#x60;.
+     * @param serverId ID облачного сервера. (required)
+     * @param timeFrom Дата начала сбора статистики. (required)
+     * @param period Количество часов за период которых нужна статистика. (required)
+     * @param keys Ключи выбираемых видов статистики. (required)
+     * @return GetServerStatisticsNew200Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;statistics&#x60; </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetServerStatisticsNew200Response getServerStatisticsNew(Integer serverId, String timeFrom, String period, String keys) throws ApiException {
+        ApiResponse<GetServerStatisticsNew200Response> localVarResp = getServerStatisticsNewWithHttpInfo(serverId, timeFrom, period, keys);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Получение статистики сервера
+     * Чтобы получить статистику сервера, отправьте GET-запрос на &#x60;/api/v1/servers/{server_id}/{time_from}/{period}/{keys}&#x60;.
+     * @param serverId ID облачного сервера. (required)
+     * @param timeFrom Дата начала сбора статистики. (required)
+     * @param period Количество часов за период которых нужна статистика. (required)
+     * @param keys Ключи выбираемых видов статистики. (required)
+     * @return ApiResponse&lt;GetServerStatisticsNew200Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;statistics&#x60; </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetServerStatisticsNew200Response> getServerStatisticsNewWithHttpInfo(Integer serverId, String timeFrom, String period, String keys) throws ApiException {
+        okhttp3.Call localVarCall = getServerStatisticsNewValidateBeforeCall(serverId, timeFrom, period, keys, null);
+        Type localVarReturnType = new TypeToken<GetServerStatisticsNew200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Получение статистики сервера (asynchronously)
+     * Чтобы получить статистику сервера, отправьте GET-запрос на &#x60;/api/v1/servers/{server_id}/{time_from}/{period}/{keys}&#x60;.
+     * @param serverId ID облачного сервера. (required)
+     * @param timeFrom Дата начала сбора статистики. (required)
+     * @param period Количество часов за период которых нужна статистика. (required)
+     * @param keys Ключи выбираемых видов статистики. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;statistics&#x60; </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getServerStatisticsNewAsync(Integer serverId, String timeFrom, String period, String keys, final ApiCallback<GetServerStatisticsNew200Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getServerStatisticsNewValidateBeforeCall(serverId, timeFrom, period, keys, _callback);
+        Type localVarReturnType = new TypeToken<GetServerStatisticsNew200Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

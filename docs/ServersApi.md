@@ -24,6 +24,7 @@ All URIs are relative to *https://api.timeweb.cloud*
 | [**getServerIPs**](ServersApi.md#getServerIPs) | **GET** /api/v1/servers/{server_id}/ips | Получение списка IP-адресов сервера |
 | [**getServerLogs**](ServersApi.md#getServerLogs) | **GET** /api/v1/servers/{server_id}/logs | Получение списка логов сервера |
 | [**getServerStatistics**](ServersApi.md#getServerStatistics) | **GET** /api/v1/servers/{server_id}/statistics | Получение статистики сервера |
+| [**getServerStatisticsNew**](ServersApi.md#getServerStatisticsNew) | **GET** /api/v1/servers/{server_id}/statistics/{time_from}/{period}/{keys} | Получение статистики сервера |
 | [**getServers**](ServersApi.md#getServers) | **GET** /api/v1/servers | Получение списка серверов |
 | [**getServersPresets**](ServersApi.md#getServersPresets) | **GET** /api/v1/presets/servers | Получение списка тарифов серверов |
 | [**getSoftware**](ServersApi.md#getSoftware) | **GET** /api/v1/software/servers | Получение списка ПО из маркетплейса |
@@ -1537,6 +1538,86 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Объект JSON c ключами &#x60;cpu&#x60;, &#x60;disk&#x60;, &#x60;network_traffic&#x60;, &#x60;ram&#x60; |  -  |
+| **400** | Некорректный запрос |  -  |
+| **401** | Не авторизован |  -  |
+| **403** | Запрещено |  -  |
+| **404** | Не найдено |  -  |
+| **409** | Конфликт |  -  |
+| **429** | Слишком много запросов |  -  |
+| **500** | Внутренняя ошибка сервера |  -  |
+
+<a id="getServerStatisticsNew"></a>
+# **getServerStatisticsNew**
+> GetServerStatisticsNew200Response getServerStatisticsNew(serverId, timeFrom, period, keys)
+
+Получение статистики сервера
+
+Чтобы получить статистику сервера, отправьте GET-запрос на &#x60;/api/v1/servers/{server_id}/{time_from}/{period}/{keys}&#x60;.
+
+### Example
+```java
+// Import classes:
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.ServersApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.timeweb.cloud");
+    
+    // Configure HTTP bearer authorization: Bearer
+    HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
+    Bearer.setBearerToken("BEARER TOKEN");
+
+    ServersApi apiInstance = new ServersApi(defaultClient);
+    Integer serverId = 1051; // Integer | ID облачного сервера.
+    String timeFrom = "Wed Apr 02 2025 13:27:02 GMT+0300 (Москва, стандартное время)"; // String | Дата начала сбора статистики.
+    String period = "24"; // String | Количество часов за период которых нужна статистика.
+    String keys = "system.cpu.util"; // String | Ключи выбираемых видов статистики.
+    try {
+      GetServerStatisticsNew200Response result = apiInstance.getServerStatisticsNew(serverId, timeFrom, period, keys);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ServersApi#getServerStatisticsNew");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **serverId** | **Integer**| ID облачного сервера. | |
+| **timeFrom** | **String**| Дата начала сбора статистики. | |
+| **period** | **String**| Количество часов за период которых нужна статистика. | |
+| **keys** | **String**| Ключи выбираемых видов статистики. | [enum: system.cpu.util, network.request, network.response] |
+
+### Return type
+
+[**GetServerStatisticsNew200Response**](GetServerStatisticsNew200Response.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Объект JSON c ключом &#x60;statistics&#x60; |  -  |
 | **400** | Некорректный запрос |  -  |
 | **401** | Не авторизован |  -  |
 | **403** | Запрещено |  -  |
