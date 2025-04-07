@@ -3359,7 +3359,7 @@ public class ServersApi {
 
     /**
      * Получение статистики сервера
-     * Чтобы получить статистику сервера, отправьте GET-запрос на &#x60;/api/v1/servers/{server_id}/{time_from}/{period}/{keys}&#x60;.
+     * Чтобы получить статистику сервера, отправьте GET-запрос на &#x60;/api/v1/servers/{server_id}/statistics/{time_from}/{period}/{keys}&#x60;.
      * @param serverId ID облачного сервера. (required)
      * @param timeFrom Дата начала сбора статистики. (required)
      * @param period Количество часов за период которых нужна статистика. (required)
@@ -3386,7 +3386,7 @@ public class ServersApi {
 
     /**
      * Получение статистики сервера
-     * Чтобы получить статистику сервера, отправьте GET-запрос на &#x60;/api/v1/servers/{server_id}/{time_from}/{period}/{keys}&#x60;.
+     * Чтобы получить статистику сервера, отправьте GET-запрос на &#x60;/api/v1/servers/{server_id}/statistics/{time_from}/{period}/{keys}&#x60;.
      * @param serverId ID облачного сервера. (required)
      * @param timeFrom Дата начала сбора статистики. (required)
      * @param period Количество часов за период которых нужна статистика. (required)
@@ -3414,7 +3414,7 @@ public class ServersApi {
 
     /**
      * Получение статистики сервера (asynchronously)
-     * Чтобы получить статистику сервера, отправьте GET-запрос на &#x60;/api/v1/servers/{server_id}/{time_from}/{period}/{keys}&#x60;.
+     * Чтобы получить статистику сервера, отправьте GET-запрос на &#x60;/api/v1/servers/{server_id}/statistics/{time_from}/{period}/{keys}&#x60;.
      * @param serverId ID облачного сервера. (required)
      * @param timeFrom Дата начала сбора статистики. (required)
      * @param period Количество часов за период которых нужна статистика. (required)

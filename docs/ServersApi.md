@@ -1552,7 +1552,7 @@ public class Example {
 
 Получение статистики сервера
 
-Чтобы получить статистику сервера, отправьте GET-запрос на &#x60;/api/v1/servers/{server_id}/{time_from}/{period}/{keys}&#x60;.
+Чтобы получить статистику сервера, отправьте GET-запрос на &#x60;/api/v1/servers/{server_id}/statistics/{time_from}/{period}/{keys}&#x60;.
 
 ### Example
 ```java
