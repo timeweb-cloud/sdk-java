@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * UpdateBalancer
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-07T09:24:52.735718Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-07T14:19:23.327795Z[Etc/UTC]")
 public class UpdateBalancer {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -202,6 +202,26 @@ public class UpdateBalancer {
   public static final String SERIALIZED_NAME_RISE = "rise";
   @SerializedName(SERIALIZED_NAME_RISE)
   private BigDecimal rise;
+
+  public static final String SERIALIZED_NAME_MAXCONN = "maxconn";
+  @SerializedName(SERIALIZED_NAME_MAXCONN)
+  private BigDecimal maxconn;
+
+  public static final String SERIALIZED_NAME_CONNECT_TIMEOUT = "connect_timeout";
+  @SerializedName(SERIALIZED_NAME_CONNECT_TIMEOUT)
+  private BigDecimal connectTimeout;
+
+  public static final String SERIALIZED_NAME_CLIENT_TIMEOUT = "client_timeout";
+  @SerializedName(SERIALIZED_NAME_CLIENT_TIMEOUT)
+  private BigDecimal clientTimeout;
+
+  public static final String SERIALIZED_NAME_SERVER_TIMEOUT = "server_timeout";
+  @SerializedName(SERIALIZED_NAME_SERVER_TIMEOUT)
+  private BigDecimal serverTimeout;
+
+  public static final String SERIALIZED_NAME_HTTPREQUEST_TIMEOUT = "httprequest_timeout";
+  @SerializedName(SERIALIZED_NAME_HTTPREQUEST_TIMEOUT)
+  private BigDecimal httprequestTimeout;
 
   public UpdateBalancer() {
   }
@@ -479,6 +499,111 @@ public class UpdateBalancer {
   }
 
 
+  public UpdateBalancer maxconn(BigDecimal maxconn) {
+    
+    this.maxconn = maxconn;
+    return this;
+  }
+
+   /**
+   * Максимальное количество соединений.
+   * @return maxconn
+  **/
+  @javax.annotation.Nullable
+  public BigDecimal getMaxconn() {
+    return maxconn;
+  }
+
+
+  public void setMaxconn(BigDecimal maxconn) {
+    this.maxconn = maxconn;
+  }
+
+
+  public UpdateBalancer connectTimeout(BigDecimal connectTimeout) {
+    
+    this.connectTimeout = connectTimeout;
+    return this;
+  }
+
+   /**
+   * Таймаут подключения.
+   * @return connectTimeout
+  **/
+  @javax.annotation.Nullable
+  public BigDecimal getConnectTimeout() {
+    return connectTimeout;
+  }
+
+
+  public void setConnectTimeout(BigDecimal connectTimeout) {
+    this.connectTimeout = connectTimeout;
+  }
+
+
+  public UpdateBalancer clientTimeout(BigDecimal clientTimeout) {
+    
+    this.clientTimeout = clientTimeout;
+    return this;
+  }
+
+   /**
+   * Таймаут клиента.
+   * @return clientTimeout
+  **/
+  @javax.annotation.Nullable
+  public BigDecimal getClientTimeout() {
+    return clientTimeout;
+  }
+
+
+  public void setClientTimeout(BigDecimal clientTimeout) {
+    this.clientTimeout = clientTimeout;
+  }
+
+
+  public UpdateBalancer serverTimeout(BigDecimal serverTimeout) {
+    
+    this.serverTimeout = serverTimeout;
+    return this;
+  }
+
+   /**
+   * Таймаут сервера.
+   * @return serverTimeout
+  **/
+  @javax.annotation.Nullable
+  public BigDecimal getServerTimeout() {
+    return serverTimeout;
+  }
+
+
+  public void setServerTimeout(BigDecimal serverTimeout) {
+    this.serverTimeout = serverTimeout;
+  }
+
+
+  public UpdateBalancer httprequestTimeout(BigDecimal httprequestTimeout) {
+    
+    this.httprequestTimeout = httprequestTimeout;
+    return this;
+  }
+
+   /**
+   * Таймаут HTTP запроса.
+   * @return httprequestTimeout
+  **/
+  @javax.annotation.Nullable
+  public BigDecimal getHttprequestTimeout() {
+    return httprequestTimeout;
+  }
+
+
+  public void setHttprequestTimeout(BigDecimal httprequestTimeout) {
+    this.httprequestTimeout = httprequestTimeout;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -501,12 +626,17 @@ public class UpdateBalancer {
         Objects.equals(this.inter, updateBalancer.inter) &&
         Objects.equals(this.timeout, updateBalancer.timeout) &&
         Objects.equals(this.fall, updateBalancer.fall) &&
-        Objects.equals(this.rise, updateBalancer.rise);
+        Objects.equals(this.rise, updateBalancer.rise) &&
+        Objects.equals(this.maxconn, updateBalancer.maxconn) &&
+        Objects.equals(this.connectTimeout, updateBalancer.connectTimeout) &&
+        Objects.equals(this.clientTimeout, updateBalancer.clientTimeout) &&
+        Objects.equals(this.serverTimeout, updateBalancer.serverTimeout) &&
+        Objects.equals(this.httprequestTimeout, updateBalancer.httprequestTimeout);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, algo, isSticky, isUseProxy, isSsl, isKeepalive, proto, port, path, inter, timeout, fall, rise);
+    return Objects.hash(name, algo, isSticky, isUseProxy, isSsl, isKeepalive, proto, port, path, inter, timeout, fall, rise, maxconn, connectTimeout, clientTimeout, serverTimeout, httprequestTimeout);
   }
 
   @Override
@@ -526,6 +656,11 @@ public class UpdateBalancer {
     sb.append("    timeout: ").append(toIndentedString(timeout)).append("\n");
     sb.append("    fall: ").append(toIndentedString(fall)).append("\n");
     sb.append("    rise: ").append(toIndentedString(rise)).append("\n");
+    sb.append("    maxconn: ").append(toIndentedString(maxconn)).append("\n");
+    sb.append("    connectTimeout: ").append(toIndentedString(connectTimeout)).append("\n");
+    sb.append("    clientTimeout: ").append(toIndentedString(clientTimeout)).append("\n");
+    sb.append("    serverTimeout: ").append(toIndentedString(serverTimeout)).append("\n");
+    sb.append("    httprequestTimeout: ").append(toIndentedString(httprequestTimeout)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -561,6 +696,11 @@ public class UpdateBalancer {
     openapiFields.add("timeout");
     openapiFields.add("fall");
     openapiFields.add("rise");
+    openapiFields.add("maxconn");
+    openapiFields.add("connect_timeout");
+    openapiFields.add("client_timeout");
+    openapiFields.add("server_timeout");
+    openapiFields.add("httprequest_timeout");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

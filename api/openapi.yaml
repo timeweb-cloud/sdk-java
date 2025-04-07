@@ -44268,10 +44268,8 @@ components:
     balancer:
       description: Балансировщик
       example:
-        availability_zone: spb-1
-        inter: 10
-        ip: 1.1.1.1
-        is_sticky: true
+        connect_timeout: 5000
+        maxconn: 10000
         created_at: 2022-10-25T15:15:45Z
         rules:
         - balancer_port: 80
@@ -44284,20 +44282,27 @@ components:
           id: 1
           balancer_proto: https
           server_proto: https
-        ips: []
         timeout: 5
-        local_ip: 1.1.1.1
         path: /
         fall: 3
+        is_ssl: true
+        id: 1
+        is_keepalive: true
+        client_timeout: 50000
+        availability_zone: spb-1
+        inter: 10
+        ip: 1.1.1.1
+        is_sticky: true
+        ips: []
+        server_timeout: 50000
+        local_ip: 1.1.1.1
         port: 80
         preset_id: 5
         proto: https
         name: Cute Quail
+        httprequest_timeout: 10000
         is_use_proxy: true
-        is_ssl: true
         location: ru-1
-        id: 1
-        is_keepalive: true
         rise: 2
         algo: roundrobin
         status: started
@@ -44371,6 +44376,26 @@ components:
           description: Порог количества успешных ответов.
           example: 2
           type: number
+        maxconn:
+          description: Максимальное количество соединений.
+          example: 10000
+          type: number
+        connect_timeout:
+          description: Таймаут подключения.
+          example: 5000
+          type: number
+        client_timeout:
+          description: Таймаут клиента.
+          example: 50000
+          type: number
+        server_timeout:
+          description: Таймаут сервера.
+          example: 50000
+          type: number
+        httprequest_timeout:
+          description: Таймаут HTTP запроса.
+          example: 10000
+          type: number
         preset_id:
           description: ID тарифа.
           example: 5
@@ -44425,8 +44450,11 @@ components:
       required:
       - algo
       - availability_zone
+      - client_timeout
+      - connect_timeout
       - created_at
       - fall
+      - httprequest_timeout
       - id
       - inter
       - ip
@@ -44437,6 +44465,7 @@ components:
       - is_use_proxy
       - local_ip
       - location
+      - maxconn
       - name
       - path
       - port
@@ -44444,6 +44473,7 @@ components:
       - proto
       - rise
       - rules
+      - server_timeout
       - status
       - timeout
       type: object
@@ -44534,6 +44564,26 @@ components:
         rise:
           description: Порог количества успешных ответов.
           example: 2
+          type: number
+        maxconn:
+          description: Максимальное количество соединений.
+          example: 10000
+          type: number
+        connect_timeout:
+          description: Таймаут подключения.
+          example: 5000
+          type: number
+        client_timeout:
+          description: Таймаут клиента.
+          example: 50000
+          type: number
+        server_timeout:
+          description: Таймаут сервера.
+          example: 50000
+          type: number
+        httprequest_timeout:
+          description: Таймаут HTTP запроса.
+          example: 10000
           type: number
         preset_id:
           description: ID тарифа.
@@ -44640,6 +44690,26 @@ components:
         rise:
           description: Порог количества успешных ответов.
           example: 2
+          type: number
+        maxconn:
+          description: Максимальное количество соединений.
+          example: 10000
+          type: number
+        connect_timeout:
+          description: Таймаут подключения.
+          example: 5000
+          type: number
+        client_timeout:
+          description: Таймаут клиента.
+          example: 50000
+          type: number
+        server_timeout:
+          description: Таймаут сервера.
+          example: 50000
+          type: number
+        httprequest_timeout:
+          description: Таймаут HTTP запроса.
+          example: 10000
           type: number
       type: object
     create-rule:
@@ -51574,10 +51644,8 @@ components:
     getBalancers_200_response:
       example:
         balancers:
-        - availability_zone: spb-1
-          inter: 10
-          ip: 1.1.1.1
-          is_sticky: true
+        - connect_timeout: 5000
+          maxconn: 10000
           created_at: 2022-10-25T15:15:45Z
           rules:
           - balancer_port: 80
@@ -51590,27 +51658,32 @@ components:
             id: 1
             balancer_proto: https
             server_proto: https
-          ips: []
           timeout: 5
-          local_ip: 1.1.1.1
           path: /
           fall: 3
+          is_ssl: true
+          id: 1
+          is_keepalive: true
+          client_timeout: 50000
+          availability_zone: spb-1
+          inter: 10
+          ip: 1.1.1.1
+          is_sticky: true
+          ips: []
+          server_timeout: 50000
+          local_ip: 1.1.1.1
           port: 80
           preset_id: 5
           proto: https
           name: Cute Quail
+          httprequest_timeout: 10000
           is_use_proxy: true
-          is_ssl: true
           location: ru-1
-          id: 1
-          is_keepalive: true
           rise: 2
           algo: roundrobin
           status: started
-        - availability_zone: spb-1
-          inter: 10
-          ip: 1.1.1.1
-          is_sticky: true
+        - connect_timeout: 5000
+          maxconn: 10000
           created_at: 2022-10-25T15:15:45Z
           rules:
           - balancer_port: 80
@@ -51623,20 +51696,27 @@ components:
             id: 1
             balancer_proto: https
             server_proto: https
-          ips: []
           timeout: 5
-          local_ip: 1.1.1.1
           path: /
           fall: 3
+          is_ssl: true
+          id: 1
+          is_keepalive: true
+          client_timeout: 50000
+          availability_zone: spb-1
+          inter: 10
+          ip: 1.1.1.1
+          is_sticky: true
+          ips: []
+          server_timeout: 50000
+          local_ip: 1.1.1.1
           port: 80
           preset_id: 5
           proto: https
           name: Cute Quail
+          httprequest_timeout: 10000
           is_use_proxy: true
-          is_ssl: true
           location: ru-1
-          id: 1
-          is_keepalive: true
           rise: 2
           algo: roundrobin
           status: started
@@ -51656,10 +51736,8 @@ components:
     createBalancer_200_response:
       example:
         balancer:
-          availability_zone: spb-1
-          inter: 10
-          ip: 1.1.1.1
-          is_sticky: true
+          connect_timeout: 5000
+          maxconn: 10000
           created_at: 2022-10-25T15:15:45Z
           rules:
           - balancer_port: 80
@@ -51672,20 +51750,27 @@ components:
             id: 1
             balancer_proto: https
             server_proto: https
-          ips: []
           timeout: 5
-          local_ip: 1.1.1.1
           path: /
           fall: 3
+          is_ssl: true
+          id: 1
+          is_keepalive: true
+          client_timeout: 50000
+          availability_zone: spb-1
+          inter: 10
+          ip: 1.1.1.1
+          is_sticky: true
+          ips: []
+          server_timeout: 50000
+          local_ip: 1.1.1.1
           port: 80
           preset_id: 5
           proto: https
           name: Cute Quail
+          httprequest_timeout: 10000
           is_use_proxy: true
-          is_ssl: true
           location: ru-1
-          id: 1
-          is_keepalive: true
           rise: 2
           algo: roundrobin
           status: started
@@ -53716,10 +53801,8 @@ components:
     getProjectBalancers_200_response:
       example:
         balancers:
-        - availability_zone: spb-1
-          inter: 10
-          ip: 1.1.1.1
-          is_sticky: true
+        - connect_timeout: 5000
+          maxconn: 10000
           created_at: 2022-10-25T15:15:45Z
           rules:
           - balancer_port: 80
@@ -53732,27 +53815,32 @@ components:
             id: 1
             balancer_proto: https
             server_proto: https
-          ips: []
           timeout: 5
-          local_ip: 1.1.1.1
           path: /
           fall: 3
+          is_ssl: true
+          id: 1
+          is_keepalive: true
+          client_timeout: 50000
+          availability_zone: spb-1
+          inter: 10
+          ip: 1.1.1.1
+          is_sticky: true
+          ips: []
+          server_timeout: 50000
+          local_ip: 1.1.1.1
           port: 80
           preset_id: 5
           proto: https
           name: Cute Quail
+          httprequest_timeout: 10000
           is_use_proxy: true
-          is_ssl: true
           location: ru-1
-          id: 1
-          is_keepalive: true
           rise: 2
           algo: roundrobin
           status: started
-        - availability_zone: spb-1
-          inter: 10
-          ip: 1.1.1.1
-          is_sticky: true
+        - connect_timeout: 5000
+          maxconn: 10000
           created_at: 2022-10-25T15:15:45Z
           rules:
           - balancer_port: 80
@@ -53765,20 +53853,27 @@ components:
             id: 1
             balancer_proto: https
             server_proto: https
-          ips: []
           timeout: 5
-          local_ip: 1.1.1.1
           path: /
           fall: 3
+          is_ssl: true
+          id: 1
+          is_keepalive: true
+          client_timeout: 50000
+          availability_zone: spb-1
+          inter: 10
+          ip: 1.1.1.1
+          is_sticky: true
+          ips: []
+          server_timeout: 50000
+          local_ip: 1.1.1.1
           port: 80
           preset_id: 5
           proto: https
           name: Cute Quail
+          httprequest_timeout: 10000
           is_use_proxy: true
-          is_ssl: true
           location: ru-1
-          id: 1
-          is_keepalive: true
           rise: 2
           algo: roundrobin
           status: started
@@ -54616,10 +54711,8 @@ components:
           cpu_frequency: "3.3"
           status: "on"
         balancers:
-        - availability_zone: spb-1
-          inter: 10
-          ip: 1.1.1.1
-          is_sticky: true
+        - connect_timeout: 5000
+          maxconn: 10000
           created_at: 2022-10-25T15:15:45Z
           rules:
           - balancer_port: 80
@@ -54632,27 +54725,32 @@ components:
             id: 1
             balancer_proto: https
             server_proto: https
-          ips: []
           timeout: 5
-          local_ip: 1.1.1.1
           path: /
           fall: 3
+          is_ssl: true
+          id: 1
+          is_keepalive: true
+          client_timeout: 50000
+          availability_zone: spb-1
+          inter: 10
+          ip: 1.1.1.1
+          is_sticky: true
+          ips: []
+          server_timeout: 50000
+          local_ip: 1.1.1.1
           port: 80
           preset_id: 5
           proto: https
           name: Cute Quail
+          httprequest_timeout: 10000
           is_use_proxy: true
-          is_ssl: true
           location: ru-1
-          id: 1
-          is_keepalive: true
           rise: 2
           algo: roundrobin
           status: started
-        - availability_zone: spb-1
-          inter: 10
-          ip: 1.1.1.1
-          is_sticky: true
+        - connect_timeout: 5000
+          maxconn: 10000
           created_at: 2022-10-25T15:15:45Z
           rules:
           - balancer_port: 80
@@ -54665,20 +54763,27 @@ components:
             id: 1
             balancer_proto: https
             server_proto: https
-          ips: []
           timeout: 5
-          local_ip: 1.1.1.1
           path: /
           fall: 3
+          is_ssl: true
+          id: 1
+          is_keepalive: true
+          client_timeout: 50000
+          availability_zone: spb-1
+          inter: 10
+          ip: 1.1.1.1
+          is_sticky: true
+          ips: []
+          server_timeout: 50000
+          local_ip: 1.1.1.1
           port: 80
           preset_id: 5
           proto: https
           name: Cute Quail
+          httprequest_timeout: 10000
           is_use_proxy: true
-          is_ssl: true
           location: ru-1
-          id: 1
-          is_keepalive: true
           rise: 2
           algo: roundrobin
           status: started

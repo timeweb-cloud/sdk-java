@@ -20,6 +20,11 @@
 |**timeout** | **BigDecimal** | Таймаут ответа балансировщика. |  |
 |**fall** | **BigDecimal** | Порог количества ошибок. |  |
 |**rise** | **BigDecimal** | Порог количества успешных ответов. |  |
+|**maxconn** | **BigDecimal** | Максимальное количество соединений. |  [optional] |
+|**connectTimeout** | **BigDecimal** | Таймаут подключения. |  [optional] |
+|**clientTimeout** | **BigDecimal** | Таймаут клиента. |  [optional] |
+|**serverTimeout** | **BigDecimal** | Таймаут сервера. |  [optional] |
+|**httprequestTimeout** | **BigDecimal** | Таймаут HTTP запроса. |  [optional] |
 |**presetId** | **BigDecimal** | ID тарифа. |  |
 |**network** | [**Network**](Network.md) |  |  [optional] |
 |**availabilityZone** | **AvailabilityZone** |  |  [optional] |

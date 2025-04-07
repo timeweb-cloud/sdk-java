@@ -20,6 +20,11 @@
 |**timeout** | **BigDecimal** | Таймаут ответа балансировщика. |  [optional] |
 |**fall** | **BigDecimal** | Порог количества ошибок. |  [optional] |
 |**rise** | **BigDecimal** | Порог количества успешных ответов. |  [optional] |
+|**maxconn** | **BigDecimal** | Максимальное количество соединений. |  [optional] |
+|**connectTimeout** | **BigDecimal** | Таймаут подключения. |  [optional] |
+|**clientTimeout** | **BigDecimal** | Таймаут клиента. |  [optional] |
+|**serverTimeout** | **BigDecimal** | Таймаут сервера. |  [optional] |
+|**httprequestTimeout** | **BigDecimal** | Таймаут HTTP запроса. |  [optional] |
 
 
 

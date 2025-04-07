@@ -53,7 +53,7 @@ import org.openapitools.client.JSON;
 /**
  * CreateBalancer
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-07T09:24:52.735718Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-07T14:19:23.327795Z[Etc/UTC]")
 public class CreateBalancer {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -204,6 +204,26 @@ public class CreateBalancer {
   public static final String SERIALIZED_NAME_RISE = "rise";
   @SerializedName(SERIALIZED_NAME_RISE)
   private BigDecimal rise;
+
+  public static final String SERIALIZED_NAME_MAXCONN = "maxconn";
+  @SerializedName(SERIALIZED_NAME_MAXCONN)
+  private BigDecimal maxconn;
+
+  public static final String SERIALIZED_NAME_CONNECT_TIMEOUT = "connect_timeout";
+  @SerializedName(SERIALIZED_NAME_CONNECT_TIMEOUT)
+  private BigDecimal connectTimeout;
+
+  public static final String SERIALIZED_NAME_CLIENT_TIMEOUT = "client_timeout";
+  @SerializedName(SERIALIZED_NAME_CLIENT_TIMEOUT)
+  private BigDecimal clientTimeout;
+
+  public static final String SERIALIZED_NAME_SERVER_TIMEOUT = "server_timeout";
+  @SerializedName(SERIALIZED_NAME_SERVER_TIMEOUT)
+  private BigDecimal serverTimeout;
+
+  public static final String SERIALIZED_NAME_HTTPREQUEST_TIMEOUT = "httprequest_timeout";
+  @SerializedName(SERIALIZED_NAME_HTTPREQUEST_TIMEOUT)
+  private BigDecimal httprequestTimeout;
 
   public static final String SERIALIZED_NAME_PRESET_ID = "preset_id";
   @SerializedName(SERIALIZED_NAME_PRESET_ID)
@@ -493,6 +513,111 @@ public class CreateBalancer {
   }
 
 
+  public CreateBalancer maxconn(BigDecimal maxconn) {
+    
+    this.maxconn = maxconn;
+    return this;
+  }
+
+   /**
+   * Максимальное количество соединений.
+   * @return maxconn
+  **/
+  @javax.annotation.Nullable
+  public BigDecimal getMaxconn() {
+    return maxconn;
+  }
+
+
+  public void setMaxconn(BigDecimal maxconn) {
+    this.maxconn = maxconn;
+  }
+
+
+  public CreateBalancer connectTimeout(BigDecimal connectTimeout) {
+    
+    this.connectTimeout = connectTimeout;
+    return this;
+  }
+
+   /**
+   * Таймаут подключения.
+   * @return connectTimeout
+  **/
+  @javax.annotation.Nullable
+  public BigDecimal getConnectTimeout() {
+    return connectTimeout;
+  }
+
+
+  public void setConnectTimeout(BigDecimal connectTimeout) {
+    this.connectTimeout = connectTimeout;
+  }
+
+
+  public CreateBalancer clientTimeout(BigDecimal clientTimeout) {
+    
+    this.clientTimeout = clientTimeout;
+    return this;
+  }
+
+   /**
+   * Таймаут клиента.
+   * @return clientTimeout
+  **/
+  @javax.annotation.Nullable
+  public BigDecimal getClientTimeout() {
+    return clientTimeout;
+  }
+
+
+  public void setClientTimeout(BigDecimal clientTimeout) {
+    this.clientTimeout = clientTimeout;
+  }
+
+
+  public CreateBalancer serverTimeout(BigDecimal serverTimeout) {
+    
+    this.serverTimeout = serverTimeout;
+    return this;
+  }
+
+   /**
+   * Таймаут сервера.
+   * @return serverTimeout
+  **/
+  @javax.annotation.Nullable
+  public BigDecimal getServerTimeout() {
+    return serverTimeout;
+  }
+
+
+  public void setServerTimeout(BigDecimal serverTimeout) {
+    this.serverTimeout = serverTimeout;
+  }
+
+
+  public CreateBalancer httprequestTimeout(BigDecimal httprequestTimeout) {
+    
+    this.httprequestTimeout = httprequestTimeout;
+    return this;
+  }
+
+   /**
+   * Таймаут HTTP запроса.
+   * @return httprequestTimeout
+  **/
+  @javax.annotation.Nullable
+  public BigDecimal getHttprequestTimeout() {
+    return httprequestTimeout;
+  }
+
+
+  public void setHttprequestTimeout(BigDecimal httprequestTimeout) {
+    this.httprequestTimeout = httprequestTimeout;
+  }
+
+
   public CreateBalancer presetId(BigDecimal presetId) {
     
     this.presetId = presetId;
@@ -579,6 +704,11 @@ public class CreateBalancer {
         Objects.equals(this.timeout, createBalancer.timeout) &&
         Objects.equals(this.fall, createBalancer.fall) &&
         Objects.equals(this.rise, createBalancer.rise) &&
+        Objects.equals(this.maxconn, createBalancer.maxconn) &&
+        Objects.equals(this.connectTimeout, createBalancer.connectTimeout) &&
+        Objects.equals(this.clientTimeout, createBalancer.clientTimeout) &&
+        Objects.equals(this.serverTimeout, createBalancer.serverTimeout) &&
+        Objects.equals(this.httprequestTimeout, createBalancer.httprequestTimeout) &&
         Objects.equals(this.presetId, createBalancer.presetId) &&
         Objects.equals(this.network, createBalancer.network) &&
         Objects.equals(this.availabilityZone, createBalancer.availabilityZone);
@@ -586,7 +716,7 @@ public class CreateBalancer {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, algo, isSticky, isUseProxy, isSsl, isKeepalive, proto, port, path, inter, timeout, fall, rise, presetId, network, availabilityZone);
+    return Objects.hash(name, algo, isSticky, isUseProxy, isSsl, isKeepalive, proto, port, path, inter, timeout, fall, rise, maxconn, connectTimeout, clientTimeout, serverTimeout, httprequestTimeout, presetId, network, availabilityZone);
   }
 
   @Override
@@ -606,6 +736,11 @@ public class CreateBalancer {
     sb.append("    timeout: ").append(toIndentedString(timeout)).append("\n");
     sb.append("    fall: ").append(toIndentedString(fall)).append("\n");
     sb.append("    rise: ").append(toIndentedString(rise)).append("\n");
+    sb.append("    maxconn: ").append(toIndentedString(maxconn)).append("\n");
+    sb.append("    connectTimeout: ").append(toIndentedString(connectTimeout)).append("\n");
+    sb.append("    clientTimeout: ").append(toIndentedString(clientTimeout)).append("\n");
+    sb.append("    serverTimeout: ").append(toIndentedString(serverTimeout)).append("\n");
+    sb.append("    httprequestTimeout: ").append(toIndentedString(httprequestTimeout)).append("\n");
     sb.append("    presetId: ").append(toIndentedString(presetId)).append("\n");
     sb.append("    network: ").append(toIndentedString(network)).append("\n");
     sb.append("    availabilityZone: ").append(toIndentedString(availabilityZone)).append("\n");
@@ -644,6 +779,11 @@ public class CreateBalancer {
     openapiFields.add("timeout");
     openapiFields.add("fall");
     openapiFields.add("rise");
+    openapiFields.add("maxconn");
+    openapiFields.add("connect_timeout");
+    openapiFields.add("client_timeout");
+    openapiFields.add("server_timeout");
+    openapiFields.add("httprequest_timeout");
     openapiFields.add("preset_id");
     openapiFields.add("network");
     openapiFields.add("availability_zone");

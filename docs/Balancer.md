@@ -21,6 +21,11 @@
 |**port** | **BigDecimal** | Порт балансировщика. |  |
 |**proto** | [**ProtoEnum**](#ProtoEnum) | Протокол. |  |
 |**rise** | **BigDecimal** | Порог количества успешных ответов. |  |
+|**maxconn** | **BigDecimal** | Максимальное количество соединений. |  |
+|**connectTimeout** | **BigDecimal** | Таймаут подключения. |  |
+|**clientTimeout** | **BigDecimal** | Таймаут клиента. |  |
+|**serverTimeout** | **BigDecimal** | Таймаут сервера. |  |
+|**httprequestTimeout** | **BigDecimal** | Таймаут HTTP запроса. |  |
 |**presetId** | **BigDecimal** | ID тарифа. |  |
 |**isSsl** | **Boolean** | Это логическое значение, которое показывает, требуется ли перенаправление на SSL. |  |
 |**status** | [**StatusEnum**](#StatusEnum) | Статус балансировщика. |  |

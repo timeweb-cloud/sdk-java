@@ -141,4 +141,44 @@ public class UpdateBalancerTest {
         // TODO: test rise
     }
 
+    /**
+     * Test the property 'maxconn'
+     */
+    @Test
+    public void maxconnTest() {
+        // TODO: test maxconn
+    }
+
+    /**
+     * Test the property 'connectTimeout'
+     */
+    @Test
+    public void connectTimeoutTest() {
+        // TODO: test connectTimeout
+    }
+
+    /**
+     * Test the property 'clientTimeout'
+     */
+    @Test
+    public void clientTimeoutTest() {
+        // TODO: test clientTimeout
+    }
+
+    /**
+     * Test the property 'serverTimeout'
+     */
+    @Test
+    public void serverTimeoutTest() {
+        // TODO: test serverTimeout
+    }
+
+    /**
+     * Test the property 'httprequestTimeout'
+     */
+    @Test
+    public void httprequestTimeoutTest() {
+        // TODO: test httprequestTimeout
+    }
+
 }

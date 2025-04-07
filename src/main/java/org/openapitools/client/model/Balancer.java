@@ -56,7 +56,7 @@ import org.openapitools.client.JSON;
 /**
  * Балансировщик
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-07T09:24:52.735718Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-07T14:19:23.327795Z[Etc/UTC]")
 public class Balancer {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -207,6 +207,26 @@ public class Balancer {
   public static final String SERIALIZED_NAME_RISE = "rise";
   @SerializedName(SERIALIZED_NAME_RISE)
   private BigDecimal rise;
+
+  public static final String SERIALIZED_NAME_MAXCONN = "maxconn";
+  @SerializedName(SERIALIZED_NAME_MAXCONN)
+  private BigDecimal maxconn;
+
+  public static final String SERIALIZED_NAME_CONNECT_TIMEOUT = "connect_timeout";
+  @SerializedName(SERIALIZED_NAME_CONNECT_TIMEOUT)
+  private BigDecimal connectTimeout;
+
+  public static final String SERIALIZED_NAME_CLIENT_TIMEOUT = "client_timeout";
+  @SerializedName(SERIALIZED_NAME_CLIENT_TIMEOUT)
+  private BigDecimal clientTimeout;
+
+  public static final String SERIALIZED_NAME_SERVER_TIMEOUT = "server_timeout";
+  @SerializedName(SERIALIZED_NAME_SERVER_TIMEOUT)
+  private BigDecimal serverTimeout;
+
+  public static final String SERIALIZED_NAME_HTTPREQUEST_TIMEOUT = "httprequest_timeout";
+  @SerializedName(SERIALIZED_NAME_HTTPREQUEST_TIMEOUT)
+  private BigDecimal httprequestTimeout;
 
   public static final String SERIALIZED_NAME_PRESET_ID = "preset_id";
   @SerializedName(SERIALIZED_NAME_PRESET_ID)
@@ -622,6 +642,111 @@ public class Balancer {
   }
 
 
+  public Balancer maxconn(BigDecimal maxconn) {
+    
+    this.maxconn = maxconn;
+    return this;
+  }
+
+   /**
+   * Максимальное количество соединений.
+   * @return maxconn
+  **/
+  @javax.annotation.Nonnull
+  public BigDecimal getMaxconn() {
+    return maxconn;
+  }
+
+
+  public void setMaxconn(BigDecimal maxconn) {
+    this.maxconn = maxconn;
+  }
+
+
+  public Balancer connectTimeout(BigDecimal connectTimeout) {
+    
+    this.connectTimeout = connectTimeout;
+    return this;
+  }
+
+   /**
+   * Таймаут подключения.
+   * @return connectTimeout
+  **/
+  @javax.annotation.Nonnull
+  public BigDecimal getConnectTimeout() {
+    return connectTimeout;
+  }
+
+
+  public void setConnectTimeout(BigDecimal connectTimeout) {
+    this.connectTimeout = connectTimeout;
+  }
+
+
+  public Balancer clientTimeout(BigDecimal clientTimeout) {
+    
+    this.clientTimeout = clientTimeout;
+    return this;
+  }
+
+   /**
+   * Таймаут клиента.
+   * @return clientTimeout
+  **/
+  @javax.annotation.Nonnull
+  public BigDecimal getClientTimeout() {
+    return clientTimeout;
+  }
+
+
+  public void setClientTimeout(BigDecimal clientTimeout) {
+    this.clientTimeout = clientTimeout;
+  }
+
+
+  public Balancer serverTimeout(BigDecimal serverTimeout) {
+    
+    this.serverTimeout = serverTimeout;
+    return this;
+  }
+
+   /**
+   * Таймаут сервера.
+   * @return serverTimeout
+  **/
+  @javax.annotation.Nonnull
+  public BigDecimal getServerTimeout() {
+    return serverTimeout;
+  }
+
+
+  public void setServerTimeout(BigDecimal serverTimeout) {
+    this.serverTimeout = serverTimeout;
+  }
+
+
+  public Balancer httprequestTimeout(BigDecimal httprequestTimeout) {
+    
+    this.httprequestTimeout = httprequestTimeout;
+    return this;
+  }
+
+   /**
+   * Таймаут HTTP запроса.
+   * @return httprequestTimeout
+  **/
+  @javax.annotation.Nonnull
+  public BigDecimal getHttprequestTimeout() {
+    return httprequestTimeout;
+  }
+
+
+  public void setHttprequestTimeout(BigDecimal httprequestTimeout) {
+    this.httprequestTimeout = httprequestTimeout;
+  }
+
+
   public Balancer presetId(BigDecimal presetId) {
     
     this.presetId = presetId;
@@ -871,6 +996,11 @@ public class Balancer {
         Objects.equals(this.port, balancer.port) &&
         Objects.equals(this.proto, balancer.proto) &&
         Objects.equals(this.rise, balancer.rise) &&
+        Objects.equals(this.maxconn, balancer.maxconn) &&
+        Objects.equals(this.connectTimeout, balancer.connectTimeout) &&
+        Objects.equals(this.clientTimeout, balancer.clientTimeout) &&
+        Objects.equals(this.serverTimeout, balancer.serverTimeout) &&
+        Objects.equals(this.httprequestTimeout, balancer.httprequestTimeout) &&
         Objects.equals(this.presetId, balancer.presetId) &&
         Objects.equals(this.isSsl, balancer.isSsl) &&
         Objects.equals(this.status, balancer.status) &&
@@ -885,7 +1015,7 @@ public class Balancer {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, algo, createdAt, fall, inter, ip, localIp, isKeepalive, name, path, port, proto, rise, presetId, isSsl, status, isSticky, timeout, isUseProxy, rules, ips, location, availabilityZone);
+    return Objects.hash(id, algo, createdAt, fall, inter, ip, localIp, isKeepalive, name, path, port, proto, rise, maxconn, connectTimeout, clientTimeout, serverTimeout, httprequestTimeout, presetId, isSsl, status, isSticky, timeout, isUseProxy, rules, ips, location, availabilityZone);
   }
 
   @Override
@@ -905,6 +1035,11 @@ public class Balancer {
     sb.append("    port: ").append(toIndentedString(port)).append("\n");
     sb.append("    proto: ").append(toIndentedString(proto)).append("\n");
     sb.append("    rise: ").append(toIndentedString(rise)).append("\n");
+    sb.append("    maxconn: ").append(toIndentedString(maxconn)).append("\n");
+    sb.append("    connectTimeout: ").append(toIndentedString(connectTimeout)).append("\n");
+    sb.append("    clientTimeout: ").append(toIndentedString(clientTimeout)).append("\n");
+    sb.append("    serverTimeout: ").append(toIndentedString(serverTimeout)).append("\n");
+    sb.append("    httprequestTimeout: ").append(toIndentedString(httprequestTimeout)).append("\n");
     sb.append("    presetId: ").append(toIndentedString(presetId)).append("\n");
     sb.append("    isSsl: ").append(toIndentedString(isSsl)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
@@ -950,6 +1085,11 @@ public class Balancer {
     openapiFields.add("port");
     openapiFields.add("proto");
     openapiFields.add("rise");
+    openapiFields.add("maxconn");
+    openapiFields.add("connect_timeout");
+    openapiFields.add("client_timeout");
+    openapiFields.add("server_timeout");
+    openapiFields.add("httprequest_timeout");
     openapiFields.add("preset_id");
     openapiFields.add("is_ssl");
     openapiFields.add("status");
@@ -976,6 +1116,11 @@ public class Balancer {
     openapiRequiredFields.add("port");
     openapiRequiredFields.add("proto");
     openapiRequiredFields.add("rise");
+    openapiRequiredFields.add("maxconn");
+    openapiRequiredFields.add("connect_timeout");
+    openapiRequiredFields.add("client_timeout");
+    openapiRequiredFields.add("server_timeout");
+    openapiRequiredFields.add("httprequest_timeout");
     openapiRequiredFields.add("preset_id");
     openapiRequiredFields.add("is_ssl");
     openapiRequiredFields.add("status");
