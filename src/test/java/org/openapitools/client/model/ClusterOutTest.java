@@ -94,6 +94,14 @@ public class ClusterOutTest {
     }
 
     /**
+     * Test the property 'avatarLink'
+     */
+    @Test
+    public void avatarLinkTest() {
+        // TODO: test avatarLink
+    }
+
+    /**
      * Test the property 'ingress'
      */
     @Test

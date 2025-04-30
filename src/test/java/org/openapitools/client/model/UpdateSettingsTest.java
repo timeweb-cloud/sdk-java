@@ -25,17 +25,17 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
- * Model tests for UpdeteSettings
+ * Model tests for UpdateSettings
  */
-public class UpdeteSettingsTest {
-    private final UpdeteSettings model = new UpdeteSettings();
+public class UpdateSettingsTest {
+    private final UpdateSettings model = new UpdateSettings();
 
     /**
-     * Model tests for UpdeteSettings
+     * Model tests for UpdateSettings
      */
     @Test
-    public void testUpdeteSettings() {
-        // TODO: test UpdeteSettings
+    public void testUpdateSettings() {
+        // TODO: test UpdateSettings
     }
 
     /**

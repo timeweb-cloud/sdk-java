@@ -60,7 +60,7 @@ import org.openapitools.client.JSON;
 /**
  * Экземпляр приложения.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-07T14:19:23.327795Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-30T11:06:05.353781Z[Etc/UTC]")
 public class App {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -292,6 +292,10 @@ public class App {
   public static final String SERIALIZED_NAME_BUILD_CMD = "build_cmd";
   @SerializedName(SERIALIZED_NAME_BUILD_CMD)
   private String buildCmd;
+
+  public static final String SERIALIZED_NAME_AVATAR_LINK = "avatar_link";
+  @SerializedName(SERIALIZED_NAME_AVATAR_LINK)
+  private String avatarLink;
 
   public static final String SERIALIZED_NAME_RUN_CMD = "run_cmd";
   @SerializedName(SERIALIZED_NAME_RUN_CMD)
@@ -727,6 +731,27 @@ public class App {
   }
 
 
+  public App avatarLink(String avatarLink) {
+    
+    this.avatarLink = avatarLink;
+    return this;
+  }
+
+   /**
+   * Ссылка на аватар приложения.
+   * @return avatarLink
+  **/
+  @javax.annotation.Nullable
+  public String getAvatarLink() {
+    return avatarLink;
+  }
+
+
+  public void setAvatarLink(String avatarLink) {
+    this.avatarLink = avatarLink;
+  }
+
+
   public App runCmd(String runCmd) {
     
     this.runCmd = runCmd;
@@ -882,6 +907,7 @@ public class App {
         Objects.equals(this.presetId, app.presetId) &&
         Objects.equals(this.indexDir, app.indexDir) &&
         Objects.equals(this.buildCmd, app.buildCmd) &&
+        Objects.equals(this.avatarLink, app.avatarLink) &&
         Objects.equals(this.runCmd, app.runCmd) &&
         Objects.equals(this._configuration, app._configuration) &&
         Objects.equals(this.diskStatus, app.diskStatus) &&
@@ -892,7 +918,7 @@ public class App {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, type, name, status, provider, ip, domains, framework, location, repository, envVersion, envs, branchName, isAutoDeploy, commitSha, comment, presetId, indexDir, buildCmd, runCmd, _configuration, diskStatus, isQemuAgent, language, startTime);
+    return Objects.hash(id, type, name, status, provider, ip, domains, framework, location, repository, envVersion, envs, branchName, isAutoDeploy, commitSha, comment, presetId, indexDir, buildCmd, avatarLink, runCmd, _configuration, diskStatus, isQemuAgent, language, startTime);
   }
 
   @Override
@@ -918,6 +944,7 @@ public class App {
     sb.append("    presetId: ").append(toIndentedString(presetId)).append("\n");
     sb.append("    indexDir: ").append(toIndentedString(indexDir)).append("\n");
     sb.append("    buildCmd: ").append(toIndentedString(buildCmd)).append("\n");
+    sb.append("    avatarLink: ").append(toIndentedString(avatarLink)).append("\n");
     sb.append("    runCmd: ").append(toIndentedString(runCmd)).append("\n");
     sb.append("    _configuration: ").append(toIndentedString(_configuration)).append("\n");
     sb.append("    diskStatus: ").append(toIndentedString(diskStatus)).append("\n");
@@ -965,6 +992,7 @@ public class App {
     openapiFields.add("preset_id");
     openapiFields.add("index_dir");
     openapiFields.add("build_cmd");
+    openapiFields.add("avatar_link");
     openapiFields.add("run_cmd");
     openapiFields.add("configuration");
     openapiFields.add("disk_status");
@@ -993,6 +1021,7 @@ public class App {
     openapiRequiredFields.add("preset_id");
     openapiRequiredFields.add("index_dir");
     openapiRequiredFields.add("build_cmd");
+    openapiRequiredFields.add("avatar_link");
     openapiRequiredFields.add("run_cmd");
     openapiRequiredFields.add("configuration");
     openapiRequiredFields.add("disk_status");
@@ -1075,6 +1104,9 @@ public class App {
       }
       if (!jsonObj.get("build_cmd").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `build_cmd` to be a primitive type in the JSON string but got `%s`", jsonObj.get("build_cmd").toString()));
+      }
+      if ((jsonObj.get("avatar_link") != null && !jsonObj.get("avatar_link").isJsonNull()) && !jsonObj.get("avatar_link").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `avatar_link` to be a primitive type in the JSON string but got `%s`", jsonObj.get("avatar_link").toString()));
       }
       if ((jsonObj.get("run_cmd") != null && !jsonObj.get("run_cmd").isJsonNull()) && !jsonObj.get("run_cmd").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `run_cmd` to be a primitive type in the JSON string but got `%s`", jsonObj.get("run_cmd").toString()));

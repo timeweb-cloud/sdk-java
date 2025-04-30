@@ -53,7 +53,7 @@ import org.openapitools.client.model.GetProviders200Response;
 import org.openapitools.client.model.GetRepositories200Response;
 import org.openapitools.client.model.GetServerStatistics200Response;
 import org.openapitools.client.model.UpdateAppSettings200Response;
-import org.openapitools.client.model.UpdeteSettings;
+import org.openapitools.client.model.UpdateSettings;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -2993,7 +2993,7 @@ public class AppsApi {
     /**
      * Build call for updateAppSettings
      * @param appId  (required)
-     * @param updeteSettings  (required)
+     * @param updateSettings  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3007,7 +3007,7 @@ public class AppsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateAppSettingsCall(String appId, UpdeteSettings updeteSettings, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call updateAppSettingsCall(String appId, UpdateSettings updateSettings, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3021,7 +3021,7 @@ public class AppsApi {
             basePath = null;
         }
 
-        Object localVarPostBody = updeteSettings;
+        Object localVarPostBody = updateSettings;
 
         // create path and map variables
         String localVarPath = "/api/v1/apps/{app_id}"
@@ -3054,18 +3054,18 @@ public class AppsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateAppSettingsValidateBeforeCall(String appId, UpdeteSettings updeteSettings, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateAppSettingsValidateBeforeCall(String appId, UpdateSettings updateSettings, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'appId' is set
         if (appId == null) {
             throw new ApiException("Missing the required parameter 'appId' when calling updateAppSettings(Async)");
         }
 
-        // verify the required parameter 'updeteSettings' is set
-        if (updeteSettings == null) {
-            throw new ApiException("Missing the required parameter 'updeteSettings' when calling updateAppSettings(Async)");
+        // verify the required parameter 'updateSettings' is set
+        if (updateSettings == null) {
+            throw new ApiException("Missing the required parameter 'updateSettings' when calling updateAppSettings(Async)");
         }
 
-        return updateAppSettingsCall(appId, updeteSettings, _callback);
+        return updateAppSettingsCall(appId, updateSettings, _callback);
 
     }
 
@@ -3073,7 +3073,7 @@ public class AppsApi {
      * Изменение настроек приложения
      * Чтобы изменить настройки приложения отправьте PATCH-запрос в &#x60;/api/v1/apps/{app_id}&#x60;, задав необходимые атрибуты.
      * @param appId  (required)
-     * @param updeteSettings  (required)
+     * @param updateSettings  (required)
      * @return UpdateAppSettings200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3086,8 +3086,8 @@ public class AppsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public UpdateAppSettings200Response updateAppSettings(String appId, UpdeteSettings updeteSettings) throws ApiException {
-        ApiResponse<UpdateAppSettings200Response> localVarResp = updateAppSettingsWithHttpInfo(appId, updeteSettings);
+    public UpdateAppSettings200Response updateAppSettings(String appId, UpdateSettings updateSettings) throws ApiException {
+        ApiResponse<UpdateAppSettings200Response> localVarResp = updateAppSettingsWithHttpInfo(appId, updateSettings);
         return localVarResp.getData();
     }
 
@@ -3095,7 +3095,7 @@ public class AppsApi {
      * Изменение настроек приложения
      * Чтобы изменить настройки приложения отправьте PATCH-запрос в &#x60;/api/v1/apps/{app_id}&#x60;, задав необходимые атрибуты.
      * @param appId  (required)
-     * @param updeteSettings  (required)
+     * @param updateSettings  (required)
      * @return ApiResponse&lt;UpdateAppSettings200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3108,8 +3108,8 @@ public class AppsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<UpdateAppSettings200Response> updateAppSettingsWithHttpInfo(String appId, UpdeteSettings updeteSettings) throws ApiException {
-        okhttp3.Call localVarCall = updateAppSettingsValidateBeforeCall(appId, updeteSettings, null);
+    public ApiResponse<UpdateAppSettings200Response> updateAppSettingsWithHttpInfo(String appId, UpdateSettings updateSettings) throws ApiException {
+        okhttp3.Call localVarCall = updateAppSettingsValidateBeforeCall(appId, updateSettings, null);
         Type localVarReturnType = new TypeToken<UpdateAppSettings200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -3118,7 +3118,7 @@ public class AppsApi {
      * Изменение настроек приложения (asynchronously)
      * Чтобы изменить настройки приложения отправьте PATCH-запрос в &#x60;/api/v1/apps/{app_id}&#x60;, задав необходимые атрибуты.
      * @param appId  (required)
-     * @param updeteSettings  (required)
+     * @param updateSettings  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3132,9 +3132,9 @@ public class AppsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateAppSettingsAsync(String appId, UpdeteSettings updeteSettings, final ApiCallback<UpdateAppSettings200Response> _callback) throws ApiException {
+    public okhttp3.Call updateAppSettingsAsync(String appId, UpdateSettings updateSettings, final ApiCallback<UpdateAppSettings200Response> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = updateAppSettingsValidateBeforeCall(appId, updeteSettings, _callback);
+        okhttp3.Call localVarCall = updateAppSettingsValidateBeforeCall(appId, updateSettings, _callback);
         Type localVarReturnType = new TypeToken<UpdateAppSettings200Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

@@ -12273,6 +12273,7 @@ paths:
                   description: Описание кластера
                   ha: false
                   k8s_version: v1.22.16
+                  avatar_link: https://urltoimage.com/avatars/image.png
                   network_driver: canal
                   ingress: false
                   preset_id: 403
@@ -12777,6 +12778,7 @@ paths:
                   ha: false
                   k8s_version: v1.22.16
                   network_driver: canal
+                  avatar_link: https://urltoimage.com/avatars/image.png
                   ingress: true
                   preset_id: 403
                   cpu: 1
@@ -38832,7 +38834,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/updete-settings'
+              $ref: '#/components/schemas/update-settings'
         required: true
       responses:
         "200":
@@ -44271,6 +44273,7 @@ components:
         connect_timeout: 5000
         maxconn: 10000
         created_at: 2022-10-25T15:15:45Z
+        avatar_link: https://urltoimage.com/avatars/image.png
         rules:
         - balancer_port: 80
           server_port: 80
@@ -44423,6 +44426,11 @@ components:
           description: Таймаут ответа балансировщика.
           example: 5
           type: number
+        avatar_link:
+          description: Ссылка на аватар балансировщика.
+          example: https://urltoimage.com/avatars/image.png
+          nullable: true
+          type: string
         is_use_proxy:
           description: "Это логическое значение, которое показывает, выступает ли\
             \ балансировщик в качестве прокси."
@@ -44450,6 +44458,7 @@ components:
       required:
       - algo
       - availability_zone
+      - avatar_link
       - client_timeout
       - connect_timeout
       - created_at
@@ -45065,6 +45074,7 @@ components:
           wal_buffers: "16"
           work_mem: "4"
         created_at: 2021-02-25T11:04:15Z
+        avatar_link: https://urltoimage.com/avatars/image.png
         networks:
         - type: public
           ips:
@@ -45132,6 +45142,11 @@ components:
           example: caching_sha2
           nullable: true
           type: string
+        avatar_link:
+          description: Ссылка на аватар для базы данных.
+          example: https://urltoimage.com/avatars/image.png
+          nullable: true
+          type: string
         port:
           description: Порт
           example: 3000
@@ -45166,6 +45181,7 @@ components:
           example: false
           type: boolean
       required:
+      - avatar_link
       - config_parameters
       - created_at
       - disk_stats
@@ -46337,6 +46353,7 @@ components:
         created_at: 2000-01-23T04:56:07.000+00:00
         description: description
         cpu: 5
+        avatar_link: https://urltoimage.com/avatars/image.png
         network_driver: kuberouter
         ingress: true
         disk: 2
@@ -46382,6 +46399,11 @@ components:
           - cilium
           title: Network Driver
           type: string
+        avatar_link:
+          description: Ссылка на аватар кластера.
+          example: https://urltoimage.com/avatars/image.png
+          nullable: true
+          type: string
         ingress:
           description: "Логическое значение, показывающее, включен ли Ingress"
           title: Ingress
@@ -46416,6 +46438,7 @@ components:
           description: ID проекта
           type: integer
       required:
+      - avatar_link
       - created_at
       - description
       - id
@@ -46437,6 +46460,7 @@ components:
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
           cpu: 5
+          avatar_link: https://urltoimage.com/avatars/image.png
           network_driver: kuberouter
           ingress: true
           disk: 2
@@ -46451,6 +46475,7 @@ components:
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
           cpu: 5
+          avatar_link: https://urltoimage.com/avatars/image.png
           network_driver: kuberouter
           ingress: true
           disk: 2
@@ -46637,6 +46662,7 @@ components:
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
           cpu: 5
+          avatar_link: https://urltoimage.com/avatars/image.png
           network_driver: kuberouter
           ingress: true
           disk: 2
@@ -48171,6 +48197,7 @@ components:
         storage_class: cold
         moved_in_quarantine_at: 2025-01-01T12:00:00Z
         description: Bucket of awesome cats
+        avatar_link: https://urltoimage.com/avatars/image.png
         type: public
         secret_key: secret_key
         hostname: s3.twcstorage.ru
@@ -48218,6 +48245,11 @@ components:
           example: 55
           nullable: true
           type: number
+        avatar_link:
+          description: Ссылка на аватар хранилища.
+          example: https://urltoimage.com/avatars/image.png
+          nullable: true
+          type: string
         status:
           description: Статус хранилища.
           enum:
@@ -48261,6 +48293,7 @@ components:
           type: string
       required:
       - access_key
+      - avatar_link
       - configurator_id
       - disk_stats
       - hostname
@@ -49307,6 +49340,7 @@ components:
         request_status: registration_request
         days_left: 100
         fqdn: somedomain.ru
+        avatar_link: https://urltoimage.com/avatars/image.png
         is_whois_privacy_enabled: true
         paid_till: 2023-01-27
         allowed_buy_periods:
@@ -49371,6 +49405,11 @@ components:
           description: ID домена.
           example: 123
           type: number
+        avatar_link:
+          description: Ссылка на аватар домена.
+          example: https://urltoimage.com/avatars/image.png
+          nullable: true
+          type: string
         is_autoprolong_enabled:
           description: "Это логическое значение, которое показывает, включено ли а\
             втопродление домена."
@@ -49449,6 +49488,7 @@ components:
           type: number
       required:
       - allowed_buy_periods
+      - avatar_link
       - days_left
       - domain_status
       - expiration
@@ -50521,6 +50561,7 @@ components:
           ram: 1024
         envs:
           NODE_ENV: production
+        avatar_link: https://urltoimage.com/avatars/image.png
         language: node
         type: backend
         repository:
@@ -50650,6 +50691,11 @@ components:
           description: Команда сборки приложения.
           example: npm run build
           type: string
+        avatar_link:
+          description: Ссылка на аватар приложения.
+          example: https://urltoimage.com/avatars/image.png
+          nullable: true
+          type: string
         run_cmd:
           description: "Команда для запуска приложения. Определена для приложений\
             \ `type: backend`. Для приложений `type: frontend` всегда null."
@@ -50674,6 +50720,7 @@ components:
           format: date-time
           type: string
       required:
+      - avatar_link
       - branch_name
       - build_cmd
       - comment
@@ -50783,7 +50830,7 @@ components:
       - provider_id
       - repository_id
       - type
-    updete-settings:
+    update-settings:
       properties:
         is_auto_deploy:
           description: Автоматический деплой.
@@ -51647,6 +51694,7 @@ components:
         - connect_timeout: 5000
           maxconn: 10000
           created_at: 2022-10-25T15:15:45Z
+          avatar_link: https://urltoimage.com/avatars/image.png
           rules:
           - balancer_port: 80
             server_port: 80
@@ -51685,6 +51733,7 @@ components:
         - connect_timeout: 5000
           maxconn: 10000
           created_at: 2022-10-25T15:15:45Z
+          avatar_link: https://urltoimage.com/avatars/image.png
           rules:
           - balancer_port: 80
             server_port: 80
@@ -51739,6 +51788,7 @@ components:
           connect_timeout: 5000
           maxconn: 10000
           created_at: 2022-10-25T15:15:45Z
+          avatar_link: https://urltoimage.com/avatars/image.png
           rules:
           - balancer_port: 80
             server_port: 80
@@ -51924,6 +51974,7 @@ components:
             wal_buffers: "16"
             work_mem: "4"
           created_at: 2021-02-25T11:04:15Z
+          avatar_link: https://urltoimage.com/avatars/image.png
           networks:
           - type: public
             ips:
@@ -51979,6 +52030,7 @@ components:
             wal_buffers: "16"
             work_mem: "4"
           created_at: 2021-02-25T11:04:15Z
+          avatar_link: https://urltoimage.com/avatars/image.png
           networks:
           - type: public
             ips:
@@ -52050,6 +52102,7 @@ components:
             wal_buffers: "16"
             work_mem: "4"
           created_at: 2021-02-25T11:04:15Z
+          avatar_link: https://urltoimage.com/avatars/image.png
           networks:
           - type: public
             ips:
@@ -53804,6 +53857,7 @@ components:
         - connect_timeout: 5000
           maxconn: 10000
           created_at: 2022-10-25T15:15:45Z
+          avatar_link: https://urltoimage.com/avatars/image.png
           rules:
           - balancer_port: 80
             server_port: 80
@@ -53842,6 +53896,7 @@ components:
         - connect_timeout: 5000
           maxconn: 10000
           created_at: 2022-10-25T15:15:45Z
+          avatar_link: https://urltoimage.com/avatars/image.png
           rules:
           - balancer_port: 80
             server_port: 80
@@ -53927,6 +53982,7 @@ components:
         - storage_class: cold
           moved_in_quarantine_at: 2025-01-01T12:00:00Z
           description: Bucket of awesome cats
+          avatar_link: https://urltoimage.com/avatars/image.png
           type: public
           secret_key: secret_key
           hostname: s3.twcstorage.ru
@@ -53944,6 +54000,7 @@ components:
         - storage_class: cold
           moved_in_quarantine_at: 2025-01-01T12:00:00Z
           description: Bucket of awesome cats
+          avatar_link: https://urltoimage.com/avatars/image.png
           type: public
           secret_key: secret_key
           hostname: s3.twcstorage.ru
@@ -54714,6 +54771,7 @@ components:
         - connect_timeout: 5000
           maxconn: 10000
           created_at: 2022-10-25T15:15:45Z
+          avatar_link: https://urltoimage.com/avatars/image.png
           rules:
           - balancer_port: 80
             server_port: 80
@@ -54752,6 +54810,7 @@ components:
         - connect_timeout: 5000
           maxconn: 10000
           created_at: 2022-10-25T15:15:45Z
+          avatar_link: https://urltoimage.com/avatars/image.png
           rules:
           - balancer_port: 80
             server_port: 80
@@ -54793,6 +54852,7 @@ components:
         - storage_class: cold
           moved_in_quarantine_at: 2025-01-01T12:00:00Z
           description: Bucket of awesome cats
+          avatar_link: https://urltoimage.com/avatars/image.png
           type: public
           secret_key: secret_key
           hostname: s3.twcstorage.ru
@@ -54810,6 +54870,7 @@ components:
         - storage_class: cold
           moved_in_quarantine_at: 2025-01-01T12:00:00Z
           description: Bucket of awesome cats
+          avatar_link: https://urltoimage.com/avatars/image.png
           type: public
           secret_key: secret_key
           hostname: s3.twcstorage.ru
@@ -54982,6 +55043,7 @@ components:
           storage_class: cold
           moved_in_quarantine_at: 2025-01-01T12:00:00Z
           description: Bucket of awesome cats
+          avatar_link: https://urltoimage.com/avatars/image.png
           type: public
           secret_key: secret_key
           hostname: s3.twcstorage.ru
@@ -55833,6 +55895,7 @@ components:
         - request_status: registration_request
           days_left: 100
           fqdn: somedomain.ru
+          avatar_link: https://urltoimage.com/avatars/image.png
           is_whois_privacy_enabled: true
           paid_till: 2023-01-27
           allowed_buy_periods:
@@ -55862,6 +55925,7 @@ components:
         - request_status: registration_request
           days_left: 100
           fqdn: somedomain.ru
+          avatar_link: https://urltoimage.com/avatars/image.png
           is_whois_privacy_enabled: true
           paid_till: 2023-01-27
           allowed_buy_periods:
@@ -55905,6 +55969,7 @@ components:
           request_status: registration_request
           days_left: 100
           fqdn: somedomain.ru
+          avatar_link: https://urltoimage.com/avatars/image.png
           is_whois_privacy_enabled: true
           paid_till: 2023-01-27
           allowed_buy_periods:
@@ -55944,6 +56009,7 @@ components:
           request_status: registration_request
           days_left: 100
           fqdn: somedomain.ru
+          avatar_link: https://urltoimage.com/avatars/image.png
           is_whois_privacy_enabled: true
           paid_till: 2023-01-27
           allowed_buy_periods:
@@ -56577,6 +56643,7 @@ components:
             ram: 1024
           envs:
             NODE_ENV: production
+          avatar_link: https://urltoimage.com/avatars/image.png
           language: node
           type: backend
           repository:
@@ -56621,6 +56688,7 @@ components:
             ram: 1024
           envs:
             NODE_ENV: production
+          avatar_link: https://urltoimage.com/avatars/image.png
           language: node
           type: backend
           repository:
@@ -56679,6 +56747,7 @@ components:
             ram: 1024
           envs:
             NODE_ENV: production
+          avatar_link: https://urltoimage.com/avatars/image.png
           language: node
           type: backend
           repository:
@@ -56732,6 +56801,7 @@ components:
             ram: 1024
           envs:
             NODE_ENV: production
+          avatar_link: https://urltoimage.com/avatars/image.png
           language: node
           type: backend
           repository:

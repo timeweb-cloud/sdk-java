@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * ClusterOut
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-07T14:19:23.327795Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-30T11:06:05.353781Z[Etc/UTC]")
 public class ClusterOut {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -131,6 +131,10 @@ public class ClusterOut {
   public static final String SERIALIZED_NAME_NETWORK_DRIVER = "network_driver";
   @SerializedName(SERIALIZED_NAME_NETWORK_DRIVER)
   private NetworkDriverEnum networkDriver;
+
+  public static final String SERIALIZED_NAME_AVATAR_LINK = "avatar_link";
+  @SerializedName(SERIALIZED_NAME_AVATAR_LINK)
+  private String avatarLink;
 
   public static final String SERIALIZED_NAME_INGRESS = "ingress";
   @SerializedName(SERIALIZED_NAME_INGRESS)
@@ -359,6 +363,27 @@ public class ClusterOut {
   }
 
 
+  public ClusterOut avatarLink(String avatarLink) {
+    
+    this.avatarLink = avatarLink;
+    return this;
+  }
+
+   /**
+   * Ссылка на аватар кластера.
+   * @return avatarLink
+  **/
+  @javax.annotation.Nullable
+  public String getAvatarLink() {
+    return avatarLink;
+  }
+
+
+  public void setAvatarLink(String avatarLink) {
+    this.avatarLink = avatarLink;
+  }
+
+
   public ClusterOut ingress(Boolean ingress) {
     
     this.ingress = ingress;
@@ -523,6 +548,7 @@ public class ClusterOut {
         Objects.equals(this.description, clusterOut.description) &&
         Objects.equals(this.k8sVersion, clusterOut.k8sVersion) &&
         Objects.equals(this.networkDriver, clusterOut.networkDriver) &&
+        Objects.equals(this.avatarLink, clusterOut.avatarLink) &&
         Objects.equals(this.ingress, clusterOut.ingress) &&
         Objects.equals(this.presetId, clusterOut.presetId) &&
         Objects.equals(this.cpu, clusterOut.cpu) &&
@@ -534,7 +560,7 @@ public class ClusterOut {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, createdAt, status, description, k8sVersion, networkDriver, ingress, presetId, cpu, ram, disk, availabilityZone, projectId);
+    return Objects.hash(id, name, createdAt, status, description, k8sVersion, networkDriver, avatarLink, ingress, presetId, cpu, ram, disk, availabilityZone, projectId);
   }
 
   @Override
@@ -548,6 +574,7 @@ public class ClusterOut {
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    k8sVersion: ").append(toIndentedString(k8sVersion)).append("\n");
     sb.append("    networkDriver: ").append(toIndentedString(networkDriver)).append("\n");
+    sb.append("    avatarLink: ").append(toIndentedString(avatarLink)).append("\n");
     sb.append("    ingress: ").append(toIndentedString(ingress)).append("\n");
     sb.append("    presetId: ").append(toIndentedString(presetId)).append("\n");
     sb.append("    cpu: ").append(toIndentedString(cpu)).append("\n");
@@ -584,6 +611,7 @@ public class ClusterOut {
     openapiFields.add("description");
     openapiFields.add("k8s_version");
     openapiFields.add("network_driver");
+    openapiFields.add("avatar_link");
     openapiFields.add("ingress");
     openapiFields.add("preset_id");
     openapiFields.add("cpu");
@@ -601,6 +629,7 @@ public class ClusterOut {
     openapiRequiredFields.add("description");
     openapiRequiredFields.add("k8s_version");
     openapiRequiredFields.add("network_driver");
+    openapiRequiredFields.add("avatar_link");
     openapiRequiredFields.add("ingress");
     openapiRequiredFields.add("preset_id");
   }
@@ -647,6 +676,9 @@ public class ClusterOut {
       }
       if (!jsonObj.get("network_driver").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `network_driver` to be a primitive type in the JSON string but got `%s`", jsonObj.get("network_driver").toString()));
+      }
+      if ((jsonObj.get("avatar_link") != null && !jsonObj.get("avatar_link").isJsonNull()) && !jsonObj.get("avatar_link").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `avatar_link` to be a primitive type in the JSON string but got `%s`", jsonObj.get("avatar_link").toString()));
       }
       if ((jsonObj.get("availability_zone") != null && !jsonObj.get("availability_zone").isJsonNull()) && !jsonObj.get("availability_zone").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `availability_zone` to be a primitive type in the JSON string but got `%s`", jsonObj.get("availability_zone").toString()));

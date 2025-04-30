@@ -50,10 +50,10 @@ import java.util.Set;
 import org.openapitools.client.JSON;
 
 /**
- * UpdeteSettings
+ * UpdateSettings
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-07T14:19:23.327795Z[Etc/UTC]")
-public class UpdeteSettings {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-30T11:06:05.353781Z[Etc/UTC]")
+public class UpdateSettings {
   public static final String SERIALIZED_NAME_IS_AUTO_DEPLOY = "is_auto_deploy";
   @SerializedName(SERIALIZED_NAME_IS_AUTO_DEPLOY)
   private Boolean isAutoDeploy;
@@ -102,10 +102,10 @@ public class UpdeteSettings {
   @SerializedName(SERIALIZED_NAME_PRESET_ID)
   private BigDecimal presetId;
 
-  public UpdeteSettings() {
+  public UpdateSettings() {
   }
 
-  public UpdeteSettings isAutoDeploy(Boolean isAutoDeploy) {
+  public UpdateSettings isAutoDeploy(Boolean isAutoDeploy) {
     
     this.isAutoDeploy = isAutoDeploy;
     return this;
@@ -126,7 +126,7 @@ public class UpdeteSettings {
   }
 
 
-  public UpdeteSettings buildCmd(String buildCmd) {
+  public UpdateSettings buildCmd(String buildCmd) {
     
     this.buildCmd = buildCmd;
     return this;
@@ -147,7 +147,7 @@ public class UpdeteSettings {
   }
 
 
-  public UpdeteSettings envs(Object envs) {
+  public UpdateSettings envs(Object envs) {
     
     this.envs = envs;
     return this;
@@ -168,7 +168,7 @@ public class UpdeteSettings {
   }
 
 
-  public UpdeteSettings branchName(String branchName) {
+  public UpdateSettings branchName(String branchName) {
     
     this.branchName = branchName;
     return this;
@@ -189,7 +189,7 @@ public class UpdeteSettings {
   }
 
 
-  public UpdeteSettings commitSha(String commitSha) {
+  public UpdateSettings commitSha(String commitSha) {
     
     this.commitSha = commitSha;
     return this;
@@ -210,7 +210,7 @@ public class UpdeteSettings {
   }
 
 
-  public UpdeteSettings envVersion(String envVersion) {
+  public UpdateSettings envVersion(String envVersion) {
     
     this.envVersion = envVersion;
     return this;
@@ -231,7 +231,7 @@ public class UpdeteSettings {
   }
 
 
-  public UpdeteSettings indexDir(String indexDir) {
+  public UpdateSettings indexDir(String indexDir) {
     
     this.indexDir = indexDir;
     return this;
@@ -252,7 +252,7 @@ public class UpdeteSettings {
   }
 
 
-  public UpdeteSettings runCmd(String runCmd) {
+  public UpdateSettings runCmd(String runCmd) {
     
     this.runCmd = runCmd;
     return this;
@@ -273,7 +273,7 @@ public class UpdeteSettings {
   }
 
 
-  public UpdeteSettings framework(Frameworks framework) {
+  public UpdateSettings framework(Frameworks framework) {
     
     this.framework = framework;
     return this;
@@ -294,7 +294,7 @@ public class UpdeteSettings {
   }
 
 
-  public UpdeteSettings name(String name) {
+  public UpdateSettings name(String name) {
     
     this.name = name;
     return this;
@@ -315,7 +315,7 @@ public class UpdeteSettings {
   }
 
 
-  public UpdeteSettings comment(String comment) {
+  public UpdateSettings comment(String comment) {
     
     this.comment = comment;
     return this;
@@ -336,7 +336,7 @@ public class UpdeteSettings {
   }
 
 
-  public UpdeteSettings presetId(BigDecimal presetId) {
+  public UpdateSettings presetId(BigDecimal presetId) {
     
     this.presetId = presetId;
     return this;
@@ -366,19 +366,19 @@ public class UpdeteSettings {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    UpdeteSettings updeteSettings = (UpdeteSettings) o;
-    return Objects.equals(this.isAutoDeploy, updeteSettings.isAutoDeploy) &&
-        Objects.equals(this.buildCmd, updeteSettings.buildCmd) &&
-        Objects.equals(this.envs, updeteSettings.envs) &&
-        Objects.equals(this.branchName, updeteSettings.branchName) &&
-        Objects.equals(this.commitSha, updeteSettings.commitSha) &&
-        Objects.equals(this.envVersion, updeteSettings.envVersion) &&
-        Objects.equals(this.indexDir, updeteSettings.indexDir) &&
-        Objects.equals(this.runCmd, updeteSettings.runCmd) &&
-        Objects.equals(this.framework, updeteSettings.framework) &&
-        Objects.equals(this.name, updeteSettings.name) &&
-        Objects.equals(this.comment, updeteSettings.comment) &&
-        Objects.equals(this.presetId, updeteSettings.presetId);
+    UpdateSettings updateSettings = (UpdateSettings) o;
+    return Objects.equals(this.isAutoDeploy, updateSettings.isAutoDeploy) &&
+        Objects.equals(this.buildCmd, updateSettings.buildCmd) &&
+        Objects.equals(this.envs, updateSettings.envs) &&
+        Objects.equals(this.branchName, updateSettings.branchName) &&
+        Objects.equals(this.commitSha, updateSettings.commitSha) &&
+        Objects.equals(this.envVersion, updateSettings.envVersion) &&
+        Objects.equals(this.indexDir, updateSettings.indexDir) &&
+        Objects.equals(this.runCmd, updateSettings.runCmd) &&
+        Objects.equals(this.framework, updateSettings.framework) &&
+        Objects.equals(this.name, updateSettings.name) &&
+        Objects.equals(this.comment, updateSettings.comment) &&
+        Objects.equals(this.presetId, updateSettings.presetId);
   }
 
   @Override
@@ -389,7 +389,7 @@ public class UpdeteSettings {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class UpdeteSettings {\n");
+    sb.append("class UpdateSettings {\n");
     sb.append("    isAutoDeploy: ").append(toIndentedString(isAutoDeploy)).append("\n");
     sb.append("    buildCmd: ").append(toIndentedString(buildCmd)).append("\n");
     sb.append("    envs: ").append(toIndentedString(envs)).append("\n");
@@ -445,20 +445,20 @@ public class UpdeteSettings {
   * Validates the JSON Element and throws an exception if issues found
   *
   * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to UpdeteSettings
+  * @throws IOException if the JSON Element is invalid with respect to UpdateSettings
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!UpdeteSettings.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in UpdeteSettings is not found in the empty JSON string", UpdeteSettings.openapiRequiredFields.toString()));
+        if (!UpdateSettings.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in UpdateSettings is not found in the empty JSON string", UpdateSettings.openapiRequiredFields.toString()));
         }
       }
 
       Set<Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Entry<String, JsonElement> entry : entries) {
-        if (!UpdeteSettings.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `UpdeteSettings` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!UpdateSettings.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `UpdateSettings` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
@@ -492,22 +492,22 @@ public class UpdeteSettings {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!UpdeteSettings.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'UpdeteSettings' and its subtypes
+       if (!UpdateSettings.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'UpdateSettings' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<UpdeteSettings> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(UpdeteSettings.class));
+       final TypeAdapter<UpdateSettings> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(UpdateSettings.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<UpdeteSettings>() {
+       return (TypeAdapter<T>) new TypeAdapter<UpdateSettings>() {
            @Override
-           public void write(JsonWriter out, UpdeteSettings value) throws IOException {
+           public void write(JsonWriter out, UpdateSettings value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public UpdeteSettings read(JsonReader in) throws IOException {
+           public UpdateSettings read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -518,18 +518,18 @@ public class UpdeteSettings {
   }
 
  /**
-  * Create an instance of UpdeteSettings given an JSON string
+  * Create an instance of UpdateSettings given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of UpdeteSettings
-  * @throws IOException if the JSON string is invalid with respect to UpdeteSettings
+  * @return An instance of UpdateSettings
+  * @throws IOException if the JSON string is invalid with respect to UpdateSettings
   */
-  public static UpdeteSettings fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, UpdeteSettings.class);
+  public static UpdateSettings fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, UpdateSettings.class);
   }
 
  /**
-  * Convert an instance of UpdeteSettings to an JSON string
+  * Convert an instance of UpdateSettings to an JSON string
   *
   * @return JSON string
   */

@@ -53,7 +53,7 @@ import org.openapitools.client.JSON;
 /**
  * Хранилище S3
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-07T14:19:23.327795Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-30T11:06:05.353781Z[Etc/UTC]")
 public class Bucket {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -129,6 +129,10 @@ public class Bucket {
   public static final String SERIALIZED_NAME_CONFIGURATOR_ID = "configurator_id";
   @SerializedName(SERIALIZED_NAME_CONFIGURATOR_ID)
   private BigDecimal configuratorId;
+
+  public static final String SERIALIZED_NAME_AVATAR_LINK = "avatar_link";
+  @SerializedName(SERIALIZED_NAME_AVATAR_LINK)
+  private String avatarLink;
 
   /**
    * Статус хранилища.
@@ -408,6 +412,27 @@ public class Bucket {
   }
 
 
+  public Bucket avatarLink(String avatarLink) {
+    
+    this.avatarLink = avatarLink;
+    return this;
+  }
+
+   /**
+   * Ссылка на аватар хранилища.
+   * @return avatarLink
+  **/
+  @javax.annotation.Nullable
+  public String getAvatarLink() {
+    return avatarLink;
+  }
+
+
+  public void setAvatarLink(String avatarLink) {
+    this.avatarLink = avatarLink;
+  }
+
+
   public Bucket status(StatusEnum status) {
     
     this.status = status;
@@ -593,6 +618,7 @@ public class Bucket {
         Objects.equals(this.type, bucket.type) &&
         Objects.equals(this.presetId, bucket.presetId) &&
         Objects.equals(this.configuratorId, bucket.configuratorId) &&
+        Objects.equals(this.avatarLink, bucket.avatarLink) &&
         Objects.equals(this.status, bucket.status) &&
         Objects.equals(this.objectAmount, bucket.objectAmount) &&
         Objects.equals(this.location, bucket.location) &&
@@ -605,7 +631,7 @@ public class Bucket {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, description, diskStats, type, presetId, configuratorId, status, objectAmount, location, hostname, accessKey, secretKey, movedInQuarantineAt, storageClass);
+    return Objects.hash(id, name, description, diskStats, type, presetId, configuratorId, avatarLink, status, objectAmount, location, hostname, accessKey, secretKey, movedInQuarantineAt, storageClass);
   }
 
   @Override
@@ -619,6 +645,7 @@ public class Bucket {
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    presetId: ").append(toIndentedString(presetId)).append("\n");
     sb.append("    configuratorId: ").append(toIndentedString(configuratorId)).append("\n");
+    sb.append("    avatarLink: ").append(toIndentedString(avatarLink)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    objectAmount: ").append(toIndentedString(objectAmount)).append("\n");
     sb.append("    location: ").append(toIndentedString(location)).append("\n");
@@ -656,6 +683,7 @@ public class Bucket {
     openapiFields.add("type");
     openapiFields.add("preset_id");
     openapiFields.add("configurator_id");
+    openapiFields.add("avatar_link");
     openapiFields.add("status");
     openapiFields.add("object_amount");
     openapiFields.add("location");
@@ -673,6 +701,7 @@ public class Bucket {
     openapiRequiredFields.add("type");
     openapiRequiredFields.add("preset_id");
     openapiRequiredFields.add("configurator_id");
+    openapiRequiredFields.add("avatar_link");
     openapiRequiredFields.add("status");
     openapiRequiredFields.add("object_amount");
     openapiRequiredFields.add("location");
@@ -721,6 +750,9 @@ public class Bucket {
       BucketDiskStats.validateJsonElement(jsonObj.get("disk_stats"));
       if (!jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+      }
+      if ((jsonObj.get("avatar_link") != null && !jsonObj.get("avatar_link").isJsonNull()) && !jsonObj.get("avatar_link").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `avatar_link` to be a primitive type in the JSON string but got `%s`", jsonObj.get("avatar_link").toString()));
       }
       if (!jsonObj.get("status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));

@@ -56,7 +56,7 @@ import org.openapitools.client.JSON;
 /**
  * Балансировщик
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-07T14:19:23.327795Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-30T11:06:05.353781Z[Etc/UTC]")
 public class Balancer {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -298,6 +298,10 @@ public class Balancer {
   public static final String SERIALIZED_NAME_TIMEOUT = "timeout";
   @SerializedName(SERIALIZED_NAME_TIMEOUT)
   private BigDecimal timeout;
+
+  public static final String SERIALIZED_NAME_AVATAR_LINK = "avatar_link";
+  @SerializedName(SERIALIZED_NAME_AVATAR_LINK)
+  private String avatarLink;
 
   public static final String SERIALIZED_NAME_IS_USE_PROXY = "is_use_proxy";
   @SerializedName(SERIALIZED_NAME_IS_USE_PROXY)
@@ -852,6 +856,27 @@ public class Balancer {
   }
 
 
+  public Balancer avatarLink(String avatarLink) {
+    
+    this.avatarLink = avatarLink;
+    return this;
+  }
+
+   /**
+   * Ссылка на аватар балансировщика.
+   * @return avatarLink
+  **/
+  @javax.annotation.Nullable
+  public String getAvatarLink() {
+    return avatarLink;
+  }
+
+
+  public void setAvatarLink(String avatarLink) {
+    this.avatarLink = avatarLink;
+  }
+
+
   public Balancer isUseProxy(Boolean isUseProxy) {
     
     this.isUseProxy = isUseProxy;
@@ -1006,6 +1031,7 @@ public class Balancer {
         Objects.equals(this.status, balancer.status) &&
         Objects.equals(this.isSticky, balancer.isSticky) &&
         Objects.equals(this.timeout, balancer.timeout) &&
+        Objects.equals(this.avatarLink, balancer.avatarLink) &&
         Objects.equals(this.isUseProxy, balancer.isUseProxy) &&
         Objects.equals(this.rules, balancer.rules) &&
         Objects.equals(this.ips, balancer.ips) &&
@@ -1015,7 +1041,7 @@ public class Balancer {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, algo, createdAt, fall, inter, ip, localIp, isKeepalive, name, path, port, proto, rise, maxconn, connectTimeout, clientTimeout, serverTimeout, httprequestTimeout, presetId, isSsl, status, isSticky, timeout, isUseProxy, rules, ips, location, availabilityZone);
+    return Objects.hash(id, algo, createdAt, fall, inter, ip, localIp, isKeepalive, name, path, port, proto, rise, maxconn, connectTimeout, clientTimeout, serverTimeout, httprequestTimeout, presetId, isSsl, status, isSticky, timeout, avatarLink, isUseProxy, rules, ips, location, availabilityZone);
   }
 
   @Override
@@ -1045,6 +1071,7 @@ public class Balancer {
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    isSticky: ").append(toIndentedString(isSticky)).append("\n");
     sb.append("    timeout: ").append(toIndentedString(timeout)).append("\n");
+    sb.append("    avatarLink: ").append(toIndentedString(avatarLink)).append("\n");
     sb.append("    isUseProxy: ").append(toIndentedString(isUseProxy)).append("\n");
     sb.append("    rules: ").append(toIndentedString(rules)).append("\n");
     sb.append("    ips: ").append(toIndentedString(ips)).append("\n");
@@ -1095,6 +1122,7 @@ public class Balancer {
     openapiFields.add("status");
     openapiFields.add("is_sticky");
     openapiFields.add("timeout");
+    openapiFields.add("avatar_link");
     openapiFields.add("is_use_proxy");
     openapiFields.add("rules");
     openapiFields.add("ips");
@@ -1126,6 +1154,7 @@ public class Balancer {
     openapiRequiredFields.add("status");
     openapiRequiredFields.add("is_sticky");
     openapiRequiredFields.add("timeout");
+    openapiRequiredFields.add("avatar_link");
     openapiRequiredFields.add("is_use_proxy");
     openapiRequiredFields.add("rules");
     openapiRequiredFields.add("ips");
@@ -1181,6 +1210,9 @@ public class Balancer {
       }
       if (!jsonObj.get("status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
+      }
+      if ((jsonObj.get("avatar_link") != null && !jsonObj.get("avatar_link").isJsonNull()) && !jsonObj.get("avatar_link").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `avatar_link` to be a primitive type in the JSON string but got `%s`", jsonObj.get("avatar_link").toString()));
       }
       // ensure the json data is an array
       if (!jsonObj.get("rules").isJsonArray()) {

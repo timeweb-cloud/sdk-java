@@ -40,7 +40,7 @@ import org.openapitools.client.model.GetProviders200Response;
 import org.openapitools.client.model.GetRepositories200Response;
 import org.openapitools.client.model.GetServerStatistics200Response;
 import org.openapitools.client.model.UpdateAppSettings200Response;
-import org.openapitools.client.model.UpdeteSettings;
+import org.openapitools.client.model.UpdateSettings;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -343,8 +343,8 @@ public class AppsApiTest {
     @Test
     public void updateAppSettingsTest() throws ApiException {
         String appId = null;
-        UpdeteSettings updeteSettings = null;
-        UpdateAppSettings200Response response = api.updateAppSettings(appId, updeteSettings);
+        UpdateSettings updateSettings = null;
+        UpdateAppSettings200Response response = api.updateAppSettings(appId, updateSettings);
         // TODO: test validations
     }
 

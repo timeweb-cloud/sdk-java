@@ -14,6 +14,7 @@
 |**description** | **String** | Описание |  |
 |**k8sVersion** | **String** | Версия Kubernetes |  |
 |**networkDriver** | [**NetworkDriverEnum**](#NetworkDriverEnum) | Используемый сетевой драйвер |  |
+|**avatarLink** | **String** | Ссылка на аватар кластера. |  |
 |**ingress** | **Boolean** | Логическое значение, показывающее, включен ли Ingress |  |
 |**presetId** | **Integer** | ID тарифа мастер-ноды |  |
 |**cpu** | **Integer** | Общее количество ядер |  [optional] |

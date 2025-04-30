@@ -57,7 +57,7 @@ import org.openapitools.client.JSON;
 /**
  * Кластер базы данных
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-07T14:19:23.327795Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-30T11:06:05.353781Z[Etc/UTC]")
 public class DatabaseCluster {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -186,6 +186,10 @@ public class DatabaseCluster {
   public static final String SERIALIZED_NAME_HASH_TYPE = "hash_type";
   @SerializedName(SERIALIZED_NAME_HASH_TYPE)
   private HashTypeEnum hashType;
+
+  public static final String SERIALIZED_NAME_AVATAR_LINK = "avatar_link";
+  @SerializedName(SERIALIZED_NAME_AVATAR_LINK)
+  private String avatarLink;
 
   public static final String SERIALIZED_NAME_PORT = "port";
   @SerializedName(SERIALIZED_NAME_PORT)
@@ -434,6 +438,27 @@ public class DatabaseCluster {
   }
 
 
+  public DatabaseCluster avatarLink(String avatarLink) {
+    
+    this.avatarLink = avatarLink;
+    return this;
+  }
+
+   /**
+   * Ссылка на аватар для базы данных.
+   * @return avatarLink
+  **/
+  @javax.annotation.Nullable
+  public String getAvatarLink() {
+    return avatarLink;
+  }
+
+
+  public void setAvatarLink(String avatarLink) {
+    this.avatarLink = avatarLink;
+  }
+
+
   public DatabaseCluster port(Integer port) {
     
     this.port = port;
@@ -577,6 +602,7 @@ public class DatabaseCluster {
         Objects.equals(this.networks, databaseCluster.networks) &&
         Objects.equals(this.type, databaseCluster.type) &&
         Objects.equals(this.hashType, databaseCluster.hashType) &&
+        Objects.equals(this.avatarLink, databaseCluster.avatarLink) &&
         Objects.equals(this.port, databaseCluster.port) &&
         Objects.equals(this.status, databaseCluster.status) &&
         Objects.equals(this.presetId, databaseCluster.presetId) &&
@@ -587,7 +613,7 @@ public class DatabaseCluster {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, location, name, networks, type, hashType, port, status, presetId, diskStats, configParameters, isEnabledPublicNetwork);
+    return Objects.hash(id, createdAt, location, name, networks, type, hashType, avatarLink, port, status, presetId, diskStats, configParameters, isEnabledPublicNetwork);
   }
 
   @Override
@@ -601,6 +627,7 @@ public class DatabaseCluster {
     sb.append("    networks: ").append(toIndentedString(networks)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    hashType: ").append(toIndentedString(hashType)).append("\n");
+    sb.append("    avatarLink: ").append(toIndentedString(avatarLink)).append("\n");
     sb.append("    port: ").append(toIndentedString(port)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    presetId: ").append(toIndentedString(presetId)).append("\n");
@@ -636,6 +663,7 @@ public class DatabaseCluster {
     openapiFields.add("networks");
     openapiFields.add("type");
     openapiFields.add("hash_type");
+    openapiFields.add("avatar_link");
     openapiFields.add("port");
     openapiFields.add("status");
     openapiFields.add("preset_id");
@@ -652,6 +680,7 @@ public class DatabaseCluster {
     openapiRequiredFields.add("networks");
     openapiRequiredFields.add("type");
     openapiRequiredFields.add("hash_type");
+    openapiRequiredFields.add("avatar_link");
     openapiRequiredFields.add("port");
     openapiRequiredFields.add("status");
     openapiRequiredFields.add("preset_id");
@@ -709,6 +738,9 @@ public class DatabaseCluster {
       };
       if ((jsonObj.get("hash_type") != null && !jsonObj.get("hash_type").isJsonNull()) && !jsonObj.get("hash_type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `hash_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("hash_type").toString()));
+      }
+      if ((jsonObj.get("avatar_link") != null && !jsonObj.get("avatar_link").isJsonNull()) && !jsonObj.get("avatar_link").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `avatar_link` to be a primitive type in the JSON string but got `%s`", jsonObj.get("avatar_link").toString()));
       }
       if (!jsonObj.get("status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));

@@ -15,6 +15,7 @@
 |**type** | [**TypeEnum**](#TypeEnum) | Тип хранилища. |  |
 |**presetId** | **BigDecimal** | ID тарифа хранилища. |  |
 |**configuratorId** | **BigDecimal** | ID конфигуратора хранилища. |  |
+|**avatarLink** | **String** | Ссылка на аватар хранилища. |  |
 |**status** | [**StatusEnum**](#StatusEnum) | Статус хранилища. |  |
 |**objectAmount** | **BigDecimal** | Количество файлов в хранилище. |  |
 |**location** | **String** | Регион хранилища. |  |

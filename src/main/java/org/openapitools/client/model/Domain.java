@@ -55,7 +55,7 @@ import org.openapitools.client.JSON;
 /**
  * Домен
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-07T14:19:23.327795Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-30T11:06:05.353781Z[Etc/UTC]")
 public class Domain {
   public static final String SERIALIZED_NAME_ALLOWED_BUY_PERIODS = "allowed_buy_periods";
   @SerializedName(SERIALIZED_NAME_ALLOWED_BUY_PERIODS)
@@ -141,6 +141,10 @@ public class Domain {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private BigDecimal id;
+
+  public static final String SERIALIZED_NAME_AVATAR_LINK = "avatar_link";
+  @SerializedName(SERIALIZED_NAME_AVATAR_LINK)
+  private String avatarLink;
 
   public static final String SERIALIZED_NAME_IS_AUTOPROLONG_ENABLED = "is_autoprolong_enabled";
   @SerializedName(SERIALIZED_NAME_IS_AUTOPROLONG_ENABLED)
@@ -385,6 +389,27 @@ public class Domain {
 
   public void setId(BigDecimal id) {
     this.id = id;
+  }
+
+
+  public Domain avatarLink(String avatarLink) {
+    
+    this.avatarLink = avatarLink;
+    return this;
+  }
+
+   /**
+   * Ссылка на аватар домена.
+   * @return avatarLink
+  **/
+  @javax.annotation.Nullable
+  public String getAvatarLink() {
+    return avatarLink;
+  }
+
+
+  public void setAvatarLink(String avatarLink) {
+    this.avatarLink = avatarLink;
   }
 
 
@@ -685,6 +710,7 @@ public class Domain {
         Objects.equals(this.expiration, domain.expiration) &&
         Objects.equals(this.fqdn, domain.fqdn) &&
         Objects.equals(this.id, domain.id) &&
+        Objects.equals(this.avatarLink, domain.avatarLink) &&
         Objects.equals(this.isAutoprolongEnabled, domain.isAutoprolongEnabled) &&
         Objects.equals(this.isPremium, domain.isPremium) &&
         Objects.equals(this.isProlongAllowed, domain.isProlongAllowed) &&
@@ -702,7 +728,7 @@ public class Domain {
 
   @Override
   public int hashCode() {
-    return Objects.hash(allowedBuyPeriods, daysLeft, domainStatus, expiration, fqdn, id, isAutoprolongEnabled, isPremium, isProlongAllowed, isTechnical, isWhoisPrivacyEnabled, linkedIp, paidTill, personId, premiumProlongCost, provider, requestStatus, subdomains, tldId);
+    return Objects.hash(allowedBuyPeriods, daysLeft, domainStatus, expiration, fqdn, id, avatarLink, isAutoprolongEnabled, isPremium, isProlongAllowed, isTechnical, isWhoisPrivacyEnabled, linkedIp, paidTill, personId, premiumProlongCost, provider, requestStatus, subdomains, tldId);
   }
 
   @Override
@@ -715,6 +741,7 @@ public class Domain {
     sb.append("    expiration: ").append(toIndentedString(expiration)).append("\n");
     sb.append("    fqdn: ").append(toIndentedString(fqdn)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    avatarLink: ").append(toIndentedString(avatarLink)).append("\n");
     sb.append("    isAutoprolongEnabled: ").append(toIndentedString(isAutoprolongEnabled)).append("\n");
     sb.append("    isPremium: ").append(toIndentedString(isPremium)).append("\n");
     sb.append("    isProlongAllowed: ").append(toIndentedString(isProlongAllowed)).append("\n");
@@ -756,6 +783,7 @@ public class Domain {
     openapiFields.add("expiration");
     openapiFields.add("fqdn");
     openapiFields.add("id");
+    openapiFields.add("avatar_link");
     openapiFields.add("is_autoprolong_enabled");
     openapiFields.add("is_premium");
     openapiFields.add("is_prolong_allowed");
@@ -778,6 +806,7 @@ public class Domain {
     openapiRequiredFields.add("expiration");
     openapiRequiredFields.add("fqdn");
     openapiRequiredFields.add("id");
+    openapiRequiredFields.add("avatar_link");
     openapiRequiredFields.add("is_autoprolong_enabled");
     openapiRequiredFields.add("is_premium");
     openapiRequiredFields.add("is_prolong_allowed");
@@ -839,6 +868,9 @@ public class Domain {
       }
       if (!jsonObj.get("fqdn").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `fqdn` to be a primitive type in the JSON string but got `%s`", jsonObj.get("fqdn").toString()));
+      }
+      if ((jsonObj.get("avatar_link") != null && !jsonObj.get("avatar_link").isJsonNull()) && !jsonObj.get("avatar_link").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `avatar_link` to be a primitive type in the JSON string but got `%s`", jsonObj.get("avatar_link").toString()));
       }
       if ((jsonObj.get("linked_ip") != null && !jsonObj.get("linked_ip").isJsonNull()) && !jsonObj.get("linked_ip").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `linked_ip` to be a primitive type in the JSON string but got `%s`", jsonObj.get("linked_ip").toString()));

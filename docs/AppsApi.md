@@ -1431,7 +1431,7 @@ public class Example {
 
 <a id="updateAppSettings"></a>
 # **updateAppSettings**
-> UpdateAppSettings200Response updateAppSettings(appId, updeteSettings)
+> UpdateAppSettings200Response updateAppSettings(appId, updateSettings)
 
 Изменение настроек приложения
 
@@ -1458,9 +1458,9 @@ public class Example {
 
     AppsApi apiInstance = new AppsApi(defaultClient);
     String appId = "appId_example"; // String | 
-    UpdeteSettings updeteSettings = new UpdeteSettings(); // UpdeteSettings | 
+    UpdateSettings updateSettings = new UpdateSettings(); // UpdateSettings | 
     try {
-      UpdateAppSettings200Response result = apiInstance.updateAppSettings(appId, updeteSettings);
+      UpdateAppSettings200Response result = apiInstance.updateAppSettings(appId, updateSettings);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AppsApi#updateAppSettings");
@@ -1478,7 +1478,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **appId** | **String**|  | |
-| **updeteSettings** | [**UpdeteSettings**](UpdeteSettings.md)|  | |
+| **updateSettings** | [**UpdateSettings**](UpdateSettings.md)|  | |
 
 ### Return type
 

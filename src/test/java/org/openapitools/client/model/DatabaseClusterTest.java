@@ -100,6 +100,14 @@ public class DatabaseClusterTest {
     }
 
     /**
+     * Test the property 'avatarLink'
+     */
+    @Test
+    public void avatarLinkTest() {
+        // TODO: test avatarLink
+    }
+
+    /**
      * Test the property 'port'
      */
     @Test

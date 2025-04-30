@@ -90,6 +90,14 @@ public class DomainTest {
     }
 
     /**
+     * Test the property 'avatarLink'
+     */
+    @Test
+    public void avatarLinkTest() {
+        // TODO: test avatarLink
+    }
+
+    /**
      * Test the property 'isAutoprolongEnabled'
      */
     @Test
