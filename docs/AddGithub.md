@@ -17,7 +17,7 @@
 
 | Name | Value |
 |---- | -----|
-| GITHUB | &quot;Github&quot; |
+| GITHUB | &quot;github&quot; |
 
 
 

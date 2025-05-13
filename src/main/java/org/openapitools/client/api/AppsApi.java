@@ -1452,8 +1452,8 @@ public class AppsApi {
     /**
      * Build call for getAppStatistics
      * @param appId  (required)
-     * @param dateFrom Дата начала сбора статистики. Строка в формате ISO 8061, закодированная в ASCII, пример: &#x60;2023-05-25%202023-05-25T14%3A35%3A38&#x60; (required)
-     * @param dateTo Дата окончания сбора статистики. Строка в формате ISO 8061, закодированная в ASCII, пример: &#x60;2023-05-26%202023-05-25T14%3A35%3A38&#x60; (required)
+     * @param dateFrom Дата начала сбора статистики. Строка в формате ISO 8061, закодированная в ASCII, пример: &#x60;2023-05-25T14%3A35%3A38&#x60; (required)
+     * @param dateTo Дата окончания сбора статистики. Строка в формате ISO 8061, закодированная в ASCII, пример: &#x60;2023-05-25T14%3A35%3A38&#x60; (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1548,8 +1548,8 @@ public class AppsApi {
      * Получение статистики приложения
      * Чтобы получить статистику сервера, отправьте GET-запрос на &#x60;/api/v1/apps/{app_id}/statistics&#x60;. Метод поддерживает только приложения &#x60;type: backend&#x60;.
      * @param appId  (required)
-     * @param dateFrom Дата начала сбора статистики. Строка в формате ISO 8061, закодированная в ASCII, пример: &#x60;2023-05-25%202023-05-25T14%3A35%3A38&#x60; (required)
-     * @param dateTo Дата окончания сбора статистики. Строка в формате ISO 8061, закодированная в ASCII, пример: &#x60;2023-05-26%202023-05-25T14%3A35%3A38&#x60; (required)
+     * @param dateFrom Дата начала сбора статистики. Строка в формате ISO 8061, закодированная в ASCII, пример: &#x60;2023-05-25T14%3A35%3A38&#x60; (required)
+     * @param dateTo Дата окончания сбора статистики. Строка в формате ISO 8061, закодированная в ASCII, пример: &#x60;2023-05-25T14%3A35%3A38&#x60; (required)
      * @return GetServerStatistics200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1574,8 +1574,8 @@ public class AppsApi {
      * Получение статистики приложения
      * Чтобы получить статистику сервера, отправьте GET-запрос на &#x60;/api/v1/apps/{app_id}/statistics&#x60;. Метод поддерживает только приложения &#x60;type: backend&#x60;.
      * @param appId  (required)
-     * @param dateFrom Дата начала сбора статистики. Строка в формате ISO 8061, закодированная в ASCII, пример: &#x60;2023-05-25%202023-05-25T14%3A35%3A38&#x60; (required)
-     * @param dateTo Дата окончания сбора статистики. Строка в формате ISO 8061, закодированная в ASCII, пример: &#x60;2023-05-26%202023-05-25T14%3A35%3A38&#x60; (required)
+     * @param dateFrom Дата начала сбора статистики. Строка в формате ISO 8061, закодированная в ASCII, пример: &#x60;2023-05-25T14%3A35%3A38&#x60; (required)
+     * @param dateTo Дата окончания сбора статистики. Строка в формате ISO 8061, закодированная в ASCII, пример: &#x60;2023-05-25T14%3A35%3A38&#x60; (required)
      * @return ApiResponse&lt;GetServerStatistics200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1601,8 +1601,8 @@ public class AppsApi {
      * Получение статистики приложения (asynchronously)
      * Чтобы получить статистику сервера, отправьте GET-запрос на &#x60;/api/v1/apps/{app_id}/statistics&#x60;. Метод поддерживает только приложения &#x60;type: backend&#x60;.
      * @param appId  (required)
-     * @param dateFrom Дата начала сбора статистики. Строка в формате ISO 8061, закодированная в ASCII, пример: &#x60;2023-05-25%202023-05-25T14%3A35%3A38&#x60; (required)
-     * @param dateTo Дата окончания сбора статистики. Строка в формате ISO 8061, закодированная в ASCII, пример: &#x60;2023-05-26%202023-05-25T14%3A35%3A38&#x60; (required)
+     * @param dateFrom Дата начала сбора статистики. Строка в формате ISO 8061, закодированная в ASCII, пример: &#x60;2023-05-25T14%3A35%3A38&#x60; (required)
+     * @param dateTo Дата окончания сбора статистики. Строка в формате ISO 8061, закодированная в ASCII, пример: &#x60;2023-05-25T14%3A35%3A38&#x60; (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

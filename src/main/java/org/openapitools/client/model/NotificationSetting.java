@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * Статус аккаунта
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-30T11:06:05.353781Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-13T14:01:57.127467Z[Etc/UTC]")
 public class NotificationSetting {
   public static final String SERIALIZED_NAME_CHANNELS = "channels";
   @SerializedName(SERIALIZED_NAME_CHANNELS)

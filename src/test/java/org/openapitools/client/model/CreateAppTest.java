@@ -20,6 +20,8 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 import org.openapitools.client.model.Frameworks;
 import org.junit.jupiter.api.Disabled;
@@ -157,6 +159,22 @@ public class CreateAppTest {
     @Test
     public void runCmdTest() {
         // TODO: test runCmd
+    }
+
+    /**
+     * Test the property 'systemDependencies'
+     */
+    @Test
+    public void systemDependenciesTest() {
+        // TODO: test systemDependencies
+    }
+
+    /**
+     * Test the property 'projectId'
+     */
+    @Test
+    public void projectIdTest() {
+        // TODO: test projectId
     }
 
 }

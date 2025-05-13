@@ -17,7 +17,7 @@
 
 | Name | Value |
 |---- | -----|
-| GITLAB | &quot;Gitlab&quot; |
+| GITLAB | &quot;gitlab&quot; |
 
 
 

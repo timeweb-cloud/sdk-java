@@ -22,6 +22,8 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 import org.openapitools.client.model.Frameworks;
 
@@ -53,7 +55,7 @@ import org.openapitools.client.JSON;
 /**
  * CreateApp
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-30T11:06:05.353781Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-13T14:01:57.127467Z[Etc/UTC]")
 public class CreateApp {
   public static final String SERIALIZED_NAME_PROVIDER_ID = "provider_id";
   @SerializedName(SERIALIZED_NAME_PROVIDER_ID)
@@ -161,6 +163,14 @@ public class CreateApp {
   public static final String SERIALIZED_NAME_RUN_CMD = "run_cmd";
   @SerializedName(SERIALIZED_NAME_RUN_CMD)
   private String runCmd;
+
+  public static final String SERIALIZED_NAME_SYSTEM_DEPENDENCIES = "system_dependencies";
+  @SerializedName(SERIALIZED_NAME_SYSTEM_DEPENDENCIES)
+  private List<String> systemDependencies;
+
+  public static final String SERIALIZED_NAME_PROJECT_ID = "project_id";
+  @SerializedName(SERIALIZED_NAME_PROJECT_ID)
+  private BigDecimal projectId;
 
   public CreateApp() {
   }
@@ -480,6 +490,56 @@ public class CreateApp {
   }
 
 
+  public CreateApp systemDependencies(List<String> systemDependencies) {
+    
+    this.systemDependencies = systemDependencies;
+    return this;
+  }
+
+  public CreateApp addSystemDependenciesItem(String systemDependenciesItem) {
+    if (this.systemDependencies == null) {
+      this.systemDependencies = new ArrayList<>();
+    }
+    this.systemDependencies.add(systemDependenciesItem);
+    return this;
+  }
+
+   /**
+   * Системные зависимости.
+   * @return systemDependencies
+  **/
+  @javax.annotation.Nullable
+  public List<String> getSystemDependencies() {
+    return systemDependencies;
+  }
+
+
+  public void setSystemDependencies(List<String> systemDependencies) {
+    this.systemDependencies = systemDependencies;
+  }
+
+
+  public CreateApp projectId(BigDecimal projectId) {
+    
+    this.projectId = projectId;
+    return this;
+  }
+
+   /**
+   * ID проекта.
+   * @return projectId
+  **/
+  @javax.annotation.Nullable
+  public BigDecimal getProjectId() {
+    return projectId;
+  }
+
+
+  public void setProjectId(BigDecimal projectId) {
+    this.projectId = projectId;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -504,12 +564,14 @@ public class CreateApp {
         Objects.equals(this.envVersion, createApp.envVersion) &&
         Objects.equals(this.framework, createApp.framework) &&
         Objects.equals(this.indexDir, createApp.indexDir) &&
-        Objects.equals(this.runCmd, createApp.runCmd);
+        Objects.equals(this.runCmd, createApp.runCmd) &&
+        Objects.equals(this.systemDependencies, createApp.systemDependencies) &&
+        Objects.equals(this.projectId, createApp.projectId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(providerId, type, repositoryId, buildCmd, envs, branchName, isAutoDeploy, commitSha, name, comment, presetId, envVersion, framework, indexDir, runCmd);
+    return Objects.hash(providerId, type, repositoryId, buildCmd, envs, branchName, isAutoDeploy, commitSha, name, comment, presetId, envVersion, framework, indexDir, runCmd, systemDependencies, projectId);
   }
 
   @Override
@@ -531,6 +593,8 @@ public class CreateApp {
     sb.append("    framework: ").append(toIndentedString(framework)).append("\n");
     sb.append("    indexDir: ").append(toIndentedString(indexDir)).append("\n");
     sb.append("    runCmd: ").append(toIndentedString(runCmd)).append("\n");
+    sb.append("    systemDependencies: ").append(toIndentedString(systemDependencies)).append("\n");
+    sb.append("    projectId: ").append(toIndentedString(projectId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -568,6 +632,8 @@ public class CreateApp {
     openapiFields.add("framework");
     openapiFields.add("index_dir");
     openapiFields.add("run_cmd");
+    openapiFields.add("system_dependencies");
+    openapiFields.add("project_id");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -644,6 +710,10 @@ public class CreateApp {
       }
       if ((jsonObj.get("run_cmd") != null && !jsonObj.get("run_cmd").isJsonNull()) && !jsonObj.get("run_cmd").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `run_cmd` to be a primitive type in the JSON string but got `%s`", jsonObj.get("run_cmd").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("system_dependencies") != null && !jsonObj.get("system_dependencies").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `system_dependencies` to be an array in the JSON string but got `%s`", jsonObj.get("system_dependencies").toString()));
       }
   }
 
