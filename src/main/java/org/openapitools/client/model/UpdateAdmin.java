@@ -53,7 +53,7 @@ import org.openapitools.client.JSON;
 /**
  * UpdateAdmin
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-13T14:01:57.127467Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-08-27T11:58:09.737284Z[Etc/UTC]")
 public class UpdateAdmin {
   public static final String SERIALIZED_NAME_PASSWORD = "password";
   @SerializedName(SERIALIZED_NAME_PASSWORD)
@@ -106,7 +106,13 @@ public class UpdateAdmin {
     
     CREATE_ROUTINE("CREATE_ROUTINE"),
     
-    TRANSACTION("TRANSACTION");
+    TRANSACTION("TRANSACTION"),
+    
+    SLOW_LOG("SLOW_LOG"),
+    
+    TRIGGER("TRIGGER"),
+    
+    CREATE_TEMPORARY_TABLES("CREATE_TEMPORARY_TABLES");
 
     private String value;
 
@@ -239,7 +245,7 @@ public class UpdateAdmin {
   }
 
    /**
-   * ID инстанса базы данных для приминения привилегий. В данных момент поле доступно только для кластеров MySQL. Если поле не передано, то привилегии будут применены ко всем инстансам
+   * ID инстанса базы данных для применения привилегий. В данных момент поле доступно только для кластеров MySQL. Если поле не передано, то привилегии будут применены ко всем инстансам
    * @return instanceId
   **/
   @javax.annotation.Nullable

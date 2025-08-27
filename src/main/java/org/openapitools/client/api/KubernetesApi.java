@@ -38,14 +38,15 @@ import org.openapitools.client.model.GetFinances403Response;
 import org.openapitools.client.model.GetFinances429Response;
 import org.openapitools.client.model.GetFinances500Response;
 import org.openapitools.client.model.GetImage404Response;
+import org.openapitools.client.model.IncreaseNodes;
 import org.openapitools.client.model.K8SVersionsResponse;
 import org.openapitools.client.model.NetworkDriversResponse;
-import org.openapitools.client.model.NodeCount;
 import org.openapitools.client.model.NodeGroupIn;
 import org.openapitools.client.model.NodeGroupResponse;
 import org.openapitools.client.model.NodeGroupsResponse;
 import org.openapitools.client.model.NodesResponse;
 import org.openapitools.client.model.PresetsResponse;
+import org.openapitools.client.model.ReduceNodes;
 import org.openapitools.client.model.ResourcesResponse;
 
 import java.lang.reflect.Type;
@@ -2471,7 +2472,7 @@ public class KubernetesApi {
      * Build call for increaseCountOfNodesInGroup
      * @param clusterId ID кластера (required)
      * @param groupId ID группы (required)
-     * @param nodeCount  (required)
+     * @param increaseNodes  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2487,7 +2488,7 @@ public class KubernetesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call increaseCountOfNodesInGroupCall(Integer clusterId, Integer groupId, NodeCount nodeCount, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call increaseCountOfNodesInGroupCall(Integer clusterId, Integer groupId, IncreaseNodes increaseNodes, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2501,7 +2502,7 @@ public class KubernetesApi {
             basePath = null;
         }
 
-        Object localVarPostBody = nodeCount;
+        Object localVarPostBody = increaseNodes;
 
         // create path and map variables
         String localVarPath = "/api/v1/k8s/clusters/{cluster_id}/groups/{group_id}/nodes"
@@ -2535,7 +2536,7 @@ public class KubernetesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call increaseCountOfNodesInGroupValidateBeforeCall(Integer clusterId, Integer groupId, NodeCount nodeCount, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call increaseCountOfNodesInGroupValidateBeforeCall(Integer clusterId, Integer groupId, IncreaseNodes increaseNodes, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'clusterId' is set
         if (clusterId == null) {
             throw new ApiException("Missing the required parameter 'clusterId' when calling increaseCountOfNodesInGroup(Async)");
@@ -2546,12 +2547,12 @@ public class KubernetesApi {
             throw new ApiException("Missing the required parameter 'groupId' when calling increaseCountOfNodesInGroup(Async)");
         }
 
-        // verify the required parameter 'nodeCount' is set
-        if (nodeCount == null) {
-            throw new ApiException("Missing the required parameter 'nodeCount' when calling increaseCountOfNodesInGroup(Async)");
+        // verify the required parameter 'increaseNodes' is set
+        if (increaseNodes == null) {
+            throw new ApiException("Missing the required parameter 'increaseNodes' when calling increaseCountOfNodesInGroup(Async)");
         }
 
-        return increaseCountOfNodesInGroupCall(clusterId, groupId, nodeCount, _callback);
+        return increaseCountOfNodesInGroupCall(clusterId, groupId, increaseNodes, _callback);
 
     }
 
@@ -2560,7 +2561,7 @@ public class KubernetesApi {
      * Чтобы увеличить количество нод в группе на указанное значение, отправьте POST-запрос на &#x60;/api/v1/k8s/clusters/{cluster_id}/groups/{group_id}/nodes&#x60;
      * @param clusterId ID кластера (required)
      * @param groupId ID группы (required)
-     * @param nodeCount  (required)
+     * @param increaseNodes  (required)
      * @return NodesResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2575,8 +2576,8 @@ public class KubernetesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public NodesResponse increaseCountOfNodesInGroup(Integer clusterId, Integer groupId, NodeCount nodeCount) throws ApiException {
-        ApiResponse<NodesResponse> localVarResp = increaseCountOfNodesInGroupWithHttpInfo(clusterId, groupId, nodeCount);
+    public NodesResponse increaseCountOfNodesInGroup(Integer clusterId, Integer groupId, IncreaseNodes increaseNodes) throws ApiException {
+        ApiResponse<NodesResponse> localVarResp = increaseCountOfNodesInGroupWithHttpInfo(clusterId, groupId, increaseNodes);
         return localVarResp.getData();
     }
 
@@ -2585,7 +2586,7 @@ public class KubernetesApi {
      * Чтобы увеличить количество нод в группе на указанное значение, отправьте POST-запрос на &#x60;/api/v1/k8s/clusters/{cluster_id}/groups/{group_id}/nodes&#x60;
      * @param clusterId ID кластера (required)
      * @param groupId ID группы (required)
-     * @param nodeCount  (required)
+     * @param increaseNodes  (required)
      * @return ApiResponse&lt;NodesResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2600,8 +2601,8 @@ public class KubernetesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<NodesResponse> increaseCountOfNodesInGroupWithHttpInfo(Integer clusterId, Integer groupId, NodeCount nodeCount) throws ApiException {
-        okhttp3.Call localVarCall = increaseCountOfNodesInGroupValidateBeforeCall(clusterId, groupId, nodeCount, null);
+    public ApiResponse<NodesResponse> increaseCountOfNodesInGroupWithHttpInfo(Integer clusterId, Integer groupId, IncreaseNodes increaseNodes) throws ApiException {
+        okhttp3.Call localVarCall = increaseCountOfNodesInGroupValidateBeforeCall(clusterId, groupId, increaseNodes, null);
         Type localVarReturnType = new TypeToken<NodesResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2611,7 +2612,7 @@ public class KubernetesApi {
      * Чтобы увеличить количество нод в группе на указанное значение, отправьте POST-запрос на &#x60;/api/v1/k8s/clusters/{cluster_id}/groups/{group_id}/nodes&#x60;
      * @param clusterId ID кластера (required)
      * @param groupId ID группы (required)
-     * @param nodeCount  (required)
+     * @param increaseNodes  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2627,9 +2628,9 @@ public class KubernetesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call increaseCountOfNodesInGroupAsync(Integer clusterId, Integer groupId, NodeCount nodeCount, final ApiCallback<NodesResponse> _callback) throws ApiException {
+    public okhttp3.Call increaseCountOfNodesInGroupAsync(Integer clusterId, Integer groupId, IncreaseNodes increaseNodes, final ApiCallback<NodesResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = increaseCountOfNodesInGroupValidateBeforeCall(clusterId, groupId, nodeCount, _callback);
+        okhttp3.Call localVarCall = increaseCountOfNodesInGroupValidateBeforeCall(clusterId, groupId, increaseNodes, _callback);
         Type localVarReturnType = new TypeToken<NodesResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2638,7 +2639,7 @@ public class KubernetesApi {
      * Build call for reduceCountOfNodesInGroup
      * @param clusterId ID кластера (required)
      * @param groupId ID группы (required)
-     * @param nodeCount  (required)
+     * @param reduceNodes  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2654,7 +2655,7 @@ public class KubernetesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call reduceCountOfNodesInGroupCall(Integer clusterId, Integer groupId, NodeCount nodeCount, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call reduceCountOfNodesInGroupCall(Integer clusterId, Integer groupId, ReduceNodes reduceNodes, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2668,7 +2669,7 @@ public class KubernetesApi {
             basePath = null;
         }
 
-        Object localVarPostBody = nodeCount;
+        Object localVarPostBody = reduceNodes;
 
         // create path and map variables
         String localVarPath = "/api/v1/k8s/clusters/{cluster_id}/groups/{group_id}/nodes"
@@ -2702,7 +2703,7 @@ public class KubernetesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call reduceCountOfNodesInGroupValidateBeforeCall(Integer clusterId, Integer groupId, NodeCount nodeCount, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call reduceCountOfNodesInGroupValidateBeforeCall(Integer clusterId, Integer groupId, ReduceNodes reduceNodes, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'clusterId' is set
         if (clusterId == null) {
             throw new ApiException("Missing the required parameter 'clusterId' when calling reduceCountOfNodesInGroup(Async)");
@@ -2713,12 +2714,12 @@ public class KubernetesApi {
             throw new ApiException("Missing the required parameter 'groupId' when calling reduceCountOfNodesInGroup(Async)");
         }
 
-        // verify the required parameter 'nodeCount' is set
-        if (nodeCount == null) {
-            throw new ApiException("Missing the required parameter 'nodeCount' when calling reduceCountOfNodesInGroup(Async)");
+        // verify the required parameter 'reduceNodes' is set
+        if (reduceNodes == null) {
+            throw new ApiException("Missing the required parameter 'reduceNodes' when calling reduceCountOfNodesInGroup(Async)");
         }
 
-        return reduceCountOfNodesInGroupCall(clusterId, groupId, nodeCount, _callback);
+        return reduceCountOfNodesInGroupCall(clusterId, groupId, reduceNodes, _callback);
 
     }
 
@@ -2727,7 +2728,7 @@ public class KubernetesApi {
      * Чтобы уменьшить количество нод в группе на указанное значение, отправьте DELETE-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/groups/{group_id}/nodes&#x60;.
      * @param clusterId ID кластера (required)
      * @param groupId ID группы (required)
-     * @param nodeCount  (required)
+     * @param reduceNodes  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2741,8 +2742,8 @@ public class KubernetesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public void reduceCountOfNodesInGroup(Integer clusterId, Integer groupId, NodeCount nodeCount) throws ApiException {
-        reduceCountOfNodesInGroupWithHttpInfo(clusterId, groupId, nodeCount);
+    public void reduceCountOfNodesInGroup(Integer clusterId, Integer groupId, ReduceNodes reduceNodes) throws ApiException {
+        reduceCountOfNodesInGroupWithHttpInfo(clusterId, groupId, reduceNodes);
     }
 
     /**
@@ -2750,7 +2751,7 @@ public class KubernetesApi {
      * Чтобы уменьшить количество нод в группе на указанное значение, отправьте DELETE-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/groups/{group_id}/nodes&#x60;.
      * @param clusterId ID кластера (required)
      * @param groupId ID группы (required)
-     * @param nodeCount  (required)
+     * @param reduceNodes  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2765,8 +2766,8 @@ public class KubernetesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> reduceCountOfNodesInGroupWithHttpInfo(Integer clusterId, Integer groupId, NodeCount nodeCount) throws ApiException {
-        okhttp3.Call localVarCall = reduceCountOfNodesInGroupValidateBeforeCall(clusterId, groupId, nodeCount, null);
+    public ApiResponse<Void> reduceCountOfNodesInGroupWithHttpInfo(Integer clusterId, Integer groupId, ReduceNodes reduceNodes) throws ApiException {
+        okhttp3.Call localVarCall = reduceCountOfNodesInGroupValidateBeforeCall(clusterId, groupId, reduceNodes, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2775,7 +2776,7 @@ public class KubernetesApi {
      * Чтобы уменьшить количество нод в группе на указанное значение, отправьте DELETE-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/groups/{group_id}/nodes&#x60;.
      * @param clusterId ID кластера (required)
      * @param groupId ID группы (required)
-     * @param nodeCount  (required)
+     * @param reduceNodes  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2791,9 +2792,9 @@ public class KubernetesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call reduceCountOfNodesInGroupAsync(Integer clusterId, Integer groupId, NodeCount nodeCount, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call reduceCountOfNodesInGroupAsync(Integer clusterId, Integer groupId, ReduceNodes reduceNodes, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = reduceCountOfNodesInGroupValidateBeforeCall(clusterId, groupId, nodeCount, _callback);
+        okhttp3.Call localVarCall = reduceCountOfNodesInGroupValidateBeforeCall(clusterId, groupId, reduceNodes, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

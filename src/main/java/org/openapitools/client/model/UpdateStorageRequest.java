@@ -22,6 +22,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
+import org.openapitools.client.model.UpdateStorageRequestConfigurator;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -51,15 +52,15 @@ import org.openapitools.client.JSON;
 /**
  * UpdateStorageRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-13T14:01:57.127467Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-08-27T11:58:09.737284Z[Etc/UTC]")
 public class UpdateStorageRequest {
   public static final String SERIALIZED_NAME_PRESET_ID = "preset_id";
   @SerializedName(SERIALIZED_NAME_PRESET_ID)
   private BigDecimal presetId;
 
-  public static final String SERIALIZED_NAME_CONFIGURATOR_ID = "configurator_id";
-  @SerializedName(SERIALIZED_NAME_CONFIGURATOR_ID)
-  private BigDecimal configuratorId;
+  public static final String SERIALIZED_NAME_CONFIGURATOR = "configurator";
+  @SerializedName(SERIALIZED_NAME_CONFIGURATOR)
+  private UpdateStorageRequestConfigurator configurator;
 
   /**
    * Тип хранилища.
@@ -140,24 +141,24 @@ public class UpdateStorageRequest {
   }
 
 
-  public UpdateStorageRequest configuratorId(BigDecimal configuratorId) {
+  public UpdateStorageRequest configurator(UpdateStorageRequestConfigurator configurator) {
     
-    this.configuratorId = configuratorId;
+    this.configurator = configurator;
     return this;
   }
 
    /**
-   * ID конфигуратора хранилища.
-   * @return configuratorId
+   * Get configurator
+   * @return configurator
   **/
   @javax.annotation.Nullable
-  public BigDecimal getConfiguratorId() {
-    return configuratorId;
+  public UpdateStorageRequestConfigurator getConfigurator() {
+    return configurator;
   }
 
 
-  public void setConfiguratorId(BigDecimal configuratorId) {
-    this.configuratorId = configuratorId;
+  public void setConfigurator(UpdateStorageRequestConfigurator configurator) {
+    this.configurator = configurator;
   }
 
 
@@ -214,14 +215,14 @@ public class UpdateStorageRequest {
     }
     UpdateStorageRequest updateStorageRequest = (UpdateStorageRequest) o;
     return Objects.equals(this.presetId, updateStorageRequest.presetId) &&
-        Objects.equals(this.configuratorId, updateStorageRequest.configuratorId) &&
+        Objects.equals(this.configurator, updateStorageRequest.configurator) &&
         Objects.equals(this.bucketType, updateStorageRequest.bucketType) &&
         Objects.equals(this.description, updateStorageRequest.description);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(presetId, configuratorId, bucketType, description);
+    return Objects.hash(presetId, configurator, bucketType, description);
   }
 
   @Override
@@ -229,7 +230,7 @@ public class UpdateStorageRequest {
     StringBuilder sb = new StringBuilder();
     sb.append("class UpdateStorageRequest {\n");
     sb.append("    presetId: ").append(toIndentedString(presetId)).append("\n");
-    sb.append("    configuratorId: ").append(toIndentedString(configuratorId)).append("\n");
+    sb.append("    configurator: ").append(toIndentedString(configurator)).append("\n");
     sb.append("    bucketType: ").append(toIndentedString(bucketType)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("}");
@@ -255,7 +256,7 @@ public class UpdateStorageRequest {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("preset_id");
-    openapiFields.add("configurator_id");
+    openapiFields.add("configurator");
     openapiFields.add("bucket_type");
     openapiFields.add("description");
 
@@ -284,6 +285,10 @@ public class UpdateStorageRequest {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      // validate the optional field `configurator`
+      if (jsonObj.get("configurator") != null && !jsonObj.get("configurator").isJsonNull()) {
+        UpdateStorageRequestConfigurator.validateJsonElement(jsonObj.get("configurator"));
+      }
       if ((jsonObj.get("bucket_type") != null && !jsonObj.get("bucket_type").isJsonNull()) && !jsonObj.get("bucket_type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `bucket_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("bucket_type").toString()));
       }

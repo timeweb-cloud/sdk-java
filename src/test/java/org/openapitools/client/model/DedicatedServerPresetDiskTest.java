@@ -53,4 +53,20 @@ public class DedicatedServerPresetDiskTest {
         // TODO: test count
     }
 
+    /**
+     * Test the property 'totalSize'
+     */
+    @Test
+    public void totalSizeTest() {
+        // TODO: test totalSize
+    }
+
+    /**
+     * Test the property 'type'
+     */
+    @Test
+    public void typeTest() {
+        // TODO: test type
+    }
+
 }

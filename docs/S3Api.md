@@ -6,23 +6,17 @@ All URIs are relative to *https://api.timeweb.cloud*
 |------------- | ------------- | -------------|
 | [**addStorageSubdomainCertificate**](S3Api.md#addStorageSubdomainCertificate) | **POST** /api/v1/storages/certificates/generate | Добавление сертификата для поддомена хранилища |
 | [**addStorageSubdomains**](S3Api.md#addStorageSubdomains) | **POST** /api/v1/storages/buckets/{bucket_id}/subdomains | Добавление поддоменов для хранилища |
-| [**copyStorageFile**](S3Api.md#copyStorageFile) | **POST** /api/v1/storages/buckets/{bucket_id}/object-manager/copy | Копирование файла/директории в хранилище |
-| [**createFolderInStorage**](S3Api.md#createFolderInStorage) | **POST** /api/v1/storages/buckets/{bucket_id}/object-manager/mkdir | Создание директории в хранилище |
 | [**createStorage**](S3Api.md#createStorage) | **POST** /api/v1/storages/buckets | Создание хранилища |
 | [**deleteStorage**](S3Api.md#deleteStorage) | **DELETE** /api/v1/storages/buckets/{bucket_id} | Удаление хранилища на аккаунте |
-| [**deleteStorageFile**](S3Api.md#deleteStorageFile) | **DELETE** /api/v1/storages/buckets/{bucket_id}/object-manager/remove | Удаление файла/директории в хранилище |
 | [**deleteStorageSubdomains**](S3Api.md#deleteStorageSubdomains) | **DELETE** /api/v1/storages/buckets/{bucket_id}/subdomains | Удаление поддоменов хранилища |
-| [**getStorageFilesList**](S3Api.md#getStorageFilesList) | **GET** /api/v1/storages/buckets/{bucket_id}/object-manager/list | Получение списка файлов в хранилище по префиксу |
 | [**getStorageSubdomains**](S3Api.md#getStorageSubdomains) | **GET** /api/v1/storages/buckets/{bucket_id}/subdomains | Получение списка поддоменов хранилища |
 | [**getStorageTransferStatus**](S3Api.md#getStorageTransferStatus) | **GET** /api/v1/storages/buckets/{bucket_id}/transfer-status | Получение статуса переноса хранилища от стороннего S3 в Timeweb Cloud |
 | [**getStorageUsers**](S3Api.md#getStorageUsers) | **GET** /api/v1/storages/users | Получение списка пользователей хранилищ аккаунта |
 | [**getStorages**](S3Api.md#getStorages) | **GET** /api/v1/storages/buckets | Получение списка хранилищ аккаунта |
 | [**getStoragesPresets**](S3Api.md#getStoragesPresets) | **GET** /api/v1/presets/storages | Получение списка тарифов для хранилищ |
-| [**renameStorageFile**](S3Api.md#renameStorageFile) | **POST** /api/v1/storages/buckets/{bucket_id}/object-manager/rename | Переименование файла/директории в хранилище |
 | [**transferStorage**](S3Api.md#transferStorage) | **POST** /api/v1/storages/transfer | Перенос хранилища от стороннего провайдера S3 в Timeweb Cloud |
 | [**updateStorage**](S3Api.md#updateStorage) | **PATCH** /api/v1/storages/buckets/{bucket_id} | Изменение хранилища на аккаунте |
 | [**updateStorageUser**](S3Api.md#updateStorageUser) | **PATCH** /api/v1/storages/users/{user_id} | Изменение пароля пользователя-администратора хранилища |
-| [**uploadFileToStorage**](S3Api.md#uploadFileToStorage) | **POST** /api/v1/storages/buckets/{bucket_id}/object-manager/upload | Загрузка файлов в хранилище |
 
 
 <a id="addStorageSubdomainCertificate"></a>
@@ -169,155 +163,6 @@ public class Example {
 | **401** | Не авторизован |  -  |
 | **403** | Запрещено |  -  |
 | **404** | Не найдено |  -  |
-| **429** | Слишком много запросов |  -  |
-| **500** | Внутренняя ошибка сервера |  -  |
-
-<a id="copyStorageFile"></a>
-# **copyStorageFile**
-> copyStorageFile(bucketId, copyStorageFileRequest)
-
-Копирование файла/директории в хранилище
-
-Чтобы скопировать файла или директорию с вложениями, отправьте POST-запрос на &#x60;/api/v1/storages/buckets/{bucket_id}/object-manager/copy&#x60;.
-
-### Example
-```java
-// Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.auth.*;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.S3Api;
-
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://api.timeweb.cloud");
-    
-    // Configure HTTP bearer authorization: Bearer
-    HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
-    Bearer.setBearerToken("BEARER TOKEN");
-
-    S3Api apiInstance = new S3Api(defaultClient);
-    Integer bucketId = 1051; // Integer | ID хранилища.
-    CopyStorageFileRequest copyStorageFileRequest = new CopyStorageFileRequest(); // CopyStorageFileRequest | 
-    try {
-      apiInstance.copyStorageFile(bucketId, copyStorageFileRequest);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling S3Api#copyStorageFile");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **bucketId** | **Integer**| ID хранилища. | |
-| **copyStorageFileRequest** | [**CopyStorageFileRequest**](CopyStorageFileRequest.md)|  | |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **204** | Задание на копирование отправлено |  -  |
-| **400** | Некорректный запрос |  -  |
-| **401** | Не авторизован |  -  |
-| **403** | Запрещено |  -  |
-| **404** | Не найдено |  -  |
-| **429** | Слишком много запросов |  -  |
-| **500** | Внутренняя ошибка сервера |  -  |
-
-<a id="createFolderInStorage"></a>
-# **createFolderInStorage**
-> createFolderInStorage(bucketId, createFolderInStorageRequest)
-
-Создание директории в хранилище
-
-Чтобы создать директорию в хранилище, отправьте POST-запрос на &#x60;/api/v1/storages/buckets/{bucket_id}/object-manager/mkdir&#x60;.
-
-### Example
-```java
-// Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.auth.*;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.S3Api;
-
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://api.timeweb.cloud");
-    
-    // Configure HTTP bearer authorization: Bearer
-    HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
-    Bearer.setBearerToken("BEARER TOKEN");
-
-    S3Api apiInstance = new S3Api(defaultClient);
-    Integer bucketId = 1051; // Integer | ID хранилища.
-    CreateFolderInStorageRequest createFolderInStorageRequest = new CreateFolderInStorageRequest(); // CreateFolderInStorageRequest | 
-    try {
-      apiInstance.createFolderInStorage(bucketId, createFolderInStorageRequest);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling S3Api#createFolderInStorage");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **bucketId** | **Integer**| ID хранилища. | |
-| **createFolderInStorageRequest** | [**CreateFolderInStorageRequest**](CreateFolderInStorageRequest.md)|  | |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **201** | Директория успешно создана |  -  |
-| **400** | Некорректный запрос |  -  |
-| **401** | Не авторизован |  -  |
-| **403** | Запрещено |  -  |
-| **404** | Не найдено |  -  |
-| **409** | Конфликт |  -  |
 | **429** | Слишком много запросов |  -  |
 | **500** | Внутренняя ошибка сервера |  -  |
 
@@ -471,82 +316,6 @@ public class Example {
 | **429** | Слишком много запросов |  -  |
 | **500** | Внутренняя ошибка сервера |  -  |
 
-<a id="deleteStorageFile"></a>
-# **deleteStorageFile**
-> deleteStorageFile(bucketId, deleteStorageFileRequest, isMultipart)
-
-Удаление файла/директории в хранилище
-
-Чтобы удалить файл или директорию с вложениями, отправьте DELETE-запрос на &#x60;/api/v1/storages/buckets/{bucket_id}/object-manager/remove&#x60;.
-
-### Example
-```java
-// Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.auth.*;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.S3Api;
-
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://api.timeweb.cloud");
-    
-    // Configure HTTP bearer authorization: Bearer
-    HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
-    Bearer.setBearerToken("BEARER TOKEN");
-
-    S3Api apiInstance = new S3Api(defaultClient);
-    Integer bucketId = 1051; // Integer | ID хранилища.
-    DeleteStorageFileRequest deleteStorageFileRequest = new DeleteStorageFileRequest(); // DeleteStorageFileRequest | 
-    Boolean isMultipart = true; // Boolean | Это логическое значение, которое используется для обозначения multipart-загрузки.
-    try {
-      apiInstance.deleteStorageFile(bucketId, deleteStorageFileRequest, isMultipart);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling S3Api#deleteStorageFile");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **bucketId** | **Integer**| ID хранилища. | |
-| **deleteStorageFileRequest** | [**DeleteStorageFileRequest**](DeleteStorageFileRequest.md)|  | |
-| **isMultipart** | **Boolean**| Это логическое значение, которое используется для обозначения multipart-загрузки. | [optional] |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **204** | Задание на удаление отправлено |  -  |
-| **400** | Некорректный запрос |  -  |
-| **401** | Не авторизован |  -  |
-| **403** | Запрещено |  -  |
-| **404** | Не найдено |  -  |
-| **429** | Слишком много запросов |  -  |
-| **500** | Внутренняя ошибка сервера |  -  |
-
 <a id="deleteStorageSubdomains"></a>
 # **deleteStorageSubdomains**
 > AddStorageSubdomains200Response deleteStorageSubdomains(bucketId, addStorageSubdomainsRequest)
@@ -615,83 +384,6 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Объект JSON c ключом &#x60;subdomains&#x60; |  -  |
-| **400** | Некорректный запрос |  -  |
-| **401** | Не авторизован |  -  |
-| **403** | Запрещено |  -  |
-| **404** | Не найдено |  -  |
-| **429** | Слишком много запросов |  -  |
-| **500** | Внутренняя ошибка сервера |  -  |
-
-<a id="getStorageFilesList"></a>
-# **getStorageFilesList**
-> GetStorageFilesList200Response getStorageFilesList(bucketId, prefix, isMultipart)
-
-Получение списка файлов в хранилище по префиксу
-
-Чтобы получить список файлов в хранилище по префиксу, отправьте GET-запрос на &#x60;/api/v1/storages/buckets/{bucket_id}/object-manager/list&#x60;.
-
-### Example
-```java
-// Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.auth.*;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.S3Api;
-
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://api.timeweb.cloud");
-    
-    // Configure HTTP bearer authorization: Bearer
-    HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
-    Bearer.setBearerToken("BEARER TOKEN");
-
-    S3Api apiInstance = new S3Api(defaultClient);
-    Integer bucketId = 1051; // Integer | ID хранилища.
-    String prefix = "example"; // String | Префикс для поиска файла.
-    Boolean isMultipart = true; // Boolean | Это логическое значение, которое используется для обозначения multipart-загрузки.
-    try {
-      GetStorageFilesList200Response result = apiInstance.getStorageFilesList(bucketId, prefix, isMultipart);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling S3Api#getStorageFilesList");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **bucketId** | **Integer**| ID хранилища. | |
-| **prefix** | **String**| Префикс для поиска файла. | [optional] |
-| **isMultipart** | **Boolean**| Это логическое значение, которое используется для обозначения multipart-загрузки. | [optional] |
-
-### Return type
-
-[**GetStorageFilesList200Response**](GetStorageFilesList200Response.md)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Объект JSON c ключом &#x60;files&#x60; |  -  |
 | **400** | Некорректный запрос |  -  |
 | **401** | Не авторизован |  -  |
 | **403** | Запрещено |  -  |
@@ -1052,80 +744,6 @@ This endpoint does not need any parameter.
 | **429** | Слишком много запросов |  -  |
 | **500** | Внутренняя ошибка сервера |  -  |
 
-<a id="renameStorageFile"></a>
-# **renameStorageFile**
-> renameStorageFile(bucketId, renameStorageFileRequest)
-
-Переименование файла/директории в хранилище
-
-Чтобы переименовать файл/директорию в хранилище, отправьте POST-запрос на &#x60;/api/v1/storages/buckets/{bucket_id}/object-manager/rename&#x60;.
-
-### Example
-```java
-// Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.auth.*;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.S3Api;
-
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://api.timeweb.cloud");
-    
-    // Configure HTTP bearer authorization: Bearer
-    HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
-    Bearer.setBearerToken("BEARER TOKEN");
-
-    S3Api apiInstance = new S3Api(defaultClient);
-    Integer bucketId = 1051; // Integer | ID хранилища.
-    RenameStorageFileRequest renameStorageFileRequest = new RenameStorageFileRequest(); // RenameStorageFileRequest | 
-    try {
-      apiInstance.renameStorageFile(bucketId, renameStorageFileRequest);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling S3Api#renameStorageFile");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **bucketId** | **Integer**| ID хранилища. | |
-| **renameStorageFileRequest** | [**RenameStorageFileRequest**](RenameStorageFileRequest.md)|  | |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **204** | Файл успешно переименован |  -  |
-| **400** | Некорректный запрос |  -  |
-| **401** | Не авторизован |  -  |
-| **403** | Запрещено |  -  |
-| **404** | Не найдено |  -  |
-| **429** | Слишком много запросов |  -  |
-| **500** | Внутренняя ошибка сервера |  -  |
-
 <a id="transferStorage"></a>
 # **transferStorage**
 > transferStorage(transferStorageRequest)
@@ -1341,82 +959,6 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Объект JSON c ключом &#x60;user&#x60; |  -  |
-| **400** | Некорректный запрос |  -  |
-| **401** | Не авторизован |  -  |
-| **403** | Запрещено |  -  |
-| **404** | Не найдено |  -  |
-| **429** | Слишком много запросов |  -  |
-| **500** | Внутренняя ошибка сервера |  -  |
-
-<a id="uploadFileToStorage"></a>
-# **uploadFileToStorage**
-> uploadFileToStorage(bucketId, files, path)
-
-Загрузка файлов в хранилище
-
-Чтобы загрузить файлы в хранилище, отправьте POST-запрос на &#x60;/api/v1/storages/buckets/{bucket_id}/object-manager/upload&#x60;.
-
-### Example
-```java
-// Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.auth.*;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.S3Api;
-
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://api.timeweb.cloud");
-    
-    // Configure HTTP bearer authorization: Bearer
-    HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
-    Bearer.setBearerToken("BEARER TOKEN");
-
-    S3Api apiInstance = new S3Api(defaultClient);
-    Integer bucketId = 1051; // Integer | ID хранилища.
-    List<File> files = Arrays.asList(); // List<File> | 
-    String path = "test1/tes2"; // String | Путь до директории в хранилище
-    try {
-      apiInstance.uploadFileToStorage(bucketId, files, path);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling S3Api#uploadFileToStorage");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **bucketId** | **Integer**| ID хранилища. | |
-| **files** | **List&lt;File&gt;**|  | |
-| **path** | **String**| Путь до директории в хранилище | [optional] |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
- - **Content-Type**: multipart/form-data
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **204** | Файл успешно загружен |  -  |
 | **400** | Некорректный запрос |  -  |
 | **401** | Не авторизован |  -  |
 | **403** | Запрещено |  -  |

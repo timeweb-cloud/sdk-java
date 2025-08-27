@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * Параметры конфигурации воркер-ноды. Нельзя передавать вместе с &#x60;preset_id&#x60;. Локация воркер-нод должна совпадать с локацией кластера
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-13T14:01:57.127467Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-08-27T11:58:09.737284Z[Etc/UTC]")
 public class NodeGroupInConfiguration {
   public static final String SERIALIZED_NAME_CONFIGURATOR_ID = "configurator_id";
   @SerializedName(SERIALIZED_NAME_CONFIGURATOR_ID)
@@ -67,6 +67,10 @@ public class NodeGroupInConfiguration {
   public static final String SERIALIZED_NAME_RAM = "ram";
   @SerializedName(SERIALIZED_NAME_RAM)
   private Integer ram;
+
+  public static final String SERIALIZED_NAME_GPU = "gpu";
+  @SerializedName(SERIALIZED_NAME_GPU)
+  private Integer gpu;
 
   public NodeGroupInConfiguration() {
   }
@@ -155,6 +159,27 @@ public class NodeGroupInConfiguration {
   }
 
 
+  public NodeGroupInConfiguration gpu(Integer gpu) {
+    
+    this.gpu = gpu;
+    return this;
+  }
+
+   /**
+   * Количество видеокарт
+   * @return gpu
+  **/
+  @javax.annotation.Nullable
+  public Integer getGpu() {
+    return gpu;
+  }
+
+
+  public void setGpu(Integer gpu) {
+    this.gpu = gpu;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -168,12 +193,13 @@ public class NodeGroupInConfiguration {
     return Objects.equals(this.configuratorId, nodeGroupInConfiguration.configuratorId) &&
         Objects.equals(this.disk, nodeGroupInConfiguration.disk) &&
         Objects.equals(this.cpu, nodeGroupInConfiguration.cpu) &&
-        Objects.equals(this.ram, nodeGroupInConfiguration.ram);
+        Objects.equals(this.ram, nodeGroupInConfiguration.ram) &&
+        Objects.equals(this.gpu, nodeGroupInConfiguration.gpu);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(configuratorId, disk, cpu, ram);
+    return Objects.hash(configuratorId, disk, cpu, ram, gpu);
   }
 
   @Override
@@ -184,6 +210,7 @@ public class NodeGroupInConfiguration {
     sb.append("    disk: ").append(toIndentedString(disk)).append("\n");
     sb.append("    cpu: ").append(toIndentedString(cpu)).append("\n");
     sb.append("    ram: ").append(toIndentedString(ram)).append("\n");
+    sb.append("    gpu: ").append(toIndentedString(gpu)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -210,6 +237,7 @@ public class NodeGroupInConfiguration {
     openapiFields.add("disk");
     openapiFields.add("cpu");
     openapiFields.add("ram");
+    openapiFields.add("gpu");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

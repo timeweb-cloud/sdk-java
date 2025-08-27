@@ -53,7 +53,7 @@ import org.openapitools.client.JSON;
 /**
  * UpdateServer
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-13T14:01:57.127467Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-08-27T11:58:09.737284Z[Etc/UTC]")
 public class UpdateServer {
   public static final String SERIALIZED_NAME_CONFIGURATOR = "configurator";
   @SerializedName(SERIALIZED_NAME_CONFIGURATOR)
@@ -210,7 +210,7 @@ public class UpdateServer {
   }
 
    /**
-   * Имя облачного сервера. Максимальная длина — 255 символов, имя должно быть уникальным.
+   * Имя облачного сервера. Максимальная длина — 255 символов.
    * @return name
   **/
   @javax.annotation.Nullable

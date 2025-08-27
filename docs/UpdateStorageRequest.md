@@ -8,7 +8,7 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**presetId** | **BigDecimal** | ID тарифа. |  [optional] |
-|**configuratorId** | **BigDecimal** | ID конфигуратора хранилища. |  [optional] |
+|**configurator** | [**UpdateStorageRequestConfigurator**](UpdateStorageRequestConfigurator.md) |  |  [optional] |
 |**bucketType** | [**BucketTypeEnum**](#BucketTypeEnum) | Тип хранилища. |  [optional] |
 |**description** | **String** | Комментарий к хранилищу. |  [optional] |
 

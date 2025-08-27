@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * Объект, содержащий информацию о процессоре выделенного сервера.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-13T14:01:57.127467Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-08-27T11:58:09.737284Z[Etc/UTC]")
 public class DedicatedServerPresetCpu {
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
@@ -64,6 +64,10 @@ public class DedicatedServerPresetCpu {
   public static final String SERIALIZED_NAME_COUNT = "count";
   @SerializedName(SERIALIZED_NAME_COUNT)
   private BigDecimal count;
+
+  public static final String SERIALIZED_NAME_VENDOR = "vendor";
+  @SerializedName(SERIALIZED_NAME_VENDOR)
+  private String vendor;
 
   public DedicatedServerPresetCpu() {
   }
@@ -131,6 +135,27 @@ public class DedicatedServerPresetCpu {
   }
 
 
+  public DedicatedServerPresetCpu vendor(String vendor) {
+    
+    this.vendor = vendor;
+    return this;
+  }
+
+   /**
+   * Производитель процессора выделенного сервера.
+   * @return vendor
+  **/
+  @javax.annotation.Nonnull
+  public String getVendor() {
+    return vendor;
+  }
+
+
+  public void setVendor(String vendor) {
+    this.vendor = vendor;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -143,12 +168,13 @@ public class DedicatedServerPresetCpu {
     DedicatedServerPresetCpu dedicatedServerPresetCpu = (DedicatedServerPresetCpu) o;
     return Objects.equals(this.description, dedicatedServerPresetCpu.description) &&
         Objects.equals(this.descriptionShort, dedicatedServerPresetCpu.descriptionShort) &&
-        Objects.equals(this.count, dedicatedServerPresetCpu.count);
+        Objects.equals(this.count, dedicatedServerPresetCpu.count) &&
+        Objects.equals(this.vendor, dedicatedServerPresetCpu.vendor);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(description, descriptionShort, count);
+    return Objects.hash(description, descriptionShort, count, vendor);
   }
 
   @Override
@@ -158,6 +184,7 @@ public class DedicatedServerPresetCpu {
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    descriptionShort: ").append(toIndentedString(descriptionShort)).append("\n");
     sb.append("    count: ").append(toIndentedString(count)).append("\n");
+    sb.append("    vendor: ").append(toIndentedString(vendor)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -183,12 +210,14 @@ public class DedicatedServerPresetCpu {
     openapiFields.add("description");
     openapiFields.add("description_short");
     openapiFields.add("count");
+    openapiFields.add("vendor");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("description");
     openapiRequiredFields.add("description_short");
     openapiRequiredFields.add("count");
+    openapiRequiredFields.add("vendor");
   }
 
  /**
@@ -224,6 +253,9 @@ public class DedicatedServerPresetCpu {
       }
       if (!jsonObj.get("description_short").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description_short` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description_short").toString()));
+      }
+      if (!jsonObj.get("vendor").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `vendor` to be a primitive type in the JSON string but got `%s`", jsonObj.get("vendor").toString()));
       }
   }
 

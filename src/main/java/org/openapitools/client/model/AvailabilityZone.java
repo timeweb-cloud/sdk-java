@@ -37,13 +37,15 @@ public enum AvailabilityZone {
   
   SPB_4("spb-4"),
   
+  MSK_1("msk-1"),
+  
   NSK_1("nsk-1"),
   
   AMS_1("ams-1"),
   
-  GDN_1("gdn-1"),
+  ALA_1("ala-1"),
   
-  ALA_1("ala-1");
+  FRA_1("fra-1");
 
   private String value;
 

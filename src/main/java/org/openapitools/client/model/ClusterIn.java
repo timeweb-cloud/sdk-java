@@ -23,6 +23,10 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import org.openapitools.client.model.ClusterInClusterNetworkCidr;
+import org.openapitools.client.model.ClusterInConfiguration;
+import org.openapitools.client.model.ClusterInMaintenanceSlot;
+import org.openapitools.client.model.ClusterInOidcProvider;
 import org.openapitools.client.model.NodeGroupIn;
 
 import com.google.gson.Gson;
@@ -53,7 +57,7 @@ import org.openapitools.client.JSON;
 /**
  * ClusterIn
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-13T14:01:57.127467Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-08-27T11:58:09.737284Z[Etc/UTC]")
 public class ClusterIn {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -76,7 +80,9 @@ public class ClusterIn {
     
     MSK_1("msk-1"),
     
-    AMS_1("ams-1");
+    AMS_1("ams-1"),
+    
+    FRA_1("fra-1");
 
     private String value;
 
@@ -187,6 +193,14 @@ public class ClusterIn {
   @SerializedName(SERIALIZED_NAME_PRESET_ID)
   private Integer presetId;
 
+  public static final String SERIALIZED_NAME_CONFIGURATION = "configuration";
+  @SerializedName(SERIALIZED_NAME_CONFIGURATION)
+  private ClusterInConfiguration _configuration;
+
+  public static final String SERIALIZED_NAME_MASTER_NODES_COUNT = "master_nodes_count";
+  @SerializedName(SERIALIZED_NAME_MASTER_NODES_COUNT)
+  private Integer masterNodesCount;
+
   public static final String SERIALIZED_NAME_WORKER_GROUPS = "worker_groups";
   @SerializedName(SERIALIZED_NAME_WORKER_GROUPS)
   private List<NodeGroupIn> workerGroups;
@@ -198,6 +212,18 @@ public class ClusterIn {
   public static final String SERIALIZED_NAME_PROJECT_ID = "project_id";
   @SerializedName(SERIALIZED_NAME_PROJECT_ID)
   private Integer projectId;
+
+  public static final String SERIALIZED_NAME_MAINTENANCE_SLOT = "maintenance_slot";
+  @SerializedName(SERIALIZED_NAME_MAINTENANCE_SLOT)
+  private ClusterInMaintenanceSlot maintenanceSlot;
+
+  public static final String SERIALIZED_NAME_OIDC_PROVIDER = "oidc_provider";
+  @SerializedName(SERIALIZED_NAME_OIDC_PROVIDER)
+  private ClusterInOidcProvider oidcProvider;
+
+  public static final String SERIALIZED_NAME_CLUSTER_NETWORK_CIDR = "cluster_network_cidr";
+  @SerializedName(SERIALIZED_NAME_CLUSTER_NETWORK_CIDR)
+  private ClusterInClusterNetworkCidr clusterNetworkCidr;
 
   public ClusterIn() {
   }
@@ -356,10 +382,10 @@ public class ClusterIn {
   }
 
    /**
-   * ID тарифа мастер-ноды
+   * ID тарифа мастер-ноды. Нельзя передавать вместе с &#x60;configuration&#x60;
    * @return presetId
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getPresetId() {
     return presetId;
   }
@@ -367,6 +393,48 @@ public class ClusterIn {
 
   public void setPresetId(Integer presetId) {
     this.presetId = presetId;
+  }
+
+
+  public ClusterIn _configuration(ClusterInConfiguration _configuration) {
+    
+    this._configuration = _configuration;
+    return this;
+  }
+
+   /**
+   * Get _configuration
+   * @return _configuration
+  **/
+  @javax.annotation.Nullable
+  public ClusterInConfiguration getConfiguration() {
+    return _configuration;
+  }
+
+
+  public void setConfiguration(ClusterInConfiguration _configuration) {
+    this._configuration = _configuration;
+  }
+
+
+  public ClusterIn masterNodesCount(Integer masterNodesCount) {
+    
+    this.masterNodesCount = masterNodesCount;
+    return this;
+  }
+
+   /**
+   * Количество мастер нод
+   * @return masterNodesCount
+  **/
+  @javax.annotation.Nullable
+  public Integer getMasterNodesCount() {
+    return masterNodesCount;
+  }
+
+
+  public void setMasterNodesCount(Integer masterNodesCount) {
+    this.masterNodesCount = masterNodesCount;
   }
 
 
@@ -441,6 +509,69 @@ public class ClusterIn {
   }
 
 
+  public ClusterIn maintenanceSlot(ClusterInMaintenanceSlot maintenanceSlot) {
+    
+    this.maintenanceSlot = maintenanceSlot;
+    return this;
+  }
+
+   /**
+   * Get maintenanceSlot
+   * @return maintenanceSlot
+  **/
+  @javax.annotation.Nullable
+  public ClusterInMaintenanceSlot getMaintenanceSlot() {
+    return maintenanceSlot;
+  }
+
+
+  public void setMaintenanceSlot(ClusterInMaintenanceSlot maintenanceSlot) {
+    this.maintenanceSlot = maintenanceSlot;
+  }
+
+
+  public ClusterIn oidcProvider(ClusterInOidcProvider oidcProvider) {
+    
+    this.oidcProvider = oidcProvider;
+    return this;
+  }
+
+   /**
+   * Get oidcProvider
+   * @return oidcProvider
+  **/
+  @javax.annotation.Nullable
+  public ClusterInOidcProvider getOidcProvider() {
+    return oidcProvider;
+  }
+
+
+  public void setOidcProvider(ClusterInOidcProvider oidcProvider) {
+    this.oidcProvider = oidcProvider;
+  }
+
+
+  public ClusterIn clusterNetworkCidr(ClusterInClusterNetworkCidr clusterNetworkCidr) {
+    
+    this.clusterNetworkCidr = clusterNetworkCidr;
+    return this;
+  }
+
+   /**
+   * Get clusterNetworkCidr
+   * @return clusterNetworkCidr
+  **/
+  @javax.annotation.Nullable
+  public ClusterInClusterNetworkCidr getClusterNetworkCidr() {
+    return clusterNetworkCidr;
+  }
+
+
+  public void setClusterNetworkCidr(ClusterInClusterNetworkCidr clusterNetworkCidr) {
+    this.clusterNetworkCidr = clusterNetworkCidr;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -459,14 +590,19 @@ public class ClusterIn {
         Objects.equals(this.isIngress, clusterIn.isIngress) &&
         Objects.equals(this.isK8sDashboard, clusterIn.isK8sDashboard) &&
         Objects.equals(this.presetId, clusterIn.presetId) &&
+        Objects.equals(this._configuration, clusterIn._configuration) &&
+        Objects.equals(this.masterNodesCount, clusterIn.masterNodesCount) &&
         Objects.equals(this.workerGroups, clusterIn.workerGroups) &&
         Objects.equals(this.networkId, clusterIn.networkId) &&
-        Objects.equals(this.projectId, clusterIn.projectId);
+        Objects.equals(this.projectId, clusterIn.projectId) &&
+        Objects.equals(this.maintenanceSlot, clusterIn.maintenanceSlot) &&
+        Objects.equals(this.oidcProvider, clusterIn.oidcProvider) &&
+        Objects.equals(this.clusterNetworkCidr, clusterIn.clusterNetworkCidr);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, k8sVersion, availabilityZone, networkDriver, isIngress, isK8sDashboard, presetId, workerGroups, networkId, projectId);
+    return Objects.hash(name, description, k8sVersion, availabilityZone, networkDriver, isIngress, isK8sDashboard, presetId, _configuration, masterNodesCount, workerGroups, networkId, projectId, maintenanceSlot, oidcProvider, clusterNetworkCidr);
   }
 
   @Override
@@ -481,9 +617,14 @@ public class ClusterIn {
     sb.append("    isIngress: ").append(toIndentedString(isIngress)).append("\n");
     sb.append("    isK8sDashboard: ").append(toIndentedString(isK8sDashboard)).append("\n");
     sb.append("    presetId: ").append(toIndentedString(presetId)).append("\n");
+    sb.append("    _configuration: ").append(toIndentedString(_configuration)).append("\n");
+    sb.append("    masterNodesCount: ").append(toIndentedString(masterNodesCount)).append("\n");
     sb.append("    workerGroups: ").append(toIndentedString(workerGroups)).append("\n");
     sb.append("    networkId: ").append(toIndentedString(networkId)).append("\n");
     sb.append("    projectId: ").append(toIndentedString(projectId)).append("\n");
+    sb.append("    maintenanceSlot: ").append(toIndentedString(maintenanceSlot)).append("\n");
+    sb.append("    oidcProvider: ").append(toIndentedString(oidcProvider)).append("\n");
+    sb.append("    clusterNetworkCidr: ").append(toIndentedString(clusterNetworkCidr)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -514,16 +655,20 @@ public class ClusterIn {
     openapiFields.add("is_ingress");
     openapiFields.add("is_k8s_dashboard");
     openapiFields.add("preset_id");
+    openapiFields.add("configuration");
+    openapiFields.add("master_nodes_count");
     openapiFields.add("worker_groups");
     openapiFields.add("network_id");
     openapiFields.add("project_id");
+    openapiFields.add("maintenance_slot");
+    openapiFields.add("oidc_provider");
+    openapiFields.add("cluster_network_cidr");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("name");
     openapiRequiredFields.add("k8s_version");
     openapiRequiredFields.add("network_driver");
-    openapiRequiredFields.add("preset_id");
   }
 
  /**
@@ -569,6 +714,10 @@ public class ClusterIn {
       if (!jsonObj.get("network_driver").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `network_driver` to be a primitive type in the JSON string but got `%s`", jsonObj.get("network_driver").toString()));
       }
+      // validate the optional field `configuration`
+      if (jsonObj.get("configuration") != null && !jsonObj.get("configuration").isJsonNull()) {
+        ClusterInConfiguration.validateJsonElement(jsonObj.get("configuration"));
+      }
       if (jsonObj.get("worker_groups") != null && !jsonObj.get("worker_groups").isJsonNull()) {
         JsonArray jsonArrayworkerGroups = jsonObj.getAsJsonArray("worker_groups");
         if (jsonArrayworkerGroups != null) {
@@ -585,6 +734,18 @@ public class ClusterIn {
       }
       if ((jsonObj.get("network_id") != null && !jsonObj.get("network_id").isJsonNull()) && !jsonObj.get("network_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `network_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("network_id").toString()));
+      }
+      // validate the optional field `maintenance_slot`
+      if (jsonObj.get("maintenance_slot") != null && !jsonObj.get("maintenance_slot").isJsonNull()) {
+        ClusterInMaintenanceSlot.validateJsonElement(jsonObj.get("maintenance_slot"));
+      }
+      // validate the optional field `oidc_provider`
+      if (jsonObj.get("oidc_provider") != null && !jsonObj.get("oidc_provider").isJsonNull()) {
+        ClusterInOidcProvider.validateJsonElement(jsonObj.get("oidc_provider"));
+      }
+      // validate the optional field `cluster_network_cidr`
+      if (jsonObj.get("cluster_network_cidr") != null && !jsonObj.get("cluster_network_cidr").isJsonNull()) {
+        ClusterInClusterNetworkCidr.validateJsonElement(jsonObj.get("cluster_network_cidr"));
       }
   }
 

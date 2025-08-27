@@ -57,7 +57,7 @@
 |---- | -----|
 | STARTED | &quot;started&quot; |
 | STARTING | &quot;starting&quot; |
-| STOPED | &quot;stoped&quot; |
+| STOPPED | &quot;stopped&quot; |
 | NO_PAID | &quot;no_paid&quot; |
 
 

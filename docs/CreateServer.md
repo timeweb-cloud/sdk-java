@@ -14,7 +14,7 @@
 |**softwareId** | **BigDecimal** | ID программного обеспечения сервера. |  [optional] |
 |**presetId** | **BigDecimal** | ID тарифа сервера. Нельзя передавать вместе с ключом &#x60;configurator&#x60;. |  [optional] |
 |**bandwidth** | **BigDecimal** | Пропускная способность тарифа. Доступные значения от 100 до 1000 с шагом 100. |  [optional] |
-|**name** | **String** | Имя облачного сервера. Максимальная длина — 255 символов, имя должно быть уникальным. |  |
+|**name** | **String** | Имя облачного сервера. Максимальная длина — 255 символов. |  |
 |**avatarId** | **String** | ID аватара сервера. |  [optional] |
 |**comment** | **String** | Комментарий к облачному серверу. Максимальная длина — 255 символов. |  [optional] |
 |**sshKeysIds** | **List&lt;BigDecimal&gt;** | Список SSH-ключей. |  [optional] |
@@ -22,6 +22,7 @@
 |**network** | [**CreateServerNetwork**](CreateServerNetwork.md) |  |  [optional] |
 |**cloudInit** | **String** | Cloud-init скрипт |  [optional] |
 |**availabilityZone** | **AvailabilityZone** |  |  [optional] |
+|**projectId** | **BigDecimal** | ID проекта. |  [optional] |
 
 
 

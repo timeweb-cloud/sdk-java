@@ -26,6 +26,7 @@ import org.openapitools.client.model.ConfigParameters;
 import org.openapitools.client.model.CreateClusterAdmin;
 import org.openapitools.client.model.CreateClusterInstance;
 import org.openapitools.client.model.CreateDbAutoBackups;
+import org.openapitools.client.model.DbReplication;
 import org.openapitools.client.model.DbType;
 import org.openapitools.client.model.Network;
 
@@ -57,7 +58,7 @@ import org.openapitools.client.JSON;
 /**
  * CreateCluster
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-13T14:01:57.127467Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-08-27T11:58:09.737284Z[Etc/UTC]")
 public class CreateCluster {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -130,9 +131,21 @@ public class CreateCluster {
   @SerializedName(SERIALIZED_NAME_PRESET_ID)
   private Integer presetId;
 
+  public static final String SERIALIZED_NAME_CONFIGURATOR_ID = "configurator_id";
+  @SerializedName(SERIALIZED_NAME_CONFIGURATOR_ID)
+  private Integer configuratorId;
+
+  public static final String SERIALIZED_NAME_PROJECT_ID = "project_id";
+  @SerializedName(SERIALIZED_NAME_PROJECT_ID)
+  private Integer projectId;
+
   public static final String SERIALIZED_NAME_CONFIG_PARAMETERS = "config_parameters";
   @SerializedName(SERIALIZED_NAME_CONFIG_PARAMETERS)
   private ConfigParameters configParameters;
+
+  public static final String SERIALIZED_NAME_REPLICATION = "replication";
+  @SerializedName(SERIALIZED_NAME_REPLICATION)
+  private DbReplication replication;
 
   public static final String SERIALIZED_NAME_NETWORK = "network";
   @SerializedName(SERIALIZED_NAME_NETWORK)
@@ -265,10 +278,10 @@ public class CreateCluster {
   }
 
    /**
-   * ID тарифа.
+   * ID тарифа. Нельзя передавать вместе с &#x60;configurator_id&#x60;
    * @return presetId
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getPresetId() {
     return presetId;
   }
@@ -276,6 +289,48 @@ public class CreateCluster {
 
   public void setPresetId(Integer presetId) {
     this.presetId = presetId;
+  }
+
+
+  public CreateCluster configuratorId(Integer configuratorId) {
+    
+    this.configuratorId = configuratorId;
+    return this;
+  }
+
+   /**
+   * ID конфигуратора. Нельзя передавать вместе с &#x60;preset_id&#x60;
+   * @return configuratorId
+  **/
+  @javax.annotation.Nullable
+  public Integer getConfiguratorId() {
+    return configuratorId;
+  }
+
+
+  public void setConfiguratorId(Integer configuratorId) {
+    this.configuratorId = configuratorId;
+  }
+
+
+  public CreateCluster projectId(Integer projectId) {
+    
+    this.projectId = projectId;
+    return this;
+  }
+
+   /**
+   * ID проекта.
+   * @return projectId
+  **/
+  @javax.annotation.Nullable
+  public Integer getProjectId() {
+    return projectId;
+  }
+
+
+  public void setProjectId(Integer projectId) {
+    this.projectId = projectId;
   }
 
 
@@ -297,6 +352,27 @@ public class CreateCluster {
 
   public void setConfigParameters(ConfigParameters configParameters) {
     this.configParameters = configParameters;
+  }
+
+
+  public CreateCluster replication(DbReplication replication) {
+    
+    this.replication = replication;
+    return this;
+  }
+
+   /**
+   * Get replication
+   * @return replication
+  **/
+  @javax.annotation.Nullable
+  public DbReplication getReplication() {
+    return replication;
+  }
+
+
+  public void setReplication(DbReplication replication) {
+    this.replication = replication;
   }
 
 
@@ -400,7 +476,10 @@ public class CreateCluster {
         Objects.equals(this.instance, createCluster.instance) &&
         Objects.equals(this.hashType, createCluster.hashType) &&
         Objects.equals(this.presetId, createCluster.presetId) &&
+        Objects.equals(this.configuratorId, createCluster.configuratorId) &&
+        Objects.equals(this.projectId, createCluster.projectId) &&
         Objects.equals(this.configParameters, createCluster.configParameters) &&
+        Objects.equals(this.replication, createCluster.replication) &&
         Objects.equals(this.network, createCluster.network) &&
         Objects.equals(this.description, createCluster.description) &&
         Objects.equals(this.availabilityZone, createCluster.availabilityZone) &&
@@ -409,7 +488,7 @@ public class CreateCluster {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, type, admin, instance, hashType, presetId, configParameters, network, description, availabilityZone, autoBackups);
+    return Objects.hash(name, type, admin, instance, hashType, presetId, configuratorId, projectId, configParameters, replication, network, description, availabilityZone, autoBackups);
   }
 
   @Override
@@ -422,7 +501,10 @@ public class CreateCluster {
     sb.append("    instance: ").append(toIndentedString(instance)).append("\n");
     sb.append("    hashType: ").append(toIndentedString(hashType)).append("\n");
     sb.append("    presetId: ").append(toIndentedString(presetId)).append("\n");
+    sb.append("    configuratorId: ").append(toIndentedString(configuratorId)).append("\n");
+    sb.append("    projectId: ").append(toIndentedString(projectId)).append("\n");
     sb.append("    configParameters: ").append(toIndentedString(configParameters)).append("\n");
+    sb.append("    replication: ").append(toIndentedString(replication)).append("\n");
     sb.append("    network: ").append(toIndentedString(network)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    availabilityZone: ").append(toIndentedString(availabilityZone)).append("\n");
@@ -455,7 +537,10 @@ public class CreateCluster {
     openapiFields.add("instance");
     openapiFields.add("hash_type");
     openapiFields.add("preset_id");
+    openapiFields.add("configurator_id");
+    openapiFields.add("project_id");
     openapiFields.add("config_parameters");
+    openapiFields.add("replication");
     openapiFields.add("network");
     openapiFields.add("description");
     openapiFields.add("availability_zone");
@@ -465,7 +550,6 @@ public class CreateCluster {
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("name");
     openapiRequiredFields.add("type");
-    openapiRequiredFields.add("preset_id");
   }
 
  /**
@@ -513,6 +597,10 @@ public class CreateCluster {
       // validate the optional field `config_parameters`
       if (jsonObj.get("config_parameters") != null && !jsonObj.get("config_parameters").isJsonNull()) {
         ConfigParameters.validateJsonElement(jsonObj.get("config_parameters"));
+      }
+      // validate the optional field `replication`
+      if (jsonObj.get("replication") != null && !jsonObj.get("replication").isJsonNull()) {
+        DbReplication.validateJsonElement(jsonObj.get("replication"));
       }
       // validate the optional field `network`
       if (jsonObj.get("network") != null && !jsonObj.get("network").isJsonNull()) {

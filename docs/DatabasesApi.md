@@ -513,7 +513,7 @@ public class Example {
 
     DatabasesApi apiInstance = new DatabasesApi(defaultClient);
     Integer dbId = 56; // Integer | ID базы данных
-    Integer backupId = 56; // Integer | ID резевной копии
+    Integer backupId = 56; // Integer | ID резервной копии
     try {
       apiInstance.deleteDatabaseBackup(dbId, backupId);
     } catch (ApiException e) {
@@ -532,7 +532,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **dbId** | **Integer**| ID базы данных | |
-| **backupId** | **Integer**| ID резевной копии | |
+| **backupId** | **Integer**| ID резервной копии | |
 
 ### Return type
 
@@ -959,7 +959,7 @@ public class Example {
 
     DatabasesApi apiInstance = new DatabasesApi(defaultClient);
     Integer dbId = 56; // Integer | ID базы данных
-    Integer backupId = 56; // Integer | ID резевной копии
+    Integer backupId = 56; // Integer | ID резервной копии
     try {
       CreateDatabaseBackup201Response result = apiInstance.getDatabaseBackup(dbId, backupId);
       System.out.println(result);
@@ -979,7 +979,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **dbId** | **Integer**| ID базы данных | |
-| **backupId** | **Integer**| ID резевной копии | |
+| **backupId** | **Integer**| ID резервной копии | |
 
 ### Return type
 
@@ -1837,7 +1837,7 @@ public class Example {
 
     DatabasesApi apiInstance = new DatabasesApi(defaultClient);
     Integer dbId = 56; // Integer | ID базы данных
-    Integer backupId = 56; // Integer | ID резевной копии
+    Integer backupId = 56; // Integer | ID резервной копии
     try {
       apiInstance.restoreDatabaseFromBackup(dbId, backupId);
     } catch (ApiException e) {
@@ -1856,7 +1856,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **dbId** | **Integer**| ID базы данных | |
-| **backupId** | **Integer**| ID резевной копии | |
+| **backupId** | **Integer**| ID резервной копии | |
 
 ### Return type
 

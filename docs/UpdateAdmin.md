@@ -10,7 +10,7 @@
 |**password** | **String** | Пароль пользователя базы данных |  [optional] |
 |**privileges** | [**List&lt;PrivilegesEnum&gt;**](#List&lt;PrivilegesEnum&gt;) | Список привилегий пользователя базы данных |  [optional] |
 |**description** | **String** | Описание пользователя базы данных |  [optional] |
-|**instanceId** | **BigDecimal** | ID инстанса базы данных для приминения привилегий. В данных момент поле доступно только для кластеров MySQL. Если поле не передано, то привилегии будут применены ко всем инстансам |  [optional] |
+|**instanceId** | **BigDecimal** | ID инстанса базы данных для применения привилегий. В данных момент поле доступно только для кластеров MySQL. Если поле не передано, то привилегии будут применены ко всем инстансам |  [optional] |
 
 
 
@@ -40,6 +40,9 @@
 | ALTER_ROUTINE | &quot;ALTER_ROUTINE&quot; |
 | CREATE_ROUTINE | &quot;CREATE_ROUTINE&quot; |
 | TRANSACTION | &quot;TRANSACTION&quot; |
+| SLOW_LOG | &quot;SLOW_LOG&quot; |
+| TRIGGER | &quot;TRIGGER&quot; |
+| CREATE_TEMPORARY_TABLES | &quot;CREATE_TEMPORARY_TABLES&quot; |
 
 
 

@@ -23,9 +23,10 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import org.openapitools.client.model.ConfigParameters;
-import org.openapitools.client.model.DatabaseClusterDiskStats;
+import org.openapitools.client.model.DatabaseClusterDisk;
 import org.openapitools.client.model.DatabaseClusterNetworksInner;
 import org.openapitools.client.model.DbType;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -132,11 +133,11 @@ public class DatabaseClusterTest {
     }
 
     /**
-     * Test the property 'diskStats'
+     * Test the property 'disk'
      */
     @Test
-    public void diskStatsTest() {
-        // TODO: test diskStats
+    public void diskTest() {
+        // TODO: test disk
     }
 
     /**

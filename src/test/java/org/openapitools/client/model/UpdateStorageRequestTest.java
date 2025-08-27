@@ -20,6 +20,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
+import org.openapitools.client.model.UpdateStorageRequestConfigurator;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -46,11 +47,11 @@ public class UpdateStorageRequestTest {
     }
 
     /**
-     * Test the property 'configuratorId'
+     * Test the property 'configurator'
      */
     @Test
-    public void configuratorIdTest() {
-        // TODO: test configuratorId
+    public void configuratorTest() {
+        // TODO: test configurator
     }
 
     /**

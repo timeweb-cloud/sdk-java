@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import org.openapitools.client.model.BucketDiskStats;
+import org.openapitools.client.model.BucketWebsiteConfig;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -53,7 +54,7 @@ import org.openapitools.client.JSON;
 /**
  * Хранилище S3
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-13T14:01:57.127467Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-08-27T11:58:09.737284Z[Etc/UTC]")
 public class Bucket {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -261,6 +262,18 @@ public class Bucket {
   public static final String SERIALIZED_NAME_STORAGE_CLASS = "storage_class";
   @SerializedName(SERIALIZED_NAME_STORAGE_CLASS)
   private StorageClassEnum storageClass;
+
+  public static final String SERIALIZED_NAME_PROJECT_ID = "project_id";
+  @SerializedName(SERIALIZED_NAME_PROJECT_ID)
+  private BigDecimal projectId;
+
+  public static final String SERIALIZED_NAME_RATE_ID = "rate_id";
+  @SerializedName(SERIALIZED_NAME_RATE_ID)
+  private BigDecimal rateId;
+
+  public static final String SERIALIZED_NAME_WEBSITE_CONFIG = "website_config";
+  @SerializedName(SERIALIZED_NAME_WEBSITE_CONFIG)
+  private BucketWebsiteConfig websiteConfig;
 
   public Bucket() {
   }
@@ -601,6 +614,69 @@ public class Bucket {
   }
 
 
+  public Bucket projectId(BigDecimal projectId) {
+    
+    this.projectId = projectId;
+    return this;
+  }
+
+   /**
+   * ID проекта.
+   * @return projectId
+  **/
+  @javax.annotation.Nonnull
+  public BigDecimal getProjectId() {
+    return projectId;
+  }
+
+
+  public void setProjectId(BigDecimal projectId) {
+    this.projectId = projectId;
+  }
+
+
+  public Bucket rateId(BigDecimal rateId) {
+    
+    this.rateId = rateId;
+    return this;
+  }
+
+   /**
+   * ID тарифа.
+   * @return rateId
+  **/
+  @javax.annotation.Nonnull
+  public BigDecimal getRateId() {
+    return rateId;
+  }
+
+
+  public void setRateId(BigDecimal rateId) {
+    this.rateId = rateId;
+  }
+
+
+  public Bucket websiteConfig(BucketWebsiteConfig websiteConfig) {
+    
+    this.websiteConfig = websiteConfig;
+    return this;
+  }
+
+   /**
+   * Get websiteConfig
+   * @return websiteConfig
+  **/
+  @javax.annotation.Nonnull
+  public BucketWebsiteConfig getWebsiteConfig() {
+    return websiteConfig;
+  }
+
+
+  public void setWebsiteConfig(BucketWebsiteConfig websiteConfig) {
+    this.websiteConfig = websiteConfig;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -626,12 +702,15 @@ public class Bucket {
         Objects.equals(this.accessKey, bucket.accessKey) &&
         Objects.equals(this.secretKey, bucket.secretKey) &&
         Objects.equals(this.movedInQuarantineAt, bucket.movedInQuarantineAt) &&
-        Objects.equals(this.storageClass, bucket.storageClass);
+        Objects.equals(this.storageClass, bucket.storageClass) &&
+        Objects.equals(this.projectId, bucket.projectId) &&
+        Objects.equals(this.rateId, bucket.rateId) &&
+        Objects.equals(this.websiteConfig, bucket.websiteConfig);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, description, diskStats, type, presetId, configuratorId, avatarLink, status, objectAmount, location, hostname, accessKey, secretKey, movedInQuarantineAt, storageClass);
+    return Objects.hash(id, name, description, diskStats, type, presetId, configuratorId, avatarLink, status, objectAmount, location, hostname, accessKey, secretKey, movedInQuarantineAt, storageClass, projectId, rateId, websiteConfig);
   }
 
   @Override
@@ -654,6 +733,9 @@ public class Bucket {
     sb.append("    secretKey: ").append(toIndentedString(secretKey)).append("\n");
     sb.append("    movedInQuarantineAt: ").append(toIndentedString(movedInQuarantineAt)).append("\n");
     sb.append("    storageClass: ").append(toIndentedString(storageClass)).append("\n");
+    sb.append("    projectId: ").append(toIndentedString(projectId)).append("\n");
+    sb.append("    rateId: ").append(toIndentedString(rateId)).append("\n");
+    sb.append("    websiteConfig: ").append(toIndentedString(websiteConfig)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -692,6 +774,9 @@ public class Bucket {
     openapiFields.add("secret_key");
     openapiFields.add("moved_in_quarantine_at");
     openapiFields.add("storage_class");
+    openapiFields.add("project_id");
+    openapiFields.add("rate_id");
+    openapiFields.add("website_config");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -710,6 +795,9 @@ public class Bucket {
     openapiRequiredFields.add("secret_key");
     openapiRequiredFields.add("moved_in_quarantine_at");
     openapiRequiredFields.add("storage_class");
+    openapiRequiredFields.add("project_id");
+    openapiRequiredFields.add("rate_id");
+    openapiRequiredFields.add("website_config");
   }
 
  /**
@@ -772,6 +860,8 @@ public class Bucket {
       if (!jsonObj.get("storage_class").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `storage_class` to be a primitive type in the JSON string but got `%s`", jsonObj.get("storage_class").toString()));
       }
+      // validate the required field `website_config`
+      BucketWebsiteConfig.validateJsonElement(jsonObj.get("website_config"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

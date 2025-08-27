@@ -24,6 +24,7 @@ import org.openapitools.client.model.ConfigParameters;
 import org.openapitools.client.model.CreateClusterAdmin;
 import org.openapitools.client.model.CreateClusterInstance;
 import org.openapitools.client.model.CreateDbAutoBackups;
+import org.openapitools.client.model.DbReplication;
 import org.openapitools.client.model.DbType;
 import org.openapitools.client.model.Network;
 import org.junit.jupiter.api.Disabled;
@@ -92,11 +93,35 @@ public class CreateClusterTest {
     }
 
     /**
+     * Test the property 'configuratorId'
+     */
+    @Test
+    public void configuratorIdTest() {
+        // TODO: test configuratorId
+    }
+
+    /**
+     * Test the property 'projectId'
+     */
+    @Test
+    public void projectIdTest() {
+        // TODO: test projectId
+    }
+
+    /**
      * Test the property 'configParameters'
      */
     @Test
     public void configParametersTest() {
         // TODO: test configParameters
+    }
+
+    /**
+     * Test the property 'replication'
+     */
+    @Test
+    public void replicationTest() {
+        // TODO: test replication
     }
 
     /**

@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import org.openapitools.client.model.BucketDiskStats;
+import org.openapitools.client.model.BucketWebsiteConfig;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -165,6 +166,30 @@ public class BucketTest {
     @Test
     public void storageClassTest() {
         // TODO: test storageClass
+    }
+
+    /**
+     * Test the property 'projectId'
+     */
+    @Test
+    public void projectIdTest() {
+        // TODO: test projectId
+    }
+
+    /**
+     * Test the property 'rateId'
+     */
+    @Test
+    public void rateIdTest() {
+        // TODO: test rateId
+    }
+
+    /**
+     * Test the property 'websiteConfig'
+     */
+    @Test
+    public void websiteConfigTest() {
+        // TODO: test websiteConfig
     }
 
 }

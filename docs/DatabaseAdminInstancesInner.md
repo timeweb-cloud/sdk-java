@@ -38,6 +38,9 @@
 | ALTER_ROUTINE | &quot;ALTER_ROUTINE&quot; |
 | CREATE_ROUTINE | &quot;CREATE_ROUTINE&quot; |
 | TRANSACTION | &quot;TRANSACTION&quot; |
+| SLOW_LOG | &quot;SLOW_LOG&quot; |
+| TRIGGER | &quot;TRIGGER&quot; |
+| CREATE_TEMPORARY_TABLES | &quot;CREATE_TEMPORARY_TABLES&quot; |
 
 
 

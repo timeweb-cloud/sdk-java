@@ -22,6 +22,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
+import org.openapitools.client.model.CreateStorageRequestConfigurator;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -51,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * CreateStorageRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-13T14:01:57.127467Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-08-27T11:58:09.737284Z[Etc/UTC]")
 public class CreateStorageRequest {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -115,6 +116,14 @@ public class CreateStorageRequest {
   public static final String SERIALIZED_NAME_PRESET_ID = "preset_id";
   @SerializedName(SERIALIZED_NAME_PRESET_ID)
   private BigDecimal presetId;
+
+  public static final String SERIALIZED_NAME_CONFIGURATOR = "configurator";
+  @SerializedName(SERIALIZED_NAME_CONFIGURATOR)
+  private CreateStorageRequestConfigurator configurator;
+
+  public static final String SERIALIZED_NAME_PROJECT_ID = "project_id";
+  @SerializedName(SERIALIZED_NAME_PROJECT_ID)
+  private BigDecimal projectId;
 
   public CreateStorageRequest() {
   }
@@ -189,10 +198,10 @@ public class CreateStorageRequest {
   }
 
    /**
-   * ID тарифа.
+   * ID тарифа. Нельзя передавать вместе с &#x60;configurator&#x60;.
    * @return presetId
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public BigDecimal getPresetId() {
     return presetId;
   }
@@ -200,6 +209,48 @@ public class CreateStorageRequest {
 
   public void setPresetId(BigDecimal presetId) {
     this.presetId = presetId;
+  }
+
+
+  public CreateStorageRequest configurator(CreateStorageRequestConfigurator configurator) {
+    
+    this.configurator = configurator;
+    return this;
+  }
+
+   /**
+   * Get configurator
+   * @return configurator
+  **/
+  @javax.annotation.Nullable
+  public CreateStorageRequestConfigurator getConfigurator() {
+    return configurator;
+  }
+
+
+  public void setConfigurator(CreateStorageRequestConfigurator configurator) {
+    this.configurator = configurator;
+  }
+
+
+  public CreateStorageRequest projectId(BigDecimal projectId) {
+    
+    this.projectId = projectId;
+    return this;
+  }
+
+   /**
+   * ID проекта.
+   * @return projectId
+  **/
+  @javax.annotation.Nullable
+  public BigDecimal getProjectId() {
+    return projectId;
+  }
+
+
+  public void setProjectId(BigDecimal projectId) {
+    this.projectId = projectId;
   }
 
 
@@ -216,12 +267,14 @@ public class CreateStorageRequest {
     return Objects.equals(this.name, createStorageRequest.name) &&
         Objects.equals(this.description, createStorageRequest.description) &&
         Objects.equals(this.type, createStorageRequest.type) &&
-        Objects.equals(this.presetId, createStorageRequest.presetId);
+        Objects.equals(this.presetId, createStorageRequest.presetId) &&
+        Objects.equals(this.configurator, createStorageRequest.configurator) &&
+        Objects.equals(this.projectId, createStorageRequest.projectId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, type, presetId);
+    return Objects.hash(name, description, type, presetId, configurator, projectId);
   }
 
   @Override
@@ -232,6 +285,8 @@ public class CreateStorageRequest {
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    presetId: ").append(toIndentedString(presetId)).append("\n");
+    sb.append("    configurator: ").append(toIndentedString(configurator)).append("\n");
+    sb.append("    projectId: ").append(toIndentedString(projectId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -258,12 +313,13 @@ public class CreateStorageRequest {
     openapiFields.add("description");
     openapiFields.add("type");
     openapiFields.add("preset_id");
+    openapiFields.add("configurator");
+    openapiFields.add("project_id");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("name");
     openapiRequiredFields.add("type");
-    openapiRequiredFields.add("preset_id");
   }
 
  /**
@@ -302,6 +358,10 @@ public class CreateStorageRequest {
       }
       if (!jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+      }
+      // validate the optional field `configurator`
+      if (jsonObj.get("configurator") != null && !jsonObj.get("configurator").isJsonNull()) {
+        CreateStorageRequestConfigurator.validateJsonElement(jsonObj.get("configurator"));
       }
   }
 

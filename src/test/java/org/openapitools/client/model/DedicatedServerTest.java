@@ -240,4 +240,36 @@ public class DedicatedServerTest {
         // TODO: test password
     }
 
+    /**
+     * Test the property 'avatarLink'
+     */
+    @Test
+    public void avatarLinkTest() {
+        // TODO: test avatarLink
+    }
+
+    /**
+     * Test the property 'isPreInstalled'
+     */
+    @Test
+    public void isPreInstalledTest() {
+        // TODO: test isPreInstalled
+    }
+
+    /**
+     * Test the property 'presetId'
+     */
+    @Test
+    public void presetIdTest() {
+        // TODO: test presetId
+    }
+
+    /**
+     * Test the property 'projectId'
+     */
+    @Test
+    public void projectIdTest() {
+        // TODO: test projectId
+    }
+
 }

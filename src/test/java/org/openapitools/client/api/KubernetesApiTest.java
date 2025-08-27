@@ -25,14 +25,15 @@ import org.openapitools.client.model.GetFinances403Response;
 import org.openapitools.client.model.GetFinances429Response;
 import org.openapitools.client.model.GetFinances500Response;
 import org.openapitools.client.model.GetImage404Response;
+import org.openapitools.client.model.IncreaseNodes;
 import org.openapitools.client.model.K8SVersionsResponse;
 import org.openapitools.client.model.NetworkDriversResponse;
-import org.openapitools.client.model.NodeCount;
 import org.openapitools.client.model.NodeGroupIn;
 import org.openapitools.client.model.NodeGroupResponse;
 import org.openapitools.client.model.NodeGroupsResponse;
 import org.openapitools.client.model.NodesResponse;
 import org.openapitools.client.model.PresetsResponse;
+import org.openapitools.client.model.ReduceNodes;
 import org.openapitools.client.model.ResourcesResponse;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -292,8 +293,8 @@ public class KubernetesApiTest {
     public void increaseCountOfNodesInGroupTest() throws ApiException {
         Integer clusterId = null;
         Integer groupId = null;
-        NodeCount nodeCount = null;
-        NodesResponse response = api.increaseCountOfNodesInGroup(clusterId, groupId, nodeCount);
+        IncreaseNodes increaseNodes = null;
+        NodesResponse response = api.increaseCountOfNodesInGroup(clusterId, groupId, increaseNodes);
         // TODO: test validations
     }
 
@@ -308,8 +309,8 @@ public class KubernetesApiTest {
     public void reduceCountOfNodesInGroupTest() throws ApiException {
         Integer clusterId = null;
         Integer groupId = null;
-        NodeCount nodeCount = null;
-        api.reduceCountOfNodesInGroup(clusterId, groupId, nodeCount);
+        ReduceNodes reduceNodes = null;
+        api.reduceCountOfNodesInGroup(clusterId, groupId, reduceNodes);
         // TODO: test validations
     }
 

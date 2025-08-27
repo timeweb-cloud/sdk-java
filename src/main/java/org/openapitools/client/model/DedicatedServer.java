@@ -54,7 +54,7 @@ import org.openapitools.client.JSON;
 /**
  * Выделенный сервер
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-13T14:01:57.127467Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-08-27T11:58:09.737284Z[Etc/UTC]")
 public class DedicatedServer {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -265,6 +265,22 @@ public class DedicatedServer {
   public static final String SERIALIZED_NAME_PASSWORD = "password";
   @SerializedName(SERIALIZED_NAME_PASSWORD)
   private String password;
+
+  public static final String SERIALIZED_NAME_AVATAR_LINK = "avatar_link";
+  @SerializedName(SERIALIZED_NAME_AVATAR_LINK)
+  private String avatarLink;
+
+  public static final String SERIALIZED_NAME_IS_PRE_INSTALLED = "is_pre_installed";
+  @SerializedName(SERIALIZED_NAME_IS_PRE_INSTALLED)
+  private Boolean isPreInstalled;
+
+  public static final String SERIALIZED_NAME_PRESET_ID = "preset_id";
+  @SerializedName(SERIALIZED_NAME_PRESET_ID)
+  private Integer presetId;
+
+  public static final String SERIALIZED_NAME_PROJECT_ID = "project_id";
+  @SerializedName(SERIALIZED_NAME_PROJECT_ID)
+  private Integer projectId;
 
   public DedicatedServer() {
   }
@@ -810,6 +826,90 @@ public class DedicatedServer {
   }
 
 
+  public DedicatedServer avatarLink(String avatarLink) {
+    
+    this.avatarLink = avatarLink;
+    return this;
+  }
+
+   /**
+   * Ссылка на аватар сервера.
+   * @return avatarLink
+  **/
+  @javax.annotation.Nullable
+  public String getAvatarLink() {
+    return avatarLink;
+  }
+
+
+  public void setAvatarLink(String avatarLink) {
+    this.avatarLink = avatarLink;
+  }
+
+
+  public DedicatedServer isPreInstalled(Boolean isPreInstalled) {
+    
+    this.isPreInstalled = isPreInstalled;
+    return this;
+  }
+
+   /**
+   * Это логическое значение, которое показывает, готов ли выделенный сервер к моментальной выдаче.
+   * @return isPreInstalled
+  **/
+  @javax.annotation.Nonnull
+  public Boolean getIsPreInstalled() {
+    return isPreInstalled;
+  }
+
+
+  public void setIsPreInstalled(Boolean isPreInstalled) {
+    this.isPreInstalled = isPreInstalled;
+  }
+
+
+  public DedicatedServer presetId(Integer presetId) {
+    
+    this.presetId = presetId;
+    return this;
+  }
+
+   /**
+   * ID тарифа сервера.
+   * @return presetId
+  **/
+  @javax.annotation.Nonnull
+  public Integer getPresetId() {
+    return presetId;
+  }
+
+
+  public void setPresetId(Integer presetId) {
+    this.presetId = presetId;
+  }
+
+
+  public DedicatedServer projectId(Integer projectId) {
+    
+    this.projectId = projectId;
+    return this;
+  }
+
+   /**
+   * ID проекта
+   * @return projectId
+  **/
+  @javax.annotation.Nonnull
+  public Integer getProjectId() {
+    return projectId;
+  }
+
+
+  public void setProjectId(Integer projectId) {
+    this.projectId = projectId;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -844,12 +944,16 @@ public class DedicatedServer {
         Objects.equals(this.price, dedicatedServer.price) &&
         Objects.equals(this.location, dedicatedServer.location) &&
         Objects.equals(this.autoinstallReady, dedicatedServer.autoinstallReady) &&
-        Objects.equals(this.password, dedicatedServer.password);
+        Objects.equals(this.password, dedicatedServer.password) &&
+        Objects.equals(this.avatarLink, dedicatedServer.avatarLink) &&
+        Objects.equals(this.isPreInstalled, dedicatedServer.isPreInstalled) &&
+        Objects.equals(this.presetId, dedicatedServer.presetId) &&
+        Objects.equals(this.projectId, dedicatedServer.projectId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, cpuDescription, hddDescription, ramDescription, createdAt, ip, ipmiIp, ipmiLogin, ipmiPassword, ipv6, nodeId, name, comment, vncPass, status, osId, cpId, bandwidthId, networkDriveId, additionalIpAddrId, planId, price, location, autoinstallReady, password);
+    return Objects.hash(id, cpuDescription, hddDescription, ramDescription, createdAt, ip, ipmiIp, ipmiLogin, ipmiPassword, ipv6, nodeId, name, comment, vncPass, status, osId, cpId, bandwidthId, networkDriveId, additionalIpAddrId, planId, price, location, autoinstallReady, password, avatarLink, isPreInstalled, presetId, projectId);
   }
 
   @Override
@@ -881,6 +985,10 @@ public class DedicatedServer {
     sb.append("    location: ").append(toIndentedString(location)).append("\n");
     sb.append("    autoinstallReady: ").append(toIndentedString(autoinstallReady)).append("\n");
     sb.append("    password: ").append(toIndentedString(password)).append("\n");
+    sb.append("    avatarLink: ").append(toIndentedString(avatarLink)).append("\n");
+    sb.append("    isPreInstalled: ").append(toIndentedString(isPreInstalled)).append("\n");
+    sb.append("    presetId: ").append(toIndentedString(presetId)).append("\n");
+    sb.append("    projectId: ").append(toIndentedString(projectId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -928,6 +1036,10 @@ public class DedicatedServer {
     openapiFields.add("location");
     openapiFields.add("autoinstall_ready");
     openapiFields.add("password");
+    openapiFields.add("avatar_link");
+    openapiFields.add("is_pre_installed");
+    openapiFields.add("preset_id");
+    openapiFields.add("project_id");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -956,6 +1068,10 @@ public class DedicatedServer {
     openapiRequiredFields.add("location");
     openapiRequiredFields.add("autoinstall_ready");
     openapiRequiredFields.add("password");
+    openapiRequiredFields.add("avatar_link");
+    openapiRequiredFields.add("is_pre_installed");
+    openapiRequiredFields.add("preset_id");
+    openapiRequiredFields.add("project_id");
   }
 
  /**
@@ -1039,6 +1155,9 @@ public class DedicatedServer {
       }
       if ((jsonObj.get("password") != null && !jsonObj.get("password").isJsonNull()) && !jsonObj.get("password").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `password` to be a primitive type in the JSON string but got `%s`", jsonObj.get("password").toString()));
+      }
+      if ((jsonObj.get("avatar_link") != null && !jsonObj.get("avatar_link").isJsonNull()) && !jsonObj.get("avatar_link").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `avatar_link` to be a primitive type in the JSON string but got `%s`", jsonObj.get("avatar_link").toString()));
       }
   }
 

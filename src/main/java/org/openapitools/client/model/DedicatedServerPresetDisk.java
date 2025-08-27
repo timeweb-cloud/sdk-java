@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * Объект, содержащий информацию о диске выделенного сервера.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-13T14:01:57.127467Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-08-27T11:58:09.737284Z[Etc/UTC]")
 public class DedicatedServerPresetDisk {
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
@@ -60,6 +60,14 @@ public class DedicatedServerPresetDisk {
   public static final String SERIALIZED_NAME_COUNT = "count";
   @SerializedName(SERIALIZED_NAME_COUNT)
   private BigDecimal count;
+
+  public static final String SERIALIZED_NAME_TOTAL_SIZE = "total_size";
+  @SerializedName(SERIALIZED_NAME_TOTAL_SIZE)
+  private BigDecimal totalSize;
+
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  private String type;
 
   public DedicatedServerPresetDisk() {
   }
@@ -106,6 +114,48 @@ public class DedicatedServerPresetDisk {
   }
 
 
+  public DedicatedServerPresetDisk totalSize(BigDecimal totalSize) {
+    
+    this.totalSize = totalSize;
+    return this;
+  }
+
+   /**
+   * Общий размер дисков выделенного сервера.
+   * @return totalSize
+  **/
+  @javax.annotation.Nonnull
+  public BigDecimal getTotalSize() {
+    return totalSize;
+  }
+
+
+  public void setTotalSize(BigDecimal totalSize) {
+    this.totalSize = totalSize;
+  }
+
+
+  public DedicatedServerPresetDisk type(String type) {
+    
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * Тип дисков выделенного сервера.
+   * @return type
+  **/
+  @javax.annotation.Nonnull
+  public String getType() {
+    return type;
+  }
+
+
+  public void setType(String type) {
+    this.type = type;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -117,12 +167,14 @@ public class DedicatedServerPresetDisk {
     }
     DedicatedServerPresetDisk dedicatedServerPresetDisk = (DedicatedServerPresetDisk) o;
     return Objects.equals(this.description, dedicatedServerPresetDisk.description) &&
-        Objects.equals(this.count, dedicatedServerPresetDisk.count);
+        Objects.equals(this.count, dedicatedServerPresetDisk.count) &&
+        Objects.equals(this.totalSize, dedicatedServerPresetDisk.totalSize) &&
+        Objects.equals(this.type, dedicatedServerPresetDisk.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(description, count);
+    return Objects.hash(description, count, totalSize, type);
   }
 
   @Override
@@ -131,6 +183,8 @@ public class DedicatedServerPresetDisk {
     sb.append("class DedicatedServerPresetDisk {\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    count: ").append(toIndentedString(count)).append("\n");
+    sb.append("    totalSize: ").append(toIndentedString(totalSize)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -155,11 +209,15 @@ public class DedicatedServerPresetDisk {
     openapiFields = new HashSet<String>();
     openapiFields.add("description");
     openapiFields.add("count");
+    openapiFields.add("total_size");
+    openapiFields.add("type");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("description");
     openapiRequiredFields.add("count");
+    openapiRequiredFields.add("total_size");
+    openapiRequiredFields.add("type");
   }
 
  /**
@@ -192,6 +250,9 @@ public class DedicatedServerPresetDisk {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
+      }
+      if (!jsonObj.get("type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
   }
 

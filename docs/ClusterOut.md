@@ -43,6 +43,7 @@
 | SPB_3 | &quot;spb-3&quot; |
 | MSK_1 | &quot;msk-1&quot; |
 | AMS_1 | &quot;ams-1&quot; |
+| FRA_1 | &quot;fra-1&quot; |
 
 
 

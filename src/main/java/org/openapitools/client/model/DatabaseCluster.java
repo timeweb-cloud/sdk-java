@@ -25,9 +25,10 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import org.openapitools.client.model.ConfigParameters;
-import org.openapitools.client.model.DatabaseClusterDiskStats;
+import org.openapitools.client.model.DatabaseClusterDisk;
 import org.openapitools.client.model.DatabaseClusterNetworksInner;
 import org.openapitools.client.model.DbType;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -57,7 +58,7 @@ import org.openapitools.client.JSON;
 /**
  * Кластер базы данных
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-13T14:01:57.127467Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-08-27T11:58:09.737284Z[Etc/UTC]")
 public class DatabaseCluster {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -74,11 +75,11 @@ public class DatabaseCluster {
   public enum LocationEnum {
     RU_1("ru-1"),
     
-    RU_2("ru-2"),
+    RU_3("ru-3"),
     
-    PL_1("pl-1"),
+    NL_1("nl-1"),
     
-    KZ_1("kz-1");
+    DE_1("de-1");
 
     private String value;
 
@@ -268,9 +269,9 @@ public class DatabaseCluster {
   @SerializedName(SERIALIZED_NAME_PRESET_ID)
   private Integer presetId;
 
-  public static final String SERIALIZED_NAME_DISK_STATS = "disk_stats";
-  @SerializedName(SERIALIZED_NAME_DISK_STATS)
-  private DatabaseClusterDiskStats diskStats;
+  public static final String SERIALIZED_NAME_DISK = "disk";
+  @SerializedName(SERIALIZED_NAME_DISK)
+  private DatabaseClusterDisk disk;
 
   public static final String SERIALIZED_NAME_CONFIG_PARAMETERS = "config_parameters";
   @SerializedName(SERIALIZED_NAME_CONFIG_PARAMETERS)
@@ -522,24 +523,24 @@ public class DatabaseCluster {
   }
 
 
-  public DatabaseCluster diskStats(DatabaseClusterDiskStats diskStats) {
+  public DatabaseCluster disk(DatabaseClusterDisk disk) {
     
-    this.diskStats = diskStats;
+    this.disk = disk;
     return this;
   }
 
    /**
-   * Get diskStats
-   * @return diskStats
+   * Get disk
+   * @return disk
   **/
   @javax.annotation.Nullable
-  public DatabaseClusterDiskStats getDiskStats() {
-    return diskStats;
+  public DatabaseClusterDisk getDisk() {
+    return disk;
   }
 
 
-  public void setDiskStats(DatabaseClusterDiskStats diskStats) {
-    this.diskStats = diskStats;
+  public void setDisk(DatabaseClusterDisk disk) {
+    this.disk = disk;
   }
 
 
@@ -606,14 +607,25 @@ public class DatabaseCluster {
         Objects.equals(this.port, databaseCluster.port) &&
         Objects.equals(this.status, databaseCluster.status) &&
         Objects.equals(this.presetId, databaseCluster.presetId) &&
-        Objects.equals(this.diskStats, databaseCluster.diskStats) &&
+        Objects.equals(this.disk, databaseCluster.disk) &&
         Objects.equals(this.configParameters, databaseCluster.configParameters) &&
         Objects.equals(this.isEnabledPublicNetwork, databaseCluster.isEnabledPublicNetwork);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, location, name, networks, type, hashType, avatarLink, port, status, presetId, diskStats, configParameters, isEnabledPublicNetwork);
+    return Objects.hash(id, createdAt, location, name, networks, type, hashType, avatarLink, port, status, presetId, disk, configParameters, isEnabledPublicNetwork);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -631,7 +643,7 @@ public class DatabaseCluster {
     sb.append("    port: ").append(toIndentedString(port)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    presetId: ").append(toIndentedString(presetId)).append("\n");
-    sb.append("    diskStats: ").append(toIndentedString(diskStats)).append("\n");
+    sb.append("    disk: ").append(toIndentedString(disk)).append("\n");
     sb.append("    configParameters: ").append(toIndentedString(configParameters)).append("\n");
     sb.append("    isEnabledPublicNetwork: ").append(toIndentedString(isEnabledPublicNetwork)).append("\n");
     sb.append("}");
@@ -667,7 +679,7 @@ public class DatabaseCluster {
     openapiFields.add("port");
     openapiFields.add("status");
     openapiFields.add("preset_id");
-    openapiFields.add("disk_stats");
+    openapiFields.add("disk");
     openapiFields.add("config_parameters");
     openapiFields.add("is_enabled_public_network");
 
@@ -684,7 +696,6 @@ public class DatabaseCluster {
     openapiRequiredFields.add("port");
     openapiRequiredFields.add("status");
     openapiRequiredFields.add("preset_id");
-    openapiRequiredFields.add("disk_stats");
     openapiRequiredFields.add("config_parameters");
     openapiRequiredFields.add("is_enabled_public_network");
   }
@@ -745,8 +756,10 @@ public class DatabaseCluster {
       if (!jsonObj.get("status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
       }
-      // validate the required field `disk_stats`
-      DatabaseClusterDiskStats.validateJsonElement(jsonObj.get("disk_stats"));
+      // validate the optional field `disk`
+      if (jsonObj.get("disk") != null && !jsonObj.get("disk").isJsonNull()) {
+        DatabaseClusterDisk.validateJsonElement(jsonObj.get("disk"));
+      }
       // validate the required field `config_parameters`
       ConfigParameters.validateJsonElement(jsonObj.get("config_parameters"));
   }

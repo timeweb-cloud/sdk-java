@@ -54,6 +54,8 @@ docs/AvailableFrameworksBackendFrameworksInner.md
 docs/AvailableFrameworksFrontendFrameworksInner.md
 docs/Backup.md
 docs/Balancer.md
+docs/BalancerNetworksInner.md
+docs/BalancerNetworksInnerIpsInner.md
 docs/BalancersApi.md
 docs/BaseError.md
 docs/BindFloatingIp.md
@@ -62,9 +64,15 @@ docs/Branch.md
 docs/Bucket.md
 docs/BucketDiskStats.md
 docs/BucketUser.md
+docs/BucketWebsiteConfig.md
+docs/BucketWebsiteConfigErrorPagesInner.md
 docs/CheckDomain200Response.md
 docs/ClusterEdit.md
 docs/ClusterIn.md
+docs/ClusterInClusterNetworkCidr.md
+docs/ClusterInConfiguration.md
+docs/ClusterInMaintenanceSlot.md
+docs/ClusterInOidcProvider.md
 docs/ClusterOut.md
 docs/ClusterResponse.md
 docs/Clusterk8s.md
@@ -72,7 +80,9 @@ docs/ClustersResponse.md
 docs/Commit.md
 docs/ComponentsSchemasBaseError.md
 docs/ConfigParameters.md
-docs/CopyStorageFileRequest.md
+docs/ContainerRegistryApi.md
+docs/ContainerRegistryPresetsInner.md
+docs/ContainerRegistryRepositoriesInner.md
 docs/CreateAdmin.md
 docs/CreateApiKey.md
 docs/CreateApp.md
@@ -102,7 +112,6 @@ docs/CreateDomainMailboxRequest.md
 docs/CreateDomainRequest201Response.md
 docs/CreateFloatingIp.md
 docs/CreateFloatingIp201Response.md
-docs/CreateFolderInStorageRequest.md
 docs/CreateInstance.md
 docs/CreateKey201Response.md
 docs/CreateKeyRequest.md
@@ -124,6 +133,7 @@ docs/CreateServerDiskRequest.md
 docs/CreateServerNetwork.md
 docs/CreateStorage201Response.md
 docs/CreateStorageRequest.md
+docs/CreateStorageRequestConfigurator.md
 docs/CreateToken201Response.md
 docs/CreateVPC201Response.md
 docs/CreateVpc.md
@@ -131,7 +141,7 @@ docs/CreatedApiKey.md
 docs/DatabaseAdmin.md
 docs/DatabaseAdminInstancesInner.md
 docs/DatabaseCluster.md
-docs/DatabaseClusterDiskStats.md
+docs/DatabaseClusterDisk.md
 docs/DatabaseClusterNetworksInner.md
 docs/DatabaseClusterNetworksInnerIpsInner.md
 docs/DatabaseInstance.md
@@ -140,6 +150,7 @@ docs/DatabaseTypeRequirements.md
 docs/DatabasesApi.md
 docs/Db.md
 docs/DbDiskStats.md
+docs/DbReplication.md
 docs/DbType.md
 docs/DedicatedServer.md
 docs/DedicatedServerAdditionalService.md
@@ -160,7 +171,6 @@ docs/DeleteServer200Response.md
 docs/DeleteServerIPRequest.md
 docs/DeleteServiceResponse.md
 docs/DeleteStorage200Response.md
-docs/DeleteStorageFileRequest.md
 docs/Deploy.md
 docs/DeploySettingsInner.md
 docs/DeployStatus.md
@@ -278,7 +288,6 @@ docs/GetServerStatisticsNew200Response.md
 docs/GetServers200Response.md
 docs/GetServersPresets200Response.md
 docs/GetSoftware200Response.md
-docs/GetStorageFilesList200Response.md
 docs/GetStorageSubdomains200Response.md
 docs/GetStorageTransferStatus200Response.md
 docs/GetStorageUsers200Response.md
@@ -301,6 +310,7 @@ docs/ImageUrlAuth.md
 docs/ImageUrlIn.md
 docs/ImagesApi.md
 docs/ImagesOutResponse.md
+docs/IncreaseNodes.md
 docs/Invoice.md
 docs/K8SVersionsResponse.md
 docs/KubernetesApi.md
@@ -315,6 +325,7 @@ docs/MailboxForwardingOutgoing.md
 docs/MailboxSpamFilter.md
 docs/MasterPresetOutApi.md
 docs/Meta.md
+docs/Meta1.md
 docs/MountNetworkDrive.md
 docs/Network.md
 docs/NetworkDrive.md
@@ -325,7 +336,6 @@ docs/NetworkDrivePresetWrite.md
 docs/NetworkDriveServiceListInner.md
 docs/NetworkDriversResponse.md
 docs/NetworkDrivesApi.md
-docs/NodeCount.md
 docs/NodeGroupIn.md
 docs/NodeGroupInConfiguration.md
 docs/NodeGroupOut.md
@@ -351,10 +361,18 @@ docs/ProjectsApi.md
 docs/Provider.md
 docs/Providers.md
 docs/Quota.md
+docs/ReduceNodes.md
 docs/RefreshApiKey.md
+docs/RegistriesResponse.md
+docs/RegistryEdit.md
+docs/RegistryIn.md
+docs/RegistryInConfiguration.md
+docs/RegistryOut.md
+docs/RegistryOutDiskStats.md
+docs/RegistryResponse.md
 docs/RemoveCountries.md
 docs/RemoveIps.md
-docs/RenameStorageFileRequest.md
+docs/RepositoriesResponse.md
 docs/Repository.md
 docs/Resource.md
 docs/ResourceTransfer.md
@@ -363,11 +381,10 @@ docs/Resources.md
 docs/ResourcesResponse.md
 docs/Rule.md
 docs/S3Api.md
-docs/S3Object.md
-docs/S3ObjectOwner.md
 docs/S3Subdomain.md
 docs/SchemasBaseError.md
 docs/SchemasMeta.md
+docs/SchemasPresetsResponse.md
 docs/ServerBackup.md
 docs/ServerDisk.md
 docs/ServerIp.md
@@ -393,6 +410,7 @@ docs/SshKeyUsedByInner.md
 docs/Status.md
 docs/StatusCompanyInfo.md
 docs/Subdomain.md
+docs/Tags.md
 docs/TopLevelDomain.md
 docs/TopLevelDomainAllowedBuyPeriodsInner.md
 docs/TransferStatus.md
@@ -431,6 +449,7 @@ docs/UpdateServerNATRequest.md
 docs/UpdateServerOSBootModeRequest.md
 docs/UpdateSettings.md
 docs/UpdateStorageRequest.md
+docs/UpdateStorageRequestConfigurator.md
 docs/UpdateStorageUser200Response.md
 docs/UpdateStorageUserRequest.md
 docs/UpdateToken200Response.md
@@ -478,6 +497,7 @@ src/main/java/org/openapitools/client/api/AccountApi.java
 src/main/java/org/openapitools/client/api/ApiKeysApi.java
 src/main/java/org/openapitools/client/api/AppsApi.java
 src/main/java/org/openapitools/client/api/BalancersApi.java
+src/main/java/org/openapitools/client/api/ContainerRegistryApi.java
 src/main/java/org/openapitools/client/api/DatabasesApi.java
 src/main/java/org/openapitools/client/api/DedicatedServersApi.java
 src/main/java/org/openapitools/client/api/DomainsApi.java
@@ -543,6 +563,8 @@ src/main/java/org/openapitools/client/model/AvailableFrameworksBackendFrameworks
 src/main/java/org/openapitools/client/model/AvailableFrameworksFrontendFrameworksInner.java
 src/main/java/org/openapitools/client/model/Backup.java
 src/main/java/org/openapitools/client/model/Balancer.java
+src/main/java/org/openapitools/client/model/BalancerNetworksInner.java
+src/main/java/org/openapitools/client/model/BalancerNetworksInnerIpsInner.java
 src/main/java/org/openapitools/client/model/BaseError.java
 src/main/java/org/openapitools/client/model/BindFloatingIp.java
 src/main/java/org/openapitools/client/model/Bonus.java
@@ -550,9 +572,15 @@ src/main/java/org/openapitools/client/model/Branch.java
 src/main/java/org/openapitools/client/model/Bucket.java
 src/main/java/org/openapitools/client/model/BucketDiskStats.java
 src/main/java/org/openapitools/client/model/BucketUser.java
+src/main/java/org/openapitools/client/model/BucketWebsiteConfig.java
+src/main/java/org/openapitools/client/model/BucketWebsiteConfigErrorPagesInner.java
 src/main/java/org/openapitools/client/model/CheckDomain200Response.java
 src/main/java/org/openapitools/client/model/ClusterEdit.java
 src/main/java/org/openapitools/client/model/ClusterIn.java
+src/main/java/org/openapitools/client/model/ClusterInClusterNetworkCidr.java
+src/main/java/org/openapitools/client/model/ClusterInConfiguration.java
+src/main/java/org/openapitools/client/model/ClusterInMaintenanceSlot.java
+src/main/java/org/openapitools/client/model/ClusterInOidcProvider.java
 src/main/java/org/openapitools/client/model/ClusterOut.java
 src/main/java/org/openapitools/client/model/ClusterResponse.java
 src/main/java/org/openapitools/client/model/Clusterk8s.java
@@ -560,7 +588,8 @@ src/main/java/org/openapitools/client/model/ClustersResponse.java
 src/main/java/org/openapitools/client/model/Commit.java
 src/main/java/org/openapitools/client/model/ComponentsSchemasBaseError.java
 src/main/java/org/openapitools/client/model/ConfigParameters.java
-src/main/java/org/openapitools/client/model/CopyStorageFileRequest.java
+src/main/java/org/openapitools/client/model/ContainerRegistryPresetsInner.java
+src/main/java/org/openapitools/client/model/ContainerRegistryRepositoriesInner.java
 src/main/java/org/openapitools/client/model/CreateAdmin.java
 src/main/java/org/openapitools/client/model/CreateApiKey.java
 src/main/java/org/openapitools/client/model/CreateApp.java
@@ -590,7 +619,6 @@ src/main/java/org/openapitools/client/model/CreateDomainMailboxRequest.java
 src/main/java/org/openapitools/client/model/CreateDomainRequest201Response.java
 src/main/java/org/openapitools/client/model/CreateFloatingIp.java
 src/main/java/org/openapitools/client/model/CreateFloatingIp201Response.java
-src/main/java/org/openapitools/client/model/CreateFolderInStorageRequest.java
 src/main/java/org/openapitools/client/model/CreateInstance.java
 src/main/java/org/openapitools/client/model/CreateKey201Response.java
 src/main/java/org/openapitools/client/model/CreateKeyRequest.java
@@ -612,6 +640,7 @@ src/main/java/org/openapitools/client/model/CreateServerDiskRequest.java
 src/main/java/org/openapitools/client/model/CreateServerNetwork.java
 src/main/java/org/openapitools/client/model/CreateStorage201Response.java
 src/main/java/org/openapitools/client/model/CreateStorageRequest.java
+src/main/java/org/openapitools/client/model/CreateStorageRequestConfigurator.java
 src/main/java/org/openapitools/client/model/CreateToken201Response.java
 src/main/java/org/openapitools/client/model/CreateVPC201Response.java
 src/main/java/org/openapitools/client/model/CreateVpc.java
@@ -619,7 +648,7 @@ src/main/java/org/openapitools/client/model/CreatedApiKey.java
 src/main/java/org/openapitools/client/model/DatabaseAdmin.java
 src/main/java/org/openapitools/client/model/DatabaseAdminInstancesInner.java
 src/main/java/org/openapitools/client/model/DatabaseCluster.java
-src/main/java/org/openapitools/client/model/DatabaseClusterDiskStats.java
+src/main/java/org/openapitools/client/model/DatabaseClusterDisk.java
 src/main/java/org/openapitools/client/model/DatabaseClusterNetworksInner.java
 src/main/java/org/openapitools/client/model/DatabaseClusterNetworksInnerIpsInner.java
 src/main/java/org/openapitools/client/model/DatabaseInstance.java
@@ -627,6 +656,7 @@ src/main/java/org/openapitools/client/model/DatabaseType.java
 src/main/java/org/openapitools/client/model/DatabaseTypeRequirements.java
 src/main/java/org/openapitools/client/model/Db.java
 src/main/java/org/openapitools/client/model/DbDiskStats.java
+src/main/java/org/openapitools/client/model/DbReplication.java
 src/main/java/org/openapitools/client/model/DbType.java
 src/main/java/org/openapitools/client/model/DedicatedServer.java
 src/main/java/org/openapitools/client/model/DedicatedServerAdditionalService.java
@@ -646,7 +676,6 @@ src/main/java/org/openapitools/client/model/DeleteServer200Response.java
 src/main/java/org/openapitools/client/model/DeleteServerIPRequest.java
 src/main/java/org/openapitools/client/model/DeleteServiceResponse.java
 src/main/java/org/openapitools/client/model/DeleteStorage200Response.java
-src/main/java/org/openapitools/client/model/DeleteStorageFileRequest.java
 src/main/java/org/openapitools/client/model/Deploy.java
 src/main/java/org/openapitools/client/model/DeploySettingsInner.java
 src/main/java/org/openapitools/client/model/DeployStatus.java
@@ -761,7 +790,6 @@ src/main/java/org/openapitools/client/model/GetServerStatisticsNew200Response.ja
 src/main/java/org/openapitools/client/model/GetServers200Response.java
 src/main/java/org/openapitools/client/model/GetServersPresets200Response.java
 src/main/java/org/openapitools/client/model/GetSoftware200Response.java
-src/main/java/org/openapitools/client/model/GetStorageFilesList200Response.java
 src/main/java/org/openapitools/client/model/GetStorageSubdomains200Response.java
 src/main/java/org/openapitools/client/model/GetStorageTransferStatus200Response.java
 src/main/java/org/openapitools/client/model/GetStorageUsers200Response.java
@@ -783,6 +811,7 @@ src/main/java/org/openapitools/client/model/ImageUpdateAPI.java
 src/main/java/org/openapitools/client/model/ImageUrlAuth.java
 src/main/java/org/openapitools/client/model/ImageUrlIn.java
 src/main/java/org/openapitools/client/model/ImagesOutResponse.java
+src/main/java/org/openapitools/client/model/IncreaseNodes.java
 src/main/java/org/openapitools/client/model/Invoice.java
 src/main/java/org/openapitools/client/model/K8SVersionsResponse.java
 src/main/java/org/openapitools/client/model/Location.java
@@ -794,6 +823,7 @@ src/main/java/org/openapitools/client/model/MailboxForwardingOutgoing.java
 src/main/java/org/openapitools/client/model/MailboxSpamFilter.java
 src/main/java/org/openapitools/client/model/MasterPresetOutApi.java
 src/main/java/org/openapitools/client/model/Meta.java
+src/main/java/org/openapitools/client/model/Meta1.java
 src/main/java/org/openapitools/client/model/MountNetworkDrive.java
 src/main/java/org/openapitools/client/model/Network.java
 src/main/java/org/openapitools/client/model/NetworkDrive.java
@@ -803,7 +833,6 @@ src/main/java/org/openapitools/client/model/NetworkDrivePresetRead.java
 src/main/java/org/openapitools/client/model/NetworkDrivePresetWrite.java
 src/main/java/org/openapitools/client/model/NetworkDriveServiceListInner.java
 src/main/java/org/openapitools/client/model/NetworkDriversResponse.java
-src/main/java/org/openapitools/client/model/NodeCount.java
 src/main/java/org/openapitools/client/model/NodeGroupIn.java
 src/main/java/org/openapitools/client/model/NodeGroupInConfiguration.java
 src/main/java/org/openapitools/client/model/NodeGroupOut.java
@@ -828,10 +857,18 @@ src/main/java/org/openapitools/client/model/ProjectResource.java
 src/main/java/org/openapitools/client/model/Provider.java
 src/main/java/org/openapitools/client/model/Providers.java
 src/main/java/org/openapitools/client/model/Quota.java
+src/main/java/org/openapitools/client/model/ReduceNodes.java
 src/main/java/org/openapitools/client/model/RefreshApiKey.java
+src/main/java/org/openapitools/client/model/RegistriesResponse.java
+src/main/java/org/openapitools/client/model/RegistryEdit.java
+src/main/java/org/openapitools/client/model/RegistryIn.java
+src/main/java/org/openapitools/client/model/RegistryInConfiguration.java
+src/main/java/org/openapitools/client/model/RegistryOut.java
+src/main/java/org/openapitools/client/model/RegistryOutDiskStats.java
+src/main/java/org/openapitools/client/model/RegistryResponse.java
 src/main/java/org/openapitools/client/model/RemoveCountries.java
 src/main/java/org/openapitools/client/model/RemoveIps.java
-src/main/java/org/openapitools/client/model/RenameStorageFileRequest.java
+src/main/java/org/openapitools/client/model/RepositoriesResponse.java
 src/main/java/org/openapitools/client/model/Repository.java
 src/main/java/org/openapitools/client/model/Resource.java
 src/main/java/org/openapitools/client/model/ResourceTransfer.java
@@ -839,11 +876,10 @@ src/main/java/org/openapitools/client/model/ResourceType.java
 src/main/java/org/openapitools/client/model/Resources.java
 src/main/java/org/openapitools/client/model/ResourcesResponse.java
 src/main/java/org/openapitools/client/model/Rule.java
-src/main/java/org/openapitools/client/model/S3Object.java
-src/main/java/org/openapitools/client/model/S3ObjectOwner.java
 src/main/java/org/openapitools/client/model/S3Subdomain.java
 src/main/java/org/openapitools/client/model/SchemasBaseError.java
 src/main/java/org/openapitools/client/model/SchemasMeta.java
+src/main/java/org/openapitools/client/model/SchemasPresetsResponse.java
 src/main/java/org/openapitools/client/model/ServerBackup.java
 src/main/java/org/openapitools/client/model/ServerDisk.java
 src/main/java/org/openapitools/client/model/ServerIp.java
@@ -867,6 +903,7 @@ src/main/java/org/openapitools/client/model/SshKeyUsedByInner.java
 src/main/java/org/openapitools/client/model/Status.java
 src/main/java/org/openapitools/client/model/StatusCompanyInfo.java
 src/main/java/org/openapitools/client/model/Subdomain.java
+src/main/java/org/openapitools/client/model/Tags.java
 src/main/java/org/openapitools/client/model/TopLevelDomain.java
 src/main/java/org/openapitools/client/model/TopLevelDomainAllowedBuyPeriodsInner.java
 src/main/java/org/openapitools/client/model/TransferStatus.java
@@ -905,6 +942,7 @@ src/main/java/org/openapitools/client/model/UpdateServerNATRequest.java
 src/main/java/org/openapitools/client/model/UpdateServerOSBootModeRequest.java
 src/main/java/org/openapitools/client/model/UpdateSettings.java
 src/main/java/org/openapitools/client/model/UpdateStorageRequest.java
+src/main/java/org/openapitools/client/model/UpdateStorageRequestConfigurator.java
 src/main/java/org/openapitools/client/model/UpdateStorageUser200Response.java
 src/main/java/org/openapitools/client/model/UpdateStorageUserRequest.java
 src/main/java/org/openapitools/client/model/UpdateToken200Response.java
@@ -929,6 +967,7 @@ src/test/java/org/openapitools/client/api/AccountApiTest.java
 src/test/java/org/openapitools/client/api/ApiKeysApiTest.java
 src/test/java/org/openapitools/client/api/AppsApiTest.java
 src/test/java/org/openapitools/client/api/BalancersApiTest.java
+src/test/java/org/openapitools/client/api/ContainerRegistryApiTest.java
 src/test/java/org/openapitools/client/api/DatabasesApiTest.java
 src/test/java/org/openapitools/client/api/DedicatedServersApiTest.java
 src/test/java/org/openapitools/client/api/DomainsApiTest.java
@@ -988,6 +1027,8 @@ src/test/java/org/openapitools/client/model/AvailableFrameworksBackendFrameworks
 src/test/java/org/openapitools/client/model/AvailableFrameworksFrontendFrameworksInnerTest.java
 src/test/java/org/openapitools/client/model/AvailableFrameworksTest.java
 src/test/java/org/openapitools/client/model/BackupTest.java
+src/test/java/org/openapitools/client/model/BalancerNetworksInnerIpsInnerTest.java
+src/test/java/org/openapitools/client/model/BalancerNetworksInnerTest.java
 src/test/java/org/openapitools/client/model/BalancerTest.java
 src/test/java/org/openapitools/client/model/BaseErrorTest.java
 src/test/java/org/openapitools/client/model/BindFloatingIpTest.java
@@ -996,8 +1037,14 @@ src/test/java/org/openapitools/client/model/BranchTest.java
 src/test/java/org/openapitools/client/model/BucketDiskStatsTest.java
 src/test/java/org/openapitools/client/model/BucketTest.java
 src/test/java/org/openapitools/client/model/BucketUserTest.java
+src/test/java/org/openapitools/client/model/BucketWebsiteConfigErrorPagesInnerTest.java
+src/test/java/org/openapitools/client/model/BucketWebsiteConfigTest.java
 src/test/java/org/openapitools/client/model/CheckDomain200ResponseTest.java
 src/test/java/org/openapitools/client/model/ClusterEditTest.java
+src/test/java/org/openapitools/client/model/ClusterInClusterNetworkCidrTest.java
+src/test/java/org/openapitools/client/model/ClusterInConfigurationTest.java
+src/test/java/org/openapitools/client/model/ClusterInMaintenanceSlotTest.java
+src/test/java/org/openapitools/client/model/ClusterInOidcProviderTest.java
 src/test/java/org/openapitools/client/model/ClusterInTest.java
 src/test/java/org/openapitools/client/model/ClusterOutTest.java
 src/test/java/org/openapitools/client/model/ClusterResponseTest.java
@@ -1006,7 +1053,8 @@ src/test/java/org/openapitools/client/model/ClustersResponseTest.java
 src/test/java/org/openapitools/client/model/CommitTest.java
 src/test/java/org/openapitools/client/model/ComponentsSchemasBaseErrorTest.java
 src/test/java/org/openapitools/client/model/ConfigParametersTest.java
-src/test/java/org/openapitools/client/model/CopyStorageFileRequestTest.java
+src/test/java/org/openapitools/client/model/ContainerRegistryPresetsInnerTest.java
+src/test/java/org/openapitools/client/model/ContainerRegistryRepositoriesInnerTest.java
 src/test/java/org/openapitools/client/model/CreateAdminTest.java
 src/test/java/org/openapitools/client/model/CreateApiKeyTest.java
 src/test/java/org/openapitools/client/model/CreateApp201ResponseTest.java
@@ -1036,7 +1084,6 @@ src/test/java/org/openapitools/client/model/CreateDomainMailboxRequestTest.java
 src/test/java/org/openapitools/client/model/CreateDomainRequest201ResponseTest.java
 src/test/java/org/openapitools/client/model/CreateFloatingIp201ResponseTest.java
 src/test/java/org/openapitools/client/model/CreateFloatingIpTest.java
-src/test/java/org/openapitools/client/model/CreateFolderInStorageRequestTest.java
 src/test/java/org/openapitools/client/model/CreateInstanceTest.java
 src/test/java/org/openapitools/client/model/CreateKey201ResponseTest.java
 src/test/java/org/openapitools/client/model/CreateKeyRequestTest.java
@@ -1057,6 +1104,7 @@ src/test/java/org/openapitools/client/model/CreateServerDiskRequestTest.java
 src/test/java/org/openapitools/client/model/CreateServerNetworkTest.java
 src/test/java/org/openapitools/client/model/CreateServerTest.java
 src/test/java/org/openapitools/client/model/CreateStorage201ResponseTest.java
+src/test/java/org/openapitools/client/model/CreateStorageRequestConfiguratorTest.java
 src/test/java/org/openapitools/client/model/CreateStorageRequestTest.java
 src/test/java/org/openapitools/client/model/CreateToken201ResponseTest.java
 src/test/java/org/openapitools/client/model/CreateVPC201ResponseTest.java
@@ -1064,7 +1112,7 @@ src/test/java/org/openapitools/client/model/CreateVpcTest.java
 src/test/java/org/openapitools/client/model/CreatedApiKeyTest.java
 src/test/java/org/openapitools/client/model/DatabaseAdminInstancesInnerTest.java
 src/test/java/org/openapitools/client/model/DatabaseAdminTest.java
-src/test/java/org/openapitools/client/model/DatabaseClusterDiskStatsTest.java
+src/test/java/org/openapitools/client/model/DatabaseClusterDiskTest.java
 src/test/java/org/openapitools/client/model/DatabaseClusterNetworksInnerIpsInnerTest.java
 src/test/java/org/openapitools/client/model/DatabaseClusterNetworksInnerTest.java
 src/test/java/org/openapitools/client/model/DatabaseClusterTest.java
@@ -1072,6 +1120,7 @@ src/test/java/org/openapitools/client/model/DatabaseInstanceTest.java
 src/test/java/org/openapitools/client/model/DatabaseTypeRequirementsTest.java
 src/test/java/org/openapitools/client/model/DatabaseTypeTest.java
 src/test/java/org/openapitools/client/model/DbDiskStatsTest.java
+src/test/java/org/openapitools/client/model/DbReplicationTest.java
 src/test/java/org/openapitools/client/model/DbTest.java
 src/test/java/org/openapitools/client/model/DbTypeTest.java
 src/test/java/org/openapitools/client/model/DedicatedServerAdditionalServiceTest.java
@@ -1092,7 +1141,6 @@ src/test/java/org/openapitools/client/model/DeleteServer200ResponseTest.java
 src/test/java/org/openapitools/client/model/DeleteServerIPRequestTest.java
 src/test/java/org/openapitools/client/model/DeleteServiceResponseTest.java
 src/test/java/org/openapitools/client/model/DeleteStorage200ResponseTest.java
-src/test/java/org/openapitools/client/model/DeleteStorageFileRequestTest.java
 src/test/java/org/openapitools/client/model/DeploySettingsInnerTest.java
 src/test/java/org/openapitools/client/model/DeployStatusTest.java
 src/test/java/org/openapitools/client/model/DeployTest.java
@@ -1207,7 +1255,6 @@ src/test/java/org/openapitools/client/model/GetServerStatisticsNew200ResponseTes
 src/test/java/org/openapitools/client/model/GetServers200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetServersPresets200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetSoftware200ResponseTest.java
-src/test/java/org/openapitools/client/model/GetStorageFilesList200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetStorageSubdomains200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetStorageTransferStatus200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetStorageUsers200ResponseTest.java
@@ -1229,6 +1276,7 @@ src/test/java/org/openapitools/client/model/ImageUpdateAPITest.java
 src/test/java/org/openapitools/client/model/ImageUrlAuthTest.java
 src/test/java/org/openapitools/client/model/ImageUrlInTest.java
 src/test/java/org/openapitools/client/model/ImagesOutResponseTest.java
+src/test/java/org/openapitools/client/model/IncreaseNodesTest.java
 src/test/java/org/openapitools/client/model/InvoiceTest.java
 src/test/java/org/openapitools/client/model/K8SVersionsResponseTest.java
 src/test/java/org/openapitools/client/model/LocationDtoTest.java
@@ -1239,6 +1287,7 @@ src/test/java/org/openapitools/client/model/MailboxForwardingOutgoingTest.java
 src/test/java/org/openapitools/client/model/MailboxSpamFilterTest.java
 src/test/java/org/openapitools/client/model/MailboxTest.java
 src/test/java/org/openapitools/client/model/MasterPresetOutApiTest.java
+src/test/java/org/openapitools/client/model/Meta1Test.java
 src/test/java/org/openapitools/client/model/MetaTest.java
 src/test/java/org/openapitools/client/model/MountNetworkDriveTest.java
 src/test/java/org/openapitools/client/model/NetworkDriveAvailableResourceTest.java
@@ -1249,7 +1298,6 @@ src/test/java/org/openapitools/client/model/NetworkDriveServiceListInnerTest.jav
 src/test/java/org/openapitools/client/model/NetworkDriveTest.java
 src/test/java/org/openapitools/client/model/NetworkDriversResponseTest.java
 src/test/java/org/openapitools/client/model/NetworkTest.java
-src/test/java/org/openapitools/client/model/NodeCountTest.java
 src/test/java/org/openapitools/client/model/NodeGroupInConfigurationTest.java
 src/test/java/org/openapitools/client/model/NodeGroupInTest.java
 src/test/java/org/openapitools/client/model/NodeGroupOutTest.java
@@ -1274,10 +1322,18 @@ src/test/java/org/openapitools/client/model/ProjectTest.java
 src/test/java/org/openapitools/client/model/ProviderTest.java
 src/test/java/org/openapitools/client/model/ProvidersTest.java
 src/test/java/org/openapitools/client/model/QuotaTest.java
+src/test/java/org/openapitools/client/model/ReduceNodesTest.java
 src/test/java/org/openapitools/client/model/RefreshApiKeyTest.java
+src/test/java/org/openapitools/client/model/RegistriesResponseTest.java
+src/test/java/org/openapitools/client/model/RegistryEditTest.java
+src/test/java/org/openapitools/client/model/RegistryInConfigurationTest.java
+src/test/java/org/openapitools/client/model/RegistryInTest.java
+src/test/java/org/openapitools/client/model/RegistryOutDiskStatsTest.java
+src/test/java/org/openapitools/client/model/RegistryOutTest.java
+src/test/java/org/openapitools/client/model/RegistryResponseTest.java
 src/test/java/org/openapitools/client/model/RemoveCountriesTest.java
 src/test/java/org/openapitools/client/model/RemoveIpsTest.java
-src/test/java/org/openapitools/client/model/RenameStorageFileRequestTest.java
+src/test/java/org/openapitools/client/model/RepositoriesResponseTest.java
 src/test/java/org/openapitools/client/model/RepositoryTest.java
 src/test/java/org/openapitools/client/model/ResourceTest.java
 src/test/java/org/openapitools/client/model/ResourceTransferTest.java
@@ -1285,11 +1341,10 @@ src/test/java/org/openapitools/client/model/ResourceTypeTest.java
 src/test/java/org/openapitools/client/model/ResourcesResponseTest.java
 src/test/java/org/openapitools/client/model/ResourcesTest.java
 src/test/java/org/openapitools/client/model/RuleTest.java
-src/test/java/org/openapitools/client/model/S3ObjectOwnerTest.java
-src/test/java/org/openapitools/client/model/S3ObjectTest.java
 src/test/java/org/openapitools/client/model/S3SubdomainTest.java
 src/test/java/org/openapitools/client/model/SchemasBaseErrorTest.java
 src/test/java/org/openapitools/client/model/SchemasMetaTest.java
+src/test/java/org/openapitools/client/model/SchemasPresetsResponseTest.java
 src/test/java/org/openapitools/client/model/ServerBackupTest.java
 src/test/java/org/openapitools/client/model/ServerDiskTest.java
 src/test/java/org/openapitools/client/model/ServerIpTest.java
@@ -1313,6 +1368,7 @@ src/test/java/org/openapitools/client/model/SshKeyUsedByInnerTest.java
 src/test/java/org/openapitools/client/model/StatusCompanyInfoTest.java
 src/test/java/org/openapitools/client/model/StatusTest.java
 src/test/java/org/openapitools/client/model/SubdomainTest.java
+src/test/java/org/openapitools/client/model/TagsTest.java
 src/test/java/org/openapitools/client/model/TopLevelDomainAllowedBuyPeriodsInnerTest.java
 src/test/java/org/openapitools/client/model/TopLevelDomainTest.java
 src/test/java/org/openapitools/client/model/TransferStatusErrorsInnerTest.java
@@ -1350,6 +1406,7 @@ src/test/java/org/openapitools/client/model/UpdateServerNATRequestTest.java
 src/test/java/org/openapitools/client/model/UpdateServerOSBootModeRequestTest.java
 src/test/java/org/openapitools/client/model/UpdateServerTest.java
 src/test/java/org/openapitools/client/model/UpdateSettingsTest.java
+src/test/java/org/openapitools/client/model/UpdateStorageRequestConfiguratorTest.java
 src/test/java/org/openapitools/client/model/UpdateStorageRequestTest.java
 src/test/java/org/openapitools/client/model/UpdateStorageUser200ResponseTest.java
 src/test/java/org/openapitools/client/model/UpdateStorageUserRequestTest.java

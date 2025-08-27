@@ -22,6 +22,8 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -51,7 +53,7 @@ import org.openapitools.client.JSON;
 /**
  * Тариф
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-13T14:01:57.127467Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-08-27T11:58:09.737284Z[Etc/UTC]")
 public class PresetsStorage {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -78,11 +80,7 @@ public class PresetsStorage {
    */
   @JsonAdapter(LocationEnum.Adapter.class)
   public enum LocationEnum {
-    RU_1("ru-1"),
-    
-    PL_1("pl-1"),
-    
-    KZ_1("kz-1");
+    RU_1("ru-1");
 
     private String value;
 
@@ -125,6 +123,61 @@ public class PresetsStorage {
   public static final String SERIALIZED_NAME_LOCATION = "location";
   @SerializedName(SERIALIZED_NAME_LOCATION)
   private LocationEnum location;
+
+  public static final String SERIALIZED_NAME_TAGS = "tags";
+  @SerializedName(SERIALIZED_NAME_TAGS)
+  private List<String> tags = new ArrayList<>();
+
+  /**
+   * Класс хранилища.
+   */
+  @JsonAdapter(StorageClassEnum.Adapter.class)
+  public enum StorageClassEnum {
+    COLD("cold"),
+    
+    HOT("hot");
+
+    private String value;
+
+    StorageClassEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static StorageClassEnum fromValue(String value) {
+      for (StorageClassEnum b : StorageClassEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<StorageClassEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final StorageClassEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public StorageClassEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return StorageClassEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_STORAGE_CLASS = "storage_class";
+  @SerializedName(SERIALIZED_NAME_STORAGE_CLASS)
+  private StorageClassEnum storageClass;
 
   public PresetsStorage() {
   }
@@ -255,6 +308,56 @@ public class PresetsStorage {
   }
 
 
+  public PresetsStorage tags(List<String> tags) {
+    
+    this.tags = tags;
+    return this;
+  }
+
+  public PresetsStorage addTagsItem(String tagsItem) {
+    if (this.tags == null) {
+      this.tags = new ArrayList<>();
+    }
+    this.tags.add(tagsItem);
+    return this;
+  }
+
+   /**
+   * Теги тарифа.
+   * @return tags
+  **/
+  @javax.annotation.Nonnull
+  public List<String> getTags() {
+    return tags;
+  }
+
+
+  public void setTags(List<String> tags) {
+    this.tags = tags;
+  }
+
+
+  public PresetsStorage storageClass(StorageClassEnum storageClass) {
+    
+    this.storageClass = storageClass;
+    return this;
+  }
+
+   /**
+   * Класс хранилища.
+   * @return storageClass
+  **/
+  @javax.annotation.Nonnull
+  public StorageClassEnum getStorageClass() {
+    return storageClass;
+  }
+
+
+  public void setStorageClass(StorageClassEnum storageClass) {
+    this.storageClass = storageClass;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -270,12 +373,14 @@ public class PresetsStorage {
         Objects.equals(this.descriptionShort, presetsStorage.descriptionShort) &&
         Objects.equals(this.disk, presetsStorage.disk) &&
         Objects.equals(this.price, presetsStorage.price) &&
-        Objects.equals(this.location, presetsStorage.location);
+        Objects.equals(this.location, presetsStorage.location) &&
+        Objects.equals(this.tags, presetsStorage.tags) &&
+        Objects.equals(this.storageClass, presetsStorage.storageClass);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, description, descriptionShort, disk, price, location);
+    return Objects.hash(id, description, descriptionShort, disk, price, location, tags, storageClass);
   }
 
   @Override
@@ -288,6 +393,8 @@ public class PresetsStorage {
     sb.append("    disk: ").append(toIndentedString(disk)).append("\n");
     sb.append("    price: ").append(toIndentedString(price)).append("\n");
     sb.append("    location: ").append(toIndentedString(location)).append("\n");
+    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
+    sb.append("    storageClass: ").append(toIndentedString(storageClass)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -316,6 +423,8 @@ public class PresetsStorage {
     openapiFields.add("disk");
     openapiFields.add("price");
     openapiFields.add("location");
+    openapiFields.add("tags");
+    openapiFields.add("storage_class");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -325,6 +434,8 @@ public class PresetsStorage {
     openapiRequiredFields.add("disk");
     openapiRequiredFields.add("price");
     openapiRequiredFields.add("location");
+    openapiRequiredFields.add("tags");
+    openapiRequiredFields.add("storage_class");
   }
 
  /**
@@ -363,6 +474,15 @@ public class PresetsStorage {
       }
       if (!jsonObj.get("location").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `location` to be a primitive type in the JSON string but got `%s`", jsonObj.get("location").toString()));
+      }
+      // ensure the required json array is present
+      if (jsonObj.get("tags") == null) {
+        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+      } else if (!jsonObj.get("tags").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `tags` to be an array in the JSON string but got `%s`", jsonObj.get("tags").toString()));
+      }
+      if (!jsonObj.get("storage_class").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `storage_class` to be a primitive type in the JSON string but got `%s`", jsonObj.get("storage_class").toString()));
       }
   }
 

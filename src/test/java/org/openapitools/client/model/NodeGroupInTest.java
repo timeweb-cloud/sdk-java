@@ -104,4 +104,12 @@ public class NodeGroupInTest {
         // TODO: test maxSize
     }
 
+    /**
+     * Test the property 'isAutohealing'
+     */
+    @Test
+    public void isAutohealingTest() {
+        // TODO: test isAutohealing
+    }
+
 }

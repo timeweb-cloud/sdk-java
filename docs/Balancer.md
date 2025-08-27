@@ -9,6 +9,7 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**id** | **BigDecimal** | ID для каждого экземпляра балансировщика. Автоматически генерируется при создании. |  |
+|**accountId** | **String** | ID пользователя. |  [optional] |
 |**algo** | [**AlgoEnum**](#AlgoEnum) | Алгоритм переключений балансировщика. |  |
 |**createdAt** | **OffsetDateTime** | Значение времени, указанное в комбинированном формате даты и времени ISO8601, которое представляет, когда был создан балансировщик. |  |
 |**fall** | **BigDecimal** | Порог количества ошибок. |  |
@@ -37,6 +38,8 @@
 |**ips** | **List&lt;String&gt;** | Список IP-адресов, привязанных к балансировщику |  |
 |**location** | [**LocationEnum**](#LocationEnum) | Географическое расположение балансировщика |  |
 |**availabilityZone** | **AvailabilityZone** |  |  |
+|**projectId** | **Integer** | ID проекта |  |
+|**networks** | [**List&lt;BalancerNetworksInner&gt;**](BalancerNetworksInner.md) | Список сетей сервера. |  |
 
 
 

@@ -207,4 +207,12 @@ public class CreateBalancerTest {
         // TODO: test availabilityZone
     }
 
+    /**
+     * Test the property 'projectId'
+     */
+    @Test
+    public void projectIdTest() {
+        // TODO: test projectId
+    }
+
 }

@@ -41,29 +41,27 @@ public enum DbType {
   
   POSTGRES17("postgres17"),
   
-  REDIS("redis"),
-  
   REDIS7("redis7"),
   
-  MONGODB4("mongodb4"),
-  
-  MONGODB("mongodb"),
-  
-  MONGODB6("mongodb6"),
+  REDIS8_1("redis8_1"),
   
   MONGODB7("mongodb7"),
   
+  MONGODB8_0("mongodb8_0"),
+  
   OPENSEARCH("opensearch"),
   
-  KAFKA("kafka"),
-  
-  RABBITMQ("rabbitmq"),
+  OPENSEARCH2_19("opensearch2_19"),
   
   CLICKHOUSE("clickhouse"),
   
   CLICKHOUSE24("clickhouse24"),
   
-  CLICKHOUSE25("clickhouse25");
+  CLICKHOUSE25("clickhouse25"),
+  
+  KAFKA("kafka"),
+  
+  RABBITMQ4_0("rabbitmq4_0");
 
   private String value;
 

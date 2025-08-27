@@ -19,7 +19,7 @@
 |**port** | **Integer** | Порт |  |
 |**status** | [**StatusEnum**](#StatusEnum) | Текущий статус кластера базы данных. |  |
 |**presetId** | **Integer** | ID тарифа. |  |
-|**diskStats** | [**DatabaseClusterDiskStats**](DatabaseClusterDiskStats.md) |  |  |
+|**disk** | [**DatabaseClusterDisk**](DatabaseClusterDisk.md) |  |  [optional] |
 |**configParameters** | [**ConfigParameters**](ConfigParameters.md) |  |  |
 |**isEnabledPublicNetwork** | **Boolean** | Доступность публичного IP-адреса |  |
 
@@ -30,9 +30,9 @@
 | Name | Value |
 |---- | -----|
 | RU_1 | &quot;ru-1&quot; |
-| RU_2 | &quot;ru-2&quot; |
-| PL_1 | &quot;pl-1&quot; |
-| KZ_1 | &quot;kz-1&quot; |
+| RU_3 | &quot;ru-3&quot; |
+| NL_1 | &quot;nl-1&quot; |
+| DE_1 | &quot;de-1&quot; |
 
 
 

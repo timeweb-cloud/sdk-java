@@ -2,6 +2,7 @@
 
 # ConfigParameters
 
+Параметры базы данных
 
 ## Properties
 

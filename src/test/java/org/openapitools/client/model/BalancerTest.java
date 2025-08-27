@@ -24,6 +24,7 @@ import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import org.openapitools.client.model.AvailabilityZone;
+import org.openapitools.client.model.BalancerNetworksInner;
 import org.openapitools.client.model.Rule;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -48,6 +49,14 @@ public class BalancerTest {
     @Test
     public void idTest() {
         // TODO: test id
+    }
+
+    /**
+     * Test the property 'accountId'
+     */
+    @Test
+    public void accountIdTest() {
+        // TODO: test accountId
     }
 
     /**
@@ -272,6 +281,22 @@ public class BalancerTest {
     @Test
     public void availabilityZoneTest() {
         // TODO: test availabilityZone
+    }
+
+    /**
+     * Test the property 'projectId'
+     */
+    @Test
+    public void projectIdTest() {
+        // TODO: test projectId
+    }
+
+    /**
+     * Test the property 'networks'
+     */
+    @Test
+    public void networksTest() {
+        // TODO: test networks
     }
 
 }

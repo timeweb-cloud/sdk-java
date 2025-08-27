@@ -54,7 +54,7 @@ import org.openapitools.client.JSON;
 /**
  * Выделенный сервер
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-13T14:01:57.127467Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-08-27T11:58:09.737284Z[Etc/UTC]")
 public class DedicatedServerPreset {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -292,7 +292,7 @@ public class DedicatedServerPreset {
    * Стоимость тарифа выделенного сервера
    * @return price
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public BigDecimal getPrice() {
     return price;
   }
@@ -424,6 +424,7 @@ public class DedicatedServerPreset {
     openapiRequiredFields.add("is_pre_installed");
     openapiRequiredFields.add("cpu");
     openapiRequiredFields.add("disk");
+    openapiRequiredFields.add("price");
     openapiRequiredFields.add("memory");
     openapiRequiredFields.add("location");
   }

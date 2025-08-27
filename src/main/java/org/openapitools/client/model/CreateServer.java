@@ -57,7 +57,7 @@ import org.openapitools.client.JSON;
 /**
  * CreateServer
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-13T14:01:57.127467Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-08-27T11:58:09.737284Z[Etc/UTC]")
 public class CreateServer {
   public static final String SERIALIZED_NAME_CONFIGURATION = "configuration";
   @SerializedName(SERIALIZED_NAME_CONFIGURATION)
@@ -120,6 +120,10 @@ public class CreateServer {
   public static final String SERIALIZED_NAME_AVAILABILITY_ZONE = "availability_zone";
   @SerializedName(SERIALIZED_NAME_AVAILABILITY_ZONE)
   private AvailabilityZone availabilityZone;
+
+  public static final String SERIALIZED_NAME_PROJECT_ID = "project_id";
+  @SerializedName(SERIALIZED_NAME_PROJECT_ID)
+  private BigDecimal projectId;
 
   public CreateServer() {
   }
@@ -278,7 +282,7 @@ public class CreateServer {
   }
 
    /**
-   * Имя облачного сервера. Максимальная длина — 255 символов, имя должно быть уникальным.
+   * Имя облачного сервера. Максимальная длина — 255 символов.
    * @return name
   **/
   @javax.annotation.Nonnull
@@ -455,6 +459,27 @@ public class CreateServer {
   }
 
 
+  public CreateServer projectId(BigDecimal projectId) {
+    
+    this.projectId = projectId;
+    return this;
+  }
+
+   /**
+   * ID проекта.
+   * @return projectId
+  **/
+  @javax.annotation.Nullable
+  public BigDecimal getProjectId() {
+    return projectId;
+  }
+
+
+  public void setProjectId(BigDecimal projectId) {
+    this.projectId = projectId;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -479,12 +504,13 @@ public class CreateServer {
         Objects.equals(this.isLocalNetwork, createServer.isLocalNetwork) &&
         Objects.equals(this.network, createServer.network) &&
         Objects.equals(this.cloudInit, createServer.cloudInit) &&
-        Objects.equals(this.availabilityZone, createServer.availabilityZone);
+        Objects.equals(this.availabilityZone, createServer.availabilityZone) &&
+        Objects.equals(this.projectId, createServer.projectId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(_configuration, isDdosGuard, osId, imageId, softwareId, presetId, bandwidth, name, avatarId, comment, sshKeysIds, isLocalNetwork, network, cloudInit, availabilityZone);
+    return Objects.hash(_configuration, isDdosGuard, osId, imageId, softwareId, presetId, bandwidth, name, avatarId, comment, sshKeysIds, isLocalNetwork, network, cloudInit, availabilityZone, projectId);
   }
 
   @Override
@@ -506,6 +532,7 @@ public class CreateServer {
     sb.append("    network: ").append(toIndentedString(network)).append("\n");
     sb.append("    cloudInit: ").append(toIndentedString(cloudInit)).append("\n");
     sb.append("    availabilityZone: ").append(toIndentedString(availabilityZone)).append("\n");
+    sb.append("    projectId: ").append(toIndentedString(projectId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -543,6 +570,7 @@ public class CreateServer {
     openapiFields.add("network");
     openapiFields.add("cloud_init");
     openapiFields.add("availability_zone");
+    openapiFields.add("project_id");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

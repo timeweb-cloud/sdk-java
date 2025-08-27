@@ -17,14 +17,9 @@ import org.openapitools.client.ApiException;
 import org.openapitools.client.model.AddStorageSubdomainCertificateRequest;
 import org.openapitools.client.model.AddStorageSubdomains200Response;
 import org.openapitools.client.model.AddStorageSubdomainsRequest;
-import org.openapitools.client.model.CopyStorageFileRequest;
-import org.openapitools.client.model.CreateDatabaseBackup409Response;
-import org.openapitools.client.model.CreateFolderInStorageRequest;
 import org.openapitools.client.model.CreateStorage201Response;
 import org.openapitools.client.model.CreateStorageRequest;
 import org.openapitools.client.model.DeleteStorage200Response;
-import org.openapitools.client.model.DeleteStorageFileRequest;
-import java.io.File;
 import org.openapitools.client.model.GetFinances400Response;
 import org.openapitools.client.model.GetFinances401Response;
 import org.openapitools.client.model.GetFinances403Response;
@@ -32,12 +27,10 @@ import org.openapitools.client.model.GetFinances429Response;
 import org.openapitools.client.model.GetFinances500Response;
 import org.openapitools.client.model.GetImage404Response;
 import org.openapitools.client.model.GetProjectStorages200Response;
-import org.openapitools.client.model.GetStorageFilesList200Response;
 import org.openapitools.client.model.GetStorageSubdomains200Response;
 import org.openapitools.client.model.GetStorageTransferStatus200Response;
 import org.openapitools.client.model.GetStorageUsers200Response;
 import org.openapitools.client.model.GetStoragesPresets200Response;
-import org.openapitools.client.model.RenameStorageFileRequest;
 import org.openapitools.client.model.TransferStorageRequest;
 import org.openapitools.client.model.UpdateStorageRequest;
 import org.openapitools.client.model.UpdateStorageUser200Response;
@@ -88,36 +81,6 @@ public class S3ApiTest {
     }
 
     /**
-     * Копирование файла/директории в хранилище
-     *
-     * Чтобы скопировать файла или директорию с вложениями, отправьте POST-запрос на &#x60;/api/v1/storages/buckets/{bucket_id}/object-manager/copy&#x60;.
-     *
-     * @throws ApiException if the Api call fails
-     */
-    @Test
-    public void copyStorageFileTest() throws ApiException {
-        Integer bucketId = null;
-        CopyStorageFileRequest copyStorageFileRequest = null;
-        api.copyStorageFile(bucketId, copyStorageFileRequest);
-        // TODO: test validations
-    }
-
-    /**
-     * Создание директории в хранилище
-     *
-     * Чтобы создать директорию в хранилище, отправьте POST-запрос на &#x60;/api/v1/storages/buckets/{bucket_id}/object-manager/mkdir&#x60;.
-     *
-     * @throws ApiException if the Api call fails
-     */
-    @Test
-    public void createFolderInStorageTest() throws ApiException {
-        Integer bucketId = null;
-        CreateFolderInStorageRequest createFolderInStorageRequest = null;
-        api.createFolderInStorage(bucketId, createFolderInStorageRequest);
-        // TODO: test validations
-    }
-
-    /**
      * Создание хранилища
      *
      * Чтобы создать хранилище, отправьте POST-запрос на &#x60;/api/v1/storages/buckets&#x60;.
@@ -148,22 +111,6 @@ public class S3ApiTest {
     }
 
     /**
-     * Удаление файла/директории в хранилище
-     *
-     * Чтобы удалить файл или директорию с вложениями, отправьте DELETE-запрос на &#x60;/api/v1/storages/buckets/{bucket_id}/object-manager/remove&#x60;.
-     *
-     * @throws ApiException if the Api call fails
-     */
-    @Test
-    public void deleteStorageFileTest() throws ApiException {
-        Integer bucketId = null;
-        DeleteStorageFileRequest deleteStorageFileRequest = null;
-        Boolean isMultipart = null;
-        api.deleteStorageFile(bucketId, deleteStorageFileRequest, isMultipart);
-        // TODO: test validations
-    }
-
-    /**
      * Удаление поддоменов хранилища
      *
      * Чтобы удалить поддомены хранилища, отправьте DELETE-запрос на &#x60;/api/v1/storages/buckets/{bucket_id}/subdomains&#x60;.
@@ -175,22 +122,6 @@ public class S3ApiTest {
         Integer bucketId = null;
         AddStorageSubdomainsRequest addStorageSubdomainsRequest = null;
         AddStorageSubdomains200Response response = api.deleteStorageSubdomains(bucketId, addStorageSubdomainsRequest);
-        // TODO: test validations
-    }
-
-    /**
-     * Получение списка файлов в хранилище по префиксу
-     *
-     * Чтобы получить список файлов в хранилище по префиксу, отправьте GET-запрос на &#x60;/api/v1/storages/buckets/{bucket_id}/object-manager/list&#x60;.
-     *
-     * @throws ApiException if the Api call fails
-     */
-    @Test
-    public void getStorageFilesListTest() throws ApiException {
-        Integer bucketId = null;
-        String prefix = null;
-        Boolean isMultipart = null;
-        GetStorageFilesList200Response response = api.getStorageFilesList(bucketId, prefix, isMultipart);
         // TODO: test validations
     }
 
@@ -262,21 +193,6 @@ public class S3ApiTest {
     }
 
     /**
-     * Переименование файла/директории в хранилище
-     *
-     * Чтобы переименовать файл/директорию в хранилище, отправьте POST-запрос на &#x60;/api/v1/storages/buckets/{bucket_id}/object-manager/rename&#x60;.
-     *
-     * @throws ApiException if the Api call fails
-     */
-    @Test
-    public void renameStorageFileTest() throws ApiException {
-        Integer bucketId = null;
-        RenameStorageFileRequest renameStorageFileRequest = null;
-        api.renameStorageFile(bucketId, renameStorageFileRequest);
-        // TODO: test validations
-    }
-
-    /**
      * Перенос хранилища от стороннего провайдера S3 в Timeweb Cloud
      *
      * Чтобы перенести хранилище от стороннего провайдера S3 в Timeweb Cloud, отправьте POST-запрос на &#x60;/api/v1/storages/transfer&#x60;.
@@ -317,22 +233,6 @@ public class S3ApiTest {
         Integer userId = null;
         UpdateStorageUserRequest updateStorageUserRequest = null;
         UpdateStorageUser200Response response = api.updateStorageUser(userId, updateStorageUserRequest);
-        // TODO: test validations
-    }
-
-    /**
-     * Загрузка файлов в хранилище
-     *
-     * Чтобы загрузить файлы в хранилище, отправьте POST-запрос на &#x60;/api/v1/storages/buckets/{bucket_id}/object-manager/upload&#x60;.
-     *
-     * @throws ApiException if the Api call fails
-     */
-    @Test
-    public void uploadFileToStorageTest() throws ApiException {
-        Integer bucketId = null;
-        List<File> files = null;
-        String path = null;
-        api.uploadFileToStorage(bucketId, files, path);
         // TODO: test validations
     }
 

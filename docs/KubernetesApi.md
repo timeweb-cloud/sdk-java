@@ -1192,7 +1192,7 @@ This endpoint does not need any parameter.
 
 <a id="increaseCountOfNodesInGroup"></a>
 # **increaseCountOfNodesInGroup**
-> NodesResponse increaseCountOfNodesInGroup(clusterId, groupId, nodeCount)
+> NodesResponse increaseCountOfNodesInGroup(clusterId, groupId, increaseNodes)
 
 Увеличение количества нод в группе на указанное количество
 
@@ -1220,9 +1220,9 @@ public class Example {
     KubernetesApi apiInstance = new KubernetesApi(defaultClient);
     Integer clusterId = 56; // Integer | ID кластера
     Integer groupId = 56; // Integer | ID группы
-    NodeCount nodeCount = new NodeCount(); // NodeCount | 
+    IncreaseNodes increaseNodes = new IncreaseNodes(); // IncreaseNodes | 
     try {
-      NodesResponse result = apiInstance.increaseCountOfNodesInGroup(clusterId, groupId, nodeCount);
+      NodesResponse result = apiInstance.increaseCountOfNodesInGroup(clusterId, groupId, increaseNodes);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling KubernetesApi#increaseCountOfNodesInGroup");
@@ -1241,7 +1241,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **clusterId** | **Integer**| ID кластера | |
 | **groupId** | **Integer**| ID группы | |
-| **nodeCount** | [**NodeCount**](NodeCount.md)|  | |
+| **increaseNodes** | [**IncreaseNodes**](IncreaseNodes.md)|  | |
 
 ### Return type
 
@@ -1269,7 +1269,7 @@ public class Example {
 
 <a id="reduceCountOfNodesInGroup"></a>
 # **reduceCountOfNodesInGroup**
-> reduceCountOfNodesInGroup(clusterId, groupId, nodeCount)
+> reduceCountOfNodesInGroup(clusterId, groupId, reduceNodes)
 
 Уменьшение количества нод в группе на указанное количество
 
@@ -1297,9 +1297,9 @@ public class Example {
     KubernetesApi apiInstance = new KubernetesApi(defaultClient);
     Integer clusterId = 56; // Integer | ID кластера
     Integer groupId = 56; // Integer | ID группы
-    NodeCount nodeCount = new NodeCount(); // NodeCount | 
+    ReduceNodes reduceNodes = new ReduceNodes(); // ReduceNodes | 
     try {
-      apiInstance.reduceCountOfNodesInGroup(clusterId, groupId, nodeCount);
+      apiInstance.reduceCountOfNodesInGroup(clusterId, groupId, reduceNodes);
     } catch (ApiException e) {
       System.err.println("Exception when calling KubernetesApi#reduceCountOfNodesInGroup");
       System.err.println("Status code: " + e.getCode());
@@ -1317,7 +1317,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **clusterId** | **Integer**| ID кластера | |
 | **groupId** | **Integer**| ID группы | |
-| **nodeCount** | [**NodeCount**](NodeCount.md)|  | |
+| **reduceNodes** | [**ReduceNodes**](ReduceNodes.md)|  | |
 
 ### Return type
 

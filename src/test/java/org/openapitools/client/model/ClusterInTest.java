@@ -21,6 +21,10 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import org.openapitools.client.model.ClusterInClusterNetworkCidr;
+import org.openapitools.client.model.ClusterInConfiguration;
+import org.openapitools.client.model.ClusterInMaintenanceSlot;
+import org.openapitools.client.model.ClusterInOidcProvider;
 import org.openapitools.client.model.NodeGroupIn;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -104,6 +108,22 @@ public class ClusterInTest {
     }
 
     /**
+     * Test the property '_configuration'
+     */
+    @Test
+    public void _configurationTest() {
+        // TODO: test _configuration
+    }
+
+    /**
+     * Test the property 'masterNodesCount'
+     */
+    @Test
+    public void masterNodesCountTest() {
+        // TODO: test masterNodesCount
+    }
+
+    /**
      * Test the property 'workerGroups'
      */
     @Test
@@ -125,6 +145,30 @@ public class ClusterInTest {
     @Test
     public void projectIdTest() {
         // TODO: test projectId
+    }
+
+    /**
+     * Test the property 'maintenanceSlot'
+     */
+    @Test
+    public void maintenanceSlotTest() {
+        // TODO: test maintenanceSlot
+    }
+
+    /**
+     * Test the property 'oidcProvider'
+     */
+    @Test
+    public void oidcProviderTest() {
+        // TODO: test oidcProvider
+    }
+
+    /**
+     * Test the property 'clusterNetworkCidr'
+     */
+    @Test
+    public void clusterNetworkCidrTest() {
+        // TODO: test clusterNetworkCidr
     }
 
 }

@@ -61,4 +61,12 @@ public class DedicatedServerPresetCpuTest {
         // TODO: test count
     }
 
+    /**
+     * Test the property 'vendor'
+     */
+    @Test
+    public void vendorTest() {
+        // TODO: test vendor
+    }
+
 }

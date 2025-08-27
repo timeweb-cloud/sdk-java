@@ -1049,7 +1049,7 @@ public class DatabasesApi {
     /**
      * Build call for deleteDatabaseBackup
      * @param dbId ID базы данных (required)
-     * @param backupId ID резевной копии (required)
+     * @param backupId ID резервной копии (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1131,7 +1131,7 @@ public class DatabasesApi {
      * Удаление бэкапа базы данных
      * Чтобы удалить бэкап базы данных, отправьте запрос DELETE в &#x60;api/v1/dbs/{db_id}/backups/{backup_id}&#x60;. 
      * @param dbId ID базы данных (required)
-     * @param backupId ID резевной копии (required)
+     * @param backupId ID резервной копии (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1153,7 +1153,7 @@ public class DatabasesApi {
      * Удаление бэкапа базы данных
      * Чтобы удалить бэкап базы данных, отправьте запрос DELETE в &#x60;api/v1/dbs/{db_id}/backups/{backup_id}&#x60;. 
      * @param dbId ID базы данных (required)
-     * @param backupId ID резевной копии (required)
+     * @param backupId ID резервной копии (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1177,7 +1177,7 @@ public class DatabasesApi {
      * Удаление бэкапа базы данных (asynchronously)
      * Чтобы удалить бэкап базы данных, отправьте запрос DELETE в &#x60;api/v1/dbs/{db_id}/backups/{backup_id}&#x60;. 
      * @param dbId ID базы данных (required)
-     * @param backupId ID резевной копии (required)
+     * @param backupId ID резервной копии (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1978,7 +1978,7 @@ public class DatabasesApi {
     /**
      * Build call for getDatabaseBackup
      * @param dbId ID базы данных (required)
-     * @param backupId ID резевной копии (required)
+     * @param backupId ID резервной копии (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2060,7 +2060,7 @@ public class DatabasesApi {
      * Получение бэкапа базы данных
      * Чтобы получить бэкап базы данных, отправьте запрос GET в &#x60;api/v1/dbs/{db_id}/backups/{backup_id}&#x60;. 
      * @param dbId ID базы данных (required)
-     * @param backupId ID резевной копии (required)
+     * @param backupId ID резервной копии (required)
      * @return CreateDatabaseBackup201Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2084,7 +2084,7 @@ public class DatabasesApi {
      * Получение бэкапа базы данных
      * Чтобы получить бэкап базы данных, отправьте запрос GET в &#x60;api/v1/dbs/{db_id}/backups/{backup_id}&#x60;. 
      * @param dbId ID базы данных (required)
-     * @param backupId ID резевной копии (required)
+     * @param backupId ID резервной копии (required)
      * @return ApiResponse&lt;CreateDatabaseBackup201Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2109,7 +2109,7 @@ public class DatabasesApi {
      * Получение бэкапа базы данных (asynchronously)
      * Чтобы получить бэкап базы данных, отправьте запрос GET в &#x60;api/v1/dbs/{db_id}/backups/{backup_id}&#x60;. 
      * @param dbId ID базы данных (required)
-     * @param backupId ID резевной копии (required)
+     * @param backupId ID резервной копии (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3779,7 +3779,7 @@ public class DatabasesApi {
     /**
      * Build call for restoreDatabaseFromBackup
      * @param dbId ID базы данных (required)
-     * @param backupId ID резевной копии (required)
+     * @param backupId ID резервной копии (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3862,7 +3862,7 @@ public class DatabasesApi {
      * Восстановление базы данных из бэкапа
      * Чтобы восстановить базу данных из бэкапа, отправьте запрос PUT в &#x60;api/v1/dbs/{db_id}/backups/{backup_id}&#x60;. 
      * @param dbId ID базы данных (required)
-     * @param backupId ID резевной копии (required)
+     * @param backupId ID резервной копии (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -3885,7 +3885,7 @@ public class DatabasesApi {
      * Восстановление базы данных из бэкапа
      * Чтобы восстановить базу данных из бэкапа, отправьте запрос PUT в &#x60;api/v1/dbs/{db_id}/backups/{backup_id}&#x60;. 
      * @param dbId ID базы данных (required)
-     * @param backupId ID резевной копии (required)
+     * @param backupId ID резервной копии (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3910,7 +3910,7 @@ public class DatabasesApi {
      * Восстановление базы данных из бэкапа (asynchronously)
      * Чтобы восстановить базу данных из бэкапа, отправьте запрос PUT в &#x60;api/v1/dbs/{db_id}/backups/{backup_id}&#x60;. 
      * @param dbId ID базы данных (required)
-     * @param backupId ID резевной копии (required)
+     * @param backupId ID резервной копии (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

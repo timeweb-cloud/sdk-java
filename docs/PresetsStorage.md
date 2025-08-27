@@ -14,6 +14,8 @@
 |**disk** | **BigDecimal** | Описание диска хранилища. |  |
 |**price** | **BigDecimal** | Стоимость тарифа хранилища. |  |
 |**location** | [**LocationEnum**](#LocationEnum) | Географическое расположение тарифа. |  |
+|**tags** | **List&lt;String&gt;** | Теги тарифа. |  |
+|**storageClass** | [**StorageClassEnum**](#StorageClassEnum) | Класс хранилища. |  |
 
 
 
@@ -22,8 +24,15 @@
 | Name | Value |
 |---- | -----|
 | RU_1 | &quot;ru-1&quot; |
-| PL_1 | &quot;pl-1&quot; |
-| KZ_1 | &quot;kz-1&quot; |
+
+
+
+## Enum: StorageClassEnum
+
+| Name | Value |
+|---- | -----|
+| COLD | &quot;cold&quot; |
+| HOT | &quot;hot&quot; |
 
 
 

@@ -24,6 +24,9 @@
 |**secretKey** | **String** | Секретный ключ доступа от хранилища. |  |
 |**movedInQuarantineAt** | **OffsetDateTime** | Дата перемещения в карантин. |  |
 |**storageClass** | [**StorageClassEnum**](#StorageClassEnum) | Класс хранилища. |  |
+|**projectId** | **BigDecimal** | ID проекта. |  |
+|**rateId** | **BigDecimal** | ID тарифа. |  |
+|**websiteConfig** | [**BucketWebsiteConfig**](BucketWebsiteConfig.md) |  |  |
 
 
 

@@ -54,7 +54,7 @@ import org.openapitools.client.JSON;
 /**
  * NodeGroupIn
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-13T14:01:57.127467Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-08-27T11:58:09.737284Z[Etc/UTC]")
 public class NodeGroupIn {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -87,6 +87,10 @@ public class NodeGroupIn {
   public static final String SERIALIZED_NAME_MAX_SIZE = "max-size";
   @SerializedName(SERIALIZED_NAME_MAX_SIZE)
   private Integer maxSize;
+
+  public static final String SERIALIZED_NAME_IS_AUTOHEALING = "is_autohealing";
+  @SerializedName(SERIALIZED_NAME_IS_AUTOHEALING)
+  private Boolean isAutohealing;
 
   public NodeGroupIn() {
   }
@@ -271,6 +275,27 @@ public class NodeGroupIn {
   }
 
 
+  public NodeGroupIn isAutohealing(Boolean isAutohealing) {
+    
+    this.isAutohealing = isAutohealing;
+    return this;
+  }
+
+   /**
+   * Автоматическое восстановление работоспособности вышедших из строя узлов
+   * @return isAutohealing
+  **/
+  @javax.annotation.Nullable
+  public Boolean getIsAutohealing() {
+    return isAutohealing;
+  }
+
+
+  public void setIsAutohealing(Boolean isAutohealing) {
+    this.isAutohealing = isAutohealing;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -288,12 +313,13 @@ public class NodeGroupIn {
         Objects.equals(this.labels, nodeGroupIn.labels) &&
         Objects.equals(this.isAutoscaling, nodeGroupIn.isAutoscaling) &&
         Objects.equals(this.minSize, nodeGroupIn.minSize) &&
-        Objects.equals(this.maxSize, nodeGroupIn.maxSize);
+        Objects.equals(this.maxSize, nodeGroupIn.maxSize) &&
+        Objects.equals(this.isAutohealing, nodeGroupIn.isAutohealing);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, presetId, _configuration, nodeCount, labels, isAutoscaling, minSize, maxSize);
+    return Objects.hash(name, presetId, _configuration, nodeCount, labels, isAutoscaling, minSize, maxSize, isAutohealing);
   }
 
   @Override
@@ -308,6 +334,7 @@ public class NodeGroupIn {
     sb.append("    isAutoscaling: ").append(toIndentedString(isAutoscaling)).append("\n");
     sb.append("    minSize: ").append(toIndentedString(minSize)).append("\n");
     sb.append("    maxSize: ").append(toIndentedString(maxSize)).append("\n");
+    sb.append("    isAutohealing: ").append(toIndentedString(isAutohealing)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -338,6 +365,7 @@ public class NodeGroupIn {
     openapiFields.add("is_autoscaling");
     openapiFields.add("min-size");
     openapiFields.add("max-size");
+    openapiFields.add("is_autohealing");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

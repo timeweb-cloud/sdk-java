@@ -53,7 +53,7 @@ import org.openapitools.client.JSON;
 /**
  * CreateBalancer
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-13T14:01:57.127467Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-08-27T11:58:09.737284Z[Etc/UTC]")
 public class CreateBalancer {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -237,6 +237,10 @@ public class CreateBalancer {
   @SerializedName(SERIALIZED_NAME_AVAILABILITY_ZONE)
   private AvailabilityZone availabilityZone;
 
+  public static final String SERIALIZED_NAME_PROJECT_ID = "project_id";
+  @SerializedName(SERIALIZED_NAME_PROJECT_ID)
+  private Integer projectId;
+
   public CreateBalancer() {
   }
 
@@ -247,7 +251,7 @@ public class CreateBalancer {
   }
 
    /**
-   * Удобочитаемое имя, установленное для балансировщика.
+   * Удобочитаемое имя, установленное для балансировщика. Должно быть уникальным в рамках аккаунта
    * @return name
   **/
   @javax.annotation.Nonnull
@@ -681,6 +685,27 @@ public class CreateBalancer {
   }
 
 
+  public CreateBalancer projectId(Integer projectId) {
+    
+    this.projectId = projectId;
+    return this;
+  }
+
+   /**
+   * ID проекта
+   * @return projectId
+  **/
+  @javax.annotation.Nullable
+  public Integer getProjectId() {
+    return projectId;
+  }
+
+
+  public void setProjectId(Integer projectId) {
+    this.projectId = projectId;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -711,12 +736,13 @@ public class CreateBalancer {
         Objects.equals(this.httprequestTimeout, createBalancer.httprequestTimeout) &&
         Objects.equals(this.presetId, createBalancer.presetId) &&
         Objects.equals(this.network, createBalancer.network) &&
-        Objects.equals(this.availabilityZone, createBalancer.availabilityZone);
+        Objects.equals(this.availabilityZone, createBalancer.availabilityZone) &&
+        Objects.equals(this.projectId, createBalancer.projectId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, algo, isSticky, isUseProxy, isSsl, isKeepalive, proto, port, path, inter, timeout, fall, rise, maxconn, connectTimeout, clientTimeout, serverTimeout, httprequestTimeout, presetId, network, availabilityZone);
+    return Objects.hash(name, algo, isSticky, isUseProxy, isSsl, isKeepalive, proto, port, path, inter, timeout, fall, rise, maxconn, connectTimeout, clientTimeout, serverTimeout, httprequestTimeout, presetId, network, availabilityZone, projectId);
   }
 
   @Override
@@ -744,6 +770,7 @@ public class CreateBalancer {
     sb.append("    presetId: ").append(toIndentedString(presetId)).append("\n");
     sb.append("    network: ").append(toIndentedString(network)).append("\n");
     sb.append("    availabilityZone: ").append(toIndentedString(availabilityZone)).append("\n");
+    sb.append("    projectId: ").append(toIndentedString(projectId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -787,6 +814,7 @@ public class CreateBalancer {
     openapiFields.add("preset_id");
     openapiFields.add("network");
     openapiFields.add("availability_zone");
+    openapiFields.add("project_id");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

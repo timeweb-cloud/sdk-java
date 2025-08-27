@@ -26,6 +26,7 @@ import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import org.openapitools.client.model.AvailabilityZone;
+import org.openapitools.client.model.BalancerNetworksInner;
 import org.openapitools.client.model.Rule;
 
 import com.google.gson.Gson;
@@ -56,11 +57,15 @@ import org.openapitools.client.JSON;
 /**
  * Балансировщик
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-13T14:01:57.127467Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-08-27T11:58:09.737284Z[Etc/UTC]")
 public class Balancer {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private BigDecimal id;
+
+  public static final String SERIALIZED_NAME_ACCOUNT_ID = "account_id";
+  @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
+  private String accountId;
 
   /**
    * Алгоритм переключений балансировщика.
@@ -370,6 +375,14 @@ public class Balancer {
   @SerializedName(SERIALIZED_NAME_AVAILABILITY_ZONE)
   private AvailabilityZone availabilityZone;
 
+  public static final String SERIALIZED_NAME_PROJECT_ID = "project_id";
+  @SerializedName(SERIALIZED_NAME_PROJECT_ID)
+  private Integer projectId;
+
+  public static final String SERIALIZED_NAME_NETWORKS = "networks";
+  @SerializedName(SERIALIZED_NAME_NETWORKS)
+  private List<BalancerNetworksInner> networks = new ArrayList<>();
+
   public Balancer() {
   }
 
@@ -391,6 +404,27 @@ public class Balancer {
 
   public void setId(BigDecimal id) {
     this.id = id;
+  }
+
+
+  public Balancer accountId(String accountId) {
+    
+    this.accountId = accountId;
+    return this;
+  }
+
+   /**
+   * ID пользователя.
+   * @return accountId
+  **/
+  @javax.annotation.Nullable
+  public String getAccountId() {
+    return accountId;
+  }
+
+
+  public void setAccountId(String accountId) {
+    this.accountId = accountId;
   }
 
 
@@ -998,6 +1032,56 @@ public class Balancer {
   }
 
 
+  public Balancer projectId(Integer projectId) {
+    
+    this.projectId = projectId;
+    return this;
+  }
+
+   /**
+   * ID проекта
+   * @return projectId
+  **/
+  @javax.annotation.Nonnull
+  public Integer getProjectId() {
+    return projectId;
+  }
+
+
+  public void setProjectId(Integer projectId) {
+    this.projectId = projectId;
+  }
+
+
+  public Balancer networks(List<BalancerNetworksInner> networks) {
+    
+    this.networks = networks;
+    return this;
+  }
+
+  public Balancer addNetworksItem(BalancerNetworksInner networksItem) {
+    if (this.networks == null) {
+      this.networks = new ArrayList<>();
+    }
+    this.networks.add(networksItem);
+    return this;
+  }
+
+   /**
+   * Список сетей сервера.
+   * @return networks
+  **/
+  @javax.annotation.Nonnull
+  public List<BalancerNetworksInner> getNetworks() {
+    return networks;
+  }
+
+
+  public void setNetworks(List<BalancerNetworksInner> networks) {
+    this.networks = networks;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -1009,6 +1093,7 @@ public class Balancer {
     }
     Balancer balancer = (Balancer) o;
     return Objects.equals(this.id, balancer.id) &&
+        Objects.equals(this.accountId, balancer.accountId) &&
         Objects.equals(this.algo, balancer.algo) &&
         Objects.equals(this.createdAt, balancer.createdAt) &&
         Objects.equals(this.fall, balancer.fall) &&
@@ -1036,12 +1121,14 @@ public class Balancer {
         Objects.equals(this.rules, balancer.rules) &&
         Objects.equals(this.ips, balancer.ips) &&
         Objects.equals(this.location, balancer.location) &&
-        Objects.equals(this.availabilityZone, balancer.availabilityZone);
+        Objects.equals(this.availabilityZone, balancer.availabilityZone) &&
+        Objects.equals(this.projectId, balancer.projectId) &&
+        Objects.equals(this.networks, balancer.networks);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, algo, createdAt, fall, inter, ip, localIp, isKeepalive, name, path, port, proto, rise, maxconn, connectTimeout, clientTimeout, serverTimeout, httprequestTimeout, presetId, isSsl, status, isSticky, timeout, avatarLink, isUseProxy, rules, ips, location, availabilityZone);
+    return Objects.hash(id, accountId, algo, createdAt, fall, inter, ip, localIp, isKeepalive, name, path, port, proto, rise, maxconn, connectTimeout, clientTimeout, serverTimeout, httprequestTimeout, presetId, isSsl, status, isSticky, timeout, avatarLink, isUseProxy, rules, ips, location, availabilityZone, projectId, networks);
   }
 
   @Override
@@ -1049,6 +1136,7 @@ public class Balancer {
     StringBuilder sb = new StringBuilder();
     sb.append("class Balancer {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    accountId: ").append(toIndentedString(accountId)).append("\n");
     sb.append("    algo: ").append(toIndentedString(algo)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    fall: ").append(toIndentedString(fall)).append("\n");
@@ -1077,6 +1165,8 @@ public class Balancer {
     sb.append("    ips: ").append(toIndentedString(ips)).append("\n");
     sb.append("    location: ").append(toIndentedString(location)).append("\n");
     sb.append("    availabilityZone: ").append(toIndentedString(availabilityZone)).append("\n");
+    sb.append("    projectId: ").append(toIndentedString(projectId)).append("\n");
+    sb.append("    networks: ").append(toIndentedString(networks)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -1100,6 +1190,7 @@ public class Balancer {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("id");
+    openapiFields.add("account_id");
     openapiFields.add("algo");
     openapiFields.add("created_at");
     openapiFields.add("fall");
@@ -1128,6 +1219,8 @@ public class Balancer {
     openapiFields.add("ips");
     openapiFields.add("location");
     openapiFields.add("availability_zone");
+    openapiFields.add("project_id");
+    openapiFields.add("networks");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -1160,6 +1253,8 @@ public class Balancer {
     openapiRequiredFields.add("ips");
     openapiRequiredFields.add("location");
     openapiRequiredFields.add("availability_zone");
+    openapiRequiredFields.add("project_id");
+    openapiRequiredFields.add("networks");
   }
 
  /**
@@ -1190,6 +1285,9 @@ public class Balancer {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("account_id") != null && !jsonObj.get("account_id").isJsonNull()) && !jsonObj.get("account_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `account_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("account_id").toString()));
+      }
       if (!jsonObj.get("algo").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `algo` to be a primitive type in the JSON string but got `%s`", jsonObj.get("algo").toString()));
       }
@@ -1233,6 +1331,16 @@ public class Balancer {
       if (!jsonObj.get("location").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `location` to be a primitive type in the JSON string but got `%s`", jsonObj.get("location").toString()));
       }
+      // ensure the json data is an array
+      if (!jsonObj.get("networks").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `networks` to be an array in the JSON string but got `%s`", jsonObj.get("networks").toString()));
+      }
+
+      JsonArray jsonArraynetworks = jsonObj.getAsJsonArray("networks");
+      // validate the required field `networks` (array)
+      for (int i = 0; i < jsonArraynetworks.size(); i++) {
+        BalancerNetworksInner.validateJsonElement(jsonArraynetworks.get(i));
+      };
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

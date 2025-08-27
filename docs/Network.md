@@ -2,6 +2,7 @@
 
 # Network
 
+Сеть
 
 ## Properties
 

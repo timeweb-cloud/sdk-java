@@ -10,7 +10,9 @@
 |**name** | **String** | Название хранилища. |  |
 |**description** | **String** | Комментарий к хранилищу. |  [optional] |
 |**type** | [**TypeEnum**](#TypeEnum) | Тип хранилища. |  |
-|**presetId** | **BigDecimal** | ID тарифа. |  |
+|**presetId** | **BigDecimal** | ID тарифа. Нельзя передавать вместе с &#x60;configurator&#x60;. |  [optional] |
+|**configurator** | [**CreateStorageRequestConfigurator**](CreateStorageRequestConfigurator.md) |  |  [optional] |
+|**projectId** | **BigDecimal** | ID проекта. |  [optional] |
 
 
 

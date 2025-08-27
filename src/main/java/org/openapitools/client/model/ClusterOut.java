@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * ClusterOut
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-13T14:01:57.127467Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-08-27T11:58:09.737284Z[Etc/UTC]")
 public class ClusterOut {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -165,7 +165,9 @@ public class ClusterOut {
     
     MSK_1("msk-1"),
     
-    AMS_1("ams-1");
+    AMS_1("ams-1"),
+    
+    FRA_1("fra-1");
 
     private String value;
 
