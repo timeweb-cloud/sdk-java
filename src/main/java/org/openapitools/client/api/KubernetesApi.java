@@ -30,6 +30,7 @@ import java.io.IOException;
 import org.openapitools.client.model.ClusterEdit;
 import org.openapitools.client.model.ClusterIn;
 import org.openapitools.client.model.ClusterResponse;
+import org.openapitools.client.model.ClusterVersionEdit;
 import org.openapitools.client.model.ClustersResponse;
 import org.openapitools.client.model.DeleteCluster200Response;
 import org.openapitools.client.model.GetFinances400Response;
@@ -2953,6 +2954,159 @@ public class KubernetesApi {
         okhttp3.Call localVarCall = updateClusterValidateBeforeCall(clusterId, clusterEdit, _callback);
         Type localVarReturnType = new TypeToken<ClusterResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for updateClusterVersion
+     * @param clusterId ID кластера (required)
+     * @param clusterVersionEdit  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Версия обновлена </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateClusterVersionCall(Integer clusterId, ClusterVersionEdit clusterVersionEdit, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = clusterVersionEdit;
+
+        // create path and map variables
+        String localVarPath = "/api/v1/k8s/clusters/{cluster_id}/versions/update"
+            .replace("{" + "cluster_id" + "}", localVarApiClient.escapeString(clusterId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "Bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call updateClusterVersionValidateBeforeCall(Integer clusterId, ClusterVersionEdit clusterVersionEdit, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'clusterId' is set
+        if (clusterId == null) {
+            throw new ApiException("Missing the required parameter 'clusterId' when calling updateClusterVersion(Async)");
+        }
+
+        // verify the required parameter 'clusterVersionEdit' is set
+        if (clusterVersionEdit == null) {
+            throw new ApiException("Missing the required parameter 'clusterVersionEdit' when calling updateClusterVersion(Async)");
+        }
+
+        return updateClusterVersionCall(clusterId, clusterVersionEdit, _callback);
+
+    }
+
+    /**
+     * Обновление версии кластера
+     * Чтобы обновить версию кластера, отправьте PATCH-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/versions/update&#x60;
+     * @param clusterId ID кластера (required)
+     * @param clusterVersionEdit  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Версия обновлена </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public void updateClusterVersion(Integer clusterId, ClusterVersionEdit clusterVersionEdit) throws ApiException {
+        updateClusterVersionWithHttpInfo(clusterId, clusterVersionEdit);
+    }
+
+    /**
+     * Обновление версии кластера
+     * Чтобы обновить версию кластера, отправьте PATCH-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/versions/update&#x60;
+     * @param clusterId ID кластера (required)
+     * @param clusterVersionEdit  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Версия обновлена </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> updateClusterVersionWithHttpInfo(Integer clusterId, ClusterVersionEdit clusterVersionEdit) throws ApiException {
+        okhttp3.Call localVarCall = updateClusterVersionValidateBeforeCall(clusterId, clusterVersionEdit, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Обновление версии кластера (asynchronously)
+     * Чтобы обновить версию кластера, отправьте PATCH-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/versions/update&#x60;
+     * @param clusterId ID кластера (required)
+     * @param clusterVersionEdit  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Версия обновлена </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateClusterVersionAsync(Integer clusterId, ClusterVersionEdit clusterVersionEdit, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updateClusterVersionValidateBeforeCall(clusterId, clusterVersionEdit, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
 }

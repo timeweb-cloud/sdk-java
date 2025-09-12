@@ -17,6 +17,7 @@ import org.openapitools.client.ApiException;
 import org.openapitools.client.model.ClusterEdit;
 import org.openapitools.client.model.ClusterIn;
 import org.openapitools.client.model.ClusterResponse;
+import org.openapitools.client.model.ClusterVersionEdit;
 import org.openapitools.client.model.ClustersResponse;
 import org.openapitools.client.model.DeleteCluster200Response;
 import org.openapitools.client.model.GetFinances400Response;
@@ -326,6 +327,21 @@ public class KubernetesApiTest {
         Integer clusterId = null;
         ClusterEdit clusterEdit = null;
         ClusterResponse response = api.updateCluster(clusterId, clusterEdit);
+        // TODO: test validations
+    }
+
+    /**
+     * Обновление версии кластера
+     *
+     * Чтобы обновить версию кластера, отправьте PATCH-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/versions/update&#x60;
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void updateClusterVersionTest() throws ApiException {
+        Integer clusterId = null;
+        ClusterVersionEdit clusterVersionEdit = null;
+        api.updateClusterVersion(clusterId, clusterVersionEdit);
         // TODO: test validations
     }
 

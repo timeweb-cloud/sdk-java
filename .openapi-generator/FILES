@@ -75,6 +75,7 @@ docs/ClusterInMaintenanceSlot.md
 docs/ClusterInOidcProvider.md
 docs/ClusterOut.md
 docs/ClusterResponse.md
+docs/ClusterVersionEdit.md
 docs/Clusterk8s.md
 docs/ClustersResponse.md
 docs/Commit.md
@@ -583,6 +584,7 @@ src/main/java/org/openapitools/client/model/ClusterInMaintenanceSlot.java
 src/main/java/org/openapitools/client/model/ClusterInOidcProvider.java
 src/main/java/org/openapitools/client/model/ClusterOut.java
 src/main/java/org/openapitools/client/model/ClusterResponse.java
+src/main/java/org/openapitools/client/model/ClusterVersionEdit.java
 src/main/java/org/openapitools/client/model/Clusterk8s.java
 src/main/java/org/openapitools/client/model/ClustersResponse.java
 src/main/java/org/openapitools/client/model/Commit.java
@@ -1048,6 +1050,7 @@ src/test/java/org/openapitools/client/model/ClusterInOidcProviderTest.java
 src/test/java/org/openapitools/client/model/ClusterInTest.java
 src/test/java/org/openapitools/client/model/ClusterOutTest.java
 src/test/java/org/openapitools/client/model/ClusterResponseTest.java
+src/test/java/org/openapitools/client/model/ClusterVersionEditTest.java
 src/test/java/org/openapitools/client/model/Clusterk8sTest.java
 src/test/java/org/openapitools/client/model/ClustersResponseTest.java
 src/test/java/org/openapitools/client/model/CommitTest.java
