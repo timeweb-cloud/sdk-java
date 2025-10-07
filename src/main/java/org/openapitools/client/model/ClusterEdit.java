@@ -21,6 +21,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import org.openapitools.client.model.ClusterEditOidcProvider;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -50,14 +51,43 @@ import org.openapitools.client.JSON;
 /**
  * ClusterEdit
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-12T09:58:07.843155Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-07T16:09:35.828584Z[Etc/UTC]")
 public class ClusterEdit {
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  private String name;
+
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
 
+  public static final String SERIALIZED_NAME_OIDC_PROVIDER = "oidc_provider";
+  @SerializedName(SERIALIZED_NAME_OIDC_PROVIDER)
+  private ClusterEditOidcProvider oidcProvider;
+
   public ClusterEdit() {
   }
+
+  public ClusterEdit name(String name) {
+    
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * Новое название кластера
+   * @return name
+  **/
+  @javax.annotation.Nullable
+  public String getName() {
+    return name;
+  }
+
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
 
   public ClusterEdit description(String description) {
     
@@ -80,6 +110,27 @@ public class ClusterEdit {
   }
 
 
+  public ClusterEdit oidcProvider(ClusterEditOidcProvider oidcProvider) {
+    
+    this.oidcProvider = oidcProvider;
+    return this;
+  }
+
+   /**
+   * Get oidcProvider
+   * @return oidcProvider
+  **/
+  @javax.annotation.Nullable
+  public ClusterEditOidcProvider getOidcProvider() {
+    return oidcProvider;
+  }
+
+
+  public void setOidcProvider(ClusterEditOidcProvider oidcProvider) {
+    this.oidcProvider = oidcProvider;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -90,19 +141,23 @@ public class ClusterEdit {
       return false;
     }
     ClusterEdit clusterEdit = (ClusterEdit) o;
-    return Objects.equals(this.description, clusterEdit.description);
+    return Objects.equals(this.name, clusterEdit.name) &&
+        Objects.equals(this.description, clusterEdit.description) &&
+        Objects.equals(this.oidcProvider, clusterEdit.oidcProvider);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(description);
+    return Objects.hash(name, description, oidcProvider);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ClusterEdit {\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    oidcProvider: ").append(toIndentedString(oidcProvider)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -125,7 +180,9 @@ public class ClusterEdit {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("name");
     openapiFields.add("description");
+    openapiFields.add("oidc_provider");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -152,8 +209,15 @@ public class ClusterEdit {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
+      }
+      // validate the optional field `oidc_provider`
+      if (jsonObj.get("oidc_provider") != null && !jsonObj.get("oidc_provider").isJsonNull()) {
+        ClusterEditOidcProvider.validateJsonElement(jsonObj.get("oidc_provider"));
       }
   }
 

@@ -68,6 +68,7 @@ docs/BucketWebsiteConfig.md
 docs/BucketWebsiteConfigErrorPagesInner.md
 docs/CheckDomain200Response.md
 docs/ClusterEdit.md
+docs/ClusterEditOidcProvider.md
 docs/ClusterIn.md
 docs/ClusterInClusterNetworkCidr.md
 docs/ClusterInConfiguration.md
@@ -577,6 +578,7 @@ src/main/java/org/openapitools/client/model/BucketWebsiteConfig.java
 src/main/java/org/openapitools/client/model/BucketWebsiteConfigErrorPagesInner.java
 src/main/java/org/openapitools/client/model/CheckDomain200Response.java
 src/main/java/org/openapitools/client/model/ClusterEdit.java
+src/main/java/org/openapitools/client/model/ClusterEditOidcProvider.java
 src/main/java/org/openapitools/client/model/ClusterIn.java
 src/main/java/org/openapitools/client/model/ClusterInClusterNetworkCidr.java
 src/main/java/org/openapitools/client/model/ClusterInConfiguration.java
@@ -1042,6 +1044,7 @@ src/test/java/org/openapitools/client/model/BucketUserTest.java
 src/test/java/org/openapitools/client/model/BucketWebsiteConfigErrorPagesInnerTest.java
 src/test/java/org/openapitools/client/model/BucketWebsiteConfigTest.java
 src/test/java/org/openapitools/client/model/CheckDomain200ResponseTest.java
+src/test/java/org/openapitools/client/model/ClusterEditOidcProviderTest.java
 src/test/java/org/openapitools/client/model/ClusterEditTest.java
 src/test/java/org/openapitools/client/model/ClusterInClusterNetworkCidrTest.java
 src/test/java/org/openapitools/client/model/ClusterInConfigurationTest.java
