@@ -23,12 +23,11 @@ import org.openapitools.client.model.DeleteCountriesFromAllowedListRequest;
 import org.openapitools.client.model.DeleteIPsFromAllowedList200Response;
 import org.openapitools.client.model.DeleteIPsFromAllowedListRequest;
 import org.openapitools.client.model.GetAccountStatus200Response;
+import org.openapitools.client.model.GetAccountStatus403Response;
 import org.openapitools.client.model.GetAuthAccessSettings200Response;
 import org.openapitools.client.model.GetCountries200Response;
-import org.openapitools.client.model.GetFinances200Response;
 import org.openapitools.client.model.GetFinances400Response;
 import org.openapitools.client.model.GetFinances401Response;
-import org.openapitools.client.model.GetFinances403Response;
 import org.openapitools.client.model.GetFinances429Response;
 import org.openapitools.client.model.GetFinances500Response;
 import org.openapitools.client.model.GetNotificationSettings200Response;
@@ -142,19 +141,6 @@ public class AccountApiTest {
     @Test
     public void getCountriesTest() throws ApiException {
         GetCountries200Response response = api.getCountries();
-        // TODO: test validations
-    }
-
-    /**
-     * Получение платежной информации
-     *
-     * Чтобы получить платежную информацию, отправьте GET-запрос на &#x60;/api/v1/account/finances&#x60;.
-     *
-     * @throws ApiException if the Api call fails
-     */
-    @Test
-    public void getFinancesTest() throws ApiException {
-        GetFinances200Response response = api.getFinances();
         // TODO: test validations
     }
 

@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * AddStorageSubdomainsRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-07T16:09:35.828584Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-08T11:03:53.274930Z[Etc/UTC]")
 public class AddStorageSubdomainsRequest {
   public static final String SERIALIZED_NAME_SUBDOMAINS = "subdomains";
   @SerializedName(SERIALIZED_NAME_SUBDOMAINS)

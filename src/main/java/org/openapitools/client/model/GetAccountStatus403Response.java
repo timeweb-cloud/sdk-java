@@ -50,10 +50,10 @@ import java.util.Set;
 import org.openapitools.client.JSON;
 
 /**
- * GetFinances403Response
+ * GetAccountStatus403Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-07T16:09:35.828584Z[Etc/UTC]")
-public class GetFinances403Response {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-08T11:03:53.274930Z[Etc/UTC]")
+public class GetAccountStatus403Response {
   public static final String SERIALIZED_NAME_STATUS_CODE = "status_code";
   @SerializedName(SERIALIZED_NAME_STATUS_CODE)
   private BigDecimal statusCode;
@@ -70,10 +70,10 @@ public class GetFinances403Response {
   @SerializedName(SERIALIZED_NAME_RESPONSE_ID)
   private UUID responseId;
 
-  public GetFinances403Response() {
+  public GetAccountStatus403Response() {
   }
 
-  public GetFinances403Response statusCode(BigDecimal statusCode) {
+  public GetAccountStatus403Response statusCode(BigDecimal statusCode) {
     
     this.statusCode = statusCode;
     return this;
@@ -94,7 +94,7 @@ public class GetFinances403Response {
   }
 
 
-  public GetFinances403Response message(String message) {
+  public GetAccountStatus403Response message(String message) {
     
     this.message = message;
     return this;
@@ -115,7 +115,7 @@ public class GetFinances403Response {
   }
 
 
-  public GetFinances403Response errorCode(String errorCode) {
+  public GetAccountStatus403Response errorCode(String errorCode) {
     
     this.errorCode = errorCode;
     return this;
@@ -136,7 +136,7 @@ public class GetFinances403Response {
   }
 
 
-  public GetFinances403Response responseId(UUID responseId) {
+  public GetAccountStatus403Response responseId(UUID responseId) {
     
     this.responseId = responseId;
     return this;
@@ -166,11 +166,11 @@ public class GetFinances403Response {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    GetFinances403Response getFinances403Response = (GetFinances403Response) o;
-    return Objects.equals(this.statusCode, getFinances403Response.statusCode) &&
-        Objects.equals(this.message, getFinances403Response.message) &&
-        Objects.equals(this.errorCode, getFinances403Response.errorCode) &&
-        Objects.equals(this.responseId, getFinances403Response.responseId);
+    GetAccountStatus403Response getAccountStatus403Response = (GetAccountStatus403Response) o;
+    return Objects.equals(this.statusCode, getAccountStatus403Response.statusCode) &&
+        Objects.equals(this.message, getAccountStatus403Response.message) &&
+        Objects.equals(this.errorCode, getAccountStatus403Response.errorCode) &&
+        Objects.equals(this.responseId, getAccountStatus403Response.responseId);
   }
 
   @Override
@@ -181,7 +181,7 @@ public class GetFinances403Response {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class GetFinances403Response {\n");
+    sb.append("class GetAccountStatus403Response {\n");
     sb.append("    statusCode: ").append(toIndentedString(statusCode)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    errorCode: ").append(toIndentedString(errorCode)).append("\n");
@@ -224,25 +224,25 @@ public class GetFinances403Response {
   * Validates the JSON Element and throws an exception if issues found
   *
   * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to GetFinances403Response
+  * @throws IOException if the JSON Element is invalid with respect to GetAccountStatus403Response
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!GetFinances403Response.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in GetFinances403Response is not found in the empty JSON string", GetFinances403Response.openapiRequiredFields.toString()));
+        if (!GetAccountStatus403Response.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in GetAccountStatus403Response is not found in the empty JSON string", GetAccountStatus403Response.openapiRequiredFields.toString()));
         }
       }
 
       Set<Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Entry<String, JsonElement> entry : entries) {
-        if (!GetFinances403Response.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `GetFinances403Response` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!GetAccountStatus403Response.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `GetAccountStatus403Response` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : GetFinances403Response.openapiRequiredFields) {
+      for (String requiredField : GetAccountStatus403Response.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
@@ -263,22 +263,22 @@ public class GetFinances403Response {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!GetFinances403Response.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'GetFinances403Response' and its subtypes
+       if (!GetAccountStatus403Response.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'GetAccountStatus403Response' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<GetFinances403Response> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(GetFinances403Response.class));
+       final TypeAdapter<GetAccountStatus403Response> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(GetAccountStatus403Response.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<GetFinances403Response>() {
+       return (TypeAdapter<T>) new TypeAdapter<GetAccountStatus403Response>() {
            @Override
-           public void write(JsonWriter out, GetFinances403Response value) throws IOException {
+           public void write(JsonWriter out, GetAccountStatus403Response value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public GetFinances403Response read(JsonReader in) throws IOException {
+           public GetAccountStatus403Response read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -289,18 +289,18 @@ public class GetFinances403Response {
   }
 
  /**
-  * Create an instance of GetFinances403Response given an JSON string
+  * Create an instance of GetAccountStatus403Response given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of GetFinances403Response
-  * @throws IOException if the JSON string is invalid with respect to GetFinances403Response
+  * @return An instance of GetAccountStatus403Response
+  * @throws IOException if the JSON string is invalid with respect to GetAccountStatus403Response
   */
-  public static GetFinances403Response fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, GetFinances403Response.class);
+  public static GetAccountStatus403Response fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, GetAccountStatus403Response.class);
   }
 
  /**
-  * Convert an instance of GetFinances403Response to an JSON string
+  * Convert an instance of GetAccountStatus403Response to an JSON string
   *
   * @return JSON string
   */

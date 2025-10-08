@@ -129,6 +129,9 @@ tags:
     \ вашим аккаунтом через панель управления – в нашей <a href='https://timeweb.cloud/docs/account-management'\
     \ target='_blank'>базе знаний</a>."
   name: Account
+- description: Группа методов для управления платежной информацией и финансами вашего
+    аккаунта.
+  name: Payments
 - description: "Облачная база данных, или База данных как сервис (DBaaS) — облачно\
     е решение для хранения структурированных данных и управления ими. DBaaS обеспе\
     чивает полностью автоматизированную, гибкую и масштабируемую платформу для раб\
@@ -252,12 +255,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/getFinances_401_response'
           description: Не авторизован
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getFinances_403_response'
-          description: Запрещено
         "429":
           content:
             application/json:
@@ -272,7 +269,7 @@ paths:
           description: Внутренняя ошибка сервера
       summary: Получение платежной информации
       tags:
-      - Account
+      - Payments
       x-codeSamples:
       - lang: cURL
         label: cURL
@@ -350,6 +347,285 @@ paths:
           \tString response = s.hasNext() ? s.next() : \"\";\n\t\tSystem.out.println(response);\n\
           \t}\n}\n"
       x-accepts: application/json
+  /api/v1/account/payment-link:
+    post:
+      description: "Чтобы получить ссылку на оплату, отправьте POST-запрос на `/api/v1/account/payment-link`."
+      operationId: getLinkCardPayment
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/create-payment'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getLinkCardPayment_200_response'
+          description: Объект JSON c ключом `confirmation_url`
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getFinances_400_response'
+          description: Некорректный запрос
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getFinances_401_response'
+          description: Не авторизован
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getFinances_429_response'
+          description: Слишком много запросов
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getFinances_500_response'
+          description: Внутренняя ошибка сервера
+      summary: Получение ссылки на оплату
+      tags:
+      - Payments
+      x-codeSamples:
+      - lang: cURL
+        label: cURL
+        source: |-
+          curl -X POST \
+            -H "Content-Type: application/json" \
+            -H "Authorization: Bearer $TIMEWEB_CLOUD_TOKEN" \
+            -d '{"amount":1000,"payment_type":"card","is_bind_card":false,"return_url":"https://example.com/success","fail_url":"https://example.com/fail"}' \
+            "https://api.timeweb.cloud/api/v1/account/payment-link"
+      - lang: JavaScript
+        source: |
+          fetch('https://api.timeweb.cloud/api/v1/account/payment-link', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': `Bearer ${TIMEWEB_CLOUD_TOKEN}`
+              },
+              body: JSON.stringify({
+                  'amount': 1000,
+                  'payment_type': 'card',
+                  'is_bind_card': false,
+                  'return_url': 'https://example.com/success',
+                  'fail_url': 'https://example.com/fail'
+              })
+          });
+      - lang: Node
+        source: |
+          const axios = require('axios');
+
+          const response = await axios.post(
+              'https://api.timeweb.cloud/api/v1/account/payment-link',
+              {
+                  'amount': 1000,
+                  'payment_type': 'card',
+                  'is_bind_card': false,
+                  'return_url': 'https://example.com/success',
+                  'fail_url': 'https://example.com/fail'
+              },
+              {
+                  headers: {
+                      'Content-Type': 'application/json',
+                      'Authorization': 'Bearer ' + process.env['TIMEWEB_CLOUD_TOKEN']
+                  }
+              }
+          );
+      - lang: Python
+        source: |
+          import os
+          import requests
+
+          headers = {
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer ' + os.getenv('TIMEWEB_CLOUD_TOKEN', ''),
+          }
+
+          json_data = {
+              'amount': 1000,
+              'payment_type': 'card',
+              'is_bind_card': False,
+              'return_url': 'https://example.com/success',
+              'fail_url': 'https://example.com/fail',
+          }
+
+          response = requests.post('https://api.timeweb.cloud/api/v1/account/payment-link', headers=headers, json=json_data)
+
+          # Note: json_data will not be serialized by requests
+          # exactly as it was in the original request.
+          #data = '{"amount":1000,"payment_type":"card","is_bind_card":false,"return_url":"https://example.com/success","fail_url":"https://example.com/fail"}'
+          #response = requests.post('https://api.timeweb.cloud/api/v1/account/payment-link', headers=headers, data=data)
+      - lang: PHP
+        source: |
+          <?php
+          $ch = curl_init();
+          curl_setopt($ch, CURLOPT_URL, 'https://api.timeweb.cloud/api/v1/account/payment-link');
+          curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+          curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+          curl_setopt($ch, CURLOPT_HTTPHEADER, [
+              'Content-Type: application/json',
+              'Authorization: Bearer ' . getenv('TIMEWEB_CLOUD_TOKEN') ?? '',
+          ]);
+          curl_setopt($ch, CURLOPT_POSTFIELDS, '{"amount":1000,"payment_type":"card","is_bind_card":false,"return_url":"https://example.com/success","fail_url":"https://example.com/fail"}');
+
+          $response = curl_exec($ch);
+
+          curl_close($ch);
+      - lang: Go
+        source: "package main\n\nimport (\n\t\"fmt\"\n\t\"io\"\n\t\"log\"\n\t\"net/http\"\
+          \n\t\"os\"\n\t\"strings\"\n)\n\nfunc main() {\n\tclient := &http.Client{}\n\
+          \tvar data = strings.NewReader(`{\"amount\":1000,\"payment_type\":\"card\"\
+          ,\"is_bind_card\":false,\"return_url\":\"https://example.com/success\",\"\
+          fail_url\":\"https://example.com/fail\"}`)\n\treq, err := http.NewRequest(\"\
+          POST\", \"https://api.timeweb.cloud/api/v1/account/payment-link\", data)\n\
+          \tif err != nil {\n\t\tlog.Fatal(err)\n\t}\n\treq.Header.Set(\"Content-Type\"\
+          , \"application/json\")\n\treq.Header.Set(\"Authorization\", \"Bearer \"\
+          \ + os.Getenv(\"TIMEWEB_CLOUD_TOKEN\"))\n\tresp, err := client.Do(req)\n\
+          \tif err != nil {\n\t\tlog.Fatal(err)\n\t}\n\tdefer resp.Body.Close()\n\t\
+          bodyText, err := io.ReadAll(resp.Body)\n\tif err != nil {\n\t\tlog.Fatal(err)\n\
+          \t}\n\tfmt.Printf(\"%s\\n\", bodyText)\n}\n"
+      - lang: Java
+        source: "import java.io.IOException;\nimport java.io.InputStream;\nimport\
+          \ java.io.OutputStreamWriter;\nimport java.lang.System;\nimport java.net.HttpURLConnection;\n\
+          import java.net.URL;\nimport java.util.Scanner;\n\nclass Main {\n\n\tpublic\
+          \ static void main(String[] args) throws IOException {\n\t\tURL url = new\
+          \ URL(\"https://api.timeweb.cloud/api/v1/account/payment-link\");\n\t\t\
+          HttpURLConnection httpConn = (HttpURLConnection) url.openConnection();\n\
+          \t\thttpConn.setRequestMethod(\"POST\");\n\n\t\thttpConn.setRequestProperty(\"\
+          Content-Type\", \"application/json\");\n\t\thttpConn.setRequestProperty(\"\
+          Authorization\", \"Bearer \" + System.getenv(\"TIMEWEB_CLOUD_TOKEN\"));\n\
+          \n\t\thttpConn.setDoOutput(true);\n\t\tOutputStreamWriter writer = new OutputStreamWriter(httpConn.getOutputStream());\n\
+          \t\twriter.write(\"{\\\"amount\\\":1000,\\\"payment_type\\\":\\\"card\\\"\
+          ,\\\"is_bind_card\\\":false,\\\"return_url\\\":\\\"https://example.com/success\\\
+          \",\\\"fail_url\\\":\\\"https://example.com/fail\\\"}\");\n\t\twriter.flush();\n\
+          \t\twriter.close();\n\t\thttpConn.getOutputStream().close();\n\n\t\tInputStream\
+          \ responseStream = httpConn.getResponseCode() / 100 == 2\n\t\t\t\t? httpConn.getInputStream()\n\
+          \t\t\t\t: httpConn.getErrorStream();\n\t\tScanner s = new Scanner(responseStream).useDelimiter(\"\
+          \\\\A\");\n\t\tString response = s.hasNext() ? s.next() : \"\";\n\t\tSystem.out.println(response);\n\
+          \t}\n}\n"
+      x-content-type: application/json
+      x-accepts: application/json
+  /api/v1/account/services/cost:
+    get:
+      description: "Чтобы получить информацию о стоимости всех активных сервисов а\
+        ккаунта, отправьте GET-запрос на `/api/v1/account/services/cost`."
+      operationId: getServicePrices
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getServicePrices_200_response'
+          description: Объект JSON с ключом `services_costs`
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getFinances_400_response'
+          description: Некорректный запрос
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getFinances_401_response'
+          description: Не авторизован
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getFinances_429_response'
+          description: Слишком много запросов
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getFinances_500_response'
+          description: Внутренняя ошибка сервера
+      summary: Получение стоимости сервисов
+      tags:
+      - Payments
+      x-codeSamples:
+      - lang: cURL
+        label: cURL
+        source: |-
+          curl -X GET \
+            -H "Content-Type: application/json" \
+            -H "Authorization: Bearer $TIMEWEB_CLOUD_TOKEN" \
+            "https://api.timeweb.cloud/api/v1/account/services/cost"
+      - lang: JavaScript
+        source: |
+          fetch('https://api.timeweb.cloud/api/v1/account/services/cost', {
+              headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': `Bearer ${TIMEWEB_CLOUD_TOKEN}`
+              }
+          });
+      - lang: Node
+        source: |
+          const axios = require('axios');
+
+          const response = await axios.get('https://api.timeweb.cloud/api/v1/account/services/cost', {
+              headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': 'Bearer ' + process.env['TIMEWEB_CLOUD_TOKEN']
+              }
+          });
+      - lang: Python
+        source: |
+          import os
+          import requests
+
+          headers = {
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer ' + os.getenv('TIMEWEB_CLOUD_TOKEN', ''),
+          }
+
+          response = requests.get('https://api.timeweb.cloud/api/v1/account/services/cost', headers=headers)
+      - lang: PHP
+        source: |
+          <?php
+          $ch = curl_init();
+          curl_setopt($ch, CURLOPT_URL, 'https://api.timeweb.cloud/api/v1/account/services/cost');
+          curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+          curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
+          curl_setopt($ch, CURLOPT_HTTPHEADER, [
+              'Content-Type: application/json',
+              'Authorization: Bearer ' . getenv('TIMEWEB_CLOUD_TOKEN') ?? '',
+          ]);
+
+          $response = curl_exec($ch);
+
+          curl_close($ch);
+      - lang: Go
+        source: "package main\n\nimport (\n\t\"fmt\"\n\t\"io\"\n\t\"log\"\n\t\"net/http\"\
+          \n\t\"os\"\n)\n\nfunc main() {\n\tclient := &http.Client{}\n\treq, err :=\
+          \ http.NewRequest(\"GET\", \"https://api.timeweb.cloud/api/v1/account/services/cost\"\
+          , nil)\n\tif err != nil {\n\t\tlog.Fatal(err)\n\t}\n\treq.Header.Set(\"\
+          Content-Type\", \"application/json\")\n\treq.Header.Set(\"Authorization\"\
+          , \"Bearer \" + os.Getenv(\"TIMEWEB_CLOUD_TOKEN\"))\n\tresp, err := client.Do(req)\n\
+          \tif err != nil {\n\t\tlog.Fatal(err)\n\t}\n\tdefer resp.Body.Close()\n\t\
+          bodyText, err := io.ReadAll(resp.Body)\n\tif err != nil {\n\t\tlog.Fatal(err)\n\
+          \t}\n\tfmt.Printf(\"%s\\n\", bodyText)\n}\n"
+      - lang: Java
+        source: "import java.io.IOException;\nimport java.io.InputStream;\nimport\
+          \ java.lang.System;\nimport java.net.HttpURLConnection;\nimport java.net.URL;\n\
+          import java.util.Scanner;\n\nclass Main {\n\n\tpublic static void main(String[]\
+          \ args) throws IOException {\n\t\tURL url = new URL(\"https://api.timeweb.cloud/api/v1/account/services/cost\"\
+          );\n\t\tHttpURLConnection httpConn = (HttpURLConnection) url.openConnection();\n\
+          \t\thttpConn.setRequestMethod(\"GET\");\n\n\t\thttpConn.setRequestProperty(\"\
+          Content-Type\", \"application/json\");\n\t\thttpConn.setRequestProperty(\"\
+          Authorization\", \"Bearer \" + System.getenv(\"TIMEWEB_CLOUD_TOKEN\"));\n\
+          \n\t\tInputStream responseStream = httpConn.getResponseCode() / 100 == 2\n\
+          \t\t\t\t? httpConn.getInputStream()\n\t\t\t\t: httpConn.getErrorStream();\n\
+          \t\tScanner s = new Scanner(responseStream).useDelimiter(\"\\\\A\");\n\t\
+          \tString response = s.hasNext() ? s.next() : \"\";\n\t\tSystem.out.println(response);\n\
+          \t}\n}\n"
+      x-accepts: application/json
   /api/v1/account/status:
     get:
       description: "Чтобы получить статус аккаунта, отправьте GET-запрос на `/api/v1/account/status`."
@@ -377,7 +653,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "429":
           content:
@@ -498,7 +774,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "429":
           content:
@@ -625,7 +901,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "429":
           content:
@@ -4740,7 +5016,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -4875,7 +5151,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -5043,7 +5319,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -5180,7 +5456,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -5322,7 +5598,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -5476,7 +5752,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -5614,7 +5890,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -5752,7 +6028,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -5895,7 +6171,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -6037,7 +6313,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -6184,7 +6460,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -6335,7 +6611,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -6471,7 +6747,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -6620,7 +6896,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -6755,7 +7031,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -6961,7 +7237,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -7098,7 +7374,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -7240,7 +7516,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -7416,7 +7692,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -7558,7 +7834,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -7756,7 +8032,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -7901,7 +8177,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -8051,7 +8327,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -8236,7 +8512,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -8381,7 +8657,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -8556,7 +8832,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -8700,7 +8976,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -8842,7 +9118,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -9004,7 +9280,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -9137,7 +9413,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -9287,7 +9563,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -9423,7 +9699,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -9592,7 +9868,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -9730,7 +10006,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -9873,7 +10149,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -10025,7 +10301,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -10168,7 +10444,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -10361,7 +10637,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -10497,7 +10773,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -10649,7 +10925,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -10794,7 +11070,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -10934,7 +11210,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -11075,7 +11351,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -11205,7 +11481,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -11340,7 +11616,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -11538,7 +11814,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -11677,7 +11953,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -11820,7 +12096,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -11992,7 +12268,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -12131,7 +12407,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -12652,7 +12928,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -12807,7 +13083,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -12967,7 +13243,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -13151,7 +13427,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -13298,7 +13574,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -13456,7 +13732,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -13607,7 +13883,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -13783,7 +14059,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -13940,7 +14216,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -14091,7 +14367,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -14320,7 +14596,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -14509,7 +14785,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -14706,7 +14982,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -14850,7 +15126,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -15106,7 +15382,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -15788,7 +16064,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -15940,7 +16216,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -16098,7 +16374,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -16513,7 +16789,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -16648,7 +16924,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "409":
           content:
@@ -16871,7 +17147,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -17015,7 +17291,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -17165,7 +17441,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -17361,7 +17637,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -17534,7 +17810,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "409":
           content:
@@ -17674,7 +17950,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "409":
           content:
@@ -17813,7 +18089,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "409":
           content:
@@ -18218,7 +18494,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "409":
           content:
@@ -18380,7 +18656,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -18555,7 +18831,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -18696,7 +18972,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -18826,7 +19102,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "429":
           content:
@@ -18950,7 +19226,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "429":
           content:
@@ -19074,7 +19350,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -19215,7 +19491,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -19388,7 +19664,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -19562,7 +19838,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -19736,7 +20012,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -19885,7 +20161,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -20066,7 +20342,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -20269,7 +20545,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -20414,7 +20690,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -20563,7 +20839,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -20741,7 +21017,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -20895,7 +21171,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -21054,7 +21330,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -21236,7 +21512,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -21391,7 +21667,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -21580,7 +21856,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -21735,7 +22011,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -21918,7 +22194,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -22085,7 +22361,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -22248,7 +22524,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -22435,7 +22711,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -22859,7 +23135,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "429":
           content:
@@ -23013,7 +23289,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -23151,7 +23427,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -23294,7 +23570,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -23459,7 +23735,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -23605,7 +23881,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -23770,7 +24046,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -23916,7 +24192,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -24081,7 +24357,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -24227,7 +24503,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -24392,7 +24668,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -24538,7 +24814,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -24703,7 +24979,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -24849,7 +25125,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -25014,7 +25290,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -25160,7 +25436,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -25325,7 +25601,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -26166,7 +26442,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -26327,7 +26603,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -26459,7 +26735,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -26653,7 +26929,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -26797,7 +27073,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -26953,7 +27229,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -27081,7 +27357,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -27226,7 +27502,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -27391,7 +27667,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -27521,7 +27797,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -27715,7 +27991,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -27883,7 +28159,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -28027,7 +28303,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -28190,7 +28466,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -28345,7 +28621,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "429":
           content:
@@ -28474,7 +28750,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "429":
           content:
@@ -28631,7 +28907,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -28778,7 +29054,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -28959,7 +29235,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -30278,7 +30554,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "429":
           content:
@@ -30399,7 +30675,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "429":
           content:
@@ -30526,7 +30802,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "429":
           content:
@@ -30708,7 +30984,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -30850,7 +31126,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -31021,7 +31297,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -31175,7 +31451,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -31318,7 +31594,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -31484,7 +31760,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -31634,7 +31910,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -31785,7 +32061,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -35078,7 +35354,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -35211,7 +35487,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "409":
           content:
@@ -35379,7 +35655,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -35522,7 +35798,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -35686,7 +35962,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -35820,7 +36096,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -35960,7 +36236,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -36087,7 +36363,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -36221,7 +36497,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "409":
           content:
@@ -36395,7 +36671,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -36533,7 +36809,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -36676,7 +36952,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -36841,7 +37117,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -37019,7 +37295,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -37147,7 +37423,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -37280,7 +37556,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "409":
           content:
@@ -37443,7 +37719,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -37582,7 +37858,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -37725,7 +38001,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -37899,7 +38175,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -38039,7 +38315,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -38174,7 +38450,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "429":
           content:
@@ -38295,7 +38571,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -38428,7 +38704,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "409":
           content:
@@ -38679,7 +38955,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -38814,7 +39090,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -39196,7 +39472,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -39336,7 +39612,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -39490,7 +39766,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -39624,7 +39900,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -39757,7 +40033,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "409":
           content:
@@ -39950,7 +40226,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -40086,7 +40362,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -40229,7 +40505,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -40390,7 +40666,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -40535,7 +40811,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "409":
           content:
@@ -40720,7 +40996,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -40870,7 +41146,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -41012,7 +41288,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "409":
           content:
@@ -41185,7 +41461,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -41321,7 +41597,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -41457,7 +41733,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -41585,7 +41861,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -41718,7 +41994,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "409":
           content:
@@ -41881,7 +42157,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -42023,7 +42299,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -42169,7 +42445,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -42344,7 +42620,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -42485,7 +42761,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -42617,7 +42893,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -42744,7 +43020,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getFinances_403_response'
+                $ref: '#/components/schemas/getAccountStatus_403_response'
           description: Запрещено
         "404":
           content:
@@ -43298,7 +43574,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/getFinances_403_response'
+            $ref: '#/components/schemas/getAccountStatus_403_response'
       description: Запрещено
     not-found:
       content:
@@ -43401,6 +43677,227 @@ components:
       - monthly_cost
       - monthly_fee
       - total_paid
+      type: object
+    payment-type:
+      description: Тип оплаты
+      enum:
+      - card
+      - yandex_money
+      - sbp
+      - sber_pay
+      example: card
+      type: string
+    create-payment:
+      description: Данные для создания платежа
+      properties:
+        amount:
+          description: Сумма оплаты
+          example: 1000
+          maximum: 1000000
+          minimum: 50
+          type: number
+        payment_type:
+          $ref: '#/components/schemas/payment-type'
+        is_bind_card:
+          description: Привязать карту
+          example: false
+          type: boolean
+        return_url:
+          description: URL для перенаправления после успешной оплаты
+          example: https://example.com/success
+          type: string
+        fail_url:
+          description: URL для перенаправления после неудачной оплаты
+          example: https://example.com/fail
+          type: string
+      required:
+      - amount
+      - payment_type
+      type: object
+    service-price-type:
+      description: Тип сервиса
+      enum:
+      - server
+      - dedicated_server
+      - s3
+      - s3_outgoing_traffic
+      - k8s
+      - database
+      - balancer
+      - vpn
+      - mail
+      - image
+      - floating_ip
+      - floating_ip_with_ddos_guard
+      - app_frontend
+      - app_backend
+      - network_drive
+      - container_registry
+      - router
+      - vmware
+      - additional_drive
+      - backup
+      example: server
+      type: string
+    service-cost-type:
+      description: Тип сервиса
+      enum:
+      - bandwidth
+      - ddos_guard
+      - additional_ips
+      - license
+      - backups
+      - disks
+      - floating_ip
+      - floating_ip_with_ddos_guard
+      - network_drive
+      example: bandwidth
+      type: string
+    service-service-price:
+      description: Информация о стоимости вложенного сервиса
+      example:
+        cost: 150.5
+        description: Дополнительный диск 100GB
+        id: 12345
+        type: bandwidth
+        node_groups:
+        - cost: 500
+          name: worker-nodes
+          nodes_count: 3
+        - cost: 500
+          name: worker-nodes
+          nodes_count: 3
+      properties:
+        id:
+          description: Идентификатор сервиса
+          example: 12345
+          type: number
+        cost:
+          description: Стоимость сервиса
+          example: 150.5
+          type: number
+        description:
+          description: Описание сервиса
+          example: Дополнительный диск 100GB
+          type: string
+        type:
+          $ref: '#/components/schemas/service-cost-type'
+        node_groups:
+          description: Группы узлов для Kubernetes кластера
+          items:
+            $ref: '#/components/schemas/service_service_price_node_groups_inner'
+          type: array
+      type: object
+    info-service-price:
+      description: Дополнительная информация о сервисе
+      example:
+        is_mounted: true
+        size: 100
+        name: PostgreSQL 14
+        count: 2
+        description: База данных PostgreSQL версии 14
+        type: postgres
+      properties:
+        name:
+          description: Название сервиса
+          example: PostgreSQL 14
+          type: string
+        description:
+          description: Описание сервиса
+          example: База данных PostgreSQL версии 14
+          type: string
+        is_mounted:
+          description: "Флаг, указывающий, подключен ли сервис"
+          example: true
+          type: boolean
+        size:
+          description: Размер в ГБ
+          example: 100
+          type: number
+        type:
+          description: Тип кластера базы данных
+          example: postgres
+          type: string
+        count:
+          description: Количество
+          example: 2
+          type: number
+      type: object
+    service-price:
+      description: Информация о стоимости сервиса
+      example:
+        cost: 250
+        total_cost: 400.5
+        project_id: 100
+        configuration:
+          disk: 100
+          cpu: 4
+          ram: 8192
+        service_id: 12345
+        services:
+        - cost: 150.5
+          description: Дополнительный диск 100GB
+          id: 12345
+          type: bandwidth
+          node_groups:
+          - cost: 500
+            name: worker-nodes
+            nodes_count: 3
+          - cost: 500
+            name: worker-nodes
+            nodes_count: 3
+        - cost: 150.5
+          description: Дополнительный диск 100GB
+          id: 12345
+          type: bandwidth
+          node_groups:
+          - cost: 500
+            name: worker-nodes
+            nodes_count: 3
+          - cost: 500
+            name: worker-nodes
+            nodes_count: 3
+        type: server
+        info:
+          is_mounted: true
+          size: 100
+          name: PostgreSQL 14
+          count: 2
+          description: База данных PostgreSQL версии 14
+          type: postgres
+      properties:
+        cost:
+          description: Стоимость сервиса
+          example: 250
+          type: number
+        total_cost:
+          description: Общая стоимость сервиса с учетом всех дополнительных услуг
+          example: 400.5
+          type: number
+        type:
+          $ref: '#/components/schemas/service-price-type'
+        service_id:
+          description: Идентификатор сервиса
+          example: 12345
+          type: number
+        project_id:
+          description: Идентификатор проекта
+          example: 100
+          nullable: true
+          type: number
+        services:
+          description: Список вложенных сервисов
+          items:
+            $ref: '#/components/schemas/service-service-price'
+          type: array
+        info:
+          $ref: '#/components/schemas/info-service-price'
+        configuration:
+          $ref: '#/components/schemas/service_price_configuration'
+      required:
+      - cost
+      - total_cost
+      - type
       type: object
     status:
       description: Статус аккаунта
@@ -51941,34 +52438,6 @@ components:
       - response_id
       - status_code
       type: object
-    getFinances_403_response:
-      properties:
-        status_code:
-          description: "Короткий идентификатор, соответствующий возвращаемому коду\
-            \ состояния HTTP."
-          example: 403
-          type: number
-        message:
-          description: "Сообщение, предоставляющее дополнительную информацию об ош\
-            ибке, в том числе сведения, помогающие устранить ее, когда это возможн\
-            о."
-          example: Forbidden
-          type: string
-        error_code:
-          description: Краткое описание ошибки HTTP на основе статуса.
-          example: forbidden
-          type: string
-        response_id:
-          description: "ID запроса, который можно указывать при обращении в службу\
-            \ технической поддержки, чтобы помочь определить проблему."
-          example: 15095f25-aac3-4d60-a788-96cb5136f186
-          format: uuid
-          type: string
-      required:
-      - error_code
-      - response_id
-      - status_code
-      type: object
     getFinances_429_response:
       properties:
         status_code:
@@ -52025,6 +52494,130 @@ components:
       - response_id
       - status_code
       type: object
+    getLinkCardPayment_200_response:
+      example:
+        confirmation_url: https://payment.timeweb.cloud/confirm/abc123def456
+        response_id: 94608d15-8672-4eed-8ab6-28bd6fa3cdf7
+      properties:
+        confirmation_url:
+          description: URL для подтверждения оплаты
+          example: https://payment.timeweb.cloud/confirm/abc123def456
+          type: string
+        response_id:
+          description: "ID запроса, который можно указывать при обращении в службу\
+            \ технической поддержки, чтобы помочь определить проблему."
+          example: 94608d15-8672-4eed-8ab6-28bd6fa3cdf7
+          type: string
+      required:
+      - confirmation_url
+      - response_id
+      type: object
+    getServicePrices_200_response_meta:
+      example:
+        total: 15
+      properties:
+        total:
+          description: Общее количество сервисов
+          example: 15
+          type: number
+      required:
+      - total
+      type: object
+    getServicePrices_200_response:
+      example:
+        services_costs:
+        - cost: 250
+          total_cost: 400.5
+          project_id: 100
+          configuration:
+            disk: 100
+            cpu: 4
+            ram: 8192
+          service_id: 12345
+          services:
+          - cost: 150.5
+            description: Дополнительный диск 100GB
+            id: 12345
+            type: bandwidth
+            node_groups:
+            - cost: 500
+              name: worker-nodes
+              nodes_count: 3
+            - cost: 500
+              name: worker-nodes
+              nodes_count: 3
+          - cost: 150.5
+            description: Дополнительный диск 100GB
+            id: 12345
+            type: bandwidth
+            node_groups:
+            - cost: 500
+              name: worker-nodes
+              nodes_count: 3
+            - cost: 500
+              name: worker-nodes
+              nodes_count: 3
+          type: server
+          info:
+            is_mounted: true
+            size: 100
+            name: PostgreSQL 14
+            count: 2
+            description: База данных PostgreSQL версии 14
+            type: postgres
+        - cost: 250
+          total_cost: 400.5
+          project_id: 100
+          configuration:
+            disk: 100
+            cpu: 4
+            ram: 8192
+          service_id: 12345
+          services:
+          - cost: 150.5
+            description: Дополнительный диск 100GB
+            id: 12345
+            type: bandwidth
+            node_groups:
+            - cost: 500
+              name: worker-nodes
+              nodes_count: 3
+            - cost: 500
+              name: worker-nodes
+              nodes_count: 3
+          - cost: 150.5
+            description: Дополнительный диск 100GB
+            id: 12345
+            type: bandwidth
+            node_groups:
+            - cost: 500
+              name: worker-nodes
+              nodes_count: 3
+            - cost: 500
+              name: worker-nodes
+              nodes_count: 3
+          type: server
+          info:
+            is_mounted: true
+            size: 100
+            name: PostgreSQL 14
+            count: 2
+            description: База данных PostgreSQL версии 14
+            type: postgres
+        meta:
+          total: 15
+      properties:
+        services_costs:
+          description: Список сервисов с информацией о стоимости
+          items:
+            $ref: '#/components/schemas/service-price'
+          type: array
+        meta:
+          $ref: '#/components/schemas/getServicePrices_200_response_meta'
+      required:
+      - meta
+      - services_costs
+      type: object
     getAccountStatus_200_response:
       example:
         status:
@@ -52041,6 +52634,34 @@ components:
           $ref: '#/components/schemas/status'
       required:
       - status
+      type: object
+    getAccountStatus_403_response:
+      properties:
+        status_code:
+          description: "Короткий идентификатор, соответствующий возвращаемому коду\
+            \ состояния HTTP."
+          example: 403
+          type: number
+        message:
+          description: "Сообщение, предоставляющее дополнительную информацию об ош\
+            ибке, в том числе сведения, помогающие устранить ее, когда это возможн\
+            о."
+          example: Forbidden
+          type: string
+        error_code:
+          description: Краткое описание ошибки HTTP на основе статуса.
+          example: forbidden
+          type: string
+        response_id:
+          description: "ID запроса, который можно указывать при обращении в службу\
+            \ технической поддержки, чтобы помочь определить проблему."
+          example: 15095f25-aac3-4d60-a788-96cb5136f186
+          format: uuid
+          type: string
+      required:
+      - error_code
+      - response_id
+      - status_code
       type: object
     getNotificationSettings_200_response:
       example:
@@ -57815,6 +58436,45 @@ components:
       required:
       - meta
       - network_drive_presets
+      type: object
+    service_service_price_node_groups_inner:
+      example:
+        cost: 500
+        name: worker-nodes
+        nodes_count: 3
+      properties:
+        cost:
+          description: Стоимость группы узлов
+          example: 500
+          type: number
+        name:
+          description: Название группы узлов
+          example: worker-nodes
+          type: string
+        nodes_count:
+          description: Количество узлов в группе
+          example: 3
+          type: number
+      type: object
+    service_price_configuration:
+      description: Конфигурация сервиса
+      example:
+        disk: 100
+        cpu: 4
+        ram: 8192
+      properties:
+        cpu:
+          description: Количество ядер процессора
+          example: 4
+          type: number
+        ram:
+          description: Объем оперативной памяти в МБ
+          example: 8192
+          type: number
+        disk:
+          description: Объем дискового пространства в ГБ
+          example: 100
+          type: number
       type: object
     status_company_info:
       description: Информация о компании.

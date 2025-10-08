@@ -19,47 +19,29 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
-import java.util.UUID;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
- * Model tests for GetFinances403Response
+ * Model tests for GetLinkCardPayment200Response
  */
-public class GetFinances403ResponseTest {
-    private final GetFinances403Response model = new GetFinances403Response();
+public class GetLinkCardPayment200ResponseTest {
+    private final GetLinkCardPayment200Response model = new GetLinkCardPayment200Response();
 
     /**
-     * Model tests for GetFinances403Response
+     * Model tests for GetLinkCardPayment200Response
      */
     @Test
-    public void testGetFinances403Response() {
-        // TODO: test GetFinances403Response
+    public void testGetLinkCardPayment200Response() {
+        // TODO: test GetLinkCardPayment200Response
     }
 
     /**
-     * Test the property 'statusCode'
+     * Test the property 'confirmationUrl'
      */
     @Test
-    public void statusCodeTest() {
-        // TODO: test statusCode
-    }
-
-    /**
-     * Test the property 'message'
-     */
-    @Test
-    public void messageTest() {
-        // TODO: test message
-    }
-
-    /**
-     * Test the property 'errorCode'
-     */
-    @Test
-    public void errorCodeTest() {
-        // TODO: test errorCode
+    public void confirmationUrlTest() {
+        // TODO: test confirmationUrl
     }
 
     /**

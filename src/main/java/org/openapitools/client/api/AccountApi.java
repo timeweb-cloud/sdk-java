@@ -36,12 +36,11 @@ import org.openapitools.client.model.DeleteCountriesFromAllowedListRequest;
 import org.openapitools.client.model.DeleteIPsFromAllowedList200Response;
 import org.openapitools.client.model.DeleteIPsFromAllowedListRequest;
 import org.openapitools.client.model.GetAccountStatus200Response;
+import org.openapitools.client.model.GetAccountStatus403Response;
 import org.openapitools.client.model.GetAuthAccessSettings200Response;
 import org.openapitools.client.model.GetCountries200Response;
-import org.openapitools.client.model.GetFinances200Response;
 import org.openapitools.client.model.GetFinances400Response;
 import org.openapitools.client.model.GetFinances401Response;
-import org.openapitools.client.model.GetFinances403Response;
 import org.openapitools.client.model.GetFinances429Response;
 import org.openapitools.client.model.GetFinances500Response;
 import org.openapitools.client.model.GetNotificationSettings200Response;
@@ -1035,139 +1034,6 @@ public class AccountApi {
 
         okhttp3.Call localVarCall = getCountriesValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<GetCountries200Response>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getFinances
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;finances&#x60; </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getFinancesCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/api/v1/account/finances";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "Bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getFinancesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getFinancesCall(_callback);
-
-    }
-
-    /**
-     * Получение платежной информации
-     * Чтобы получить платежную информацию, отправьте GET-запрос на &#x60;/api/v1/account/finances&#x60;.
-     * @return GetFinances200Response
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;finances&#x60; </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
-     </table>
-     */
-    public GetFinances200Response getFinances() throws ApiException {
-        ApiResponse<GetFinances200Response> localVarResp = getFinancesWithHttpInfo();
-        return localVarResp.getData();
-    }
-
-    /**
-     * Получение платежной информации
-     * Чтобы получить платежную информацию, отправьте GET-запрос на &#x60;/api/v1/account/finances&#x60;.
-     * @return ApiResponse&lt;GetFinances200Response&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;finances&#x60; </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<GetFinances200Response> getFinancesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getFinancesValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<GetFinances200Response>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Получение платежной информации (asynchronously)
-     * Чтобы получить платежную информацию, отправьте GET-запрос на &#x60;/api/v1/account/finances&#x60;.
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;finances&#x60; </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getFinancesAsync(final ApiCallback<GetFinances200Response> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getFinancesValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<GetFinances200Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

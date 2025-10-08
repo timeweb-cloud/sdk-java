@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * Параметры конфигурации хранилища. Нельзя передавать вместе с &#x60;preset_id&#x60;.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-07T16:09:35.828584Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-08T11:03:53.274930Z[Etc/UTC]")
 public class CreateStorageRequestConfigurator {
   public static final String SERIALIZED_NAME_DISK = "disk";
   @SerializedName(SERIALIZED_NAME_DISK)

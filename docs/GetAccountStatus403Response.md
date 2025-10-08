@@ -1,6 +1,6 @@
 
 
-# GetFinances403Response
+# GetAccountStatus403Response
 
 
 ## Properties

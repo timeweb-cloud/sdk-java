@@ -11,7 +11,6 @@ All URIs are relative to *https://api.timeweb.cloud*
 | [**getAccountStatus**](AccountApi.md#getAccountStatus) | **GET** /api/v1/account/status | Получение статуса аккаунта |
 | [**getAuthAccessSettings**](AccountApi.md#getAuthAccessSettings) | **GET** /api/v1/auth/access | Получить информацию о ограничениях авторизации пользователя |
 | [**getCountries**](AccountApi.md#getCountries) | **GET** /api/v1/auth/access/countries | Получение списка стран |
-| [**getFinances**](AccountApi.md#getFinances) | **GET** /api/v1/account/finances | Получение платежной информации |
 | [**getNotificationSettings**](AccountApi.md#getNotificationSettings) | **GET** /api/v1/account/notification-settings | Получение настроек уведомлений аккаунта |
 | [**updateAuthRestrictionsByCountries**](AccountApi.md#updateAuthRestrictionsByCountries) | **POST** /api/v1/auth/access/countries/enabled | Включение/отключение ограничений по стране |
 | [**updateAuthRestrictionsByIP**](AccountApi.md#updateAuthRestrictionsByIP) | **POST** /api/v1/auth/access/ips/enabled | Включение/отключение ограничений по IP-адресу |
@@ -501,74 +500,6 @@ This endpoint does not need any parameter.
 | **200** | Объект JSON c ключом &#x60;countries&#x60; |  -  |
 | **400** | Некорректный запрос |  -  |
 | **401** | Не авторизован |  -  |
-| **429** | Слишком много запросов |  -  |
-| **500** | Внутренняя ошибка сервера |  -  |
-
-<a id="getFinances"></a>
-# **getFinances**
-> GetFinances200Response getFinances()
-
-Получение платежной информации
-
-Чтобы получить платежную информацию, отправьте GET-запрос на &#x60;/api/v1/account/finances&#x60;.
-
-### Example
-```java
-// Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.auth.*;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.AccountApi;
-
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://api.timeweb.cloud");
-    
-    // Configure HTTP bearer authorization: Bearer
-    HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
-    Bearer.setBearerToken("BEARER TOKEN");
-
-    AccountApi apiInstance = new AccountApi(defaultClient);
-    try {
-      GetFinances200Response result = apiInstance.getFinances();
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling AccountApi#getFinances");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
-```
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-[**GetFinances200Response**](GetFinances200Response.md)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Объект JSON c ключом &#x60;finances&#x60; |  -  |
-| **400** | Некорректный запрос |  -  |
-| **401** | Не авторизован |  -  |
-| **403** | Запрещено |  -  |
 | **429** | Слишком много запросов |  -  |
 | **500** | Внутренняя ошибка сервера |  -  |
 

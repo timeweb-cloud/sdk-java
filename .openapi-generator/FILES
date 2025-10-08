@@ -122,6 +122,7 @@ docs/CreateMultipleDomainMailboxesRequest.md
 docs/CreateMultipleDomainMailboxesRequestMailboxesInner.md
 docs/CreateNetworkDrive.md
 docs/CreateNetworkDrive201Response.md
+docs/CreatePayment.md
 docs/CreateProject.md
 docs/CreateProject201Response.md
 docs/CreateRule.md
@@ -215,6 +216,7 @@ docs/ForwardingOutgoingIsEnabled.md
 docs/Frameworks.md
 docs/Free.md
 docs/GetAccountStatus200Response.md
+docs/GetAccountStatus403Response.md
 docs/GetAllProjectResources200Response.md
 docs/GetAppDeploys200Response.md
 docs/GetAppLogs200Response.md
@@ -251,13 +253,13 @@ docs/GetDomains200Response.md
 docs/GetFinances200Response.md
 docs/GetFinances400Response.md
 docs/GetFinances401Response.md
-docs/GetFinances403Response.md
 docs/GetFinances429Response.md
 docs/GetFinances500Response.md
 docs/GetFloatingIps200Response.md
 docs/GetImage404Response.md
 docs/GetKey200Response.md
 docs/GetKeys200Response.md
+docs/GetLinkCardPayment200Response.md
 docs/GetLocations200Response.md
 docs/GetMailQuota200Response.md
 docs/GetMailboxes200Response.md
@@ -289,6 +291,8 @@ docs/GetServerStatistics200ResponseRamInner.md
 docs/GetServerStatisticsNew200Response.md
 docs/GetServers200Response.md
 docs/GetServersPresets200Response.md
+docs/GetServicePrices200Response.md
+docs/GetServicePrices200ResponseMeta.md
 docs/GetSoftware200Response.md
 docs/GetStorageSubdomains200Response.md
 docs/GetStorageTransferStatus200Response.md
@@ -313,6 +317,7 @@ docs/ImageUrlIn.md
 docs/ImagesApi.md
 docs/ImagesOutResponse.md
 docs/IncreaseNodes.md
+docs/InfoServicePrice.md
 docs/Invoice.md
 docs/K8SVersionsResponse.md
 docs/KubernetesApi.md
@@ -350,6 +355,8 @@ docs/NotificationSettingChannel.md
 docs/NotificationSettingChannels.md
 docs/NotificationSettingType.md
 docs/OS.md
+docs/PaymentType.md
+docs/PaymentsApi.md
 docs/PerformActionOnBackupRequest.md
 docs/PerformActionOnServerRequest.md
 docs/Policy.md
@@ -402,6 +409,12 @@ docs/ServersSoftwareRequirements.md
 docs/ServersStatistics.md
 docs/ServersStatisticsListInner.md
 docs/ServersStatisticsMeta.md
+docs/ServiceCostType.md
+docs/ServicePrice.md
+docs/ServicePriceConfiguration.md
+docs/ServicePriceType.md
+docs/ServiceServicePrice.md
+docs/ServiceServicePriceNodeGroupsInner.md
 docs/SetLabels.md
 docs/SettingCondition.md
 docs/SpamFilterIsDisabled.md
@@ -510,6 +523,7 @@ src/main/java/org/openapitools/client/api/KubernetesApi.java
 src/main/java/org/openapitools/client/api/LocationsApi.java
 src/main/java/org/openapitools/client/api/MailApi.java
 src/main/java/org/openapitools/client/api/NetworkDrivesApi.java
+src/main/java/org/openapitools/client/api/PaymentsApi.java
 src/main/java/org/openapitools/client/api/ProjectsApi.java
 src/main/java/org/openapitools/client/api/S3Api.java
 src/main/java/org/openapitools/client/api/ServersApi.java
@@ -631,6 +645,7 @@ src/main/java/org/openapitools/client/model/CreateMultipleDomainMailboxesRequest
 src/main/java/org/openapitools/client/model/CreateMultipleDomainMailboxesRequestMailboxesInner.java
 src/main/java/org/openapitools/client/model/CreateNetworkDrive.java
 src/main/java/org/openapitools/client/model/CreateNetworkDrive201Response.java
+src/main/java/org/openapitools/client/model/CreatePayment.java
 src/main/java/org/openapitools/client/model/CreateProject.java
 src/main/java/org/openapitools/client/model/CreateProject201Response.java
 src/main/java/org/openapitools/client/model/CreateRule.java
@@ -719,6 +734,7 @@ src/main/java/org/openapitools/client/model/ForwardingOutgoingIsEnabled.java
 src/main/java/org/openapitools/client/model/Frameworks.java
 src/main/java/org/openapitools/client/model/Free.java
 src/main/java/org/openapitools/client/model/GetAccountStatus200Response.java
+src/main/java/org/openapitools/client/model/GetAccountStatus403Response.java
 src/main/java/org/openapitools/client/model/GetAllProjectResources200Response.java
 src/main/java/org/openapitools/client/model/GetAppDeploys200Response.java
 src/main/java/org/openapitools/client/model/GetAppLogs200Response.java
@@ -755,13 +771,13 @@ src/main/java/org/openapitools/client/model/GetDomains200Response.java
 src/main/java/org/openapitools/client/model/GetFinances200Response.java
 src/main/java/org/openapitools/client/model/GetFinances400Response.java
 src/main/java/org/openapitools/client/model/GetFinances401Response.java
-src/main/java/org/openapitools/client/model/GetFinances403Response.java
 src/main/java/org/openapitools/client/model/GetFinances429Response.java
 src/main/java/org/openapitools/client/model/GetFinances500Response.java
 src/main/java/org/openapitools/client/model/GetFloatingIps200Response.java
 src/main/java/org/openapitools/client/model/GetImage404Response.java
 src/main/java/org/openapitools/client/model/GetKey200Response.java
 src/main/java/org/openapitools/client/model/GetKeys200Response.java
+src/main/java/org/openapitools/client/model/GetLinkCardPayment200Response.java
 src/main/java/org/openapitools/client/model/GetLocations200Response.java
 src/main/java/org/openapitools/client/model/GetMailQuota200Response.java
 src/main/java/org/openapitools/client/model/GetMailboxes200Response.java
@@ -793,6 +809,8 @@ src/main/java/org/openapitools/client/model/GetServerStatistics200ResponseRamInn
 src/main/java/org/openapitools/client/model/GetServerStatisticsNew200Response.java
 src/main/java/org/openapitools/client/model/GetServers200Response.java
 src/main/java/org/openapitools/client/model/GetServersPresets200Response.java
+src/main/java/org/openapitools/client/model/GetServicePrices200Response.java
+src/main/java/org/openapitools/client/model/GetServicePrices200ResponseMeta.java
 src/main/java/org/openapitools/client/model/GetSoftware200Response.java
 src/main/java/org/openapitools/client/model/GetStorageSubdomains200Response.java
 src/main/java/org/openapitools/client/model/GetStorageTransferStatus200Response.java
@@ -816,6 +834,7 @@ src/main/java/org/openapitools/client/model/ImageUrlAuth.java
 src/main/java/org/openapitools/client/model/ImageUrlIn.java
 src/main/java/org/openapitools/client/model/ImagesOutResponse.java
 src/main/java/org/openapitools/client/model/IncreaseNodes.java
+src/main/java/org/openapitools/client/model/InfoServicePrice.java
 src/main/java/org/openapitools/client/model/Invoice.java
 src/main/java/org/openapitools/client/model/K8SVersionsResponse.java
 src/main/java/org/openapitools/client/model/Location.java
@@ -849,6 +868,7 @@ src/main/java/org/openapitools/client/model/NotificationSettingChannel.java
 src/main/java/org/openapitools/client/model/NotificationSettingChannels.java
 src/main/java/org/openapitools/client/model/NotificationSettingType.java
 src/main/java/org/openapitools/client/model/OS.java
+src/main/java/org/openapitools/client/model/PaymentType.java
 src/main/java/org/openapitools/client/model/PerformActionOnBackupRequest.java
 src/main/java/org/openapitools/client/model/PerformActionOnServerRequest.java
 src/main/java/org/openapitools/client/model/Policy.java
@@ -898,6 +918,12 @@ src/main/java/org/openapitools/client/model/ServersSoftwareRequirements.java
 src/main/java/org/openapitools/client/model/ServersStatistics.java
 src/main/java/org/openapitools/client/model/ServersStatisticsListInner.java
 src/main/java/org/openapitools/client/model/ServersStatisticsMeta.java
+src/main/java/org/openapitools/client/model/ServiceCostType.java
+src/main/java/org/openapitools/client/model/ServicePrice.java
+src/main/java/org/openapitools/client/model/ServicePriceConfiguration.java
+src/main/java/org/openapitools/client/model/ServicePriceType.java
+src/main/java/org/openapitools/client/model/ServiceServicePrice.java
+src/main/java/org/openapitools/client/model/ServiceServicePriceNodeGroupsInner.java
 src/main/java/org/openapitools/client/model/SetLabels.java
 src/main/java/org/openapitools/client/model/SettingCondition.java
 src/main/java/org/openapitools/client/model/SpamFilterIsDisabled.java
@@ -982,6 +1008,7 @@ src/test/java/org/openapitools/client/api/KubernetesApiTest.java
 src/test/java/org/openapitools/client/api/LocationsApiTest.java
 src/test/java/org/openapitools/client/api/MailApiTest.java
 src/test/java/org/openapitools/client/api/NetworkDrivesApiTest.java
+src/test/java/org/openapitools/client/api/PaymentsApiTest.java
 src/test/java/org/openapitools/client/api/ProjectsApiTest.java
 src/test/java/org/openapitools/client/api/S3ApiTest.java
 src/test/java/org/openapitools/client/api/ServersApiTest.java
@@ -1098,6 +1125,7 @@ src/test/java/org/openapitools/client/model/CreateMultipleDomainMailboxesRequest
 src/test/java/org/openapitools/client/model/CreateMultipleDomainMailboxesRequestTest.java
 src/test/java/org/openapitools/client/model/CreateNetworkDrive201ResponseTest.java
 src/test/java/org/openapitools/client/model/CreateNetworkDriveTest.java
+src/test/java/org/openapitools/client/model/CreatePaymentTest.java
 src/test/java/org/openapitools/client/model/CreateProject201ResponseTest.java
 src/test/java/org/openapitools/client/model/CreateProjectTest.java
 src/test/java/org/openapitools/client/model/CreateRuleTest.java
@@ -1186,6 +1214,7 @@ src/test/java/org/openapitools/client/model/ForwardingOutgoingIsEnabledTest.java
 src/test/java/org/openapitools/client/model/FrameworksTest.java
 src/test/java/org/openapitools/client/model/FreeTest.java
 src/test/java/org/openapitools/client/model/GetAccountStatus200ResponseTest.java
+src/test/java/org/openapitools/client/model/GetAccountStatus403ResponseTest.java
 src/test/java/org/openapitools/client/model/GetAllProjectResources200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetAppDeploys200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetAppLogs200ResponseTest.java
@@ -1222,13 +1251,13 @@ src/test/java/org/openapitools/client/model/GetDomains200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetFinances200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetFinances400ResponseTest.java
 src/test/java/org/openapitools/client/model/GetFinances401ResponseTest.java
-src/test/java/org/openapitools/client/model/GetFinances403ResponseTest.java
 src/test/java/org/openapitools/client/model/GetFinances429ResponseTest.java
 src/test/java/org/openapitools/client/model/GetFinances500ResponseTest.java
 src/test/java/org/openapitools/client/model/GetFloatingIps200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetImage404ResponseTest.java
 src/test/java/org/openapitools/client/model/GetKey200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetKeys200ResponseTest.java
+src/test/java/org/openapitools/client/model/GetLinkCardPayment200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetLocations200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetMailQuota200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetMailboxes200ResponseTest.java
@@ -1260,6 +1289,8 @@ src/test/java/org/openapitools/client/model/GetServerStatistics200ResponseTest.j
 src/test/java/org/openapitools/client/model/GetServerStatisticsNew200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetServers200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetServersPresets200ResponseTest.java
+src/test/java/org/openapitools/client/model/GetServicePrices200ResponseMetaTest.java
+src/test/java/org/openapitools/client/model/GetServicePrices200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetSoftware200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetStorageSubdomains200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetStorageTransferStatus200ResponseTest.java
@@ -1283,6 +1314,7 @@ src/test/java/org/openapitools/client/model/ImageUrlAuthTest.java
 src/test/java/org/openapitools/client/model/ImageUrlInTest.java
 src/test/java/org/openapitools/client/model/ImagesOutResponseTest.java
 src/test/java/org/openapitools/client/model/IncreaseNodesTest.java
+src/test/java/org/openapitools/client/model/InfoServicePriceTest.java
 src/test/java/org/openapitools/client/model/InvoiceTest.java
 src/test/java/org/openapitools/client/model/K8SVersionsResponseTest.java
 src/test/java/org/openapitools/client/model/LocationDtoTest.java
@@ -1316,6 +1348,7 @@ src/test/java/org/openapitools/client/model/NotificationSettingChannelsTest.java
 src/test/java/org/openapitools/client/model/NotificationSettingTest.java
 src/test/java/org/openapitools/client/model/NotificationSettingTypeTest.java
 src/test/java/org/openapitools/client/model/OSTest.java
+src/test/java/org/openapitools/client/model/PaymentTypeTest.java
 src/test/java/org/openapitools/client/model/PerformActionOnBackupRequestTest.java
 src/test/java/org/openapitools/client/model/PerformActionOnServerRequestTest.java
 src/test/java/org/openapitools/client/model/PolicyTest.java
@@ -1365,6 +1398,12 @@ src/test/java/org/openapitools/client/model/ServersSoftwareTest.java
 src/test/java/org/openapitools/client/model/ServersStatisticsListInnerTest.java
 src/test/java/org/openapitools/client/model/ServersStatisticsMetaTest.java
 src/test/java/org/openapitools/client/model/ServersStatisticsTest.java
+src/test/java/org/openapitools/client/model/ServiceCostTypeTest.java
+src/test/java/org/openapitools/client/model/ServicePriceConfigurationTest.java
+src/test/java/org/openapitools/client/model/ServicePriceTest.java
+src/test/java/org/openapitools/client/model/ServicePriceTypeTest.java
+src/test/java/org/openapitools/client/model/ServiceServicePriceNodeGroupsInnerTest.java
+src/test/java/org/openapitools/client/model/ServiceServicePriceTest.java
 src/test/java/org/openapitools/client/model/SetLabelsTest.java
 src/test/java/org/openapitools/client/model/SettingConditionTest.java
 src/test/java/org/openapitools/client/model/SpamFilterIsDisabledTest.java

@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * AutoBackup
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-07T16:09:35.828584Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-08T11:03:53.274930Z[Etc/UTC]")
 public class AutoBackup {
   public static final String SERIALIZED_NAME_COPY_COUNT = "copy_count";
   @SerializedName(SERIALIZED_NAME_COPY_COUNT)

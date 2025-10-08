@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * BalancerNetworksInnerIpsInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-07T16:09:35.828584Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-08T11:03:53.274930Z[Etc/UTC]")
 public class BalancerNetworksInnerIpsInner {
   /**
    * Тип IP-адреса сети
