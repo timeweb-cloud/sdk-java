@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * Автоответчик на входящие письма
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-09T16:00:31.180845Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-09T17:18:25.900282Z[Etc/UTC]")
 public class MailboxAutoReply {
   public static final String SERIALIZED_NAME_IS_ENABLED = "is_enabled";
   @SerializedName(SERIALIZED_NAME_IS_ENABLED)

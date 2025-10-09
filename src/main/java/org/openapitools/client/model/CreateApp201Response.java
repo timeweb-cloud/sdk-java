@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * CreateApp201Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-09T16:00:31.180845Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-09T17:18:25.900282Z[Etc/UTC]")
 public class CreateApp201Response {
   public static final String SERIALIZED_NAME_APP = "app";
   @SerializedName(SERIALIZED_NAME_APP)

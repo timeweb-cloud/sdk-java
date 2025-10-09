@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * Дополнительные параметры конфигурации базы данных.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-09T16:00:31.180845Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-09T17:18:25.900282Z[Etc/UTC]")
 public class UpdateDb {
   public static final String SERIALIZED_NAME_PASSWORD = "password";
   @SerializedName(SERIALIZED_NAME_PASSWORD)

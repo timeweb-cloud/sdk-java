@@ -122,7 +122,6 @@ docs/CreateMultipleDomainMailboxesRequest.md
 docs/CreateMultipleDomainMailboxesRequestMailboxesInner.md
 docs/CreateNetworkDrive.md
 docs/CreateNetworkDrive201Response.md
-docs/CreatePayment.md
 docs/CreateProject.md
 docs/CreateProject201Response.md
 docs/CreateRule.md
@@ -259,7 +258,6 @@ docs/GetFloatingIps200Response.md
 docs/GetImage404Response.md
 docs/GetKey200Response.md
 docs/GetKeys200Response.md
-docs/GetLinkCardPayment200Response.md
 docs/GetLocations200Response.md
 docs/GetMailQuota200Response.md
 docs/GetMailboxes200Response.md
@@ -355,7 +353,6 @@ docs/NotificationSettingChannel.md
 docs/NotificationSettingChannels.md
 docs/NotificationSettingType.md
 docs/OS.md
-docs/PaymentType.md
 docs/PaymentsApi.md
 docs/PerformActionOnBackupRequest.md
 docs/PerformActionOnServerRequest.md
@@ -645,7 +642,6 @@ src/main/java/org/openapitools/client/model/CreateMultipleDomainMailboxesRequest
 src/main/java/org/openapitools/client/model/CreateMultipleDomainMailboxesRequestMailboxesInner.java
 src/main/java/org/openapitools/client/model/CreateNetworkDrive.java
 src/main/java/org/openapitools/client/model/CreateNetworkDrive201Response.java
-src/main/java/org/openapitools/client/model/CreatePayment.java
 src/main/java/org/openapitools/client/model/CreateProject.java
 src/main/java/org/openapitools/client/model/CreateProject201Response.java
 src/main/java/org/openapitools/client/model/CreateRule.java
@@ -777,7 +773,6 @@ src/main/java/org/openapitools/client/model/GetFloatingIps200Response.java
 src/main/java/org/openapitools/client/model/GetImage404Response.java
 src/main/java/org/openapitools/client/model/GetKey200Response.java
 src/main/java/org/openapitools/client/model/GetKeys200Response.java
-src/main/java/org/openapitools/client/model/GetLinkCardPayment200Response.java
 src/main/java/org/openapitools/client/model/GetLocations200Response.java
 src/main/java/org/openapitools/client/model/GetMailQuota200Response.java
 src/main/java/org/openapitools/client/model/GetMailboxes200Response.java
@@ -868,7 +863,6 @@ src/main/java/org/openapitools/client/model/NotificationSettingChannel.java
 src/main/java/org/openapitools/client/model/NotificationSettingChannels.java
 src/main/java/org/openapitools/client/model/NotificationSettingType.java
 src/main/java/org/openapitools/client/model/OS.java
-src/main/java/org/openapitools/client/model/PaymentType.java
 src/main/java/org/openapitools/client/model/PerformActionOnBackupRequest.java
 src/main/java/org/openapitools/client/model/PerformActionOnServerRequest.java
 src/main/java/org/openapitools/client/model/Policy.java
@@ -1125,7 +1119,6 @@ src/test/java/org/openapitools/client/model/CreateMultipleDomainMailboxesRequest
 src/test/java/org/openapitools/client/model/CreateMultipleDomainMailboxesRequestTest.java
 src/test/java/org/openapitools/client/model/CreateNetworkDrive201ResponseTest.java
 src/test/java/org/openapitools/client/model/CreateNetworkDriveTest.java
-src/test/java/org/openapitools/client/model/CreatePaymentTest.java
 src/test/java/org/openapitools/client/model/CreateProject201ResponseTest.java
 src/test/java/org/openapitools/client/model/CreateProjectTest.java
 src/test/java/org/openapitools/client/model/CreateRuleTest.java
@@ -1257,7 +1250,6 @@ src/test/java/org/openapitools/client/model/GetFloatingIps200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetImage404ResponseTest.java
 src/test/java/org/openapitools/client/model/GetKey200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetKeys200ResponseTest.java
-src/test/java/org/openapitools/client/model/GetLinkCardPayment200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetLocations200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetMailQuota200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetMailboxes200ResponseTest.java
@@ -1348,7 +1340,6 @@ src/test/java/org/openapitools/client/model/NotificationSettingChannelsTest.java
 src/test/java/org/openapitools/client/model/NotificationSettingTest.java
 src/test/java/org/openapitools/client/model/NotificationSettingTypeTest.java
 src/test/java/org/openapitools/client/model/OSTest.java
-src/test/java/org/openapitools/client/model/PaymentTypeTest.java
 src/test/java/org/openapitools/client/model/PerformActionOnBackupRequestTest.java
 src/test/java/org/openapitools/client/model/PerformActionOnServerRequestTest.java
 src/test/java/org/openapitools/client/model/PolicyTest.java

@@ -14,13 +14,11 @@
 package org.openapitools.client.api;
 
 import org.openapitools.client.ApiException;
-import org.openapitools.client.model.CreatePayment;
 import org.openapitools.client.model.GetFinances200Response;
 import org.openapitools.client.model.GetFinances400Response;
 import org.openapitools.client.model.GetFinances401Response;
 import org.openapitools.client.model.GetFinances429Response;
 import org.openapitools.client.model.GetFinances500Response;
-import org.openapitools.client.model.GetLinkCardPayment200Response;
 import org.openapitools.client.model.GetServicePrices200Response;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -48,20 +46,6 @@ public class PaymentsApiTest {
     @Test
     public void getFinancesTest() throws ApiException {
         GetFinances200Response response = api.getFinances();
-        // TODO: test validations
-    }
-
-    /**
-     * Получение ссылки на оплату
-     *
-     * Чтобы получить ссылку на оплату, отправьте POST-запрос на &#x60;/api/v1/account/payment-link&#x60;.
-     *
-     * @throws ApiException if the Api call fails
-     */
-    @Test
-    public void getLinkCardPaymentTest() throws ApiException {
-        CreatePayment createPayment = null;
-        GetLinkCardPayment200Response response = api.getLinkCardPayment(createPayment);
         // TODO: test validations
     }
 

@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * AddCountriesToAllowedListRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-09T16:00:31.180845Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-09T17:18:25.900282Z[Etc/UTC]")
 public class AddCountriesToAllowedListRequest {
   public static final String SERIALIZED_NAME_COUNTRIES = "countries";
   @SerializedName(SERIALIZED_NAME_COUNTRIES)

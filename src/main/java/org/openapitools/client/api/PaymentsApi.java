@@ -27,13 +27,11 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import org.openapitools.client.model.CreatePayment;
 import org.openapitools.client.model.GetFinances200Response;
 import org.openapitools.client.model.GetFinances400Response;
 import org.openapitools.client.model.GetFinances401Response;
 import org.openapitools.client.model.GetFinances429Response;
 import org.openapitools.client.model.GetFinances500Response;
-import org.openapitools.client.model.GetLinkCardPayment200Response;
 import org.openapitools.client.model.GetServicePrices200Response;
 
 import java.lang.reflect.Type;
@@ -205,145 +203,6 @@ public class PaymentsApi {
 
         okhttp3.Call localVarCall = getFinancesValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<GetFinances200Response>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getLinkCardPayment
-     * @param createPayment  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;confirmation_url&#x60; </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getLinkCardPaymentCall(CreatePayment createPayment, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = createPayment;
-
-        // create path and map variables
-        String localVarPath = "/api/v1/account/payment-link";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "Bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getLinkCardPaymentValidateBeforeCall(CreatePayment createPayment, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'createPayment' is set
-        if (createPayment == null) {
-            throw new ApiException("Missing the required parameter 'createPayment' when calling getLinkCardPayment(Async)");
-        }
-
-        return getLinkCardPaymentCall(createPayment, _callback);
-
-    }
-
-    /**
-     * Получение ссылки на оплату
-     * Чтобы получить ссылку на оплату, отправьте POST-запрос на &#x60;/api/v1/account/payment-link&#x60;.
-     * @param createPayment  (required)
-     * @return GetLinkCardPayment200Response
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;confirmation_url&#x60; </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
-     </table>
-     */
-    public GetLinkCardPayment200Response getLinkCardPayment(CreatePayment createPayment) throws ApiException {
-        ApiResponse<GetLinkCardPayment200Response> localVarResp = getLinkCardPaymentWithHttpInfo(createPayment);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Получение ссылки на оплату
-     * Чтобы получить ссылку на оплату, отправьте POST-запрос на &#x60;/api/v1/account/payment-link&#x60;.
-     * @param createPayment  (required)
-     * @return ApiResponse&lt;GetLinkCardPayment200Response&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;confirmation_url&#x60; </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<GetLinkCardPayment200Response> getLinkCardPaymentWithHttpInfo(CreatePayment createPayment) throws ApiException {
-        okhttp3.Call localVarCall = getLinkCardPaymentValidateBeforeCall(createPayment, null);
-        Type localVarReturnType = new TypeToken<GetLinkCardPayment200Response>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Получение ссылки на оплату (asynchronously)
-     * Чтобы получить ссылку на оплату, отправьте POST-запрос на &#x60;/api/v1/account/payment-link&#x60;.
-     * @param createPayment  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;confirmation_url&#x60; </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getLinkCardPaymentAsync(CreatePayment createPayment, final ApiCallback<GetLinkCardPayment200Response> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getLinkCardPaymentValidateBeforeCall(createPayment, _callback);
-        Type localVarReturnType = new TypeToken<GetLinkCardPayment200Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
