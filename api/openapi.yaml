@@ -43724,7 +43724,6 @@ components:
       - k8s
       - database
       - balancer
-      - vpn
       - mail
       - image
       - floating_ip

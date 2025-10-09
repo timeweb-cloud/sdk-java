@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * DatabaseClusterNetworksInnerIpsInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-08T11:03:53.274930Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-09T16:00:31.180845Z[Etc/UTC]")
 public class DatabaseClusterNetworksInnerIpsInner {
   /**
    * Тип IP-адреса сети

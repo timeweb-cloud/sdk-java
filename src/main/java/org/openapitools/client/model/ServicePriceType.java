@@ -43,8 +43,6 @@ public enum ServicePriceType {
   
   BALANCER("balancer"),
   
-  VPN("vpn"),
-  
   MAIL("mail"),
   
   IMAGE("image"),
