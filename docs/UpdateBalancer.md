@@ -25,6 +25,8 @@
 |**clientTimeout** | **BigDecimal** | Таймаут клиента. |  [optional] |
 |**serverTimeout** | **BigDecimal** | Таймаут сервера. |  [optional] |
 |**httprequestTimeout** | **BigDecimal** | Таймаут HTTP запроса. |  [optional] |
+|**comment** | **String** | Комментарий к балансировщику. |  [optional] |
+|**certificates** | [**CreateBalancerCertificates**](CreateBalancerCertificates.md) |  |  [optional] |
 
 
 

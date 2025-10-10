@@ -111,7 +111,7 @@ public class Example {
 
 <a id="createDatabaseBackup"></a>
 # **createDatabaseBackup**
-> CreateDatabaseBackup201Response createDatabaseBackup(dbId)
+> CreateDatabaseBackup201Response createDatabaseBackup(dbId, comment)
 
 Создание бэкапа базы данных
 
@@ -138,8 +138,9 @@ public class Example {
 
     DatabasesApi apiInstance = new DatabasesApi(defaultClient);
     Integer dbId = 56; // Integer | ID базы данных
+    String comment = "comment_example"; // String | Описание бэкапа
     try {
-      CreateDatabaseBackup201Response result = apiInstance.createDatabaseBackup(dbId);
+      CreateDatabaseBackup201Response result = apiInstance.createDatabaseBackup(dbId, comment);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling DatabasesApi#createDatabaseBackup");
@@ -157,6 +158,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **dbId** | **Integer**| ID базы данных | |
+| **comment** | **String**| Описание бэкапа | [optional] |
 
 ### Return type
 

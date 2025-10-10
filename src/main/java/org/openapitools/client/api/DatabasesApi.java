@@ -261,6 +261,7 @@ public class DatabasesApi {
     /**
      * Build call for createDatabaseBackup
      * @param dbId ID базы данных (required)
+     * @param comment Описание бэкапа (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -277,7 +278,7 @@ public class DatabasesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createDatabaseBackupCall(Integer dbId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createDatabaseBackupCall(Integer dbId, String comment, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -303,6 +304,10 @@ public class DatabasesApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (comment != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("comment", comment));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -323,13 +328,13 @@ public class DatabasesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createDatabaseBackupValidateBeforeCall(Integer dbId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createDatabaseBackupValidateBeforeCall(Integer dbId, String comment, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'dbId' is set
         if (dbId == null) {
             throw new ApiException("Missing the required parameter 'dbId' when calling createDatabaseBackup(Async)");
         }
 
-        return createDatabaseBackupCall(dbId, _callback);
+        return createDatabaseBackupCall(dbId, comment, _callback);
 
     }
 
@@ -337,6 +342,7 @@ public class DatabasesApi {
      * Создание бэкапа базы данных
      * Чтобы создать бэкап базы данных, отправьте запрос POST в &#x60;api/v1/dbs/{db_id}/backups&#x60;. 
      * @param dbId ID базы данных (required)
+     * @param comment Описание бэкапа (optional)
      * @return CreateDatabaseBackup201Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -352,8 +358,8 @@ public class DatabasesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public CreateDatabaseBackup201Response createDatabaseBackup(Integer dbId) throws ApiException {
-        ApiResponse<CreateDatabaseBackup201Response> localVarResp = createDatabaseBackupWithHttpInfo(dbId);
+    public CreateDatabaseBackup201Response createDatabaseBackup(Integer dbId, String comment) throws ApiException {
+        ApiResponse<CreateDatabaseBackup201Response> localVarResp = createDatabaseBackupWithHttpInfo(dbId, comment);
         return localVarResp.getData();
     }
 
@@ -361,6 +367,7 @@ public class DatabasesApi {
      * Создание бэкапа базы данных
      * Чтобы создать бэкап базы данных, отправьте запрос POST в &#x60;api/v1/dbs/{db_id}/backups&#x60;. 
      * @param dbId ID базы данных (required)
+     * @param comment Описание бэкапа (optional)
      * @return ApiResponse&lt;CreateDatabaseBackup201Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -376,8 +383,8 @@ public class DatabasesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CreateDatabaseBackup201Response> createDatabaseBackupWithHttpInfo(Integer dbId) throws ApiException {
-        okhttp3.Call localVarCall = createDatabaseBackupValidateBeforeCall(dbId, null);
+    public ApiResponse<CreateDatabaseBackup201Response> createDatabaseBackupWithHttpInfo(Integer dbId, String comment) throws ApiException {
+        okhttp3.Call localVarCall = createDatabaseBackupValidateBeforeCall(dbId, comment, null);
         Type localVarReturnType = new TypeToken<CreateDatabaseBackup201Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -386,6 +393,7 @@ public class DatabasesApi {
      * Создание бэкапа базы данных (asynchronously)
      * Чтобы создать бэкап базы данных, отправьте запрос POST в &#x60;api/v1/dbs/{db_id}/backups&#x60;. 
      * @param dbId ID базы данных (required)
+     * @param comment Описание бэкапа (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -402,9 +410,9 @@ public class DatabasesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createDatabaseBackupAsync(Integer dbId, final ApiCallback<CreateDatabaseBackup201Response> _callback) throws ApiException {
+    public okhttp3.Call createDatabaseBackupAsync(Integer dbId, String comment, final ApiCallback<CreateDatabaseBackup201Response> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createDatabaseBackupValidateBeforeCall(dbId, _callback);
+        okhttp3.Call localVarCall = createDatabaseBackupValidateBeforeCall(dbId, comment, _callback);
         Type localVarReturnType = new TypeToken<CreateDatabaseBackup201Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

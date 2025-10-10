@@ -85,7 +85,8 @@ public class DatabasesApiTest {
     @Test
     public void createDatabaseBackupTest() throws ApiException {
         Integer dbId = null;
-        CreateDatabaseBackup201Response response = api.createDatabaseBackup(dbId);
+        String comment = null;
+        CreateDatabaseBackup201Response response = api.createDatabaseBackup(dbId, comment);
         // TODO: test validations
     }
 

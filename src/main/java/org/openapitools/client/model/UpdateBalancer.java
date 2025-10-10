@@ -22,6 +22,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
+import org.openapitools.client.model.CreateBalancerCertificates;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -51,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * UpdateBalancer
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-09T17:18:25.900282Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-10T12:59:55.901681Z[Etc/UTC]")
 public class UpdateBalancer {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -222,6 +223,14 @@ public class UpdateBalancer {
   public static final String SERIALIZED_NAME_HTTPREQUEST_TIMEOUT = "httprequest_timeout";
   @SerializedName(SERIALIZED_NAME_HTTPREQUEST_TIMEOUT)
   private BigDecimal httprequestTimeout;
+
+  public static final String SERIALIZED_NAME_COMMENT = "comment";
+  @SerializedName(SERIALIZED_NAME_COMMENT)
+  private String comment;
+
+  public static final String SERIALIZED_NAME_CERTIFICATES = "certificates";
+  @SerializedName(SERIALIZED_NAME_CERTIFICATES)
+  private CreateBalancerCertificates certificates;
 
   public UpdateBalancer() {
   }
@@ -604,6 +613,48 @@ public class UpdateBalancer {
   }
 
 
+  public UpdateBalancer comment(String comment) {
+    
+    this.comment = comment;
+    return this;
+  }
+
+   /**
+   * Комментарий к балансировщику.
+   * @return comment
+  **/
+  @javax.annotation.Nullable
+  public String getComment() {
+    return comment;
+  }
+
+
+  public void setComment(String comment) {
+    this.comment = comment;
+  }
+
+
+  public UpdateBalancer certificates(CreateBalancerCertificates certificates) {
+    
+    this.certificates = certificates;
+    return this;
+  }
+
+   /**
+   * Get certificates
+   * @return certificates
+  **/
+  @javax.annotation.Nullable
+  public CreateBalancerCertificates getCertificates() {
+    return certificates;
+  }
+
+
+  public void setCertificates(CreateBalancerCertificates certificates) {
+    this.certificates = certificates;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -631,12 +682,14 @@ public class UpdateBalancer {
         Objects.equals(this.connectTimeout, updateBalancer.connectTimeout) &&
         Objects.equals(this.clientTimeout, updateBalancer.clientTimeout) &&
         Objects.equals(this.serverTimeout, updateBalancer.serverTimeout) &&
-        Objects.equals(this.httprequestTimeout, updateBalancer.httprequestTimeout);
+        Objects.equals(this.httprequestTimeout, updateBalancer.httprequestTimeout) &&
+        Objects.equals(this.comment, updateBalancer.comment) &&
+        Objects.equals(this.certificates, updateBalancer.certificates);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, algo, isSticky, isUseProxy, isSsl, isKeepalive, proto, port, path, inter, timeout, fall, rise, maxconn, connectTimeout, clientTimeout, serverTimeout, httprequestTimeout);
+    return Objects.hash(name, algo, isSticky, isUseProxy, isSsl, isKeepalive, proto, port, path, inter, timeout, fall, rise, maxconn, connectTimeout, clientTimeout, serverTimeout, httprequestTimeout, comment, certificates);
   }
 
   @Override
@@ -661,6 +714,8 @@ public class UpdateBalancer {
     sb.append("    clientTimeout: ").append(toIndentedString(clientTimeout)).append("\n");
     sb.append("    serverTimeout: ").append(toIndentedString(serverTimeout)).append("\n");
     sb.append("    httprequestTimeout: ").append(toIndentedString(httprequestTimeout)).append("\n");
+    sb.append("    comment: ").append(toIndentedString(comment)).append("\n");
+    sb.append("    certificates: ").append(toIndentedString(certificates)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -701,6 +756,8 @@ public class UpdateBalancer {
     openapiFields.add("client_timeout");
     openapiFields.add("server_timeout");
     openapiFields.add("httprequest_timeout");
+    openapiFields.add("comment");
+    openapiFields.add("certificates");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -738,6 +795,13 @@ public class UpdateBalancer {
       }
       if ((jsonObj.get("path") != null && !jsonObj.get("path").isJsonNull()) && !jsonObj.get("path").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `path` to be a primitive type in the JSON string but got `%s`", jsonObj.get("path").toString()));
+      }
+      if ((jsonObj.get("comment") != null && !jsonObj.get("comment").isJsonNull()) && !jsonObj.get("comment").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `comment` to be a primitive type in the JSON string but got `%s`", jsonObj.get("comment").toString()));
+      }
+      // validate the optional field `certificates`
+      if (jsonObj.get("certificates") != null && !jsonObj.get("certificates").isJsonNull()) {
+        CreateBalancerCertificates.validateJsonElement(jsonObj.get("certificates"));
       }
   }
 

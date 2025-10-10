@@ -91,6 +91,7 @@ docs/CreateApp.md
 docs/CreateApp201Response.md
 docs/CreateBalancer.md
 docs/CreateBalancer200Response.md
+docs/CreateBalancerCertificates.md
 docs/CreateBalancerRule200Response.md
 docs/CreateCluster.md
 docs/CreateClusterAdmin.md
@@ -611,6 +612,7 @@ src/main/java/org/openapitools/client/model/CreateApp.java
 src/main/java/org/openapitools/client/model/CreateApp201Response.java
 src/main/java/org/openapitools/client/model/CreateBalancer.java
 src/main/java/org/openapitools/client/model/CreateBalancer200Response.java
+src/main/java/org/openapitools/client/model/CreateBalancerCertificates.java
 src/main/java/org/openapitools/client/model/CreateBalancerRule200Response.java
 src/main/java/org/openapitools/client/model/CreateCluster.java
 src/main/java/org/openapitools/client/model/CreateClusterAdmin.java
@@ -1087,6 +1089,7 @@ src/test/java/org/openapitools/client/model/CreateApiKeyTest.java
 src/test/java/org/openapitools/client/model/CreateApp201ResponseTest.java
 src/test/java/org/openapitools/client/model/CreateAppTest.java
 src/test/java/org/openapitools/client/model/CreateBalancer200ResponseTest.java
+src/test/java/org/openapitools/client/model/CreateBalancerCertificatesTest.java
 src/test/java/org/openapitools/client/model/CreateBalancerRule200ResponseTest.java
 src/test/java/org/openapitools/client/model/CreateBalancerTest.java
 src/test/java/org/openapitools/client/model/CreateClusterAdminTest.java

@@ -20,6 +20,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
+import org.openapitools.client.model.CreateBalancerCertificates;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -179,6 +180,22 @@ public class UpdateBalancerTest {
     @Test
     public void httprequestTimeoutTest() {
         // TODO: test httprequestTimeout
+    }
+
+    /**
+     * Test the property 'comment'
+     */
+    @Test
+    public void commentTest() {
+        // TODO: test comment
+    }
+
+    /**
+     * Test the property 'certificates'
+     */
+    @Test
+    public void certificatesTest() {
+        // TODO: test certificates
     }
 
 }

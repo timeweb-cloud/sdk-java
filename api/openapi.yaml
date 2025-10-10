@@ -10587,6 +10587,14 @@ paths:
         schema:
           type: integer
         style: simple
+      - description: Описание бэкапа
+        explode: true
+        in: query
+        name: comment
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "201":
           content:
@@ -45007,6 +45015,8 @@ components:
           description: ID проекта
           example: 1
           type: integer
+        certificates:
+          $ref: '#/components/schemas/create_balancer_certificates'
       required:
       - algo
       - fall
@@ -45126,6 +45136,12 @@ components:
           description: Таймаут HTTP запроса.
           example: 10000
           type: number
+        comment:
+          description: Комментарий к балансировщику.
+          example: comment
+          type: string
+        certificates:
+          $ref: '#/components/schemas/create_balancer_certificates'
       type: object
     create-rule:
       properties:
@@ -58354,6 +58370,35 @@ components:
       required:
       - ips
       - type
+    create_balancer_certificates:
+      description: Сертификат SSL.
+      properties:
+        type:
+          description: Тип сертификата.
+          enum:
+          - lets_encrypt
+          - custom
+          example: custom
+          type: string
+        fqdn:
+          description: Полное имя домена.
+          example: somedomain.ru
+          type: string
+        cert_data:
+          description: Данные сертификата. Нужны только для типа custom.
+          example: |-
+            -----BEGIN CERTIFICATE-----
+            MIIDxjCCArMC
+            -----END CERTIFICATE-----
+          type: string
+        key_data:
+          description: Данные ключа. Нужны только для типа custom.
+          example: |-
+            -----BEGIN PRIVATE KEY-----
+            MIIDxjCCArMC
+            -----END PRIVATE KEY-----
+          type: string
+      type: object
     database_cluster_networks_inner_ips_inner:
       example:
         ip: 0.0.0.0

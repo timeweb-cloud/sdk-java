@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * DeploySettingsInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-09T17:18:25.900282Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-10T12:59:55.901681Z[Etc/UTC]")
 public class DeploySettingsInner {
   public static final String SERIALIZED_NAME_FRAMEWORK = "framework";
   @SerializedName(SERIALIZED_NAME_FRAMEWORK)

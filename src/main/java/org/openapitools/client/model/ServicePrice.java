@@ -58,7 +58,7 @@ import org.openapitools.client.JSON;
 /**
  * Информация о стоимости сервиса
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-09T17:18:25.900282Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-10T12:59:55.901681Z[Etc/UTC]")
 public class ServicePrice {
   public static final String SERIALIZED_NAME_COST = "cost";
   @SerializedName(SERIALIZED_NAME_COST)

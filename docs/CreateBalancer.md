@@ -29,6 +29,7 @@
 |**network** | [**Network**](Network.md) |  |  [optional] |
 |**availabilityZone** | **AvailabilityZone** |  |  [optional] |
 |**projectId** | **Integer** | ID проекта |  [optional] |
+|**certificates** | [**CreateBalancerCertificates**](CreateBalancerCertificates.md) |  |  [optional] |
 
 
 

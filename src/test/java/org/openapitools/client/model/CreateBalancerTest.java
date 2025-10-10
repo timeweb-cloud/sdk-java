@@ -21,6 +21,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
 import org.openapitools.client.model.AvailabilityZone;
+import org.openapitools.client.model.CreateBalancerCertificates;
 import org.openapitools.client.model.Network;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -213,6 +214,14 @@ public class CreateBalancerTest {
     @Test
     public void projectIdTest() {
         // TODO: test projectId
+    }
+
+    /**
+     * Test the property 'certificates'
+     */
+    @Test
+    public void certificatesTest() {
+        // TODO: test certificates
     }
 
 }

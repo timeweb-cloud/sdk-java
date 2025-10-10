@@ -23,6 +23,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
 import org.openapitools.client.model.AvailabilityZone;
+import org.openapitools.client.model.CreateBalancerCertificates;
 import org.openapitools.client.model.Network;
 
 import com.google.gson.Gson;
@@ -53,7 +54,7 @@ import org.openapitools.client.JSON;
 /**
  * CreateBalancer
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-09T17:18:25.900282Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-10T12:59:55.901681Z[Etc/UTC]")
 public class CreateBalancer {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -240,6 +241,10 @@ public class CreateBalancer {
   public static final String SERIALIZED_NAME_PROJECT_ID = "project_id";
   @SerializedName(SERIALIZED_NAME_PROJECT_ID)
   private Integer projectId;
+
+  public static final String SERIALIZED_NAME_CERTIFICATES = "certificates";
+  @SerializedName(SERIALIZED_NAME_CERTIFICATES)
+  private CreateBalancerCertificates certificates;
 
   public CreateBalancer() {
   }
@@ -706,6 +711,27 @@ public class CreateBalancer {
   }
 
 
+  public CreateBalancer certificates(CreateBalancerCertificates certificates) {
+    
+    this.certificates = certificates;
+    return this;
+  }
+
+   /**
+   * Get certificates
+   * @return certificates
+  **/
+  @javax.annotation.Nullable
+  public CreateBalancerCertificates getCertificates() {
+    return certificates;
+  }
+
+
+  public void setCertificates(CreateBalancerCertificates certificates) {
+    this.certificates = certificates;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -737,12 +763,13 @@ public class CreateBalancer {
         Objects.equals(this.presetId, createBalancer.presetId) &&
         Objects.equals(this.network, createBalancer.network) &&
         Objects.equals(this.availabilityZone, createBalancer.availabilityZone) &&
-        Objects.equals(this.projectId, createBalancer.projectId);
+        Objects.equals(this.projectId, createBalancer.projectId) &&
+        Objects.equals(this.certificates, createBalancer.certificates);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, algo, isSticky, isUseProxy, isSsl, isKeepalive, proto, port, path, inter, timeout, fall, rise, maxconn, connectTimeout, clientTimeout, serverTimeout, httprequestTimeout, presetId, network, availabilityZone, projectId);
+    return Objects.hash(name, algo, isSticky, isUseProxy, isSsl, isKeepalive, proto, port, path, inter, timeout, fall, rise, maxconn, connectTimeout, clientTimeout, serverTimeout, httprequestTimeout, presetId, network, availabilityZone, projectId, certificates);
   }
 
   @Override
@@ -771,6 +798,7 @@ public class CreateBalancer {
     sb.append("    network: ").append(toIndentedString(network)).append("\n");
     sb.append("    availabilityZone: ").append(toIndentedString(availabilityZone)).append("\n");
     sb.append("    projectId: ").append(toIndentedString(projectId)).append("\n");
+    sb.append("    certificates: ").append(toIndentedString(certificates)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -815,6 +843,7 @@ public class CreateBalancer {
     openapiFields.add("network");
     openapiFields.add("availability_zone");
     openapiFields.add("project_id");
+    openapiFields.add("certificates");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -877,6 +906,10 @@ public class CreateBalancer {
       // validate the optional field `network`
       if (jsonObj.get("network") != null && !jsonObj.get("network").isJsonNull()) {
         Network.validateJsonElement(jsonObj.get("network"));
+      }
+      // validate the optional field `certificates`
+      if (jsonObj.get("certificates") != null && !jsonObj.get("certificates").isJsonNull()) {
+        CreateBalancerCertificates.validateJsonElement(jsonObj.get("certificates"));
       }
   }
 
