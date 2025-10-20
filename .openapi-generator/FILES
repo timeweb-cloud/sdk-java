@@ -33,7 +33,13 @@ docs/AddStorageSubdomains200Response.md
 docs/AddStorageSubdomainsRequest.md
 docs/AddStorageToProjectRequest.md
 docs/AddSubdomain201Response.md
+docs/AddTokenPackage.md
 docs/AddedSubdomain.md
+docs/Agent.md
+docs/AgentModelSettings.md
+docs/AgentSettings.md
+docs/AgentSettingsWidget.md
+docs/AiAgentsApi.md
 docs/ApiKey.md
 docs/ApiKeysApi.md
 docs/App.md
@@ -86,6 +92,8 @@ docs/ContainerRegistryApi.md
 docs/ContainerRegistryPresetsInner.md
 docs/ContainerRegistryRepositoriesInner.md
 docs/CreateAdmin.md
+docs/CreateAgent.md
+docs/CreateAgent201Response.md
 docs/CreateApiKey.md
 docs/CreateApp.md
 docs/CreateApp201Response.md
@@ -118,6 +126,8 @@ docs/CreateFloatingIp201Response.md
 docs/CreateInstance.md
 docs/CreateKey201Response.md
 docs/CreateKeyRequest.md
+docs/CreateKnowledgebase.md
+docs/CreateKnowledgebase201Response.md
 docs/CreateMultipleDomainMailboxes201Response.md
 docs/CreateMultipleDomainMailboxesRequest.md
 docs/CreateMultipleDomainMailboxesRequestMailboxesInner.md
@@ -179,6 +189,9 @@ docs/DeploySettingsInner.md
 docs/DeployStatus.md
 docs/DnsRecord.md
 docs/DnsRecordData.md
+docs/Document.md
+docs/DocumentStatusInfo.md
+docs/DocumentStatusInfoDetails.md
 docs/Domain.md
 docs/DomainAllowedBuyPeriodsInner.md
 docs/DomainInfo.md
@@ -217,6 +230,10 @@ docs/Frameworks.md
 docs/Free.md
 docs/GetAccountStatus200Response.md
 docs/GetAccountStatus403Response.md
+docs/GetAgentStatistics200Response.md
+docs/GetAgentStatistics200ResponseMeta.md
+docs/GetAgents200Response.md
+docs/GetAgents200ResponseMeta.md
 docs/GetAllProjectResources200Response.md
 docs/GetAppDeploys200Response.md
 docs/GetAppLogs200Response.md
@@ -259,6 +276,9 @@ docs/GetFloatingIps200Response.md
 docs/GetImage404Response.md
 docs/GetKey200Response.md
 docs/GetKeys200Response.md
+docs/GetKnowledgebaseStatistics200Response.md
+docs/GetKnowledgebases200Response.md
+docs/GetKnowledgebases200ResponseMeta.md
 docs/GetLocations200Response.md
 docs/GetMailQuota200Response.md
 docs/GetMailboxes200Response.md
@@ -319,6 +339,8 @@ docs/IncreaseNodes.md
 docs/InfoServicePrice.md
 docs/Invoice.md
 docs/K8SVersionsResponse.md
+docs/KnowledgeBasesApi.md
+docs/Knowledgebase.md
 docs/KubernetesApi.md
 docs/Location.md
 docs/LocationDto.md
@@ -424,6 +446,7 @@ docs/Status.md
 docs/StatusCompanyInfo.md
 docs/Subdomain.md
 docs/Tags.md
+docs/TokenStatistic.md
 docs/TopLevelDomain.md
 docs/TopLevelDomainAllowedBuyPeriodsInner.md
 docs/TransferStatus.md
@@ -431,6 +454,8 @@ docs/TransferStatusErrorsInner.md
 docs/TransferStorageRequest.md
 docs/URLType.md
 docs/UpdateAdmin.md
+docs/UpdateAgent.md
+docs/UpdateAgentSettings.md
 docs/UpdateAppSettings200Response.md
 docs/UpdateAuthRestrictionsByCountriesRequest.md
 docs/UpdateBalancer.md
@@ -445,6 +470,7 @@ docs/UpdateDomainNameServersNameServersInner.md
 docs/UpdateFloatingIp.md
 docs/UpdateInstance.md
 docs/UpdateKeyRequest.md
+docs/UpdateKnowledgebase.md
 docs/UpdateMailQuotaRequest.md
 docs/UpdateMailbox.md
 docs/UpdateNetworkDrive.md
@@ -467,6 +493,7 @@ docs/UpdateStorageUser200Response.md
 docs/UpdateStorageUserRequest.md
 docs/UpdateToken200Response.md
 docs/UpdateVpc.md
+docs/UploadFilesToKnowledgebase200Response.md
 docs/UploadSuccessful.md
 docs/UploadSuccessfulResponse.md
 docs/UrlStatus.md
@@ -507,6 +534,7 @@ src/main/java/org/openapitools/client/ServerConfiguration.java
 src/main/java/org/openapitools/client/ServerVariable.java
 src/main/java/org/openapitools/client/StringUtil.java
 src/main/java/org/openapitools/client/api/AccountApi.java
+src/main/java/org/openapitools/client/api/AiAgentsApi.java
 src/main/java/org/openapitools/client/api/ApiKeysApi.java
 src/main/java/org/openapitools/client/api/AppsApi.java
 src/main/java/org/openapitools/client/api/BalancersApi.java
@@ -517,6 +545,7 @@ src/main/java/org/openapitools/client/api/DomainsApi.java
 src/main/java/org/openapitools/client/api/FirewallApi.java
 src/main/java/org/openapitools/client/api/FloatingIpApi.java
 src/main/java/org/openapitools/client/api/ImagesApi.java
+src/main/java/org/openapitools/client/api/KnowledgeBasesApi.java
 src/main/java/org/openapitools/client/api/KubernetesApi.java
 src/main/java/org/openapitools/client/api/LocationsApi.java
 src/main/java/org/openapitools/client/api/MailApi.java
@@ -558,7 +587,12 @@ src/main/java/org/openapitools/client/model/AddStorageSubdomains200Response.java
 src/main/java/org/openapitools/client/model/AddStorageSubdomainsRequest.java
 src/main/java/org/openapitools/client/model/AddStorageToProjectRequest.java
 src/main/java/org/openapitools/client/model/AddSubdomain201Response.java
+src/main/java/org/openapitools/client/model/AddTokenPackage.java
 src/main/java/org/openapitools/client/model/AddedSubdomain.java
+src/main/java/org/openapitools/client/model/Agent.java
+src/main/java/org/openapitools/client/model/AgentModelSettings.java
+src/main/java/org/openapitools/client/model/AgentSettings.java
+src/main/java/org/openapitools/client/model/AgentSettingsWidget.java
 src/main/java/org/openapitools/client/model/ApiKey.java
 src/main/java/org/openapitools/client/model/App.java
 src/main/java/org/openapitools/client/model/AppConfiguration.java
@@ -607,6 +641,8 @@ src/main/java/org/openapitools/client/model/ConfigParameters.java
 src/main/java/org/openapitools/client/model/ContainerRegistryPresetsInner.java
 src/main/java/org/openapitools/client/model/ContainerRegistryRepositoriesInner.java
 src/main/java/org/openapitools/client/model/CreateAdmin.java
+src/main/java/org/openapitools/client/model/CreateAgent.java
+src/main/java/org/openapitools/client/model/CreateAgent201Response.java
 src/main/java/org/openapitools/client/model/CreateApiKey.java
 src/main/java/org/openapitools/client/model/CreateApp.java
 src/main/java/org/openapitools/client/model/CreateApp201Response.java
@@ -639,6 +675,8 @@ src/main/java/org/openapitools/client/model/CreateFloatingIp201Response.java
 src/main/java/org/openapitools/client/model/CreateInstance.java
 src/main/java/org/openapitools/client/model/CreateKey201Response.java
 src/main/java/org/openapitools/client/model/CreateKeyRequest.java
+src/main/java/org/openapitools/client/model/CreateKnowledgebase.java
+src/main/java/org/openapitools/client/model/CreateKnowledgebase201Response.java
 src/main/java/org/openapitools/client/model/CreateMultipleDomainMailboxes201Response.java
 src/main/java/org/openapitools/client/model/CreateMultipleDomainMailboxesRequest.java
 src/main/java/org/openapitools/client/model/CreateMultipleDomainMailboxesRequestMailboxesInner.java
@@ -698,6 +736,9 @@ src/main/java/org/openapitools/client/model/DeploySettingsInner.java
 src/main/java/org/openapitools/client/model/DeployStatus.java
 src/main/java/org/openapitools/client/model/DnsRecord.java
 src/main/java/org/openapitools/client/model/DnsRecordData.java
+src/main/java/org/openapitools/client/model/Document.java
+src/main/java/org/openapitools/client/model/DocumentStatusInfo.java
+src/main/java/org/openapitools/client/model/DocumentStatusInfoDetails.java
 src/main/java/org/openapitools/client/model/Domain.java
 src/main/java/org/openapitools/client/model/DomainAllowedBuyPeriodsInner.java
 src/main/java/org/openapitools/client/model/DomainInfo.java
@@ -733,6 +774,10 @@ src/main/java/org/openapitools/client/model/Frameworks.java
 src/main/java/org/openapitools/client/model/Free.java
 src/main/java/org/openapitools/client/model/GetAccountStatus200Response.java
 src/main/java/org/openapitools/client/model/GetAccountStatus403Response.java
+src/main/java/org/openapitools/client/model/GetAgentStatistics200Response.java
+src/main/java/org/openapitools/client/model/GetAgentStatistics200ResponseMeta.java
+src/main/java/org/openapitools/client/model/GetAgents200Response.java
+src/main/java/org/openapitools/client/model/GetAgents200ResponseMeta.java
 src/main/java/org/openapitools/client/model/GetAllProjectResources200Response.java
 src/main/java/org/openapitools/client/model/GetAppDeploys200Response.java
 src/main/java/org/openapitools/client/model/GetAppLogs200Response.java
@@ -775,6 +820,9 @@ src/main/java/org/openapitools/client/model/GetFloatingIps200Response.java
 src/main/java/org/openapitools/client/model/GetImage404Response.java
 src/main/java/org/openapitools/client/model/GetKey200Response.java
 src/main/java/org/openapitools/client/model/GetKeys200Response.java
+src/main/java/org/openapitools/client/model/GetKnowledgebaseStatistics200Response.java
+src/main/java/org/openapitools/client/model/GetKnowledgebases200Response.java
+src/main/java/org/openapitools/client/model/GetKnowledgebases200ResponseMeta.java
 src/main/java/org/openapitools/client/model/GetLocations200Response.java
 src/main/java/org/openapitools/client/model/GetMailQuota200Response.java
 src/main/java/org/openapitools/client/model/GetMailboxes200Response.java
@@ -834,6 +882,7 @@ src/main/java/org/openapitools/client/model/IncreaseNodes.java
 src/main/java/org/openapitools/client/model/InfoServicePrice.java
 src/main/java/org/openapitools/client/model/Invoice.java
 src/main/java/org/openapitools/client/model/K8SVersionsResponse.java
+src/main/java/org/openapitools/client/model/Knowledgebase.java
 src/main/java/org/openapitools/client/model/Location.java
 src/main/java/org/openapitools/client/model/LocationDto.java
 src/main/java/org/openapitools/client/model/Mailbox.java
@@ -930,6 +979,7 @@ src/main/java/org/openapitools/client/model/Status.java
 src/main/java/org/openapitools/client/model/StatusCompanyInfo.java
 src/main/java/org/openapitools/client/model/Subdomain.java
 src/main/java/org/openapitools/client/model/Tags.java
+src/main/java/org/openapitools/client/model/TokenStatistic.java
 src/main/java/org/openapitools/client/model/TopLevelDomain.java
 src/main/java/org/openapitools/client/model/TopLevelDomainAllowedBuyPeriodsInner.java
 src/main/java/org/openapitools/client/model/TransferStatus.java
@@ -937,6 +987,8 @@ src/main/java/org/openapitools/client/model/TransferStatusErrorsInner.java
 src/main/java/org/openapitools/client/model/TransferStorageRequest.java
 src/main/java/org/openapitools/client/model/URLType.java
 src/main/java/org/openapitools/client/model/UpdateAdmin.java
+src/main/java/org/openapitools/client/model/UpdateAgent.java
+src/main/java/org/openapitools/client/model/UpdateAgentSettings.java
 src/main/java/org/openapitools/client/model/UpdateAppSettings200Response.java
 src/main/java/org/openapitools/client/model/UpdateAuthRestrictionsByCountriesRequest.java
 src/main/java/org/openapitools/client/model/UpdateBalancer.java
@@ -951,6 +1003,7 @@ src/main/java/org/openapitools/client/model/UpdateDomainNameServersNameServersIn
 src/main/java/org/openapitools/client/model/UpdateFloatingIp.java
 src/main/java/org/openapitools/client/model/UpdateInstance.java
 src/main/java/org/openapitools/client/model/UpdateKeyRequest.java
+src/main/java/org/openapitools/client/model/UpdateKnowledgebase.java
 src/main/java/org/openapitools/client/model/UpdateMailQuotaRequest.java
 src/main/java/org/openapitools/client/model/UpdateMailbox.java
 src/main/java/org/openapitools/client/model/UpdateNetworkDrive.java
@@ -973,6 +1026,7 @@ src/main/java/org/openapitools/client/model/UpdateStorageUser200Response.java
 src/main/java/org/openapitools/client/model/UpdateStorageUserRequest.java
 src/main/java/org/openapitools/client/model/UpdateToken200Response.java
 src/main/java/org/openapitools/client/model/UpdateVpc.java
+src/main/java/org/openapitools/client/model/UploadFilesToKnowledgebase200Response.java
 src/main/java/org/openapitools/client/model/UploadSuccessful.java
 src/main/java/org/openapitools/client/model/UploadSuccessfulResponse.java
 src/main/java/org/openapitools/client/model/UrlStatus.java
@@ -990,6 +1044,7 @@ src/main/java/org/openapitools/client/model/VpcPortService.java
 src/main/java/org/openapitools/client/model/VpcService.java
 src/main/java/org/openapitools/client/model/WorkerPresetOutApi.java
 src/test/java/org/openapitools/client/api/AccountApiTest.java
+src/test/java/org/openapitools/client/api/AiAgentsApiTest.java
 src/test/java/org/openapitools/client/api/ApiKeysApiTest.java
 src/test/java/org/openapitools/client/api/AppsApiTest.java
 src/test/java/org/openapitools/client/api/BalancersApiTest.java
@@ -1000,6 +1055,7 @@ src/test/java/org/openapitools/client/api/DomainsApiTest.java
 src/test/java/org/openapitools/client/api/FirewallApiTest.java
 src/test/java/org/openapitools/client/api/FloatingIpApiTest.java
 src/test/java/org/openapitools/client/api/ImagesApiTest.java
+src/test/java/org/openapitools/client/api/KnowledgeBasesApiTest.java
 src/test/java/org/openapitools/client/api/KubernetesApiTest.java
 src/test/java/org/openapitools/client/api/LocationsApiTest.java
 src/test/java/org/openapitools/client/api/MailApiTest.java
@@ -1036,7 +1092,12 @@ src/test/java/org/openapitools/client/model/AddStorageSubdomains200ResponseTest.
 src/test/java/org/openapitools/client/model/AddStorageSubdomainsRequestTest.java
 src/test/java/org/openapitools/client/model/AddStorageToProjectRequestTest.java
 src/test/java/org/openapitools/client/model/AddSubdomain201ResponseTest.java
+src/test/java/org/openapitools/client/model/AddTokenPackageTest.java
 src/test/java/org/openapitools/client/model/AddedSubdomainTest.java
+src/test/java/org/openapitools/client/model/AgentModelSettingsTest.java
+src/test/java/org/openapitools/client/model/AgentSettingsTest.java
+src/test/java/org/openapitools/client/model/AgentSettingsWidgetTest.java
+src/test/java/org/openapitools/client/model/AgentTest.java
 src/test/java/org/openapitools/client/model/ApiKeyTest.java
 src/test/java/org/openapitools/client/model/AppConfigurationTest.java
 src/test/java/org/openapitools/client/model/AppDiskStatusTest.java
@@ -1085,6 +1146,8 @@ src/test/java/org/openapitools/client/model/ConfigParametersTest.java
 src/test/java/org/openapitools/client/model/ContainerRegistryPresetsInnerTest.java
 src/test/java/org/openapitools/client/model/ContainerRegistryRepositoriesInnerTest.java
 src/test/java/org/openapitools/client/model/CreateAdminTest.java
+src/test/java/org/openapitools/client/model/CreateAgent201ResponseTest.java
+src/test/java/org/openapitools/client/model/CreateAgentTest.java
 src/test/java/org/openapitools/client/model/CreateApiKeyTest.java
 src/test/java/org/openapitools/client/model/CreateApp201ResponseTest.java
 src/test/java/org/openapitools/client/model/CreateAppTest.java
@@ -1117,6 +1180,8 @@ src/test/java/org/openapitools/client/model/CreateFloatingIpTest.java
 src/test/java/org/openapitools/client/model/CreateInstanceTest.java
 src/test/java/org/openapitools/client/model/CreateKey201ResponseTest.java
 src/test/java/org/openapitools/client/model/CreateKeyRequestTest.java
+src/test/java/org/openapitools/client/model/CreateKnowledgebase201ResponseTest.java
+src/test/java/org/openapitools/client/model/CreateKnowledgebaseTest.java
 src/test/java/org/openapitools/client/model/CreateMultipleDomainMailboxes201ResponseTest.java
 src/test/java/org/openapitools/client/model/CreateMultipleDomainMailboxesRequestMailboxesInnerTest.java
 src/test/java/org/openapitools/client/model/CreateMultipleDomainMailboxesRequestTest.java
@@ -1176,6 +1241,9 @@ src/test/java/org/openapitools/client/model/DeployStatusTest.java
 src/test/java/org/openapitools/client/model/DeployTest.java
 src/test/java/org/openapitools/client/model/DnsRecordDataTest.java
 src/test/java/org/openapitools/client/model/DnsRecordTest.java
+src/test/java/org/openapitools/client/model/DocumentStatusInfoDetailsTest.java
+src/test/java/org/openapitools/client/model/DocumentStatusInfoTest.java
+src/test/java/org/openapitools/client/model/DocumentTest.java
 src/test/java/org/openapitools/client/model/DomainAllowedBuyPeriodsInnerTest.java
 src/test/java/org/openapitools/client/model/DomainInfoTest.java
 src/test/java/org/openapitools/client/model/DomainNameServerItemsInnerTest.java
@@ -1211,6 +1279,10 @@ src/test/java/org/openapitools/client/model/FrameworksTest.java
 src/test/java/org/openapitools/client/model/FreeTest.java
 src/test/java/org/openapitools/client/model/GetAccountStatus200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetAccountStatus403ResponseTest.java
+src/test/java/org/openapitools/client/model/GetAgentStatistics200ResponseMetaTest.java
+src/test/java/org/openapitools/client/model/GetAgentStatistics200ResponseTest.java
+src/test/java/org/openapitools/client/model/GetAgents200ResponseMetaTest.java
+src/test/java/org/openapitools/client/model/GetAgents200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetAllProjectResources200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetAppDeploys200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetAppLogs200ResponseTest.java
@@ -1253,6 +1325,9 @@ src/test/java/org/openapitools/client/model/GetFloatingIps200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetImage404ResponseTest.java
 src/test/java/org/openapitools/client/model/GetKey200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetKeys200ResponseTest.java
+src/test/java/org/openapitools/client/model/GetKnowledgebaseStatistics200ResponseTest.java
+src/test/java/org/openapitools/client/model/GetKnowledgebases200ResponseMetaTest.java
+src/test/java/org/openapitools/client/model/GetKnowledgebases200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetLocations200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetMailQuota200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetMailboxes200ResponseTest.java
@@ -1312,6 +1387,7 @@ src/test/java/org/openapitools/client/model/IncreaseNodesTest.java
 src/test/java/org/openapitools/client/model/InfoServicePriceTest.java
 src/test/java/org/openapitools/client/model/InvoiceTest.java
 src/test/java/org/openapitools/client/model/K8SVersionsResponseTest.java
+src/test/java/org/openapitools/client/model/KnowledgebaseTest.java
 src/test/java/org/openapitools/client/model/LocationDtoTest.java
 src/test/java/org/openapitools/client/model/LocationTest.java
 src/test/java/org/openapitools/client/model/MailboxAutoReplyTest.java
@@ -1408,6 +1484,7 @@ src/test/java/org/openapitools/client/model/StatusCompanyInfoTest.java
 src/test/java/org/openapitools/client/model/StatusTest.java
 src/test/java/org/openapitools/client/model/SubdomainTest.java
 src/test/java/org/openapitools/client/model/TagsTest.java
+src/test/java/org/openapitools/client/model/TokenStatisticTest.java
 src/test/java/org/openapitools/client/model/TopLevelDomainAllowedBuyPeriodsInnerTest.java
 src/test/java/org/openapitools/client/model/TopLevelDomainTest.java
 src/test/java/org/openapitools/client/model/TransferStatusErrorsInnerTest.java
@@ -1415,6 +1492,8 @@ src/test/java/org/openapitools/client/model/TransferStatusTest.java
 src/test/java/org/openapitools/client/model/TransferStorageRequestTest.java
 src/test/java/org/openapitools/client/model/URLTypeTest.java
 src/test/java/org/openapitools/client/model/UpdateAdminTest.java
+src/test/java/org/openapitools/client/model/UpdateAgentSettingsTest.java
+src/test/java/org/openapitools/client/model/UpdateAgentTest.java
 src/test/java/org/openapitools/client/model/UpdateAppSettings200ResponseTest.java
 src/test/java/org/openapitools/client/model/UpdateAuthRestrictionsByCountriesRequestTest.java
 src/test/java/org/openapitools/client/model/UpdateBalancerTest.java
@@ -1429,6 +1508,7 @@ src/test/java/org/openapitools/client/model/UpdateDomainTest.java
 src/test/java/org/openapitools/client/model/UpdateFloatingIpTest.java
 src/test/java/org/openapitools/client/model/UpdateInstanceTest.java
 src/test/java/org/openapitools/client/model/UpdateKeyRequestTest.java
+src/test/java/org/openapitools/client/model/UpdateKnowledgebaseTest.java
 src/test/java/org/openapitools/client/model/UpdateMailQuotaRequestTest.java
 src/test/java/org/openapitools/client/model/UpdateMailboxTest.java
 src/test/java/org/openapitools/client/model/UpdateNetworkDriveTest.java
@@ -1451,6 +1531,7 @@ src/test/java/org/openapitools/client/model/UpdateStorageUser200ResponseTest.jav
 src/test/java/org/openapitools/client/model/UpdateStorageUserRequestTest.java
 src/test/java/org/openapitools/client/model/UpdateToken200ResponseTest.java
 src/test/java/org/openapitools/client/model/UpdateVpcTest.java
+src/test/java/org/openapitools/client/model/UploadFilesToKnowledgebase200ResponseTest.java
 src/test/java/org/openapitools/client/model/UploadSuccessfulResponseTest.java
 src/test/java/org/openapitools/client/model/UploadSuccessfulTest.java
 src/test/java/org/openapitools/client/model/UrlStatusTest.java

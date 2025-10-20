@@ -2,7 +2,7 @@
 
 Timeweb Cloud API
 - API version: 1.0.0
-  - Build date: 2025-10-10T12:59:55.901681Z[Etc/UTC]
+  - Build date: 2025-10-20T12:27:23.664206Z[Etc/UTC]
 
 # Введение
 API Timeweb Cloud позволяет вам управлять ресурсами в облаке программным способом с использованием обычных HTTP-запросов.
@@ -276,6 +276,13 @@ Class | Method | HTTP request | Description
 *AccountApi* | [**updateAuthRestrictionsByCountries**](docs/AccountApi.md#updateAuthRestrictionsByCountries) | **POST** /api/v1/auth/access/countries/enabled | Включение/отключение ограничений по стране
 *AccountApi* | [**updateAuthRestrictionsByIP**](docs/AccountApi.md#updateAuthRestrictionsByIP) | **POST** /api/v1/auth/access/ips/enabled | Включение/отключение ограничений по IP-адресу
 *AccountApi* | [**updateNotificationSettings**](docs/AccountApi.md#updateNotificationSettings) | **PATCH** /api/v1/account/notification-settings | Изменение настроек уведомлений аккаунта
+*AiAgentsApi* | [**addAdditionalTokenPackage**](docs/AiAgentsApi.md#addAdditionalTokenPackage) | **POST** /api/v1/cloud-ai/agents/{id}/add-additional-token-package | Добавление дополнительного пакета токенов
+*AiAgentsApi* | [**createAgent**](docs/AiAgentsApi.md#createAgent) | **POST** /api/v1/cloud-ai/agents | Создание AI агента
+*AiAgentsApi* | [**deleteAgent**](docs/AiAgentsApi.md#deleteAgent) | **DELETE** /api/v1/cloud-ai/agents/{id} | Удаление AI агента
+*AiAgentsApi* | [**getAgent**](docs/AiAgentsApi.md#getAgent) | **GET** /api/v1/cloud-ai/agents/{id} | Получение AI агента
+*AiAgentsApi* | [**getAgentStatistics**](docs/AiAgentsApi.md#getAgentStatistics) | **GET** /api/v1/cloud-ai/agents/{id}/statistic | Получение статистики использования токенов агента
+*AiAgentsApi* | [**getAgents**](docs/AiAgentsApi.md#getAgents) | **GET** /api/v1/cloud-ai/agents | Получение списка AI агентов
+*AiAgentsApi* | [**updateAgent**](docs/AiAgentsApi.md#updateAgent) | **PATCH** /api/v1/cloud-ai/agents/{id} | Обновление AI агента
 *ApiKeysApi* | [**createToken**](docs/ApiKeysApi.md#createToken) | **POST** /api/v1/auth/api-keys | Создание токена
 *ApiKeysApi* | [**deleteToken**](docs/ApiKeysApi.md#deleteToken) | **DELETE** /api/v1/auth/api-keys/{token_id} | Удалить токен
 *ApiKeysApi* | [**getTokens**](docs/ApiKeysApi.md#getTokens) | **GET** /api/v1/auth/api-keys | Получение списка выпущенных токенов
@@ -411,6 +418,19 @@ Class | Method | HTTP request | Description
 *ImagesApi* | [**getImages**](docs/ImagesApi.md#getImages) | **GET** /api/v1/images | Получение списка образов
 *ImagesApi* | [**updateImage**](docs/ImagesApi.md#updateImage) | **PATCH** /api/v1/images/{image_id} | Обновление информации о образе
 *ImagesApi* | [**uploadImage**](docs/ImagesApi.md#uploadImage) | **POST** /api/v1/images/{image_id} | Загрузка образа
+*KnowledgeBasesApi* | [**addAdditionalTokenPackageToKnowledgebase**](docs/KnowledgeBasesApi.md#addAdditionalTokenPackageToKnowledgebase) | **POST** /api/v1/cloud-ai/knowledge-bases/{id}/add-additional-token-package | Добавление дополнительного пакета токенов
+*KnowledgeBasesApi* | [**createKnowledgebase**](docs/KnowledgeBasesApi.md#createKnowledgebase) | **POST** /api/v1/cloud-ai/knowledge-bases | Создание базы знаний
+*KnowledgeBasesApi* | [**deleteDocument**](docs/KnowledgeBasesApi.md#deleteDocument) | **DELETE** /api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id} | Удаление документа из базы знаний
+*KnowledgeBasesApi* | [**deleteKnowledgebase**](docs/KnowledgeBasesApi.md#deleteKnowledgebase) | **DELETE** /api/v1/cloud-ai/knowledge-bases/{id} | Удаление базы знаний
+*KnowledgeBasesApi* | [**downloadDocument**](docs/KnowledgeBasesApi.md#downloadDocument) | **GET** /api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id}/download | Скачивание документа из базы знаний
+*KnowledgeBasesApi* | [**getKnowledgebase**](docs/KnowledgeBasesApi.md#getKnowledgebase) | **GET** /api/v1/cloud-ai/knowledge-bases/{id} | Получение базы знаний
+*KnowledgeBasesApi* | [**getKnowledgebaseStatistics**](docs/KnowledgeBasesApi.md#getKnowledgebaseStatistics) | **GET** /api/v1/cloud-ai/knowledge-bases/{id}/statistic | Получение статистики использования токенов базы знаний
+*KnowledgeBasesApi* | [**getKnowledgebases**](docs/KnowledgeBasesApi.md#getKnowledgebases) | **GET** /api/v1/cloud-ai/knowledge-bases | Получение списка баз знаний
+*KnowledgeBasesApi* | [**linkKnowledgebaseToAgent**](docs/KnowledgeBasesApi.md#linkKnowledgebaseToAgent) | **POST** /api/v1/cloud-ai/knowledge-bases/{id}/link/{agent_id} | Привязка базы знаний к агенту
+*KnowledgeBasesApi* | [**reindexDocument**](docs/KnowledgeBasesApi.md#reindexDocument) | **POST** /api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id}/reindex | Переиндексация документа
+*KnowledgeBasesApi* | [**unlinkKnowledgebaseFromAgent**](docs/KnowledgeBasesApi.md#unlinkKnowledgebaseFromAgent) | **DELETE** /api/v1/cloud-ai/knowledge-bases/{id}/link/{agent_id} | Отвязка базы знаний от агента
+*KnowledgeBasesApi* | [**updateKnowledgebase**](docs/KnowledgeBasesApi.md#updateKnowledgebase) | **PATCH** /api/v1/cloud-ai/knowledge-bases/{id} | Обновление базы знаний
+*KnowledgeBasesApi* | [**uploadFilesToKnowledgebase**](docs/KnowledgeBasesApi.md#uploadFilesToKnowledgebase) | **POST** /api/v1/cloud-ai/knowledge-bases/{id}/upload | Загрузка файлов в базу знаний
 *KubernetesApi* | [**createCluster**](docs/KubernetesApi.md#createCluster) | **POST** /api/v1/k8s/clusters | Создание кластера
 *KubernetesApi* | [**createClusterNodeGroup**](docs/KubernetesApi.md#createClusterNodeGroup) | **POST** /api/v1/k8s/clusters/{cluster_id}/groups | Создание группы нод
 *KubernetesApi* | [**deleteCluster**](docs/KubernetesApi.md#deleteCluster) | **DELETE** /api/v1/k8s/clusters/{cluster_id} | Удаление кластера
@@ -575,7 +595,12 @@ Class | Method | HTTP request | Description
  - [AddStorageSubdomainsRequest](docs/AddStorageSubdomainsRequest.md)
  - [AddStorageToProjectRequest](docs/AddStorageToProjectRequest.md)
  - [AddSubdomain201Response](docs/AddSubdomain201Response.md)
+ - [AddTokenPackage](docs/AddTokenPackage.md)
  - [AddedSubdomain](docs/AddedSubdomain.md)
+ - [Agent](docs/Agent.md)
+ - [AgentModelSettings](docs/AgentModelSettings.md)
+ - [AgentSettings](docs/AgentSettings.md)
+ - [AgentSettingsWidget](docs/AgentSettingsWidget.md)
  - [ApiKey](docs/ApiKey.md)
  - [App](docs/App.md)
  - [AppConfiguration](docs/AppConfiguration.md)
@@ -624,6 +649,8 @@ Class | Method | HTTP request | Description
  - [ContainerRegistryPresetsInner](docs/ContainerRegistryPresetsInner.md)
  - [ContainerRegistryRepositoriesInner](docs/ContainerRegistryRepositoriesInner.md)
  - [CreateAdmin](docs/CreateAdmin.md)
+ - [CreateAgent](docs/CreateAgent.md)
+ - [CreateAgent201Response](docs/CreateAgent201Response.md)
  - [CreateApiKey](docs/CreateApiKey.md)
  - [CreateApp](docs/CreateApp.md)
  - [CreateApp201Response](docs/CreateApp201Response.md)
@@ -656,6 +683,8 @@ Class | Method | HTTP request | Description
  - [CreateInstance](docs/CreateInstance.md)
  - [CreateKey201Response](docs/CreateKey201Response.md)
  - [CreateKeyRequest](docs/CreateKeyRequest.md)
+ - [CreateKnowledgebase](docs/CreateKnowledgebase.md)
+ - [CreateKnowledgebase201Response](docs/CreateKnowledgebase201Response.md)
  - [CreateMultipleDomainMailboxes201Response](docs/CreateMultipleDomainMailboxes201Response.md)
  - [CreateMultipleDomainMailboxesRequest](docs/CreateMultipleDomainMailboxesRequest.md)
  - [CreateMultipleDomainMailboxesRequestMailboxesInner](docs/CreateMultipleDomainMailboxesRequestMailboxesInner.md)
@@ -715,6 +744,9 @@ Class | Method | HTTP request | Description
  - [DeployStatus](docs/DeployStatus.md)
  - [DnsRecord](docs/DnsRecord.md)
  - [DnsRecordData](docs/DnsRecordData.md)
+ - [Document](docs/Document.md)
+ - [DocumentStatusInfo](docs/DocumentStatusInfo.md)
+ - [DocumentStatusInfoDetails](docs/DocumentStatusInfoDetails.md)
  - [Domain](docs/Domain.md)
  - [DomainAllowedBuyPeriodsInner](docs/DomainAllowedBuyPeriodsInner.md)
  - [DomainInfo](docs/DomainInfo.md)
@@ -750,6 +782,10 @@ Class | Method | HTTP request | Description
  - [Free](docs/Free.md)
  - [GetAccountStatus200Response](docs/GetAccountStatus200Response.md)
  - [GetAccountStatus403Response](docs/GetAccountStatus403Response.md)
+ - [GetAgentStatistics200Response](docs/GetAgentStatistics200Response.md)
+ - [GetAgentStatistics200ResponseMeta](docs/GetAgentStatistics200ResponseMeta.md)
+ - [GetAgents200Response](docs/GetAgents200Response.md)
+ - [GetAgents200ResponseMeta](docs/GetAgents200ResponseMeta.md)
  - [GetAllProjectResources200Response](docs/GetAllProjectResources200Response.md)
  - [GetAppDeploys200Response](docs/GetAppDeploys200Response.md)
  - [GetAppLogs200Response](docs/GetAppLogs200Response.md)
@@ -792,6 +828,9 @@ Class | Method | HTTP request | Description
  - [GetImage404Response](docs/GetImage404Response.md)
  - [GetKey200Response](docs/GetKey200Response.md)
  - [GetKeys200Response](docs/GetKeys200Response.md)
+ - [GetKnowledgebaseStatistics200Response](docs/GetKnowledgebaseStatistics200Response.md)
+ - [GetKnowledgebases200Response](docs/GetKnowledgebases200Response.md)
+ - [GetKnowledgebases200ResponseMeta](docs/GetKnowledgebases200ResponseMeta.md)
  - [GetLocations200Response](docs/GetLocations200Response.md)
  - [GetMailQuota200Response](docs/GetMailQuota200Response.md)
  - [GetMailboxes200Response](docs/GetMailboxes200Response.md)
@@ -851,6 +890,7 @@ Class | Method | HTTP request | Description
  - [InfoServicePrice](docs/InfoServicePrice.md)
  - [Invoice](docs/Invoice.md)
  - [K8SVersionsResponse](docs/K8SVersionsResponse.md)
+ - [Knowledgebase](docs/Knowledgebase.md)
  - [Location](docs/Location.md)
  - [LocationDto](docs/LocationDto.md)
  - [Mailbox](docs/Mailbox.md)
@@ -947,6 +987,7 @@ Class | Method | HTTP request | Description
  - [StatusCompanyInfo](docs/StatusCompanyInfo.md)
  - [Subdomain](docs/Subdomain.md)
  - [Tags](docs/Tags.md)
+ - [TokenStatistic](docs/TokenStatistic.md)
  - [TopLevelDomain](docs/TopLevelDomain.md)
  - [TopLevelDomainAllowedBuyPeriodsInner](docs/TopLevelDomainAllowedBuyPeriodsInner.md)
  - [TransferStatus](docs/TransferStatus.md)
@@ -954,6 +995,8 @@ Class | Method | HTTP request | Description
  - [TransferStorageRequest](docs/TransferStorageRequest.md)
  - [URLType](docs/URLType.md)
  - [UpdateAdmin](docs/UpdateAdmin.md)
+ - [UpdateAgent](docs/UpdateAgent.md)
+ - [UpdateAgentSettings](docs/UpdateAgentSettings.md)
  - [UpdateAppSettings200Response](docs/UpdateAppSettings200Response.md)
  - [UpdateAuthRestrictionsByCountriesRequest](docs/UpdateAuthRestrictionsByCountriesRequest.md)
  - [UpdateBalancer](docs/UpdateBalancer.md)
@@ -968,6 +1011,7 @@ Class | Method | HTTP request | Description
  - [UpdateFloatingIp](docs/UpdateFloatingIp.md)
  - [UpdateInstance](docs/UpdateInstance.md)
  - [UpdateKeyRequest](docs/UpdateKeyRequest.md)
+ - [UpdateKnowledgebase](docs/UpdateKnowledgebase.md)
  - [UpdateMailQuotaRequest](docs/UpdateMailQuotaRequest.md)
  - [UpdateMailbox](docs/UpdateMailbox.md)
  - [UpdateNetworkDrive](docs/UpdateNetworkDrive.md)
@@ -990,6 +1034,7 @@ Class | Method | HTTP request | Description
  - [UpdateStorageUserRequest](docs/UpdateStorageUserRequest.md)
  - [UpdateToken200Response](docs/UpdateToken200Response.md)
  - [UpdateVpc](docs/UpdateVpc.md)
+ - [UploadFilesToKnowledgebase200Response](docs/UploadFilesToKnowledgebase200Response.md)
  - [UploadSuccessful](docs/UploadSuccessful.md)
  - [UploadSuccessfulResponse](docs/UploadSuccessfulResponse.md)
  - [UrlStatus](docs/UrlStatus.md)
