@@ -11,7 +11,7 @@
 |**id** | **BigDecimal** | Уникальный идентификатор базы знаний |  |
 |**name** | **String** | Название базы знаний |  |
 |**description** | **String** | Описание базы знаний |  [optional] |
-|**dbaasId** | **BigDecimal** | ID базы данных (opensearch или qdrant) |  |
+|**dbaasId** | **BigDecimal** | ID базы данных opensearch |  |
 |**status** | [**StatusEnum**](#StatusEnum) | Статус базы знаний |  |
 |**lastSync** | **OffsetDateTime** | Дата последней синхронизации |  [optional] |
 |**totalTokens** | **BigDecimal** | Всего токенов выделено |  |

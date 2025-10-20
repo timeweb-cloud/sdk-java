@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * Repository
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-20T12:27:23.664206Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-20T12:50:09.036217Z[Etc/UTC]")
 public class Repository {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
