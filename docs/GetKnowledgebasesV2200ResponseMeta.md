@@ -1,6 +1,6 @@
 
 
-# GetKnowledgebases200ResponseMeta
+# GetKnowledgebasesV2200ResponseMeta
 
 
 ## Properties

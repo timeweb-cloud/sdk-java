@@ -24,8 +24,10 @@ import org.openapitools.client.model.GetFinances401Response;
 import org.openapitools.client.model.GetFinances429Response;
 import org.openapitools.client.model.GetFinances500Response;
 import org.openapitools.client.model.GetImage404Response;
+import org.openapitools.client.model.GetKnowledgebaseDocumentsV2200Response;
 import org.openapitools.client.model.GetKnowledgebaseStatistics200Response;
 import org.openapitools.client.model.GetKnowledgebases200Response;
+import org.openapitools.client.model.GetKnowledgebasesV2200Response;
 import java.time.OffsetDateTime;
 import org.openapitools.client.model.UpdateKnowledgebase;
 import org.openapitools.client.model.UploadFilesToKnowledgebase200Response;
@@ -133,6 +135,24 @@ public class KnowledgeBasesApiTest {
     }
 
     /**
+     * Получение списка документов базы знаний
+     *
+     * Чтобы получить список документов базы знаний, отправьте GET-запрос на &#x60;/api/v2/cloud-ai/knowledge-bases/{id}/documents&#x60;.  Тело ответа будет представлять собой объект JSON с ключами &#x60;knowledgebase_documents&#x60; и &#x60;meta&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void getKnowledgebaseDocumentsV2Test() throws ApiException {
+        Integer id = null;
+        Integer limit = null;
+        Integer offset = null;
+        String sortBy = null;
+        String sortOrder = null;
+        GetKnowledgebaseDocumentsV2200Response response = api.getKnowledgebaseDocumentsV2(id, limit, offset, sortBy, sortOrder);
+        // TODO: test validations
+    }
+
+    /**
      * Получение статистики использования токенов базы знаний
      *
      * Чтобы получить статистику использования токенов базы знаний, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/statistic&#x60;.  Можно указать временной диапазон и интервал агрегации.
@@ -159,6 +179,19 @@ public class KnowledgeBasesApiTest {
     @Test
     public void getKnowledgebasesTest() throws ApiException {
         GetKnowledgebases200Response response = api.getKnowledgebases();
+        // TODO: test validations
+    }
+
+    /**
+     * Получение списка баз знаний (v2)
+     *
+     * Чтобы получить список баз знаний, отправьте GET-запрос на &#x60;/api/v2/cloud-ai/knowledge-bases&#x60;.  Версия API v2 возвращает оптимизированный ответ с количеством документов вместо полного списка документов.  Тело ответа будет представлять собой объект JSON с ключом &#x60;knowledgebases&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void getKnowledgebasesV2Test() throws ApiException {
+        GetKnowledgebasesV2200Response response = api.getKnowledgebasesV2();
         // TODO: test validations
     }
 

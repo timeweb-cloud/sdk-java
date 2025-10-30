@@ -23,7 +23,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import org.openapitools.client.model.GetKnowledgebases200ResponseMeta;
+import org.openapitools.client.model.GetKnowledgebasesV2200ResponseMeta;
 import org.openapitools.client.model.Knowledgebase;
 
 import com.google.gson.Gson;
@@ -54,7 +54,7 @@ import org.openapitools.client.JSON;
 /**
  * GetKnowledgebases200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-20T12:50:09.036217Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-30T12:35:37.057389Z[Etc/UTC]")
 public class GetKnowledgebases200Response {
   public static final String SERIALIZED_NAME_KNOWLEDGEBASES = "knowledgebases";
   @SerializedName(SERIALIZED_NAME_KNOWLEDGEBASES)
@@ -62,7 +62,7 @@ public class GetKnowledgebases200Response {
 
   public static final String SERIALIZED_NAME_META = "meta";
   @SerializedName(SERIALIZED_NAME_META)
-  private GetKnowledgebases200ResponseMeta meta;
+  private GetKnowledgebasesV2200ResponseMeta meta;
 
   public GetKnowledgebases200Response() {
   }
@@ -96,7 +96,7 @@ public class GetKnowledgebases200Response {
   }
 
 
-  public GetKnowledgebases200Response meta(GetKnowledgebases200ResponseMeta meta) {
+  public GetKnowledgebases200Response meta(GetKnowledgebasesV2200ResponseMeta meta) {
     
     this.meta = meta;
     return this;
@@ -107,12 +107,12 @@ public class GetKnowledgebases200Response {
    * @return meta
   **/
   @javax.annotation.Nonnull
-  public GetKnowledgebases200ResponseMeta getMeta() {
+  public GetKnowledgebasesV2200ResponseMeta getMeta() {
     return meta;
   }
 
 
-  public void setMeta(GetKnowledgebases200ResponseMeta meta) {
+  public void setMeta(GetKnowledgebasesV2200ResponseMeta meta) {
     this.meta = meta;
   }
 
@@ -212,7 +212,7 @@ public class GetKnowledgebases200Response {
         Knowledgebase.validateJsonElement(jsonArrayknowledgebases.get(i));
       };
       // validate the required field `meta`
-      GetKnowledgebases200ResponseMeta.validateJsonElement(jsonObj.get("meta"));
+      GetKnowledgebasesV2200ResponseMeta.validateJsonElement(jsonObj.get("meta"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

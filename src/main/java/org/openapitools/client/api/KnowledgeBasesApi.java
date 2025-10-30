@@ -37,8 +37,10 @@ import org.openapitools.client.model.GetFinances401Response;
 import org.openapitools.client.model.GetFinances429Response;
 import org.openapitools.client.model.GetFinances500Response;
 import org.openapitools.client.model.GetImage404Response;
+import org.openapitools.client.model.GetKnowledgebaseDocumentsV2200Response;
 import org.openapitools.client.model.GetKnowledgebaseStatistics200Response;
 import org.openapitools.client.model.GetKnowledgebases200Response;
+import org.openapitools.client.model.GetKnowledgebasesV2200Response;
 import java.time.OffsetDateTime;
 import org.openapitools.client.model.UpdateKnowledgebase;
 import org.openapitools.client.model.UploadFilesToKnowledgebase200Response;
@@ -975,6 +977,185 @@ public class KnowledgeBasesApi {
         return localVarCall;
     }
     /**
+     * Build call for getKnowledgebaseDocumentsV2
+     * @param id ID базы знаний (required)
+     * @param limit Количество документов на странице (по умолчанию: 10, максимум: 100) (optional, default to 10)
+     * @param offset Количество документов для пропуска (по умолчанию: 0) (optional, default to 0)
+     * @param sortBy Поле для сортировки (по умолчанию: indexing_timestamp - время последней индексации документа) (optional, default to indexing_timestamp)
+     * @param sortOrder Порядок сортировки (по умолчанию: DESC) (optional, default to DESC)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключами &#x60;knowledgebase_documents&#x60; и &#x60;meta&#x60; </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getKnowledgebaseDocumentsV2Call(Integer id, Integer limit, Integer offset, String sortBy, String sortOrder, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/v2/cloud-ai/knowledge-bases/{id}/documents"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (offset != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("offset", offset));
+        }
+
+        if (sortBy != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("sort_by", sortBy));
+        }
+
+        if (sortOrder != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("sort_order", sortOrder));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "Bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getKnowledgebaseDocumentsV2ValidateBeforeCall(Integer id, Integer limit, Integer offset, String sortBy, String sortOrder, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling getKnowledgebaseDocumentsV2(Async)");
+        }
+
+        return getKnowledgebaseDocumentsV2Call(id, limit, offset, sortBy, sortOrder, _callback);
+
+    }
+
+    /**
+     * Получение списка документов базы знаний
+     * Чтобы получить список документов базы знаний, отправьте GET-запрос на &#x60;/api/v2/cloud-ai/knowledge-bases/{id}/documents&#x60;.  Тело ответа будет представлять собой объект JSON с ключами &#x60;knowledgebase_documents&#x60; и &#x60;meta&#x60;.
+     * @param id ID базы знаний (required)
+     * @param limit Количество документов на странице (по умолчанию: 10, максимум: 100) (optional, default to 10)
+     * @param offset Количество документов для пропуска (по умолчанию: 0) (optional, default to 0)
+     * @param sortBy Поле для сортировки (по умолчанию: indexing_timestamp - время последней индексации документа) (optional, default to indexing_timestamp)
+     * @param sortOrder Порядок сортировки (по умолчанию: DESC) (optional, default to DESC)
+     * @return GetKnowledgebaseDocumentsV2200Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключами &#x60;knowledgebase_documents&#x60; и &#x60;meta&#x60; </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetKnowledgebaseDocumentsV2200Response getKnowledgebaseDocumentsV2(Integer id, Integer limit, Integer offset, String sortBy, String sortOrder) throws ApiException {
+        ApiResponse<GetKnowledgebaseDocumentsV2200Response> localVarResp = getKnowledgebaseDocumentsV2WithHttpInfo(id, limit, offset, sortBy, sortOrder);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Получение списка документов базы знаний
+     * Чтобы получить список документов базы знаний, отправьте GET-запрос на &#x60;/api/v2/cloud-ai/knowledge-bases/{id}/documents&#x60;.  Тело ответа будет представлять собой объект JSON с ключами &#x60;knowledgebase_documents&#x60; и &#x60;meta&#x60;.
+     * @param id ID базы знаний (required)
+     * @param limit Количество документов на странице (по умолчанию: 10, максимум: 100) (optional, default to 10)
+     * @param offset Количество документов для пропуска (по умолчанию: 0) (optional, default to 0)
+     * @param sortBy Поле для сортировки (по умолчанию: indexing_timestamp - время последней индексации документа) (optional, default to indexing_timestamp)
+     * @param sortOrder Порядок сортировки (по умолчанию: DESC) (optional, default to DESC)
+     * @return ApiResponse&lt;GetKnowledgebaseDocumentsV2200Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключами &#x60;knowledgebase_documents&#x60; и &#x60;meta&#x60; </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetKnowledgebaseDocumentsV2200Response> getKnowledgebaseDocumentsV2WithHttpInfo(Integer id, Integer limit, Integer offset, String sortBy, String sortOrder) throws ApiException {
+        okhttp3.Call localVarCall = getKnowledgebaseDocumentsV2ValidateBeforeCall(id, limit, offset, sortBy, sortOrder, null);
+        Type localVarReturnType = new TypeToken<GetKnowledgebaseDocumentsV2200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Получение списка документов базы знаний (asynchronously)
+     * Чтобы получить список документов базы знаний, отправьте GET-запрос на &#x60;/api/v2/cloud-ai/knowledge-bases/{id}/documents&#x60;.  Тело ответа будет представлять собой объект JSON с ключами &#x60;knowledgebase_documents&#x60; и &#x60;meta&#x60;.
+     * @param id ID базы знаний (required)
+     * @param limit Количество документов на странице (по умолчанию: 10, максимум: 100) (optional, default to 10)
+     * @param offset Количество документов для пропуска (по умолчанию: 0) (optional, default to 0)
+     * @param sortBy Поле для сортировки (по умолчанию: indexing_timestamp - время последней индексации документа) (optional, default to indexing_timestamp)
+     * @param sortOrder Порядок сортировки (по умолчанию: DESC) (optional, default to DESC)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключами &#x60;knowledgebase_documents&#x60; и &#x60;meta&#x60; </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getKnowledgebaseDocumentsV2Async(Integer id, Integer limit, Integer offset, String sortBy, String sortOrder, final ApiCallback<GetKnowledgebaseDocumentsV2200Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getKnowledgebaseDocumentsV2ValidateBeforeCall(id, limit, offset, sortBy, sortOrder, _callback);
+        Type localVarReturnType = new TypeToken<GetKnowledgebaseDocumentsV2200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for getKnowledgebaseStatistics
      * @param id ID базы знаний (required)
      * @param startTime Начало временного диапазона (ISO 8601) (optional)
@@ -1161,7 +1342,9 @@ public class KnowledgeBasesApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call getKnowledgebasesCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -1206,6 +1389,7 @@ public class KnowledgeBasesApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getKnowledgebasesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
         return getKnowledgebasesCall(_callback);
@@ -1228,7 +1412,9 @@ public class KnowledgeBasesApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public GetKnowledgebases200Response getKnowledgebases() throws ApiException {
         ApiResponse<GetKnowledgebases200Response> localVarResp = getKnowledgebasesWithHttpInfo();
         return localVarResp.getData();
@@ -1250,7 +1436,9 @@ public class KnowledgeBasesApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<GetKnowledgebases200Response> getKnowledgebasesWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getKnowledgebasesValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<GetKnowledgebases200Response>(){}.getType();
@@ -1274,11 +1462,150 @@ public class KnowledgeBasesApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call getKnowledgebasesAsync(final ApiCallback<GetKnowledgebases200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getKnowledgebasesValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<GetKnowledgebases200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getKnowledgebasesV2
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключами &#x60;knowledgebases&#x60; и &#x60;meta&#x60; </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getKnowledgebasesV2Call(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/v2/cloud-ai/knowledge-bases";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "Bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getKnowledgebasesV2ValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getKnowledgebasesV2Call(_callback);
+
+    }
+
+    /**
+     * Получение списка баз знаний (v2)
+     * Чтобы получить список баз знаний, отправьте GET-запрос на &#x60;/api/v2/cloud-ai/knowledge-bases&#x60;.  Версия API v2 возвращает оптимизированный ответ с количеством документов вместо полного списка документов.  Тело ответа будет представлять собой объект JSON с ключом &#x60;knowledgebases&#x60;.
+     * @return GetKnowledgebasesV2200Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключами &#x60;knowledgebases&#x60; и &#x60;meta&#x60; </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetKnowledgebasesV2200Response getKnowledgebasesV2() throws ApiException {
+        ApiResponse<GetKnowledgebasesV2200Response> localVarResp = getKnowledgebasesV2WithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Получение списка баз знаний (v2)
+     * Чтобы получить список баз знаний, отправьте GET-запрос на &#x60;/api/v2/cloud-ai/knowledge-bases&#x60;.  Версия API v2 возвращает оптимизированный ответ с количеством документов вместо полного списка документов.  Тело ответа будет представлять собой объект JSON с ключом &#x60;knowledgebases&#x60;.
+     * @return ApiResponse&lt;GetKnowledgebasesV2200Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключами &#x60;knowledgebases&#x60; и &#x60;meta&#x60; </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetKnowledgebasesV2200Response> getKnowledgebasesV2WithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getKnowledgebasesV2ValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<GetKnowledgebasesV2200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Получение списка баз знаний (v2) (asynchronously)
+     * Чтобы получить список баз знаний, отправьте GET-запрос на &#x60;/api/v2/cloud-ai/knowledge-bases&#x60;.  Версия API v2 возвращает оптимизированный ответ с количеством документов вместо полного списка документов.  Тело ответа будет представлять собой объект JSON с ключом &#x60;knowledgebases&#x60;.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключами &#x60;knowledgebases&#x60; и &#x60;meta&#x60; </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getKnowledgebasesV2Async(final ApiCallback<GetKnowledgebasesV2200Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getKnowledgebasesV2ValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<GetKnowledgebasesV2200Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

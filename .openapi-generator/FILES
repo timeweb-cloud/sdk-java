@@ -276,9 +276,12 @@ docs/GetFloatingIps200Response.md
 docs/GetImage404Response.md
 docs/GetKey200Response.md
 docs/GetKeys200Response.md
+docs/GetKnowledgebaseDocumentsV2200Response.md
+docs/GetKnowledgebaseDocumentsV2200ResponseMeta.md
 docs/GetKnowledgebaseStatistics200Response.md
 docs/GetKnowledgebases200Response.md
-docs/GetKnowledgebases200ResponseMeta.md
+docs/GetKnowledgebasesV2200Response.md
+docs/GetKnowledgebasesV2200ResponseMeta.md
 docs/GetLocations200Response.md
 docs/GetMailQuota200Response.md
 docs/GetMailboxes200Response.md
@@ -341,6 +344,7 @@ docs/Invoice.md
 docs/K8SVersionsResponse.md
 docs/KnowledgeBasesApi.md
 docs/Knowledgebase.md
+docs/KnowledgebaseV2.md
 docs/KubernetesApi.md
 docs/Location.md
 docs/LocationDto.md
@@ -820,9 +824,12 @@ src/main/java/org/openapitools/client/model/GetFloatingIps200Response.java
 src/main/java/org/openapitools/client/model/GetImage404Response.java
 src/main/java/org/openapitools/client/model/GetKey200Response.java
 src/main/java/org/openapitools/client/model/GetKeys200Response.java
+src/main/java/org/openapitools/client/model/GetKnowledgebaseDocumentsV2200Response.java
+src/main/java/org/openapitools/client/model/GetKnowledgebaseDocumentsV2200ResponseMeta.java
 src/main/java/org/openapitools/client/model/GetKnowledgebaseStatistics200Response.java
 src/main/java/org/openapitools/client/model/GetKnowledgebases200Response.java
-src/main/java/org/openapitools/client/model/GetKnowledgebases200ResponseMeta.java
+src/main/java/org/openapitools/client/model/GetKnowledgebasesV2200Response.java
+src/main/java/org/openapitools/client/model/GetKnowledgebasesV2200ResponseMeta.java
 src/main/java/org/openapitools/client/model/GetLocations200Response.java
 src/main/java/org/openapitools/client/model/GetMailQuota200Response.java
 src/main/java/org/openapitools/client/model/GetMailboxes200Response.java
@@ -883,6 +890,7 @@ src/main/java/org/openapitools/client/model/InfoServicePrice.java
 src/main/java/org/openapitools/client/model/Invoice.java
 src/main/java/org/openapitools/client/model/K8SVersionsResponse.java
 src/main/java/org/openapitools/client/model/Knowledgebase.java
+src/main/java/org/openapitools/client/model/KnowledgebaseV2.java
 src/main/java/org/openapitools/client/model/Location.java
 src/main/java/org/openapitools/client/model/LocationDto.java
 src/main/java/org/openapitools/client/model/Mailbox.java
@@ -1325,9 +1333,12 @@ src/test/java/org/openapitools/client/model/GetFloatingIps200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetImage404ResponseTest.java
 src/test/java/org/openapitools/client/model/GetKey200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetKeys200ResponseTest.java
+src/test/java/org/openapitools/client/model/GetKnowledgebaseDocumentsV2200ResponseMetaTest.java
+src/test/java/org/openapitools/client/model/GetKnowledgebaseDocumentsV2200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetKnowledgebaseStatistics200ResponseTest.java
-src/test/java/org/openapitools/client/model/GetKnowledgebases200ResponseMetaTest.java
 src/test/java/org/openapitools/client/model/GetKnowledgebases200ResponseTest.java
+src/test/java/org/openapitools/client/model/GetKnowledgebasesV2200ResponseMetaTest.java
+src/test/java/org/openapitools/client/model/GetKnowledgebasesV2200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetLocations200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetMailQuota200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetMailboxes200ResponseTest.java
@@ -1388,6 +1399,7 @@ src/test/java/org/openapitools/client/model/InfoServicePriceTest.java
 src/test/java/org/openapitools/client/model/InvoiceTest.java
 src/test/java/org/openapitools/client/model/K8SVersionsResponseTest.java
 src/test/java/org/openapitools/client/model/KnowledgebaseTest.java
+src/test/java/org/openapitools/client/model/KnowledgebaseV2Test.java
 src/test/java/org/openapitools/client/model/LocationDtoTest.java
 src/test/java/org/openapitools/client/model/LocationTest.java
 src/test/java/org/openapitools/client/model/MailboxAutoReplyTest.java

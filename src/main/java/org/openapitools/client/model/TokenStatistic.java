@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * Точка статистики использования токенов
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-20T12:50:09.036217Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-30T12:35:37.057389Z[Etc/UTC]")
 public class TokenStatistic {
   public static final String SERIALIZED_NAME_TIME = "time";
   @SerializedName(SERIALIZED_NAME_TIME)

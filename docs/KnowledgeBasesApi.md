@@ -10,8 +10,10 @@ All URIs are relative to *https://api.timeweb.cloud*
 | [**deleteKnowledgebase**](KnowledgeBasesApi.md#deleteKnowledgebase) | **DELETE** /api/v1/cloud-ai/knowledge-bases/{id} | Удаление базы знаний |
 | [**downloadDocument**](KnowledgeBasesApi.md#downloadDocument) | **GET** /api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id}/download | Скачивание документа из базы знаний |
 | [**getKnowledgebase**](KnowledgeBasesApi.md#getKnowledgebase) | **GET** /api/v1/cloud-ai/knowledge-bases/{id} | Получение базы знаний |
+| [**getKnowledgebaseDocumentsV2**](KnowledgeBasesApi.md#getKnowledgebaseDocumentsV2) | **GET** /api/v2/cloud-ai/knowledge-bases/{id}/documents | Получение списка документов базы знаний |
 | [**getKnowledgebaseStatistics**](KnowledgeBasesApi.md#getKnowledgebaseStatistics) | **GET** /api/v1/cloud-ai/knowledge-bases/{id}/statistic | Получение статистики использования токенов базы знаний |
 | [**getKnowledgebases**](KnowledgeBasesApi.md#getKnowledgebases) | **GET** /api/v1/cloud-ai/knowledge-bases | Получение списка баз знаний |
+| [**getKnowledgebasesV2**](KnowledgeBasesApi.md#getKnowledgebasesV2) | **GET** /api/v2/cloud-ai/knowledge-bases | Получение списка баз знаний (v2) |
 | [**linkKnowledgebaseToAgent**](KnowledgeBasesApi.md#linkKnowledgebaseToAgent) | **POST** /api/v1/cloud-ai/knowledge-bases/{id}/link/{agent_id} | Привязка базы знаний к агенту |
 | [**reindexDocument**](KnowledgeBasesApi.md#reindexDocument) | **POST** /api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id}/reindex | Переиндексация документа |
 | [**unlinkKnowledgebaseFromAgent**](KnowledgeBasesApi.md#unlinkKnowledgebaseFromAgent) | **DELETE** /api/v1/cloud-ai/knowledge-bases/{id}/link/{agent_id} | Отвязка базы знаний от агента |
@@ -458,6 +460,87 @@ public class Example {
 | **429** | Слишком много запросов |  -  |
 | **500** | Внутренняя ошибка сервера |  -  |
 
+<a id="getKnowledgebaseDocumentsV2"></a>
+# **getKnowledgebaseDocumentsV2**
+> GetKnowledgebaseDocumentsV2200Response getKnowledgebaseDocumentsV2(id, limit, offset, sortBy, sortOrder)
+
+Получение списка документов базы знаний
+
+Чтобы получить список документов базы знаний, отправьте GET-запрос на &#x60;/api/v2/cloud-ai/knowledge-bases/{id}/documents&#x60;.  Тело ответа будет представлять собой объект JSON с ключами &#x60;knowledgebase_documents&#x60; и &#x60;meta&#x60;.
+
+### Example
+```java
+// Import classes:
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.KnowledgeBasesApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.timeweb.cloud");
+    
+    // Configure HTTP bearer authorization: Bearer
+    HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
+    Bearer.setBearerToken("BEARER TOKEN");
+
+    KnowledgeBasesApi apiInstance = new KnowledgeBasesApi(defaultClient);
+    Integer id = 1; // Integer | ID базы знаний
+    Integer limit = 10; // Integer | Количество документов на странице (по умолчанию: 10, максимум: 100)
+    Integer offset = 0; // Integer | Количество документов для пропуска (по умолчанию: 0)
+    String sortBy = "name"; // String | Поле для сортировки (по умолчанию: indexing_timestamp - время последней индексации документа)
+    String sortOrder = "ASC"; // String | Порядок сортировки (по умолчанию: DESC)
+    try {
+      GetKnowledgebaseDocumentsV2200Response result = apiInstance.getKnowledgebaseDocumentsV2(id, limit, offset, sortBy, sortOrder);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling KnowledgeBasesApi#getKnowledgebaseDocumentsV2");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **id** | **Integer**| ID базы знаний | |
+| **limit** | **Integer**| Количество документов на странице (по умолчанию: 10, максимум: 100) | [optional] [default to 10] |
+| **offset** | **Integer**| Количество документов для пропуска (по умолчанию: 0) | [optional] [default to 0] |
+| **sortBy** | **String**| Поле для сортировки (по умолчанию: indexing_timestamp - время последней индексации документа) | [optional] [default to indexing_timestamp] [enum: name, size, status, indexing_timestamp] |
+| **sortOrder** | **String**| Порядок сортировки (по умолчанию: DESC) | [optional] [default to DESC] [enum: ASC, DESC] |
+
+### Return type
+
+[**GetKnowledgebaseDocumentsV2200Response**](GetKnowledgebaseDocumentsV2200Response.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Объект JSON c ключами &#x60;knowledgebase_documents&#x60; и &#x60;meta&#x60; |  -  |
+| **400** | Некорректный запрос |  -  |
+| **401** | Не авторизован |  -  |
+| **403** | Запрещено |  -  |
+| **404** | Не найдено |  -  |
+| **429** | Слишком много запросов |  -  |
+| **500** | Внутренняя ошибка сервера |  -  |
+
 <a id="getKnowledgebaseStatistics"></a>
 # **getKnowledgebaseStatistics**
 > GetKnowledgebaseStatistics200Response getKnowledgebaseStatistics(id, startTime, endTime, interval)
@@ -585,6 +668,75 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**GetKnowledgebases200Response**](GetKnowledgebases200Response.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Объект JSON c ключами &#x60;knowledgebases&#x60; и &#x60;meta&#x60; |  -  |
+| **400** | Некорректный запрос |  -  |
+| **401** | Не авторизован |  -  |
+| **403** | Запрещено |  -  |
+| **404** | Не найдено |  -  |
+| **429** | Слишком много запросов |  -  |
+| **500** | Внутренняя ошибка сервера |  -  |
+
+<a id="getKnowledgebasesV2"></a>
+# **getKnowledgebasesV2**
+> GetKnowledgebasesV2200Response getKnowledgebasesV2()
+
+Получение списка баз знаний (v2)
+
+Чтобы получить список баз знаний, отправьте GET-запрос на &#x60;/api/v2/cloud-ai/knowledge-bases&#x60;.  Версия API v2 возвращает оптимизированный ответ с количеством документов вместо полного списка документов.  Тело ответа будет представлять собой объект JSON с ключом &#x60;knowledgebases&#x60;.
+
+### Example
+```java
+// Import classes:
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.KnowledgeBasesApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.timeweb.cloud");
+    
+    // Configure HTTP bearer authorization: Bearer
+    HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
+    Bearer.setBearerToken("BEARER TOKEN");
+
+    KnowledgeBasesApi apiInstance = new KnowledgeBasesApi(defaultClient);
+    try {
+      GetKnowledgebasesV2200Response result = apiInstance.getKnowledgebasesV2();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling KnowledgeBasesApi#getKnowledgebasesV2");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**GetKnowledgebasesV2200Response**](GetKnowledgebasesV2200Response.md)
 
 ### Authorization
 
