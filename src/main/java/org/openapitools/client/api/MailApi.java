@@ -27,6 +27,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import org.openapitools.client.model.CreateDatabaseBackup409Response;
 import org.openapitools.client.model.CreateDomainMailbox201Response;
 import org.openapitools.client.model.CreateDomainMailboxRequest;
 import org.openapitools.client.model.CreateMultipleDomainMailboxes201Response;
@@ -38,11 +39,11 @@ import org.openapitools.client.model.GetFinances401Response;
 import org.openapitools.client.model.GetFinances429Response;
 import org.openapitools.client.model.GetFinances500Response;
 import org.openapitools.client.model.GetImage404Response;
-import org.openapitools.client.model.GetMailQuota200Response;
 import org.openapitools.client.model.GetMailboxes200Response;
 import org.openapitools.client.model.UpdateDomainMailInfoRequest;
-import org.openapitools.client.model.UpdateMailQuotaRequest;
 import org.openapitools.client.model.UpdateMailbox;
+import org.openapitools.client.model.UpdateMailboxV2;
+import org.openapitools.client.model.UpdateMailboxV2200Response;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -873,139 +874,6 @@ public class MailApi {
         return localVarCall;
     }
     /**
-     * Build call for getMailQuota
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;quota&#x60;. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getMailQuotaCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/api/v1/mail/quota";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "Bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getMailQuotaValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getMailQuotaCall(_callback);
-
-    }
-
-    /**
-     * Получение квоты почты аккаунта
-     * Чтобы получить квоту почты аккаунта, отправьте GET-запрос на &#x60;/api/v1/mail/quota&#x60;.
-     * @return GetMailQuota200Response
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;quota&#x60;. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
-     </table>
-     */
-    public GetMailQuota200Response getMailQuota() throws ApiException {
-        ApiResponse<GetMailQuota200Response> localVarResp = getMailQuotaWithHttpInfo();
-        return localVarResp.getData();
-    }
-
-    /**
-     * Получение квоты почты аккаунта
-     * Чтобы получить квоту почты аккаунта, отправьте GET-запрос на &#x60;/api/v1/mail/quota&#x60;.
-     * @return ApiResponse&lt;GetMailQuota200Response&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;quota&#x60;. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<GetMailQuota200Response> getMailQuotaWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getMailQuotaValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<GetMailQuota200Response>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Получение квоты почты аккаунта (asynchronously)
-     * Чтобы получить квоту почты аккаунта, отправьте GET-запрос на &#x60;/api/v1/mail/quota&#x60;.
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;quota&#x60;. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getMailQuotaAsync(final ApiCallback<GetMailQuota200Response> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getMailQuotaValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<GetMailQuota200Response>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
      * Build call for getMailbox
      * @param domain Полное имя домена (required)
      * @param mailbox Название почтового ящика (required)
@@ -1477,149 +1345,6 @@ public class MailApi {
         return localVarCall;
     }
     /**
-     * Build call for updateMailQuota
-     * @param updateMailQuotaRequest  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;quota&#x60;. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call updateMailQuotaCall(UpdateMailQuotaRequest updateMailQuotaRequest, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = updateMailQuotaRequest;
-
-        // create path and map variables
-        String localVarPath = "/api/v1/mail/quota";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "Bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateMailQuotaValidateBeforeCall(UpdateMailQuotaRequest updateMailQuotaRequest, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'updateMailQuotaRequest' is set
-        if (updateMailQuotaRequest == null) {
-            throw new ApiException("Missing the required parameter 'updateMailQuotaRequest' when calling updateMailQuota(Async)");
-        }
-
-        return updateMailQuotaCall(updateMailQuotaRequest, _callback);
-
-    }
-
-    /**
-     * Изменение квоты почты аккаунта
-     * Чтобы получить инфомацию по квоте почты аккаунта, отправьте GET-запрос на &#x60;/api/v1/mail/quota&#x60;.
-     * @param updateMailQuotaRequest  (required)
-     * @return GetMailQuota200Response
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;quota&#x60;. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
-     </table>
-     */
-    public GetMailQuota200Response updateMailQuota(UpdateMailQuotaRequest updateMailQuotaRequest) throws ApiException {
-        ApiResponse<GetMailQuota200Response> localVarResp = updateMailQuotaWithHttpInfo(updateMailQuotaRequest);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Изменение квоты почты аккаунта
-     * Чтобы получить инфомацию по квоте почты аккаунта, отправьте GET-запрос на &#x60;/api/v1/mail/quota&#x60;.
-     * @param updateMailQuotaRequest  (required)
-     * @return ApiResponse&lt;GetMailQuota200Response&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;quota&#x60;. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<GetMailQuota200Response> updateMailQuotaWithHttpInfo(UpdateMailQuotaRequest updateMailQuotaRequest) throws ApiException {
-        okhttp3.Call localVarCall = updateMailQuotaValidateBeforeCall(updateMailQuotaRequest, null);
-        Type localVarReturnType = new TypeToken<GetMailQuota200Response>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Изменение квоты почты аккаунта (asynchronously)
-     * Чтобы получить инфомацию по квоте почты аккаунта, отправьте GET-запрос на &#x60;/api/v1/mail/quota&#x60;.
-     * @param updateMailQuotaRequest  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;quota&#x60;. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call updateMailQuotaAsync(UpdateMailQuotaRequest updateMailQuotaRequest, final ApiCallback<GetMailQuota200Response> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = updateMailQuotaValidateBeforeCall(updateMailQuotaRequest, _callback);
-        Type localVarReturnType = new TypeToken<GetMailQuota200Response>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
      * Build call for updateMailbox
      * @param domain Полное имя домена (required)
      * @param mailbox Название почтового ящика (required)
@@ -1638,7 +1363,9 @@ public class MailApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call updateMailboxCall(String domain, String mailbox, UpdateMailbox updateMailbox, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -1686,6 +1413,7 @@ public class MailApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call updateMailboxValidateBeforeCall(String domain, String mailbox, UpdateMailbox updateMailbox, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'domain' is set
@@ -1726,7 +1454,9 @@ public class MailApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public CreateDomainMailbox201Response updateMailbox(String domain, String mailbox, UpdateMailbox updateMailbox) throws ApiException {
         ApiResponse<CreateDomainMailbox201Response> localVarResp = updateMailboxWithHttpInfo(domain, mailbox, updateMailbox);
         return localVarResp.getData();
@@ -1751,7 +1481,9 @@ public class MailApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<CreateDomainMailbox201Response> updateMailboxWithHttpInfo(String domain, String mailbox, UpdateMailbox updateMailbox) throws ApiException {
         okhttp3.Call localVarCall = updateMailboxValidateBeforeCall(domain, mailbox, updateMailbox, null);
         Type localVarReturnType = new TypeToken<CreateDomainMailbox201Response>(){}.getType();
@@ -1778,11 +1510,180 @@ public class MailApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call updateMailboxAsync(String domain, String mailbox, UpdateMailbox updateMailbox, final ApiCallback<CreateDomainMailbox201Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = updateMailboxValidateBeforeCall(domain, mailbox, updateMailbox, _callback);
         Type localVarReturnType = new TypeToken<CreateDomainMailbox201Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for updateMailboxV2
+     * @param domain Полное имя домена (required)
+     * @param mailbox Название почтового ящика (required)
+     * @param updateMailboxV2  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;mailbox&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateMailboxV2Call(String domain, String mailbox, UpdateMailboxV2 updateMailboxV2, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = updateMailboxV2;
+
+        // create path and map variables
+        String localVarPath = "/api/v2/mail/domains/{domain}/mailboxes/{mailbox}"
+            .replace("{" + "domain" + "}", localVarApiClient.escapeString(domain.toString()))
+            .replace("{" + "mailbox" + "}", localVarApiClient.escapeString(mailbox.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "Bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call updateMailboxV2ValidateBeforeCall(String domain, String mailbox, UpdateMailboxV2 updateMailboxV2, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'domain' is set
+        if (domain == null) {
+            throw new ApiException("Missing the required parameter 'domain' when calling updateMailboxV2(Async)");
+        }
+
+        // verify the required parameter 'mailbox' is set
+        if (mailbox == null) {
+            throw new ApiException("Missing the required parameter 'mailbox' when calling updateMailboxV2(Async)");
+        }
+
+        // verify the required parameter 'updateMailboxV2' is set
+        if (updateMailboxV2 == null) {
+            throw new ApiException("Missing the required parameter 'updateMailboxV2' when calling updateMailboxV2(Async)");
+        }
+
+        return updateMailboxV2Call(domain, mailbox, updateMailboxV2, _callback);
+
+    }
+
+    /**
+     * Изменение почтового ящика
+     * Чтобы изменить почтовый ящик, отправьте PATCH-запрос на &#x60;/api/v2/mail/domains/{domain}/mailboxes/{mailbox}&#x60;.
+     * @param domain Полное имя домена (required)
+     * @param mailbox Название почтового ящика (required)
+     * @param updateMailboxV2  (required)
+     * @return UpdateMailboxV2200Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;mailbox&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public UpdateMailboxV2200Response updateMailboxV2(String domain, String mailbox, UpdateMailboxV2 updateMailboxV2) throws ApiException {
+        ApiResponse<UpdateMailboxV2200Response> localVarResp = updateMailboxV2WithHttpInfo(domain, mailbox, updateMailboxV2);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Изменение почтового ящика
+     * Чтобы изменить почтовый ящик, отправьте PATCH-запрос на &#x60;/api/v2/mail/domains/{domain}/mailboxes/{mailbox}&#x60;.
+     * @param domain Полное имя домена (required)
+     * @param mailbox Название почтового ящика (required)
+     * @param updateMailboxV2  (required)
+     * @return ApiResponse&lt;UpdateMailboxV2200Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;mailbox&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<UpdateMailboxV2200Response> updateMailboxV2WithHttpInfo(String domain, String mailbox, UpdateMailboxV2 updateMailboxV2) throws ApiException {
+        okhttp3.Call localVarCall = updateMailboxV2ValidateBeforeCall(domain, mailbox, updateMailboxV2, null);
+        Type localVarReturnType = new TypeToken<UpdateMailboxV2200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Изменение почтового ящика (asynchronously)
+     * Чтобы изменить почтовый ящик, отправьте PATCH-запрос на &#x60;/api/v2/mail/domains/{domain}/mailboxes/{mailbox}&#x60;.
+     * @param domain Полное имя домена (required)
+     * @param mailbox Название почтового ящика (required)
+     * @param updateMailboxV2  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;mailbox&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateMailboxV2Async(String domain, String mailbox, UpdateMailboxV2 updateMailboxV2, final ApiCallback<UpdateMailboxV2200Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updateMailboxV2ValidateBeforeCall(domain, mailbox, updateMailboxV2, _callback);
+        Type localVarReturnType = new TypeToken<UpdateMailboxV2200Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

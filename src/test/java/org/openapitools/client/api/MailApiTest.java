@@ -14,6 +14,7 @@
 package org.openapitools.client.api;
 
 import org.openapitools.client.ApiException;
+import org.openapitools.client.model.CreateDatabaseBackup409Response;
 import org.openapitools.client.model.CreateDomainMailbox201Response;
 import org.openapitools.client.model.CreateDomainMailboxRequest;
 import org.openapitools.client.model.CreateMultipleDomainMailboxes201Response;
@@ -25,11 +26,11 @@ import org.openapitools.client.model.GetFinances401Response;
 import org.openapitools.client.model.GetFinances429Response;
 import org.openapitools.client.model.GetFinances500Response;
 import org.openapitools.client.model.GetImage404Response;
-import org.openapitools.client.model.GetMailQuota200Response;
 import org.openapitools.client.model.GetMailboxes200Response;
 import org.openapitools.client.model.UpdateDomainMailInfoRequest;
-import org.openapitools.client.model.UpdateMailQuotaRequest;
 import org.openapitools.client.model.UpdateMailbox;
+import org.openapitools.client.model.UpdateMailboxV2;
+import org.openapitools.client.model.UpdateMailboxV2200Response;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -123,19 +124,6 @@ public class MailApiTest {
     }
 
     /**
-     * Получение квоты почты аккаунта
-     *
-     * Чтобы получить квоту почты аккаунта, отправьте GET-запрос на &#x60;/api/v1/mail/quota&#x60;.
-     *
-     * @throws ApiException if the Api call fails
-     */
-    @Test
-    public void getMailQuotaTest() throws ApiException {
-        GetMailQuota200Response response = api.getMailQuota();
-        // TODO: test validations
-    }
-
-    /**
      * Получение почтового ящика
      *
      * Чтобы получить почтовый ящик, отправьте GET-запрос на &#x60;/api/v1/mail/domains/{domain}/mailboxes/{mailbox}&#x60;.
@@ -182,20 +170,6 @@ public class MailApiTest {
     }
 
     /**
-     * Изменение квоты почты аккаунта
-     *
-     * Чтобы получить инфомацию по квоте почты аккаунта, отправьте GET-запрос на &#x60;/api/v1/mail/quota&#x60;.
-     *
-     * @throws ApiException if the Api call fails
-     */
-    @Test
-    public void updateMailQuotaTest() throws ApiException {
-        UpdateMailQuotaRequest updateMailQuotaRequest = null;
-        GetMailQuota200Response response = api.updateMailQuota(updateMailQuotaRequest);
-        // TODO: test validations
-    }
-
-    /**
      * Изменение почтового ящика
      *
      * Чтобы изменить почтовый ящик, отправьте PATCH-запрос на &#x60;/api/v1/mail/domains/{domain}/mailboxes/{mailbox}&#x60;.
@@ -208,6 +182,22 @@ public class MailApiTest {
         String mailbox = null;
         UpdateMailbox updateMailbox = null;
         CreateDomainMailbox201Response response = api.updateMailbox(domain, mailbox, updateMailbox);
+        // TODO: test validations
+    }
+
+    /**
+     * Изменение почтового ящика
+     *
+     * Чтобы изменить почтовый ящик, отправьте PATCH-запрос на &#x60;/api/v2/mail/domains/{domain}/mailboxes/{mailbox}&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void updateMailboxV2Test() throws ApiException {
+        String domain = null;
+        String mailbox = null;
+        UpdateMailboxV2 updateMailboxV2 = null;
+        UpdateMailboxV2200Response response = api.updateMailboxV2(domain, mailbox, updateMailboxV2);
         // TODO: test validations
     }
 

@@ -2,7 +2,7 @@
 
 Timeweb Cloud API
 - API version: 1.0.0
-  - Build date: 2025-10-30T12:35:37.057389Z[Etc/UTC]
+  - Build date: 2025-10-31T14:40:51.795734Z[Etc/UTC]
 
 # Введение
 API Timeweb Cloud позволяет вам управлять ресурсами в облаке программным способом с использованием обычных HTTP-запросов.
@@ -459,12 +459,11 @@ Class | Method | HTTP request | Description
 *MailApi* | [**deleteMailbox**](docs/MailApi.md#deleteMailbox) | **DELETE** /api/v1/mail/domains/{domain}/mailboxes/{mailbox} | Удаление почтового ящика
 *MailApi* | [**getDomainMailInfo**](docs/MailApi.md#getDomainMailInfo) | **GET** /api/v1/mail/domains/{domain}/info | Получение почтовой информации о домене
 *MailApi* | [**getDomainMailboxes**](docs/MailApi.md#getDomainMailboxes) | **GET** /api/v1/mail/domains/{domain} | Получение списка почтовых ящиков домена
-*MailApi* | [**getMailQuota**](docs/MailApi.md#getMailQuota) | **GET** /api/v1/mail/quota | Получение квоты почты аккаунта
 *MailApi* | [**getMailbox**](docs/MailApi.md#getMailbox) | **GET** /api/v1/mail/domains/{domain}/mailboxes/{mailbox} | Получение почтового ящика
 *MailApi* | [**getMailboxes**](docs/MailApi.md#getMailboxes) | **GET** /api/v1/mail | Получение списка почтовых ящиков аккаунта
 *MailApi* | [**updateDomainMailInfo**](docs/MailApi.md#updateDomainMailInfo) | **PATCH** /api/v1/mail/domains/{domain}/info | Изменение почтовой информации о домене
-*MailApi* | [**updateMailQuota**](docs/MailApi.md#updateMailQuota) | **PATCH** /api/v1/mail/quota | Изменение квоты почты аккаунта
 *MailApi* | [**updateMailbox**](docs/MailApi.md#updateMailbox) | **PATCH** /api/v1/mail/domains/{domain}/mailboxes/{mailbox} | Изменение почтового ящика
+*MailApi* | [**updateMailboxV2**](docs/MailApi.md#updateMailboxV2) | **PATCH** /api/v2/mail/domains/{domain}/mailboxes/{mailbox} | Изменение почтового ящика
 *NetworkDrivesApi* | [**createNetworkDrive**](docs/NetworkDrivesApi.md#createNetworkDrive) | **POST** /api/v1/network-drives | Создание сетевого диска
 *NetworkDrivesApi* | [**deleteNetworkDrive**](docs/NetworkDrivesApi.md#deleteNetworkDrive) | **DELETE** /api/v1/network-drives/{network_drive_id} | Удаление сетевого диска по идентификатору
 *NetworkDrivesApi* | [**getNetworkDrive**](docs/NetworkDrivesApi.md#getNetworkDrive) | **GET** /api/v1/network-drives/{network_drive_id} | Получение сетевого диска
@@ -615,6 +614,8 @@ Class | Method | HTTP request | Description
  - [AutoBackup](docs/AutoBackup.md)
  - [AutoReplyIsDisabled](docs/AutoReplyIsDisabled.md)
  - [AutoReplyIsEnabled](docs/AutoReplyIsEnabled.md)
+ - [AutoreplyIsDisabled](docs/AutoreplyIsDisabled.md)
+ - [AutoreplyIsEnabled](docs/AutoreplyIsEnabled.md)
  - [AvailabilityZone](docs/AvailabilityZone.md)
  - [AvailableFrameworks](docs/AvailableFrameworks.md)
  - [AvailableFrameworksBackendFrameworksInner](docs/AvailableFrameworksBackendFrameworksInner.md)
@@ -776,6 +777,8 @@ Class | Method | HTTP request | Description
  - [FirewallRuleProtocol](docs/FirewallRuleProtocol.md)
  - [FirewallRulesOutResponse](docs/FirewallRulesOutResponse.md)
  - [FloatingIp](docs/FloatingIp.md)
+ - [ForwardIsDisabled](docs/ForwardIsDisabled.md)
+ - [ForwardIsEnabled](docs/ForwardIsEnabled.md)
  - [ForwardingIncomingIsDisabled](docs/ForwardingIncomingIsDisabled.md)
  - [ForwardingIncomingIsEnabled](docs/ForwardingIncomingIsEnabled.md)
  - [ForwardingOutgoingIsDisabled](docs/ForwardingOutgoingIsDisabled.md)
@@ -837,7 +840,6 @@ Class | Method | HTTP request | Description
  - [GetKnowledgebasesV2200Response](docs/GetKnowledgebasesV2200Response.md)
  - [GetKnowledgebasesV2200ResponseMeta](docs/GetKnowledgebasesV2200ResponseMeta.md)
  - [GetLocations200Response](docs/GetLocations200Response.md)
- - [GetMailQuota200Response](docs/GetMailQuota200Response.md)
  - [GetMailboxes200Response](docs/GetMailboxes200Response.md)
  - [GetNetworkDrives200Response](docs/GetNetworkDrives200Response.md)
  - [GetNetworkDrivesAvailableResources200Response](docs/GetNetworkDrivesAvailableResources200Response.md)
@@ -903,6 +905,7 @@ Class | Method | HTTP request | Description
  - [MailboxAutoReply](docs/MailboxAutoReply.md)
  - [MailboxForwardingIncoming](docs/MailboxForwardingIncoming.md)
  - [MailboxForwardingOutgoing](docs/MailboxForwardingOutgoing.md)
+ - [MailboxResponse](docs/MailboxResponse.md)
  - [MailboxSpamFilter](docs/MailboxSpamFilter.md)
  - [MasterPresetOutApi](docs/MasterPresetOutApi.md)
  - [Meta](docs/Meta.md)
@@ -928,6 +931,8 @@ Class | Method | HTTP request | Description
  - [NotificationSettingChannels](docs/NotificationSettingChannels.md)
  - [NotificationSettingType](docs/NotificationSettingType.md)
  - [OS](docs/OS.md)
+ - [OutgoingIsDisabled](docs/OutgoingIsDisabled.md)
+ - [OutgoingIsEnabled](docs/OutgoingIsEnabled.md)
  - [PerformActionOnBackupRequest](docs/PerformActionOnBackupRequest.md)
  - [PerformActionOnServerRequest](docs/PerformActionOnServerRequest.md)
  - [Policy](docs/Policy.md)
@@ -939,7 +944,6 @@ Class | Method | HTTP request | Description
  - [ProjectResource](docs/ProjectResource.md)
  - [Provider](docs/Provider.md)
  - [Providers](docs/Providers.md)
- - [Quota](docs/Quota.md)
  - [ReduceNodes](docs/ReduceNodes.md)
  - [RefreshApiKey](docs/RefreshApiKey.md)
  - [RegistriesResponse](docs/RegistriesResponse.md)
@@ -987,6 +991,8 @@ Class | Method | HTTP request | Description
  - [SettingCondition](docs/SettingCondition.md)
  - [SpamFilterIsDisabled](docs/SpamFilterIsDisabled.md)
  - [SpamFilterIsEnabled](docs/SpamFilterIsEnabled.md)
+ - [SpamProtectionIsDisabled](docs/SpamProtectionIsDisabled.md)
+ - [SpamProtectionIsEnabled](docs/SpamProtectionIsEnabled.md)
  - [SshKey](docs/SshKey.md)
  - [SshKeyUsedByInner](docs/SshKeyUsedByInner.md)
  - [Status](docs/Status.md)
@@ -1018,8 +1024,9 @@ Class | Method | HTTP request | Description
  - [UpdateInstance](docs/UpdateInstance.md)
  - [UpdateKeyRequest](docs/UpdateKeyRequest.md)
  - [UpdateKnowledgebase](docs/UpdateKnowledgebase.md)
- - [UpdateMailQuotaRequest](docs/UpdateMailQuotaRequest.md)
  - [UpdateMailbox](docs/UpdateMailbox.md)
+ - [UpdateMailboxV2](docs/UpdateMailboxV2.md)
+ - [UpdateMailboxV2200Response](docs/UpdateMailboxV2200Response.md)
  - [UpdateNetworkDrive](docs/UpdateNetworkDrive.md)
  - [UpdateNotificationSettingsRequest](docs/UpdateNotificationSettingsRequest.md)
  - [UpdateNotificationSettingsRequestSettingsInner](docs/UpdateNotificationSettingsRequestSettingsInner.md)

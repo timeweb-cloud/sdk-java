@@ -1,13 +1,13 @@
 
 
-# GetMailQuota200Response
+# UpdateMailboxV2200Response
 
 
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**quota** | [**Quota**](Quota.md) |  |  |
+|**mailbox** | [**MailboxResponse**](MailboxResponse.md) |  |  |
 
 
 

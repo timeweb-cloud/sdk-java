@@ -21,7 +21,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import org.openapitools.client.model.Quota;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -49,35 +48,35 @@ import java.util.Set;
 import org.openapitools.client.JSON;
 
 /**
- * GetMailQuota200Response
+ * OutgoingIsDisabled
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-30T12:35:37.057389Z[Etc/UTC]")
-public class GetMailQuota200Response {
-  public static final String SERIALIZED_NAME_QUOTA = "quota";
-  @SerializedName(SERIALIZED_NAME_QUOTA)
-  private Quota quota;
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-31T14:40:51.795734Z[Etc/UTC]")
+public class OutgoingIsDisabled {
+  public static final String SERIALIZED_NAME_IS_ENABLED = "is_enabled";
+  @SerializedName(SERIALIZED_NAME_IS_ENABLED)
+  private Boolean isEnabled;
 
-  public GetMailQuota200Response() {
+  public OutgoingIsDisabled() {
   }
 
-  public GetMailQuota200Response quota(Quota quota) {
+  public OutgoingIsDisabled isEnabled(Boolean isEnabled) {
     
-    this.quota = quota;
+    this.isEnabled = isEnabled;
     return this;
   }
 
    /**
-   * Get quota
-   * @return quota
+   * Включена ли пересылка исходящих писем
+   * @return isEnabled
   **/
   @javax.annotation.Nonnull
-  public Quota getQuota() {
-    return quota;
+  public Boolean getIsEnabled() {
+    return isEnabled;
   }
 
 
-  public void setQuota(Quota quota) {
-    this.quota = quota;
+  public void setIsEnabled(Boolean isEnabled) {
+    this.isEnabled = isEnabled;
   }
 
 
@@ -90,20 +89,20 @@ public class GetMailQuota200Response {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    GetMailQuota200Response getMailQuota200Response = (GetMailQuota200Response) o;
-    return Objects.equals(this.quota, getMailQuota200Response.quota);
+    OutgoingIsDisabled outgoingIsDisabled = (OutgoingIsDisabled) o;
+    return Objects.equals(this.isEnabled, outgoingIsDisabled.isEnabled);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(quota);
+    return Objects.hash(isEnabled);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class GetMailQuota200Response {\n");
-    sb.append("    quota: ").append(toIndentedString(quota)).append("\n");
+    sb.append("class OutgoingIsDisabled {\n");
+    sb.append("    isEnabled: ").append(toIndentedString(isEnabled)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -126,65 +125,63 @@ public class GetMailQuota200Response {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("quota");
+    openapiFields.add("is_enabled");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("quota");
+    openapiRequiredFields.add("is_enabled");
   }
 
  /**
   * Validates the JSON Element and throws an exception if issues found
   *
   * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to GetMailQuota200Response
+  * @throws IOException if the JSON Element is invalid with respect to OutgoingIsDisabled
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!GetMailQuota200Response.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in GetMailQuota200Response is not found in the empty JSON string", GetMailQuota200Response.openapiRequiredFields.toString()));
+        if (!OutgoingIsDisabled.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in OutgoingIsDisabled is not found in the empty JSON string", OutgoingIsDisabled.openapiRequiredFields.toString()));
         }
       }
 
       Set<Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Entry<String, JsonElement> entry : entries) {
-        if (!GetMailQuota200Response.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `GetMailQuota200Response` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!OutgoingIsDisabled.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `OutgoingIsDisabled` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : GetMailQuota200Response.openapiRequiredFields) {
+      for (String requiredField : OutgoingIsDisabled.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the required field `quota`
-      Quota.validateJsonElement(jsonObj.get("quota"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!GetMailQuota200Response.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'GetMailQuota200Response' and its subtypes
+       if (!OutgoingIsDisabled.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'OutgoingIsDisabled' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<GetMailQuota200Response> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(GetMailQuota200Response.class));
+       final TypeAdapter<OutgoingIsDisabled> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(OutgoingIsDisabled.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<GetMailQuota200Response>() {
+       return (TypeAdapter<T>) new TypeAdapter<OutgoingIsDisabled>() {
            @Override
-           public void write(JsonWriter out, GetMailQuota200Response value) throws IOException {
+           public void write(JsonWriter out, OutgoingIsDisabled value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public GetMailQuota200Response read(JsonReader in) throws IOException {
+           public OutgoingIsDisabled read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -195,18 +192,18 @@ public class GetMailQuota200Response {
   }
 
  /**
-  * Create an instance of GetMailQuota200Response given an JSON string
+  * Create an instance of OutgoingIsDisabled given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of GetMailQuota200Response
-  * @throws IOException if the JSON string is invalid with respect to GetMailQuota200Response
+  * @return An instance of OutgoingIsDisabled
+  * @throws IOException if the JSON string is invalid with respect to OutgoingIsDisabled
   */
-  public static GetMailQuota200Response fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, GetMailQuota200Response.class);
+  public static OutgoingIsDisabled fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, OutgoingIsDisabled.class);
   }
 
  /**
-  * Convert an instance of GetMailQuota200Response to an JSON string
+  * Convert an instance of OutgoingIsDisabled to an JSON string
   *
   * @return JSON string
   */

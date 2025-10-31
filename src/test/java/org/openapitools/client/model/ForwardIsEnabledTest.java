@@ -19,30 +19,47 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
- * Model tests for UpdateMailQuotaRequest
+ * Model tests for ForwardIsEnabled
  */
-public class UpdateMailQuotaRequestTest {
-    private final UpdateMailQuotaRequest model = new UpdateMailQuotaRequest();
+public class ForwardIsEnabledTest {
+    private final ForwardIsEnabled model = new ForwardIsEnabled();
 
     /**
-     * Model tests for UpdateMailQuotaRequest
+     * Model tests for ForwardIsEnabled
      */
     @Test
-    public void testUpdateMailQuotaRequest() {
-        // TODO: test UpdateMailQuotaRequest
+    public void testForwardIsEnabled() {
+        // TODO: test ForwardIsEnabled
     }
 
     /**
-     * Test the property 'total'
+     * Test the property 'isEnabled'
      */
     @Test
-    public void totalTest() {
-        // TODO: test total
+    public void isEnabledTest() {
+        // TODO: test isEnabled
+    }
+
+    /**
+     * Test the property 'forwardList'
+     */
+    @Test
+    public void forwardListTest() {
+        // TODO: test forwardList
+    }
+
+    /**
+     * Test the property 'isLeaveMessages'
+     */
+    @Test
+    public void isLeaveMessagesTest() {
+        // TODO: test isLeaveMessages
     }
 
 }

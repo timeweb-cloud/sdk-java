@@ -21,7 +21,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -49,60 +48,35 @@ import java.util.Set;
 import org.openapitools.client.JSON;
 
 /**
- * Почтовая квота
+ * SpamProtectionIsDisabled
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-30T12:35:37.057389Z[Etc/UTC]")
-public class Quota {
-  public static final String SERIALIZED_NAME_TOTAL = "total";
-  @SerializedName(SERIALIZED_NAME_TOTAL)
-  private BigDecimal total;
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-31T14:40:51.795734Z[Etc/UTC]")
+public class SpamProtectionIsDisabled {
+  public static final String SERIALIZED_NAME_IS_ENABLED = "is_enabled";
+  @SerializedName(SERIALIZED_NAME_IS_ENABLED)
+  private Boolean isEnabled;
 
-  public static final String SERIALIZED_NAME_USED = "used";
-  @SerializedName(SERIALIZED_NAME_USED)
-  private BigDecimal used;
-
-  public Quota() {
+  public SpamProtectionIsDisabled() {
   }
 
-  public Quota total(BigDecimal total) {
+  public SpamProtectionIsDisabled isEnabled(Boolean isEnabled) {
     
-    this.total = total;
+    this.isEnabled = isEnabled;
     return this;
   }
 
    /**
-   * Общее количество места на почте (в Мб).
-   * @return total
+   * Включен ли спам-фильтр
+   * @return isEnabled
   **/
   @javax.annotation.Nonnull
-  public BigDecimal getTotal() {
-    return total;
+  public Boolean getIsEnabled() {
+    return isEnabled;
   }
 
 
-  public void setTotal(BigDecimal total) {
-    this.total = total;
-  }
-
-
-  public Quota used(BigDecimal used) {
-    
-    this.used = used;
-    return this;
-  }
-
-   /**
-   * Занятое место на почте (в Мб).
-   * @return used
-  **/
-  @javax.annotation.Nonnull
-  public BigDecimal getUsed() {
-    return used;
-  }
-
-
-  public void setUsed(BigDecimal used) {
-    this.used = used;
+  public void setIsEnabled(Boolean isEnabled) {
+    this.isEnabled = isEnabled;
   }
 
 
@@ -115,22 +89,20 @@ public class Quota {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Quota quota = (Quota) o;
-    return Objects.equals(this.total, quota.total) &&
-        Objects.equals(this.used, quota.used);
+    SpamProtectionIsDisabled spamProtectionIsDisabled = (SpamProtectionIsDisabled) o;
+    return Objects.equals(this.isEnabled, spamProtectionIsDisabled.isEnabled);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(total, used);
+    return Objects.hash(isEnabled);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Quota {\n");
-    sb.append("    total: ").append(toIndentedString(total)).append("\n");
-    sb.append("    used: ").append(toIndentedString(used)).append("\n");
+    sb.append("class SpamProtectionIsDisabled {\n");
+    sb.append("    isEnabled: ").append(toIndentedString(isEnabled)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -153,38 +125,36 @@ public class Quota {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("total");
-    openapiFields.add("used");
+    openapiFields.add("is_enabled");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("total");
-    openapiRequiredFields.add("used");
+    openapiRequiredFields.add("is_enabled");
   }
 
  /**
   * Validates the JSON Element and throws an exception if issues found
   *
   * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to Quota
+  * @throws IOException if the JSON Element is invalid with respect to SpamProtectionIsDisabled
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!Quota.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in Quota is not found in the empty JSON string", Quota.openapiRequiredFields.toString()));
+        if (!SpamProtectionIsDisabled.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in SpamProtectionIsDisabled is not found in the empty JSON string", SpamProtectionIsDisabled.openapiRequiredFields.toString()));
         }
       }
 
       Set<Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Entry<String, JsonElement> entry : entries) {
-        if (!Quota.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Quota` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!SpamProtectionIsDisabled.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `SpamProtectionIsDisabled` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : Quota.openapiRequiredFields) {
+      for (String requiredField : SpamProtectionIsDisabled.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
@@ -196,22 +166,22 @@ public class Quota {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!Quota.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'Quota' and its subtypes
+       if (!SpamProtectionIsDisabled.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'SpamProtectionIsDisabled' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<Quota> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(Quota.class));
+       final TypeAdapter<SpamProtectionIsDisabled> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(SpamProtectionIsDisabled.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<Quota>() {
+       return (TypeAdapter<T>) new TypeAdapter<SpamProtectionIsDisabled>() {
            @Override
-           public void write(JsonWriter out, Quota value) throws IOException {
+           public void write(JsonWriter out, SpamProtectionIsDisabled value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public Quota read(JsonReader in) throws IOException {
+           public SpamProtectionIsDisabled read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -222,18 +192,18 @@ public class Quota {
   }
 
  /**
-  * Create an instance of Quota given an JSON string
+  * Create an instance of SpamProtectionIsDisabled given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of Quota
-  * @throws IOException if the JSON string is invalid with respect to Quota
+  * @return An instance of SpamProtectionIsDisabled
+  * @throws IOException if the JSON string is invalid with respect to SpamProtectionIsDisabled
   */
-  public static Quota fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, Quota.class);
+  public static SpamProtectionIsDisabled fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, SpamProtectionIsDisabled.class);
   }
 
  /**
-  * Convert an instance of Quota to an JSON string
+  * Convert an instance of SpamProtectionIsDisabled to an JSON string
   *
   * @return JSON string
   */

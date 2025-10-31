@@ -9,12 +9,11 @@ All URIs are relative to *https://api.timeweb.cloud*
 | [**deleteMailbox**](MailApi.md#deleteMailbox) | **DELETE** /api/v1/mail/domains/{domain}/mailboxes/{mailbox} | Удаление почтового ящика |
 | [**getDomainMailInfo**](MailApi.md#getDomainMailInfo) | **GET** /api/v1/mail/domains/{domain}/info | Получение почтовой информации о домене |
 | [**getDomainMailboxes**](MailApi.md#getDomainMailboxes) | **GET** /api/v1/mail/domains/{domain} | Получение списка почтовых ящиков домена |
-| [**getMailQuota**](MailApi.md#getMailQuota) | **GET** /api/v1/mail/quota | Получение квоты почты аккаунта |
 | [**getMailbox**](MailApi.md#getMailbox) | **GET** /api/v1/mail/domains/{domain}/mailboxes/{mailbox} | Получение почтового ящика |
 | [**getMailboxes**](MailApi.md#getMailboxes) | **GET** /api/v1/mail | Получение списка почтовых ящиков аккаунта |
 | [**updateDomainMailInfo**](MailApi.md#updateDomainMailInfo) | **PATCH** /api/v1/mail/domains/{domain}/info | Изменение почтовой информации о домене |
-| [**updateMailQuota**](MailApi.md#updateMailQuota) | **PATCH** /api/v1/mail/quota | Изменение квоты почты аккаунта |
 | [**updateMailbox**](MailApi.md#updateMailbox) | **PATCH** /api/v1/mail/domains/{domain}/mailboxes/{mailbox} | Изменение почтового ящика |
+| [**updateMailboxV2**](MailApi.md#updateMailboxV2) | **PATCH** /api/v2/mail/domains/{domain}/mailboxes/{mailbox} | Изменение почтового ящика |
 
 
 <a id="createDomainMailbox"></a>
@@ -393,74 +392,6 @@ public class Example {
 | **429** | Слишком много запросов |  -  |
 | **500** | Внутренняя ошибка сервера |  -  |
 
-<a id="getMailQuota"></a>
-# **getMailQuota**
-> GetMailQuota200Response getMailQuota()
-
-Получение квоты почты аккаунта
-
-Чтобы получить квоту почты аккаунта, отправьте GET-запрос на &#x60;/api/v1/mail/quota&#x60;.
-
-### Example
-```java
-// Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.auth.*;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.MailApi;
-
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://api.timeweb.cloud");
-    
-    // Configure HTTP bearer authorization: Bearer
-    HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
-    Bearer.setBearerToken("BEARER TOKEN");
-
-    MailApi apiInstance = new MailApi(defaultClient);
-    try {
-      GetMailQuota200Response result = apiInstance.getMailQuota();
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling MailApi#getMailQuota");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
-```
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-[**GetMailQuota200Response**](GetMailQuota200Response.md)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Ответ будет представлять собой объект JSON c ключом &#x60;quota&#x60;. |  -  |
-| **400** | Некорректный запрос |  -  |
-| **401** | Не авторизован |  -  |
-| **403** | Запрещено |  -  |
-| **429** | Слишком много запросов |  -  |
-| **500** | Внутренняя ошибка сервера |  -  |
-
 <a id="getMailbox"></a>
 # **getMailbox**
 > CreateDomainMailbox201Response getMailbox(domain, mailbox)
@@ -687,78 +618,6 @@ public class Example {
 | **429** | Слишком много запросов |  -  |
 | **500** | Внутренняя ошибка сервера |  -  |
 
-<a id="updateMailQuota"></a>
-# **updateMailQuota**
-> GetMailQuota200Response updateMailQuota(updateMailQuotaRequest)
-
-Изменение квоты почты аккаунта
-
-Чтобы получить инфомацию по квоте почты аккаунта, отправьте GET-запрос на &#x60;/api/v1/mail/quota&#x60;.
-
-### Example
-```java
-// Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.auth.*;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.MailApi;
-
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://api.timeweb.cloud");
-    
-    // Configure HTTP bearer authorization: Bearer
-    HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
-    Bearer.setBearerToken("BEARER TOKEN");
-
-    MailApi apiInstance = new MailApi(defaultClient);
-    UpdateMailQuotaRequest updateMailQuotaRequest = new UpdateMailQuotaRequest(); // UpdateMailQuotaRequest | 
-    try {
-      GetMailQuota200Response result = apiInstance.updateMailQuota(updateMailQuotaRequest);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling MailApi#updateMailQuota");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **updateMailQuotaRequest** | [**UpdateMailQuotaRequest**](UpdateMailQuotaRequest.md)|  | |
-
-### Return type
-
-[**GetMailQuota200Response**](GetMailQuota200Response.md)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Ответ будет представлять собой объект JSON c ключом &#x60;quota&#x60;. |  -  |
-| **400** | Некорректный запрос |  -  |
-| **401** | Не авторизован |  -  |
-| **403** | Запрещено |  -  |
-| **429** | Слишком много запросов |  -  |
-| **500** | Внутренняя ошибка сервера |  -  |
-
 <a id="updateMailbox"></a>
 # **updateMailbox**
 > CreateDomainMailbox201Response updateMailbox(domain, mailbox, updateMailbox)
@@ -833,6 +692,83 @@ public class Example {
 | **401** | Не авторизован |  -  |
 | **403** | Запрещено |  -  |
 | **404** | Не найдено |  -  |
+| **429** | Слишком много запросов |  -  |
+| **500** | Внутренняя ошибка сервера |  -  |
+
+<a id="updateMailboxV2"></a>
+# **updateMailboxV2**
+> UpdateMailboxV2200Response updateMailboxV2(domain, mailbox, updateMailboxV2)
+
+Изменение почтового ящика
+
+Чтобы изменить почтовый ящик, отправьте PATCH-запрос на &#x60;/api/v2/mail/domains/{domain}/mailboxes/{mailbox}&#x60;.
+
+### Example
+```java
+// Import classes:
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.MailApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.timeweb.cloud");
+    
+    // Configure HTTP bearer authorization: Bearer
+    HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
+    Bearer.setBearerToken("BEARER TOKEN");
+
+    MailApi apiInstance = new MailApi(defaultClient);
+    String domain = "somedomain.ru"; // String | Полное имя домена
+    String mailbox = "mailbox"; // String | Название почтового ящика
+    UpdateMailboxV2 updateMailboxV2 = new UpdateMailboxV2(); // UpdateMailboxV2 | 
+    try {
+      UpdateMailboxV2200Response result = apiInstance.updateMailboxV2(domain, mailbox, updateMailboxV2);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling MailApi#updateMailboxV2");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **domain** | **String**| Полное имя домена | |
+| **mailbox** | **String**| Название почтового ящика | |
+| **updateMailboxV2** | [**UpdateMailboxV2**](UpdateMailboxV2.md)|  | |
+
+### Return type
+
+[**UpdateMailboxV2200Response**](UpdateMailboxV2200Response.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Ответ будет представлять собой объект JSON c ключом &#x60;mailbox&#x60;. |  -  |
+| **400** | Некорректный запрос |  -  |
+| **401** | Не авторизован |  -  |
+| **404** | Не найдено |  -  |
+| **409** | Конфликт |  -  |
 | **429** | Слишком много запросов |  -  |
 | **500** | Внутренняя ошибка сервера |  -  |
 

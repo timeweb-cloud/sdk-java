@@ -21,7 +21,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -49,35 +48,60 @@ import java.util.Set;
 import org.openapitools.client.JSON;
 
 /**
- * UpdateMailQuotaRequest
+ * OutgoingIsEnabled
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-30T12:35:37.057389Z[Etc/UTC]")
-public class UpdateMailQuotaRequest {
-  public static final String SERIALIZED_NAME_TOTAL = "total";
-  @SerializedName(SERIALIZED_NAME_TOTAL)
-  private BigDecimal total;
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-31T14:40:51.795734Z[Etc/UTC]")
+public class OutgoingIsEnabled {
+  public static final String SERIALIZED_NAME_IS_ENABLED = "is_enabled";
+  @SerializedName(SERIALIZED_NAME_IS_ENABLED)
+  private Boolean isEnabled;
 
-  public UpdateMailQuotaRequest() {
+  public static final String SERIALIZED_NAME_OUTGOING_EMAIL = "outgoing_email";
+  @SerializedName(SERIALIZED_NAME_OUTGOING_EMAIL)
+  private String outgoingEmail;
+
+  public OutgoingIsEnabled() {
   }
 
-  public UpdateMailQuotaRequest total(BigDecimal total) {
+  public OutgoingIsEnabled isEnabled(Boolean isEnabled) {
     
-    this.total = total;
+    this.isEnabled = isEnabled;
     return this;
   }
 
    /**
-   * Общее количество места на почте (в Мб).
-   * @return total
+   * Включена ли пересылка исходящих писем
+   * @return isEnabled
   **/
   @javax.annotation.Nonnull
-  public BigDecimal getTotal() {
-    return total;
+  public Boolean getIsEnabled() {
+    return isEnabled;
   }
 
 
-  public void setTotal(BigDecimal total) {
-    this.total = total;
+  public void setIsEnabled(Boolean isEnabled) {
+    this.isEnabled = isEnabled;
+  }
+
+
+  public OutgoingIsEnabled outgoingEmail(String outgoingEmail) {
+    
+    this.outgoingEmail = outgoingEmail;
+    return this;
+  }
+
+   /**
+   * Адрес для пересылки исходящих писем. \\  Если передан параметр &#x60;is_enabled&#x60;: &#x60;false&#x60;, то значение передавать нельзя
+   * @return outgoingEmail
+  **/
+  @javax.annotation.Nonnull
+  public String getOutgoingEmail() {
+    return outgoingEmail;
+  }
+
+
+  public void setOutgoingEmail(String outgoingEmail) {
+    this.outgoingEmail = outgoingEmail;
   }
 
 
@@ -90,20 +114,22 @@ public class UpdateMailQuotaRequest {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    UpdateMailQuotaRequest updateMailQuotaRequest = (UpdateMailQuotaRequest) o;
-    return Objects.equals(this.total, updateMailQuotaRequest.total);
+    OutgoingIsEnabled outgoingIsEnabled = (OutgoingIsEnabled) o;
+    return Objects.equals(this.isEnabled, outgoingIsEnabled.isEnabled) &&
+        Objects.equals(this.outgoingEmail, outgoingIsEnabled.outgoingEmail);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(total);
+    return Objects.hash(isEnabled, outgoingEmail);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class UpdateMailQuotaRequest {\n");
-    sb.append("    total: ").append(toIndentedString(total)).append("\n");
+    sb.append("class OutgoingIsEnabled {\n");
+    sb.append("    isEnabled: ").append(toIndentedString(isEnabled)).append("\n");
+    sb.append("    outgoingEmail: ").append(toIndentedString(outgoingEmail)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -126,63 +152,68 @@ public class UpdateMailQuotaRequest {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("total");
+    openapiFields.add("is_enabled");
+    openapiFields.add("outgoing_email");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("total");
+    openapiRequiredFields.add("is_enabled");
+    openapiRequiredFields.add("outgoing_email");
   }
 
  /**
   * Validates the JSON Element and throws an exception if issues found
   *
   * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to UpdateMailQuotaRequest
+  * @throws IOException if the JSON Element is invalid with respect to OutgoingIsEnabled
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!UpdateMailQuotaRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in UpdateMailQuotaRequest is not found in the empty JSON string", UpdateMailQuotaRequest.openapiRequiredFields.toString()));
+        if (!OutgoingIsEnabled.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in OutgoingIsEnabled is not found in the empty JSON string", OutgoingIsEnabled.openapiRequiredFields.toString()));
         }
       }
 
       Set<Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Entry<String, JsonElement> entry : entries) {
-        if (!UpdateMailQuotaRequest.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `UpdateMailQuotaRequest` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!OutgoingIsEnabled.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `OutgoingIsEnabled` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : UpdateMailQuotaRequest.openapiRequiredFields) {
+      for (String requiredField : OutgoingIsEnabled.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if (!jsonObj.get("outgoing_email").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `outgoing_email` to be a primitive type in the JSON string but got `%s`", jsonObj.get("outgoing_email").toString()));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!UpdateMailQuotaRequest.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'UpdateMailQuotaRequest' and its subtypes
+       if (!OutgoingIsEnabled.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'OutgoingIsEnabled' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<UpdateMailQuotaRequest> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(UpdateMailQuotaRequest.class));
+       final TypeAdapter<OutgoingIsEnabled> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(OutgoingIsEnabled.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<UpdateMailQuotaRequest>() {
+       return (TypeAdapter<T>) new TypeAdapter<OutgoingIsEnabled>() {
            @Override
-           public void write(JsonWriter out, UpdateMailQuotaRequest value) throws IOException {
+           public void write(JsonWriter out, OutgoingIsEnabled value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public UpdateMailQuotaRequest read(JsonReader in) throws IOException {
+           public OutgoingIsEnabled read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -193,18 +224,18 @@ public class UpdateMailQuotaRequest {
   }
 
  /**
-  * Create an instance of UpdateMailQuotaRequest given an JSON string
+  * Create an instance of OutgoingIsEnabled given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of UpdateMailQuotaRequest
-  * @throws IOException if the JSON string is invalid with respect to UpdateMailQuotaRequest
+  * @return An instance of OutgoingIsEnabled
+  * @throws IOException if the JSON string is invalid with respect to OutgoingIsEnabled
   */
-  public static UpdateMailQuotaRequest fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, UpdateMailQuotaRequest.class);
+  public static OutgoingIsEnabled fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, OutgoingIsEnabled.class);
   }
 
  /**
-  * Convert an instance of UpdateMailQuotaRequest to an JSON string
+  * Convert an instance of OutgoingIsEnabled to an JSON string
   *
   * @return JSON string
   */

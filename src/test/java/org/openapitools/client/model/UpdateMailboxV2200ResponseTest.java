@@ -19,38 +19,30 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
+import org.openapitools.client.model.MailboxResponse;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
- * Model tests for Quota
+ * Model tests for UpdateMailboxV2200Response
  */
-public class QuotaTest {
-    private final Quota model = new Quota();
+public class UpdateMailboxV2200ResponseTest {
+    private final UpdateMailboxV2200Response model = new UpdateMailboxV2200Response();
 
     /**
-     * Model tests for Quota
+     * Model tests for UpdateMailboxV2200Response
      */
     @Test
-    public void testQuota() {
-        // TODO: test Quota
+    public void testUpdateMailboxV2200Response() {
+        // TODO: test UpdateMailboxV2200Response
     }
 
     /**
-     * Test the property 'total'
+     * Test the property 'mailbox'
      */
     @Test
-    public void totalTest() {
-        // TODO: test total
-    }
-
-    /**
-     * Test the property 'used'
-     */
-    @Test
-    public void usedTest() {
-        // TODO: test used
+    public void mailboxTest() {
+        // TODO: test mailbox
     }
 
 }
