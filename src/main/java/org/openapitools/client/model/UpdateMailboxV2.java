@@ -54,7 +54,7 @@ import org.openapitools.client.JSON;
 /**
  * Обновление почтового ящика
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-31T14:40:51.795734Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-31T14:51:42.512373Z[Etc/UTC]")
 public class UpdateMailboxV2 {
   public static final String SERIALIZED_NAME_PASSWORD = "password";
   @SerializedName(SERIALIZED_NAME_PASSWORD)

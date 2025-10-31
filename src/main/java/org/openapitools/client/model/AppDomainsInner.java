@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * AppDomainsInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-31T14:40:51.795734Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-31T14:51:42.512373Z[Etc/UTC]")
 public class AppDomainsInner {
   public static final String SERIALIZED_NAME_FQDN = "fqdn";
   @SerializedName(SERIALIZED_NAME_FQDN)

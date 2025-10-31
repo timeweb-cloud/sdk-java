@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * Заявка на регистрацию домена
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-31T14:40:51.795734Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-31T14:51:42.512373Z[Etc/UTC]")
 public class DomainRegister {
   /**
    * Тип создаваемой заявки.
