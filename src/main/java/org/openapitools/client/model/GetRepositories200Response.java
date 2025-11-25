@@ -54,7 +54,7 @@ import org.openapitools.client.JSON;
 /**
  * GetRepositories200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-31T14:51:42.512373Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-11-25T10:53:35.047456Z[Etc/UTC]")
 public class GetRepositories200Response {
   public static final String SERIALIZED_NAME_META = "meta";
   @SerializedName(SERIALIZED_NAME_META)

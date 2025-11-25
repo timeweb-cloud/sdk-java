@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * ForwardIsEnabled
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-31T14:51:42.512373Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-11-25T10:53:35.047456Z[Etc/UTC]")
 public class ForwardIsEnabled {
   public static final String SERIALIZED_NAME_IS_ENABLED = "is_enabled";
   @SerializedName(SERIALIZED_NAME_IS_ENABLED)
@@ -126,7 +126,7 @@ public class ForwardIsEnabled {
   }
 
    /**
-   * Оставлять ли копии входящих писем в почтовом ящике (не удалять). \\  Если передан параметр &#x60;is_enabled&#x60;: &#x60;false&#x60;, то значение передавать нельзя
+   * Оставлять ли копии входящих писем в почтовом ящике (не удалять). \\  При &#x60;is_leave_messages&#x60;: &#x60;true&#x60;— копии входящих писем не сохраняются и будут удаляться. \\  При &#x60;is_leave_messages&#x60;: &#x60;false&#x60; — копии входящих писем сохраняются. \\ \\  Если передан параметр &#x60;is_enabled&#x60;: &#x60;false&#x60;, то значение передавать нельзя
    * @return isLeaveMessages
   **/
   @javax.annotation.Nullable
