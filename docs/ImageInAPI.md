@@ -13,6 +13,7 @@
 |**uploadUrl** | **URI** | Ссылка для загрузки образа. |  [optional] |
 |**location** | **Location** |  |  |
 |**os** | **OS** |  |  |
+|**hostname** | **String** | Сетевое имя сервера |  [optional] |
 
 
 

@@ -87,4 +87,12 @@ public class ImageInAPITest {
         // TODO: test os
     }
 
+    /**
+     * Test the property 'hostname'
+     */
+    @Test
+    public void hostnameTest() {
+        // TODO: test hostname
+    }
+
 }

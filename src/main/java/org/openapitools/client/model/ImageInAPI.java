@@ -53,7 +53,7 @@ import org.openapitools.client.JSON;
 /**
  * ImageInAPI
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-11-25T10:53:35.047456Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-22T15:01:36.960771Z[Etc/UTC]")
 public class ImageInAPI {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -78,6 +78,10 @@ public class ImageInAPI {
   public static final String SERIALIZED_NAME_OS = "os";
   @SerializedName(SERIALIZED_NAME_OS)
   private OS os;
+
+  public static final String SERIALIZED_NAME_HOSTNAME = "hostname";
+  @SerializedName(SERIALIZED_NAME_HOSTNAME)
+  private String hostname;
 
   public ImageInAPI() {
   }
@@ -208,6 +212,27 @@ public class ImageInAPI {
   }
 
 
+  public ImageInAPI hostname(String hostname) {
+    
+    this.hostname = hostname;
+    return this;
+  }
+
+   /**
+   * Сетевое имя сервера
+   * @return hostname
+  **/
+  @javax.annotation.Nullable
+  public String getHostname() {
+    return hostname;
+  }
+
+
+  public void setHostname(String hostname) {
+    this.hostname = hostname;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -223,12 +248,13 @@ public class ImageInAPI {
         Objects.equals(this.diskId, imageInAPI.diskId) &&
         Objects.equals(this.uploadUrl, imageInAPI.uploadUrl) &&
         Objects.equals(this.location, imageInAPI.location) &&
-        Objects.equals(this.os, imageInAPI.os);
+        Objects.equals(this.os, imageInAPI.os) &&
+        Objects.equals(this.hostname, imageInAPI.hostname);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, diskId, uploadUrl, location, os);
+    return Objects.hash(name, description, diskId, uploadUrl, location, os, hostname);
   }
 
   @Override
@@ -241,6 +267,7 @@ public class ImageInAPI {
     sb.append("    uploadUrl: ").append(toIndentedString(uploadUrl)).append("\n");
     sb.append("    location: ").append(toIndentedString(location)).append("\n");
     sb.append("    os: ").append(toIndentedString(os)).append("\n");
+    sb.append("    hostname: ").append(toIndentedString(hostname)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -269,6 +296,7 @@ public class ImageInAPI {
     openapiFields.add("upload_url");
     openapiFields.add("location");
     openapiFields.add("os");
+    openapiFields.add("hostname");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -312,6 +340,9 @@ public class ImageInAPI {
       }
       if ((jsonObj.get("upload_url") != null && !jsonObj.get("upload_url").isJsonNull()) && !jsonObj.get("upload_url").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `upload_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("upload_url").toString()));
+      }
+      if ((jsonObj.get("hostname") != null && !jsonObj.get("hostname").isJsonNull()) && !jsonObj.get("hostname").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `hostname` to be a primitive type in the JSON string but got `%s`", jsonObj.get("hostname").toString()));
       }
   }
 
