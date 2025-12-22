@@ -171,4 +171,12 @@ public class CreateServerTest {
         // TODO: test projectId
     }
 
+    /**
+     * Test the property 'hostname'
+     */
+    @Test
+    public void hostnameTest() {
+        // TODO: test hostname
+    }
+
 }

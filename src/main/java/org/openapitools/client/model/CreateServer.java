@@ -57,7 +57,7 @@ import org.openapitools.client.JSON;
 /**
  * CreateServer
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-22T15:01:36.960771Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-22T15:17:27.084719Z[Etc/UTC]")
 public class CreateServer {
   public static final String SERIALIZED_NAME_CONFIGURATION = "configuration";
   @SerializedName(SERIALIZED_NAME_CONFIGURATION)
@@ -124,6 +124,10 @@ public class CreateServer {
   public static final String SERIALIZED_NAME_PROJECT_ID = "project_id";
   @SerializedName(SERIALIZED_NAME_PROJECT_ID)
   private BigDecimal projectId;
+
+  public static final String SERIALIZED_NAME_HOSTNAME = "hostname";
+  @SerializedName(SERIALIZED_NAME_HOSTNAME)
+  private String hostname;
 
   public CreateServer() {
   }
@@ -480,6 +484,27 @@ public class CreateServer {
   }
 
 
+  public CreateServer hostname(String hostname) {
+    
+    this.hostname = hostname;
+    return this;
+  }
+
+   /**
+   * Сетевое имя сервера
+   * @return hostname
+  **/
+  @javax.annotation.Nullable
+  public String getHostname() {
+    return hostname;
+  }
+
+
+  public void setHostname(String hostname) {
+    this.hostname = hostname;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -505,12 +530,13 @@ public class CreateServer {
         Objects.equals(this.network, createServer.network) &&
         Objects.equals(this.cloudInit, createServer.cloudInit) &&
         Objects.equals(this.availabilityZone, createServer.availabilityZone) &&
-        Objects.equals(this.projectId, createServer.projectId);
+        Objects.equals(this.projectId, createServer.projectId) &&
+        Objects.equals(this.hostname, createServer.hostname);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(_configuration, isDdosGuard, osId, imageId, softwareId, presetId, bandwidth, name, avatarId, comment, sshKeysIds, isLocalNetwork, network, cloudInit, availabilityZone, projectId);
+    return Objects.hash(_configuration, isDdosGuard, osId, imageId, softwareId, presetId, bandwidth, name, avatarId, comment, sshKeysIds, isLocalNetwork, network, cloudInit, availabilityZone, projectId, hostname);
   }
 
   @Override
@@ -533,6 +559,7 @@ public class CreateServer {
     sb.append("    cloudInit: ").append(toIndentedString(cloudInit)).append("\n");
     sb.append("    availabilityZone: ").append(toIndentedString(availabilityZone)).append("\n");
     sb.append("    projectId: ").append(toIndentedString(projectId)).append("\n");
+    sb.append("    hostname: ").append(toIndentedString(hostname)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -571,6 +598,7 @@ public class CreateServer {
     openapiFields.add("cloud_init");
     openapiFields.add("availability_zone");
     openapiFields.add("project_id");
+    openapiFields.add("hostname");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -631,6 +659,9 @@ public class CreateServer {
       }
       if ((jsonObj.get("cloud_init") != null && !jsonObj.get("cloud_init").isJsonNull()) && !jsonObj.get("cloud_init").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `cloud_init` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cloud_init").toString()));
+      }
+      if ((jsonObj.get("hostname") != null && !jsonObj.get("hostname").isJsonNull()) && !jsonObj.get("hostname").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `hostname` to be a primitive type in the JSON string but got `%s`", jsonObj.get("hostname").toString()));
       }
   }
 

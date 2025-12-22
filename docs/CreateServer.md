@@ -23,6 +23,7 @@
 |**cloudInit** | **String** | Cloud-init скрипт |  [optional] |
 |**availabilityZone** | **AvailabilityZone** |  |  [optional] |
 |**projectId** | **BigDecimal** | ID проекта. |  [optional] |
+|**hostname** | **String** | Сетевое имя сервера |  [optional] |
 
 
 
