@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * AppsPresetsBackendPresetsInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-22T15:17:27.084719Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-14T14:16:00.448863Z[Etc/UTC]")
 public class AppsPresetsBackendPresetsInner {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
