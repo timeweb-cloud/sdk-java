@@ -40,7 +40,6 @@ docs/AgentModelSettings.md
 docs/AgentSettings.md
 docs/AgentSettingsWidget.md
 docs/AiAgentsApi.md
-docs/AiModelsApi.md
 docs/ApiKey.md
 docs/ApiKeysApi.md
 docs/App.md
@@ -562,7 +561,6 @@ src/main/java/org/openapitools/client/ServerVariable.java
 src/main/java/org/openapitools/client/StringUtil.java
 src/main/java/org/openapitools/client/api/AccountApi.java
 src/main/java/org/openapitools/client/api/AiAgentsApi.java
-src/main/java/org/openapitools/client/api/AiModelsApi.java
 src/main/java/org/openapitools/client/api/ApiKeysApi.java
 src/main/java/org/openapitools/client/api/AppsApi.java
 src/main/java/org/openapitools/client/api/BalancersApi.java
@@ -1099,7 +1097,6 @@ src/main/java/org/openapitools/client/model/VpcService.java
 src/main/java/org/openapitools/client/model/WorkerPresetOutApi.java
 src/test/java/org/openapitools/client/api/AccountApiTest.java
 src/test/java/org/openapitools/client/api/AiAgentsApiTest.java
-src/test/java/org/openapitools/client/api/AiModelsApiTest.java
 src/test/java/org/openapitools/client/api/ApiKeysApiTest.java
 src/test/java/org/openapitools/client/api/AppsApiTest.java
 src/test/java/org/openapitools/client/api/BalancersApiTest.java

@@ -2,7 +2,7 @@
 
 Timeweb Cloud API
 - API version: 1.0.0
-  - Build date: 2026-01-16T08:33:54.637973Z[Etc/UTC]
+  - Build date: 2026-01-16T13:16:16.584479Z[Etc/UTC]
 
 # Введение
 API Timeweb Cloud позволяет вам управлять ресурсами в облаке программным способом с использованием обычных HTTP-запросов.
@@ -282,10 +282,10 @@ Class | Method | HTTP request | Description
 *AiAgentsApi* | [**getAgent**](docs/AiAgentsApi.md#getAgent) | **GET** /api/v1/cloud-ai/agents/{id} | Получение AI агента
 *AiAgentsApi* | [**getAgentStatistics**](docs/AiAgentsApi.md#getAgentStatistics) | **GET** /api/v1/cloud-ai/agents/{id}/statistic | Получение статистики использования токенов агента
 *AiAgentsApi* | [**getAgents**](docs/AiAgentsApi.md#getAgents) | **GET** /api/v1/cloud-ai/agents | Получение списка AI агентов
+*AiAgentsApi* | [**getAgentsTokenPackages**](docs/AiAgentsApi.md#getAgentsTokenPackages) | **GET** /api/v1/cloud-ai/token-packages/agents | Получение списка пакетов токенов для агентов
+*AiAgentsApi* | [**getKnowledgebasesTokenPackages**](docs/AiAgentsApi.md#getKnowledgebasesTokenPackages) | **GET** /api/v1/cloud-ai/token-packages/knowledge-bases | Получение списка пакетов токенов для баз знаний
+*AiAgentsApi* | [**getModels**](docs/AiAgentsApi.md#getModels) | **GET** /api/v1/cloud-ai/models | Получение списка моделей
 *AiAgentsApi* | [**updateAgent**](docs/AiAgentsApi.md#updateAgent) | **PATCH** /api/v1/cloud-ai/agents/{id} | Обновление AI агента
-*AiModelsApi* | [**getAgentsTokenPackages**](docs/AiModelsApi.md#getAgentsTokenPackages) | **GET** /api/v1/cloud-ai/token-packages/agents | Получение списка пакетов токенов для агентов
-*AiModelsApi* | [**getKnowledgebasesTokenPackages**](docs/AiModelsApi.md#getKnowledgebasesTokenPackages) | **GET** /api/v1/cloud-ai/token-packages/knowledge-bases | Получение списка пакетов токенов для баз знаний
-*AiModelsApi* | [**getModels**](docs/AiModelsApi.md#getModels) | **GET** /api/v1/cloud-ai/models | Получение списка моделей
 *ApiKeysApi* | [**createToken**](docs/ApiKeysApi.md#createToken) | **POST** /api/v1/auth/api-keys | Создание токена
 *ApiKeysApi* | [**deleteToken**](docs/ApiKeysApi.md#deleteToken) | **DELETE** /api/v1/auth/api-keys/{token_id} | Удалить токен
 *ApiKeysApi* | [**getTokens**](docs/ApiKeysApi.md#getTokens) | **GET** /api/v1/auth/api-keys | Получение списка выпущенных токенов

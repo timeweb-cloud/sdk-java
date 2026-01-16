@@ -20,11 +20,13 @@ import org.openapitools.client.model.CreateAgent201Response;
 import org.openapitools.client.model.GetAccountStatus403Response;
 import org.openapitools.client.model.GetAgentStatistics200Response;
 import org.openapitools.client.model.GetAgents200Response;
+import org.openapitools.client.model.GetAgentsTokenPackages200Response;
 import org.openapitools.client.model.GetFinances400Response;
 import org.openapitools.client.model.GetFinances401Response;
 import org.openapitools.client.model.GetFinances429Response;
 import org.openapitools.client.model.GetFinances500Response;
 import org.openapitools.client.model.GetImage404Response;
+import org.openapitools.client.model.GetModels200Response;
 import java.time.OffsetDateTime;
 import org.openapitools.client.model.UpdateAgent;
 import org.junit.jupiter.api.Disabled;
@@ -127,6 +129,45 @@ public class AiAgentsApiTest {
     @Test
     public void getAgentsTest() throws ApiException {
         GetAgents200Response response = api.getAgents();
+        // TODO: test validations
+    }
+
+    /**
+     * Получение списка пакетов токенов для агентов
+     *
+     * Чтобы получить список доступных пакетов токенов для AI агентов, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/token-packages/agents&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;token_packages&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void getAgentsTokenPackagesTest() throws ApiException {
+        GetAgentsTokenPackages200Response response = api.getAgentsTokenPackages();
+        // TODO: test validations
+    }
+
+    /**
+     * Получение списка пакетов токенов для баз знаний
+     *
+     * Чтобы получить список доступных пакетов токенов для баз знаний, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/token-packages/knowledge-bases&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;token_packages&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void getKnowledgebasesTokenPackagesTest() throws ApiException {
+        GetAgentsTokenPackages200Response response = api.getKnowledgebasesTokenPackages();
+        // TODO: test validations
+    }
+
+    /**
+     * Получение списка моделей
+     *
+     * Чтобы получить список доступных AI моделей, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/models&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;models&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void getModelsTest() throws ApiException {
+        GetModels200Response response = api.getModels();
         // TODO: test validations
     }
 
