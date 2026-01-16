@@ -18,7 +18,7 @@
 |**forwardStatus** | **Boolean** | Статус пересылки |  [optional] |
 |**outgoingControl** | **Boolean** | Контроль исходящей почты |  [optional] |
 |**outgoingEmail** | **String** | Email для исходящих писем |  [optional] |
-|**password** | **String** | Пароль (обычно пустая строка в ответе) |  [optional] |
+|**password** | **String** | Пароль (пустая строка в ответе) |  [optional] |
 |**whiteList** | **List&lt;String&gt;** | Белый список адресов |  [optional] |
 |**webmail** | **Boolean** | Доступ к веб-почте |  [optional] |
 |**dovecot** | **Boolean** | Использование Dovecot |  [optional] |

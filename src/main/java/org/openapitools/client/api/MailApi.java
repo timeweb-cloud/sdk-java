@@ -30,9 +30,14 @@ import java.io.IOException;
 import org.openapitools.client.model.CreateDatabaseBackup409Response;
 import org.openapitools.client.model.CreateDomainMailbox201Response;
 import org.openapitools.client.model.CreateDomainMailboxRequest;
+import org.openapitools.client.model.CreateDomainMailboxV2201Response;
+import org.openapitools.client.model.CreateDomainMailboxV2Request;
 import org.openapitools.client.model.CreateMultipleDomainMailboxes201Response;
 import org.openapitools.client.model.CreateMultipleDomainMailboxesRequest;
+import org.openapitools.client.model.CreateMultipleDomainMailboxesV2201Response;
+import org.openapitools.client.model.CreateMultipleDomainMailboxesV2RequestInner;
 import org.openapitools.client.model.GetAccountStatus403Response;
+import org.openapitools.client.model.GetAllMailboxesV2200Response;
 import org.openapitools.client.model.GetDomainMailInfo200Response;
 import org.openapitools.client.model.GetFinances400Response;
 import org.openapitools.client.model.GetFinances401Response;
@@ -106,7 +111,9 @@ public class MailApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call createDomainMailboxCall(String domain, CreateDomainMailboxRequest createDomainMailboxRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -153,6 +160,7 @@ public class MailApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createDomainMailboxValidateBeforeCall(String domain, CreateDomainMailboxRequest createDomainMailboxRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'domain' is set
@@ -187,7 +195,9 @@ public class MailApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public CreateDomainMailbox201Response createDomainMailbox(String domain, CreateDomainMailboxRequest createDomainMailboxRequest) throws ApiException {
         ApiResponse<CreateDomainMailbox201Response> localVarResp = createDomainMailboxWithHttpInfo(domain, createDomainMailboxRequest);
         return localVarResp.getData();
@@ -211,7 +221,9 @@ public class MailApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<CreateDomainMailbox201Response> createDomainMailboxWithHttpInfo(String domain, CreateDomainMailboxRequest createDomainMailboxRequest) throws ApiException {
         okhttp3.Call localVarCall = createDomainMailboxValidateBeforeCall(domain, createDomainMailboxRequest, null);
         Type localVarReturnType = new TypeToken<CreateDomainMailbox201Response>(){}.getType();
@@ -237,11 +249,174 @@ public class MailApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call createDomainMailboxAsync(String domain, CreateDomainMailboxRequest createDomainMailboxRequest, final ApiCallback<CreateDomainMailbox201Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createDomainMailboxValidateBeforeCall(domain, createDomainMailboxRequest, _callback);
         Type localVarReturnType = new TypeToken<CreateDomainMailbox201Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createDomainMailboxV2
+     * @param domain Полное имя домена (required)
+     * @param createDomainMailboxV2Request  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;mailbox&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createDomainMailboxV2Call(String domain, CreateDomainMailboxV2Request createDomainMailboxV2Request, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = createDomainMailboxV2Request;
+
+        // create path and map variables
+        String localVarPath = "/api/v2/mail/domains/{domain}"
+            .replace("{" + "domain" + "}", localVarApiClient.escapeString(domain.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "Bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createDomainMailboxV2ValidateBeforeCall(String domain, CreateDomainMailboxV2Request createDomainMailboxV2Request, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'domain' is set
+        if (domain == null) {
+            throw new ApiException("Missing the required parameter 'domain' when calling createDomainMailboxV2(Async)");
+        }
+
+        // verify the required parameter 'createDomainMailboxV2Request' is set
+        if (createDomainMailboxV2Request == null) {
+            throw new ApiException("Missing the required parameter 'createDomainMailboxV2Request' when calling createDomainMailboxV2(Async)");
+        }
+
+        return createDomainMailboxV2Call(domain, createDomainMailboxV2Request, _callback);
+
+    }
+
+    /**
+     * Создание почтового ящика
+     * Чтобы создать почтовый ящик, отправьте POST-запрос на &#x60;/api/v2/mail/domains/{domain}&#x60;.
+     * @param domain Полное имя домена (required)
+     * @param createDomainMailboxV2Request  (required)
+     * @return CreateDomainMailboxV2201Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;mailbox&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateDomainMailboxV2201Response createDomainMailboxV2(String domain, CreateDomainMailboxV2Request createDomainMailboxV2Request) throws ApiException {
+        ApiResponse<CreateDomainMailboxV2201Response> localVarResp = createDomainMailboxV2WithHttpInfo(domain, createDomainMailboxV2Request);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Создание почтового ящика
+     * Чтобы создать почтовый ящик, отправьте POST-запрос на &#x60;/api/v2/mail/domains/{domain}&#x60;.
+     * @param domain Полное имя домена (required)
+     * @param createDomainMailboxV2Request  (required)
+     * @return ApiResponse&lt;CreateDomainMailboxV2201Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;mailbox&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateDomainMailboxV2201Response> createDomainMailboxV2WithHttpInfo(String domain, CreateDomainMailboxV2Request createDomainMailboxV2Request) throws ApiException {
+        okhttp3.Call localVarCall = createDomainMailboxV2ValidateBeforeCall(domain, createDomainMailboxV2Request, null);
+        Type localVarReturnType = new TypeToken<CreateDomainMailboxV2201Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Создание почтового ящика (asynchronously)
+     * Чтобы создать почтовый ящик, отправьте POST-запрос на &#x60;/api/v2/mail/domains/{domain}&#x60;.
+     * @param domain Полное имя домена (required)
+     * @param createDomainMailboxV2Request  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;mailbox&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createDomainMailboxV2Async(String domain, CreateDomainMailboxV2Request createDomainMailboxV2Request, final ApiCallback<CreateDomainMailboxV2201Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createDomainMailboxV2ValidateBeforeCall(domain, createDomainMailboxV2Request, _callback);
+        Type localVarReturnType = new TypeToken<CreateDomainMailboxV2201Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -263,7 +438,9 @@ public class MailApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call createMultipleDomainMailboxesCall(String domain, CreateMultipleDomainMailboxesRequest createMultipleDomainMailboxesRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -310,6 +487,7 @@ public class MailApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createMultipleDomainMailboxesValidateBeforeCall(String domain, CreateMultipleDomainMailboxesRequest createMultipleDomainMailboxesRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'domain' is set
@@ -344,7 +522,9 @@ public class MailApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public CreateMultipleDomainMailboxes201Response createMultipleDomainMailboxes(String domain, CreateMultipleDomainMailboxesRequest createMultipleDomainMailboxesRequest) throws ApiException {
         ApiResponse<CreateMultipleDomainMailboxes201Response> localVarResp = createMultipleDomainMailboxesWithHttpInfo(domain, createMultipleDomainMailboxesRequest);
         return localVarResp.getData();
@@ -368,7 +548,9 @@ public class MailApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<CreateMultipleDomainMailboxes201Response> createMultipleDomainMailboxesWithHttpInfo(String domain, CreateMultipleDomainMailboxesRequest createMultipleDomainMailboxesRequest) throws ApiException {
         okhttp3.Call localVarCall = createMultipleDomainMailboxesValidateBeforeCall(domain, createMultipleDomainMailboxesRequest, null);
         Type localVarReturnType = new TypeToken<CreateMultipleDomainMailboxes201Response>(){}.getType();
@@ -394,11 +576,170 @@ public class MailApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call createMultipleDomainMailboxesAsync(String domain, CreateMultipleDomainMailboxesRequest createMultipleDomainMailboxesRequest, final ApiCallback<CreateMultipleDomainMailboxes201Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createMultipleDomainMailboxesValidateBeforeCall(domain, createMultipleDomainMailboxesRequest, _callback);
         Type localVarReturnType = new TypeToken<CreateMultipleDomainMailboxes201Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createMultipleDomainMailboxesV2
+     * @param domain Полное имя домена (required)
+     * @param createMultipleDomainMailboxesV2RequestInner  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;mailboxes_batch&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createMultipleDomainMailboxesV2Call(String domain, List<CreateMultipleDomainMailboxesV2RequestInner> createMultipleDomainMailboxesV2RequestInner, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = createMultipleDomainMailboxesV2RequestInner;
+
+        // create path and map variables
+        String localVarPath = "/api/v2/mail/domains/{domain}/batch"
+            .replace("{" + "domain" + "}", localVarApiClient.escapeString(domain.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "Bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createMultipleDomainMailboxesV2ValidateBeforeCall(String domain, List<CreateMultipleDomainMailboxesV2RequestInner> createMultipleDomainMailboxesV2RequestInner, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'domain' is set
+        if (domain == null) {
+            throw new ApiException("Missing the required parameter 'domain' when calling createMultipleDomainMailboxesV2(Async)");
+        }
+
+        // verify the required parameter 'createMultipleDomainMailboxesV2RequestInner' is set
+        if (createMultipleDomainMailboxesV2RequestInner == null) {
+            throw new ApiException("Missing the required parameter 'createMultipleDomainMailboxesV2RequestInner' when calling createMultipleDomainMailboxesV2(Async)");
+        }
+
+        return createMultipleDomainMailboxesV2Call(domain, createMultipleDomainMailboxesV2RequestInner, _callback);
+
+    }
+
+    /**
+     * Множественное создание почтовых ящиков
+     * Чтобы создать несколько почтовых ящиков одновременно, отправьте POST-запрос на &#x60;/api/v2/mail/domains/{domain}/batch&#x60;.
+     * @param domain Полное имя домена (required)
+     * @param createMultipleDomainMailboxesV2RequestInner  (required)
+     * @return CreateMultipleDomainMailboxesV2201Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;mailboxes_batch&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateMultipleDomainMailboxesV2201Response createMultipleDomainMailboxesV2(String domain, List<CreateMultipleDomainMailboxesV2RequestInner> createMultipleDomainMailboxesV2RequestInner) throws ApiException {
+        ApiResponse<CreateMultipleDomainMailboxesV2201Response> localVarResp = createMultipleDomainMailboxesV2WithHttpInfo(domain, createMultipleDomainMailboxesV2RequestInner);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Множественное создание почтовых ящиков
+     * Чтобы создать несколько почтовых ящиков одновременно, отправьте POST-запрос на &#x60;/api/v2/mail/domains/{domain}/batch&#x60;.
+     * @param domain Полное имя домена (required)
+     * @param createMultipleDomainMailboxesV2RequestInner  (required)
+     * @return ApiResponse&lt;CreateMultipleDomainMailboxesV2201Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;mailboxes_batch&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateMultipleDomainMailboxesV2201Response> createMultipleDomainMailboxesV2WithHttpInfo(String domain, List<CreateMultipleDomainMailboxesV2RequestInner> createMultipleDomainMailboxesV2RequestInner) throws ApiException {
+        okhttp3.Call localVarCall = createMultipleDomainMailboxesV2ValidateBeforeCall(domain, createMultipleDomainMailboxesV2RequestInner, null);
+        Type localVarReturnType = new TypeToken<CreateMultipleDomainMailboxesV2201Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Множественное создание почтовых ящиков (asynchronously)
+     * Чтобы создать несколько почтовых ящиков одновременно, отправьте POST-запрос на &#x60;/api/v2/mail/domains/{domain}/batch&#x60;.
+     * @param domain Полное имя домена (required)
+     * @param createMultipleDomainMailboxesV2RequestInner  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;mailboxes_batch&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createMultipleDomainMailboxesV2Async(String domain, List<CreateMultipleDomainMailboxesV2RequestInner> createMultipleDomainMailboxesV2RequestInner, final ApiCallback<CreateMultipleDomainMailboxesV2201Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createMultipleDomainMailboxesV2ValidateBeforeCall(domain, createMultipleDomainMailboxesV2RequestInner, _callback);
+        Type localVarReturnType = new TypeToken<CreateMultipleDomainMailboxesV2201Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -556,6 +897,163 @@ public class MailApi {
         return localVarCall;
     }
     /**
+     * Build call for getAllMailboxesV2
+     * @param limit Обозначает количество записей, которое необходимо вернуть. (optional, default to 100)
+     * @param offset Указывает на смещение относительно начала списка. (optional, default to 0)
+     * @param search Поиск почтового ящика по названию (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;mailboxes&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAllMailboxesV2Call(Integer limit, Integer offset, String search, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/v2/mail";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (offset != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("offset", offset));
+        }
+
+        if (search != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("search", search));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "Bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getAllMailboxesV2ValidateBeforeCall(Integer limit, Integer offset, String search, final ApiCallback _callback) throws ApiException {
+        return getAllMailboxesV2Call(limit, offset, search, _callback);
+
+    }
+
+    /**
+     * Получение списка всех почтовых ящиков аккаунта
+     * Чтобы получить список всех почтовых ящиков, отправьте GET-запрос на &#x60;/api/v2/mail&#x60;.
+     * @param limit Обозначает количество записей, которое необходимо вернуть. (optional, default to 100)
+     * @param offset Указывает на смещение относительно начала списка. (optional, default to 0)
+     * @param search Поиск почтового ящика по названию (optional)
+     * @return GetAllMailboxesV2200Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;mailboxes&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetAllMailboxesV2200Response getAllMailboxesV2(Integer limit, Integer offset, String search) throws ApiException {
+        ApiResponse<GetAllMailboxesV2200Response> localVarResp = getAllMailboxesV2WithHttpInfo(limit, offset, search);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Получение списка всех почтовых ящиков аккаунта
+     * Чтобы получить список всех почтовых ящиков, отправьте GET-запрос на &#x60;/api/v2/mail&#x60;.
+     * @param limit Обозначает количество записей, которое необходимо вернуть. (optional, default to 100)
+     * @param offset Указывает на смещение относительно начала списка. (optional, default to 0)
+     * @param search Поиск почтового ящика по названию (optional)
+     * @return ApiResponse&lt;GetAllMailboxesV2200Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;mailboxes&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetAllMailboxesV2200Response> getAllMailboxesV2WithHttpInfo(Integer limit, Integer offset, String search) throws ApiException {
+        okhttp3.Call localVarCall = getAllMailboxesV2ValidateBeforeCall(limit, offset, search, null);
+        Type localVarReturnType = new TypeToken<GetAllMailboxesV2200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Получение списка всех почтовых ящиков аккаунта (asynchronously)
+     * Чтобы получить список всех почтовых ящиков, отправьте GET-запрос на &#x60;/api/v2/mail&#x60;.
+     * @param limit Обозначает количество записей, которое необходимо вернуть. (optional, default to 100)
+     * @param offset Указывает на смещение относительно начала списка. (optional, default to 0)
+     * @param search Поиск почтового ящика по названию (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;mailboxes&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAllMailboxesV2Async(Integer limit, Integer offset, String search, final ApiCallback<GetAllMailboxesV2200Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getAllMailboxesV2ValidateBeforeCall(limit, offset, search, _callback);
+        Type localVarReturnType = new TypeToken<GetAllMailboxesV2200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for getDomainMailInfo
      * @param domain Полное имя домена (required)
      * @param _callback Callback for upload/download progress
@@ -572,7 +1070,9 @@ public class MailApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call getDomainMailInfoCall(String domain, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -618,6 +1118,7 @@ public class MailApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getDomainMailInfoValidateBeforeCall(String domain, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'domain' is set
@@ -646,7 +1147,9 @@ public class MailApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public GetDomainMailInfo200Response getDomainMailInfo(String domain) throws ApiException {
         ApiResponse<GetDomainMailInfo200Response> localVarResp = getDomainMailInfoWithHttpInfo(domain);
         return localVarResp.getData();
@@ -669,7 +1172,9 @@ public class MailApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<GetDomainMailInfo200Response> getDomainMailInfoWithHttpInfo(String domain) throws ApiException {
         okhttp3.Call localVarCall = getDomainMailInfoValidateBeforeCall(domain, null);
         Type localVarReturnType = new TypeToken<GetDomainMailInfo200Response>(){}.getType();
@@ -694,7 +1199,9 @@ public class MailApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call getDomainMailInfoAsync(String domain, final ApiCallback<GetDomainMailInfo200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getDomainMailInfoValidateBeforeCall(domain, _callback);
@@ -891,7 +1398,9 @@ public class MailApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call getMailboxCall(String domain, String mailbox, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -938,6 +1447,7 @@ public class MailApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getMailboxValidateBeforeCall(String domain, String mailbox, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'domain' is set
@@ -972,7 +1482,9 @@ public class MailApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public CreateDomainMailbox201Response getMailbox(String domain, String mailbox) throws ApiException {
         ApiResponse<CreateDomainMailbox201Response> localVarResp = getMailboxWithHttpInfo(domain, mailbox);
         return localVarResp.getData();
@@ -996,7 +1508,9 @@ public class MailApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<CreateDomainMailbox201Response> getMailboxWithHttpInfo(String domain, String mailbox) throws ApiException {
         okhttp3.Call localVarCall = getMailboxValidateBeforeCall(domain, mailbox, null);
         Type localVarReturnType = new TypeToken<CreateDomainMailbox201Response>(){}.getType();
@@ -1022,11 +1536,170 @@ public class MailApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call getMailboxAsync(String domain, String mailbox, final ApiCallback<CreateDomainMailbox201Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getMailboxValidateBeforeCall(domain, mailbox, _callback);
         Type localVarReturnType = new TypeToken<CreateDomainMailbox201Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getMailboxV2
+     * @param domain Полное имя домена (required)
+     * @param mailbox Название почтового ящика (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;mailbox&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getMailboxV2Call(String domain, String mailbox, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/v2/mail/domains/{domain}/mailboxes/{mailbox}"
+            .replace("{" + "domain" + "}", localVarApiClient.escapeString(domain.toString()))
+            .replace("{" + "mailbox" + "}", localVarApiClient.escapeString(mailbox.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "Bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getMailboxV2ValidateBeforeCall(String domain, String mailbox, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'domain' is set
+        if (domain == null) {
+            throw new ApiException("Missing the required parameter 'domain' when calling getMailboxV2(Async)");
+        }
+
+        // verify the required parameter 'mailbox' is set
+        if (mailbox == null) {
+            throw new ApiException("Missing the required parameter 'mailbox' when calling getMailboxV2(Async)");
+        }
+
+        return getMailboxV2Call(domain, mailbox, _callback);
+
+    }
+
+    /**
+     * Получение почтового ящика
+     * Чтобы получить почтовый ящик, отправьте GET-запрос на &#x60;/api/v2/mail/domains/{domain}/mailboxes/{mailbox}&#x60;.
+     * @param domain Полное имя домена (required)
+     * @param mailbox Название почтового ящика (required)
+     * @return CreateDomainMailboxV2201Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;mailbox&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateDomainMailboxV2201Response getMailboxV2(String domain, String mailbox) throws ApiException {
+        ApiResponse<CreateDomainMailboxV2201Response> localVarResp = getMailboxV2WithHttpInfo(domain, mailbox);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Получение почтового ящика
+     * Чтобы получить почтовый ящик, отправьте GET-запрос на &#x60;/api/v2/mail/domains/{domain}/mailboxes/{mailbox}&#x60;.
+     * @param domain Полное имя домена (required)
+     * @param mailbox Название почтового ящика (required)
+     * @return ApiResponse&lt;CreateDomainMailboxV2201Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;mailbox&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateDomainMailboxV2201Response> getMailboxV2WithHttpInfo(String domain, String mailbox) throws ApiException {
+        okhttp3.Call localVarCall = getMailboxV2ValidateBeforeCall(domain, mailbox, null);
+        Type localVarReturnType = new TypeToken<CreateDomainMailboxV2201Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Получение почтового ящика (asynchronously)
+     * Чтобы получить почтовый ящик, отправьте GET-запрос на &#x60;/api/v2/mail/domains/{domain}/mailboxes/{mailbox}&#x60;.
+     * @param domain Полное имя домена (required)
+     * @param mailbox Название почтового ящика (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;mailbox&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getMailboxV2Async(String domain, String mailbox, final ApiCallback<CreateDomainMailboxV2201Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getMailboxV2ValidateBeforeCall(domain, mailbox, _callback);
+        Type localVarReturnType = new TypeToken<CreateDomainMailboxV2201Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1048,7 +1721,9 @@ public class MailApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call getMailboxesCall(Integer limit, Integer offset, String search, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -1105,6 +1780,7 @@ public class MailApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getMailboxesValidateBeforeCall(Integer limit, Integer offset, String search, final ApiCallback _callback) throws ApiException {
         return getMailboxesCall(limit, offset, search, _callback);
@@ -1129,7 +1805,9 @@ public class MailApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public GetMailboxes200Response getMailboxes(Integer limit, Integer offset, String search) throws ApiException {
         ApiResponse<GetMailboxes200Response> localVarResp = getMailboxesWithHttpInfo(limit, offset, search);
         return localVarResp.getData();
@@ -1153,7 +1831,9 @@ public class MailApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<GetMailboxes200Response> getMailboxesWithHttpInfo(Integer limit, Integer offset, String search) throws ApiException {
         okhttp3.Call localVarCall = getMailboxesValidateBeforeCall(limit, offset, search, null);
         Type localVarReturnType = new TypeToken<GetMailboxes200Response>(){}.getType();
@@ -1179,7 +1859,9 @@ public class MailApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call getMailboxesAsync(Integer limit, Integer offset, String search, final ApiCallback<GetMailboxes200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getMailboxesValidateBeforeCall(limit, offset, search, _callback);
@@ -1205,7 +1887,9 @@ public class MailApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call updateDomainMailInfoCall(String domain, UpdateDomainMailInfoRequest updateDomainMailInfoRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -1252,6 +1936,7 @@ public class MailApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call updateDomainMailInfoValidateBeforeCall(String domain, UpdateDomainMailInfoRequest updateDomainMailInfoRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'domain' is set
@@ -1286,7 +1971,9 @@ public class MailApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public GetDomainMailInfo200Response updateDomainMailInfo(String domain, UpdateDomainMailInfoRequest updateDomainMailInfoRequest) throws ApiException {
         ApiResponse<GetDomainMailInfo200Response> localVarResp = updateDomainMailInfoWithHttpInfo(domain, updateDomainMailInfoRequest);
         return localVarResp.getData();
@@ -1310,7 +1997,9 @@ public class MailApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<GetDomainMailInfo200Response> updateDomainMailInfoWithHttpInfo(String domain, UpdateDomainMailInfoRequest updateDomainMailInfoRequest) throws ApiException {
         okhttp3.Call localVarCall = updateDomainMailInfoValidateBeforeCall(domain, updateDomainMailInfoRequest, null);
         Type localVarReturnType = new TypeToken<GetDomainMailInfo200Response>(){}.getType();
@@ -1336,7 +2025,9 @@ public class MailApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call updateDomainMailInfoAsync(String domain, UpdateDomainMailInfoRequest updateDomainMailInfoRequest, final ApiCallback<GetDomainMailInfo200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = updateDomainMailInfoValidateBeforeCall(domain, updateDomainMailInfoRequest, _callback);

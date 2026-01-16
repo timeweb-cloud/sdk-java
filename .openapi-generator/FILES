@@ -124,6 +124,8 @@ docs/CreateDomainDNSRecord201Response.md
 docs/CreateDomainDNSRecordV2201Response.md
 docs/CreateDomainMailbox201Response.md
 docs/CreateDomainMailboxRequest.md
+docs/CreateDomainMailboxV2201Response.md
+docs/CreateDomainMailboxV2Request.md
 docs/CreateDomainRequest201Response.md
 docs/CreateFloatingIp.md
 docs/CreateFloatingIp201Response.md
@@ -135,6 +137,8 @@ docs/CreateKnowledgebase201Response.md
 docs/CreateMultipleDomainMailboxes201Response.md
 docs/CreateMultipleDomainMailboxesRequest.md
 docs/CreateMultipleDomainMailboxesRequestMailboxesInner.md
+docs/CreateMultipleDomainMailboxesV2201Response.md
+docs/CreateMultipleDomainMailboxesV2RequestInner.md
 docs/CreateNetworkDrive.md
 docs/CreateNetworkDrive201Response.md
 docs/CreateProject.md
@@ -244,6 +248,7 @@ docs/GetAgents200Response.md
 docs/GetAgents200ResponseMeta.md
 docs/GetAgentsTokenPackages200Response.md
 docs/GetAgentsTokenPackages200ResponseMeta.md
+docs/GetAllMailboxesV2200Response.md
 docs/GetAllProjectResources200Response.md
 docs/GetAppDeploys200Response.md
 docs/GetAppLogs200Response.md
@@ -367,6 +372,8 @@ docs/MailboxForwardingIncoming.md
 docs/MailboxForwardingOutgoing.md
 docs/MailboxResponse.md
 docs/MailboxSpamFilter.md
+docs/MailboxV2.md
+docs/MailboxesBatchV2.md
 docs/MasterPresetOutApi.md
 docs/Meta.md
 docs/Meta1.md
@@ -699,6 +706,8 @@ src/main/java/org/openapitools/client/model/CreateDomainDNSRecord201Response.jav
 src/main/java/org/openapitools/client/model/CreateDomainDNSRecordV2201Response.java
 src/main/java/org/openapitools/client/model/CreateDomainMailbox201Response.java
 src/main/java/org/openapitools/client/model/CreateDomainMailboxRequest.java
+src/main/java/org/openapitools/client/model/CreateDomainMailboxV2201Response.java
+src/main/java/org/openapitools/client/model/CreateDomainMailboxV2Request.java
 src/main/java/org/openapitools/client/model/CreateDomainRequest201Response.java
 src/main/java/org/openapitools/client/model/CreateFloatingIp.java
 src/main/java/org/openapitools/client/model/CreateFloatingIp201Response.java
@@ -710,6 +719,8 @@ src/main/java/org/openapitools/client/model/CreateKnowledgebase201Response.java
 src/main/java/org/openapitools/client/model/CreateMultipleDomainMailboxes201Response.java
 src/main/java/org/openapitools/client/model/CreateMultipleDomainMailboxesRequest.java
 src/main/java/org/openapitools/client/model/CreateMultipleDomainMailboxesRequestMailboxesInner.java
+src/main/java/org/openapitools/client/model/CreateMultipleDomainMailboxesV2201Response.java
+src/main/java/org/openapitools/client/model/CreateMultipleDomainMailboxesV2RequestInner.java
 src/main/java/org/openapitools/client/model/CreateNetworkDrive.java
 src/main/java/org/openapitools/client/model/CreateNetworkDrive201Response.java
 src/main/java/org/openapitools/client/model/CreateProject.java
@@ -814,6 +825,7 @@ src/main/java/org/openapitools/client/model/GetAgents200Response.java
 src/main/java/org/openapitools/client/model/GetAgents200ResponseMeta.java
 src/main/java/org/openapitools/client/model/GetAgentsTokenPackages200Response.java
 src/main/java/org/openapitools/client/model/GetAgentsTokenPackages200ResponseMeta.java
+src/main/java/org/openapitools/client/model/GetAllMailboxesV2200Response.java
 src/main/java/org/openapitools/client/model/GetAllProjectResources200Response.java
 src/main/java/org/openapitools/client/model/GetAppDeploys200Response.java
 src/main/java/org/openapitools/client/model/GetAppLogs200Response.java
@@ -932,6 +944,8 @@ src/main/java/org/openapitools/client/model/MailboxForwardingIncoming.java
 src/main/java/org/openapitools/client/model/MailboxForwardingOutgoing.java
 src/main/java/org/openapitools/client/model/MailboxResponse.java
 src/main/java/org/openapitools/client/model/MailboxSpamFilter.java
+src/main/java/org/openapitools/client/model/MailboxV2.java
+src/main/java/org/openapitools/client/model/MailboxesBatchV2.java
 src/main/java/org/openapitools/client/model/MasterPresetOutApi.java
 src/main/java/org/openapitools/client/model/Meta.java
 src/main/java/org/openapitools/client/model/Meta1.java
@@ -1230,6 +1244,8 @@ src/test/java/org/openapitools/client/model/CreateDomainDNSRecord201ResponseTest
 src/test/java/org/openapitools/client/model/CreateDomainDNSRecordV2201ResponseTest.java
 src/test/java/org/openapitools/client/model/CreateDomainMailbox201ResponseTest.java
 src/test/java/org/openapitools/client/model/CreateDomainMailboxRequestTest.java
+src/test/java/org/openapitools/client/model/CreateDomainMailboxV2201ResponseTest.java
+src/test/java/org/openapitools/client/model/CreateDomainMailboxV2RequestTest.java
 src/test/java/org/openapitools/client/model/CreateDomainRequest201ResponseTest.java
 src/test/java/org/openapitools/client/model/CreateFloatingIp201ResponseTest.java
 src/test/java/org/openapitools/client/model/CreateFloatingIpTest.java
@@ -1241,6 +1257,8 @@ src/test/java/org/openapitools/client/model/CreateKnowledgebaseTest.java
 src/test/java/org/openapitools/client/model/CreateMultipleDomainMailboxes201ResponseTest.java
 src/test/java/org/openapitools/client/model/CreateMultipleDomainMailboxesRequestMailboxesInnerTest.java
 src/test/java/org/openapitools/client/model/CreateMultipleDomainMailboxesRequestTest.java
+src/test/java/org/openapitools/client/model/CreateMultipleDomainMailboxesV2201ResponseTest.java
+src/test/java/org/openapitools/client/model/CreateMultipleDomainMailboxesV2RequestInnerTest.java
 src/test/java/org/openapitools/client/model/CreateNetworkDrive201ResponseTest.java
 src/test/java/org/openapitools/client/model/CreateNetworkDriveTest.java
 src/test/java/org/openapitools/client/model/CreateProject201ResponseTest.java
@@ -1345,6 +1363,7 @@ src/test/java/org/openapitools/client/model/GetAgents200ResponseMetaTest.java
 src/test/java/org/openapitools/client/model/GetAgents200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetAgentsTokenPackages200ResponseMetaTest.java
 src/test/java/org/openapitools/client/model/GetAgentsTokenPackages200ResponseTest.java
+src/test/java/org/openapitools/client/model/GetAllMailboxesV2200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetAllProjectResources200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetAppDeploys200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetAppLogs200ResponseTest.java
@@ -1463,6 +1482,8 @@ src/test/java/org/openapitools/client/model/MailboxForwardingOutgoingTest.java
 src/test/java/org/openapitools/client/model/MailboxResponseTest.java
 src/test/java/org/openapitools/client/model/MailboxSpamFilterTest.java
 src/test/java/org/openapitools/client/model/MailboxTest.java
+src/test/java/org/openapitools/client/model/MailboxV2Test.java
+src/test/java/org/openapitools/client/model/MailboxesBatchV2Test.java
 src/test/java/org/openapitools/client/model/MasterPresetOutApiTest.java
 src/test/java/org/openapitools/client/model/Meta1Test.java
 src/test/java/org/openapitools/client/model/MetaTest.java

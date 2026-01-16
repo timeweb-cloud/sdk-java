@@ -17,9 +17,14 @@ import org.openapitools.client.ApiException;
 import org.openapitools.client.model.CreateDatabaseBackup409Response;
 import org.openapitools.client.model.CreateDomainMailbox201Response;
 import org.openapitools.client.model.CreateDomainMailboxRequest;
+import org.openapitools.client.model.CreateDomainMailboxV2201Response;
+import org.openapitools.client.model.CreateDomainMailboxV2Request;
 import org.openapitools.client.model.CreateMultipleDomainMailboxes201Response;
 import org.openapitools.client.model.CreateMultipleDomainMailboxesRequest;
+import org.openapitools.client.model.CreateMultipleDomainMailboxesV2201Response;
+import org.openapitools.client.model.CreateMultipleDomainMailboxesV2RequestInner;
 import org.openapitools.client.model.GetAccountStatus403Response;
+import org.openapitools.client.model.GetAllMailboxesV2200Response;
 import org.openapitools.client.model.GetDomainMailInfo200Response;
 import org.openapitools.client.model.GetFinances400Response;
 import org.openapitools.client.model.GetFinances401Response;
@@ -63,6 +68,21 @@ public class MailApiTest {
     }
 
     /**
+     * Создание почтового ящика
+     *
+     * Чтобы создать почтовый ящик, отправьте POST-запрос на &#x60;/api/v2/mail/domains/{domain}&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void createDomainMailboxV2Test() throws ApiException {
+        String domain = null;
+        CreateDomainMailboxV2Request createDomainMailboxV2Request = null;
+        CreateDomainMailboxV2201Response response = api.createDomainMailboxV2(domain, createDomainMailboxV2Request);
+        // TODO: test validations
+    }
+
+    /**
      * Множественное создание почтовых ящиков
      *
      * Чтобы создать почтовый ящики, отправьте POST-запрос на &#x60;/api/v1/mail/domains/{domain}/batch&#x60;.
@@ -78,6 +98,21 @@ public class MailApiTest {
     }
 
     /**
+     * Множественное создание почтовых ящиков
+     *
+     * Чтобы создать несколько почтовых ящиков одновременно, отправьте POST-запрос на &#x60;/api/v2/mail/domains/{domain}/batch&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void createMultipleDomainMailboxesV2Test() throws ApiException {
+        String domain = null;
+        List<CreateMultipleDomainMailboxesV2RequestInner> createMultipleDomainMailboxesV2RequestInner = null;
+        CreateMultipleDomainMailboxesV2201Response response = api.createMultipleDomainMailboxesV2(domain, createMultipleDomainMailboxesV2RequestInner);
+        // TODO: test validations
+    }
+
+    /**
      * Удаление почтового ящика
      *
      * Чтобы удалить почтовый ящик, отправьте DELETE-запрос на &#x60;/api/v1/mail/domains/{domain}/mailboxes/{mailbox}&#x60;.
@@ -89,6 +124,22 @@ public class MailApiTest {
         String domain = null;
         String mailbox = null;
         api.deleteMailbox(domain, mailbox);
+        // TODO: test validations
+    }
+
+    /**
+     * Получение списка всех почтовых ящиков аккаунта
+     *
+     * Чтобы получить список всех почтовых ящиков, отправьте GET-запрос на &#x60;/api/v2/mail&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void getAllMailboxesV2Test() throws ApiException {
+        Integer limit = null;
+        Integer offset = null;
+        String search = null;
+        GetAllMailboxesV2200Response response = api.getAllMailboxesV2(limit, offset, search);
         // TODO: test validations
     }
 
@@ -135,6 +186,21 @@ public class MailApiTest {
         String domain = null;
         String mailbox = null;
         CreateDomainMailbox201Response response = api.getMailbox(domain, mailbox);
+        // TODO: test validations
+    }
+
+    /**
+     * Получение почтового ящика
+     *
+     * Чтобы получить почтовый ящик, отправьте GET-запрос на &#x60;/api/v2/mail/domains/{domain}/mailboxes/{mailbox}&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void getMailboxV2Test() throws ApiException {
+        String domain = null;
+        String mailbox = null;
+        CreateDomainMailboxV2201Response response = api.getMailboxV2(domain, mailbox);
         // TODO: test validations
     }
 
