@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * Действие над сервером
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-14T14:16:00.448863Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-16T08:33:54.637973Z[Etc/UTC]")
 public class PerformActionOnServerRequest {
   /**
    * Gets or Sets action

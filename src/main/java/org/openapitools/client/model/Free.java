@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * Обновление заявки на перенос домена
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-14T14:16:00.448863Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-16T08:33:54.637973Z[Etc/UTC]")
 public class Free {
   /**
    * Тип создаваемой заявки.

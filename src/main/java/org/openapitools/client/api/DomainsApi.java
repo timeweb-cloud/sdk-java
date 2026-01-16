@@ -31,7 +31,9 @@ import org.openapitools.client.model.AddSubdomain201Response;
 import org.openapitools.client.model.CheckDomain200Response;
 import org.openapitools.client.model.CreateDatabaseBackup409Response;
 import org.openapitools.client.model.CreateDns;
+import org.openapitools.client.model.CreateDnsV2;
 import org.openapitools.client.model.CreateDomainDNSRecord201Response;
+import org.openapitools.client.model.CreateDomainDNSRecordV2201Response;
 import org.openapitools.client.model.CreateDomainRequest201Response;
 import org.openapitools.client.model.DomainRegister;
 import org.openapitools.client.model.GetDomain200Response;
@@ -542,7 +544,9 @@ public class DomainsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call createDomainDNSRecordCall(String fqdn, CreateDns createDns, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -589,6 +593,7 @@ public class DomainsApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createDomainDNSRecordValidateBeforeCall(String fqdn, CreateDns createDns, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'fqdn' is set
@@ -622,7 +627,9 @@ public class DomainsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public CreateDomainDNSRecord201Response createDomainDNSRecord(String fqdn, CreateDns createDns) throws ApiException {
         ApiResponse<CreateDomainDNSRecord201Response> localVarResp = createDomainDNSRecordWithHttpInfo(fqdn, createDns);
         return localVarResp.getData();
@@ -645,7 +652,9 @@ public class DomainsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<CreateDomainDNSRecord201Response> createDomainDNSRecordWithHttpInfo(String fqdn, CreateDns createDns) throws ApiException {
         okhttp3.Call localVarCall = createDomainDNSRecordValidateBeforeCall(fqdn, createDns, null);
         Type localVarReturnType = new TypeToken<CreateDomainDNSRecord201Response>(){}.getType();
@@ -670,11 +679,170 @@ public class DomainsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call createDomainDNSRecordAsync(String fqdn, CreateDns createDns, final ApiCallback<CreateDomainDNSRecord201Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createDomainDNSRecordValidateBeforeCall(fqdn, createDns, _callback);
         Type localVarReturnType = new TypeToken<CreateDomainDNSRecord201Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createDomainDNSRecordV2
+     * @param fqdn Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, &#x60;somedomain.ru&#x60;). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, &#x60;sub.somedomain.ru&#x60;). (required)
+     * @param createDnsV2  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;dns_record&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createDomainDNSRecordV2Call(String fqdn, CreateDnsV2 createDnsV2, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = createDnsV2;
+
+        // create path and map variables
+        String localVarPath = "/api/v2/domains/{fqdn}/dns-records"
+            .replace("{" + "fqdn" + "}", localVarApiClient.escapeString(fqdn.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "Bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createDomainDNSRecordV2ValidateBeforeCall(String fqdn, CreateDnsV2 createDnsV2, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'fqdn' is set
+        if (fqdn == null) {
+            throw new ApiException("Missing the required parameter 'fqdn' when calling createDomainDNSRecordV2(Async)");
+        }
+
+        // verify the required parameter 'createDnsV2' is set
+        if (createDnsV2 == null) {
+            throw new ApiException("Missing the required parameter 'createDnsV2' when calling createDomainDNSRecordV2(Async)");
+        }
+
+        return createDomainDNSRecordV2Call(fqdn, createDnsV2, _callback);
+
+    }
+
+    /**
+     * Добавить информацию о DNS-записи для домена или поддомена
+     * Чтобы добавить информацию о DNS-записи для домена или поддомена, отправьте запрос POST на &#x60;/api/v2/domains/{fqdn}/dns-records&#x60;, задав необходимые атрибуты.  DNS-запись будет добавлена с использованием предоставленной информации. Тело ответа будет содержать объект JSON с информацией о добавленной DNS-записи.
+     * @param fqdn Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, &#x60;somedomain.ru&#x60;). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, &#x60;sub.somedomain.ru&#x60;). (required)
+     * @param createDnsV2  (required)
+     * @return CreateDomainDNSRecordV2201Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;dns_record&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateDomainDNSRecordV2201Response createDomainDNSRecordV2(String fqdn, CreateDnsV2 createDnsV2) throws ApiException {
+        ApiResponse<CreateDomainDNSRecordV2201Response> localVarResp = createDomainDNSRecordV2WithHttpInfo(fqdn, createDnsV2);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Добавить информацию о DNS-записи для домена или поддомена
+     * Чтобы добавить информацию о DNS-записи для домена или поддомена, отправьте запрос POST на &#x60;/api/v2/domains/{fqdn}/dns-records&#x60;, задав необходимые атрибуты.  DNS-запись будет добавлена с использованием предоставленной информации. Тело ответа будет содержать объект JSON с информацией о добавленной DNS-записи.
+     * @param fqdn Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, &#x60;somedomain.ru&#x60;). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, &#x60;sub.somedomain.ru&#x60;). (required)
+     * @param createDnsV2  (required)
+     * @return ApiResponse&lt;CreateDomainDNSRecordV2201Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;dns_record&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateDomainDNSRecordV2201Response> createDomainDNSRecordV2WithHttpInfo(String fqdn, CreateDnsV2 createDnsV2) throws ApiException {
+        okhttp3.Call localVarCall = createDomainDNSRecordV2ValidateBeforeCall(fqdn, createDnsV2, null);
+        Type localVarReturnType = new TypeToken<CreateDomainDNSRecordV2201Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Добавить информацию о DNS-записи для домена или поддомена (asynchronously)
+     * Чтобы добавить информацию о DNS-записи для домена или поддомена, отправьте запрос POST на &#x60;/api/v2/domains/{fqdn}/dns-records&#x60;, задав необходимые атрибуты.  DNS-запись будет добавлена с использованием предоставленной информации. Тело ответа будет содержать объект JSON с информацией о добавленной DNS-записи.
+     * @param fqdn Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, &#x60;somedomain.ru&#x60;). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, &#x60;sub.somedomain.ru&#x60;). (required)
+     * @param createDnsV2  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;dns_record&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createDomainDNSRecordV2Async(String fqdn, CreateDnsV2 createDnsV2, final ApiCallback<CreateDomainDNSRecordV2201Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createDomainDNSRecordV2ValidateBeforeCall(fqdn, createDnsV2, _callback);
+        Type localVarReturnType = new TypeToken<CreateDomainDNSRecordV2201Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -981,7 +1149,9 @@ public class DomainsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call deleteDomainDNSRecordCall(String fqdn, Integer recordId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -1028,6 +1198,7 @@ public class DomainsApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call deleteDomainDNSRecordValidateBeforeCall(String fqdn, Integer recordId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'fqdn' is set
@@ -1060,7 +1231,9 @@ public class DomainsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public void deleteDomainDNSRecord(String fqdn, Integer recordId) throws ApiException {
         deleteDomainDNSRecordWithHttpInfo(fqdn, recordId);
     }
@@ -1082,7 +1255,9 @@ public class DomainsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<Void> deleteDomainDNSRecordWithHttpInfo(String fqdn, Integer recordId) throws ApiException {
         okhttp3.Call localVarCall = deleteDomainDNSRecordValidateBeforeCall(fqdn, recordId, null);
         return localVarApiClient.execute(localVarCall);
@@ -1106,10 +1281,161 @@ public class DomainsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call deleteDomainDNSRecordAsync(String fqdn, Integer recordId, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteDomainDNSRecordValidateBeforeCall(fqdn, recordId, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for deleteDomainDNSRecordV2
+     * @param fqdn Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, &#x60;somedomain.ru&#x60;). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, &#x60;sub.somedomain.ru&#x60;). (required)
+     * @param recordId ID DNS-записи домена или поддомена. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Информация о DNS-записи успешно удалена. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteDomainDNSRecordV2Call(String fqdn, Integer recordId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/v2/domains/{fqdn}/dns-records/{record_id}"
+            .replace("{" + "fqdn" + "}", localVarApiClient.escapeString(fqdn.toString()))
+            .replace("{" + "record_id" + "}", localVarApiClient.escapeString(recordId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "Bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteDomainDNSRecordV2ValidateBeforeCall(String fqdn, Integer recordId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'fqdn' is set
+        if (fqdn == null) {
+            throw new ApiException("Missing the required parameter 'fqdn' when calling deleteDomainDNSRecordV2(Async)");
+        }
+
+        // verify the required parameter 'recordId' is set
+        if (recordId == null) {
+            throw new ApiException("Missing the required parameter 'recordId' when calling deleteDomainDNSRecordV2(Async)");
+        }
+
+        return deleteDomainDNSRecordV2Call(fqdn, recordId, _callback);
+
+    }
+
+    /**
+     * Удалить информацию о DNS-записи для домена или поддомена
+     * Чтобы удалить информацию о DNS-записи для домена или поддомена, отправьте запрос DELETE на &#x60;/api/v2/domains/{fqdn}/dns-records/{record_id}&#x60;.
+     * @param fqdn Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, &#x60;somedomain.ru&#x60;). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, &#x60;sub.somedomain.ru&#x60;). (required)
+     * @param recordId ID DNS-записи домена или поддомена. (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Информация о DNS-записи успешно удалена. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public void deleteDomainDNSRecordV2(String fqdn, Integer recordId) throws ApiException {
+        deleteDomainDNSRecordV2WithHttpInfo(fqdn, recordId);
+    }
+
+    /**
+     * Удалить информацию о DNS-записи для домена или поддомена
+     * Чтобы удалить информацию о DNS-записи для домена или поддомена, отправьте запрос DELETE на &#x60;/api/v2/domains/{fqdn}/dns-records/{record_id}&#x60;.
+     * @param fqdn Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, &#x60;somedomain.ru&#x60;). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, &#x60;sub.somedomain.ru&#x60;). (required)
+     * @param recordId ID DNS-записи домена или поддомена. (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Информация о DNS-записи успешно удалена. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> deleteDomainDNSRecordV2WithHttpInfo(String fqdn, Integer recordId) throws ApiException {
+        okhttp3.Call localVarCall = deleteDomainDNSRecordV2ValidateBeforeCall(fqdn, recordId, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Удалить информацию о DNS-записи для домена или поддомена (asynchronously)
+     * Чтобы удалить информацию о DNS-записи для домена или поддомена, отправьте запрос DELETE на &#x60;/api/v2/domains/{fqdn}/dns-records/{record_id}&#x60;.
+     * @param fqdn Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, &#x60;somedomain.ru&#x60;). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, &#x60;sub.somedomain.ru&#x60;). (required)
+     * @param recordId ID DNS-записи домена или поддомена. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Информация о DNS-записи успешно удалена. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteDomainDNSRecordV2Async(String fqdn, Integer recordId, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteDomainDNSRecordV2ValidateBeforeCall(fqdn, recordId, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
@@ -2790,7 +3116,9 @@ public class DomainsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call updateDomainDNSRecordCall(String fqdn, Integer recordId, CreateDns createDns, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -2838,6 +3166,7 @@ public class DomainsApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call updateDomainDNSRecordValidateBeforeCall(String fqdn, Integer recordId, CreateDns createDns, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'fqdn' is set
@@ -2877,7 +3206,9 @@ public class DomainsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public CreateDomainDNSRecord201Response updateDomainDNSRecord(String fqdn, Integer recordId, CreateDns createDns) throws ApiException {
         ApiResponse<CreateDomainDNSRecord201Response> localVarResp = updateDomainDNSRecordWithHttpInfo(fqdn, recordId, createDns);
         return localVarResp.getData();
@@ -2901,7 +3232,9 @@ public class DomainsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<CreateDomainDNSRecord201Response> updateDomainDNSRecordWithHttpInfo(String fqdn, Integer recordId, CreateDns createDns) throws ApiException {
         okhttp3.Call localVarCall = updateDomainDNSRecordValidateBeforeCall(fqdn, recordId, createDns, null);
         Type localVarReturnType = new TypeToken<CreateDomainDNSRecord201Response>(){}.getType();
@@ -2927,11 +3260,180 @@ public class DomainsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call updateDomainDNSRecordAsync(String fqdn, Integer recordId, CreateDns createDns, final ApiCallback<CreateDomainDNSRecord201Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = updateDomainDNSRecordValidateBeforeCall(fqdn, recordId, createDns, _callback);
         Type localVarReturnType = new TypeToken<CreateDomainDNSRecord201Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for updateDomainDNSRecordV2
+     * @param fqdn Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, &#x60;somedomain.ru&#x60;). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, &#x60;sub.somedomain.ru&#x60;). (required)
+     * @param recordId ID DNS-записи домена или поддомена. (required)
+     * @param createDnsV2  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;dns_record&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateDomainDNSRecordV2Call(String fqdn, Integer recordId, CreateDnsV2 createDnsV2, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = createDnsV2;
+
+        // create path and map variables
+        String localVarPath = "/api/v2/domains/{fqdn}/dns-records/{record_id}"
+            .replace("{" + "fqdn" + "}", localVarApiClient.escapeString(fqdn.toString()))
+            .replace("{" + "record_id" + "}", localVarApiClient.escapeString(recordId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "Bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call updateDomainDNSRecordV2ValidateBeforeCall(String fqdn, Integer recordId, CreateDnsV2 createDnsV2, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'fqdn' is set
+        if (fqdn == null) {
+            throw new ApiException("Missing the required parameter 'fqdn' when calling updateDomainDNSRecordV2(Async)");
+        }
+
+        // verify the required parameter 'recordId' is set
+        if (recordId == null) {
+            throw new ApiException("Missing the required parameter 'recordId' when calling updateDomainDNSRecordV2(Async)");
+        }
+
+        // verify the required parameter 'createDnsV2' is set
+        if (createDnsV2 == null) {
+            throw new ApiException("Missing the required parameter 'createDnsV2' when calling updateDomainDNSRecordV2(Async)");
+        }
+
+        return updateDomainDNSRecordV2Call(fqdn, recordId, createDnsV2, _callback);
+
+    }
+
+    /**
+     * Обновить информацию о DNS-записи домена или поддомена
+     * Чтобы обновить информацию о DNS-записи для домена или поддомена, отправьте запрос PATCH на &#x60;/api/v2/domains/{fqdn}/dns-records/{record_id}&#x60;, задав необходимые атрибуты.  DNS-запись будет обновлена с использованием предоставленной информации. Тело ответа будет содержать объект JSON с информацией об обновленной DNS-записи.
+     * @param fqdn Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, &#x60;somedomain.ru&#x60;). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, &#x60;sub.somedomain.ru&#x60;). (required)
+     * @param recordId ID DNS-записи домена или поддомена. (required)
+     * @param createDnsV2  (required)
+     * @return CreateDomainDNSRecordV2201Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;dns_record&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateDomainDNSRecordV2201Response updateDomainDNSRecordV2(String fqdn, Integer recordId, CreateDnsV2 createDnsV2) throws ApiException {
+        ApiResponse<CreateDomainDNSRecordV2201Response> localVarResp = updateDomainDNSRecordV2WithHttpInfo(fqdn, recordId, createDnsV2);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Обновить информацию о DNS-записи домена или поддомена
+     * Чтобы обновить информацию о DNS-записи для домена или поддомена, отправьте запрос PATCH на &#x60;/api/v2/domains/{fqdn}/dns-records/{record_id}&#x60;, задав необходимые атрибуты.  DNS-запись будет обновлена с использованием предоставленной информации. Тело ответа будет содержать объект JSON с информацией об обновленной DNS-записи.
+     * @param fqdn Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, &#x60;somedomain.ru&#x60;). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, &#x60;sub.somedomain.ru&#x60;). (required)
+     * @param recordId ID DNS-записи домена или поддомена. (required)
+     * @param createDnsV2  (required)
+     * @return ApiResponse&lt;CreateDomainDNSRecordV2201Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;dns_record&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateDomainDNSRecordV2201Response> updateDomainDNSRecordV2WithHttpInfo(String fqdn, Integer recordId, CreateDnsV2 createDnsV2) throws ApiException {
+        okhttp3.Call localVarCall = updateDomainDNSRecordV2ValidateBeforeCall(fqdn, recordId, createDnsV2, null);
+        Type localVarReturnType = new TypeToken<CreateDomainDNSRecordV2201Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Обновить информацию о DNS-записи домена или поддомена (asynchronously)
+     * Чтобы обновить информацию о DNS-записи для домена или поддомена, отправьте запрос PATCH на &#x60;/api/v2/domains/{fqdn}/dns-records/{record_id}&#x60;, задав необходимые атрибуты.  DNS-запись будет обновлена с использованием предоставленной информации. Тело ответа будет содержать объект JSON с информацией об обновленной DNS-записи.
+     * @param fqdn Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, &#x60;somedomain.ru&#x60;). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, &#x60;sub.somedomain.ru&#x60;). (required)
+     * @param recordId ID DNS-записи домена или поддомена. (required)
+     * @param createDnsV2  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;dns_record&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateDomainDNSRecordV2Async(String fqdn, Integer recordId, CreateDnsV2 createDnsV2, final ApiCallback<CreateDomainDNSRecordV2201Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updateDomainDNSRecordV2ValidateBeforeCall(fqdn, recordId, createDnsV2, _callback);
+        Type localVarReturnType = new TypeToken<CreateDomainDNSRecordV2201Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

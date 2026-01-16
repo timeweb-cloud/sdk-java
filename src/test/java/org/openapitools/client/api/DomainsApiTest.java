@@ -18,7 +18,9 @@ import org.openapitools.client.model.AddSubdomain201Response;
 import org.openapitools.client.model.CheckDomain200Response;
 import org.openapitools.client.model.CreateDatabaseBackup409Response;
 import org.openapitools.client.model.CreateDns;
+import org.openapitools.client.model.CreateDnsV2;
 import org.openapitools.client.model.CreateDomainDNSRecord201Response;
+import org.openapitools.client.model.CreateDomainDNSRecordV2201Response;
 import org.openapitools.client.model.CreateDomainRequest201Response;
 import org.openapitools.client.model.DomainRegister;
 import org.openapitools.client.model.GetDomain200Response;
@@ -112,6 +114,21 @@ public class DomainsApiTest {
     }
 
     /**
+     * Добавить информацию о DNS-записи для домена или поддомена
+     *
+     * Чтобы добавить информацию о DNS-записи для домена или поддомена, отправьте запрос POST на &#x60;/api/v2/domains/{fqdn}/dns-records&#x60;, задав необходимые атрибуты.  DNS-запись будет добавлена с использованием предоставленной информации. Тело ответа будет содержать объект JSON с информацией о добавленной DNS-записи.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void createDomainDNSRecordV2Test() throws ApiException {
+        String fqdn = null;
+        CreateDnsV2 createDnsV2 = null;
+        CreateDomainDNSRecordV2201Response response = api.createDomainDNSRecordV2(fqdn, createDnsV2);
+        // TODO: test validations
+    }
+
+    /**
      * Создание заявки на регистрацию/продление/трансфер домена
      *
      * Чтобы создать заявку на регистрацию/продление/трансфер домена, отправьте POST-запрос в &#x60;api/v1/domains-requests&#x60;, задав необходимые атрибуты.  Заявка будет создана с использованием предоставленной информации. Тело ответа будет содержать объект JSON с информацией о созданной заявке.
@@ -151,6 +168,21 @@ public class DomainsApiTest {
         String fqdn = null;
         Integer recordId = null;
         api.deleteDomainDNSRecord(fqdn, recordId);
+        // TODO: test validations
+    }
+
+    /**
+     * Удалить информацию о DNS-записи для домена или поддомена
+     *
+     * Чтобы удалить информацию о DNS-записи для домена или поддомена, отправьте запрос DELETE на &#x60;/api/v2/domains/{fqdn}/dns-records/{record_id}&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void deleteDomainDNSRecordV2Test() throws ApiException {
+        String fqdn = null;
+        Integer recordId = null;
+        api.deleteDomainDNSRecordV2(fqdn, recordId);
         // TODO: test validations
     }
 
@@ -333,6 +365,22 @@ public class DomainsApiTest {
         Integer recordId = null;
         CreateDns createDns = null;
         CreateDomainDNSRecord201Response response = api.updateDomainDNSRecord(fqdn, recordId, createDns);
+        // TODO: test validations
+    }
+
+    /**
+     * Обновить информацию о DNS-записи домена или поддомена
+     *
+     * Чтобы обновить информацию о DNS-записи для домена или поддомена, отправьте запрос PATCH на &#x60;/api/v2/domains/{fqdn}/dns-records/{record_id}&#x60;, задав необходимые атрибуты.  DNS-запись будет обновлена с использованием предоставленной информации. Тело ответа будет содержать объект JSON с информацией об обновленной DNS-записи.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void updateDomainDNSRecordV2Test() throws ApiException {
+        String fqdn = null;
+        Integer recordId = null;
+        CreateDnsV2 createDnsV2 = null;
+        CreateDomainDNSRecordV2201Response response = api.updateDomainDNSRecordV2(fqdn, recordId, createDnsV2);
         // TODO: test validations
     }
 

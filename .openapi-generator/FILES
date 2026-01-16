@@ -120,7 +120,9 @@ docs/CreateDedicatedServer201Response.md
 docs/CreateDeploy201Response.md
 docs/CreateDeployRequest.md
 docs/CreateDns.md
+docs/CreateDnsV2.md
 docs/CreateDomainDNSRecord201Response.md
+docs/CreateDomainDNSRecordV2201Response.md
 docs/CreateDomainMailbox201Response.md
 docs/CreateDomainMailboxRequest.md
 docs/CreateDomainRequest201Response.md
@@ -192,6 +194,8 @@ docs/DeploySettingsInner.md
 docs/DeployStatus.md
 docs/DnsRecord.md
 docs/DnsRecordData.md
+docs/DnsRecordV2.md
+docs/DnsRecordV2Data.md
 docs/Document.md
 docs/DocumentStatusInfo.md
 docs/DocumentStatusInfoDetails.md
@@ -692,7 +696,9 @@ src/main/java/org/openapitools/client/model/CreateDedicatedServer201Response.jav
 src/main/java/org/openapitools/client/model/CreateDeploy201Response.java
 src/main/java/org/openapitools/client/model/CreateDeployRequest.java
 src/main/java/org/openapitools/client/model/CreateDns.java
+src/main/java/org/openapitools/client/model/CreateDnsV2.java
 src/main/java/org/openapitools/client/model/CreateDomainDNSRecord201Response.java
+src/main/java/org/openapitools/client/model/CreateDomainDNSRecordV2201Response.java
 src/main/java/org/openapitools/client/model/CreateDomainMailbox201Response.java
 src/main/java/org/openapitools/client/model/CreateDomainMailboxRequest.java
 src/main/java/org/openapitools/client/model/CreateDomainRequest201Response.java
@@ -762,6 +768,8 @@ src/main/java/org/openapitools/client/model/DeploySettingsInner.java
 src/main/java/org/openapitools/client/model/DeployStatus.java
 src/main/java/org/openapitools/client/model/DnsRecord.java
 src/main/java/org/openapitools/client/model/DnsRecordData.java
+src/main/java/org/openapitools/client/model/DnsRecordV2.java
+src/main/java/org/openapitools/client/model/DnsRecordV2Data.java
 src/main/java/org/openapitools/client/model/Document.java
 src/main/java/org/openapitools/client/model/DocumentStatusInfo.java
 src/main/java/org/openapitools/client/model/DocumentStatusInfoDetails.java
@@ -1220,7 +1228,9 @@ src/test/java/org/openapitools/client/model/CreateDedicatedServerTest.java
 src/test/java/org/openapitools/client/model/CreateDeploy201ResponseTest.java
 src/test/java/org/openapitools/client/model/CreateDeployRequestTest.java
 src/test/java/org/openapitools/client/model/CreateDnsTest.java
+src/test/java/org/openapitools/client/model/CreateDnsV2Test.java
 src/test/java/org/openapitools/client/model/CreateDomainDNSRecord201ResponseTest.java
+src/test/java/org/openapitools/client/model/CreateDomainDNSRecordV2201ResponseTest.java
 src/test/java/org/openapitools/client/model/CreateDomainMailbox201ResponseTest.java
 src/test/java/org/openapitools/client/model/CreateDomainMailboxRequestTest.java
 src/test/java/org/openapitools/client/model/CreateDomainRequest201ResponseTest.java
@@ -1290,6 +1300,8 @@ src/test/java/org/openapitools/client/model/DeployStatusTest.java
 src/test/java/org/openapitools/client/model/DeployTest.java
 src/test/java/org/openapitools/client/model/DnsRecordDataTest.java
 src/test/java/org/openapitools/client/model/DnsRecordTest.java
+src/test/java/org/openapitools/client/model/DnsRecordV2DataTest.java
+src/test/java/org/openapitools/client/model/DnsRecordV2Test.java
 src/test/java/org/openapitools/client/model/DocumentStatusInfoDetailsTest.java
 src/test/java/org/openapitools/client/model/DocumentStatusInfoTest.java
 src/test/java/org/openapitools/client/model/DocumentTest.java
