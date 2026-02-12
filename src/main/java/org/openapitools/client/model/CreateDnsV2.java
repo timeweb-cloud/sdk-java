@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * CreateDnsV2
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-16T15:24:58.872867Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-12T08:40:14.501223Z[Etc/UTC]")
 public class CreateDnsV2 {
   /**
    * Тип DNS-записи.
@@ -109,6 +109,10 @@ public class CreateDnsV2 {
   public static final String SERIALIZED_NAME_TTL = "ttl";
   @SerializedName(SERIALIZED_NAME_TTL)
   private BigDecimal ttl;
+
+  public static final String SERIALIZED_NAME_APP_ID = "app_id";
+  @SerializedName(SERIALIZED_NAME_APP_ID)
+  private BigDecimal appId;
 
   public CreateDnsV2() {
   }
@@ -176,6 +180,27 @@ public class CreateDnsV2 {
   }
 
 
+  public CreateDnsV2 appId(BigDecimal appId) {
+    
+    this.appId = appId;
+    return this;
+  }
+
+   /**
+   * Идентификатор приложения в App Platform, к которому будет привязан домен или поддомен.
+   * @return appId
+  **/
+  @javax.annotation.Nullable
+  public BigDecimal getAppId() {
+    return appId;
+  }
+
+
+  public void setAppId(BigDecimal appId) {
+    this.appId = appId;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -188,12 +213,13 @@ public class CreateDnsV2 {
     CreateDnsV2 createDnsV2 = (CreateDnsV2) o;
     return Objects.equals(this.type, createDnsV2.type) &&
         Objects.equals(this.value, createDnsV2.value) &&
-        Objects.equals(this.ttl, createDnsV2.ttl);
+        Objects.equals(this.ttl, createDnsV2.ttl) &&
+        Objects.equals(this.appId, createDnsV2.appId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, value, ttl);
+    return Objects.hash(type, value, ttl, appId);
   }
 
   @Override
@@ -203,6 +229,7 @@ public class CreateDnsV2 {
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("    ttl: ").append(toIndentedString(ttl)).append("\n");
+    sb.append("    appId: ").append(toIndentedString(appId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -228,6 +255,7 @@ public class CreateDnsV2 {
     openapiFields.add("type");
     openapiFields.add("value");
     openapiFields.add("ttl");
+    openapiFields.add("app_id");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

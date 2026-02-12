@@ -61,4 +61,12 @@ public class CreateDnsV2Test {
         // TODO: test ttl
     }
 
+    /**
+     * Test the property 'appId'
+     */
+    @Test
+    public void appIdTest() {
+        // TODO: test appId
+    }
+
 }

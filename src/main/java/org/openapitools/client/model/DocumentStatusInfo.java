@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * Детальная информация о текущем состоянии документа в базе знаний
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-16T15:24:58.872867Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-12T08:40:14.501223Z[Etc/UTC]")
 public class DocumentStatusInfo {
   /**
    * Тип статуса документа
