@@ -9,6 +9,7 @@ All URIs are relative to *https://api.timeweb.cloud*
 | [**createStorage**](S3Api.md#createStorage) | **POST** /api/v1/storages/buckets | Создание хранилища |
 | [**deleteStorage**](S3Api.md#deleteStorage) | **DELETE** /api/v1/storages/buckets/{bucket_id} | Удаление хранилища на аккаунте |
 | [**deleteStorageSubdomains**](S3Api.md#deleteStorageSubdomains) | **DELETE** /api/v1/storages/buckets/{bucket_id}/subdomains | Удаление поддоменов хранилища |
+| [**getStorage**](S3Api.md#getStorage) | **GET** /api/v1/storages/buckets/{bucket_id} | Получение хранилища по ID |
 | [**getStorageSubdomains**](S3Api.md#getStorageSubdomains) | **GET** /api/v1/storages/buckets/{bucket_id}/subdomains | Получение списка поддоменов хранилища |
 | [**getStorageTransferStatus**](S3Api.md#getStorageTransferStatus) | **GET** /api/v1/storages/buckets/{bucket_id}/transfer-status | Получение статуса переноса хранилища от стороннего S3 в Timeweb Cloud |
 | [**getStorageUsers**](S3Api.md#getStorageUsers) | **GET** /api/v1/storages/users | Получение списка пользователей хранилищ аккаунта |
@@ -384,6 +385,79 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Объект JSON c ключом &#x60;subdomains&#x60; |  -  |
+| **400** | Некорректный запрос |  -  |
+| **401** | Не авторизован |  -  |
+| **403** | Запрещено |  -  |
+| **404** | Не найдено |  -  |
+| **429** | Слишком много запросов |  -  |
+| **500** | Внутренняя ошибка сервера |  -  |
+
+<a id="getStorage"></a>
+# **getStorage**
+> CreateStorage201Response getStorage(bucketId)
+
+Получение хранилища по ID
+
+Чтобы получить хранилище по ID, отправьте GET-запрос на &#x60;/api/v1/storages/buckets/{bucket_id}&#x60;.
+
+### Example
+```java
+// Import classes:
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.S3Api;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.timeweb.cloud");
+    
+    // Configure HTTP bearer authorization: Bearer
+    HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
+    Bearer.setBearerToken("BEARER TOKEN");
+
+    S3Api apiInstance = new S3Api(defaultClient);
+    Integer bucketId = 1051; // Integer | ID хранилища.
+    try {
+      CreateStorage201Response result = apiInstance.getStorage(bucketId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling S3Api#getStorage");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **bucketId** | **Integer**| ID хранилища. | |
+
+### Return type
+
+[**CreateStorage201Response**](CreateStorage201Response.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Объект JSON c ключом &#x60;bucket&#x60; |  -  |
 | **400** | Некорректный запрос |  -  |
 | **401** | Не авторизован |  -  |
 | **403** | Запрещено |  -  |

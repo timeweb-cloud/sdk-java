@@ -54,7 +54,7 @@ import org.openapitools.client.JSON;
 /**
  * Хранилище S3
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-12T08:40:14.501223Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-19T12:57:33.640999Z[Etc/UTC]")
 public class Bucket {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -275,6 +275,10 @@ public class Bucket {
   @SerializedName(SERIALIZED_NAME_WEBSITE_CONFIG)
   private BucketWebsiteConfig websiteConfig;
 
+  public static final String SERIALIZED_NAME_IS_ALLOW_AUTO_UPGRADE = "is_allow_auto_upgrade";
+  @SerializedName(SERIALIZED_NAME_IS_ALLOW_AUTO_UPGRADE)
+  private Boolean isAllowAutoUpgrade;
+
   public Bucket() {
   }
 
@@ -330,7 +334,7 @@ public class Bucket {
    * Комментарий к хранилищу.
    * @return description
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getDescription() {
     return description;
   }
@@ -666,7 +670,7 @@ public class Bucket {
    * Get websiteConfig
    * @return websiteConfig
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public BucketWebsiteConfig getWebsiteConfig() {
     return websiteConfig;
   }
@@ -674,6 +678,27 @@ public class Bucket {
 
   public void setWebsiteConfig(BucketWebsiteConfig websiteConfig) {
     this.websiteConfig = websiteConfig;
+  }
+
+
+  public Bucket isAllowAutoUpgrade(Boolean isAllowAutoUpgrade) {
+    
+    this.isAllowAutoUpgrade = isAllowAutoUpgrade;
+    return this;
+  }
+
+   /**
+   * Разрешено ли автоматическое повышение тарифа.
+   * @return isAllowAutoUpgrade
+  **/
+  @javax.annotation.Nonnull
+  public Boolean getIsAllowAutoUpgrade() {
+    return isAllowAutoUpgrade;
+  }
+
+
+  public void setIsAllowAutoUpgrade(Boolean isAllowAutoUpgrade) {
+    this.isAllowAutoUpgrade = isAllowAutoUpgrade;
   }
 
 
@@ -705,12 +730,13 @@ public class Bucket {
         Objects.equals(this.storageClass, bucket.storageClass) &&
         Objects.equals(this.projectId, bucket.projectId) &&
         Objects.equals(this.rateId, bucket.rateId) &&
-        Objects.equals(this.websiteConfig, bucket.websiteConfig);
+        Objects.equals(this.websiteConfig, bucket.websiteConfig) &&
+        Objects.equals(this.isAllowAutoUpgrade, bucket.isAllowAutoUpgrade);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, description, diskStats, type, presetId, configuratorId, avatarLink, status, objectAmount, location, hostname, accessKey, secretKey, movedInQuarantineAt, storageClass, projectId, rateId, websiteConfig);
+    return Objects.hash(id, name, description, diskStats, type, presetId, configuratorId, avatarLink, status, objectAmount, location, hostname, accessKey, secretKey, movedInQuarantineAt, storageClass, projectId, rateId, websiteConfig, isAllowAutoUpgrade);
   }
 
   @Override
@@ -736,6 +762,7 @@ public class Bucket {
     sb.append("    projectId: ").append(toIndentedString(projectId)).append("\n");
     sb.append("    rateId: ").append(toIndentedString(rateId)).append("\n");
     sb.append("    websiteConfig: ").append(toIndentedString(websiteConfig)).append("\n");
+    sb.append("    isAllowAutoUpgrade: ").append(toIndentedString(isAllowAutoUpgrade)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -777,11 +804,13 @@ public class Bucket {
     openapiFields.add("project_id");
     openapiFields.add("rate_id");
     openapiFields.add("website_config");
+    openapiFields.add("is_allow_auto_upgrade");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("id");
     openapiRequiredFields.add("name");
+    openapiRequiredFields.add("description");
     openapiRequiredFields.add("disk_stats");
     openapiRequiredFields.add("type");
     openapiRequiredFields.add("preset_id");
@@ -798,6 +827,7 @@ public class Bucket {
     openapiRequiredFields.add("project_id");
     openapiRequiredFields.add("rate_id");
     openapiRequiredFields.add("website_config");
+    openapiRequiredFields.add("is_allow_auto_upgrade");
   }
 
  /**
@@ -831,7 +861,7 @@ public class Bucket {
       if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
-      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
+      if (!jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
       // validate the required field `disk_stats`

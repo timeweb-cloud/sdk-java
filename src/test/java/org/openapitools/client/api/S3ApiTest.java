@@ -126,6 +126,20 @@ public class S3ApiTest {
     }
 
     /**
+     * Получение хранилища по ID
+     *
+     * Чтобы получить хранилище по ID, отправьте GET-запрос на &#x60;/api/v1/storages/buckets/{bucket_id}&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void getStorageTest() throws ApiException {
+        Integer bucketId = null;
+        CreateStorage201Response response = api.getStorage(bucketId);
+        // TODO: test validations
+    }
+
+    /**
      * Получение списка поддоменов хранилища
      *
      * Чтобы получить список поддоменов хранилища, отправьте GET-запрос на &#x60;/api/v1/storages/buckets/{bucket_id}/subdomains&#x60;.

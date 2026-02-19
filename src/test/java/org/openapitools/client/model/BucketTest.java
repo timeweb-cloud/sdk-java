@@ -192,4 +192,12 @@ public class BucketTest {
         // TODO: test websiteConfig
     }
 
+    /**
+     * Test the property 'isAllowAutoUpgrade'
+     */
+    @Test
+    public void isAllowAutoUpgradeTest() {
+        // TODO: test isAllowAutoUpgrade
+    }
+
 }

@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * Статистика использования диска хранилища.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-12T08:40:14.501223Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-19T12:57:33.640999Z[Etc/UTC]")
 public class BucketDiskStats {
   public static final String SERIALIZED_NAME_SIZE = "size";
   @SerializedName(SERIALIZED_NAME_SIZE)
@@ -60,6 +60,10 @@ public class BucketDiskStats {
   public static final String SERIALIZED_NAME_USED = "used";
   @SerializedName(SERIALIZED_NAME_USED)
   private BigDecimal used;
+
+  public static final String SERIALIZED_NAME_IS_UNLIMITED = "is_unlimited";
+  @SerializedName(SERIALIZED_NAME_IS_UNLIMITED)
+  private Boolean isUnlimited;
 
   public BucketDiskStats() {
   }
@@ -71,7 +75,7 @@ public class BucketDiskStats {
   }
 
    /**
-   * Размер (в Кб) диска хранилища.
+   * Размер (в Кб) диска хранилища включенного в тариф.
    * @return size
   **/
   @javax.annotation.Nonnull
@@ -106,6 +110,27 @@ public class BucketDiskStats {
   }
 
 
+  public BucketDiskStats isUnlimited(Boolean isUnlimited) {
+    
+    this.isUnlimited = isUnlimited;
+    return this;
+  }
+
+   /**
+   * Признак безлимитного размера хранилища.
+   * @return isUnlimited
+  **/
+  @javax.annotation.Nonnull
+  public Boolean getIsUnlimited() {
+    return isUnlimited;
+  }
+
+
+  public void setIsUnlimited(Boolean isUnlimited) {
+    this.isUnlimited = isUnlimited;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -117,12 +142,13 @@ public class BucketDiskStats {
     }
     BucketDiskStats bucketDiskStats = (BucketDiskStats) o;
     return Objects.equals(this.size, bucketDiskStats.size) &&
-        Objects.equals(this.used, bucketDiskStats.used);
+        Objects.equals(this.used, bucketDiskStats.used) &&
+        Objects.equals(this.isUnlimited, bucketDiskStats.isUnlimited);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(size, used);
+    return Objects.hash(size, used, isUnlimited);
   }
 
   @Override
@@ -131,6 +157,7 @@ public class BucketDiskStats {
     sb.append("class BucketDiskStats {\n");
     sb.append("    size: ").append(toIndentedString(size)).append("\n");
     sb.append("    used: ").append(toIndentedString(used)).append("\n");
+    sb.append("    isUnlimited: ").append(toIndentedString(isUnlimited)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -155,11 +182,13 @@ public class BucketDiskStats {
     openapiFields = new HashSet<String>();
     openapiFields.add("size");
     openapiFields.add("used");
+    openapiFields.add("is_unlimited");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("size");
     openapiRequiredFields.add("used");
+    openapiRequiredFields.add("is_unlimited");
   }
 
  /**

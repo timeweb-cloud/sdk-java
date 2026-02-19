@@ -10,7 +10,7 @@
 |------------ | ------------- | ------------- | -------------|
 |**id** | **BigDecimal** | ID для каждого экземпляра хранилища. Автоматически генерируется при создании. |  |
 |**name** | **String** | Удобочитаемое имя, установленное для хранилища. |  |
-|**description** | **String** | Комментарий к хранилищу. |  [optional] |
+|**description** | **String** | Комментарий к хранилищу. |  |
 |**diskStats** | [**BucketDiskStats**](BucketDiskStats.md) |  |  |
 |**type** | [**TypeEnum**](#TypeEnum) | Тип хранилища. |  |
 |**presetId** | **BigDecimal** | ID тарифа хранилища. |  |
@@ -27,6 +27,7 @@
 |**projectId** | **BigDecimal** | ID проекта. |  |
 |**rateId** | **BigDecimal** | ID тарифа. |  |
 |**websiteConfig** | [**BucketWebsiteConfig**](BucketWebsiteConfig.md) |  |  |
+|**isAllowAutoUpgrade** | **Boolean** | Разрешено ли автоматическое повышение тарифа. |  |
 
 
 

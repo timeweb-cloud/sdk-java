@@ -2,7 +2,7 @@
 
 Timeweb Cloud API
 - API version: 1.0.0
-  - Build date: 2026-02-12T08:40:14.501223Z[Etc/UTC]
+  - Build date: 2026-02-19T12:57:33.640999Z[Etc/UTC]
 
 # Введение
 API Timeweb Cloud позволяет вам управлять ресурсами в облаке программным способом с использованием обычных HTTP-запросов.
@@ -515,6 +515,7 @@ Class | Method | HTTP request | Description
 *S3Api* | [**createStorage**](docs/S3Api.md#createStorage) | **POST** /api/v1/storages/buckets | Создание хранилища
 *S3Api* | [**deleteStorage**](docs/S3Api.md#deleteStorage) | **DELETE** /api/v1/storages/buckets/{bucket_id} | Удаление хранилища на аккаунте
 *S3Api* | [**deleteStorageSubdomains**](docs/S3Api.md#deleteStorageSubdomains) | **DELETE** /api/v1/storages/buckets/{bucket_id}/subdomains | Удаление поддоменов хранилища
+*S3Api* | [**getStorage**](docs/S3Api.md#getStorage) | **GET** /api/v1/storages/buckets/{bucket_id} | Получение хранилища по ID
 *S3Api* | [**getStorageSubdomains**](docs/S3Api.md#getStorageSubdomains) | **GET** /api/v1/storages/buckets/{bucket_id}/subdomains | Получение списка поддоменов хранилища
 *S3Api* | [**getStorageTransferStatus**](docs/S3Api.md#getStorageTransferStatus) | **GET** /api/v1/storages/buckets/{bucket_id}/transfer-status | Получение статуса переноса хранилища от стороннего S3 в Timeweb Cloud
 *S3Api* | [**getStorageUsers**](docs/S3Api.md#getStorageUsers) | **GET** /api/v1/storages/users | Получение списка пользователей хранилищ аккаунта

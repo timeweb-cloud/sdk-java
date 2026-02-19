@@ -53,4 +53,12 @@ public class BucketDiskStatsTest {
         // TODO: test used
     }
 
+    /**
+     * Test the property 'isUnlimited'
+     */
+    @Test
+    public void isUnlimitedTest() {
+        // TODO: test isUnlimited
+    }
+
 }
