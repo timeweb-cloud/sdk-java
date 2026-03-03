@@ -3649,6 +3649,7 @@ public class DatabasesApi {
     }
     /**
      * Build call for getDatabasesPresets
+     * @param dbId ID базы данных (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3664,7 +3665,7 @@ public class DatabasesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getDatabasesPresetsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getDatabasesPresetsCall(Integer dbId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3689,6 +3690,10 @@ public class DatabasesApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (dbId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("db_id", dbId));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -3709,14 +3714,15 @@ public class DatabasesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getDatabasesPresetsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getDatabasesPresetsCall(_callback);
+    private okhttp3.Call getDatabasesPresetsValidateBeforeCall(Integer dbId, final ApiCallback _callback) throws ApiException {
+        return getDatabasesPresetsCall(dbId, _callback);
 
     }
 
     /**
      * Получение списка тарифов для баз данных
      * Чтобы получить список тарифов для баз данных, отправьте GET-запрос на &#x60;/api/v2/presets/dbs&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;databases_presets&#x60;.
+     * @param dbId ID базы данных (optional)
      * @return GetDatabasesPresets200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3731,14 +3737,15 @@ public class DatabasesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public GetDatabasesPresets200Response getDatabasesPresets() throws ApiException {
-        ApiResponse<GetDatabasesPresets200Response> localVarResp = getDatabasesPresetsWithHttpInfo();
+    public GetDatabasesPresets200Response getDatabasesPresets(Integer dbId) throws ApiException {
+        ApiResponse<GetDatabasesPresets200Response> localVarResp = getDatabasesPresetsWithHttpInfo(dbId);
         return localVarResp.getData();
     }
 
     /**
      * Получение списка тарифов для баз данных
      * Чтобы получить список тарифов для баз данных, отправьте GET-запрос на &#x60;/api/v2/presets/dbs&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;databases_presets&#x60;.
+     * @param dbId ID базы данных (optional)
      * @return ApiResponse&lt;GetDatabasesPresets200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3753,8 +3760,8 @@ public class DatabasesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GetDatabasesPresets200Response> getDatabasesPresetsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getDatabasesPresetsValidateBeforeCall(null);
+    public ApiResponse<GetDatabasesPresets200Response> getDatabasesPresetsWithHttpInfo(Integer dbId) throws ApiException {
+        okhttp3.Call localVarCall = getDatabasesPresetsValidateBeforeCall(dbId, null);
         Type localVarReturnType = new TypeToken<GetDatabasesPresets200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -3762,6 +3769,7 @@ public class DatabasesApi {
     /**
      * Получение списка тарифов для баз данных (asynchronously)
      * Чтобы получить список тарифов для баз данных, отправьте GET-запрос на &#x60;/api/v2/presets/dbs&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;databases_presets&#x60;.
+     * @param dbId ID базы данных (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3777,9 +3785,9 @@ public class DatabasesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getDatabasesPresetsAsync(final ApiCallback<GetDatabasesPresets200Response> _callback) throws ApiException {
+    public okhttp3.Call getDatabasesPresetsAsync(Integer dbId, final ApiCallback<GetDatabasesPresets200Response> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getDatabasesPresetsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getDatabasesPresetsValidateBeforeCall(dbId, _callback);
         Type localVarReturnType = new TypeToken<GetDatabasesPresets200Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

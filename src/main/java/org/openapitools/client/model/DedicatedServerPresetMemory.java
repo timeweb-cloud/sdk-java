@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * Объект, содержащий информацию об ОЗУ выделенного сервера.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-03-03T14:20:26.597031Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-03-03T15:07:31.848337Z[Etc/UTC]")
 public class DedicatedServerPresetMemory {
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)

@@ -1743,7 +1743,7 @@ public class Example {
 
 <a id="getDatabasesPresets"></a>
 # **getDatabasesPresets**
-> GetDatabasesPresets200Response getDatabasesPresets()
+> GetDatabasesPresets200Response getDatabasesPresets(dbId)
 
 Получение списка тарифов для баз данных
 
@@ -1769,8 +1769,9 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     DatabasesApi apiInstance = new DatabasesApi(defaultClient);
+    Integer dbId = 56; // Integer | ID базы данных
     try {
-      GetDatabasesPresets200Response result = apiInstance.getDatabasesPresets();
+      GetDatabasesPresets200Response result = apiInstance.getDatabasesPresets(dbId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling DatabasesApi#getDatabasesPresets");
@@ -1784,7 +1785,10 @@ public class Example {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **dbId** | **Integer**| ID базы данных | [optional] |
 
 ### Return type
 

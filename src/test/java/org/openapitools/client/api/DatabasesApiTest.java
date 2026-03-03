@@ -407,7 +407,8 @@ public class DatabasesApiTest {
      */
     @Test
     public void getDatabasesPresetsTest() throws ApiException {
-        GetDatabasesPresets200Response response = api.getDatabasesPresets();
+        Integer dbId = null;
+        GetDatabasesPresets200Response response = api.getDatabasesPresets(dbId);
         // TODO: test validations
     }
 
