@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * UpdateStorageUser200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-19T12:57:33.640999Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-03-03T14:20:26.597031Z[Etc/UTC]")
 public class UpdateStorageUser200Response {
   public static final String SERIALIZED_NAME_USER = "user";
   @SerializedName(SERIALIZED_NAME_USER)

@@ -2,7 +2,7 @@
 
 Timeweb Cloud API
 - API version: 1.0.0
-  - Build date: 2026-02-19T12:57:33.640999Z[Etc/UTC]
+  - Build date: 2026-03-03T14:20:26.597031Z[Etc/UTC]
 
 # Введение
 API Timeweb Cloud позволяет вам управлять ресурсами в облаке программным способом с использованием обычных HTTP-запросов.
@@ -355,7 +355,7 @@ Class | Method | HTTP request | Description
 *DatabasesApi* | [**getDatabaseUser**](docs/DatabasesApi.md#getDatabaseUser) | **GET** /api/v1/databases/{db_cluster_id}/admins/{admin_id} | Получение пользователя базы данных
 *DatabasesApi* | [**getDatabaseUsers**](docs/DatabasesApi.md#getDatabaseUsers) | **GET** /api/v1/databases/{db_cluster_id}/admins | Получение списка пользователей базы данных
 *DatabasesApi* | [**getDatabases**](docs/DatabasesApi.md#getDatabases) | **GET** /api/v1/dbs | Получение списка всех баз данных
-*DatabasesApi* | [**getDatabasesPresets**](docs/DatabasesApi.md#getDatabasesPresets) | **GET** /api/v1/presets/dbs | Получение списка тарифов для баз данных
+*DatabasesApi* | [**getDatabasesPresets**](docs/DatabasesApi.md#getDatabasesPresets) | **GET** /api/v2/presets/dbs | Получение списка тарифов для баз данных
 *DatabasesApi* | [**restoreDatabaseFromBackup**](docs/DatabasesApi.md#restoreDatabaseFromBackup) | **PUT** /api/v1/dbs/{db_id}/backups/{backup_id} | Восстановление базы данных из бэкапа
 *DatabasesApi* | [**updateDatabase**](docs/DatabasesApi.md#updateDatabase) | **PATCH** /api/v1/dbs/{db_id} | Обновление базы данных
 *DatabasesApi* | [**updateDatabaseAutoBackupsSettings**](docs/DatabasesApi.md#updateDatabaseAutoBackupsSettings) | **PATCH** /api/v1/dbs/{db_id}/auto-backups | Изменение настроек автобэкапов базы данных

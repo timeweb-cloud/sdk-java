@@ -3681,7 +3681,7 @@ public class DatabasesApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/v1/presets/dbs";
+        String localVarPath = "/api/v2/presets/dbs";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -3716,7 +3716,7 @@ public class DatabasesApi {
 
     /**
      * Получение списка тарифов для баз данных
-     * Чтобы получить список тарифов для баз данных, отправьте GET-запрос на &#x60;/api/v1/presets/dbs&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;databases_presets&#x60;.
+     * Чтобы получить список тарифов для баз данных, отправьте GET-запрос на &#x60;/api/v2/presets/dbs&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;databases_presets&#x60;.
      * @return GetDatabasesPresets200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3738,7 +3738,7 @@ public class DatabasesApi {
 
     /**
      * Получение списка тарифов для баз данных
-     * Чтобы получить список тарифов для баз данных, отправьте GET-запрос на &#x60;/api/v1/presets/dbs&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;databases_presets&#x60;.
+     * Чтобы получить список тарифов для баз данных, отправьте GET-запрос на &#x60;/api/v2/presets/dbs&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;databases_presets&#x60;.
      * @return ApiResponse&lt;GetDatabasesPresets200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3761,7 +3761,7 @@ public class DatabasesApi {
 
     /**
      * Получение списка тарифов для баз данных (asynchronously)
-     * Чтобы получить список тарифов для баз данных, отправьте GET-запрос на &#x60;/api/v1/presets/dbs&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;databases_presets&#x60;.
+     * Чтобы получить список тарифов для баз данных, отправьте GET-запрос на &#x60;/api/v2/presets/dbs&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;databases_presets&#x60;.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

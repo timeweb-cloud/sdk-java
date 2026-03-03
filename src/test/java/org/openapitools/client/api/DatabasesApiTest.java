@@ -401,7 +401,7 @@ public class DatabasesApiTest {
     /**
      * Получение списка тарифов для баз данных
      *
-     * Чтобы получить список тарифов для баз данных, отправьте GET-запрос на &#x60;/api/v1/presets/dbs&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;databases_presets&#x60;.
+     * Чтобы получить список тарифов для баз данных, отправьте GET-запрос на &#x60;/api/v2/presets/dbs&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;databases_presets&#x60;.
      *
      * @throws ApiException if the Api call fails
      */
