@@ -53,7 +53,7 @@ import org.openapitools.client.JSON;
 /**
  * Модель AI
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-03-03T15:07:31.848337Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-03-26T10:40:53.649303Z[Etc/UTC]")
 public class Model {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -66,6 +66,10 @@ public class Model {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
+
+  public static final String SERIALIZED_NAME_PUBLIC_NAME = "public_name";
+  @SerializedName(SERIALIZED_NAME_PUBLIC_NAME)
+  private String publicName;
 
   /**
    * Тип модели (llm - языковая модель, embedding - модель для эмбеддингов)
@@ -117,6 +121,14 @@ public class Model {
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
   private TypeEnum type;
+
+  public static final String SERIALIZED_NAME_IS_DEPRECATED = "is_deprecated";
+  @SerializedName(SERIALIZED_NAME_IS_DEPRECATED)
+  private Boolean isDeprecated;
+
+  public static final String SERIALIZED_NAME_IS_REASONING = "is_reasoning";
+  @SerializedName(SERIALIZED_NAME_IS_REASONING)
+  private Boolean isReasoning;
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
@@ -192,6 +204,27 @@ public class Model {
   }
 
 
+  public Model publicName(String publicName) {
+    
+    this.publicName = publicName;
+    return this;
+  }
+
+   /**
+   * Публичное имя модели
+   * @return publicName
+  **/
+  @javax.annotation.Nonnull
+  public String getPublicName() {
+    return publicName;
+  }
+
+
+  public void setPublicName(String publicName) {
+    this.publicName = publicName;
+  }
+
+
   public Model type(TypeEnum type) {
     
     this.type = type;
@@ -210,6 +243,48 @@ public class Model {
 
   public void setType(TypeEnum type) {
     this.type = type;
+  }
+
+
+  public Model isDeprecated(Boolean isDeprecated) {
+    
+    this.isDeprecated = isDeprecated;
+    return this;
+  }
+
+   /**
+   * Признак, что модель устарела
+   * @return isDeprecated
+  **/
+  @javax.annotation.Nonnull
+  public Boolean getIsDeprecated() {
+    return isDeprecated;
+  }
+
+
+  public void setIsDeprecated(Boolean isDeprecated) {
+    this.isDeprecated = isDeprecated;
+  }
+
+
+  public Model isReasoning(Boolean isReasoning) {
+    
+    this.isReasoning = isReasoning;
+    return this;
+  }
+
+   /**
+   * Признак поддержки режима рассуждения
+   * @return isReasoning
+  **/
+  @javax.annotation.Nonnull
+  public Boolean getIsReasoning() {
+    return isReasoning;
+  }
+
+
+  public void setIsReasoning(Boolean isReasoning) {
+    this.isReasoning = isReasoning;
   }
 
 
@@ -268,7 +343,10 @@ public class Model {
     return Objects.equals(this.id, model.id) &&
         Objects.equals(this.providerId, model.providerId) &&
         Objects.equals(this.name, model.name) &&
+        Objects.equals(this.publicName, model.publicName) &&
         Objects.equals(this.type, model.type) &&
+        Objects.equals(this.isDeprecated, model.isDeprecated) &&
+        Objects.equals(this.isReasoning, model.isReasoning) &&
         Objects.equals(this.version, model.version) &&
         Objects.equals(this.paramsInfo, model.paramsInfo);
   }
@@ -279,7 +357,7 @@ public class Model {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, providerId, name, type, version, paramsInfo);
+    return Objects.hash(id, providerId, name, publicName, type, isDeprecated, isReasoning, version, paramsInfo);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -296,7 +374,10 @@ public class Model {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    providerId: ").append(toIndentedString(providerId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    publicName: ").append(toIndentedString(publicName)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    isDeprecated: ").append(toIndentedString(isDeprecated)).append("\n");
+    sb.append("    isReasoning: ").append(toIndentedString(isReasoning)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    paramsInfo: ").append(toIndentedString(paramsInfo)).append("\n");
     sb.append("}");
@@ -324,7 +405,10 @@ public class Model {
     openapiFields.add("id");
     openapiFields.add("provider_id");
     openapiFields.add("name");
+    openapiFields.add("public_name");
     openapiFields.add("type");
+    openapiFields.add("is_deprecated");
+    openapiFields.add("is_reasoning");
     openapiFields.add("version");
     openapiFields.add("params_info");
 
@@ -333,7 +417,10 @@ public class Model {
     openapiRequiredFields.add("id");
     openapiRequiredFields.add("provider_id");
     openapiRequiredFields.add("name");
+    openapiRequiredFields.add("public_name");
     openapiRequiredFields.add("type");
+    openapiRequiredFields.add("is_deprecated");
+    openapiRequiredFields.add("is_reasoning");
     openapiRequiredFields.add("version");
   }
 
@@ -367,6 +454,9 @@ public class Model {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      if (!jsonObj.get("public_name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `public_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("public_name").toString()));
       }
       if (!jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));

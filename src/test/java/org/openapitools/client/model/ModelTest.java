@@ -64,11 +64,35 @@ public class ModelTest {
     }
 
     /**
+     * Test the property 'publicName'
+     */
+    @Test
+    public void publicNameTest() {
+        // TODO: test publicName
+    }
+
+    /**
      * Test the property 'type'
      */
     @Test
     public void typeTest() {
         // TODO: test type
+    }
+
+    /**
+     * Test the property 'isDeprecated'
+     */
+    @Test
+    public void isDeprecatedTest() {
+        // TODO: test isDeprecated
+    }
+
+    /**
+     * Test the property 'isReasoning'
+     */
+    @Test
+    public void isReasoningTest() {
+        // TODO: test isReasoning
     }
 
     /**

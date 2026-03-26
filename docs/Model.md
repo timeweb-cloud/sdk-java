@@ -11,7 +11,10 @@
 |**id** | **BigDecimal** | Уникальный идентификатор модели |  |
 |**providerId** | **BigDecimal** | ID провайдера, который предоставляет модель |  |
 |**name** | **String** | Название модели |  |
+|**publicName** | **String** | Публичное имя модели |  |
 |**type** | [**TypeEnum**](#TypeEnum) | Тип модели (llm - языковая модель, embedding - модель для эмбеддингов) |  |
+|**isDeprecated** | **Boolean** | Признак, что модель устарела |  |
+|**isReasoning** | **Boolean** | Признак поддержки режима рассуждения |  |
 |**version** | **String** | Версия модели |  |
 |**paramsInfo** | [**ModelParamsInfo**](ModelParamsInfo.md) |  |  [optional] |
 

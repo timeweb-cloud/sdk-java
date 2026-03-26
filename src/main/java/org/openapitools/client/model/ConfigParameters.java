@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * Параметры базы данных
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-03-03T15:07:31.848337Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-03-26T10:40:53.649303Z[Etc/UTC]")
 public class ConfigParameters {
   public static final String SERIALIZED_NAME_AUTO_INCREMENT_INCREMENT = "auto_increment_increment";
   @SerializedName(SERIALIZED_NAME_AUTO_INCREMENT_INCREMENT)
