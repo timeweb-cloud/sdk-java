@@ -2,7 +2,7 @@
 
 Timeweb Cloud API
 - API version: 1.0.0
-  - Build date: 2026-03-26T10:40:53.649303Z[Etc/UTC]
+  - Build date: 2026-03-27T08:34:36.292871Z[Etc/UTC]
 
 # Введение
 API Timeweb Cloud позволяет вам управлять ресурсами в облаке программным способом с использованием обычных HTTP-запросов.
@@ -553,6 +553,7 @@ Class | Method | HTTP request | Description
 *ServersApi* | [**performActionOnBackup**](docs/ServersApi.md#performActionOnBackup) | **POST** /api/v1/servers/{server_id}/disks/{disk_id}/backups/{backup_id}/action | Выполнение действия над бэкапом диска сервера
 *ServersApi* | [**performActionOnServer**](docs/ServersApi.md#performActionOnServer) | **POST** /api/v1/servers/{server_id}/action | Выполнение действия над сервером
 *ServersApi* | [**rebootServer**](docs/ServersApi.md#rebootServer) | **POST** /api/v1/servers/{server_id}/reboot | Перезагрузка сервера
+*ServersApi* | [**rebootServerHard**](docs/ServersApi.md#rebootServerHard) | **POST** /api/v1/servers/{server_id}/hard-reboot | Принудительная перезагрузка сервера
 *ServersApi* | [**resetServerPassword**](docs/ServersApi.md#resetServerPassword) | **POST** /api/v1/servers/{server_id}/reset-password | Сброс пароля сервера
 *ServersApi* | [**shutdownServer**](docs/ServersApi.md#shutdownServer) | **POST** /api/v1/servers/{server_id}/shutdown | Выключение сервера
 *ServersApi* | [**startServer**](docs/ServersApi.md#startServer) | **POST** /api/v1/servers/{server_id}/start | Запуск сервера

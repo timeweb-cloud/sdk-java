@@ -4624,6 +4624,149 @@ public class ServersApi {
         return localVarCall;
     }
     /**
+     * Build call for rebootServerHard
+     * @param serverId ID облачного сервера. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Успешное выполнение действия </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call rebootServerHardCall(Integer serverId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/v1/servers/{server_id}/hard-reboot"
+            .replace("{" + "server_id" + "}", localVarApiClient.escapeString(serverId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "Bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call rebootServerHardValidateBeforeCall(Integer serverId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'serverId' is set
+        if (serverId == null) {
+            throw new ApiException("Missing the required parameter 'serverId' when calling rebootServerHard(Async)");
+        }
+
+        return rebootServerHardCall(serverId, _callback);
+
+    }
+
+    /**
+     * Принудительная перезагрузка сервера
+     * Чтобы принудительно перезагрузить сервер, отправьте POST-запрос на &#x60;/api/v1/servers/{server_id}/hard-reboot&#x60;.
+     * @param serverId ID облачного сервера. (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Успешное выполнение действия </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public void rebootServerHard(Integer serverId) throws ApiException {
+        rebootServerHardWithHttpInfo(serverId);
+    }
+
+    /**
+     * Принудительная перезагрузка сервера
+     * Чтобы принудительно перезагрузить сервер, отправьте POST-запрос на &#x60;/api/v1/servers/{server_id}/hard-reboot&#x60;.
+     * @param serverId ID облачного сервера. (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Успешное выполнение действия </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> rebootServerHardWithHttpInfo(Integer serverId) throws ApiException {
+        okhttp3.Call localVarCall = rebootServerHardValidateBeforeCall(serverId, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Принудительная перезагрузка сервера (asynchronously)
+     * Чтобы принудительно перезагрузить сервер, отправьте POST-запрос на &#x60;/api/v1/servers/{server_id}/hard-reboot&#x60;.
+     * @param serverId ID облачного сервера. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Успешное выполнение действия </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call rebootServerHardAsync(Integer serverId, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = rebootServerHardValidateBeforeCall(serverId, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for resetServerPassword
      * @param serverId ID облачного сервера. (required)
      * @param _callback Callback for upload/download progress

@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * AddStorageSubdomainCertificateRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-03-26T10:40:53.649303Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-03-27T08:34:36.292871Z[Etc/UTC]")
 public class AddStorageSubdomainCertificateRequest {
   public static final String SERIALIZED_NAME_SUBDOMAIN = "subdomain";
   @SerializedName(SERIALIZED_NAME_SUBDOMAIN)

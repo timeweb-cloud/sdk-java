@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * GetKnowledgebasesV2200ResponseMeta
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-03-26T10:40:53.649303Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-03-27T08:34:36.292871Z[Etc/UTC]")
 public class GetKnowledgebasesV2200ResponseMeta {
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)

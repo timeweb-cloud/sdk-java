@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * DeleteServer200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-03-26T10:40:53.649303Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-03-27T08:34:36.292871Z[Etc/UTC]")
 public class DeleteServer200Response {
   public static final String SERIALIZED_NAME_SERVER_DELETE = "server_delete";
   @SerializedName(SERIALIZED_NAME_SERVER_DELETE)

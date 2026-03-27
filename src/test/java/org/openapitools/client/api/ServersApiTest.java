@@ -500,6 +500,20 @@ public class ServersApiTest {
     }
 
     /**
+     * Принудительная перезагрузка сервера
+     *
+     * Чтобы принудительно перезагрузить сервер, отправьте POST-запрос на &#x60;/api/v1/servers/{server_id}/hard-reboot&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void rebootServerHardTest() throws ApiException {
+        Integer serverId = null;
+        api.rebootServerHard(serverId);
+        // TODO: test validations
+    }
+
+    /**
      * Сброс пароля сервера
      *
      * Чтобы сбросить пароль сервера, отправьте POST-запрос на &#x60;/api/v1/servers/{server_id}/reset-password&#x60;.

@@ -33,6 +33,7 @@ All URIs are relative to *https://api.timeweb.cloud*
 | [**performActionOnBackup**](ServersApi.md#performActionOnBackup) | **POST** /api/v1/servers/{server_id}/disks/{disk_id}/backups/{backup_id}/action | Выполнение действия над бэкапом диска сервера |
 | [**performActionOnServer**](ServersApi.md#performActionOnServer) | **POST** /api/v1/servers/{server_id}/action | Выполнение действия над сервером |
 | [**rebootServer**](ServersApi.md#rebootServer) | **POST** /api/v1/servers/{server_id}/reboot | Перезагрузка сервера |
+| [**rebootServerHard**](ServersApi.md#rebootServerHard) | **POST** /api/v1/servers/{server_id}/hard-reboot | Принудительная перезагрузка сервера |
 | [**resetServerPassword**](ServersApi.md#resetServerPassword) | **POST** /api/v1/servers/{server_id}/reset-password | Сброс пароля сервера |
 | [**shutdownServer**](ServersApi.md#shutdownServer) | **POST** /api/v1/servers/{server_id}/shutdown | Выключение сервера |
 | [**startServer**](ServersApi.md#startServer) | **POST** /api/v1/servers/{server_id}/start | Запуск сервера |
@@ -2168,6 +2169,78 @@ public class Example {
       apiInstance.rebootServer(serverId);
     } catch (ApiException e) {
       System.err.println("Exception when calling ServersApi#rebootServer");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **serverId** | **Integer**| ID облачного сервера. | |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | Успешное выполнение действия |  -  |
+| **400** | Некорректный запрос |  -  |
+| **401** | Не авторизован |  -  |
+| **403** | Запрещено |  -  |
+| **409** | Конфликт |  -  |
+| **429** | Слишком много запросов |  -  |
+| **500** | Внутренняя ошибка сервера |  -  |
+
+<a id="rebootServerHard"></a>
+# **rebootServerHard**
+> rebootServerHard(serverId)
+
+Принудительная перезагрузка сервера
+
+Чтобы принудительно перезагрузить сервер, отправьте POST-запрос на &#x60;/api/v1/servers/{server_id}/hard-reboot&#x60;.
+
+### Example
+```java
+// Import classes:
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.ServersApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.timeweb.cloud");
+    
+    // Configure HTTP bearer authorization: Bearer
+    HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
+    Bearer.setBearerToken("BEARER TOKEN");
+
+    ServersApi apiInstance = new ServersApi(defaultClient);
+    Integer serverId = 1051; // Integer | ID облачного сервера.
+    try {
+      apiInstance.rebootServerHard(serverId);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ServersApi#rebootServerHard");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
