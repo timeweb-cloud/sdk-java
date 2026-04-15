@@ -118,4 +118,12 @@ public class CreateDedicatedServerTest {
         // TODO: test comment
     }
 
+    /**
+     * Test the property 'projectId'
+     */
+    @Test
+    public void projectIdTest() {
+        // TODO: test projectId
+    }
+
 }

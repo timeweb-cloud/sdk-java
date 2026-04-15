@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * Параметры конфигурации воркер-ноды. Нельзя передавать вместе с &#x60;preset_id&#x60;. Локация воркер-нод должна совпадать с локацией кластера
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-03-27T08:34:36.292871Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-15T15:18:13.346485Z[Etc/UTC]")
 public class NodeGroupInConfiguration {
   public static final String SERIALIZED_NAME_CONFIGURATOR_ID = "configurator_id";
   @SerializedName(SERIALIZED_NAME_CONFIGURATOR_ID)

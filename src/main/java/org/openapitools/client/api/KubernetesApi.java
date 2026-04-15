@@ -27,8 +27,11 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import org.openapitools.client.model.AddonsConfigResponse;
+import org.openapitools.client.model.AddonsResponse;
 import org.openapitools.client.model.ClusterEdit;
 import org.openapitools.client.model.ClusterIn;
+import org.openapitools.client.model.ClusterIn1;
 import org.openapitools.client.model.ClusterResponse;
 import org.openapitools.client.model.ClusterVersionEdit;
 import org.openapitools.client.model.ClustersResponse;
@@ -859,6 +862,151 @@ public class KubernetesApi {
     public okhttp3.Call deleteClusterNodeGroupAsync(Integer clusterId, Integer groupId, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteClusterNodeGroupValidateBeforeCall(clusterId, groupId, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for deleteKubernetesAddons
+     * @param clusterId ID кластера (required)
+     * @param addonId ID аддона (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Дополнение удалено </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteKubernetesAddonsCall(Integer clusterId, Integer addonId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/v1/k8s/clusters/{cluster_id}/addons/{addon_id}"
+            .replace("{" + "cluster_id" + "}", localVarApiClient.escapeString(clusterId.toString()))
+            .replace("{" + "addon_id" + "}", localVarApiClient.escapeString(addonId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "Bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteKubernetesAddonsValidateBeforeCall(Integer clusterId, Integer addonId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'clusterId' is set
+        if (clusterId == null) {
+            throw new ApiException("Missing the required parameter 'clusterId' when calling deleteKubernetesAddons(Async)");
+        }
+
+        // verify the required parameter 'addonId' is set
+        if (addonId == null) {
+            throw new ApiException("Missing the required parameter 'addonId' when calling deleteKubernetesAddons(Async)");
+        }
+
+        return deleteKubernetesAddonsCall(clusterId, addonId, _callback);
+
+    }
+
+    /**
+     * Удаление дополнения
+     * Чтобы удалить дополнение, отправьте DELETE-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/addons/{addon_id}&#x60;.
+     * @param clusterId ID кластера (required)
+     * @param addonId ID аддона (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Дополнение удалено </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public void deleteKubernetesAddons(Integer clusterId, Integer addonId) throws ApiException {
+        deleteKubernetesAddonsWithHttpInfo(clusterId, addonId);
+    }
+
+    /**
+     * Удаление дополнения
+     * Чтобы удалить дополнение, отправьте DELETE-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/addons/{addon_id}&#x60;.
+     * @param clusterId ID кластера (required)
+     * @param addonId ID аддона (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Дополнение удалено </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> deleteKubernetesAddonsWithHttpInfo(Integer clusterId, Integer addonId) throws ApiException {
+        okhttp3.Call localVarCall = deleteKubernetesAddonsValidateBeforeCall(clusterId, addonId, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Удаление дополнения (asynchronously)
+     * Чтобы удалить дополнение, отправьте DELETE-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/addons/{addon_id}&#x60;.
+     * @param clusterId ID кластера (required)
+     * @param addonId ID аддона (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Дополнение удалено </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteKubernetesAddonsAsync(Integer clusterId, Integer addonId, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteKubernetesAddonsValidateBeforeCall(clusterId, addonId, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
@@ -2341,6 +2489,284 @@ public class KubernetesApi {
         return localVarCall;
     }
     /**
+     * Build call for getKubernetesAddons
+     * @param clusterId ID кластера (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Список установленных дополнений </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getKubernetesAddonsCall(Integer clusterId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/v1/k8s/clusters/{cluster_id}/addons"
+            .replace("{" + "cluster_id" + "}", localVarApiClient.escapeString(clusterId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "Bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getKubernetesAddonsValidateBeforeCall(Integer clusterId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'clusterId' is set
+        if (clusterId == null) {
+            throw new ApiException("Missing the required parameter 'clusterId' when calling getKubernetesAddons(Async)");
+        }
+
+        return getKubernetesAddonsCall(clusterId, _callback);
+
+    }
+
+    /**
+     * Получение списка установленных дополнений
+     * Чтобы получить список установленных дополнений, отправьте GET-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/addons&#x60;.
+     * @param clusterId ID кластера (required)
+     * @return AddonsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Список установленных дополнений </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public AddonsResponse getKubernetesAddons(Integer clusterId) throws ApiException {
+        ApiResponse<AddonsResponse> localVarResp = getKubernetesAddonsWithHttpInfo(clusterId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Получение списка установленных дополнений
+     * Чтобы получить список установленных дополнений, отправьте GET-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/addons&#x60;.
+     * @param clusterId ID кластера (required)
+     * @return ApiResponse&lt;AddonsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Список установленных дополнений </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<AddonsResponse> getKubernetesAddonsWithHttpInfo(Integer clusterId) throws ApiException {
+        okhttp3.Call localVarCall = getKubernetesAddonsValidateBeforeCall(clusterId, null);
+        Type localVarReturnType = new TypeToken<AddonsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Получение списка установленных дополнений (asynchronously)
+     * Чтобы получить список установленных дополнений, отправьте GET-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/addons&#x60;.
+     * @param clusterId ID кластера (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Список установленных дополнений </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getKubernetesAddonsAsync(Integer clusterId, final ApiCallback<AddonsResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getKubernetesAddonsValidateBeforeCall(clusterId, _callback);
+        Type localVarReturnType = new TypeToken<AddonsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getKubernetesAddonsConfig
+     * @param clusterId ID кластера (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Список конфигураций дополнений </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getKubernetesAddonsConfigCall(Integer clusterId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/v1/k8s/clusters/{cluster_id}/addons-configs"
+            .replace("{" + "cluster_id" + "}", localVarApiClient.escapeString(clusterId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "Bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getKubernetesAddonsConfigValidateBeforeCall(Integer clusterId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'clusterId' is set
+        if (clusterId == null) {
+            throw new ApiException("Missing the required parameter 'clusterId' when calling getKubernetesAddonsConfig(Async)");
+        }
+
+        return getKubernetesAddonsConfigCall(clusterId, _callback);
+
+    }
+
+    /**
+     * Получение списка конфигураций дополнений
+     * Чтобы получить список конфигураций дополнений, отправьте GET-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/addons-configs&#x60;.
+     * @param clusterId ID кластера (required)
+     * @return AddonsConfigResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Список конфигураций дополнений </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public AddonsConfigResponse getKubernetesAddonsConfig(Integer clusterId) throws ApiException {
+        ApiResponse<AddonsConfigResponse> localVarResp = getKubernetesAddonsConfigWithHttpInfo(clusterId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Получение списка конфигураций дополнений
+     * Чтобы получить список конфигураций дополнений, отправьте GET-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/addons-configs&#x60;.
+     * @param clusterId ID кластера (required)
+     * @return ApiResponse&lt;AddonsConfigResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Список конфигураций дополнений </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<AddonsConfigResponse> getKubernetesAddonsConfigWithHttpInfo(Integer clusterId) throws ApiException {
+        okhttp3.Call localVarCall = getKubernetesAddonsConfigValidateBeforeCall(clusterId, null);
+        Type localVarReturnType = new TypeToken<AddonsConfigResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Получение списка конфигураций дополнений (asynchronously)
+     * Чтобы получить список конфигураций дополнений, отправьте GET-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/addons-configs&#x60;.
+     * @param clusterId ID кластера (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Список конфигураций дополнений </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getKubernetesAddonsConfigAsync(Integer clusterId, final ApiCallback<AddonsConfigResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getKubernetesAddonsConfigValidateBeforeCall(clusterId, _callback);
+        Type localVarReturnType = new TypeToken<AddonsConfigResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for getKubernetesPresets
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2634,6 +3060,306 @@ public class KubernetesApi {
         okhttp3.Call localVarCall = increaseCountOfNodesInGroupValidateBeforeCall(clusterId, groupId, increaseNodes, _callback);
         Type localVarReturnType = new TypeToken<NodesResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postKubernetesAddons
+     * @param clusterId ID кластера (required)
+     * @param clusterIn1  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Дополнение установлено </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postKubernetesAddonsCall(Integer clusterId, ClusterIn1 clusterIn1, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = clusterIn1;
+
+        // create path and map variables
+        String localVarPath = "/api/v1/k8s/clusters/{cluster_id}/addons"
+            .replace("{" + "cluster_id" + "}", localVarApiClient.escapeString(clusterId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "Bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postKubernetesAddonsValidateBeforeCall(Integer clusterId, ClusterIn1 clusterIn1, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'clusterId' is set
+        if (clusterId == null) {
+            throw new ApiException("Missing the required parameter 'clusterId' when calling postKubernetesAddons(Async)");
+        }
+
+        // verify the required parameter 'clusterIn1' is set
+        if (clusterIn1 == null) {
+            throw new ApiException("Missing the required parameter 'clusterIn1' when calling postKubernetesAddons(Async)");
+        }
+
+        return postKubernetesAddonsCall(clusterId, clusterIn1, _callback);
+
+    }
+
+    /**
+     * Установка дополнения
+     * Чтобы установить дополнение, отправьте POST-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/addons&#x60;.
+     * @param clusterId ID кластера (required)
+     * @param clusterIn1  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Дополнение установлено </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public void postKubernetesAddons(Integer clusterId, ClusterIn1 clusterIn1) throws ApiException {
+        postKubernetesAddonsWithHttpInfo(clusterId, clusterIn1);
+    }
+
+    /**
+     * Установка дополнения
+     * Чтобы установить дополнение, отправьте POST-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/addons&#x60;.
+     * @param clusterId ID кластера (required)
+     * @param clusterIn1  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Дополнение установлено </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> postKubernetesAddonsWithHttpInfo(Integer clusterId, ClusterIn1 clusterIn1) throws ApiException {
+        okhttp3.Call localVarCall = postKubernetesAddonsValidateBeforeCall(clusterId, clusterIn1, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Установка дополнения (asynchronously)
+     * Чтобы установить дополнение, отправьте POST-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/addons&#x60;.
+     * @param clusterId ID кластера (required)
+     * @param clusterIn1  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Дополнение установлено </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postKubernetesAddonsAsync(Integer clusterId, ClusterIn1 clusterIn1, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postKubernetesAddonsValidateBeforeCall(clusterId, clusterIn1, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postKubernetesAddonsUpdate
+     * @param clusterId ID кластера (required)
+     * @param addonId ID аддона (required)
+     * @param clusterIn1  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Дополнение Обновлено </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postKubernetesAddonsUpdateCall(Integer clusterId, Integer addonId, ClusterIn1 clusterIn1, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = clusterIn1;
+
+        // create path and map variables
+        String localVarPath = "/api/v1/k8s/clusters/{cluster_id}/addons/{addon_id}"
+            .replace("{" + "cluster_id" + "}", localVarApiClient.escapeString(clusterId.toString()))
+            .replace("{" + "addon_id" + "}", localVarApiClient.escapeString(addonId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "Bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postKubernetesAddonsUpdateValidateBeforeCall(Integer clusterId, Integer addonId, ClusterIn1 clusterIn1, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'clusterId' is set
+        if (clusterId == null) {
+            throw new ApiException("Missing the required parameter 'clusterId' when calling postKubernetesAddonsUpdate(Async)");
+        }
+
+        // verify the required parameter 'addonId' is set
+        if (addonId == null) {
+            throw new ApiException("Missing the required parameter 'addonId' when calling postKubernetesAddonsUpdate(Async)");
+        }
+
+        // verify the required parameter 'clusterIn1' is set
+        if (clusterIn1 == null) {
+            throw new ApiException("Missing the required parameter 'clusterIn1' when calling postKubernetesAddonsUpdate(Async)");
+        }
+
+        return postKubernetesAddonsUpdateCall(clusterId, addonId, clusterIn1, _callback);
+
+    }
+
+    /**
+     * Изменение конфигурации дополнения
+     * Чтобы обновить конфигурацию дополнения, отправьте POST-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/addons/{addon_id}&#x60;.
+     * @param clusterId ID кластера (required)
+     * @param addonId ID аддона (required)
+     * @param clusterIn1  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Дополнение Обновлено </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public void postKubernetesAddonsUpdate(Integer clusterId, Integer addonId, ClusterIn1 clusterIn1) throws ApiException {
+        postKubernetesAddonsUpdateWithHttpInfo(clusterId, addonId, clusterIn1);
+    }
+
+    /**
+     * Изменение конфигурации дополнения
+     * Чтобы обновить конфигурацию дополнения, отправьте POST-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/addons/{addon_id}&#x60;.
+     * @param clusterId ID кластера (required)
+     * @param addonId ID аддона (required)
+     * @param clusterIn1  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Дополнение Обновлено </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> postKubernetesAddonsUpdateWithHttpInfo(Integer clusterId, Integer addonId, ClusterIn1 clusterIn1) throws ApiException {
+        okhttp3.Call localVarCall = postKubernetesAddonsUpdateValidateBeforeCall(clusterId, addonId, clusterIn1, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Изменение конфигурации дополнения (asynchronously)
+     * Чтобы обновить конфигурацию дополнения, отправьте POST-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/addons/{addon_id}&#x60;.
+     * @param clusterId ID кластера (required)
+     * @param addonId ID аддона (required)
+     * @param clusterIn1  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Дополнение Обновлено </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postKubernetesAddonsUpdateAsync(Integer clusterId, Integer addonId, ClusterIn1 clusterIn1, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postKubernetesAddonsUpdateValidateBeforeCall(clusterId, addonId, clusterIn1, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**

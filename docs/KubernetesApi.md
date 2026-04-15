@@ -9,6 +9,7 @@ All URIs are relative to *https://api.timeweb.cloud*
 | [**deleteCluster**](KubernetesApi.md#deleteCluster) | **DELETE** /api/v1/k8s/clusters/{cluster_id} | Удаление кластера |
 | [**deleteClusterNode**](KubernetesApi.md#deleteClusterNode) | **DELETE** /api/v1/k8s/clusters/{cluster_id}/nodes/{node_id} | Удаление ноды |
 | [**deleteClusterNodeGroup**](KubernetesApi.md#deleteClusterNodeGroup) | **DELETE** /api/v1/k8s/clusters/{cluster_id}/groups/{group_id} | Удаление группы нод |
+| [**deleteKubernetesAddons**](KubernetesApi.md#deleteKubernetesAddons) | **DELETE** /api/v1/k8s/clusters/{cluster_id}/addons/{addon_id} | Удаление дополнения |
 | [**getCluster**](KubernetesApi.md#getCluster) | **GET** /api/v1/k8s/clusters/{cluster_id} | Получение информации о кластере |
 | [**getClusterKubeconfig**](KubernetesApi.md#getClusterKubeconfig) | **GET** /api/v1/k8s/clusters/{cluster_id}/kubeconfig | Получение файла kubeconfig |
 | [**getClusterNodeGroup**](KubernetesApi.md#getClusterNodeGroup) | **GET** /api/v1/k8s/clusters/{cluster_id}/groups/{group_id} | Получение информации о группе нод |
@@ -19,8 +20,12 @@ All URIs are relative to *https://api.timeweb.cloud*
 | [**getClusters**](KubernetesApi.md#getClusters) | **GET** /api/v1/k8s/clusters | Получение списка кластеров |
 | [**getK8SNetworkDrivers**](KubernetesApi.md#getK8SNetworkDrivers) | **GET** /api/v1/k8s/network-drivers | Получение списка сетевых драйверов k8s |
 | [**getK8SVersions**](KubernetesApi.md#getK8SVersions) | **GET** /api/v1/k8s/k8s-versions | Получение списка версий k8s |
+| [**getKubernetesAddons**](KubernetesApi.md#getKubernetesAddons) | **GET** /api/v1/k8s/clusters/{cluster_id}/addons | Получение списка установленных дополнений |
+| [**getKubernetesAddonsConfig**](KubernetesApi.md#getKubernetesAddonsConfig) | **GET** /api/v1/k8s/clusters/{cluster_id}/addons-configs | Получение списка конфигураций дополнений |
 | [**getKubernetesPresets**](KubernetesApi.md#getKubernetesPresets) | **GET** /api/v1/presets/k8s | Получение списка тарифов |
 | [**increaseCountOfNodesInGroup**](KubernetesApi.md#increaseCountOfNodesInGroup) | **POST** /api/v1/k8s/clusters/{cluster_id}/groups/{group_id}/nodes | Увеличение количества нод в группе на указанное количество |
+| [**postKubernetesAddons**](KubernetesApi.md#postKubernetesAddons) | **POST** /api/v1/k8s/clusters/{cluster_id}/addons | Установка дополнения |
+| [**postKubernetesAddonsUpdate**](KubernetesApi.md#postKubernetesAddonsUpdate) | **POST** /api/v1/k8s/clusters/{cluster_id}/addons/{addon_id} | Изменение конфигурации дополнения |
 | [**reduceCountOfNodesInGroup**](KubernetesApi.md#reduceCountOfNodesInGroup) | **DELETE** /api/v1/k8s/clusters/{cluster_id}/groups/{group_id}/nodes | Уменьшение количества нод в группе на указанное количество |
 | [**updateCluster**](KubernetesApi.md#updateCluster) | **PATCH** /api/v1/k8s/clusters/{cluster_id} | Обновление информации о кластере |
 | [**updateClusterVersion**](KubernetesApi.md#updateClusterVersion) | **PATCH** /api/v1/k8s/clusters/{cluster_id}/versions/update | Обновление версии кластера |
@@ -395,6 +400,78 @@ null (empty response body)
 | **401** | Не авторизован |  -  |
 | **403** | Запрещено |  -  |
 | **404** | Не найдено |  -  |
+| **429** | Слишком много запросов |  -  |
+| **500** | Внутренняя ошибка сервера |  -  |
+
+<a id="deleteKubernetesAddons"></a>
+# **deleteKubernetesAddons**
+> deleteKubernetesAddons(clusterId, addonId)
+
+Удаление дополнения
+
+Чтобы удалить дополнение, отправьте DELETE-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/addons/{addon_id}&#x60;.
+
+### Example
+```java
+// Import classes:
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.KubernetesApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.timeweb.cloud");
+    
+    // Configure HTTP bearer authorization: Bearer
+    HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
+    Bearer.setBearerToken("BEARER TOKEN");
+
+    KubernetesApi apiInstance = new KubernetesApi(defaultClient);
+    Integer clusterId = 56; // Integer | ID кластера
+    Integer addonId = 56; // Integer | ID аддона
+    try {
+      apiInstance.deleteKubernetesAddons(clusterId, addonId);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling KubernetesApi#deleteKubernetesAddons");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **clusterId** | **Integer**| ID кластера | |
+| **addonId** | **Integer**| ID аддона | |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | Дополнение удалено |  -  |
+| **400** | Некорректный запрос |  -  |
+| **401** | Не авторизован |  -  |
 | **429** | Слишком много запросов |  -  |
 | **500** | Внутренняя ошибка сервера |  -  |
 
@@ -1124,6 +1201,148 @@ This endpoint does not need any parameter.
 | **429** | Слишком много запросов |  -  |
 | **500** | Внутренняя ошибка сервера |  -  |
 
+<a id="getKubernetesAddons"></a>
+# **getKubernetesAddons**
+> AddonsResponse getKubernetesAddons(clusterId)
+
+Получение списка установленных дополнений
+
+Чтобы получить список установленных дополнений, отправьте GET-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/addons&#x60;.
+
+### Example
+```java
+// Import classes:
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.KubernetesApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.timeweb.cloud");
+    
+    // Configure HTTP bearer authorization: Bearer
+    HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
+    Bearer.setBearerToken("BEARER TOKEN");
+
+    KubernetesApi apiInstance = new KubernetesApi(defaultClient);
+    Integer clusterId = 56; // Integer | ID кластера
+    try {
+      AddonsResponse result = apiInstance.getKubernetesAddons(clusterId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling KubernetesApi#getKubernetesAddons");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **clusterId** | **Integer**| ID кластера | |
+
+### Return type
+
+[**AddonsResponse**](AddonsResponse.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Список установленных дополнений |  -  |
+| **400** | Некорректный запрос |  -  |
+| **401** | Не авторизован |  -  |
+| **429** | Слишком много запросов |  -  |
+| **500** | Внутренняя ошибка сервера |  -  |
+
+<a id="getKubernetesAddonsConfig"></a>
+# **getKubernetesAddonsConfig**
+> AddonsConfigResponse getKubernetesAddonsConfig(clusterId)
+
+Получение списка конфигураций дополнений
+
+Чтобы получить список конфигураций дополнений, отправьте GET-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/addons-configs&#x60;.
+
+### Example
+```java
+// Import classes:
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.KubernetesApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.timeweb.cloud");
+    
+    // Configure HTTP bearer authorization: Bearer
+    HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
+    Bearer.setBearerToken("BEARER TOKEN");
+
+    KubernetesApi apiInstance = new KubernetesApi(defaultClient);
+    Integer clusterId = 56; // Integer | ID кластера
+    try {
+      AddonsConfigResponse result = apiInstance.getKubernetesAddonsConfig(clusterId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling KubernetesApi#getKubernetesAddonsConfig");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **clusterId** | **Integer**| ID кластера | |
+
+### Return type
+
+[**AddonsConfigResponse**](AddonsConfigResponse.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Список конфигураций дополнений |  -  |
+| **400** | Некорректный запрос |  -  |
+| **401** | Не авторизован |  -  |
+| **429** | Слишком много запросов |  -  |
+| **500** | Внутренняя ошибка сервера |  -  |
+
 <a id="getKubernetesPresets"></a>
 # **getKubernetesPresets**
 > PresetsResponse getKubernetesPresets()
@@ -1265,6 +1484,152 @@ public class Example {
 | **401** | Не авторизован |  -  |
 | **403** | Запрещено |  -  |
 | **404** | Не найдено |  -  |
+| **429** | Слишком много запросов |  -  |
+| **500** | Внутренняя ошибка сервера |  -  |
+
+<a id="postKubernetesAddons"></a>
+# **postKubernetesAddons**
+> postKubernetesAddons(clusterId, clusterIn1)
+
+Установка дополнения
+
+Чтобы установить дополнение, отправьте POST-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/addons&#x60;.
+
+### Example
+```java
+// Import classes:
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.KubernetesApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.timeweb.cloud");
+    
+    // Configure HTTP bearer authorization: Bearer
+    HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
+    Bearer.setBearerToken("BEARER TOKEN");
+
+    KubernetesApi apiInstance = new KubernetesApi(defaultClient);
+    Integer clusterId = 56; // Integer | ID кластера
+    ClusterIn1 clusterIn1 = new ClusterIn1(); // ClusterIn1 | 
+    try {
+      apiInstance.postKubernetesAddons(clusterId, clusterIn1);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling KubernetesApi#postKubernetesAddons");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **clusterId** | **Integer**| ID кластера | |
+| **clusterIn1** | [**ClusterIn1**](ClusterIn1.md)|  | |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Дополнение установлено |  -  |
+| **400** | Некорректный запрос |  -  |
+| **401** | Не авторизован |  -  |
+| **429** | Слишком много запросов |  -  |
+| **500** | Внутренняя ошибка сервера |  -  |
+
+<a id="postKubernetesAddonsUpdate"></a>
+# **postKubernetesAddonsUpdate**
+> postKubernetesAddonsUpdate(clusterId, addonId, clusterIn1)
+
+Изменение конфигурации дополнения
+
+Чтобы обновить конфигурацию дополнения, отправьте POST-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/addons/{addon_id}&#x60;.
+
+### Example
+```java
+// Import classes:
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.KubernetesApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.timeweb.cloud");
+    
+    // Configure HTTP bearer authorization: Bearer
+    HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
+    Bearer.setBearerToken("BEARER TOKEN");
+
+    KubernetesApi apiInstance = new KubernetesApi(defaultClient);
+    Integer clusterId = 56; // Integer | ID кластера
+    Integer addonId = 56; // Integer | ID аддона
+    ClusterIn1 clusterIn1 = new ClusterIn1(); // ClusterIn1 | 
+    try {
+      apiInstance.postKubernetesAddonsUpdate(clusterId, addonId, clusterIn1);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling KubernetesApi#postKubernetesAddonsUpdate");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **clusterId** | **Integer**| ID кластера | |
+| **addonId** | **Integer**| ID аддона | |
+| **clusterIn1** | [**ClusterIn1**](ClusterIn1.md)|  | |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Дополнение Обновлено |  -  |
+| **400** | Некорректный запрос |  -  |
+| **401** | Не авторизован |  -  |
 | **429** | Слишком много запросов |  -  |
 | **500** | Внутренняя ошибка сервера |  -  |
 

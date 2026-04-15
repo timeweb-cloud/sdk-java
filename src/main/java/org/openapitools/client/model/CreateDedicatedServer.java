@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * CreateDedicatedServer
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-03-27T08:34:36.292871Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-15T15:18:13.346485Z[Etc/UTC]")
 public class CreateDedicatedServer {
   public static final String SERIALIZED_NAME_PLAN_ID = "plan_id";
   @SerializedName(SERIALIZED_NAME_PLAN_ID)
@@ -144,6 +144,10 @@ public class CreateDedicatedServer {
   public static final String SERIALIZED_NAME_COMMENT = "comment";
   @SerializedName(SERIALIZED_NAME_COMMENT)
   private String comment;
+
+  public static final String SERIALIZED_NAME_PROJECT_ID = "project_id";
+  @SerializedName(SERIALIZED_NAME_PROJECT_ID)
+  private BigDecimal projectId;
 
   public CreateDedicatedServer() {
   }
@@ -358,6 +362,27 @@ public class CreateDedicatedServer {
   }
 
 
+  public CreateDedicatedServer projectId(BigDecimal projectId) {
+    
+    this.projectId = projectId;
+    return this;
+  }
+
+   /**
+   * ID проекта, в который будет добавлен выделенный сервер.
+   * @return projectId
+  **/
+  @javax.annotation.Nullable
+  public BigDecimal getProjectId() {
+    return projectId;
+  }
+
+
+  public void setProjectId(BigDecimal projectId) {
+    this.projectId = projectId;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -377,7 +402,8 @@ public class CreateDedicatedServer {
         Objects.equals(this.additionalIpAddrId, createDedicatedServer.additionalIpAddrId) &&
         Objects.equals(this.paymentPeriod, createDedicatedServer.paymentPeriod) &&
         Objects.equals(this.name, createDedicatedServer.name) &&
-        Objects.equals(this.comment, createDedicatedServer.comment);
+        Objects.equals(this.comment, createDedicatedServer.comment) &&
+        Objects.equals(this.projectId, createDedicatedServer.projectId);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -386,7 +412,7 @@ public class CreateDedicatedServer {
 
   @Override
   public int hashCode() {
-    return Objects.hash(planId, presetId, osId, cpId, bandwidthId, networkDriveId, additionalIpAddrId, paymentPeriod, name, comment);
+    return Objects.hash(planId, presetId, osId, cpId, bandwidthId, networkDriveId, additionalIpAddrId, paymentPeriod, name, comment, projectId);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -410,6 +436,7 @@ public class CreateDedicatedServer {
     sb.append("    paymentPeriod: ").append(toIndentedString(paymentPeriod)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    comment: ").append(toIndentedString(comment)).append("\n");
+    sb.append("    projectId: ").append(toIndentedString(projectId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -442,6 +469,7 @@ public class CreateDedicatedServer {
     openapiFields.add("payment_period");
     openapiFields.add("name");
     openapiFields.add("comment");
+    openapiFields.add("project_id");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

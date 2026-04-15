@@ -14,8 +14,11 @@
 package org.openapitools.client.api;
 
 import org.openapitools.client.ApiException;
+import org.openapitools.client.model.AddonsConfigResponse;
+import org.openapitools.client.model.AddonsResponse;
 import org.openapitools.client.model.ClusterEdit;
 import org.openapitools.client.model.ClusterIn;
+import org.openapitools.client.model.ClusterIn1;
 import org.openapitools.client.model.ClusterResponse;
 import org.openapitools.client.model.ClusterVersionEdit;
 import org.openapitools.client.model.ClustersResponse;
@@ -124,6 +127,21 @@ public class KubernetesApiTest {
         Integer clusterId = null;
         Integer groupId = null;
         api.deleteClusterNodeGroup(clusterId, groupId);
+        // TODO: test validations
+    }
+
+    /**
+     * Удаление дополнения
+     *
+     * Чтобы удалить дополнение, отправьте DELETE-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/addons/{addon_id}&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void deleteKubernetesAddonsTest() throws ApiException {
+        Integer clusterId = null;
+        Integer addonId = null;
+        api.deleteKubernetesAddons(clusterId, addonId);
         // TODO: test validations
     }
 
@@ -271,6 +289,34 @@ public class KubernetesApiTest {
     }
 
     /**
+     * Получение списка установленных дополнений
+     *
+     * Чтобы получить список установленных дополнений, отправьте GET-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/addons&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void getKubernetesAddonsTest() throws ApiException {
+        Integer clusterId = null;
+        AddonsResponse response = api.getKubernetesAddons(clusterId);
+        // TODO: test validations
+    }
+
+    /**
+     * Получение списка конфигураций дополнений
+     *
+     * Чтобы получить список конфигураций дополнений, отправьте GET-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/addons-configs&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void getKubernetesAddonsConfigTest() throws ApiException {
+        Integer clusterId = null;
+        AddonsConfigResponse response = api.getKubernetesAddonsConfig(clusterId);
+        // TODO: test validations
+    }
+
+    /**
      * Получение списка тарифов
      *
      * Чтобы получить список тарифов, отправьте GET-запрос в &#x60;/api/v1/presets/k8s&#x60;.
@@ -296,6 +342,37 @@ public class KubernetesApiTest {
         Integer groupId = null;
         IncreaseNodes increaseNodes = null;
         NodesResponse response = api.increaseCountOfNodesInGroup(clusterId, groupId, increaseNodes);
+        // TODO: test validations
+    }
+
+    /**
+     * Установка дополнения
+     *
+     * Чтобы установить дополнение, отправьте POST-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/addons&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void postKubernetesAddonsTest() throws ApiException {
+        Integer clusterId = null;
+        ClusterIn1 clusterIn1 = null;
+        api.postKubernetesAddons(clusterId, clusterIn1);
+        // TODO: test validations
+    }
+
+    /**
+     * Изменение конфигурации дополнения
+     *
+     * Чтобы обновить конфигурацию дополнения, отправьте POST-запрос в &#x60;/api/v1/k8s/clusters/{cluster_id}/addons/{addon_id}&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void postKubernetesAddonsUpdateTest() throws ApiException {
+        Integer clusterId = null;
+        Integer addonId = null;
+        ClusterIn1 clusterIn1 = null;
+        api.postKubernetesAddonsUpdate(clusterId, addonId, clusterIn1);
         // TODO: test validations
     }
 

@@ -2,7 +2,7 @@
 
 Timeweb Cloud API
 - API version: 1.0.0
-  - Build date: 2026-03-27T08:34:36.292871Z[Etc/UTC]
+  - Build date: 2026-04-15T15:18:13.346485Z[Etc/UTC]
 
 # Введение
 API Timeweb Cloud позволяет вам управлять ресурсами в облаке программным способом с использованием обычных HTTP-запросов.
@@ -444,6 +444,7 @@ Class | Method | HTTP request | Description
 *KubernetesApi* | [**deleteCluster**](docs/KubernetesApi.md#deleteCluster) | **DELETE** /api/v1/k8s/clusters/{cluster_id} | Удаление кластера
 *KubernetesApi* | [**deleteClusterNode**](docs/KubernetesApi.md#deleteClusterNode) | **DELETE** /api/v1/k8s/clusters/{cluster_id}/nodes/{node_id} | Удаление ноды
 *KubernetesApi* | [**deleteClusterNodeGroup**](docs/KubernetesApi.md#deleteClusterNodeGroup) | **DELETE** /api/v1/k8s/clusters/{cluster_id}/groups/{group_id} | Удаление группы нод
+*KubernetesApi* | [**deleteKubernetesAddons**](docs/KubernetesApi.md#deleteKubernetesAddons) | **DELETE** /api/v1/k8s/clusters/{cluster_id}/addons/{addon_id} | Удаление дополнения
 *KubernetesApi* | [**getCluster**](docs/KubernetesApi.md#getCluster) | **GET** /api/v1/k8s/clusters/{cluster_id} | Получение информации о кластере
 *KubernetesApi* | [**getClusterKubeconfig**](docs/KubernetesApi.md#getClusterKubeconfig) | **GET** /api/v1/k8s/clusters/{cluster_id}/kubeconfig | Получение файла kubeconfig
 *KubernetesApi* | [**getClusterNodeGroup**](docs/KubernetesApi.md#getClusterNodeGroup) | **GET** /api/v1/k8s/clusters/{cluster_id}/groups/{group_id} | Получение информации о группе нод
@@ -454,8 +455,12 @@ Class | Method | HTTP request | Description
 *KubernetesApi* | [**getClusters**](docs/KubernetesApi.md#getClusters) | **GET** /api/v1/k8s/clusters | Получение списка кластеров
 *KubernetesApi* | [**getK8SNetworkDrivers**](docs/KubernetesApi.md#getK8SNetworkDrivers) | **GET** /api/v1/k8s/network-drivers | Получение списка сетевых драйверов k8s
 *KubernetesApi* | [**getK8SVersions**](docs/KubernetesApi.md#getK8SVersions) | **GET** /api/v1/k8s/k8s-versions | Получение списка версий k8s
+*KubernetesApi* | [**getKubernetesAddons**](docs/KubernetesApi.md#getKubernetesAddons) | **GET** /api/v1/k8s/clusters/{cluster_id}/addons | Получение списка установленных дополнений
+*KubernetesApi* | [**getKubernetesAddonsConfig**](docs/KubernetesApi.md#getKubernetesAddonsConfig) | **GET** /api/v1/k8s/clusters/{cluster_id}/addons-configs | Получение списка конфигураций дополнений
 *KubernetesApi* | [**getKubernetesPresets**](docs/KubernetesApi.md#getKubernetesPresets) | **GET** /api/v1/presets/k8s | Получение списка тарифов
 *KubernetesApi* | [**increaseCountOfNodesInGroup**](docs/KubernetesApi.md#increaseCountOfNodesInGroup) | **POST** /api/v1/k8s/clusters/{cluster_id}/groups/{group_id}/nodes | Увеличение количества нод в группе на указанное количество
+*KubernetesApi* | [**postKubernetesAddons**](docs/KubernetesApi.md#postKubernetesAddons) | **POST** /api/v1/k8s/clusters/{cluster_id}/addons | Установка дополнения
+*KubernetesApi* | [**postKubernetesAddonsUpdate**](docs/KubernetesApi.md#postKubernetesAddonsUpdate) | **POST** /api/v1/k8s/clusters/{cluster_id}/addons/{addon_id} | Изменение конфигурации дополнения
 *KubernetesApi* | [**reduceCountOfNodesInGroup**](docs/KubernetesApi.md#reduceCountOfNodesInGroup) | **DELETE** /api/v1/k8s/clusters/{cluster_id}/groups/{group_id}/nodes | Уменьшение количества нод в группе на указанное количество
 *KubernetesApi* | [**updateCluster**](docs/KubernetesApi.md#updateCluster) | **PATCH** /api/v1/k8s/clusters/{cluster_id} | Обновление информации о кластере
 *KubernetesApi* | [**updateClusterVersion**](docs/KubernetesApi.md#updateClusterVersion) | **PATCH** /api/v1/k8s/clusters/{cluster_id}/versions/update | Обновление версии кластера
@@ -610,6 +615,10 @@ Class | Method | HTTP request | Description
  - [AddSubdomain201Response](docs/AddSubdomain201Response.md)
  - [AddTokenPackage](docs/AddTokenPackage.md)
  - [AddedSubdomain](docs/AddedSubdomain.md)
+ - [AddonConfigOut](docs/AddonConfigOut.md)
+ - [AddonOut](docs/AddonOut.md)
+ - [AddonsConfigResponse](docs/AddonsConfigResponse.md)
+ - [AddonsResponse](docs/AddonsResponse.md)
  - [Agent](docs/Agent.md)
  - [AgentModelSettings](docs/AgentModelSettings.md)
  - [AgentSettings](docs/AgentSettings.md)
@@ -649,6 +658,7 @@ Class | Method | HTTP request | Description
  - [ClusterEdit](docs/ClusterEdit.md)
  - [ClusterEditOidcProvider](docs/ClusterEditOidcProvider.md)
  - [ClusterIn](docs/ClusterIn.md)
+ - [ClusterIn1](docs/ClusterIn1.md)
  - [ClusterInClusterNetworkCidr](docs/ClusterInClusterNetworkCidr.md)
  - [ClusterInConfiguration](docs/ClusterInConfiguration.md)
  - [ClusterInMaintenanceSlot](docs/ClusterInMaintenanceSlot.md)

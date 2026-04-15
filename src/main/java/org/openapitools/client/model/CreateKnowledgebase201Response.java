@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * CreateKnowledgebase201Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-03-27T08:34:36.292871Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-15T15:18:13.346485Z[Etc/UTC]")
 public class CreateKnowledgebase201Response {
   public static final String SERIALIZED_NAME_KNOWLEDGEBASE = "knowledgebase";
   @SerializedName(SERIALIZED_NAME_KNOWLEDGEBASE)
