@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * Конфигурация сервиса
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-15T15:18:13.346485Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-05-12T12:16:32.307248Z[Etc/UTC]")
 public class ServicePriceConfiguration {
   public static final String SERIALIZED_NAME_CPU = "cpu";
   @SerializedName(SERIALIZED_NAME_CPU)

@@ -44,8 +44,6 @@ docs/AgentModelSettings.md
 docs/AgentSettings.md
 docs/AgentSettingsWidget.md
 docs/AiAgentsApi.md
-docs/ApiKey.md
-docs/ApiKeysApi.md
 docs/App.md
 docs/AppConfiguration.md
 docs/AppDiskStatus.md
@@ -101,7 +99,6 @@ docs/ContainerRegistryRepositoriesInner.md
 docs/CreateAdmin.md
 docs/CreateAgent.md
 docs/CreateAgent201Response.md
-docs/CreateApiKey.md
 docs/CreateApp.md
 docs/CreateApp201Response.md
 docs/CreateBalancer.md
@@ -160,10 +157,8 @@ docs/CreateServerNetwork.md
 docs/CreateStorage201Response.md
 docs/CreateStorageRequest.md
 docs/CreateStorageRequestConfigurator.md
-docs/CreateToken201Response.md
 docs/CreateVPC201Response.md
 docs/CreateVpc.md
-docs/CreatedApiKey.md
 docs/DatabaseAdmin.md
 docs/DatabaseAdminInstancesInner.md
 docs/DatabaseCluster.md
@@ -219,7 +214,6 @@ docs/DomainRegister.md
 docs/DomainRequest.md
 docs/DomainTransfer.md
 docs/DomainsApi.md
-docs/EditApiKey.md
 docs/Finances.md
 docs/FirewallApi.md
 docs/FirewallGroup.md
@@ -343,7 +337,6 @@ docs/GetStorageUsers200Response.md
 docs/GetStoragesPresets200Response.md
 docs/GetTLD200Response.md
 docs/GetTLDs200Response.md
-docs/GetTokens200Response.md
 docs/GetVPCPorts200Response.md
 docs/GetVPCServices200Response.md
 docs/GetVPCs200Response.md
@@ -425,7 +418,6 @@ docs/ProjectsApi.md
 docs/Provider.md
 docs/Providers.md
 docs/ReduceNodes.md
-docs/RefreshApiKey.md
 docs/RegistriesResponse.md
 docs/RegistryEdit.md
 docs/RegistryIn.md
@@ -529,7 +521,6 @@ docs/UpdateStorageRequest.md
 docs/UpdateStorageRequestConfigurator.md
 docs/UpdateStorageUser200Response.md
 docs/UpdateStorageUserRequest.md
-docs/UpdateToken200Response.md
 docs/UpdateVpc.md
 docs/UploadFilesToKnowledgebase200Response.md
 docs/UploadSuccessful.md
@@ -573,7 +564,6 @@ src/main/java/org/openapitools/client/ServerVariable.java
 src/main/java/org/openapitools/client/StringUtil.java
 src/main/java/org/openapitools/client/api/AccountApi.java
 src/main/java/org/openapitools/client/api/AiAgentsApi.java
-src/main/java/org/openapitools/client/api/ApiKeysApi.java
 src/main/java/org/openapitools/client/api/AppsApi.java
 src/main/java/org/openapitools/client/api/BalancersApi.java
 src/main/java/org/openapitools/client/api/ContainerRegistryApi.java
@@ -635,7 +625,6 @@ src/main/java/org/openapitools/client/model/Agent.java
 src/main/java/org/openapitools/client/model/AgentModelSettings.java
 src/main/java/org/openapitools/client/model/AgentSettings.java
 src/main/java/org/openapitools/client/model/AgentSettingsWidget.java
-src/main/java/org/openapitools/client/model/ApiKey.java
 src/main/java/org/openapitools/client/model/App.java
 src/main/java/org/openapitools/client/model/AppConfiguration.java
 src/main/java/org/openapitools/client/model/AppDiskStatus.java
@@ -688,7 +677,6 @@ src/main/java/org/openapitools/client/model/ContainerRegistryRepositoriesInner.j
 src/main/java/org/openapitools/client/model/CreateAdmin.java
 src/main/java/org/openapitools/client/model/CreateAgent.java
 src/main/java/org/openapitools/client/model/CreateAgent201Response.java
-src/main/java/org/openapitools/client/model/CreateApiKey.java
 src/main/java/org/openapitools/client/model/CreateApp.java
 src/main/java/org/openapitools/client/model/CreateApp201Response.java
 src/main/java/org/openapitools/client/model/CreateBalancer.java
@@ -747,10 +735,8 @@ src/main/java/org/openapitools/client/model/CreateServerNetwork.java
 src/main/java/org/openapitools/client/model/CreateStorage201Response.java
 src/main/java/org/openapitools/client/model/CreateStorageRequest.java
 src/main/java/org/openapitools/client/model/CreateStorageRequestConfigurator.java
-src/main/java/org/openapitools/client/model/CreateToken201Response.java
 src/main/java/org/openapitools/client/model/CreateVPC201Response.java
 src/main/java/org/openapitools/client/model/CreateVpc.java
-src/main/java/org/openapitools/client/model/CreatedApiKey.java
 src/main/java/org/openapitools/client/model/DatabaseAdmin.java
 src/main/java/org/openapitools/client/model/DatabaseAdminInstancesInner.java
 src/main/java/org/openapitools/client/model/DatabaseCluster.java
@@ -803,7 +789,6 @@ src/main/java/org/openapitools/client/model/DomainProlong.java
 src/main/java/org/openapitools/client/model/DomainRegister.java
 src/main/java/org/openapitools/client/model/DomainRequest.java
 src/main/java/org/openapitools/client/model/DomainTransfer.java
-src/main/java/org/openapitools/client/model/EditApiKey.java
 src/main/java/org/openapitools/client/model/Finances.java
 src/main/java/org/openapitools/client/model/FirewallGroup.java
 src/main/java/org/openapitools/client/model/FirewallGroupInAPI.java
@@ -925,7 +910,6 @@ src/main/java/org/openapitools/client/model/GetStorageUsers200Response.java
 src/main/java/org/openapitools/client/model/GetStoragesPresets200Response.java
 src/main/java/org/openapitools/client/model/GetTLD200Response.java
 src/main/java/org/openapitools/client/model/GetTLDs200Response.java
-src/main/java/org/openapitools/client/model/GetTokens200Response.java
 src/main/java/org/openapitools/client/model/GetVPCPorts200Response.java
 src/main/java/org/openapitools/client/model/GetVPCServices200Response.java
 src/main/java/org/openapitools/client/model/GetVPCs200Response.java
@@ -999,7 +983,6 @@ src/main/java/org/openapitools/client/model/ProjectResource.java
 src/main/java/org/openapitools/client/model/Provider.java
 src/main/java/org/openapitools/client/model/Providers.java
 src/main/java/org/openapitools/client/model/ReduceNodes.java
-src/main/java/org/openapitools/client/model/RefreshApiKey.java
 src/main/java/org/openapitools/client/model/RegistriesResponse.java
 src/main/java/org/openapitools/client/model/RegistryEdit.java
 src/main/java/org/openapitools/client/model/RegistryIn.java
@@ -1100,7 +1083,6 @@ src/main/java/org/openapitools/client/model/UpdateStorageRequest.java
 src/main/java/org/openapitools/client/model/UpdateStorageRequestConfigurator.java
 src/main/java/org/openapitools/client/model/UpdateStorageUser200Response.java
 src/main/java/org/openapitools/client/model/UpdateStorageUserRequest.java
-src/main/java/org/openapitools/client/model/UpdateToken200Response.java
 src/main/java/org/openapitools/client/model/UpdateVpc.java
 src/main/java/org/openapitools/client/model/UploadFilesToKnowledgebase200Response.java
 src/main/java/org/openapitools/client/model/UploadSuccessful.java
@@ -1121,7 +1103,6 @@ src/main/java/org/openapitools/client/model/VpcService.java
 src/main/java/org/openapitools/client/model/WorkerPresetOutApi.java
 src/test/java/org/openapitools/client/api/AccountApiTest.java
 src/test/java/org/openapitools/client/api/AiAgentsApiTest.java
-src/test/java/org/openapitools/client/api/ApiKeysApiTest.java
 src/test/java/org/openapitools/client/api/AppsApiTest.java
 src/test/java/org/openapitools/client/api/BalancersApiTest.java
 src/test/java/org/openapitools/client/api/ContainerRegistryApiTest.java
@@ -1178,7 +1159,6 @@ src/test/java/org/openapitools/client/model/AgentModelSettingsTest.java
 src/test/java/org/openapitools/client/model/AgentSettingsTest.java
 src/test/java/org/openapitools/client/model/AgentSettingsWidgetTest.java
 src/test/java/org/openapitools/client/model/AgentTest.java
-src/test/java/org/openapitools/client/model/ApiKeyTest.java
 src/test/java/org/openapitools/client/model/AppConfigurationTest.java
 src/test/java/org/openapitools/client/model/AppDiskStatusTest.java
 src/test/java/org/openapitools/client/model/AppDomainsInnerTest.java
@@ -1231,7 +1211,6 @@ src/test/java/org/openapitools/client/model/ContainerRegistryRepositoriesInnerTe
 src/test/java/org/openapitools/client/model/CreateAdminTest.java
 src/test/java/org/openapitools/client/model/CreateAgent201ResponseTest.java
 src/test/java/org/openapitools/client/model/CreateAgentTest.java
-src/test/java/org/openapitools/client/model/CreateApiKeyTest.java
 src/test/java/org/openapitools/client/model/CreateApp201ResponseTest.java
 src/test/java/org/openapitools/client/model/CreateAppTest.java
 src/test/java/org/openapitools/client/model/CreateBalancer200ResponseTest.java
@@ -1290,10 +1269,8 @@ src/test/java/org/openapitools/client/model/CreateServerTest.java
 src/test/java/org/openapitools/client/model/CreateStorage201ResponseTest.java
 src/test/java/org/openapitools/client/model/CreateStorageRequestConfiguratorTest.java
 src/test/java/org/openapitools/client/model/CreateStorageRequestTest.java
-src/test/java/org/openapitools/client/model/CreateToken201ResponseTest.java
 src/test/java/org/openapitools/client/model/CreateVPC201ResponseTest.java
 src/test/java/org/openapitools/client/model/CreateVpcTest.java
-src/test/java/org/openapitools/client/model/CreatedApiKeyTest.java
 src/test/java/org/openapitools/client/model/DatabaseAdminInstancesInnerTest.java
 src/test/java/org/openapitools/client/model/DatabaseAdminTest.java
 src/test/java/org/openapitools/client/model/DatabaseClusterDiskTest.java
@@ -1346,7 +1323,6 @@ src/test/java/org/openapitools/client/model/DomainRegisterTest.java
 src/test/java/org/openapitools/client/model/DomainRequestTest.java
 src/test/java/org/openapitools/client/model/DomainTest.java
 src/test/java/org/openapitools/client/model/DomainTransferTest.java
-src/test/java/org/openapitools/client/model/EditApiKeyTest.java
 src/test/java/org/openapitools/client/model/FinancesTest.java
 src/test/java/org/openapitools/client/model/FirewallGroupInAPITest.java
 src/test/java/org/openapitools/client/model/FirewallGroupOutResponseTest.java
@@ -1468,7 +1444,6 @@ src/test/java/org/openapitools/client/model/GetStorageUsers200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetStoragesPresets200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetTLD200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetTLDs200ResponseTest.java
-src/test/java/org/openapitools/client/model/GetTokens200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetVPCPorts200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetVPCServices200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetVPCs200ResponseTest.java
@@ -1542,7 +1517,6 @@ src/test/java/org/openapitools/client/model/ProjectTest.java
 src/test/java/org/openapitools/client/model/ProviderTest.java
 src/test/java/org/openapitools/client/model/ProvidersTest.java
 src/test/java/org/openapitools/client/model/ReduceNodesTest.java
-src/test/java/org/openapitools/client/model/RefreshApiKeyTest.java
 src/test/java/org/openapitools/client/model/RegistriesResponseTest.java
 src/test/java/org/openapitools/client/model/RegistryEditTest.java
 src/test/java/org/openapitools/client/model/RegistryInConfigurationTest.java
@@ -1643,7 +1617,6 @@ src/test/java/org/openapitools/client/model/UpdateStorageRequestConfiguratorTest
 src/test/java/org/openapitools/client/model/UpdateStorageRequestTest.java
 src/test/java/org/openapitools/client/model/UpdateStorageUser200ResponseTest.java
 src/test/java/org/openapitools/client/model/UpdateStorageUserRequestTest.java
-src/test/java/org/openapitools/client/model/UpdateToken200ResponseTest.java
 src/test/java/org/openapitools/client/model/UpdateVpcTest.java
 src/test/java/org/openapitools/client/model/UploadFilesToKnowledgebase200ResponseTest.java
 src/test/java/org/openapitools/client/model/UploadSuccessfulResponseTest.java

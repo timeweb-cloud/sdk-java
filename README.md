@@ -2,7 +2,7 @@
 
 Timeweb Cloud API
 - API version: 1.0.0
-  - Build date: 2026-04-15T15:18:13.346485Z[Etc/UTC]
+  - Build date: 2026-05-12T12:16:32.307248Z[Etc/UTC]
 
 # Введение
 API Timeweb Cloud позволяет вам управлять ресурсами в облаке программным способом с использованием обычных HTTP-запросов.
@@ -286,11 +286,6 @@ Class | Method | HTTP request | Description
 *AiAgentsApi* | [**getKnowledgebasesTokenPackages**](docs/AiAgentsApi.md#getKnowledgebasesTokenPackages) | **GET** /api/v1/cloud-ai/token-packages/knowledge-bases | Получение списка пакетов токенов для баз знаний
 *AiAgentsApi* | [**getModels**](docs/AiAgentsApi.md#getModels) | **GET** /api/v1/cloud-ai/models | Получение списка моделей
 *AiAgentsApi* | [**updateAgent**](docs/AiAgentsApi.md#updateAgent) | **PATCH** /api/v1/cloud-ai/agents/{id} | Обновление AI агента
-*ApiKeysApi* | [**createToken**](docs/ApiKeysApi.md#createToken) | **POST** /api/v1/auth/api-keys | Создание токена
-*ApiKeysApi* | [**deleteToken**](docs/ApiKeysApi.md#deleteToken) | **DELETE** /api/v1/auth/api-keys/{token_id} | Удалить токен
-*ApiKeysApi* | [**getTokens**](docs/ApiKeysApi.md#getTokens) | **GET** /api/v1/auth/api-keys | Получение списка выпущенных токенов
-*ApiKeysApi* | [**reissueToken**](docs/ApiKeysApi.md#reissueToken) | **PUT** /api/v1/auth/api-keys/{token_id} | Перевыпустить токен
-*ApiKeysApi* | [**updateToken**](docs/ApiKeysApi.md#updateToken) | **PATCH** /api/v1/auth/api-keys/{token_id} | Изменить токен
 *AppsApi* | [**addProvider**](docs/AppsApi.md#addProvider) | **POST** /api/v1/vcs-provider | Привязка vcs провайдера
 *AppsApi* | [**createApp**](docs/AppsApi.md#createApp) | **POST** /api/v1/apps | Создание приложения
 *AppsApi* | [**createDeploy**](docs/AppsApi.md#createDeploy) | **POST** /api/v1/apps/{app_id}/deploy | Запуск деплоя приложения
@@ -623,7 +618,6 @@ Class | Method | HTTP request | Description
  - [AgentModelSettings](docs/AgentModelSettings.md)
  - [AgentSettings](docs/AgentSettings.md)
  - [AgentSettingsWidget](docs/AgentSettingsWidget.md)
- - [ApiKey](docs/ApiKey.md)
  - [App](docs/App.md)
  - [AppConfiguration](docs/AppConfiguration.md)
  - [AppDiskStatus](docs/AppDiskStatus.md)
@@ -676,7 +670,6 @@ Class | Method | HTTP request | Description
  - [CreateAdmin](docs/CreateAdmin.md)
  - [CreateAgent](docs/CreateAgent.md)
  - [CreateAgent201Response](docs/CreateAgent201Response.md)
- - [CreateApiKey](docs/CreateApiKey.md)
  - [CreateApp](docs/CreateApp.md)
  - [CreateApp201Response](docs/CreateApp201Response.md)
  - [CreateBalancer](docs/CreateBalancer.md)
@@ -735,10 +728,8 @@ Class | Method | HTTP request | Description
  - [CreateStorage201Response](docs/CreateStorage201Response.md)
  - [CreateStorageRequest](docs/CreateStorageRequest.md)
  - [CreateStorageRequestConfigurator](docs/CreateStorageRequestConfigurator.md)
- - [CreateToken201Response](docs/CreateToken201Response.md)
  - [CreateVPC201Response](docs/CreateVPC201Response.md)
  - [CreateVpc](docs/CreateVpc.md)
- - [CreatedApiKey](docs/CreatedApiKey.md)
  - [DatabaseAdmin](docs/DatabaseAdmin.md)
  - [DatabaseAdminInstancesInner](docs/DatabaseAdminInstancesInner.md)
  - [DatabaseCluster](docs/DatabaseCluster.md)
@@ -791,7 +782,6 @@ Class | Method | HTTP request | Description
  - [DomainRegister](docs/DomainRegister.md)
  - [DomainRequest](docs/DomainRequest.md)
  - [DomainTransfer](docs/DomainTransfer.md)
- - [EditApiKey](docs/EditApiKey.md)
  - [Finances](docs/Finances.md)
  - [FirewallGroup](docs/FirewallGroup.md)
  - [FirewallGroupInAPI](docs/FirewallGroupInAPI.md)
@@ -913,7 +903,6 @@ Class | Method | HTTP request | Description
  - [GetStoragesPresets200Response](docs/GetStoragesPresets200Response.md)
  - [GetTLD200Response](docs/GetTLD200Response.md)
  - [GetTLDs200Response](docs/GetTLDs200Response.md)
- - [GetTokens200Response](docs/GetTokens200Response.md)
  - [GetVPCPorts200Response](docs/GetVPCPorts200Response.md)
  - [GetVPCServices200Response](docs/GetVPCServices200Response.md)
  - [GetVPCs200Response](docs/GetVPCs200Response.md)
@@ -987,7 +976,6 @@ Class | Method | HTTP request | Description
  - [Provider](docs/Provider.md)
  - [Providers](docs/Providers.md)
  - [ReduceNodes](docs/ReduceNodes.md)
- - [RefreshApiKey](docs/RefreshApiKey.md)
  - [RegistriesResponse](docs/RegistriesResponse.md)
  - [RegistryEdit](docs/RegistryEdit.md)
  - [RegistryIn](docs/RegistryIn.md)
@@ -1088,7 +1076,6 @@ Class | Method | HTTP request | Description
  - [UpdateStorageRequestConfigurator](docs/UpdateStorageRequestConfigurator.md)
  - [UpdateStorageUser200Response](docs/UpdateStorageUser200Response.md)
  - [UpdateStorageUserRequest](docs/UpdateStorageUserRequest.md)
- - [UpdateToken200Response](docs/UpdateToken200Response.md)
  - [UpdateVpc](docs/UpdateVpc.md)
  - [UploadFilesToKnowledgebase200Response](docs/UploadFilesToKnowledgebase200Response.md)
  - [UploadSuccessful](docs/UploadSuccessful.md)
