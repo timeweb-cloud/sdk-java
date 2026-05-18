@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * Лейбл для группы нод
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-05-12T12:16:32.307248Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-05-18T09:03:06.803954Z[Etc/UTC]")
 public class SetLabels {
   public static final String SERIALIZED_NAME_KEY = "key";
   @SerializedName(SERIALIZED_NAME_KEY)

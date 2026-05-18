@@ -57,7 +57,7 @@ import org.openapitools.client.JSON;
 /**
  * ClusterIn
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-05-12T12:16:32.307248Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-05-18T09:03:06.803954Z[Etc/UTC]")
 public class ClusterIn {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -182,10 +182,12 @@ public class ClusterIn {
   private NetworkDriverEnum networkDriver;
 
   public static final String SERIALIZED_NAME_IS_INGRESS = "is_ingress";
+  @Deprecated
   @SerializedName(SERIALIZED_NAME_IS_INGRESS)
   private Boolean isIngress;
 
   public static final String SERIALIZED_NAME_IS_K8S_DASHBOARD = "is_k8s_dashboard";
+  @Deprecated
   @SerializedName(SERIALIZED_NAME_IS_K8S_DASHBOARD)
   private Boolean isK8sDashboard;
 
@@ -333,6 +335,7 @@ public class ClusterIn {
   }
 
 
+  @Deprecated
   public ClusterIn isIngress(Boolean isIngress) {
     
     this.isIngress = isIngress;
@@ -342,18 +345,22 @@ public class ClusterIn {
    /**
    * Логическое значение, которое показывает, использовать ли Ingress в кластере
    * @return isIngress
+   * @deprecated
   **/
+  @Deprecated
   @javax.annotation.Nullable
   public Boolean getIsIngress() {
     return isIngress;
   }
 
 
+  @Deprecated
   public void setIsIngress(Boolean isIngress) {
     this.isIngress = isIngress;
   }
 
 
+  @Deprecated
   public ClusterIn isK8sDashboard(Boolean isK8sDashboard) {
     
     this.isK8sDashboard = isK8sDashboard;
@@ -363,13 +370,16 @@ public class ClusterIn {
    /**
    * Логическое значение, которое показывает, использовать ли Kubernetes Dashboard в кластере
    * @return isK8sDashboard
+   * @deprecated
   **/
+  @Deprecated
   @javax.annotation.Nullable
   public Boolean getIsK8sDashboard() {
     return isK8sDashboard;
   }
 
 
+  @Deprecated
   public void setIsK8sDashboard(Boolean isK8sDashboard) {
     this.isK8sDashboard = isK8sDashboard;
   }
