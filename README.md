@@ -2,7 +2,7 @@
 
 Timeweb Cloud API
 - API version: 1.0.0
-  - Build date: 2026-05-18T09:03:06.803954Z[Etc/UTC]
+  - Build date: 2026-06-16T13:34:23.005067Z[Etc/UTC]
 
 # Введение
 API Timeweb Cloud позволяет вам управлять ресурсами в облаке программным способом с использованием обычных HTTP-запросов.
@@ -510,6 +510,29 @@ Class | Method | HTTP request | Description
 *ProjectsApi* | [**getProjects**](docs/ProjectsApi.md#getProjects) | **GET** /api/v1/projects | Получение списка проектов
 *ProjectsApi* | [**transferResourceToAnotherProject**](docs/ProjectsApi.md#transferResourceToAnotherProject) | **PUT** /api/v1/projects/{project_id}/resources/transfer | Перенести ресурс в другой проект
 *ProjectsApi* | [**updateProject**](docs/ProjectsApi.md#updateProject) | **PUT** /api/v1/projects/{project_id} | Изменение проекта
+*RoutersApi* | [**addNetworks**](docs/RoutersApi.md#addNetworks) | **POST** /api/v1/routers/{router_id}/networks | Подключение сетей к роутеру
+*RoutersApi* | [**createRouter**](docs/RoutersApi.md#createRouter) | **POST** /api/v1/routers | Создание роутера
+*RoutersApi* | [**deleteDnat**](docs/RoutersApi.md#deleteDnat) | **DELETE** /api/v1/routers/{router_id}/dnat-rules/{dnat_id} | Удаление правила проброса портов
+*RoutersApi* | [**deleteRouter**](docs/RoutersApi.md#deleteRouter) | **DELETE** /api/v1/routers/{router_id} | Удаление роутера
+*RoutersApi* | [**deleteRouterNat**](docs/RoutersApi.md#deleteRouterNat) | **DELETE** /api/v1/routers/{router_id}/networks/{network_name}/nat | Выключение NAT для сети
+*RoutersApi* | [**deleteRouterNetwork**](docs/RoutersApi.md#deleteRouterNetwork) | **DELETE** /api/v1/routers/{router_id}/networks/{network_name} | Удаление сети из роутера
+*RoutersApi* | [**deleteStaticRoute**](docs/RoutersApi.md#deleteStaticRoute) | **DELETE** /api/v1/routers/{router_id}/static-routes/{static_route_id} | Удаление статического маршрута
+*RoutersApi* | [**getAvailableStaticRoutes**](docs/RoutersApi.md#getAvailableStaticRoutes) | **GET** /api/v1/routers/{router_id}/static-routes/available | Получение доступных подсетей для статических маршрутов
+*RoutersApi* | [**getDnat**](docs/RoutersApi.md#getDnat) | **GET** /api/v1/routers/{router_id}/dnat-rules | Получение списка правил проброса портов
+*RoutersApi* | [**getDnatRule**](docs/RoutersApi.md#getDnatRule) | **GET** /api/v1/routers/{router_id}/dnat-rules/{dnat_id} | Получение правила проброса портов
+*RoutersApi* | [**getNetworks**](docs/RoutersApi.md#getNetworks) | **GET** /api/v1/routers/{router_id}/networks | Получение списка сетей роутера
+*RoutersApi* | [**getRouter**](docs/RoutersApi.md#getRouter) | **GET** /api/v1/routers/{router_id} | Получение информации о роутере
+*RoutersApi* | [**getRouterAvailableNetworks**](docs/RoutersApi.md#getRouterAvailableNetworks) | **GET** /api/v1/routers/networks/available | Получение списка доступных сетей
+*RoutersApi* | [**getRouterPresets**](docs/RoutersApi.md#getRouterPresets) | **GET** /api/v1/presets/routers | Получение списка тарифов роутеров
+*RoutersApi* | [**getRouterStatistics**](docs/RoutersApi.md#getRouterStatistics) | **GET** /api/v1/routers/{router_id}/statistics/{time_from}/{period}/{keys} | Получение статистики роутера
+*RoutersApi* | [**getRouters**](docs/RoutersApi.md#getRouters) | **GET** /api/v1/routers | Получение списка роутеров
+*RoutersApi* | [**getStaticRoutes**](docs/RoutersApi.md#getStaticRoutes) | **GET** /api/v1/routers/{router_id}/static-routes | Получение списка статических маршрутов
+*RoutersApi* | [**patchNetwork**](docs/RoutersApi.md#patchNetwork) | **PATCH** /api/v1/routers/{router_id}/networks/{network_name} | Обновление информации о сети
+*RoutersApi* | [**patchNetworks**](docs/RoutersApi.md#patchNetworks) | **PATCH** /api/v1/routers/{router_id}/networks | Обновление сетей роутера
+*RoutersApi* | [**postDnat**](docs/RoutersApi.md#postDnat) | **POST** /api/v1/routers/{router_id}/dnat-rules | Добавление правила проброса портов
+*RoutersApi* | [**postStaticRoute**](docs/RoutersApi.md#postStaticRoute) | **POST** /api/v1/routers/{router_id}/static-routes | Добавление статического маршрута
+*RoutersApi* | [**updateRouter**](docs/RoutersApi.md#updateRouter) | **PATCH** /api/v1/routers/{router_id} | Обновление информации о роутере
+*RoutersApi* | [**updateRouterNat**](docs/RoutersApi.md#updateRouterNat) | **PATCH** /api/v1/routers/{router_id}/networks/{network_name}/nat | Включение NAT для сети
 *S3Api* | [**addStorageSubdomainCertificate**](docs/S3Api.md#addStorageSubdomainCertificate) | **POST** /api/v1/storages/certificates/generate | Добавление сертификата для поддомена хранилища
 *S3Api* | [**addStorageSubdomains**](docs/S3Api.md#addStorageSubdomains) | **POST** /api/v1/storages/buckets/{bucket_id}/subdomains | Добавление поддоменов для хранилища
 *S3Api* | [**createStorage**](docs/S3Api.md#createStorage) | **POST** /api/v1/storages/buckets | Создание хранилища
@@ -635,6 +658,11 @@ Class | Method | HTTP request | Description
  - [AvailableFrameworks](docs/AvailableFrameworks.md)
  - [AvailableFrameworksBackendFrameworksInner](docs/AvailableFrameworksBackendFrameworksInner.md)
  - [AvailableFrameworksFrontendFrameworksInner](docs/AvailableFrameworksFrontendFrameworksInner.md)
+ - [AvailableNetwork](docs/AvailableNetwork.md)
+ - [AvailableNetworksResponse](docs/AvailableNetworksResponse.md)
+ - [AvailableStaticRoute](docs/AvailableStaticRoute.md)
+ - [AvailableStaticRouteSubnetsInner](docs/AvailableStaticRouteSubnetsInner.md)
+ - [AvailableStaticRoutesResponse](docs/AvailableStaticRoutesResponse.md)
  - [Backup](docs/Backup.md)
  - [Balancer](docs/Balancer.md)
  - [BalancerNetworksInner](docs/BalancerNetworksInner.md)
@@ -664,6 +692,7 @@ Class | Method | HTTP request | Description
  - [ClustersResponse](docs/ClustersResponse.md)
  - [Commit](docs/Commit.md)
  - [ComponentsSchemasBaseError](docs/ComponentsSchemasBaseError.md)
+ - [ComponentsSchemasMeta](docs/ComponentsSchemasMeta.md)
  - [ConfigParameters](docs/ConfigParameters.md)
  - [ContainerRegistryPresetsInner](docs/ContainerRegistryPresetsInner.md)
  - [ContainerRegistryRepositoriesInner](docs/ContainerRegistryRepositoriesInner.md)
@@ -764,6 +793,12 @@ Class | Method | HTTP request | Description
  - [Deploy](docs/Deploy.md)
  - [DeploySettingsInner](docs/DeploySettingsInner.md)
  - [DeployStatus](docs/DeployStatus.md)
+ - [DnatIn](docs/DnatIn.md)
+ - [DnatInLocal](docs/DnatInLocal.md)
+ - [DnatInPublic](docs/DnatInPublic.md)
+ - [DnatRuleOut](docs/DnatRuleOut.md)
+ - [DnatRuleResponse](docs/DnatRuleResponse.md)
+ - [DnatRulesResponse](docs/DnatRulesResponse.md)
  - [DnsRecord](docs/DnsRecord.md)
  - [DnsRecordData](docs/DnsRecordData.md)
  - [DnsRecordV2](docs/DnsRecordV2.md)
@@ -942,6 +977,7 @@ Class | Method | HTTP request | Description
  - [ModelParamsInfoReasoningEffort](docs/ModelParamsInfoReasoningEffort.md)
  - [ModelParamsInfoTemperature](docs/ModelParamsInfoTemperature.md)
  - [MountNetworkDrive](docs/MountNetworkDrive.md)
+ - [NatIn](docs/NatIn.md)
  - [Network](docs/Network.md)
  - [NetworkDrive](docs/NetworkDrive.md)
  - [NetworkDriveAvailableResource](docs/NetworkDriveAvailableResource.md)
@@ -950,6 +986,11 @@ Class | Method | HTTP request | Description
  - [NetworkDrivePresetWrite](docs/NetworkDrivePresetWrite.md)
  - [NetworkDriveServiceListInner](docs/NetworkDriveServiceListInner.md)
  - [NetworkDriversResponse](docs/NetworkDriversResponse.md)
+ - [NetworkEdit](docs/NetworkEdit.md)
+ - [NetworkIn](docs/NetworkIn.md)
+ - [NetworkOut](docs/NetworkOut.md)
+ - [NetworkResponse](docs/NetworkResponse.md)
+ - [NetworksResponse](docs/NetworksResponse.md)
  - [NodeGroupIn](docs/NodeGroupIn.md)
  - [NodeGroupInConfiguration](docs/NodeGroupInConfiguration.md)
  - [NodeGroupOut](docs/NodeGroupOut.md)
@@ -992,6 +1033,27 @@ Class | Method | HTTP request | Description
  - [ResourceType](docs/ResourceType.md)
  - [Resources](docs/Resources.md)
  - [ResourcesResponse](docs/ResourcesResponse.md)
+ - [RouterEdit](docs/RouterEdit.md)
+ - [RouterIn](docs/RouterIn.md)
+ - [RouterInIpsInner](docs/RouterInIpsInner.md)
+ - [RouterInIpsInnerNat](docs/RouterInIpsInnerNat.md)
+ - [RouterInNetworksInner](docs/RouterInNetworksInner.md)
+ - [RouterInParentService](docs/RouterInParentService.md)
+ - [RouterNetworkMeta](docs/RouterNetworkMeta.md)
+ - [RouterNetworkMetaDhcp](docs/RouterNetworkMetaDhcp.md)
+ - [RouterOut](docs/RouterOut.md)
+ - [RouterOutIpsInner](docs/RouterOutIpsInner.md)
+ - [RouterOutIpsInnerNat](docs/RouterOutIpsInnerNat.md)
+ - [RouterOutNodesInner](docs/RouterOutNodesInner.md)
+ - [RouterOutParentServicesInner](docs/RouterOutParentServicesInner.md)
+ - [RouterPreset](docs/RouterPreset.md)
+ - [RouterPresetsResponse](docs/RouterPresetsResponse.md)
+ - [RouterResponse](docs/RouterResponse.md)
+ - [RouterStatistic](docs/RouterStatistic.md)
+ - [RouterStatisticListInner](docs/RouterStatisticListInner.md)
+ - [RouterStatisticMeta](docs/RouterStatisticMeta.md)
+ - [RouterStatisticsResponse](docs/RouterStatisticsResponse.md)
+ - [RoutersResponse](docs/RoutersResponse.md)
  - [Rule](docs/Rule.md)
  - [S3Subdomain](docs/S3Subdomain.md)
  - [SchemasBaseError](docs/SchemasBaseError.md)
@@ -1025,6 +1087,10 @@ Class | Method | HTTP request | Description
  - [SpamProtectionIsEnabled](docs/SpamProtectionIsEnabled.md)
  - [SshKey](docs/SshKey.md)
  - [SshKeyUsedByInner](docs/SshKeyUsedByInner.md)
+ - [StaticRouteIn](docs/StaticRouteIn.md)
+ - [StaticRouteOut](docs/StaticRouteOut.md)
+ - [StaticRouteResponse](docs/StaticRouteResponse.md)
+ - [StaticRoutesResponse](docs/StaticRoutesResponse.md)
  - [Status](docs/Status.md)
  - [StatusCompanyInfo](docs/StatusCompanyInfo.md)
  - [Subdomain](docs/Subdomain.md)
