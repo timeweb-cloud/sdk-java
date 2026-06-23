@@ -41,9 +41,11 @@ public enum DbType {
   
   POSTGRES17("postgres17"),
   
-  REDIS7("redis7"),
+  VALKEY7("valkey7"),
   
-  REDIS8_1("redis8_1"),
+  VALKEY8_1("valkey8_1"),
+  
+  VALKEY9_1("valkey9_1"),
   
   MONGODB7("mongodb7"),
   
