@@ -58,7 +58,7 @@ import org.openapitools.client.JSON;
 /**
  * Кластер базы данных
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-06-23T10:10:22.244701Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-06-23T13:38:59.144144Z[Etc/UTC]")
 public class DatabaseCluster {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -130,6 +130,10 @@ public class DatabaseCluster {
   public static final String SERIALIZED_NAME_NETWORKS = "networks";
   @SerializedName(SERIALIZED_NAME_NETWORKS)
   private List<DatabaseClusterNetworksInner> networks = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_IS_PUBLIC_IPV6 = "is_public_ipv6";
+  @SerializedName(SERIALIZED_NAME_IS_PUBLIC_IPV6)
+  private Boolean isPublicIpv6;
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
@@ -397,6 +401,27 @@ public class DatabaseCluster {
   }
 
 
+  public DatabaseCluster isPublicIpv6(Boolean isPublicIpv6) {
+    
+    this.isPublicIpv6 = isPublicIpv6;
+    return this;
+  }
+
+   /**
+   * Использование IPv6 адреса.
+   * @return isPublicIpv6
+  **/
+  @javax.annotation.Nullable
+  public Boolean getIsPublicIpv6() {
+    return isPublicIpv6;
+  }
+
+
+  public void setIsPublicIpv6(Boolean isPublicIpv6) {
+    this.isPublicIpv6 = isPublicIpv6;
+  }
+
+
   public DatabaseCluster type(DbType type) {
     
     this.type = type;
@@ -601,6 +626,7 @@ public class DatabaseCluster {
         Objects.equals(this.location, databaseCluster.location) &&
         Objects.equals(this.name, databaseCluster.name) &&
         Objects.equals(this.networks, databaseCluster.networks) &&
+        Objects.equals(this.isPublicIpv6, databaseCluster.isPublicIpv6) &&
         Objects.equals(this.type, databaseCluster.type) &&
         Objects.equals(this.hashType, databaseCluster.hashType) &&
         Objects.equals(this.avatarLink, databaseCluster.avatarLink) &&
@@ -618,7 +644,7 @@ public class DatabaseCluster {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, location, name, networks, type, hashType, avatarLink, port, status, presetId, disk, configParameters, isEnabledPublicNetwork);
+    return Objects.hash(id, createdAt, location, name, networks, isPublicIpv6, type, hashType, avatarLink, port, status, presetId, disk, configParameters, isEnabledPublicNetwork);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -637,6 +663,7 @@ public class DatabaseCluster {
     sb.append("    location: ").append(toIndentedString(location)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    networks: ").append(toIndentedString(networks)).append("\n");
+    sb.append("    isPublicIpv6: ").append(toIndentedString(isPublicIpv6)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    hashType: ").append(toIndentedString(hashType)).append("\n");
     sb.append("    avatarLink: ").append(toIndentedString(avatarLink)).append("\n");
@@ -673,6 +700,7 @@ public class DatabaseCluster {
     openapiFields.add("location");
     openapiFields.add("name");
     openapiFields.add("networks");
+    openapiFields.add("is_public_ipv6");
     openapiFields.add("type");
     openapiFields.add("hash_type");
     openapiFields.add("avatar_link");

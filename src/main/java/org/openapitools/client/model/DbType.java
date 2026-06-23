@@ -41,6 +41,8 @@ public enum DbType {
   
   POSTGRES17("postgres17"),
   
+  POSTGRES18("postgres18"),
+  
   VALKEY7("valkey7"),
   
   VALKEY8_1("valkey8_1"),
@@ -50,8 +52,6 @@ public enum DbType {
   MONGODB7("mongodb7"),
   
   MONGODB8_0("mongodb8_0"),
-  
-  OPENSEARCH("opensearch"),
   
   OPENSEARCH2_19("opensearch2_19"),
   

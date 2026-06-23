@@ -68,4 +68,12 @@ public class UpdateClusterTest {
         // TODO: test isEnabledPublicNetwork
     }
 
+    /**
+     * Test the property 'isPublicIpv6'
+     */
+    @Test
+    public void isPublicIpv6Test() {
+        // TODO: test isPublicIpv6
+    }
+
 }

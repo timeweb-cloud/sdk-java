@@ -54634,12 +54634,12 @@ components:
       - postgres15
       - postgres16
       - postgres17
+      - postgres18
       - valkey7
       - valkey8_1
       - valkey9_1
       - mongodb7
       - mongodb8_0
-      - opensearch
       - opensearch2_19
       - clickhouse
       - clickhouse24
@@ -54869,6 +54869,7 @@ components:
           - ip: 0.0.0.0
             type: ipv4
         type: mysql
+        is_public_ipv6: true
         disk:
           size: 10485760
           used: 486.11328125
@@ -54911,6 +54912,10 @@ components:
           items:
             $ref: '#/components/schemas/database_cluster_networks_inner'
           type: array
+        is_public_ipv6:
+          description: Использование IPv6 адреса.
+          example: true
+          type: boolean
         type:
           $ref: '#/components/schemas/db-type'
         hash_type:
@@ -55054,6 +55059,10 @@ components:
           $ref: '#/components/schemas/db-replication'
         network:
           $ref: '#/components/schemas/network'
+        is_public_ipv6:
+          description: Использование IPv6 адреса.
+          example: true
+          type: boolean
         description:
           description: Описание кластера базы данных
           example: description
@@ -55084,6 +55093,10 @@ components:
         is_enabled_public_network:
           description: Доступность публичного IP-адреса
           example: false
+          type: boolean
+        is_public_ipv6:
+          description: Использование IPv6 адреса.
+          example: true
           type: boolean
       type: object
     database-admin:
@@ -64751,6 +64764,7 @@ components:
             - ip: 0.0.0.0
               type: ipv4
           type: mysql
+          is_public_ipv6: true
           disk:
             size: 10485760
             used: 486.11328125
@@ -64807,6 +64821,7 @@ components:
             - ip: 0.0.0.0
               type: ipv4
           type: mysql
+          is_public_ipv6: true
           disk:
             size: 10485760
             used: 486.11328125
@@ -64879,6 +64894,7 @@ components:
             - ip: 0.0.0.0
               type: ipv4
           type: mysql
+          is_public_ipv6: true
           disk:
             size: 10485760
             used: 486.11328125

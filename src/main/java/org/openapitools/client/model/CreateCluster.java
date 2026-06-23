@@ -58,7 +58,7 @@ import org.openapitools.client.JSON;
 /**
  * CreateCluster
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-06-23T10:10:22.244701Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-06-23T13:38:59.144144Z[Etc/UTC]")
 public class CreateCluster {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -150,6 +150,10 @@ public class CreateCluster {
   public static final String SERIALIZED_NAME_NETWORK = "network";
   @SerializedName(SERIALIZED_NAME_NETWORK)
   private Network network;
+
+  public static final String SERIALIZED_NAME_IS_PUBLIC_IPV6 = "is_public_ipv6";
+  @SerializedName(SERIALIZED_NAME_IS_PUBLIC_IPV6)
+  private Boolean isPublicIpv6;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
@@ -397,6 +401,27 @@ public class CreateCluster {
   }
 
 
+  public CreateCluster isPublicIpv6(Boolean isPublicIpv6) {
+    
+    this.isPublicIpv6 = isPublicIpv6;
+    return this;
+  }
+
+   /**
+   * Использование IPv6 адреса.
+   * @return isPublicIpv6
+  **/
+  @javax.annotation.Nullable
+  public Boolean getIsPublicIpv6() {
+    return isPublicIpv6;
+  }
+
+
+  public void setIsPublicIpv6(Boolean isPublicIpv6) {
+    this.isPublicIpv6 = isPublicIpv6;
+  }
+
+
   public CreateCluster description(String description) {
     
     this.description = description;
@@ -481,6 +506,7 @@ public class CreateCluster {
         Objects.equals(this.configParameters, createCluster.configParameters) &&
         Objects.equals(this.replication, createCluster.replication) &&
         Objects.equals(this.network, createCluster.network) &&
+        Objects.equals(this.isPublicIpv6, createCluster.isPublicIpv6) &&
         Objects.equals(this.description, createCluster.description) &&
         Objects.equals(this.availabilityZone, createCluster.availabilityZone) &&
         Objects.equals(this.autoBackups, createCluster.autoBackups);
@@ -488,7 +514,7 @@ public class CreateCluster {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, type, admin, instance, hashType, presetId, configuratorId, projectId, configParameters, replication, network, description, availabilityZone, autoBackups);
+    return Objects.hash(name, type, admin, instance, hashType, presetId, configuratorId, projectId, configParameters, replication, network, isPublicIpv6, description, availabilityZone, autoBackups);
   }
 
   @Override
@@ -506,6 +532,7 @@ public class CreateCluster {
     sb.append("    configParameters: ").append(toIndentedString(configParameters)).append("\n");
     sb.append("    replication: ").append(toIndentedString(replication)).append("\n");
     sb.append("    network: ").append(toIndentedString(network)).append("\n");
+    sb.append("    isPublicIpv6: ").append(toIndentedString(isPublicIpv6)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    availabilityZone: ").append(toIndentedString(availabilityZone)).append("\n");
     sb.append("    autoBackups: ").append(toIndentedString(autoBackups)).append("\n");
@@ -542,6 +569,7 @@ public class CreateCluster {
     openapiFields.add("config_parameters");
     openapiFields.add("replication");
     openapiFields.add("network");
+    openapiFields.add("is_public_ipv6");
     openapiFields.add("description");
     openapiFields.add("availability_zone");
     openapiFields.add("auto_backups");

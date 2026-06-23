@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * UpdateCluster
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-06-23T10:10:22.244701Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-06-23T13:38:59.144144Z[Etc/UTC]")
 public class UpdateCluster {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -67,6 +67,10 @@ public class UpdateCluster {
   public static final String SERIALIZED_NAME_IS_ENABLED_PUBLIC_NETWORK = "is_enabled_public_network";
   @SerializedName(SERIALIZED_NAME_IS_ENABLED_PUBLIC_NETWORK)
   private Boolean isEnabledPublicNetwork;
+
+  public static final String SERIALIZED_NAME_IS_PUBLIC_IPV6 = "is_public_ipv6";
+  @SerializedName(SERIALIZED_NAME_IS_PUBLIC_IPV6)
+  private Boolean isPublicIpv6;
 
   public UpdateCluster() {
   }
@@ -155,6 +159,27 @@ public class UpdateCluster {
   }
 
 
+  public UpdateCluster isPublicIpv6(Boolean isPublicIpv6) {
+    
+    this.isPublicIpv6 = isPublicIpv6;
+    return this;
+  }
+
+   /**
+   * Использование IPv6 адреса.
+   * @return isPublicIpv6
+  **/
+  @javax.annotation.Nullable
+  public Boolean getIsPublicIpv6() {
+    return isPublicIpv6;
+  }
+
+
+  public void setIsPublicIpv6(Boolean isPublicIpv6) {
+    this.isPublicIpv6 = isPublicIpv6;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -168,12 +193,13 @@ public class UpdateCluster {
     return Objects.equals(this.name, updateCluster.name) &&
         Objects.equals(this.presetId, updateCluster.presetId) &&
         Objects.equals(this.description, updateCluster.description) &&
-        Objects.equals(this.isEnabledPublicNetwork, updateCluster.isEnabledPublicNetwork);
+        Objects.equals(this.isEnabledPublicNetwork, updateCluster.isEnabledPublicNetwork) &&
+        Objects.equals(this.isPublicIpv6, updateCluster.isPublicIpv6);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, presetId, description, isEnabledPublicNetwork);
+    return Objects.hash(name, presetId, description, isEnabledPublicNetwork, isPublicIpv6);
   }
 
   @Override
@@ -184,6 +210,7 @@ public class UpdateCluster {
     sb.append("    presetId: ").append(toIndentedString(presetId)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    isEnabledPublicNetwork: ").append(toIndentedString(isEnabledPublicNetwork)).append("\n");
+    sb.append("    isPublicIpv6: ").append(toIndentedString(isPublicIpv6)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -210,6 +237,7 @@ public class UpdateCluster {
     openapiFields.add("preset_id");
     openapiFields.add("description");
     openapiFields.add("is_enabled_public_network");
+    openapiFields.add("is_public_ipv6");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

@@ -13,6 +13,7 @@
 |**location** | [**LocationEnum**](#LocationEnum) | Локация сервера. |  |
 |**name** | **String** | Название кластера базы данных. |  |
 |**networks** | [**List&lt;DatabaseClusterNetworksInner&gt;**](DatabaseClusterNetworksInner.md) | Список сетей кластера базы данных. |  |
+|**isPublicIpv6** | **Boolean** | Использование IPv6 адреса. |  [optional] |
 |**type** | **DbType** |  |  |
 |**hashType** | [**HashTypeEnum**](#HashTypeEnum) | Тип хеширования кластера базы данных (mysql5 | mysql | postgres). |  |
 |**avatarLink** | **String** | Ссылка на аватар для базы данных. |  |

@@ -85,6 +85,14 @@ public class DatabaseClusterTest {
     }
 
     /**
+     * Test the property 'isPublicIpv6'
+     */
+    @Test
+    public void isPublicIpv6Test() {
+        // TODO: test isPublicIpv6
+    }
+
+    /**
      * Test the property 'type'
      */
     @Test
