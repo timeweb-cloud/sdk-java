@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * CreateDomainMailboxV2201Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-06-23T13:38:59.144144Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-06-25T12:45:58.392473Z[Etc/UTC]")
 public class CreateDomainMailboxV2201Response {
   public static final String SERIALIZED_NAME_MAILBOX = "mailbox";
   @SerializedName(SERIALIZED_NAME_MAILBOX)

@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * Пользователь базы данных.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-06-23T13:38:59.144144Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-06-25T12:45:58.392473Z[Etc/UTC]")
 public class CreateClusterAdmin {
   public static final String SERIALIZED_NAME_LOGIN = "login";
   @SerializedName(SERIALIZED_NAME_LOGIN)
@@ -73,13 +73,29 @@ public class CreateClusterAdmin {
   public enum PrivilegesEnum {
     ALTER("ALTER"),
     
+    ALTER_TABLE("ALTER_TABLE"),
+    
+    ALTER_VIEW("ALTER_VIEW"),
+    
     CREATE_VIEW("CREATE_VIEW"),
+    
+    CREATE_DICTIONARY("CREATE_DICTIONARY"),
+    
+    CREATE_FUNCTION("CREATE_FUNCTION"),
+    
+    CREATE_TABLE("CREATE_TABLE"),
     
     CREATE("CREATE"),
     
     DELETE("DELETE"),
     
     DROP("DROP"),
+    
+    DROP_TABLE("DROP_TABLE"),
+    
+    DROP_VIEW("DROP_VIEW"),
+    
+    DROP_DICTIONARY("DROP_DICTIONARY"),
     
     EVENT("EVENT"),
     
@@ -93,9 +109,13 @@ public class CreateClusterAdmin {
     
     SELECT("SELECT"),
     
+    SHOW("SHOW"),
+    
     SHOW_VIEW("SHOW_VIEW"),
     
     TRUNCATE("TRUNCATE"),
+    
+    TRIGGER("TRIGGER"),
     
     UPDATE("UPDATE"),
     
@@ -103,17 +123,87 @@ public class CreateClusterAdmin {
     
     WRITE("WRITE"),
     
-    CONNECTION("CONNECTION"),
+    READ_WRITE("READ_WRITE"),
     
-    FAST("FAST"),
-    
-    READWRITE("readWrite"),
+    DB_ADMIN("DB_ADMIN"),
     
     ALTER_ROUTINE("ALTER_ROUTINE"),
     
     CREATE_ROUTINE("CREATE_ROUTINE"),
     
-    TRANSACTION("TRANSACTION");
+    CREATE_TEMPORARY_TABLES("CREATE_TEMPORARY_TABLES"),
+    
+    TEMPORARY("TEMPORARY"),
+    
+    CONFIGURE("CONFIGURE"),
+    
+    READ_DASHBOARD("READ_DASHBOARD"),
+    
+    WRITE_DASHBOARD("WRITE_DASHBOARD"),
+    
+    DESCRIBE("DESCRIBE"),
+    
+    OPTIMIZE("OPTIMIZE"),
+    
+    EXECUTE("EXECUTE"),
+    
+    CREATEDB("CREATEDB"),
+    
+    CREATEROLE("CREATEROLE"),
+    
+    CREATE_DB("CREATE_DB"),
+    
+    CREATE_USER("CREATE_USER"),
+    
+    PROCESS("PROCESS"),
+    
+    SLOW_LOG("SLOW_LOG"),
+    
+    CREATE_TEMPORARY_TABLE("CREATE_TEMPORARY_TABLE"),
+    
+    ADMIN("ADMIN"),
+    
+    BITMAP("BITMAP"),
+    
+    BLOCKING("BLOCKING"),
+    
+    CONNECTION("CONNECTION"),
+    
+    DANGEROUS("DANGEROUS"),
+    
+    GEO("GEO"),
+    
+    HASH("HASH"),
+    
+    HYPERLOGLOG("HYPERLOGLOG"),
+    
+    FAST("FAST"),
+    
+    KEYSPACE("KEYSPACE"),
+    
+    LIST("LIST"),
+    
+    PUBSUB("PUBSUB"),
+    
+    SCRIPTING("SCRIPTING"),
+    
+    SET("SET"),
+    
+    SORTEDSET("SORTEDSET"),
+    
+    SLOW("SLOW"),
+    
+    STREAM("STREAM"),
+    
+    STRING("STRING"),
+    
+    TRANSACTION("TRANSACTION"),
+    
+    DICTGET("dictGet"),
+    
+    DBADMIN("dbAdmin"),
+    
+    READWRITE("readWrite");
 
     private String value;
 

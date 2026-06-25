@@ -17,15 +17,12 @@ import org.openapitools.client.ApiException;
 import org.openapitools.client.model.AutoBackup;
 import org.openapitools.client.model.CreateAdmin;
 import org.openapitools.client.model.CreateCluster;
-import org.openapitools.client.model.CreateDatabase201Response;
 import org.openapitools.client.model.CreateDatabaseBackup201Response;
 import org.openapitools.client.model.CreateDatabaseBackup409Response;
 import org.openapitools.client.model.CreateDatabaseCluster201Response;
 import org.openapitools.client.model.CreateDatabaseInstance201Response;
 import org.openapitools.client.model.CreateDatabaseUser201Response;
-import org.openapitools.client.model.CreateDb;
 import org.openapitools.client.model.CreateInstance;
-import org.openapitools.client.model.DeleteDatabase200Response;
 import org.openapitools.client.model.DeleteDatabaseCluster200Response;
 import org.openapitools.client.model.GetAccountStatus403Response;
 import org.openapitools.client.model.GetDatabaseAutoBackupsSettings200Response;
@@ -34,7 +31,6 @@ import org.openapitools.client.model.GetDatabaseClusterTypes200Response;
 import org.openapitools.client.model.GetDatabaseClusters200Response;
 import org.openapitools.client.model.GetDatabaseInstances200Response;
 import org.openapitools.client.model.GetDatabaseUsers200Response;
-import org.openapitools.client.model.GetDatabases200Response;
 import org.openapitools.client.model.GetDatabasesPresets200Response;
 import org.openapitools.client.model.GetFinances400Response;
 import org.openapitools.client.model.GetFinances401Response;
@@ -43,7 +39,6 @@ import org.openapitools.client.model.GetFinances500Response;
 import org.openapitools.client.model.GetImage404Response;
 import org.openapitools.client.model.UpdateAdmin;
 import org.openapitools.client.model.UpdateCluster;
-import org.openapitools.client.model.UpdateDb;
 import org.openapitools.client.model.UpdateInstance;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -60,20 +55,6 @@ import java.util.Map;
 public class DatabasesApiTest {
 
     private final DatabasesApi api = new DatabasesApi();
-
-    /**
-     * Создание базы данных
-     *
-     * Чтобы создать базу данных на вашем аккаунте, отправьте POST-запрос на &#x60;/api/v1/dbs&#x60;, задав необходимые атрибуты.  База данных будет создана с использованием предоставленной информации. Тело ответа будет содержать объект JSON с информацией о созданной базе данных.
-     *
-     * @throws ApiException if the Api call fails
-     */
-    @Test
-    public void createDatabaseTest() throws ApiException {
-        CreateDb createDb = null;
-        CreateDatabase201Response response = api.createDatabase(createDb);
-        // TODO: test validations
-    }
 
     /**
      * Создание бэкапа базы данных
@@ -135,22 +116,6 @@ public class DatabasesApiTest {
     }
 
     /**
-     * Удаление базы данных
-     *
-     * Чтобы удалить базу данных, отправьте запрос DELETE в &#x60;api/v1/dbs/{db_id}&#x60;. 
-     *
-     * @throws ApiException if the Api call fails
-     */
-    @Test
-    public void deleteDatabaseTest() throws ApiException {
-        Integer dbId = null;
-        String hash = null;
-        String code = null;
-        DeleteDatabase200Response response = api.deleteDatabase(dbId, hash, code);
-        // TODO: test validations
-    }
-
-    /**
      * Удаление бэкапа базы данных
      *
      * Чтобы удалить бэкап базы данных, отправьте запрос DELETE в &#x60;api/v1/dbs/{db_id}/backups/{backup_id}&#x60;. 
@@ -208,20 +173,6 @@ public class DatabasesApiTest {
         Integer dbClusterId = null;
         Integer adminId = null;
         api.deleteDatabaseUser(dbClusterId, adminId);
-        // TODO: test validations
-    }
-
-    /**
-     * Получение базы данных
-     *
-     * Чтобы отобразить информацию об отдельной базе данных, отправьте запрос GET на &#x60;api/v1/dbs/{db_id}&#x60;. 
-     *
-     * @throws ApiException if the Api call fails
-     */
-    @Test
-    public void getDatabaseTest() throws ApiException {
-        Integer dbId = null;
-        CreateDatabase201Response response = api.getDatabase(dbId);
         // TODO: test validations
     }
 
@@ -384,21 +335,6 @@ public class DatabasesApiTest {
     }
 
     /**
-     * Получение списка всех баз данных
-     *
-     * Чтобы получить список всех баз данных на вашем аккаунте, отправьте GET-запрос на &#x60;/api/v1/dbs&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;dbs&#x60;.
-     *
-     * @throws ApiException if the Api call fails
-     */
-    @Test
-    public void getDatabasesTest() throws ApiException {
-        Integer limit = null;
-        Integer offset = null;
-        GetDatabases200Response response = api.getDatabases(limit, offset);
-        // TODO: test validations
-    }
-
-    /**
      * Получение списка тарифов для баз данных
      *
      * Чтобы получить список тарифов для баз данных, отправьте GET-запрос на &#x60;/api/v2/presets/dbs&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;databases_presets&#x60;.
@@ -424,21 +360,6 @@ public class DatabasesApiTest {
         Integer dbId = null;
         Integer backupId = null;
         api.restoreDatabaseFromBackup(dbId, backupId);
-        // TODO: test validations
-    }
-
-    /**
-     * Обновление базы данных
-     *
-     * Чтобы обновить только определенные атрибуты базы данных, отправьте запрос PATCH в &#x60;api/v1/dbs/{db_id}&#x60;. 
-     *
-     * @throws ApiException if the Api call fails
-     */
-    @Test
-    public void updateDatabaseTest() throws ApiException {
-        Integer dbId = null;
-        UpdateDb updateDb = null;
-        CreateDatabase201Response response = api.updateDatabase(dbId, updateDb);
         // TODO: test validations
     }
 

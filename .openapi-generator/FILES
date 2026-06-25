@@ -114,13 +114,11 @@ docs/CreateBalancerRule200Response.md
 docs/CreateCluster.md
 docs/CreateClusterAdmin.md
 docs/CreateClusterInstance.md
-docs/CreateDatabase201Response.md
 docs/CreateDatabaseBackup201Response.md
 docs/CreateDatabaseBackup409Response.md
 docs/CreateDatabaseCluster201Response.md
 docs/CreateDatabaseInstance201Response.md
 docs/CreateDatabaseUser201Response.md
-docs/CreateDb.md
 docs/CreateDbAutoBackups.md
 docs/CreateDedicatedServer.md
 docs/CreateDedicatedServer201Response.md
@@ -190,7 +188,6 @@ docs/DeleteBalancer200Response.md
 docs/DeleteCluster200Response.md
 docs/DeleteCountriesFromAllowedList200Response.md
 docs/DeleteCountriesFromAllowedListRequest.md
-docs/DeleteDatabase200Response.md
 docs/DeleteDatabaseCluster200Response.md
 docs/DeleteIPsFromAllowedList200Response.md
 docs/DeleteIPsFromAllowedListRequest.md
@@ -280,7 +277,6 @@ docs/GetDatabaseClusterTypes200Response.md
 docs/GetDatabaseClusters200Response.md
 docs/GetDatabaseInstances200Response.md
 docs/GetDatabaseUsers200Response.md
-docs/GetDatabases200Response.md
 docs/GetDatabasesPresets200Response.md
 docs/GetDedicatedServerPresetAdditionalServices200Response.md
 docs/GetDedicatedServers200Response.md
@@ -533,7 +529,6 @@ docs/UpdateAppSettings200Response.md
 docs/UpdateAuthRestrictionsByCountriesRequest.md
 docs/UpdateBalancer.md
 docs/UpdateCluster.md
-docs/UpdateDb.md
 docs/UpdateDedicatedServerRequest.md
 docs/UpdateDomain.md
 docs/UpdateDomainAutoProlongation200Response.md
@@ -737,13 +732,11 @@ src/main/java/org/openapitools/client/model/CreateBalancerRule200Response.java
 src/main/java/org/openapitools/client/model/CreateCluster.java
 src/main/java/org/openapitools/client/model/CreateClusterAdmin.java
 src/main/java/org/openapitools/client/model/CreateClusterInstance.java
-src/main/java/org/openapitools/client/model/CreateDatabase201Response.java
 src/main/java/org/openapitools/client/model/CreateDatabaseBackup201Response.java
 src/main/java/org/openapitools/client/model/CreateDatabaseBackup409Response.java
 src/main/java/org/openapitools/client/model/CreateDatabaseCluster201Response.java
 src/main/java/org/openapitools/client/model/CreateDatabaseInstance201Response.java
 src/main/java/org/openapitools/client/model/CreateDatabaseUser201Response.java
-src/main/java/org/openapitools/client/model/CreateDb.java
 src/main/java/org/openapitools/client/model/CreateDbAutoBackups.java
 src/main/java/org/openapitools/client/model/CreateDedicatedServer.java
 src/main/java/org/openapitools/client/model/CreateDedicatedServer201Response.java
@@ -811,7 +804,6 @@ src/main/java/org/openapitools/client/model/DeleteBalancer200Response.java
 src/main/java/org/openapitools/client/model/DeleteCluster200Response.java
 src/main/java/org/openapitools/client/model/DeleteCountriesFromAllowedList200Response.java
 src/main/java/org/openapitools/client/model/DeleteCountriesFromAllowedListRequest.java
-src/main/java/org/openapitools/client/model/DeleteDatabase200Response.java
 src/main/java/org/openapitools/client/model/DeleteDatabaseCluster200Response.java
 src/main/java/org/openapitools/client/model/DeleteIPsFromAllowedList200Response.java
 src/main/java/org/openapitools/client/model/DeleteIPsFromAllowedListRequest.java
@@ -898,7 +890,6 @@ src/main/java/org/openapitools/client/model/GetDatabaseClusterTypes200Response.j
 src/main/java/org/openapitools/client/model/GetDatabaseClusters200Response.java
 src/main/java/org/openapitools/client/model/GetDatabaseInstances200Response.java
 src/main/java/org/openapitools/client/model/GetDatabaseUsers200Response.java
-src/main/java/org/openapitools/client/model/GetDatabases200Response.java
 src/main/java/org/openapitools/client/model/GetDatabasesPresets200Response.java
 src/main/java/org/openapitools/client/model/GetDedicatedServerPresetAdditionalServices200Response.java
 src/main/java/org/openapitools/client/model/GetDedicatedServers200Response.java
@@ -1139,7 +1130,6 @@ src/main/java/org/openapitools/client/model/UpdateAppSettings200Response.java
 src/main/java/org/openapitools/client/model/UpdateAuthRestrictionsByCountriesRequest.java
 src/main/java/org/openapitools/client/model/UpdateBalancer.java
 src/main/java/org/openapitools/client/model/UpdateCluster.java
-src/main/java/org/openapitools/client/model/UpdateDb.java
 src/main/java/org/openapitools/client/model/UpdateDedicatedServerRequest.java
 src/main/java/org/openapitools/client/model/UpdateDomain.java
 src/main/java/org/openapitools/client/model/UpdateDomainAutoProlongation200Response.java
@@ -1315,14 +1305,12 @@ src/test/java/org/openapitools/client/model/CreateBalancerTest.java
 src/test/java/org/openapitools/client/model/CreateClusterAdminTest.java
 src/test/java/org/openapitools/client/model/CreateClusterInstanceTest.java
 src/test/java/org/openapitools/client/model/CreateClusterTest.java
-src/test/java/org/openapitools/client/model/CreateDatabase201ResponseTest.java
 src/test/java/org/openapitools/client/model/CreateDatabaseBackup201ResponseTest.java
 src/test/java/org/openapitools/client/model/CreateDatabaseBackup409ResponseTest.java
 src/test/java/org/openapitools/client/model/CreateDatabaseCluster201ResponseTest.java
 src/test/java/org/openapitools/client/model/CreateDatabaseInstance201ResponseTest.java
 src/test/java/org/openapitools/client/model/CreateDatabaseUser201ResponseTest.java
 src/test/java/org/openapitools/client/model/CreateDbAutoBackupsTest.java
-src/test/java/org/openapitools/client/model/CreateDbTest.java
 src/test/java/org/openapitools/client/model/CreateDedicatedServer201ResponseTest.java
 src/test/java/org/openapitools/client/model/CreateDedicatedServerTest.java
 src/test/java/org/openapitools/client/model/CreateDeploy201ResponseTest.java
@@ -1389,7 +1377,6 @@ src/test/java/org/openapitools/client/model/DeleteBalancer200ResponseTest.java
 src/test/java/org/openapitools/client/model/DeleteCluster200ResponseTest.java
 src/test/java/org/openapitools/client/model/DeleteCountriesFromAllowedList200ResponseTest.java
 src/test/java/org/openapitools/client/model/DeleteCountriesFromAllowedListRequestTest.java
-src/test/java/org/openapitools/client/model/DeleteDatabase200ResponseTest.java
 src/test/java/org/openapitools/client/model/DeleteDatabaseCluster200ResponseTest.java
 src/test/java/org/openapitools/client/model/DeleteIPsFromAllowedList200ResponseTest.java
 src/test/java/org/openapitools/client/model/DeleteIPsFromAllowedListRequestTest.java
@@ -1476,7 +1463,6 @@ src/test/java/org/openapitools/client/model/GetDatabaseClusterTypes200ResponseTe
 src/test/java/org/openapitools/client/model/GetDatabaseClusters200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetDatabaseInstances200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetDatabaseUsers200ResponseTest.java
-src/test/java/org/openapitools/client/model/GetDatabases200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetDatabasesPresets200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetDedicatedServerPresetAdditionalServices200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetDedicatedServers200ResponseTest.java
@@ -1717,7 +1703,6 @@ src/test/java/org/openapitools/client/model/UpdateAppSettings200ResponseTest.jav
 src/test/java/org/openapitools/client/model/UpdateAuthRestrictionsByCountriesRequestTest.java
 src/test/java/org/openapitools/client/model/UpdateBalancerTest.java
 src/test/java/org/openapitools/client/model/UpdateClusterTest.java
-src/test/java/org/openapitools/client/model/UpdateDbTest.java
 src/test/java/org/openapitools/client/model/UpdateDedicatedServerRequestTest.java
 src/test/java/org/openapitools/client/model/UpdateDomainAutoProlongation200ResponseTest.java
 src/test/java/org/openapitools/client/model/UpdateDomainMailInfoRequestTest.java

@@ -58,7 +58,7 @@ import org.openapitools.client.JSON;
 /**
  * CreateCluster
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-06-23T13:38:59.144144Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-06-25T12:45:58.392473Z[Etc/UTC]")
 public class CreateCluster {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)

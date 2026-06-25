@@ -53,7 +53,7 @@ import org.openapitools.client.JSON;
 /**
  * Информация о доступных параметрах модели с их ограничениями
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-06-23T13:38:59.144144Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-06-25T12:45:58.392473Z[Etc/UTC]")
 public class ModelParamsInfo {
   public static final String SERIALIZED_NAME_TEMPERATURE = "temperature";
   @SerializedName(SERIALIZED_NAME_TEMPERATURE)
