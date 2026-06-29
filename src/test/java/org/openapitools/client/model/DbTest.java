@@ -21,9 +21,9 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
 import org.openapitools.client.model.AvailabilityZone;
-import org.openapitools.client.model.ConfigParameters;
 import org.openapitools.client.model.DbDiskStats;
 import org.openapitools.client.model.DbType;
+import org.openapitools.client.model.Mysql;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 

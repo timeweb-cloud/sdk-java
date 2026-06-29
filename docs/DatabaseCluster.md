@@ -21,7 +21,7 @@
 |**status** | [**StatusEnum**](#StatusEnum) | Текущий статус кластера базы данных. |  |
 |**presetId** | **Integer** | ID тарифа. |  |
 |**disk** | [**DatabaseClusterDisk**](DatabaseClusterDisk.md) |  |  [optional] |
-|**configParameters** | [**ConfigParameters**](ConfigParameters.md) |  |  |
+|**configParameters** | [**Mysql**](Mysql.md) |  |  |
 |**isEnabledPublicNetwork** | **Boolean** | Доступность публичного IP-адреса |  |
 
 

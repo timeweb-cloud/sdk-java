@@ -99,6 +99,8 @@ docs/Commit.md
 docs/ComponentsSchemasBaseError.md
 docs/ComponentsSchemasMeta.md
 docs/ConfigParameters.md
+docs/ConfigParametersMysql.md
+docs/ConfigParametersPostgres.md
 docs/ContainerRegistryApi.md
 docs/ContainerRegistryPresetsInner.md
 docs/ContainerRegistryRepositoriesInner.md
@@ -389,6 +391,7 @@ docs/ModelParamsInfoMaxTokens.md
 docs/ModelParamsInfoReasoningEffort.md
 docs/ModelParamsInfoTemperature.md
 docs/MountNetworkDrive.md
+docs/Mysql.md
 docs/NatIn.md
 docs/Network.md
 docs/NetworkDrive.md
@@ -422,6 +425,7 @@ docs/PaymentsApi.md
 docs/PerformActionOnBackupRequest.md
 docs/PerformActionOnServerRequest.md
 docs/Policy.md
+docs/Postgres.md
 docs/PresetsBalancer.md
 docs/PresetsDbs.md
 docs/PresetsResponse.md
@@ -718,6 +722,8 @@ src/main/java/org/openapitools/client/model/Commit.java
 src/main/java/org/openapitools/client/model/ComponentsSchemasBaseError.java
 src/main/java/org/openapitools/client/model/ComponentsSchemasMeta.java
 src/main/java/org/openapitools/client/model/ConfigParameters.java
+src/main/java/org/openapitools/client/model/ConfigParametersMysql.java
+src/main/java/org/openapitools/client/model/ConfigParametersPostgres.java
 src/main/java/org/openapitools/client/model/ContainerRegistryPresetsInner.java
 src/main/java/org/openapitools/client/model/ContainerRegistryRepositoriesInner.java
 src/main/java/org/openapitools/client/model/CreateAdmin.java
@@ -997,6 +1003,7 @@ src/main/java/org/openapitools/client/model/ModelParamsInfoMaxTokens.java
 src/main/java/org/openapitools/client/model/ModelParamsInfoReasoningEffort.java
 src/main/java/org/openapitools/client/model/ModelParamsInfoTemperature.java
 src/main/java/org/openapitools/client/model/MountNetworkDrive.java
+src/main/java/org/openapitools/client/model/Mysql.java
 src/main/java/org/openapitools/client/model/NatIn.java
 src/main/java/org/openapitools/client/model/Network.java
 src/main/java/org/openapitools/client/model/NetworkDrive.java
@@ -1028,6 +1035,7 @@ src/main/java/org/openapitools/client/model/OutgoingIsEnabled.java
 src/main/java/org/openapitools/client/model/PerformActionOnBackupRequest.java
 src/main/java/org/openapitools/client/model/PerformActionOnServerRequest.java
 src/main/java/org/openapitools/client/model/Policy.java
+src/main/java/org/openapitools/client/model/Postgres.java
 src/main/java/org/openapitools/client/model/PresetsBalancer.java
 src/main/java/org/openapitools/client/model/PresetsDbs.java
 src/main/java/org/openapitools/client/model/PresetsResponse.java
@@ -1290,6 +1298,8 @@ src/test/java/org/openapitools/client/model/ClustersResponseTest.java
 src/test/java/org/openapitools/client/model/CommitTest.java
 src/test/java/org/openapitools/client/model/ComponentsSchemasBaseErrorTest.java
 src/test/java/org/openapitools/client/model/ComponentsSchemasMetaTest.java
+src/test/java/org/openapitools/client/model/ConfigParametersMysqlTest.java
+src/test/java/org/openapitools/client/model/ConfigParametersPostgresTest.java
 src/test/java/org/openapitools/client/model/ConfigParametersTest.java
 src/test/java/org/openapitools/client/model/ContainerRegistryPresetsInnerTest.java
 src/test/java/org/openapitools/client/model/ContainerRegistryRepositoriesInnerTest.java
@@ -1570,6 +1580,7 @@ src/test/java/org/openapitools/client/model/ModelParamsInfoTemperatureTest.java
 src/test/java/org/openapitools/client/model/ModelParamsInfoTest.java
 src/test/java/org/openapitools/client/model/ModelTest.java
 src/test/java/org/openapitools/client/model/MountNetworkDriveTest.java
+src/test/java/org/openapitools/client/model/MysqlTest.java
 src/test/java/org/openapitools/client/model/NatInTest.java
 src/test/java/org/openapitools/client/model/NetworkDriveAvailableResourceTest.java
 src/test/java/org/openapitools/client/model/NetworkDrivePresetReadTest.java
@@ -1601,6 +1612,7 @@ src/test/java/org/openapitools/client/model/OutgoingIsEnabledTest.java
 src/test/java/org/openapitools/client/model/PerformActionOnBackupRequestTest.java
 src/test/java/org/openapitools/client/model/PerformActionOnServerRequestTest.java
 src/test/java/org/openapitools/client/model/PolicyTest.java
+src/test/java/org/openapitools/client/model/PostgresTest.java
 src/test/java/org/openapitools/client/model/PresetsBalancerTest.java
 src/test/java/org/openapitools/client/model/PresetsDbsTest.java
 src/test/java/org/openapitools/client/model/PresetsResponseTest.java

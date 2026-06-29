@@ -22,12 +22,12 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import org.openapitools.client.model.AvailabilityZone;
-import org.openapitools.client.model.ConfigParameters;
 import org.openapitools.client.model.CreateClusterAdmin;
 import org.openapitools.client.model.CreateClusterInstance;
 import org.openapitools.client.model.CreateDbAutoBackups;
 import org.openapitools.client.model.DbReplication;
 import org.openapitools.client.model.DbType;
+import org.openapitools.client.model.Mysql;
 import org.openapitools.client.model.Network;
 
 import com.google.gson.Gson;
@@ -58,7 +58,7 @@ import org.openapitools.client.JSON;
 /**
  * CreateCluster
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-06-25T12:45:58.392473Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-06-29T12:59:11.660393Z[Etc/UTC]")
 public class CreateCluster {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -141,7 +141,7 @@ public class CreateCluster {
 
   public static final String SERIALIZED_NAME_CONFIG_PARAMETERS = "config_parameters";
   @SerializedName(SERIALIZED_NAME_CONFIG_PARAMETERS)
-  private ConfigParameters configParameters;
+  private Mysql configParameters;
 
   public static final String SERIALIZED_NAME_REPLICATION = "replication";
   @SerializedName(SERIALIZED_NAME_REPLICATION)
@@ -338,7 +338,7 @@ public class CreateCluster {
   }
 
 
-  public CreateCluster configParameters(ConfigParameters configParameters) {
+  public CreateCluster configParameters(Mysql configParameters) {
     
     this.configParameters = configParameters;
     return this;
@@ -349,12 +349,12 @@ public class CreateCluster {
    * @return configParameters
   **/
   @javax.annotation.Nullable
-  public ConfigParameters getConfigParameters() {
+  public Mysql getConfigParameters() {
     return configParameters;
   }
 
 
-  public void setConfigParameters(ConfigParameters configParameters) {
+  public void setConfigParameters(Mysql configParameters) {
     this.configParameters = configParameters;
   }
 
@@ -624,7 +624,7 @@ public class CreateCluster {
       }
       // validate the optional field `config_parameters`
       if (jsonObj.get("config_parameters") != null && !jsonObj.get("config_parameters").isJsonNull()) {
-        ConfigParameters.validateJsonElement(jsonObj.get("config_parameters"));
+        Mysql.validateJsonElement(jsonObj.get("config_parameters"));
       }
       // validate the optional field `replication`
       if (jsonObj.get("replication") != null && !jsonObj.get("replication").isJsonNull()) {

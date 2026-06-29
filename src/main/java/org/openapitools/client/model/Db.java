@@ -23,9 +23,9 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
 import org.openapitools.client.model.AvailabilityZone;
-import org.openapitools.client.model.ConfigParameters;
 import org.openapitools.client.model.DbDiskStats;
 import org.openapitools.client.model.DbType;
+import org.openapitools.client.model.Mysql;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -55,7 +55,7 @@ import org.openapitools.client.JSON;
 /**
  * База данных
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-06-25T12:45:58.392473Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-06-29T12:59:11.660393Z[Etc/UTC]")
 public class Db {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -274,7 +274,7 @@ public class Db {
 
   public static final String SERIALIZED_NAME_CONFIG_PARAMETERS = "config_parameters";
   @SerializedName(SERIALIZED_NAME_CONFIG_PARAMETERS)
-  private ConfigParameters configParameters;
+  private Mysql configParameters;
 
   public static final String SERIALIZED_NAME_IS_ONLY_LOCAL_IP_ACCESS = "is_only_local_ip_access";
   @SerializedName(SERIALIZED_NAME_IS_ONLY_LOCAL_IP_ACCESS)
@@ -623,7 +623,7 @@ public class Db {
   }
 
 
-  public Db configParameters(ConfigParameters configParameters) {
+  public Db configParameters(Mysql configParameters) {
     
     this.configParameters = configParameters;
     return this;
@@ -634,12 +634,12 @@ public class Db {
    * @return configParameters
   **/
   @javax.annotation.Nonnull
-  public ConfigParameters getConfigParameters() {
+  public Mysql getConfigParameters() {
     return configParameters;
   }
 
 
-  public void setConfigParameters(ConfigParameters configParameters) {
+  public void setConfigParameters(Mysql configParameters) {
     this.configParameters = configParameters;
   }
 
@@ -873,7 +873,7 @@ public class Db {
       // validate the required field `disk_stats`
       DbDiskStats.validateJsonElement(jsonObj.get("disk_stats"));
       // validate the required field `config_parameters`
-      ConfigParameters.validateJsonElement(jsonObj.get("config_parameters"));
+      Mysql.validateJsonElement(jsonObj.get("config_parameters"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

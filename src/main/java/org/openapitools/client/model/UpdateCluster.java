@@ -21,6 +21,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import org.openapitools.client.model.Mysql;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -50,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * UpdateCluster
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-06-25T12:45:58.392473Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-06-29T12:59:11.660393Z[Etc/UTC]")
 public class UpdateCluster {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -59,6 +60,10 @@ public class UpdateCluster {
   public static final String SERIALIZED_NAME_PRESET_ID = "preset_id";
   @SerializedName(SERIALIZED_NAME_PRESET_ID)
   private Integer presetId;
+
+  public static final String SERIALIZED_NAME_CONFIG_PARAMETERS = "config_parameters";
+  @SerializedName(SERIALIZED_NAME_CONFIG_PARAMETERS)
+  private Mysql configParameters;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
@@ -114,6 +119,27 @@ public class UpdateCluster {
 
   public void setPresetId(Integer presetId) {
     this.presetId = presetId;
+  }
+
+
+  public UpdateCluster configParameters(Mysql configParameters) {
+    
+    this.configParameters = configParameters;
+    return this;
+  }
+
+   /**
+   * Get configParameters
+   * @return configParameters
+  **/
+  @javax.annotation.Nullable
+  public Mysql getConfigParameters() {
+    return configParameters;
+  }
+
+
+  public void setConfigParameters(Mysql configParameters) {
+    this.configParameters = configParameters;
   }
 
 
@@ -192,6 +218,7 @@ public class UpdateCluster {
     UpdateCluster updateCluster = (UpdateCluster) o;
     return Objects.equals(this.name, updateCluster.name) &&
         Objects.equals(this.presetId, updateCluster.presetId) &&
+        Objects.equals(this.configParameters, updateCluster.configParameters) &&
         Objects.equals(this.description, updateCluster.description) &&
         Objects.equals(this.isEnabledPublicNetwork, updateCluster.isEnabledPublicNetwork) &&
         Objects.equals(this.isPublicIpv6, updateCluster.isPublicIpv6);
@@ -199,7 +226,7 @@ public class UpdateCluster {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, presetId, description, isEnabledPublicNetwork, isPublicIpv6);
+    return Objects.hash(name, presetId, configParameters, description, isEnabledPublicNetwork, isPublicIpv6);
   }
 
   @Override
@@ -208,6 +235,7 @@ public class UpdateCluster {
     sb.append("class UpdateCluster {\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    presetId: ").append(toIndentedString(presetId)).append("\n");
+    sb.append("    configParameters: ").append(toIndentedString(configParameters)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    isEnabledPublicNetwork: ").append(toIndentedString(isEnabledPublicNetwork)).append("\n");
     sb.append("    isPublicIpv6: ").append(toIndentedString(isPublicIpv6)).append("\n");
@@ -235,6 +263,7 @@ public class UpdateCluster {
     openapiFields = new HashSet<String>();
     openapiFields.add("name");
     openapiFields.add("preset_id");
+    openapiFields.add("config_parameters");
     openapiFields.add("description");
     openapiFields.add("is_enabled_public_network");
     openapiFields.add("is_public_ipv6");
@@ -266,6 +295,10 @@ public class UpdateCluster {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      // validate the optional field `config_parameters`
+      if (jsonObj.get("config_parameters") != null && !jsonObj.get("config_parameters").isJsonNull()) {
+        Mysql.validateJsonElement(jsonObj.get("config_parameters"));
       }
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));

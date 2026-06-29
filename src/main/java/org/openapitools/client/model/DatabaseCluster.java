@@ -24,10 +24,10 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import org.openapitools.client.model.ConfigParameters;
 import org.openapitools.client.model.DatabaseClusterDisk;
 import org.openapitools.client.model.DatabaseClusterNetworksInner;
 import org.openapitools.client.model.DbType;
+import org.openapitools.client.model.Mysql;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -58,7 +58,7 @@ import org.openapitools.client.JSON;
 /**
  * Кластер базы данных
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-06-25T12:45:58.392473Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-06-29T12:59:11.660393Z[Etc/UTC]")
 public class DatabaseCluster {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -279,7 +279,7 @@ public class DatabaseCluster {
 
   public static final String SERIALIZED_NAME_CONFIG_PARAMETERS = "config_parameters";
   @SerializedName(SERIALIZED_NAME_CONFIG_PARAMETERS)
-  private ConfigParameters configParameters;
+  private Mysql configParameters;
 
   public static final String SERIALIZED_NAME_IS_ENABLED_PUBLIC_NETWORK = "is_enabled_public_network";
   @SerializedName(SERIALIZED_NAME_IS_ENABLED_PUBLIC_NETWORK)
@@ -569,7 +569,7 @@ public class DatabaseCluster {
   }
 
 
-  public DatabaseCluster configParameters(ConfigParameters configParameters) {
+  public DatabaseCluster configParameters(Mysql configParameters) {
     
     this.configParameters = configParameters;
     return this;
@@ -580,12 +580,12 @@ public class DatabaseCluster {
    * @return configParameters
   **/
   @javax.annotation.Nonnull
-  public ConfigParameters getConfigParameters() {
+  public Mysql getConfigParameters() {
     return configParameters;
   }
 
 
-  public void setConfigParameters(ConfigParameters configParameters) {
+  public void setConfigParameters(Mysql configParameters) {
     this.configParameters = configParameters;
   }
 
@@ -789,7 +789,7 @@ public class DatabaseCluster {
         DatabaseClusterDisk.validateJsonElement(jsonObj.get("disk"));
       }
       // validate the required field `config_parameters`
-      ConfigParameters.validateJsonElement(jsonObj.get("config_parameters"));
+      Mysql.validateJsonElement(jsonObj.get("config_parameters"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

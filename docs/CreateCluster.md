@@ -15,7 +15,7 @@
 |**presetId** | **Integer** | ID тарифа. Нельзя передавать вместе с &#x60;configurator_id&#x60; |  [optional] |
 |**configuratorId** | **Integer** | ID конфигуратора. Нельзя передавать вместе с &#x60;preset_id&#x60; |  [optional] |
 |**projectId** | **Integer** | ID проекта. |  [optional] |
-|**configParameters** | [**ConfigParameters**](ConfigParameters.md) |  |  [optional] |
+|**configParameters** | [**Mysql**](Mysql.md) |  |  [optional] |
 |**replication** | [**DbReplication**](DbReplication.md) |  |  [optional] |
 |**network** | [**Network**](Network.md) |  |  [optional] |
 |**isPublicIpv6** | **Boolean** | Использование IPv6 адреса. |  [optional] |

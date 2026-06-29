@@ -54,7 +54,7 @@ import org.openapitools.client.JSON;
 /**
  * Статус трансфера.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-06-25T12:45:58.392473Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-06-29T12:59:11.660393Z[Etc/UTC]")
 public class TransferStatus {
   /**
    * Общий статус трансфера.

@@ -2,7 +2,7 @@
 
 Timeweb Cloud API
 - API version: 1.0.0
-  - Build date: 2026-06-25T12:45:58.392473Z[Etc/UTC]
+  - Build date: 2026-06-29T12:59:11.660393Z[Etc/UTC]
 
 # Введение
 API Timeweb Cloud позволяет вам управлять ресурсами в облаке программным способом с использованием обычных HTTP-запросов.
@@ -689,6 +689,8 @@ Class | Method | HTTP request | Description
  - [ComponentsSchemasBaseError](docs/ComponentsSchemasBaseError.md)
  - [ComponentsSchemasMeta](docs/ComponentsSchemasMeta.md)
  - [ConfigParameters](docs/ConfigParameters.md)
+ - [ConfigParametersMysql](docs/ConfigParametersMysql.md)
+ - [ConfigParametersPostgres](docs/ConfigParametersPostgres.md)
  - [ContainerRegistryPresetsInner](docs/ContainerRegistryPresetsInner.md)
  - [ContainerRegistryRepositoriesInner](docs/ContainerRegistryRepositoriesInner.md)
  - [CreateAdmin](docs/CreateAdmin.md)
@@ -968,6 +970,7 @@ Class | Method | HTTP request | Description
  - [ModelParamsInfoReasoningEffort](docs/ModelParamsInfoReasoningEffort.md)
  - [ModelParamsInfoTemperature](docs/ModelParamsInfoTemperature.md)
  - [MountNetworkDrive](docs/MountNetworkDrive.md)
+ - [Mysql](docs/Mysql.md)
  - [NatIn](docs/NatIn.md)
  - [Network](docs/Network.md)
  - [NetworkDrive](docs/NetworkDrive.md)
@@ -999,6 +1002,7 @@ Class | Method | HTTP request | Description
  - [PerformActionOnBackupRequest](docs/PerformActionOnBackupRequest.md)
  - [PerformActionOnServerRequest](docs/PerformActionOnServerRequest.md)
  - [Policy](docs/Policy.md)
+ - [Postgres](docs/Postgres.md)
  - [PresetsBalancer](docs/PresetsBalancer.md)
  - [PresetsDbs](docs/PresetsDbs.md)
  - [PresetsResponse](docs/PresetsResponse.md)

@@ -15,6 +15,7 @@ package org.openapitools.client.api;
 
 import org.openapitools.client.ApiException;
 import org.openapitools.client.model.AutoBackup;
+import org.openapitools.client.model.ConfigParameters;
 import org.openapitools.client.model.CreateAdmin;
 import org.openapitools.client.model.CreateCluster;
 import org.openapitools.client.model.CreateDatabaseBackup201Response;
@@ -301,7 +302,7 @@ public class DatabasesApiTest {
      */
     @Test
     public void getDatabaseParametersTest() throws ApiException {
-        Map<String, List<String>> response = api.getDatabaseParameters();
+        ConfigParameters response = api.getDatabaseParameters();
         // TODO: test validations
     }
 

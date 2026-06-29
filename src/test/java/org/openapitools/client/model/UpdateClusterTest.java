@@ -19,6 +19,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import org.openapitools.client.model.Mysql;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -50,6 +51,14 @@ public class UpdateClusterTest {
     @Test
     public void presetIdTest() {
         // TODO: test presetId
+    }
+
+    /**
+     * Test the property 'configParameters'
+     */
+    @Test
+    public void configParametersTest() {
+        // TODO: test configParameters
     }
 
     /**

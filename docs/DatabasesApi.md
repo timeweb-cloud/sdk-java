@@ -1222,7 +1222,7 @@ public class Example {
 
 <a id="getDatabaseParameters"></a>
 # **getDatabaseParameters**
-> Map&lt;String, List&lt;String&gt;&gt; getDatabaseParameters()
+> ConfigParameters getDatabaseParameters()
 
 Получение списка параметров баз данных
 
@@ -1249,7 +1249,7 @@ public class Example {
 
     DatabasesApi apiInstance = new DatabasesApi(defaultClient);
     try {
-      Map<String, List<String>> result = apiInstance.getDatabaseParameters();
+      ConfigParameters result = apiInstance.getDatabaseParameters();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling DatabasesApi#getDatabaseParameters");
@@ -1267,7 +1267,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**Map&lt;String, List&lt;String&gt;&gt;**](List.md)
+[**ConfigParameters**](ConfigParameters.md)
 
 ### Authorization
 

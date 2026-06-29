@@ -19,6 +19,8 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import org.openapitools.client.model.ConfigParametersMysql;
+import org.openapitools.client.model.ConfigParametersPostgres;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -37,227 +39,19 @@ public class ConfigParametersTest {
     }
 
     /**
-     * Test the property 'autoIncrementIncrement'
+     * Test the property 'mysql'
      */
     @Test
-    public void autoIncrementIncrementTest() {
-        // TODO: test autoIncrementIncrement
+    public void mysqlTest() {
+        // TODO: test mysql
     }
 
     /**
-     * Test the property 'autoIncrementOffset'
+     * Test the property 'postgres'
      */
     @Test
-    public void autoIncrementOffsetTest() {
-        // TODO: test autoIncrementOffset
-    }
-
-    /**
-     * Test the property 'innodbIoCapacity'
-     */
-    @Test
-    public void innodbIoCapacityTest() {
-        // TODO: test innodbIoCapacity
-    }
-
-    /**
-     * Test the property 'innodbPurgeThreads'
-     */
-    @Test
-    public void innodbPurgeThreadsTest() {
-        // TODO: test innodbPurgeThreads
-    }
-
-    /**
-     * Test the property 'innodbReadIoThreads'
-     */
-    @Test
-    public void innodbReadIoThreadsTest() {
-        // TODO: test innodbReadIoThreads
-    }
-
-    /**
-     * Test the property 'innodbThreadConcurrency'
-     */
-    @Test
-    public void innodbThreadConcurrencyTest() {
-        // TODO: test innodbThreadConcurrency
-    }
-
-    /**
-     * Test the property 'innodbWriteIoThreads'
-     */
-    @Test
-    public void innodbWriteIoThreadsTest() {
-        // TODO: test innodbWriteIoThreads
-    }
-
-    /**
-     * Test the property 'joinBufferSize'
-     */
-    @Test
-    public void joinBufferSizeTest() {
-        // TODO: test joinBufferSize
-    }
-
-    /**
-     * Test the property 'maxAllowedPacket'
-     */
-    @Test
-    public void maxAllowedPacketTest() {
-        // TODO: test maxAllowedPacket
-    }
-
-    /**
-     * Test the property 'maxHeapTableSize'
-     */
-    @Test
-    public void maxHeapTableSizeTest() {
-        // TODO: test maxHeapTableSize
-    }
-
-    /**
-     * Test the property 'autovacuumAnalyzeScaleFactor'
-     */
-    @Test
-    public void autovacuumAnalyzeScaleFactorTest() {
-        // TODO: test autovacuumAnalyzeScaleFactor
-    }
-
-    /**
-     * Test the property 'bgwriterDelay'
-     */
-    @Test
-    public void bgwriterDelayTest() {
-        // TODO: test bgwriterDelay
-    }
-
-    /**
-     * Test the property 'bgwriterLruMaxpages'
-     */
-    @Test
-    public void bgwriterLruMaxpagesTest() {
-        // TODO: test bgwriterLruMaxpages
-    }
-
-    /**
-     * Test the property 'deadlockTimeout'
-     */
-    @Test
-    public void deadlockTimeoutTest() {
-        // TODO: test deadlockTimeout
-    }
-
-    /**
-     * Test the property 'ginPendingListLimit'
-     */
-    @Test
-    public void ginPendingListLimitTest() {
-        // TODO: test ginPendingListLimit
-    }
-
-    /**
-     * Test the property 'idleInTransactionSessionTimeout'
-     */
-    @Test
-    public void idleInTransactionSessionTimeoutTest() {
-        // TODO: test idleInTransactionSessionTimeout
-    }
-
-    /**
-     * Test the property 'idleSessionTimeout'
-     */
-    @Test
-    public void idleSessionTimeoutTest() {
-        // TODO: test idleSessionTimeout
-    }
-
-    /**
-     * Test the property 'joinCollapseLimit'
-     */
-    @Test
-    public void joinCollapseLimitTest() {
-        // TODO: test joinCollapseLimit
-    }
-
-    /**
-     * Test the property 'lockTimeout'
-     */
-    @Test
-    public void lockTimeoutTest() {
-        // TODO: test lockTimeout
-    }
-
-    /**
-     * Test the property 'maxPreparedTransactions'
-     */
-    @Test
-    public void maxPreparedTransactionsTest() {
-        // TODO: test maxPreparedTransactions
-    }
-
-    /**
-     * Test the property 'maxConnections'
-     */
-    @Test
-    public void maxConnectionsTest() {
-        // TODO: test maxConnections
-    }
-
-    /**
-     * Test the property 'sharedBuffers'
-     */
-    @Test
-    public void sharedBuffersTest() {
-        // TODO: test sharedBuffers
-    }
-
-    /**
-     * Test the property 'walBuffers'
-     */
-    @Test
-    public void walBuffersTest() {
-        // TODO: test walBuffers
-    }
-
-    /**
-     * Test the property 'tempBuffers'
-     */
-    @Test
-    public void tempBuffersTest() {
-        // TODO: test tempBuffers
-    }
-
-    /**
-     * Test the property 'workMem'
-     */
-    @Test
-    public void workMemTest() {
-        // TODO: test workMem
-    }
-
-    /**
-     * Test the property 'sqlMode'
-     */
-    @Test
-    public void sqlModeTest() {
-        // TODO: test sqlMode
-    }
-
-    /**
-     * Test the property 'queryCacheType'
-     */
-    @Test
-    public void queryCacheTypeTest() {
-        // TODO: test queryCacheType
-    }
-
-    /**
-     * Test the property 'queryCacheSize'
-     */
-    @Test
-    public void queryCacheSizeTest() {
-        // TODO: test queryCacheSize
+    public void postgresTest() {
+        // TODO: test postgres
     }
 
 }

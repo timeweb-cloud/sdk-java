@@ -28,6 +28,7 @@ import java.io.IOException;
 
 
 import org.openapitools.client.model.AutoBackup;
+import org.openapitools.client.model.ConfigParameters;
 import org.openapitools.client.model.CreateAdmin;
 import org.openapitools.client.model.CreateCluster;
 import org.openapitools.client.model.CreateDatabaseBackup201Response;
@@ -2621,7 +2622,7 @@ public class DatabasesApi {
     /**
      * Получение списка параметров баз данных
      * Чтобы получить список параметров баз данных, отправьте GET-запрос на &#x60;/api/v1/dbs/parameters&#x60;.
-     * @return Map&lt;String, List&lt;String&gt;&gt;
+     * @return ConfigParameters
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2635,15 +2636,15 @@ public class DatabasesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public Map<String, List<String>> getDatabaseParameters() throws ApiException {
-        ApiResponse<Map<String, List<String>>> localVarResp = getDatabaseParametersWithHttpInfo();
+    public ConfigParameters getDatabaseParameters() throws ApiException {
+        ApiResponse<ConfigParameters> localVarResp = getDatabaseParametersWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Получение списка параметров баз данных
      * Чтобы получить список параметров баз данных, отправьте GET-запрос на &#x60;/api/v1/dbs/parameters&#x60;.
-     * @return ApiResponse&lt;Map&lt;String, List&lt;String&gt;&gt;&gt;
+     * @return ApiResponse&lt;ConfigParameters&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2657,9 +2658,9 @@ public class DatabasesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Map<String, List<String>>> getDatabaseParametersWithHttpInfo() throws ApiException {
+    public ApiResponse<ConfigParameters> getDatabaseParametersWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getDatabaseParametersValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<Map<String, List<String>>>(){}.getType();
+        Type localVarReturnType = new TypeToken<ConfigParameters>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -2681,10 +2682,10 @@ public class DatabasesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getDatabaseParametersAsync(final ApiCallback<Map<String, List<String>>> _callback) throws ApiException {
+    public okhttp3.Call getDatabaseParametersAsync(final ApiCallback<ConfigParameters> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getDatabaseParametersValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<Map<String, List<String>>>(){}.getType();
+        Type localVarReturnType = new TypeToken<ConfigParameters>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
