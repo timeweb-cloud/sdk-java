@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * Определяет сетевые диапазоны (CIDR) для подов (pods_network) и сервисов (services_network) в Kubernetes-кластере.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-06-29T12:59:11.660393Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-07-02T09:34:31.780138Z[Etc/UTC]")
 public class ClusterInClusterNetworkCidr {
   public static final String SERIALIZED_NAME_PODS_NETWORK = "pods_network";
   @SerializedName(SERIALIZED_NAME_PODS_NETWORK)

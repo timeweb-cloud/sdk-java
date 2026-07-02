@@ -1,0 +1,519 @@
+/*
+ * Timeweb Cloud API
+ * # Введение API Timeweb Cloud позволяет вам управлять ресурсами в облаке программным способом с использованием обычных HTTP-запросов.  Множество функций, которые доступны в панели управления Timeweb Cloud, также доступны через API, что позволяет вам автоматизировать ваши собственные сценарии.  В этой документации сперва будет описан общий дизайн и принципы работы API, а после этого конкретные конечные точки. Также будут приведены примеры запросов к ним.   ## Запросы Запросы должны выполняться по протоколу `HTTPS`, чтобы гарантировать шифрование транзакций. Поддерживаются следующие методы запроса: |Метод|Применение| |--- |--- | |GET|Извлекает данные о коллекциях и отдельных ресурсах.| |POST|Для коллекций создает новый ресурс этого типа. Также используется для выполнения действий с конкретным ресурсом.| |PUT|Обновляет существующий ресурс.| |PATCH|Некоторые ресурсы поддерживают частичное обновление, то есть обновление только части атрибутов ресурса, в этом случае вместо метода PUT будет использован PATCH.| |DELETE|Удаляет ресурс.|  Методы `POST`, `PUT` и `PATCH` могут включать объект в тело запроса с типом содержимого `application/json`.  ### Параметры в запросах Некоторые коллекции поддерживают пагинацию, поиск или сортировку в запросах. В параметрах запроса требуется передать: - `limit` — обозначает количество записей, которое необходимо вернуть  - `offset` — указывает на смещение, относительно начала списка  - `search` — позволяет указать набор символов для поиска  - `sort` — можно задать правило сортировки коллекции  ## Ответы Запросы вернут один из следующих кодов состояния ответа HTTP:  |Статус|Описание| |--- |--- | |200 OK|Действие с ресурсом было выполнено успешно.| |201 Created|Ресурс был успешно создан. При этом ресурс может быть как уже готовым к использованию, так и находиться в процессе запуска.| |204 No Content|Действие с ресурсом было выполнено успешно, и ответ не содержит дополнительной информации в теле.| |400 Bad Request|Был отправлен неверный запрос, например, в нем отсутствуют обязательные параметры и т. д. Тело ответа будет содержать дополнительную информацию об ошибке.| |401 Unauthorized|Ошибка аутентификации.| |403 Forbidden|Аутентификация прошла успешно, но недостаточно прав для выполнения действия.| |404 Not Found|Запрашиваемый ресурс не найден.| |409 Conflict|Запрос конфликтует с текущим состоянием.| |423 Locked|Ресурс из запроса заблокирован от применения к нему указанного метода.| |429 Too Many Requests|Был достигнут лимит по количеству запросов в единицу времени.| |500 Internal Server Error|При выполнении запроса произошла какая-то внутренняя ошибка. Чтобы решить эту проблему, лучше всего создать тикет в панели управления.|  ### Структура успешного ответа Все конечные точки будут возвращать данные в формате `JSON`. Ответы на `GET`-запросы будут иметь на верхнем уровне следующую структуру атрибутов:  |Название поля|Тип|Описание| |--- |--- |--- | |[entity_name]|object, object[], string[], number[], boolean|Динамическое поле, которое будет меняться в зависимости от запрашиваемого ресурса и будет содержать все атрибуты, необходимые для описания этого ресурса. Например, при запросе списка баз данных будет возвращаться поле `dbs`, а при запросе конкретного облачного сервера `server`. Для некоторых конечных точек в ответе может возвращаться сразу несколько ресурсов.| |meta|object|Опционально. Объект, который содержит вспомогательную информацию о ресурсе. Чаще всего будет встречаться при запросе коллекций и содержать поле `total`, которое будет указывать на количество элементов в коллекции.| |response_id|string|Опционально. В большинстве случаев в ответе будет содержаться ID ответа в формате UUIDv4, который однозначно указывает на ваш запрос внутри нашей системы. Если вам потребуется задать вопрос нашей поддержке, приложите к вопросу этот ID— так мы сможем найти ответ на него намного быстрее. Также вы можете использовать этот ID, чтобы убедиться, что это новый ответ на запрос и результат не был получен из кэша.|  Пример запроса на получение списка SSH-ключей: ```     HTTP/2.0 200 OK     {       \"ssh_keys\":[           {             \"body\":\"ssh-rsa AAAAB3NzaC1sdfghjkOAsBwWhs= example@device.local\",             \"created_at\":\"2021-09-15T19:52:27Z\",             \"expired_at\":null,             \"id\":5297,             \"is_default\":false,             \"name\":\"example@device.local\",             \"used_at\":null,             \"used_by\":[]           }       ],       \"meta\":{           \"total\":1       },       \"response_id\":\"94608d15-8672-4eed-8ab6-28bd6fa3cdf7\"     } ```  ### Структура ответа с ошибкой |Название поля|Тип|Описание| |--- |--- |--- | |status_code|number|Короткий числовой идентификатор ошибки.| |error_code|string|Короткий текстовый идентификатор ошибки, который уточняет числовой идентификатор и удобен для программной обработки. Самый простой пример — это код `not_found` для ошибки 404.| |message|string, string[]|Опционально. В большинстве случаев в ответе будет содержаться человекочитаемое подробное описание ошибки или ошибок, которые помогут понять, что нужно исправить.| |response_id|string|Опционально. В большинстве случае в ответе будет содержаться ID ответа в формате UUIDv4, который однозначно указывает на ваш запрос внутри нашей системы. Если вам потребуется задать вопрос нашей поддержке, приложите к вопросу этот ID — так мы сможем найти ответ на него намного быстрее.|  Пример: ```     HTTP/2.0 403 Forbidden     {       \"status_code\": 403,       \"error_code\":  \"forbidden\",       \"message\":     \"You do not have access for the attempted action\",       \"response_id\": \"94608d15-8672-4eed-8ab6-28bd6fa3cdf7\"     } ```  ## Статусы ресурсов Важно учесть, что при создании большинства ресурсов внутри платформы вам будет сразу возвращен ответ от сервера со статусом `200 OK` или `201 Created` и ID созданного ресурса в теле ответа, но при этом этот ресурс может быть ещё в *состоянии запуска*.  Для того чтобы понять, в каком состоянии сейчас находится ваш ресурс, мы добавили поле `status` в ответ на получение информации о ресурсе.  Список статусов будет отличаться в зависимости от типа ресурса. Увидеть поддерживаемый список статусов вы сможете в описании каждого конкретного ресурса.     ## Ограничение скорости запросов (Rate Limiting) Чтобы обеспечить стабильность для всех пользователей, Timeweb Cloud защищает API от всплесков входящего трафика, анализируя количество запросов c каждого аккаунта к каждой конечной точке.  Если ваше приложение отправляет более 20 запросов в секунду на одну конечную точку, то для этого запроса API может вернуть код состояния HTTP `429 Too Many Requests`.   ## Аутентификация Доступ к API осуществляется с помощью JWT-токена. Токенами можно управлять внутри панели управления Timeweb Cloud в разделе *API и Terraform*.  Токен необходимо передавать в заголовке каждого запроса в формате: ```   Authorization: Bearer $TIMEWEB_CLOUD_TOKEN ```  ## Формат примеров API Примеры в этой документации описаны с помощью `curl`, HTTP-клиента командной строки. На компьютерах `Linux` и `macOS` обычно по умолчанию установлен `curl`, и он доступен для загрузки на всех популярных платформах, включая `Windows`.  Каждый пример разделен на несколько строк символом `\\`, который совместим с `bash`. Типичный пример выглядит так: ```   curl -X PATCH      -H \"Content-Type: application/json\"      -H \"Authorization: Bearer $TIMEWEB_CLOUD_TOKEN\"      -d '{\"name\":\"Cute Corvus\",\"comment\":\"Development Server\"}'      \"https://api.timeweb.cloud/api/v1/dedicated/1051\" ``` - Параметр `-X` задает метод запроса. Для согласованности метод будет указан во всех примерах, даже если он явно не требуется для методов `GET`. - Строки `-H` задают требуемые HTTP-заголовки. - Примеры, для которых требуется объект JSON в теле запроса, передают требуемые данные через параметр `-d`.  Чтобы использовать приведенные примеры, не подставляя каждый раз в них свой токен, вы можете добавить токен один раз в переменные окружения в вашей консоли. Например, на `Linux` это можно сделать с помощью команды:  ``` TIMEWEB_CLOUD_TOKEN=\"token\" ```  После этого токен будет автоматически подставляться в ваши запросы.  Обратите внимание, что все значения в этой документации являются примерами. Не полагайтесь на IDы операционных систем, тарифов и т.д., используемые в примерах. Используйте соответствующую конечную точку для получения значений перед созданием ресурсов.   ## Версионирование API построено согласно принципам [семантического версионирования](https://semver.org/lang/ru). Это значит, что мы гарантируем обратную совместимость всех изменений в пределах одной мажорной версии.  Мажорная версия каждой конечной точки обозначается в пути запроса, например, запрос `/api/v1/servers` указывает, что этот метод имеет версию 1.
+ *
+ * The version of the OpenAPI document: 1.0.0
+ * Contact: info@timeweb.cloud
+ *
+ * NOTE: This class is auto generated by OpenAPI Generator (https://openapi-generator.tech).
+ * https://openapi-generator.tech
+ * Do not edit the class manually.
+ */
+
+
+package org.openapitools.client.model;
+
+import java.util.Objects;
+import java.util.Arrays;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import org.openapitools.client.JSON;
+
+/**
+ * Параметры Valkey (&#x60;valkey&#x60; | &#x60;valkey7&#x60; | &#x60;valkey8_1&#x60; | &#x60;valkey9_1&#x60;)
+ */
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-07-02T09:34:31.780138Z[Etc/UTC]")
+public class ConfigParametersValkey {
+  public static final String SERIALIZED_NAME_CLIENT_OUTPUT_BUFFER_LIMIT_NORMAL = "client-output-buffer-limit normal";
+  @SerializedName(SERIALIZED_NAME_CLIENT_OUTPUT_BUFFER_LIMIT_NORMAL)
+  private String clientOutputBufferLimitNormal;
+
+  public static final String SERIALIZED_NAME_CLIENT_OUTPUT_BUFFER_LIMIT_PUBSUB = "client-output-buffer-limit pubsub";
+  @SerializedName(SERIALIZED_NAME_CLIENT_OUTPUT_BUFFER_LIMIT_PUBSUB)
+  private String clientOutputBufferLimitPubsub;
+
+  public static final String SERIALIZED_NAME_DATABASES = "databases";
+  @SerializedName(SERIALIZED_NAME_DATABASES)
+  private String databases;
+
+  public static final String SERIALIZED_NAME_TIMEOUT = "timeout";
+  @SerializedName(SERIALIZED_NAME_TIMEOUT)
+  private String timeout;
+
+  public static final String SERIALIZED_NAME_MAXMEMORY_POLICY = "maxmemory-policy";
+  @SerializedName(SERIALIZED_NAME_MAXMEMORY_POLICY)
+  private String maxmemoryPolicy;
+
+  public static final String SERIALIZED_NAME_SLOWLOG_LOG_SLOWER_THAN = "slowlog-log-slower-than";
+  @SerializedName(SERIALIZED_NAME_SLOWLOG_LOG_SLOWER_THAN)
+  private String slowlogLogSlowerThan;
+
+  public static final String SERIALIZED_NAME_SLOWLOG_MAX_LEN = "slowlog-max-len";
+  @SerializedName(SERIALIZED_NAME_SLOWLOG_MAX_LEN)
+  private String slowlogMaxLen;
+
+  public static final String SERIALIZED_NAME_SAVE = "save";
+  @SerializedName(SERIALIZED_NAME_SAVE)
+  private String save;
+
+  public static final String SERIALIZED_NAME_APPENDONLY = "appendonly";
+  @SerializedName(SERIALIZED_NAME_APPENDONLY)
+  private String appendonly;
+
+  public static final String SERIALIZED_NAME_APPENDFSYNC = "appendfsync";
+  @SerializedName(SERIALIZED_NAME_APPENDFSYNC)
+  private String appendfsync;
+
+  public static final String SERIALIZED_NAME_TCP_KEEPALIVE = "tcp-keepalive";
+  @SerializedName(SERIALIZED_NAME_TCP_KEEPALIVE)
+  private String tcpKeepalive;
+
+  public ConfigParametersValkey() {
+  }
+
+  public ConfigParametersValkey clientOutputBufferLimitNormal(String clientOutputBufferLimitNormal) {
+    
+    this.clientOutputBufferLimitNormal = clientOutputBufferLimitNormal;
+    return this;
+  }
+
+   /**
+   * Ограничение буфера вывода для обычных клиентских подключений. Формат: &#x60;hard-limit soft-limit soft-seconds&#x60; (&#x60;valkey&#x60; | &#x60;valkey7&#x60; | &#x60;valkey8_1&#x60; | &#x60;valkey9_1&#x60;).
+   * @return clientOutputBufferLimitNormal
+  **/
+  @javax.annotation.Nullable
+  public String getClientOutputBufferLimitNormal() {
+    return clientOutputBufferLimitNormal;
+  }
+
+
+  public void setClientOutputBufferLimitNormal(String clientOutputBufferLimitNormal) {
+    this.clientOutputBufferLimitNormal = clientOutputBufferLimitNormal;
+  }
+
+
+  public ConfigParametersValkey clientOutputBufferLimitPubsub(String clientOutputBufferLimitPubsub) {
+    
+    this.clientOutputBufferLimitPubsub = clientOutputBufferLimitPubsub;
+    return this;
+  }
+
+   /**
+   * Ограничение буфера вывода для клиентов pub/sub. Формат: &#x60;hard-limit soft-limit soft-seconds&#x60; (&#x60;valkey&#x60; | &#x60;valkey7&#x60; | &#x60;valkey8_1&#x60; | &#x60;valkey9_1&#x60;).
+   * @return clientOutputBufferLimitPubsub
+  **/
+  @javax.annotation.Nullable
+  public String getClientOutputBufferLimitPubsub() {
+    return clientOutputBufferLimitPubsub;
+  }
+
+
+  public void setClientOutputBufferLimitPubsub(String clientOutputBufferLimitPubsub) {
+    this.clientOutputBufferLimitPubsub = clientOutputBufferLimitPubsub;
+  }
+
+
+  public ConfigParametersValkey databases(String databases) {
+    
+    this.databases = databases;
+    return this;
+  }
+
+   /**
+   * Количество логических баз данных на сервере (&#x60;valkey&#x60; | &#x60;valkey7&#x60; | &#x60;valkey8_1&#x60; | &#x60;valkey9_1&#x60;).
+   * @return databases
+  **/
+  @javax.annotation.Nullable
+  public String getDatabases() {
+    return databases;
+  }
+
+
+  public void setDatabases(String databases) {
+    this.databases = databases;
+  }
+
+
+  public ConfigParametersValkey timeout(String timeout) {
+    
+    this.timeout = timeout;
+    return this;
+  }
+
+   /**
+   * Время ожидания в секундах перед закрытием неактивного клиентского соединения. &#x60;0&#x60; — отключено (&#x60;valkey&#x60; | &#x60;valkey7&#x60; | &#x60;valkey8_1&#x60; | &#x60;valkey9_1&#x60;).
+   * @return timeout
+  **/
+  @javax.annotation.Nullable
+  public String getTimeout() {
+    return timeout;
+  }
+
+
+  public void setTimeout(String timeout) {
+    this.timeout = timeout;
+  }
+
+
+  public ConfigParametersValkey maxmemoryPolicy(String maxmemoryPolicy) {
+    
+    this.maxmemoryPolicy = maxmemoryPolicy;
+    return this;
+  }
+
+   /**
+   * Политика вытеснения ключей при достижении лимита памяти (&#x60;valkey&#x60; | &#x60;valkey7&#x60; | &#x60;valkey8_1&#x60; | &#x60;valkey9_1&#x60;).
+   * @return maxmemoryPolicy
+  **/
+  @javax.annotation.Nullable
+  public String getMaxmemoryPolicy() {
+    return maxmemoryPolicy;
+  }
+
+
+  public void setMaxmemoryPolicy(String maxmemoryPolicy) {
+    this.maxmemoryPolicy = maxmemoryPolicy;
+  }
+
+
+  public ConfigParametersValkey slowlogLogSlowerThan(String slowlogLogSlowerThan) {
+    
+    this.slowlogLogSlowerThan = slowlogLogSlowerThan;
+    return this;
+  }
+
+   /**
+   * Минимальное время выполнения команды в микросекундах для записи в журнал медленных команд (&#x60;valkey&#x60; | &#x60;valkey7&#x60; | &#x60;valkey8_1&#x60; | &#x60;valkey9_1&#x60;).
+   * @return slowlogLogSlowerThan
+  **/
+  @javax.annotation.Nullable
+  public String getSlowlogLogSlowerThan() {
+    return slowlogLogSlowerThan;
+  }
+
+
+  public void setSlowlogLogSlowerThan(String slowlogLogSlowerThan) {
+    this.slowlogLogSlowerThan = slowlogLogSlowerThan;
+  }
+
+
+  public ConfigParametersValkey slowlogMaxLen(String slowlogMaxLen) {
+    
+    this.slowlogMaxLen = slowlogMaxLen;
+    return this;
+  }
+
+   /**
+   * Максимальное количество записей, хранящихся в журнале медленных команд (&#x60;valkey&#x60; | &#x60;valkey7&#x60; | &#x60;valkey8_1&#x60; | &#x60;valkey9_1&#x60;).
+   * @return slowlogMaxLen
+  **/
+  @javax.annotation.Nullable
+  public String getSlowlogMaxLen() {
+    return slowlogMaxLen;
+  }
+
+
+  public void setSlowlogMaxLen(String slowlogMaxLen) {
+    this.slowlogMaxLen = slowlogMaxLen;
+  }
+
+
+  public ConfigParametersValkey save(String save) {
+    
+    this.save = save;
+    return this;
+  }
+
+   /**
+   * Условие создания снимка RDB на диск. Формат: &#x60;seconds changes&#x60; — сохранение выполняется, если за указанное время было сделано не менее указанного количества изменений (&#x60;valkey&#x60; | &#x60;valkey7&#x60; | &#x60;valkey8_1&#x60; | &#x60;valkey9_1&#x60;).
+   * @return save
+  **/
+  @javax.annotation.Nullable
+  public String getSave() {
+    return save;
+  }
+
+
+  public void setSave(String save) {
+    this.save = save;
+  }
+
+
+  public ConfigParametersValkey appendonly(String appendonly) {
+    
+    this.appendonly = appendonly;
+    return this;
+  }
+
+   /**
+   * Включение режима AOF (Append Only File) для персистентного хранения данных (&#x60;valkey&#x60; | &#x60;valkey7&#x60; | &#x60;valkey8_1&#x60; | &#x60;valkey9_1&#x60;).
+   * @return appendonly
+  **/
+  @javax.annotation.Nullable
+  public String getAppendonly() {
+    return appendonly;
+  }
+
+
+  public void setAppendonly(String appendonly) {
+    this.appendonly = appendonly;
+  }
+
+
+  public ConfigParametersValkey appendfsync(String appendfsync) {
+    
+    this.appendfsync = appendfsync;
+    return this;
+  }
+
+   /**
+   * Режим синхронизации AOF-файла с диском: &#x60;always&#x60; — при каждой записи, &#x60;everysec&#x60; — раз в секунду, &#x60;no&#x60; — управление передаётся ОС (&#x60;valkey&#x60; | &#x60;valkey7&#x60; | &#x60;valkey8_1&#x60; | &#x60;valkey9_1&#x60;).
+   * @return appendfsync
+  **/
+  @javax.annotation.Nullable
+  public String getAppendfsync() {
+    return appendfsync;
+  }
+
+
+  public void setAppendfsync(String appendfsync) {
+    this.appendfsync = appendfsync;
+  }
+
+
+  public ConfigParametersValkey tcpKeepalive(String tcpKeepalive) {
+    
+    this.tcpKeepalive = tcpKeepalive;
+    return this;
+  }
+
+   /**
+   * Интервал проверки активности TCP-соединения в секундах. &#x60;0&#x60; — отключено (&#x60;valkey&#x60; | &#x60;valkey7&#x60; | &#x60;valkey8_1&#x60; | &#x60;valkey9_1&#x60;).
+   * @return tcpKeepalive
+  **/
+  @javax.annotation.Nullable
+  public String getTcpKeepalive() {
+    return tcpKeepalive;
+  }
+
+
+  public void setTcpKeepalive(String tcpKeepalive) {
+    this.tcpKeepalive = tcpKeepalive;
+  }
+
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    ConfigParametersValkey configParametersValkey = (ConfigParametersValkey) o;
+    return Objects.equals(this.clientOutputBufferLimitNormal, configParametersValkey.clientOutputBufferLimitNormal) &&
+        Objects.equals(this.clientOutputBufferLimitPubsub, configParametersValkey.clientOutputBufferLimitPubsub) &&
+        Objects.equals(this.databases, configParametersValkey.databases) &&
+        Objects.equals(this.timeout, configParametersValkey.timeout) &&
+        Objects.equals(this.maxmemoryPolicy, configParametersValkey.maxmemoryPolicy) &&
+        Objects.equals(this.slowlogLogSlowerThan, configParametersValkey.slowlogLogSlowerThan) &&
+        Objects.equals(this.slowlogMaxLen, configParametersValkey.slowlogMaxLen) &&
+        Objects.equals(this.save, configParametersValkey.save) &&
+        Objects.equals(this.appendonly, configParametersValkey.appendonly) &&
+        Objects.equals(this.appendfsync, configParametersValkey.appendfsync) &&
+        Objects.equals(this.tcpKeepalive, configParametersValkey.tcpKeepalive);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(clientOutputBufferLimitNormal, clientOutputBufferLimitPubsub, databases, timeout, maxmemoryPolicy, slowlogLogSlowerThan, slowlogMaxLen, save, appendonly, appendfsync, tcpKeepalive);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class ConfigParametersValkey {\n");
+    sb.append("    clientOutputBufferLimitNormal: ").append(toIndentedString(clientOutputBufferLimitNormal)).append("\n");
+    sb.append("    clientOutputBufferLimitPubsub: ").append(toIndentedString(clientOutputBufferLimitPubsub)).append("\n");
+    sb.append("    databases: ").append(toIndentedString(databases)).append("\n");
+    sb.append("    timeout: ").append(toIndentedString(timeout)).append("\n");
+    sb.append("    maxmemoryPolicy: ").append(toIndentedString(maxmemoryPolicy)).append("\n");
+    sb.append("    slowlogLogSlowerThan: ").append(toIndentedString(slowlogLogSlowerThan)).append("\n");
+    sb.append("    slowlogMaxLen: ").append(toIndentedString(slowlogMaxLen)).append("\n");
+    sb.append("    save: ").append(toIndentedString(save)).append("\n");
+    sb.append("    appendonly: ").append(toIndentedString(appendonly)).append("\n");
+    sb.append("    appendfsync: ").append(toIndentedString(appendfsync)).append("\n");
+    sb.append("    tcpKeepalive: ").append(toIndentedString(tcpKeepalive)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("client-output-buffer-limit normal");
+    openapiFields.add("client-output-buffer-limit pubsub");
+    openapiFields.add("databases");
+    openapiFields.add("timeout");
+    openapiFields.add("maxmemory-policy");
+    openapiFields.add("slowlog-log-slower-than");
+    openapiFields.add("slowlog-max-len");
+    openapiFields.add("save");
+    openapiFields.add("appendonly");
+    openapiFields.add("appendfsync");
+    openapiFields.add("tcp-keepalive");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Element and throws an exception if issues found
+  *
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to ConfigParametersValkey
+  */
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!ConfigParametersValkey.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in ConfigParametersValkey is not found in the empty JSON string", ConfigParametersValkey.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!ConfigParametersValkey.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ConfigParametersValkey` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        }
+      }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("client-output-buffer-limit normal") != null && !jsonObj.get("client-output-buffer-limit normal").isJsonNull()) && !jsonObj.get("client-output-buffer-limit normal").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `client-output-buffer-limit normal` to be a primitive type in the JSON string but got `%s`", jsonObj.get("client-output-buffer-limit normal").toString()));
+      }
+      if ((jsonObj.get("client-output-buffer-limit pubsub") != null && !jsonObj.get("client-output-buffer-limit pubsub").isJsonNull()) && !jsonObj.get("client-output-buffer-limit pubsub").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `client-output-buffer-limit pubsub` to be a primitive type in the JSON string but got `%s`", jsonObj.get("client-output-buffer-limit pubsub").toString()));
+      }
+      if ((jsonObj.get("databases") != null && !jsonObj.get("databases").isJsonNull()) && !jsonObj.get("databases").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `databases` to be a primitive type in the JSON string but got `%s`", jsonObj.get("databases").toString()));
+      }
+      if ((jsonObj.get("timeout") != null && !jsonObj.get("timeout").isJsonNull()) && !jsonObj.get("timeout").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `timeout` to be a primitive type in the JSON string but got `%s`", jsonObj.get("timeout").toString()));
+      }
+      if ((jsonObj.get("maxmemory-policy") != null && !jsonObj.get("maxmemory-policy").isJsonNull()) && !jsonObj.get("maxmemory-policy").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `maxmemory-policy` to be a primitive type in the JSON string but got `%s`", jsonObj.get("maxmemory-policy").toString()));
+      }
+      if ((jsonObj.get("slowlog-log-slower-than") != null && !jsonObj.get("slowlog-log-slower-than").isJsonNull()) && !jsonObj.get("slowlog-log-slower-than").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `slowlog-log-slower-than` to be a primitive type in the JSON string but got `%s`", jsonObj.get("slowlog-log-slower-than").toString()));
+      }
+      if ((jsonObj.get("slowlog-max-len") != null && !jsonObj.get("slowlog-max-len").isJsonNull()) && !jsonObj.get("slowlog-max-len").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `slowlog-max-len` to be a primitive type in the JSON string but got `%s`", jsonObj.get("slowlog-max-len").toString()));
+      }
+      if ((jsonObj.get("save") != null && !jsonObj.get("save").isJsonNull()) && !jsonObj.get("save").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `save` to be a primitive type in the JSON string but got `%s`", jsonObj.get("save").toString()));
+      }
+      if ((jsonObj.get("appendonly") != null && !jsonObj.get("appendonly").isJsonNull()) && !jsonObj.get("appendonly").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `appendonly` to be a primitive type in the JSON string but got `%s`", jsonObj.get("appendonly").toString()));
+      }
+      if ((jsonObj.get("appendfsync") != null && !jsonObj.get("appendfsync").isJsonNull()) && !jsonObj.get("appendfsync").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `appendfsync` to be a primitive type in the JSON string but got `%s`", jsonObj.get("appendfsync").toString()));
+      }
+      if ((jsonObj.get("tcp-keepalive") != null && !jsonObj.get("tcp-keepalive").isJsonNull()) && !jsonObj.get("tcp-keepalive").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `tcp-keepalive` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tcp-keepalive").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!ConfigParametersValkey.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ConfigParametersValkey' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<ConfigParametersValkey> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ConfigParametersValkey.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<ConfigParametersValkey>() {
+           @Override
+           public void write(JsonWriter out, ConfigParametersValkey value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public ConfigParametersValkey read(JsonReader in) throws IOException {
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of ConfigParametersValkey given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of ConfigParametersValkey
+  * @throws IOException if the JSON string is invalid with respect to ConfigParametersValkey
+  */
+  public static ConfigParametersValkey fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ConfigParametersValkey.class);
+  }
+
+ /**
+  * Convert an instance of ConfigParametersValkey to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
+}
+

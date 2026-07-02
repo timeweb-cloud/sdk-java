@@ -23,6 +23,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import org.openapitools.client.model.ConfigParametersMysql;
 import org.openapitools.client.model.ConfigParametersPostgres;
+import org.openapitools.client.model.ConfigParametersValkey;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -52,7 +53,7 @@ import org.openapitools.client.JSON;
 /**
  * Параметры базы данных
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-06-29T12:59:11.660393Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-07-02T09:34:31.780138Z[Etc/UTC]")
 public class ConfigParameters {
   public static final String SERIALIZED_NAME_MYSQL = "mysql";
   @SerializedName(SERIALIZED_NAME_MYSQL)
@@ -61,6 +62,10 @@ public class ConfigParameters {
   public static final String SERIALIZED_NAME_POSTGRES = "postgres";
   @SerializedName(SERIALIZED_NAME_POSTGRES)
   private ConfigParametersPostgres postgres;
+
+  public static final String SERIALIZED_NAME_VALKEY = "valkey";
+  @SerializedName(SERIALIZED_NAME_VALKEY)
+  private ConfigParametersValkey valkey;
 
   public ConfigParameters() {
   }
@@ -107,6 +112,27 @@ public class ConfigParameters {
   }
 
 
+  public ConfigParameters valkey(ConfigParametersValkey valkey) {
+    
+    this.valkey = valkey;
+    return this;
+  }
+
+   /**
+   * Get valkey
+   * @return valkey
+  **/
+  @javax.annotation.Nullable
+  public ConfigParametersValkey getValkey() {
+    return valkey;
+  }
+
+
+  public void setValkey(ConfigParametersValkey valkey) {
+    this.valkey = valkey;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -118,12 +144,13 @@ public class ConfigParameters {
     }
     ConfigParameters configParameters = (ConfigParameters) o;
     return Objects.equals(this.mysql, configParameters.mysql) &&
-        Objects.equals(this.postgres, configParameters.postgres);
+        Objects.equals(this.postgres, configParameters.postgres) &&
+        Objects.equals(this.valkey, configParameters.valkey);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(mysql, postgres);
+    return Objects.hash(mysql, postgres, valkey);
   }
 
   @Override
@@ -132,6 +159,7 @@ public class ConfigParameters {
     sb.append("class ConfigParameters {\n");
     sb.append("    mysql: ").append(toIndentedString(mysql)).append("\n");
     sb.append("    postgres: ").append(toIndentedString(postgres)).append("\n");
+    sb.append("    valkey: ").append(toIndentedString(valkey)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -156,6 +184,7 @@ public class ConfigParameters {
     openapiFields = new HashSet<String>();
     openapiFields.add("mysql");
     openapiFields.add("postgres");
+    openapiFields.add("valkey");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -189,6 +218,10 @@ public class ConfigParameters {
       // validate the optional field `postgres`
       if (jsonObj.get("postgres") != null && !jsonObj.get("postgres").isJsonNull()) {
         ConfigParametersPostgres.validateJsonElement(jsonObj.get("postgres"));
+      }
+      // validate the optional field `valkey`
+      if (jsonObj.get("valkey") != null && !jsonObj.get("valkey").isJsonNull()) {
+        ConfigParametersValkey.validateJsonElement(jsonObj.get("valkey"));
       }
   }
 

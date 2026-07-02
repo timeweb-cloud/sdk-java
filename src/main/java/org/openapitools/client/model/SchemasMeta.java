@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * SchemasMeta
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-06-29T12:59:11.660393Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-07-02T09:34:31.780138Z[Etc/UTC]")
 public class SchemasMeta {
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)

@@ -21,6 +21,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import org.openapitools.client.model.ConfigParametersMysql;
 import org.openapitools.client.model.ConfigParametersPostgres;
+import org.openapitools.client.model.ConfigParametersValkey;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -52,6 +53,14 @@ public class ConfigParametersTest {
     @Test
     public void postgresTest() {
         // TODO: test postgres
+    }
+
+    /**
+     * Test the property 'valkey'
+     */
+    @Test
+    public void valkeyTest() {
+        // TODO: test valkey
     }
 
 }

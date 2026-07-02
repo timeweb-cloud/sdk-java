@@ -82,6 +82,7 @@ docs/BucketUser.md
 docs/BucketWebsiteConfig.md
 docs/BucketWebsiteConfigErrorPagesInner.md
 docs/CheckDomain200Response.md
+docs/Clickhouse.md
 docs/ClusterEdit.md
 docs/ClusterEditOidcProvider.md
 docs/ClusterIn.md
@@ -101,6 +102,7 @@ docs/ComponentsSchemasMeta.md
 docs/ConfigParameters.md
 docs/ConfigParametersMysql.md
 docs/ConfigParametersPostgres.md
+docs/ConfigParametersValkey.md
 docs/ContainerRegistryApi.md
 docs/ContainerRegistryPresetsInner.md
 docs/ContainerRegistryRepositoriesInner.md
@@ -366,6 +368,7 @@ docs/IncreaseNodes.md
 docs/InfoServicePrice.md
 docs/Invoice.md
 docs/K8SVersionsResponse.md
+docs/Kafka.md
 docs/KnowledgeBasesApi.md
 docs/Knowledgebase.md
 docs/KnowledgebaseV2.md
@@ -390,6 +393,7 @@ docs/ModelParamsInfo.md
 docs/ModelParamsInfoMaxTokens.md
 docs/ModelParamsInfoReasoningEffort.md
 docs/ModelParamsInfoTemperature.md
+docs/Mongodb.md
 docs/MountNetworkDrive.md
 docs/Mysql.md
 docs/NatIn.md
@@ -419,6 +423,7 @@ docs/NotificationSettingChannel.md
 docs/NotificationSettingChannels.md
 docs/NotificationSettingType.md
 docs/OS.md
+docs/Opensearch.md
 docs/OutgoingIsDisabled.md
 docs/OutgoingIsEnabled.md
 docs/PaymentsApi.md
@@ -426,6 +431,7 @@ docs/PerformActionOnBackupRequest.md
 docs/PerformActionOnServerRequest.md
 docs/Policy.md
 docs/Postgres.md
+docs/Postgresql.md
 docs/PresetsBalancer.md
 docs/PresetsDbs.md
 docs/PresetsResponse.md
@@ -433,8 +439,11 @@ docs/PresetsStorage.md
 docs/Project.md
 docs/ProjectResource.md
 docs/ProjectsApi.md
+docs/PropertiesMysql.md
+docs/PropertiesValkey.md
 docs/Provider.md
 docs/Providers.md
+docs/Rabbitmq.md
 docs/ReduceNodes.md
 docs/RegistriesResponse.md
 docs/RegistryEdit.md
@@ -570,6 +579,7 @@ docs/UploadSuccessful.md
 docs/UploadSuccessfulResponse.md
 docs/UrlStatus.md
 docs/Use.md
+docs/Valkey.md
 docs/Vds.md
 docs/VdsDisksInner.md
 docs/VdsImage.md
@@ -705,6 +715,7 @@ src/main/java/org/openapitools/client/model/BucketUser.java
 src/main/java/org/openapitools/client/model/BucketWebsiteConfig.java
 src/main/java/org/openapitools/client/model/BucketWebsiteConfigErrorPagesInner.java
 src/main/java/org/openapitools/client/model/CheckDomain200Response.java
+src/main/java/org/openapitools/client/model/Clickhouse.java
 src/main/java/org/openapitools/client/model/ClusterEdit.java
 src/main/java/org/openapitools/client/model/ClusterEditOidcProvider.java
 src/main/java/org/openapitools/client/model/ClusterIn.java
@@ -724,6 +735,7 @@ src/main/java/org/openapitools/client/model/ComponentsSchemasMeta.java
 src/main/java/org/openapitools/client/model/ConfigParameters.java
 src/main/java/org/openapitools/client/model/ConfigParametersMysql.java
 src/main/java/org/openapitools/client/model/ConfigParametersPostgres.java
+src/main/java/org/openapitools/client/model/ConfigParametersValkey.java
 src/main/java/org/openapitools/client/model/ContainerRegistryPresetsInner.java
 src/main/java/org/openapitools/client/model/ContainerRegistryRepositoriesInner.java
 src/main/java/org/openapitools/client/model/CreateAdmin.java
@@ -982,6 +994,7 @@ src/main/java/org/openapitools/client/model/IncreaseNodes.java
 src/main/java/org/openapitools/client/model/InfoServicePrice.java
 src/main/java/org/openapitools/client/model/Invoice.java
 src/main/java/org/openapitools/client/model/K8SVersionsResponse.java
+src/main/java/org/openapitools/client/model/Kafka.java
 src/main/java/org/openapitools/client/model/Knowledgebase.java
 src/main/java/org/openapitools/client/model/KnowledgebaseV2.java
 src/main/java/org/openapitools/client/model/Location.java
@@ -1002,6 +1015,7 @@ src/main/java/org/openapitools/client/model/ModelParamsInfo.java
 src/main/java/org/openapitools/client/model/ModelParamsInfoMaxTokens.java
 src/main/java/org/openapitools/client/model/ModelParamsInfoReasoningEffort.java
 src/main/java/org/openapitools/client/model/ModelParamsInfoTemperature.java
+src/main/java/org/openapitools/client/model/Mongodb.java
 src/main/java/org/openapitools/client/model/MountNetworkDrive.java
 src/main/java/org/openapitools/client/model/Mysql.java
 src/main/java/org/openapitools/client/model/NatIn.java
@@ -1030,20 +1044,25 @@ src/main/java/org/openapitools/client/model/NotificationSettingChannel.java
 src/main/java/org/openapitools/client/model/NotificationSettingChannels.java
 src/main/java/org/openapitools/client/model/NotificationSettingType.java
 src/main/java/org/openapitools/client/model/OS.java
+src/main/java/org/openapitools/client/model/Opensearch.java
 src/main/java/org/openapitools/client/model/OutgoingIsDisabled.java
 src/main/java/org/openapitools/client/model/OutgoingIsEnabled.java
 src/main/java/org/openapitools/client/model/PerformActionOnBackupRequest.java
 src/main/java/org/openapitools/client/model/PerformActionOnServerRequest.java
 src/main/java/org/openapitools/client/model/Policy.java
 src/main/java/org/openapitools/client/model/Postgres.java
+src/main/java/org/openapitools/client/model/Postgresql.java
 src/main/java/org/openapitools/client/model/PresetsBalancer.java
 src/main/java/org/openapitools/client/model/PresetsDbs.java
 src/main/java/org/openapitools/client/model/PresetsResponse.java
 src/main/java/org/openapitools/client/model/PresetsStorage.java
 src/main/java/org/openapitools/client/model/Project.java
 src/main/java/org/openapitools/client/model/ProjectResource.java
+src/main/java/org/openapitools/client/model/PropertiesMysql.java
+src/main/java/org/openapitools/client/model/PropertiesValkey.java
 src/main/java/org/openapitools/client/model/Provider.java
 src/main/java/org/openapitools/client/model/Providers.java
+src/main/java/org/openapitools/client/model/Rabbitmq.java
 src/main/java/org/openapitools/client/model/ReduceNodes.java
 src/main/java/org/openapitools/client/model/RegistriesResponse.java
 src/main/java/org/openapitools/client/model/RegistryEdit.java
@@ -1175,6 +1194,7 @@ src/main/java/org/openapitools/client/model/UploadSuccessful.java
 src/main/java/org/openapitools/client/model/UploadSuccessfulResponse.java
 src/main/java/org/openapitools/client/model/UrlStatus.java
 src/main/java/org/openapitools/client/model/Use.java
+src/main/java/org/openapitools/client/model/Valkey.java
 src/main/java/org/openapitools/client/model/Vds.java
 src/main/java/org/openapitools/client/model/VdsDisksInner.java
 src/main/java/org/openapitools/client/model/VdsImage.java
@@ -1282,6 +1302,7 @@ src/test/java/org/openapitools/client/model/BucketUserTest.java
 src/test/java/org/openapitools/client/model/BucketWebsiteConfigErrorPagesInnerTest.java
 src/test/java/org/openapitools/client/model/BucketWebsiteConfigTest.java
 src/test/java/org/openapitools/client/model/CheckDomain200ResponseTest.java
+src/test/java/org/openapitools/client/model/ClickhouseTest.java
 src/test/java/org/openapitools/client/model/ClusterEditOidcProviderTest.java
 src/test/java/org/openapitools/client/model/ClusterEditTest.java
 src/test/java/org/openapitools/client/model/ClusterIn1Test.java
@@ -1301,6 +1322,7 @@ src/test/java/org/openapitools/client/model/ComponentsSchemasMetaTest.java
 src/test/java/org/openapitools/client/model/ConfigParametersMysqlTest.java
 src/test/java/org/openapitools/client/model/ConfigParametersPostgresTest.java
 src/test/java/org/openapitools/client/model/ConfigParametersTest.java
+src/test/java/org/openapitools/client/model/ConfigParametersValkeyTest.java
 src/test/java/org/openapitools/client/model/ContainerRegistryPresetsInnerTest.java
 src/test/java/org/openapitools/client/model/ContainerRegistryRepositoriesInnerTest.java
 src/test/java/org/openapitools/client/model/CreateAdminTest.java
@@ -1559,6 +1581,7 @@ src/test/java/org/openapitools/client/model/IncreaseNodesTest.java
 src/test/java/org/openapitools/client/model/InfoServicePriceTest.java
 src/test/java/org/openapitools/client/model/InvoiceTest.java
 src/test/java/org/openapitools/client/model/K8SVersionsResponseTest.java
+src/test/java/org/openapitools/client/model/KafkaTest.java
 src/test/java/org/openapitools/client/model/KnowledgebaseTest.java
 src/test/java/org/openapitools/client/model/KnowledgebaseV2Test.java
 src/test/java/org/openapitools/client/model/LocationDtoTest.java
@@ -1579,6 +1602,7 @@ src/test/java/org/openapitools/client/model/ModelParamsInfoReasoningEffortTest.j
 src/test/java/org/openapitools/client/model/ModelParamsInfoTemperatureTest.java
 src/test/java/org/openapitools/client/model/ModelParamsInfoTest.java
 src/test/java/org/openapitools/client/model/ModelTest.java
+src/test/java/org/openapitools/client/model/MongodbTest.java
 src/test/java/org/openapitools/client/model/MountNetworkDriveTest.java
 src/test/java/org/openapitools/client/model/MysqlTest.java
 src/test/java/org/openapitools/client/model/NatInTest.java
@@ -1607,20 +1631,25 @@ src/test/java/org/openapitools/client/model/NotificationSettingChannelsTest.java
 src/test/java/org/openapitools/client/model/NotificationSettingTest.java
 src/test/java/org/openapitools/client/model/NotificationSettingTypeTest.java
 src/test/java/org/openapitools/client/model/OSTest.java
+src/test/java/org/openapitools/client/model/OpensearchTest.java
 src/test/java/org/openapitools/client/model/OutgoingIsDisabledTest.java
 src/test/java/org/openapitools/client/model/OutgoingIsEnabledTest.java
 src/test/java/org/openapitools/client/model/PerformActionOnBackupRequestTest.java
 src/test/java/org/openapitools/client/model/PerformActionOnServerRequestTest.java
 src/test/java/org/openapitools/client/model/PolicyTest.java
 src/test/java/org/openapitools/client/model/PostgresTest.java
+src/test/java/org/openapitools/client/model/PostgresqlTest.java
 src/test/java/org/openapitools/client/model/PresetsBalancerTest.java
 src/test/java/org/openapitools/client/model/PresetsDbsTest.java
 src/test/java/org/openapitools/client/model/PresetsResponseTest.java
 src/test/java/org/openapitools/client/model/PresetsStorageTest.java
 src/test/java/org/openapitools/client/model/ProjectResourceTest.java
 src/test/java/org/openapitools/client/model/ProjectTest.java
+src/test/java/org/openapitools/client/model/PropertiesMysqlTest.java
+src/test/java/org/openapitools/client/model/PropertiesValkeyTest.java
 src/test/java/org/openapitools/client/model/ProviderTest.java
 src/test/java/org/openapitools/client/model/ProvidersTest.java
+src/test/java/org/openapitools/client/model/RabbitmqTest.java
 src/test/java/org/openapitools/client/model/ReduceNodesTest.java
 src/test/java/org/openapitools/client/model/RegistriesResponseTest.java
 src/test/java/org/openapitools/client/model/RegistryEditTest.java
@@ -1752,6 +1781,7 @@ src/test/java/org/openapitools/client/model/UploadSuccessfulResponseTest.java
 src/test/java/org/openapitools/client/model/UploadSuccessfulTest.java
 src/test/java/org/openapitools/client/model/UrlStatusTest.java
 src/test/java/org/openapitools/client/model/UseTest.java
+src/test/java/org/openapitools/client/model/ValkeyTest.java
 src/test/java/org/openapitools/client/model/VdsDisksInnerTest.java
 src/test/java/org/openapitools/client/model/VdsImageTest.java
 src/test/java/org/openapitools/client/model/VdsNetworksInnerIpsInnerTest.java

@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import org.openapitools.client.model.PropertiesMysql;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -53,192 +54,15 @@ import org.openapitools.client.JSON;
 /**
  * DatabaseAdminInstancesInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-06-29T12:59:11.660393Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-07-02T09:34:31.780138Z[Etc/UTC]")
 public class DatabaseAdminInstancesInner {
   public static final String SERIALIZED_NAME_INSTANCE_ID = "instance_id";
   @SerializedName(SERIALIZED_NAME_INSTANCE_ID)
   private BigDecimal instanceId;
 
-  /**
-   * Gets or Sets privileges
-   */
-  @JsonAdapter(PrivilegesEnum.Adapter.class)
-  public enum PrivilegesEnum {
-    ALTER("ALTER"),
-    
-    ALTER_TABLE("ALTER_TABLE"),
-    
-    ALTER_VIEW("ALTER_VIEW"),
-    
-    CREATE_VIEW("CREATE_VIEW"),
-    
-    CREATE_DICTIONARY("CREATE_DICTIONARY"),
-    
-    CREATE_FUNCTION("CREATE_FUNCTION"),
-    
-    CREATE_TABLE("CREATE_TABLE"),
-    
-    CREATE("CREATE"),
-    
-    DELETE("DELETE"),
-    
-    DROP("DROP"),
-    
-    DROP_TABLE("DROP_TABLE"),
-    
-    DROP_VIEW("DROP_VIEW"),
-    
-    DROP_DICTIONARY("DROP_DICTIONARY"),
-    
-    EVENT("EVENT"),
-    
-    INDEX("INDEX"),
-    
-    INSERT("INSERT"),
-    
-    LOCK_TABLES("LOCK_TABLES"),
-    
-    REFERENCES("REFERENCES"),
-    
-    SELECT("SELECT"),
-    
-    SHOW("SHOW"),
-    
-    SHOW_VIEW("SHOW_VIEW"),
-    
-    TRUNCATE("TRUNCATE"),
-    
-    TRIGGER("TRIGGER"),
-    
-    UPDATE("UPDATE"),
-    
-    READ("READ"),
-    
-    WRITE("WRITE"),
-    
-    READ_WRITE("READ_WRITE"),
-    
-    DB_ADMIN("DB_ADMIN"),
-    
-    ALTER_ROUTINE("ALTER_ROUTINE"),
-    
-    CREATE_ROUTINE("CREATE_ROUTINE"),
-    
-    CREATE_TEMPORARY_TABLES("CREATE_TEMPORARY_TABLES"),
-    
-    TEMPORARY("TEMPORARY"),
-    
-    CONFIGURE("CONFIGURE"),
-    
-    READ_DASHBOARD("READ_DASHBOARD"),
-    
-    WRITE_DASHBOARD("WRITE_DASHBOARD"),
-    
-    DESCRIBE("DESCRIBE"),
-    
-    OPTIMIZE("OPTIMIZE"),
-    
-    EXECUTE("EXECUTE"),
-    
-    CREATEDB("CREATEDB"),
-    
-    CREATEROLE("CREATEROLE"),
-    
-    CREATE_DB("CREATE_DB"),
-    
-    CREATE_USER("CREATE_USER"),
-    
-    PROCESS("PROCESS"),
-    
-    SLOW_LOG("SLOW_LOG"),
-    
-    CREATE_TEMPORARY_TABLE("CREATE_TEMPORARY_TABLE"),
-    
-    ADMIN("ADMIN"),
-    
-    BITMAP("BITMAP"),
-    
-    BLOCKING("BLOCKING"),
-    
-    CONNECTION("CONNECTION"),
-    
-    DANGEROUS("DANGEROUS"),
-    
-    GEO("GEO"),
-    
-    HASH("HASH"),
-    
-    HYPERLOGLOG("HYPERLOGLOG"),
-    
-    FAST("FAST"),
-    
-    KEYSPACE("KEYSPACE"),
-    
-    LIST("LIST"),
-    
-    PUBSUB("PUBSUB"),
-    
-    SCRIPTING("SCRIPTING"),
-    
-    SET("SET"),
-    
-    SORTEDSET("SORTEDSET"),
-    
-    SLOW("SLOW"),
-    
-    STREAM("STREAM"),
-    
-    STRING("STRING"),
-    
-    TRANSACTION("TRANSACTION"),
-    
-    DICTGET("dictGet"),
-    
-    DBADMIN("dbAdmin"),
-    
-    READWRITE("readWrite");
-
-    private String value;
-
-    PrivilegesEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static PrivilegesEnum fromValue(String value) {
-      for (PrivilegesEnum b : PrivilegesEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<PrivilegesEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final PrivilegesEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public PrivilegesEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return PrivilegesEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_PRIVILEGES = "privileges";
   @SerializedName(SERIALIZED_NAME_PRIVILEGES)
-  private List<PrivilegesEnum> privileges = new ArrayList<>();
+  private List<PropertiesMysql> privileges = new ArrayList<>();
 
   public DatabaseAdminInstancesInner() {
   }
@@ -264,13 +88,13 @@ public class DatabaseAdminInstancesInner {
   }
 
 
-  public DatabaseAdminInstancesInner privileges(List<PrivilegesEnum> privileges) {
+  public DatabaseAdminInstancesInner privileges(List<PropertiesMysql> privileges) {
     
     this.privileges = privileges;
     return this;
   }
 
-  public DatabaseAdminInstancesInner addPrivilegesItem(PrivilegesEnum privilegesItem) {
+  public DatabaseAdminInstancesInner addPrivilegesItem(PropertiesMysql privilegesItem) {
     if (this.privileges == null) {
       this.privileges = new ArrayList<>();
     }
@@ -283,12 +107,12 @@ public class DatabaseAdminInstancesInner {
    * @return privileges
   **/
   @javax.annotation.Nonnull
-  public List<PrivilegesEnum> getPrivileges() {
+  public List<PropertiesMysql> getPrivileges() {
     return privileges;
   }
 
 
-  public void setPrivileges(List<PrivilegesEnum> privileges) {
+  public void setPrivileges(List<PropertiesMysql> privileges) {
     this.privileges = privileges;
   }
 

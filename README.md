@@ -2,7 +2,7 @@
 
 Timeweb Cloud API
 - API version: 1.0.0
-  - Build date: 2026-06-29T12:59:11.660393Z[Etc/UTC]
+  - Build date: 2026-07-02T09:34:31.780138Z[Etc/UTC]
 
 # Введение
 API Timeweb Cloud позволяет вам управлять ресурсами в облаке программным способом с использованием обычных HTTP-запросов.
@@ -672,6 +672,7 @@ Class | Method | HTTP request | Description
  - [BucketWebsiteConfig](docs/BucketWebsiteConfig.md)
  - [BucketWebsiteConfigErrorPagesInner](docs/BucketWebsiteConfigErrorPagesInner.md)
  - [CheckDomain200Response](docs/CheckDomain200Response.md)
+ - [Clickhouse](docs/Clickhouse.md)
  - [ClusterEdit](docs/ClusterEdit.md)
  - [ClusterEditOidcProvider](docs/ClusterEditOidcProvider.md)
  - [ClusterIn](docs/ClusterIn.md)
@@ -691,6 +692,7 @@ Class | Method | HTTP request | Description
  - [ConfigParameters](docs/ConfigParameters.md)
  - [ConfigParametersMysql](docs/ConfigParametersMysql.md)
  - [ConfigParametersPostgres](docs/ConfigParametersPostgres.md)
+ - [ConfigParametersValkey](docs/ConfigParametersValkey.md)
  - [ContainerRegistryPresetsInner](docs/ContainerRegistryPresetsInner.md)
  - [ContainerRegistryRepositoriesInner](docs/ContainerRegistryRepositoriesInner.md)
  - [CreateAdmin](docs/CreateAdmin.md)
@@ -949,6 +951,7 @@ Class | Method | HTTP request | Description
  - [InfoServicePrice](docs/InfoServicePrice.md)
  - [Invoice](docs/Invoice.md)
  - [K8SVersionsResponse](docs/K8SVersionsResponse.md)
+ - [Kafka](docs/Kafka.md)
  - [Knowledgebase](docs/Knowledgebase.md)
  - [KnowledgebaseV2](docs/KnowledgebaseV2.md)
  - [Location](docs/Location.md)
@@ -969,6 +972,7 @@ Class | Method | HTTP request | Description
  - [ModelParamsInfoMaxTokens](docs/ModelParamsInfoMaxTokens.md)
  - [ModelParamsInfoReasoningEffort](docs/ModelParamsInfoReasoningEffort.md)
  - [ModelParamsInfoTemperature](docs/ModelParamsInfoTemperature.md)
+ - [Mongodb](docs/Mongodb.md)
  - [MountNetworkDrive](docs/MountNetworkDrive.md)
  - [Mysql](docs/Mysql.md)
  - [NatIn](docs/NatIn.md)
@@ -997,20 +1001,25 @@ Class | Method | HTTP request | Description
  - [NotificationSettingChannels](docs/NotificationSettingChannels.md)
  - [NotificationSettingType](docs/NotificationSettingType.md)
  - [OS](docs/OS.md)
+ - [Opensearch](docs/Opensearch.md)
  - [OutgoingIsDisabled](docs/OutgoingIsDisabled.md)
  - [OutgoingIsEnabled](docs/OutgoingIsEnabled.md)
  - [PerformActionOnBackupRequest](docs/PerformActionOnBackupRequest.md)
  - [PerformActionOnServerRequest](docs/PerformActionOnServerRequest.md)
  - [Policy](docs/Policy.md)
  - [Postgres](docs/Postgres.md)
+ - [Postgresql](docs/Postgresql.md)
  - [PresetsBalancer](docs/PresetsBalancer.md)
  - [PresetsDbs](docs/PresetsDbs.md)
  - [PresetsResponse](docs/PresetsResponse.md)
  - [PresetsStorage](docs/PresetsStorage.md)
  - [Project](docs/Project.md)
  - [ProjectResource](docs/ProjectResource.md)
+ - [PropertiesMysql](docs/PropertiesMysql.md)
+ - [PropertiesValkey](docs/PropertiesValkey.md)
  - [Provider](docs/Provider.md)
  - [Providers](docs/Providers.md)
+ - [Rabbitmq](docs/Rabbitmq.md)
  - [ReduceNodes](docs/ReduceNodes.md)
  - [RegistriesResponse](docs/RegistriesResponse.md)
  - [RegistryEdit](docs/RegistryEdit.md)
@@ -1142,6 +1151,7 @@ Class | Method | HTTP request | Description
  - [UploadSuccessfulResponse](docs/UploadSuccessfulResponse.md)
  - [UrlStatus](docs/UrlStatus.md)
  - [Use](docs/Use.md)
+ - [Valkey](docs/Valkey.md)
  - [Vds](docs/Vds.md)
  - [VdsDisksInner](docs/VdsDisksInner.md)
  - [VdsImage](docs/VdsImage.md)
