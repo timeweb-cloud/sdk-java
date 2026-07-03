@@ -24,7 +24,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * Привилегии Kafka (&#x60;kafka&#x60;)
+ * Gets or Sets kafka
  */
 @JsonAdapter(Kafka.Adapter.class)
 public enum Kafka {
