@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * AvailableStaticRouteSubnetsInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-07-13T13:33:30.951959Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-07-13T14:48:50.006639Z[Etc/UTC]")
 public class AvailableStaticRouteSubnetsInner {
   public static final String SERIALIZED_NAME_SUBNET = "subnet";
   @SerializedName(SERIALIZED_NAME_SUBNET)
