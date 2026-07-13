@@ -238,7 +238,7 @@ public class DomainsApi {
     /**
      * Build call for addSubdomain
      * @param fqdn Полное имя домена. (required)
-     * @param subdomainFqdn Полное имя поддомена. (required)
+     * @param subdomain Имя поддомена без имени домена. Например, для поддомена &#x60;sub.somedomain.ru&#x60; нужно передать &#x60;sub&#x60;. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -253,7 +253,7 @@ public class DomainsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call addSubdomainCall(String fqdn, String subdomainFqdn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call addSubdomainCall(String fqdn, String subdomain, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -270,9 +270,9 @@ public class DomainsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/v1/domains/{fqdn}/subdomains/{subdomain_fqdn}"
+        String localVarPath = "/api/v1/domains/{fqdn}/subdomains/{subdomain}"
             .replace("{" + "fqdn" + "}", localVarApiClient.escapeString(fqdn.toString()))
-            .replace("{" + "subdomain_fqdn" + "}", localVarApiClient.escapeString(subdomainFqdn.toString()));
+            .replace("{" + "subdomain" + "}", localVarApiClient.escapeString(subdomain.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -300,26 +300,26 @@ public class DomainsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call addSubdomainValidateBeforeCall(String fqdn, String subdomainFqdn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call addSubdomainValidateBeforeCall(String fqdn, String subdomain, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'fqdn' is set
         if (fqdn == null) {
             throw new ApiException("Missing the required parameter 'fqdn' when calling addSubdomain(Async)");
         }
 
-        // verify the required parameter 'subdomainFqdn' is set
-        if (subdomainFqdn == null) {
-            throw new ApiException("Missing the required parameter 'subdomainFqdn' when calling addSubdomain(Async)");
+        // verify the required parameter 'subdomain' is set
+        if (subdomain == null) {
+            throw new ApiException("Missing the required parameter 'subdomain' when calling addSubdomain(Async)");
         }
 
-        return addSubdomainCall(fqdn, subdomainFqdn, _callback);
+        return addSubdomainCall(fqdn, subdomain, _callback);
 
     }
 
     /**
      * Добавление поддомена
-     * Чтобы добавить поддомен, отправьте запрос POST на &#x60;/api/v1/domains/{fqdn}/subdomains/{subdomain_fqdn}&#x60;, задав необходимые атрибуты.  Поддомен будет добавлен с использованием предоставленной информации. Тело ответа будет содержать объект JSON с информацией о добавленном поддомене.
+     * Чтобы добавить поддомен, отправьте запрос POST на &#x60;/api/v1/domains/{fqdn}/subdomains/{subdomain}&#x60;, задав необходимые атрибуты.  Поддомен будет добавлен с использованием предоставленной информации. Тело ответа будет содержать объект JSON с информацией о добавленном поддомене.
      * @param fqdn Полное имя домена. (required)
-     * @param subdomainFqdn Полное имя поддомена. (required)
+     * @param subdomain Имя поддомена без имени домена. Например, для поддомена &#x60;sub.somedomain.ru&#x60; нужно передать &#x60;sub&#x60;. (required)
      * @return AddSubdomain201Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -333,16 +333,16 @@ public class DomainsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public AddSubdomain201Response addSubdomain(String fqdn, String subdomainFqdn) throws ApiException {
-        ApiResponse<AddSubdomain201Response> localVarResp = addSubdomainWithHttpInfo(fqdn, subdomainFqdn);
+    public AddSubdomain201Response addSubdomain(String fqdn, String subdomain) throws ApiException {
+        ApiResponse<AddSubdomain201Response> localVarResp = addSubdomainWithHttpInfo(fqdn, subdomain);
         return localVarResp.getData();
     }
 
     /**
      * Добавление поддомена
-     * Чтобы добавить поддомен, отправьте запрос POST на &#x60;/api/v1/domains/{fqdn}/subdomains/{subdomain_fqdn}&#x60;, задав необходимые атрибуты.  Поддомен будет добавлен с использованием предоставленной информации. Тело ответа будет содержать объект JSON с информацией о добавленном поддомене.
+     * Чтобы добавить поддомен, отправьте запрос POST на &#x60;/api/v1/domains/{fqdn}/subdomains/{subdomain}&#x60;, задав необходимые атрибуты.  Поддомен будет добавлен с использованием предоставленной информации. Тело ответа будет содержать объект JSON с информацией о добавленном поддомене.
      * @param fqdn Полное имя домена. (required)
-     * @param subdomainFqdn Полное имя поддомена. (required)
+     * @param subdomain Имя поддомена без имени домена. Например, для поддомена &#x60;sub.somedomain.ru&#x60; нужно передать &#x60;sub&#x60;. (required)
      * @return ApiResponse&lt;AddSubdomain201Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -356,17 +356,17 @@ public class DomainsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AddSubdomain201Response> addSubdomainWithHttpInfo(String fqdn, String subdomainFqdn) throws ApiException {
-        okhttp3.Call localVarCall = addSubdomainValidateBeforeCall(fqdn, subdomainFqdn, null);
+    public ApiResponse<AddSubdomain201Response> addSubdomainWithHttpInfo(String fqdn, String subdomain) throws ApiException {
+        okhttp3.Call localVarCall = addSubdomainValidateBeforeCall(fqdn, subdomain, null);
         Type localVarReturnType = new TypeToken<AddSubdomain201Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Добавление поддомена (asynchronously)
-     * Чтобы добавить поддомен, отправьте запрос POST на &#x60;/api/v1/domains/{fqdn}/subdomains/{subdomain_fqdn}&#x60;, задав необходимые атрибуты.  Поддомен будет добавлен с использованием предоставленной информации. Тело ответа будет содержать объект JSON с информацией о добавленном поддомене.
+     * Чтобы добавить поддомен, отправьте запрос POST на &#x60;/api/v1/domains/{fqdn}/subdomains/{subdomain}&#x60;, задав необходимые атрибуты.  Поддомен будет добавлен с использованием предоставленной информации. Тело ответа будет содержать объект JSON с информацией о добавленном поддомене.
      * @param fqdn Полное имя домена. (required)
-     * @param subdomainFqdn Полное имя поддомена. (required)
+     * @param subdomain Имя поддомена без имени домена. Например, для поддомена &#x60;sub.somedomain.ru&#x60; нужно передать &#x60;sub&#x60;. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -381,9 +381,9 @@ public class DomainsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call addSubdomainAsync(String fqdn, String subdomainFqdn, final ApiCallback<AddSubdomain201Response> _callback) throws ApiException {
+    public okhttp3.Call addSubdomainAsync(String fqdn, String subdomain, final ApiCallback<AddSubdomain201Response> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = addSubdomainValidateBeforeCall(fqdn, subdomainFqdn, _callback);
+        okhttp3.Call localVarCall = addSubdomainValidateBeforeCall(fqdn, subdomain, _callback);
         Type localVarReturnType = new TypeToken<AddSubdomain201Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -691,7 +691,7 @@ public class DomainsApi {
     }
     /**
      * Build call for createDomainDNSRecordV2
-     * @param fqdn Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, &#x60;somedomain.ru&#x60;). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, &#x60;sub.somedomain.ru&#x60;). (required)
+     * @param fqdn Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, &#x60;somedomain.ru&#x60;). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, &#x60;sub.somedomain.ru&#x60;).  Поддомен должен быть создан заранее методом добавления поддомена (&#x60;POST /api/v1/domains/{fqdn}/subdomains/{subdomain}&#x60;). (required)
      * @param createDnsV2  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -773,7 +773,7 @@ public class DomainsApi {
     /**
      * Добавить информацию о DNS-записи для домена или поддомена
      * Чтобы добавить информацию о DNS-записи для домена или поддомена, отправьте запрос POST на &#x60;/api/v2/domains/{fqdn}/dns-records&#x60;, задав необходимые атрибуты.  DNS-запись будет добавлена с использованием предоставленной информации. Тело ответа будет содержать объект JSON с информацией о добавленной DNS-записи.
-     * @param fqdn Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, &#x60;somedomain.ru&#x60;). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, &#x60;sub.somedomain.ru&#x60;). (required)
+     * @param fqdn Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, &#x60;somedomain.ru&#x60;). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, &#x60;sub.somedomain.ru&#x60;).  Поддомен должен быть создан заранее методом добавления поддомена (&#x60;POST /api/v1/domains/{fqdn}/subdomains/{subdomain}&#x60;). (required)
      * @param createDnsV2  (required)
      * @return CreateDomainDNSRecordV2201Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -797,7 +797,7 @@ public class DomainsApi {
     /**
      * Добавить информацию о DNS-записи для домена или поддомена
      * Чтобы добавить информацию о DNS-записи для домена или поддомена, отправьте запрос POST на &#x60;/api/v2/domains/{fqdn}/dns-records&#x60;, задав необходимые атрибуты.  DNS-запись будет добавлена с использованием предоставленной информации. Тело ответа будет содержать объект JSON с информацией о добавленной DNS-записи.
-     * @param fqdn Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, &#x60;somedomain.ru&#x60;). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, &#x60;sub.somedomain.ru&#x60;). (required)
+     * @param fqdn Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, &#x60;somedomain.ru&#x60;). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, &#x60;sub.somedomain.ru&#x60;).  Поддомен должен быть создан заранее методом добавления поддомена (&#x60;POST /api/v1/domains/{fqdn}/subdomains/{subdomain}&#x60;). (required)
      * @param createDnsV2  (required)
      * @return ApiResponse&lt;CreateDomainDNSRecordV2201Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -822,7 +822,7 @@ public class DomainsApi {
     /**
      * Добавить информацию о DNS-записи для домена или поддомена (asynchronously)
      * Чтобы добавить информацию о DNS-записи для домена или поддомена, отправьте запрос POST на &#x60;/api/v2/domains/{fqdn}/dns-records&#x60;, задав необходимые атрибуты.  DNS-запись будет добавлена с использованием предоставленной информации. Тело ответа будет содержать объект JSON с информацией о добавленной DNS-записи.
-     * @param fqdn Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, &#x60;somedomain.ru&#x60;). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, &#x60;sub.somedomain.ru&#x60;). (required)
+     * @param fqdn Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, &#x60;somedomain.ru&#x60;). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, &#x60;sub.somedomain.ru&#x60;).  Поддомен должен быть создан заранее методом добавления поддомена (&#x60;POST /api/v1/domains/{fqdn}/subdomains/{subdomain}&#x60;). (required)
      * @param createDnsV2  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1292,7 +1292,7 @@ public class DomainsApi {
     }
     /**
      * Build call for deleteDomainDNSRecordV2
-     * @param fqdn Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, &#x60;somedomain.ru&#x60;). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, &#x60;sub.somedomain.ru&#x60;). (required)
+     * @param fqdn Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, &#x60;somedomain.ru&#x60;). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, &#x60;sub.somedomain.ru&#x60;).  Поддомен должен быть создан заранее методом добавления поддомена (&#x60;POST /api/v1/domains/{fqdn}/subdomains/{subdomain}&#x60;). (required)
      * @param recordId ID DNS-записи домена или поддомена. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1373,7 +1373,7 @@ public class DomainsApi {
     /**
      * Удалить информацию о DNS-записи для домена или поддомена
      * Чтобы удалить информацию о DNS-записи для домена или поддомена, отправьте запрос DELETE на &#x60;/api/v2/domains/{fqdn}/dns-records/{record_id}&#x60;.
-     * @param fqdn Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, &#x60;somedomain.ru&#x60;). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, &#x60;sub.somedomain.ru&#x60;). (required)
+     * @param fqdn Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, &#x60;somedomain.ru&#x60;). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, &#x60;sub.somedomain.ru&#x60;).  Поддомен должен быть создан заранее методом добавления поддомена (&#x60;POST /api/v1/domains/{fqdn}/subdomains/{subdomain}&#x60;). (required)
      * @param recordId ID DNS-записи домена или поддомена. (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1394,7 +1394,7 @@ public class DomainsApi {
     /**
      * Удалить информацию о DNS-записи для домена или поддомена
      * Чтобы удалить информацию о DNS-записи для домена или поддомена, отправьте запрос DELETE на &#x60;/api/v2/domains/{fqdn}/dns-records/{record_id}&#x60;.
-     * @param fqdn Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, &#x60;somedomain.ru&#x60;). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, &#x60;sub.somedomain.ru&#x60;). (required)
+     * @param fqdn Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, &#x60;somedomain.ru&#x60;). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, &#x60;sub.somedomain.ru&#x60;).  Поддомен должен быть создан заранее методом добавления поддомена (&#x60;POST /api/v1/domains/{fqdn}/subdomains/{subdomain}&#x60;). (required)
      * @param recordId ID DNS-записи домена или поддомена. (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1417,7 +1417,7 @@ public class DomainsApi {
     /**
      * Удалить информацию о DNS-записи для домена или поддомена (asynchronously)
      * Чтобы удалить информацию о DNS-записи для домена или поддомена, отправьте запрос DELETE на &#x60;/api/v2/domains/{fqdn}/dns-records/{record_id}&#x60;.
-     * @param fqdn Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, &#x60;somedomain.ru&#x60;). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, &#x60;sub.somedomain.ru&#x60;). (required)
+     * @param fqdn Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, &#x60;somedomain.ru&#x60;). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, &#x60;sub.somedomain.ru&#x60;).  Поддомен должен быть создан заранее методом добавления поддомена (&#x60;POST /api/v1/domains/{fqdn}/subdomains/{subdomain}&#x60;). (required)
      * @param recordId ID DNS-записи домена или поддомена. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1442,7 +1442,7 @@ public class DomainsApi {
     /**
      * Build call for deleteSubdomain
      * @param fqdn Полное имя домена. (required)
-     * @param subdomainFqdn Полное имя поддомена. (required)
+     * @param subdomain Имя поддомена без имени домена. Например, для поддомена &#x60;sub.somedomain.ru&#x60; нужно передать &#x60;sub&#x60;. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1458,7 +1458,7 @@ public class DomainsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteSubdomainCall(String fqdn, String subdomainFqdn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteSubdomainCall(String fqdn, String subdomain, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1475,9 +1475,9 @@ public class DomainsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/v1/domains/{fqdn}/subdomains/{subdomain_fqdn}"
+        String localVarPath = "/api/v1/domains/{fqdn}/subdomains/{subdomain}"
             .replace("{" + "fqdn" + "}", localVarApiClient.escapeString(fqdn.toString()))
-            .replace("{" + "subdomain_fqdn" + "}", localVarApiClient.escapeString(subdomainFqdn.toString()));
+            .replace("{" + "subdomain" + "}", localVarApiClient.escapeString(subdomain.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1505,26 +1505,26 @@ public class DomainsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteSubdomainValidateBeforeCall(String fqdn, String subdomainFqdn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteSubdomainValidateBeforeCall(String fqdn, String subdomain, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'fqdn' is set
         if (fqdn == null) {
             throw new ApiException("Missing the required parameter 'fqdn' when calling deleteSubdomain(Async)");
         }
 
-        // verify the required parameter 'subdomainFqdn' is set
-        if (subdomainFqdn == null) {
-            throw new ApiException("Missing the required parameter 'subdomainFqdn' when calling deleteSubdomain(Async)");
+        // verify the required parameter 'subdomain' is set
+        if (subdomain == null) {
+            throw new ApiException("Missing the required parameter 'subdomain' when calling deleteSubdomain(Async)");
         }
 
-        return deleteSubdomainCall(fqdn, subdomainFqdn, _callback);
+        return deleteSubdomainCall(fqdn, subdomain, _callback);
 
     }
 
     /**
      * Удаление поддомена
-     * Чтобы удалить поддомен, отправьте запрос DELETE на &#x60;/api/v1/domains/{fqdn}/subdomains/{subdomain_fqdn}&#x60;.
+     * Чтобы удалить поддомен, отправьте запрос DELETE на &#x60;/api/v1/domains/{fqdn}/subdomains/{subdomain}&#x60;.
      * @param fqdn Полное имя домена. (required)
-     * @param subdomainFqdn Полное имя поддомена. (required)
+     * @param subdomain Имя поддомена без имени домена. Например, для поддомена &#x60;sub.somedomain.ru&#x60; нужно передать &#x60;sub&#x60;. (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1538,15 +1538,15 @@ public class DomainsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteSubdomain(String fqdn, String subdomainFqdn) throws ApiException {
-        deleteSubdomainWithHttpInfo(fqdn, subdomainFqdn);
+    public void deleteSubdomain(String fqdn, String subdomain) throws ApiException {
+        deleteSubdomainWithHttpInfo(fqdn, subdomain);
     }
 
     /**
      * Удаление поддомена
-     * Чтобы удалить поддомен, отправьте запрос DELETE на &#x60;/api/v1/domains/{fqdn}/subdomains/{subdomain_fqdn}&#x60;.
+     * Чтобы удалить поддомен, отправьте запрос DELETE на &#x60;/api/v1/domains/{fqdn}/subdomains/{subdomain}&#x60;.
      * @param fqdn Полное имя домена. (required)
-     * @param subdomainFqdn Полное имя поддомена. (required)
+     * @param subdomain Имя поддомена без имени домена. Например, для поддомена &#x60;sub.somedomain.ru&#x60; нужно передать &#x60;sub&#x60;. (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1561,16 +1561,16 @@ public class DomainsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteSubdomainWithHttpInfo(String fqdn, String subdomainFqdn) throws ApiException {
-        okhttp3.Call localVarCall = deleteSubdomainValidateBeforeCall(fqdn, subdomainFqdn, null);
+    public ApiResponse<Void> deleteSubdomainWithHttpInfo(String fqdn, String subdomain) throws ApiException {
+        okhttp3.Call localVarCall = deleteSubdomainValidateBeforeCall(fqdn, subdomain, null);
         return localVarApiClient.execute(localVarCall);
     }
 
     /**
      * Удаление поддомена (asynchronously)
-     * Чтобы удалить поддомен, отправьте запрос DELETE на &#x60;/api/v1/domains/{fqdn}/subdomains/{subdomain_fqdn}&#x60;.
+     * Чтобы удалить поддомен, отправьте запрос DELETE на &#x60;/api/v1/domains/{fqdn}/subdomains/{subdomain}&#x60;.
      * @param fqdn Полное имя домена. (required)
-     * @param subdomainFqdn Полное имя поддомена. (required)
+     * @param subdomain Имя поддомена без имени домена. Например, для поддомена &#x60;sub.somedomain.ru&#x60; нужно передать &#x60;sub&#x60;. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1586,9 +1586,9 @@ public class DomainsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteSubdomainAsync(String fqdn, String subdomainFqdn, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteSubdomainAsync(String fqdn, String subdomain, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteSubdomainValidateBeforeCall(fqdn, subdomainFqdn, _callback);
+        okhttp3.Call localVarCall = deleteSubdomainValidateBeforeCall(fqdn, subdomain, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
@@ -3272,7 +3272,7 @@ public class DomainsApi {
     }
     /**
      * Build call for updateDomainDNSRecordV2
-     * @param fqdn Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, &#x60;somedomain.ru&#x60;). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, &#x60;sub.somedomain.ru&#x60;). (required)
+     * @param fqdn Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, &#x60;somedomain.ru&#x60;). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, &#x60;sub.somedomain.ru&#x60;).  Поддомен должен быть создан заранее методом добавления поддомена (&#x60;POST /api/v1/domains/{fqdn}/subdomains/{subdomain}&#x60;). (required)
      * @param recordId ID DNS-записи домена или поддомена. (required)
      * @param createDnsV2  (required)
      * @param _callback Callback for upload/download progress
@@ -3361,7 +3361,7 @@ public class DomainsApi {
     /**
      * Обновить информацию о DNS-записи домена или поддомена
      * Чтобы обновить информацию о DNS-записи для домена или поддомена, отправьте запрос PATCH на &#x60;/api/v2/domains/{fqdn}/dns-records/{record_id}&#x60;, задав необходимые атрибуты.  DNS-запись будет обновлена с использованием предоставленной информации. Тело ответа будет содержать объект JSON с информацией об обновленной DNS-записи.
-     * @param fqdn Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, &#x60;somedomain.ru&#x60;). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, &#x60;sub.somedomain.ru&#x60;). (required)
+     * @param fqdn Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, &#x60;somedomain.ru&#x60;). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, &#x60;sub.somedomain.ru&#x60;).  Поддомен должен быть создан заранее методом добавления поддомена (&#x60;POST /api/v1/domains/{fqdn}/subdomains/{subdomain}&#x60;). (required)
      * @param recordId ID DNS-записи домена или поддомена. (required)
      * @param createDnsV2  (required)
      * @return CreateDomainDNSRecordV2201Response
@@ -3386,7 +3386,7 @@ public class DomainsApi {
     /**
      * Обновить информацию о DNS-записи домена или поддомена
      * Чтобы обновить информацию о DNS-записи для домена или поддомена, отправьте запрос PATCH на &#x60;/api/v2/domains/{fqdn}/dns-records/{record_id}&#x60;, задав необходимые атрибуты.  DNS-запись будет обновлена с использованием предоставленной информации. Тело ответа будет содержать объект JSON с информацией об обновленной DNS-записи.
-     * @param fqdn Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, &#x60;somedomain.ru&#x60;). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, &#x60;sub.somedomain.ru&#x60;). (required)
+     * @param fqdn Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, &#x60;somedomain.ru&#x60;). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, &#x60;sub.somedomain.ru&#x60;).  Поддомен должен быть создан заранее методом добавления поддомена (&#x60;POST /api/v1/domains/{fqdn}/subdomains/{subdomain}&#x60;). (required)
      * @param recordId ID DNS-записи домена или поддомена. (required)
      * @param createDnsV2  (required)
      * @return ApiResponse&lt;CreateDomainDNSRecordV2201Response&gt;
@@ -3412,7 +3412,7 @@ public class DomainsApi {
     /**
      * Обновить информацию о DNS-записи домена или поддомена (asynchronously)
      * Чтобы обновить информацию о DNS-записи для домена или поддомена, отправьте запрос PATCH на &#x60;/api/v2/domains/{fqdn}/dns-records/{record_id}&#x60;, задав необходимые атрибуты.  DNS-запись будет обновлена с использованием предоставленной информации. Тело ответа будет содержать объект JSON с информацией об обновленной DNS-записи.
-     * @param fqdn Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, &#x60;somedomain.ru&#x60;). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, &#x60;sub.somedomain.ru&#x60;). (required)
+     * @param fqdn Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, &#x60;somedomain.ru&#x60;). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, &#x60;sub.somedomain.ru&#x60;).  Поддомен должен быть создан заранее методом добавления поддомена (&#x60;POST /api/v1/domains/{fqdn}/subdomains/{subdomain}&#x60;). (required)
      * @param recordId ID DNS-записи домена или поддомена. (required)
      * @param createDnsV2  (required)
      * @param _callback The callback to be executed when the API call finishes

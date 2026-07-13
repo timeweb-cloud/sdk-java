@@ -2,7 +2,7 @@
 
 Timeweb Cloud API
 - API version: 1.0.0
-  - Build date: 2026-07-03T09:26:34.553541Z[Etc/UTC]
+  - Build date: 2026-07-13T10:12:40.584547Z[Etc/UTC]
 
 # Введение
 API Timeweb Cloud позволяет вам управлять ресурсами в облаке программным способом с использованием обычных HTTP-запросов.
@@ -360,7 +360,7 @@ Class | Method | HTTP request | Description
 *DedicatedServersApi* | [**getDedicatedServersPresets**](docs/DedicatedServersApi.md#getDedicatedServersPresets) | **GET** /api/v1/presets/dedicated-servers | Получение списка тарифов для выделенного сервера
 *DedicatedServersApi* | [**updateDedicatedServer**](docs/DedicatedServersApi.md#updateDedicatedServer) | **PATCH** /api/v1/dedicated-servers/{dedicated_id} | Обновление выделенного сервера
 *DomainsApi* | [**addDomain**](docs/DomainsApi.md#addDomain) | **POST** /api/v1/add-domain/{fqdn} | Добавление домена на аккаунт
-*DomainsApi* | [**addSubdomain**](docs/DomainsApi.md#addSubdomain) | **POST** /api/v1/domains/{fqdn}/subdomains/{subdomain_fqdn} | Добавление поддомена
+*DomainsApi* | [**addSubdomain**](docs/DomainsApi.md#addSubdomain) | **POST** /api/v1/domains/{fqdn}/subdomains/{subdomain} | Добавление поддомена
 *DomainsApi* | [**checkDomain**](docs/DomainsApi.md#checkDomain) | **GET** /api/v1/check-domain/{fqdn} | Проверить, доступен ли домен для регистрации
 *DomainsApi* | [**createDomainDNSRecord**](docs/DomainsApi.md#createDomainDNSRecord) | **POST** /api/v1/domains/{fqdn}/dns-records | Добавить информацию о DNS-записи для домена или поддомена
 *DomainsApi* | [**createDomainDNSRecordV2**](docs/DomainsApi.md#createDomainDNSRecordV2) | **POST** /api/v2/domains/{fqdn}/dns-records | Добавить информацию о DNS-записи для домена или поддомена
@@ -368,7 +368,7 @@ Class | Method | HTTP request | Description
 *DomainsApi* | [**deleteDomain**](docs/DomainsApi.md#deleteDomain) | **DELETE** /api/v1/domains/{fqdn} | Удаление домена
 *DomainsApi* | [**deleteDomainDNSRecord**](docs/DomainsApi.md#deleteDomainDNSRecord) | **DELETE** /api/v1/domains/{fqdn}/dns-records/{record_id} | Удалить информацию о DNS-записи для домена или поддомена
 *DomainsApi* | [**deleteDomainDNSRecordV2**](docs/DomainsApi.md#deleteDomainDNSRecordV2) | **DELETE** /api/v2/domains/{fqdn}/dns-records/{record_id} | Удалить информацию о DNS-записи для домена или поддомена
-*DomainsApi* | [**deleteSubdomain**](docs/DomainsApi.md#deleteSubdomain) | **DELETE** /api/v1/domains/{fqdn}/subdomains/{subdomain_fqdn} | Удаление поддомена
+*DomainsApi* | [**deleteSubdomain**](docs/DomainsApi.md#deleteSubdomain) | **DELETE** /api/v1/domains/{fqdn}/subdomains/{subdomain} | Удаление поддомена
 *DomainsApi* | [**getDomain**](docs/DomainsApi.md#getDomain) | **GET** /api/v1/domains/{fqdn} | Получение информации о домене
 *DomainsApi* | [**getDomainDNSRecords**](docs/DomainsApi.md#getDomainDNSRecords) | **GET** /api/v1/domains/{fqdn}/dns-records | Получить информацию обо всех пользовательских DNS-записях домена или поддомена
 *DomainsApi* | [**getDomainDefaultDNSRecords**](docs/DomainsApi.md#getDomainDefaultDNSRecords) | **GET** /api/v1/domains/{fqdn}/default-dns-records | Получить информацию обо всех DNS-записях по умолчанию домена или поддомена

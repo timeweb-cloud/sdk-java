@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * Параметры PostgreSQL (&#x60;postgres&#x60; | &#x60;postgres14&#x60; | &#x60;postgres15&#x60; | &#x60;postgres16&#x60; | &#x60;postgres17&#x60; | &#x60;postgres18&#x60;)
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-07-03T09:26:34.553541Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-07-13T10:12:40.584547Z[Etc/UTC]")
 public class Postgres {
   public static final String SERIALIZED_NAME_MAX_CONNECTIONS = "max_connections";
   @SerializedName(SERIALIZED_NAME_MAX_CONNECTIONS)

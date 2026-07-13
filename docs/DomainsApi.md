@@ -5,7 +5,7 @@ All URIs are relative to *https://api.timeweb.cloud*
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
 | [**addDomain**](DomainsApi.md#addDomain) | **POST** /api/v1/add-domain/{fqdn} | Добавление домена на аккаунт |
-| [**addSubdomain**](DomainsApi.md#addSubdomain) | **POST** /api/v1/domains/{fqdn}/subdomains/{subdomain_fqdn} | Добавление поддомена |
+| [**addSubdomain**](DomainsApi.md#addSubdomain) | **POST** /api/v1/domains/{fqdn}/subdomains/{subdomain} | Добавление поддомена |
 | [**checkDomain**](DomainsApi.md#checkDomain) | **GET** /api/v1/check-domain/{fqdn} | Проверить, доступен ли домен для регистрации |
 | [**createDomainDNSRecord**](DomainsApi.md#createDomainDNSRecord) | **POST** /api/v1/domains/{fqdn}/dns-records | Добавить информацию о DNS-записи для домена или поддомена |
 | [**createDomainDNSRecordV2**](DomainsApi.md#createDomainDNSRecordV2) | **POST** /api/v2/domains/{fqdn}/dns-records | Добавить информацию о DNS-записи для домена или поддомена |
@@ -13,7 +13,7 @@ All URIs are relative to *https://api.timeweb.cloud*
 | [**deleteDomain**](DomainsApi.md#deleteDomain) | **DELETE** /api/v1/domains/{fqdn} | Удаление домена |
 | [**deleteDomainDNSRecord**](DomainsApi.md#deleteDomainDNSRecord) | **DELETE** /api/v1/domains/{fqdn}/dns-records/{record_id} | Удалить информацию о DNS-записи для домена или поддомена |
 | [**deleteDomainDNSRecordV2**](DomainsApi.md#deleteDomainDNSRecordV2) | **DELETE** /api/v2/domains/{fqdn}/dns-records/{record_id} | Удалить информацию о DNS-записи для домена или поддомена |
-| [**deleteSubdomain**](DomainsApi.md#deleteSubdomain) | **DELETE** /api/v1/domains/{fqdn}/subdomains/{subdomain_fqdn} | Удаление поддомена |
+| [**deleteSubdomain**](DomainsApi.md#deleteSubdomain) | **DELETE** /api/v1/domains/{fqdn}/subdomains/{subdomain} | Удаление поддомена |
 | [**getDomain**](DomainsApi.md#getDomain) | **GET** /api/v1/domains/{fqdn} | Получение информации о домене |
 | [**getDomainDNSRecords**](DomainsApi.md#getDomainDNSRecords) | **GET** /api/v1/domains/{fqdn}/dns-records | Получить информацию обо всех пользовательских DNS-записях домена или поддомена |
 | [**getDomainDefaultDNSRecords**](DomainsApi.md#getDomainDefaultDNSRecords) | **GET** /api/v1/domains/{fqdn}/default-dns-records | Получить информацию обо всех DNS-записях по умолчанию домена или поддомена |
@@ -103,11 +103,11 @@ null (empty response body)
 
 <a id="addSubdomain"></a>
 # **addSubdomain**
-> AddSubdomain201Response addSubdomain(fqdn, subdomainFqdn)
+> AddSubdomain201Response addSubdomain(fqdn, subdomain)
 
 Добавление поддомена
 
-Чтобы добавить поддомен, отправьте запрос POST на &#x60;/api/v1/domains/{fqdn}/subdomains/{subdomain_fqdn}&#x60;, задав необходимые атрибуты.  Поддомен будет добавлен с использованием предоставленной информации. Тело ответа будет содержать объект JSON с информацией о добавленном поддомене.
+Чтобы добавить поддомен, отправьте запрос POST на &#x60;/api/v1/domains/{fqdn}/subdomains/{subdomain}&#x60;, задав необходимые атрибуты.  Поддомен будет добавлен с использованием предоставленной информации. Тело ответа будет содержать объект JSON с информацией о добавленном поддомене.
 
 ### Example
 ```java
@@ -130,9 +130,9 @@ public class Example {
 
     DomainsApi apiInstance = new DomainsApi(defaultClient);
     String fqdn = "somedomain.ru"; // String | Полное имя домена.
-    String subdomainFqdn = "sub.somedomain.ru"; // String | Полное имя поддомена.
+    String subdomain = "sub"; // String | Имя поддомена без имени домена. Например, для поддомена `sub.somedomain.ru` нужно передать `sub`.
     try {
-      AddSubdomain201Response result = apiInstance.addSubdomain(fqdn, subdomainFqdn);
+      AddSubdomain201Response result = apiInstance.addSubdomain(fqdn, subdomain);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling DomainsApi#addSubdomain");
@@ -150,7 +150,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **fqdn** | **String**| Полное имя домена. | |
-| **subdomainFqdn** | **String**| Полное имя поддомена. | |
+| **subdomain** | **String**| Имя поддомена без имени домена. Например, для поддомена &#x60;sub.somedomain.ru&#x60; нужно передать &#x60;sub&#x60;. | |
 
 ### Return type
 
@@ -348,7 +348,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     DomainsApi apiInstance = new DomainsApi(defaultClient);
-    String fqdn = "somedomain.ru"; // String | Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, `somedomain.ru`). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, `sub.somedomain.ru`).
+    String fqdn = "somedomain.ru"; // String | Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, `somedomain.ru`). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, `sub.somedomain.ru`).  Поддомен должен быть создан заранее методом добавления поддомена (`POST /api/v1/domains/{fqdn}/subdomains/{subdomain}`).
     CreateDnsV2 createDnsV2 = new CreateDnsV2(); // CreateDnsV2 | 
     try {
       CreateDomainDNSRecordV2201Response result = apiInstance.createDomainDNSRecordV2(fqdn, createDnsV2);
@@ -368,7 +368,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **fqdn** | **String**| Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, &#x60;somedomain.ru&#x60;). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, &#x60;sub.somedomain.ru&#x60;). | |
+| **fqdn** | **String**| Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, &#x60;somedomain.ru&#x60;). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, &#x60;sub.somedomain.ru&#x60;).  Поддомен должен быть создан заранее методом добавления поддомена (&#x60;POST /api/v1/domains/{fqdn}/subdomains/{subdomain}&#x60;). | |
 | **createDnsV2** | [**CreateDnsV2**](CreateDnsV2.md)|  | |
 
 ### Return type
@@ -640,7 +640,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     DomainsApi apiInstance = new DomainsApi(defaultClient);
-    String fqdn = "somedomain.ru"; // String | Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, `somedomain.ru`). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, `sub.somedomain.ru`).
+    String fqdn = "somedomain.ru"; // String | Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, `somedomain.ru`). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, `sub.somedomain.ru`).  Поддомен должен быть создан заранее методом добавления поддомена (`POST /api/v1/domains/{fqdn}/subdomains/{subdomain}`).
     Integer recordId = 123; // Integer | ID DNS-записи домена или поддомена.
     try {
       apiInstance.deleteDomainDNSRecordV2(fqdn, recordId);
@@ -659,7 +659,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **fqdn** | **String**| Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, &#x60;somedomain.ru&#x60;). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, &#x60;sub.somedomain.ru&#x60;). | |
+| **fqdn** | **String**| Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, &#x60;somedomain.ru&#x60;). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, &#x60;sub.somedomain.ru&#x60;).  Поддомен должен быть создан заранее методом добавления поддомена (&#x60;POST /api/v1/domains/{fqdn}/subdomains/{subdomain}&#x60;). | |
 | **recordId** | **Integer**| ID DNS-записи домена или поддомена. | |
 
 ### Return type
@@ -687,11 +687,11 @@ null (empty response body)
 
 <a id="deleteSubdomain"></a>
 # **deleteSubdomain**
-> deleteSubdomain(fqdn, subdomainFqdn)
+> deleteSubdomain(fqdn, subdomain)
 
 Удаление поддомена
 
-Чтобы удалить поддомен, отправьте запрос DELETE на &#x60;/api/v1/domains/{fqdn}/subdomains/{subdomain_fqdn}&#x60;.
+Чтобы удалить поддомен, отправьте запрос DELETE на &#x60;/api/v1/domains/{fqdn}/subdomains/{subdomain}&#x60;.
 
 ### Example
 ```java
@@ -714,9 +714,9 @@ public class Example {
 
     DomainsApi apiInstance = new DomainsApi(defaultClient);
     String fqdn = "somedomain.ru"; // String | Полное имя домена.
-    String subdomainFqdn = "sub.somedomain.ru"; // String | Полное имя поддомена.
+    String subdomain = "sub"; // String | Имя поддомена без имени домена. Например, для поддомена `sub.somedomain.ru` нужно передать `sub`.
     try {
-      apiInstance.deleteSubdomain(fqdn, subdomainFqdn);
+      apiInstance.deleteSubdomain(fqdn, subdomain);
     } catch (ApiException e) {
       System.err.println("Exception when calling DomainsApi#deleteSubdomain");
       System.err.println("Status code: " + e.getCode());
@@ -733,7 +733,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **fqdn** | **String**| Полное имя домена. | |
-| **subdomainFqdn** | **String**| Полное имя поддомена. | |
+| **subdomain** | **String**| Имя поддомена без имени домена. Например, для поддомена &#x60;sub.somedomain.ru&#x60; нужно передать &#x60;sub&#x60;. | |
 
 ### Return type
 
@@ -1603,7 +1603,7 @@ public class Example {
     Bearer.setBearerToken("BEARER TOKEN");
 
     DomainsApi apiInstance = new DomainsApi(defaultClient);
-    String fqdn = "somedomain.ru"; // String | Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, `somedomain.ru`). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, `sub.somedomain.ru`).
+    String fqdn = "somedomain.ru"; // String | Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, `somedomain.ru`). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, `sub.somedomain.ru`).  Поддомен должен быть создан заранее методом добавления поддомена (`POST /api/v1/domains/{fqdn}/subdomains/{subdomain}`).
     Integer recordId = 123; // Integer | ID DNS-записи домена или поддомена.
     CreateDnsV2 createDnsV2 = new CreateDnsV2(); // CreateDnsV2 | 
     try {
@@ -1624,7 +1624,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **fqdn** | **String**| Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, &#x60;somedomain.ru&#x60;). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, &#x60;sub.somedomain.ru&#x60;). | |
+| **fqdn** | **String**| Полное имя домена или поддомена. Для создания записи на основном домене передайте имя домена (например, &#x60;somedomain.ru&#x60;). Для создания записи на поддомене передайте полное доменное имя включая поддомен (например, &#x60;sub.somedomain.ru&#x60;).  Поддомен должен быть создан заранее методом добавления поддомена (&#x60;POST /api/v1/domains/{fqdn}/subdomains/{subdomain}&#x60;). | |
 | **recordId** | **Integer**| ID DNS-записи домена или поддомена. | |
 | **createDnsV2** | [**CreateDnsV2**](CreateDnsV2.md)|  | |
 

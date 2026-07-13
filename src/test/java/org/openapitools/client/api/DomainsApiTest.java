@@ -72,15 +72,15 @@ public class DomainsApiTest {
     /**
      * Добавление поддомена
      *
-     * Чтобы добавить поддомен, отправьте запрос POST на &#x60;/api/v1/domains/{fqdn}/subdomains/{subdomain_fqdn}&#x60;, задав необходимые атрибуты.  Поддомен будет добавлен с использованием предоставленной информации. Тело ответа будет содержать объект JSON с информацией о добавленном поддомене.
+     * Чтобы добавить поддомен, отправьте запрос POST на &#x60;/api/v1/domains/{fqdn}/subdomains/{subdomain}&#x60;, задав необходимые атрибуты.  Поддомен будет добавлен с использованием предоставленной информации. Тело ответа будет содержать объект JSON с информацией о добавленном поддомене.
      *
      * @throws ApiException if the Api call fails
      */
     @Test
     public void addSubdomainTest() throws ApiException {
         String fqdn = null;
-        String subdomainFqdn = null;
-        AddSubdomain201Response response = api.addSubdomain(fqdn, subdomainFqdn);
+        String subdomain = null;
+        AddSubdomain201Response response = api.addSubdomain(fqdn, subdomain);
         // TODO: test validations
     }
 
@@ -189,15 +189,15 @@ public class DomainsApiTest {
     /**
      * Удаление поддомена
      *
-     * Чтобы удалить поддомен, отправьте запрос DELETE на &#x60;/api/v1/domains/{fqdn}/subdomains/{subdomain_fqdn}&#x60;.
+     * Чтобы удалить поддомен, отправьте запрос DELETE на &#x60;/api/v1/domains/{fqdn}/subdomains/{subdomain}&#x60;.
      *
      * @throws ApiException if the Api call fails
      */
     @Test
     public void deleteSubdomainTest() throws ApiException {
         String fqdn = null;
-        String subdomainFqdn = null;
-        api.deleteSubdomain(fqdn, subdomainFqdn);
+        String subdomain = null;
+        api.deleteSubdomain(fqdn, subdomain);
         // TODO: test validations
     }
 

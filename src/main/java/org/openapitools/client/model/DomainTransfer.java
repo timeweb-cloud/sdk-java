@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * Заявка на перенос домена
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-07-03T09:26:34.553541Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-07-13T10:12:40.584547Z[Etc/UTC]")
 public class DomainTransfer {
   /**
    * Тип создаваемой заявки.

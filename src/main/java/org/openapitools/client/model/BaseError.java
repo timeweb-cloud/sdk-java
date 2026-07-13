@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * BaseError
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-07-03T09:26:34.553541Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-07-13T10:12:40.584547Z[Etc/UTC]")
 public class BaseError {
   public static final String SERIALIZED_NAME_STATUS_CODE = "status_code";
   @SerializedName(SERIALIZED_NAME_STATUS_CODE)

@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * CreateDeploy201Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-07-03T09:26:34.553541Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-07-13T10:12:40.584547Z[Etc/UTC]")
 public class CreateDeploy201Response {
   public static final String SERIALIZED_NAME_DEPLOY = "deploy";
   @SerializedName(SERIALIZED_NAME_DEPLOY)
