@@ -2,7 +2,7 @@
 
 Timeweb Cloud API
 - API version: 1.0.0
-  - Build date: 2026-07-13T10:12:40.584547Z[Etc/UTC]
+  - Build date: 2026-07-13T13:33:30.951959Z[Etc/UTC]
 
 # Введение
 API Timeweb Cloud позволяет вам управлять ресурсами в облаке программным способом с использованием обычных HTTP-запросов.
@@ -582,6 +582,11 @@ Class | Method | HTTP request | Description
 *ServersApi* | [**updateServerIP**](docs/ServersApi.md#updateServerIP) | **PATCH** /api/v1/servers/{server_id}/ips | Изменение IP-адреса сервера
 *ServersApi* | [**updateServerNAT**](docs/ServersApi.md#updateServerNAT) | **PATCH** /api/v1/servers/{server_id}/local-networks/nat-mode | Изменение правил маршрутизации трафика сервера (NAT)
 *ServersApi* | [**updateServerOSBootMode**](docs/ServersApi.md#updateServerOSBootMode) | **POST** /api/v1/servers/{server_id}/boot-mode | Выбор типа загрузки операционной системы сервера
+*SnapshotsApi* | [**commitRestorePoint**](docs/SnapshotsApi.md#commitRestorePoint) | **POST** /api/v1/restore-points/{vds_id}/commit | Фиксация снапшота
+*SnapshotsApi* | [**createRestorePoint**](docs/SnapshotsApi.md#createRestorePoint) | **POST** /api/v1/restore-points/{vds_id}/create | Создание снапшота
+*SnapshotsApi* | [**getRestorePoint**](docs/SnapshotsApi.md#getRestorePoint) | **GET** /api/v1/restore-points/{vds_id} | Получение снапшота сервера
+*SnapshotsApi* | [**getRestorePoints**](docs/SnapshotsApi.md#getRestorePoints) | **GET** /api/v1/restore-points | Получение списка снапшотов
+*SnapshotsApi* | [**rollbackRestorePoint**](docs/SnapshotsApi.md#rollbackRestorePoint) | **POST** /api/v1/restore-points/{vds_id}/rollback | Откат к снапшоту
 *SshApi* | [**addKeyToServer**](docs/SshApi.md#addKeyToServer) | **POST** /api/v1/servers/{server_id}/ssh-keys | Добавление SSH-ключей на сервер
 *SshApi* | [**createKey**](docs/SshApi.md#createKey) | **POST** /api/v1/ssh-keys | Создание SSH-ключа
 *SshApi* | [**deleteKey**](docs/SshApi.md#deleteKey) | **DELETE** /api/v1/ssh-keys/{ssh_key_id} | Удаление SSH-ключа по ID
@@ -910,6 +915,8 @@ Class | Method | HTTP request | Description
  - [GetProjects200Response](docs/GetProjects200Response.md)
  - [GetProviders200Response](docs/GetProviders200Response.md)
  - [GetRepositories200Response](docs/GetRepositories200Response.md)
+ - [GetRestorePoint200Response](docs/GetRestorePoint200Response.md)
+ - [GetRestorePoints200Response](docs/GetRestorePoints200Response.md)
  - [GetServerDiskAutoBackupSettings200Response](docs/GetServerDiskAutoBackupSettings200Response.md)
  - [GetServerDiskBackup200Response](docs/GetServerDiskBackup200Response.md)
  - [GetServerDiskBackups200Response](docs/GetServerDiskBackups200Response.md)
@@ -1037,6 +1044,7 @@ Class | Method | HTTP request | Description
  - [ResourceType](docs/ResourceType.md)
  - [Resources](docs/Resources.md)
  - [ResourcesResponse](docs/ResourcesResponse.md)
+ - [RestorePoint](docs/RestorePoint.md)
  - [RouterEdit](docs/RouterEdit.md)
  - [RouterIn](docs/RouterIn.md)
  - [RouterInIpsInner](docs/RouterInIpsInner.md)

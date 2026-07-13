@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * Добавление аккаунта GitLab
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-07-13T10:12:40.584547Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-07-13T13:33:30.951959Z[Etc/UTC]")
 public class AddGitlab {
   /**
    * Тип провайдера.

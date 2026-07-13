@@ -326,6 +326,8 @@ docs/GetProjectStorages200Response.md
 docs/GetProjects200Response.md
 docs/GetProviders200Response.md
 docs/GetRepositories200Response.md
+docs/GetRestorePoint200Response.md
+docs/GetRestorePoints200Response.md
 docs/GetServerDiskAutoBackupSettings200Response.md
 docs/GetServerDiskBackup200Response.md
 docs/GetServerDiskBackups200Response.md
@@ -461,6 +463,7 @@ docs/ResourceTransfer.md
 docs/ResourceType.md
 docs/Resources.md
 docs/ResourcesResponse.md
+docs/RestorePoint.md
 docs/RouterEdit.md
 docs/RouterIn.md
 docs/RouterInIpsInner.md
@@ -512,6 +515,7 @@ docs/ServiceServicePrice.md
 docs/ServiceServicePriceNodeGroupsInner.md
 docs/SetLabels.md
 docs/SettingCondition.md
+docs/SnapshotsApi.md
 docs/SpamFilterIsDisabled.md
 docs/SpamFilterIsEnabled.md
 docs/SpamProtectionIsDisabled.md
@@ -636,6 +640,7 @@ src/main/java/org/openapitools/client/api/ProjectsApi.java
 src/main/java/org/openapitools/client/api/RoutersApi.java
 src/main/java/org/openapitools/client/api/S3Api.java
 src/main/java/org/openapitools/client/api/ServersApi.java
+src/main/java/org/openapitools/client/api/SnapshotsApi.java
 src/main/java/org/openapitools/client/api/SshApi.java
 src/main/java/org/openapitools/client/api/VpcApi.java
 src/main/java/org/openapitools/client/auth/ApiKeyAuth.java
@@ -953,6 +958,8 @@ src/main/java/org/openapitools/client/model/GetProjectStorages200Response.java
 src/main/java/org/openapitools/client/model/GetProjects200Response.java
 src/main/java/org/openapitools/client/model/GetProviders200Response.java
 src/main/java/org/openapitools/client/model/GetRepositories200Response.java
+src/main/java/org/openapitools/client/model/GetRestorePoint200Response.java
+src/main/java/org/openapitools/client/model/GetRestorePoints200Response.java
 src/main/java/org/openapitools/client/model/GetServerDiskAutoBackupSettings200Response.java
 src/main/java/org/openapitools/client/model/GetServerDiskBackup200Response.java
 src/main/java/org/openapitools/client/model/GetServerDiskBackups200Response.java
@@ -1080,6 +1087,7 @@ src/main/java/org/openapitools/client/model/ResourceTransfer.java
 src/main/java/org/openapitools/client/model/ResourceType.java
 src/main/java/org/openapitools/client/model/Resources.java
 src/main/java/org/openapitools/client/model/ResourcesResponse.java
+src/main/java/org/openapitools/client/model/RestorePoint.java
 src/main/java/org/openapitools/client/model/RouterEdit.java
 src/main/java/org/openapitools/client/model/RouterIn.java
 src/main/java/org/openapitools/client/model/RouterInIpsInner.java
@@ -1228,6 +1236,7 @@ src/test/java/org/openapitools/client/api/ProjectsApiTest.java
 src/test/java/org/openapitools/client/api/RoutersApiTest.java
 src/test/java/org/openapitools/client/api/S3ApiTest.java
 src/test/java/org/openapitools/client/api/ServersApiTest.java
+src/test/java/org/openapitools/client/api/SnapshotsApiTest.java
 src/test/java/org/openapitools/client/api/SshApiTest.java
 src/test/java/org/openapitools/client/api/VpcApiTest.java
 src/test/java/org/openapitools/client/model/AddBalancerToProject200ResponseTest.java
@@ -1540,6 +1549,8 @@ src/test/java/org/openapitools/client/model/GetProjectStorages200ResponseTest.ja
 src/test/java/org/openapitools/client/model/GetProjects200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetProviders200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetRepositories200ResponseTest.java
+src/test/java/org/openapitools/client/model/GetRestorePoint200ResponseTest.java
+src/test/java/org/openapitools/client/model/GetRestorePoints200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetServerDiskAutoBackupSettings200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetServerDiskBackup200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetServerDiskBackups200ResponseTest.java
@@ -1667,6 +1678,7 @@ src/test/java/org/openapitools/client/model/ResourceTransferTest.java
 src/test/java/org/openapitools/client/model/ResourceTypeTest.java
 src/test/java/org/openapitools/client/model/ResourcesResponseTest.java
 src/test/java/org/openapitools/client/model/ResourcesTest.java
+src/test/java/org/openapitools/client/model/RestorePointTest.java
 src/test/java/org/openapitools/client/model/RouterEditTest.java
 src/test/java/org/openapitools/client/model/RouterInIpsInnerNatTest.java
 src/test/java/org/openapitools/client/model/RouterInIpsInnerTest.java
