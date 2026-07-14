@@ -515,7 +515,6 @@ docs/ServiceServicePrice.md
 docs/ServiceServicePriceNodeGroupsInner.md
 docs/SetLabels.md
 docs/SettingCondition.md
-docs/SnapshotsApi.md
 docs/SpamFilterIsDisabled.md
 docs/SpamFilterIsEnabled.md
 docs/SpamProtectionIsDisabled.md
@@ -640,7 +639,6 @@ src/main/java/org/openapitools/client/api/ProjectsApi.java
 src/main/java/org/openapitools/client/api/RoutersApi.java
 src/main/java/org/openapitools/client/api/S3Api.java
 src/main/java/org/openapitools/client/api/ServersApi.java
-src/main/java/org/openapitools/client/api/SnapshotsApi.java
 src/main/java/org/openapitools/client/api/SshApi.java
 src/main/java/org/openapitools/client/api/VpcApi.java
 src/main/java/org/openapitools/client/auth/ApiKeyAuth.java
@@ -1236,7 +1234,6 @@ src/test/java/org/openapitools/client/api/ProjectsApiTest.java
 src/test/java/org/openapitools/client/api/RoutersApiTest.java
 src/test/java/org/openapitools/client/api/S3ApiTest.java
 src/test/java/org/openapitools/client/api/ServersApiTest.java
-src/test/java/org/openapitools/client/api/SnapshotsApiTest.java
 src/test/java/org/openapitools/client/api/SshApiTest.java
 src/test/java/org/openapitools/client/api/VpcApiTest.java
 src/test/java/org/openapitools/client/model/AddBalancerToProject200ResponseTest.java

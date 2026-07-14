@@ -47,6 +47,8 @@ import org.openapitools.client.model.GetFinances429Response;
 import org.openapitools.client.model.GetFinances500Response;
 import org.openapitools.client.model.GetImage404Response;
 import org.openapitools.client.model.GetOsList200Response;
+import org.openapitools.client.model.GetRestorePoint200Response;
+import org.openapitools.client.model.GetRestorePoints200Response;
 import org.openapitools.client.model.GetServerDiskAutoBackupSettings200Response;
 import org.openapitools.client.model.GetServerDiskBackup200Response;
 import org.openapitools.client.model.GetServerDiskBackups200Response;
@@ -415,6 +417,296 @@ public class ServersApi {
 
         okhttp3.Call localVarCall = cloneServerValidateBeforeCall(serverId, _callback);
         Type localVarReturnType = new TypeToken<CreateServer201Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for commitRestorePoint
+     * @param vdsId ID облачного сервера (VDS). (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Действие над снапшотом запущено </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call commitRestorePointCall(Integer vdsId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/v1/restore-points/{vds_id}/commit"
+            .replace("{" + "vds_id" + "}", localVarApiClient.escapeString(vdsId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "Bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call commitRestorePointValidateBeforeCall(Integer vdsId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'vdsId' is set
+        if (vdsId == null) {
+            throw new ApiException("Missing the required parameter 'vdsId' when calling commitRestorePoint(Async)");
+        }
+
+        return commitRestorePointCall(vdsId, _callback);
+
+    }
+
+    /**
+     * Фиксация снапшота
+     * Чтобы зафиксировать (применить) снапшот облачного сервера (VDS), отправьте POST-запрос на &#x60;/api/v1/restore-points/{vds_id}/commit&#x60;.  Фиксация подтверждает текущее состояние сервера. Действие выполняется асинхронно, ответ не содержит тела.  Для выполнения действия сервер должен быть включён, иначе вернётся ошибка &#x60;403&#x60;.
+     * @param vdsId ID облачного сервера (VDS). (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Действие над снапшотом запущено </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public void commitRestorePoint(Integer vdsId) throws ApiException {
+        commitRestorePointWithHttpInfo(vdsId);
+    }
+
+    /**
+     * Фиксация снапшота
+     * Чтобы зафиксировать (применить) снапшот облачного сервера (VDS), отправьте POST-запрос на &#x60;/api/v1/restore-points/{vds_id}/commit&#x60;.  Фиксация подтверждает текущее состояние сервера. Действие выполняется асинхронно, ответ не содержит тела.  Для выполнения действия сервер должен быть включён, иначе вернётся ошибка &#x60;403&#x60;.
+     * @param vdsId ID облачного сервера (VDS). (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Действие над снапшотом запущено </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> commitRestorePointWithHttpInfo(Integer vdsId) throws ApiException {
+        okhttp3.Call localVarCall = commitRestorePointValidateBeforeCall(vdsId, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Фиксация снапшота (asynchronously)
+     * Чтобы зафиксировать (применить) снапшот облачного сервера (VDS), отправьте POST-запрос на &#x60;/api/v1/restore-points/{vds_id}/commit&#x60;.  Фиксация подтверждает текущее состояние сервера. Действие выполняется асинхронно, ответ не содержит тела.  Для выполнения действия сервер должен быть включён, иначе вернётся ошибка &#x60;403&#x60;.
+     * @param vdsId ID облачного сервера (VDS). (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Действие над снапшотом запущено </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call commitRestorePointAsync(Integer vdsId, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = commitRestorePointValidateBeforeCall(vdsId, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createRestorePoint
+     * @param vdsId ID облачного сервера (VDS). (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Объект JSON c ключом &#x60;restore_point&#x60; </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createRestorePointCall(Integer vdsId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/v1/restore-points/{vds_id}/create"
+            .replace("{" + "vds_id" + "}", localVarApiClient.escapeString(vdsId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "Bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createRestorePointValidateBeforeCall(Integer vdsId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'vdsId' is set
+        if (vdsId == null) {
+            throw new ApiException("Missing the required parameter 'vdsId' when calling createRestorePoint(Async)");
+        }
+
+        return createRestorePointCall(vdsId, _callback);
+
+    }
+
+    /**
+     * Создание снапшота
+     * Чтобы создать снапшот облачного сервера (VDS), отправьте POST-запрос на &#x60;/api/v1/restore-points/{vds_id}/create&#x60;.  Тело ответа будет содержать объект JSON с ключом &#x60;restore_point&#x60; и информацией о созданном снапшоте. Сразу после создания снапшот может находиться в статусе &#x60;creating&#x60;.  Для создания снапшота сервер должен быть включён, иначе вернётся ошибка &#x60;403&#x60;.
+     * @param vdsId ID облачного сервера (VDS). (required)
+     * @return GetRestorePoint200Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Объект JSON c ключом &#x60;restore_point&#x60; </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetRestorePoint200Response createRestorePoint(Integer vdsId) throws ApiException {
+        ApiResponse<GetRestorePoint200Response> localVarResp = createRestorePointWithHttpInfo(vdsId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Создание снапшота
+     * Чтобы создать снапшот облачного сервера (VDS), отправьте POST-запрос на &#x60;/api/v1/restore-points/{vds_id}/create&#x60;.  Тело ответа будет содержать объект JSON с ключом &#x60;restore_point&#x60; и информацией о созданном снапшоте. Сразу после создания снапшот может находиться в статусе &#x60;creating&#x60;.  Для создания снапшота сервер должен быть включён, иначе вернётся ошибка &#x60;403&#x60;.
+     * @param vdsId ID облачного сервера (VDS). (required)
+     * @return ApiResponse&lt;GetRestorePoint200Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Объект JSON c ключом &#x60;restore_point&#x60; </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetRestorePoint200Response> createRestorePointWithHttpInfo(Integer vdsId) throws ApiException {
+        okhttp3.Call localVarCall = createRestorePointValidateBeforeCall(vdsId, null);
+        Type localVarReturnType = new TypeToken<GetRestorePoint200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Создание снапшота (asynchronously)
+     * Чтобы создать снапшот облачного сервера (VDS), отправьте POST-запрос на &#x60;/api/v1/restore-points/{vds_id}/create&#x60;.  Тело ответа будет содержать объект JSON с ключом &#x60;restore_point&#x60; и информацией о созданном снапшоте. Сразу после создания снапшот может находиться в статусе &#x60;creating&#x60;.  Для создания снапшота сервер должен быть включён, иначе вернётся ошибка &#x60;403&#x60;.
+     * @param vdsId ID облачного сервера (VDS). (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Объект JSON c ключом &#x60;restore_point&#x60; </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createRestorePointAsync(Integer vdsId, final ApiCallback<GetRestorePoint200Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createRestorePointValidateBeforeCall(vdsId, _callback);
+        Type localVarReturnType = new TypeToken<GetRestorePoint200Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1802,6 +2094,278 @@ public class ServersApi {
 
         okhttp3.Call localVarCall = getOsListValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<GetOsList200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getRestorePoint
+     * @param vdsId ID облачного сервера (VDS). (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;restore_point&#x60; </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getRestorePointCall(Integer vdsId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/v1/restore-points/{vds_id}"
+            .replace("{" + "vds_id" + "}", localVarApiClient.escapeString(vdsId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "Bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getRestorePointValidateBeforeCall(Integer vdsId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'vdsId' is set
+        if (vdsId == null) {
+            throw new ApiException("Missing the required parameter 'vdsId' when calling getRestorePoint(Async)");
+        }
+
+        return getRestorePointCall(vdsId, _callback);
+
+    }
+
+    /**
+     * Получение снапшота сервера
+     * Чтобы получить снапшот облачного сервера (VDS), отправьте GET-запрос на &#x60;/api/v1/restore-points/{vds_id}&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;restore_point&#x60;.
+     * @param vdsId ID облачного сервера (VDS). (required)
+     * @return GetRestorePoint200Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;restore_point&#x60; </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetRestorePoint200Response getRestorePoint(Integer vdsId) throws ApiException {
+        ApiResponse<GetRestorePoint200Response> localVarResp = getRestorePointWithHttpInfo(vdsId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Получение снапшота сервера
+     * Чтобы получить снапшот облачного сервера (VDS), отправьте GET-запрос на &#x60;/api/v1/restore-points/{vds_id}&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;restore_point&#x60;.
+     * @param vdsId ID облачного сервера (VDS). (required)
+     * @return ApiResponse&lt;GetRestorePoint200Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;restore_point&#x60; </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetRestorePoint200Response> getRestorePointWithHttpInfo(Integer vdsId) throws ApiException {
+        okhttp3.Call localVarCall = getRestorePointValidateBeforeCall(vdsId, null);
+        Type localVarReturnType = new TypeToken<GetRestorePoint200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Получение снапшота сервера (asynchronously)
+     * Чтобы получить снапшот облачного сервера (VDS), отправьте GET-запрос на &#x60;/api/v1/restore-points/{vds_id}&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;restore_point&#x60;.
+     * @param vdsId ID облачного сервера (VDS). (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;restore_point&#x60; </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getRestorePointAsync(Integer vdsId, final ApiCallback<GetRestorePoint200Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getRestorePointValidateBeforeCall(vdsId, _callback);
+        Type localVarReturnType = new TypeToken<GetRestorePoint200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getRestorePoints
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;restore_points&#x60; </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getRestorePointsCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/v1/restore-points";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "Bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getRestorePointsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getRestorePointsCall(_callback);
+
+    }
+
+    /**
+     * Получение списка снапшотов
+     * Чтобы получить список снапшотов аккаунта, отправьте GET-запрос на &#x60;/api/v1/restore-points&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;restore_points&#x60;.  Снапшот — это снимок состояния облачного сервера (VDS), к которому можно вернуться. Каждому снапшоту соответствует один сервер.
+     * @return GetRestorePoints200Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;restore_points&#x60; </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetRestorePoints200Response getRestorePoints() throws ApiException {
+        ApiResponse<GetRestorePoints200Response> localVarResp = getRestorePointsWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Получение списка снапшотов
+     * Чтобы получить список снапшотов аккаунта, отправьте GET-запрос на &#x60;/api/v1/restore-points&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;restore_points&#x60;.  Снапшот — это снимок состояния облачного сервера (VDS), к которому можно вернуться. Каждому снапшоту соответствует один сервер.
+     * @return ApiResponse&lt;GetRestorePoints200Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;restore_points&#x60; </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetRestorePoints200Response> getRestorePointsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getRestorePointsValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<GetRestorePoints200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Получение списка снапшотов (asynchronously)
+     * Чтобы получить список снапшотов аккаунта, отправьте GET-запрос на &#x60;/api/v1/restore-points&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;restore_points&#x60;.  Снапшот — это снимок состояния облачного сервера (VDS), к которому можно вернуться. Каждому снапшоту соответствует один сервер.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;restore_points&#x60; </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getRestorePointsAsync(final ApiCallback<GetRestorePoints200Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getRestorePointsValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<GetRestorePoints200Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -4902,6 +5466,149 @@ public class ServersApi {
     public okhttp3.Call resetServerPasswordAsync(Integer serverId, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = resetServerPasswordValidateBeforeCall(serverId, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for rollbackRestorePoint
+     * @param vdsId ID облачного сервера (VDS). (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Действие над снапшотом запущено </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call rollbackRestorePointCall(Integer vdsId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/v1/restore-points/{vds_id}/rollback"
+            .replace("{" + "vds_id" + "}", localVarApiClient.escapeString(vdsId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "Bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call rollbackRestorePointValidateBeforeCall(Integer vdsId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'vdsId' is set
+        if (vdsId == null) {
+            throw new ApiException("Missing the required parameter 'vdsId' when calling rollbackRestorePoint(Async)");
+        }
+
+        return rollbackRestorePointCall(vdsId, _callback);
+
+    }
+
+    /**
+     * Откат к снапшоту
+     * Чтобы откатить облачный сервер (VDS) к снапшоту, отправьте POST-запрос на &#x60;/api/v1/restore-points/{vds_id}/rollback&#x60;.  Откат возвращает сервер к состоянию, сохранённому в снапшоте. Действие выполняется асинхронно, ответ не содержит тела.  Для выполнения действия сервер должен быть включён, иначе вернётся ошибка &#x60;403&#x60;.
+     * @param vdsId ID облачного сервера (VDS). (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Действие над снапшотом запущено </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public void rollbackRestorePoint(Integer vdsId) throws ApiException {
+        rollbackRestorePointWithHttpInfo(vdsId);
+    }
+
+    /**
+     * Откат к снапшоту
+     * Чтобы откатить облачный сервер (VDS) к снапшоту, отправьте POST-запрос на &#x60;/api/v1/restore-points/{vds_id}/rollback&#x60;.  Откат возвращает сервер к состоянию, сохранённому в снапшоте. Действие выполняется асинхронно, ответ не содержит тела.  Для выполнения действия сервер должен быть включён, иначе вернётся ошибка &#x60;403&#x60;.
+     * @param vdsId ID облачного сервера (VDS). (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Действие над снапшотом запущено </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> rollbackRestorePointWithHttpInfo(Integer vdsId) throws ApiException {
+        okhttp3.Call localVarCall = rollbackRestorePointValidateBeforeCall(vdsId, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Откат к снапшоту (asynchronously)
+     * Чтобы откатить облачный сервер (VDS) к снапшоту, отправьте POST-запрос на &#x60;/api/v1/restore-points/{vds_id}/rollback&#x60;.  Откат возвращает сервер к состоянию, сохранённому в снапшоте. Действие выполняется асинхронно, ответ не содержит тела.  Для выполнения действия сервер должен быть включён, иначе вернётся ошибка &#x60;403&#x60;.
+     * @param vdsId ID облачного сервера (VDS). (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Действие над снапшотом запущено </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call rollbackRestorePointAsync(Integer vdsId, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = rollbackRestorePointValidateBeforeCall(vdsId, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

@@ -34,6 +34,8 @@ import org.openapitools.client.model.GetFinances429Response;
 import org.openapitools.client.model.GetFinances500Response;
 import org.openapitools.client.model.GetImage404Response;
 import org.openapitools.client.model.GetOsList200Response;
+import org.openapitools.client.model.GetRestorePoint200Response;
+import org.openapitools.client.model.GetRestorePoints200Response;
 import org.openapitools.client.model.GetServerDiskAutoBackupSettings200Response;
 import org.openapitools.client.model.GetServerDiskBackup200Response;
 import org.openapitools.client.model.GetServerDiskBackups200Response;
@@ -95,6 +97,34 @@ public class ServersApiTest {
     public void cloneServerTest() throws ApiException {
         Integer serverId = null;
         CreateServer201Response response = api.cloneServer(serverId);
+        // TODO: test validations
+    }
+
+    /**
+     * Фиксация снапшота
+     *
+     * Чтобы зафиксировать (применить) снапшот облачного сервера (VDS), отправьте POST-запрос на &#x60;/api/v1/restore-points/{vds_id}/commit&#x60;.  Фиксация подтверждает текущее состояние сервера. Действие выполняется асинхронно, ответ не содержит тела.  Для выполнения действия сервер должен быть включён, иначе вернётся ошибка &#x60;403&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void commitRestorePointTest() throws ApiException {
+        Integer vdsId = null;
+        api.commitRestorePoint(vdsId);
+        // TODO: test validations
+    }
+
+    /**
+     * Создание снапшота
+     *
+     * Чтобы создать снапшот облачного сервера (VDS), отправьте POST-запрос на &#x60;/api/v1/restore-points/{vds_id}/create&#x60;.  Тело ответа будет содержать объект JSON с ключом &#x60;restore_point&#x60; и информацией о созданном снапшоте. Сразу после создания снапшот может находиться в статусе &#x60;creating&#x60;.  Для создания снапшота сервер должен быть включён, иначе вернётся ошибка &#x60;403&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void createRestorePointTest() throws ApiException {
+        Integer vdsId = null;
+        GetRestorePoint200Response response = api.createRestorePoint(vdsId);
         // TODO: test validations
     }
 
@@ -228,6 +258,33 @@ public class ServersApiTest {
     @Test
     public void getOsListTest() throws ApiException {
         GetOsList200Response response = api.getOsList();
+        // TODO: test validations
+    }
+
+    /**
+     * Получение снапшота сервера
+     *
+     * Чтобы получить снапшот облачного сервера (VDS), отправьте GET-запрос на &#x60;/api/v1/restore-points/{vds_id}&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;restore_point&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void getRestorePointTest() throws ApiException {
+        Integer vdsId = null;
+        GetRestorePoint200Response response = api.getRestorePoint(vdsId);
+        // TODO: test validations
+    }
+
+    /**
+     * Получение списка снапшотов
+     *
+     * Чтобы получить список снапшотов аккаунта, отправьте GET-запрос на &#x60;/api/v1/restore-points&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;restore_points&#x60;.  Снапшот — это снимок состояния облачного сервера (VDS), к которому можно вернуться. Каждому снапшоту соответствует один сервер.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void getRestorePointsTest() throws ApiException {
+        GetRestorePoints200Response response = api.getRestorePoints();
         // TODO: test validations
     }
 
@@ -524,6 +581,20 @@ public class ServersApiTest {
     public void resetServerPasswordTest() throws ApiException {
         Integer serverId = null;
         api.resetServerPassword(serverId);
+        // TODO: test validations
+    }
+
+    /**
+     * Откат к снапшоту
+     *
+     * Чтобы откатить облачный сервер (VDS) к снапшоту, отправьте POST-запрос на &#x60;/api/v1/restore-points/{vds_id}/rollback&#x60;.  Откат возвращает сервер к состоянию, сохранённому в снапшоте. Действие выполняется асинхронно, ответ не содержит тела.  Для выполнения действия сервер должен быть включён, иначе вернётся ошибка &#x60;403&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void rollbackRestorePointTest() throws ApiException {
+        Integer vdsId = null;
+        api.rollbackRestorePoint(vdsId);
         // TODO: test validations
     }
 

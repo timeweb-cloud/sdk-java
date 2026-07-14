@@ -2,7 +2,7 @@
 
 Timeweb Cloud API
 - API version: 1.0.0
-  - Build date: 2026-07-14T06:41:04.594716Z[Etc/UTC]
+  - Build date: 2026-07-14T08:25:11.002930Z[Etc/UTC]
 
 # Введение
 API Timeweb Cloud позволяет вам управлять ресурсами в облаке программным способом с использованием обычных HTTP-запросов.
@@ -544,6 +544,8 @@ Class | Method | HTTP request | Description
 *S3Api* | [**updateStorageUser**](docs/S3Api.md#updateStorageUser) | **PATCH** /api/v1/storages/users/{user_id} | Изменение пароля пользователя-администратора хранилища
 *ServersApi* | [**addServerIP**](docs/ServersApi.md#addServerIP) | **POST** /api/v1/servers/{server_id}/ips | Добавление IP-адреса сервера
 *ServersApi* | [**cloneServer**](docs/ServersApi.md#cloneServer) | **POST** /api/v1/servers/{server_id}/clone | Клонирование сервера
+*ServersApi* | [**commitRestorePoint**](docs/ServersApi.md#commitRestorePoint) | **POST** /api/v1/restore-points/{vds_id}/commit | Фиксация снапшота
+*ServersApi* | [**createRestorePoint**](docs/ServersApi.md#createRestorePoint) | **POST** /api/v1/restore-points/{vds_id}/create | Создание снапшота
 *ServersApi* | [**createServer**](docs/ServersApi.md#createServer) | **POST** /api/v1/servers | Создание сервера
 *ServersApi* | [**createServerDisk**](docs/ServersApi.md#createServerDisk) | **POST** /api/v1/servers/{server_id}/disks | Создание диска сервера
 *ServersApi* | [**createServerDiskBackup**](docs/ServersApi.md#createServerDiskBackup) | **POST** /api/v1/servers/{server_id}/disks/{disk_id}/backups | Создание бэкапа диска сервера
@@ -553,6 +555,8 @@ Class | Method | HTTP request | Description
 *ServersApi* | [**deleteServerIP**](docs/ServersApi.md#deleteServerIP) | **DELETE** /api/v1/servers/{server_id}/ips | Удаление IP-адреса сервера
 *ServersApi* | [**getConfigurators**](docs/ServersApi.md#getConfigurators) | **GET** /api/v1/configurator/servers | Получение списка конфигураторов серверов
 *ServersApi* | [**getOsList**](docs/ServersApi.md#getOsList) | **GET** /api/v1/os/servers | Получение списка операционных систем
+*ServersApi* | [**getRestorePoint**](docs/ServersApi.md#getRestorePoint) | **GET** /api/v1/restore-points/{vds_id} | Получение снапшота сервера
+*ServersApi* | [**getRestorePoints**](docs/ServersApi.md#getRestorePoints) | **GET** /api/v1/restore-points | Получение списка снапшотов
 *ServersApi* | [**getServer**](docs/ServersApi.md#getServer) | **GET** /api/v1/servers/{server_id} | Получение сервера
 *ServersApi* | [**getServerDisk**](docs/ServersApi.md#getServerDisk) | **GET** /api/v1/servers/{server_id}/disks/{disk_id} | Получение диска сервера
 *ServersApi* | [**getServerDiskAutoBackupSettings**](docs/ServersApi.md#getServerDiskAutoBackupSettings) | **GET** /api/v1/servers/{server_id}/disks/{disk_id}/auto-backups | Получить настройки автобэкапов диска сервера
@@ -573,6 +577,7 @@ Class | Method | HTTP request | Description
 *ServersApi* | [**rebootServer**](docs/ServersApi.md#rebootServer) | **POST** /api/v1/servers/{server_id}/reboot | Перезагрузка сервера
 *ServersApi* | [**rebootServerHard**](docs/ServersApi.md#rebootServerHard) | **POST** /api/v1/servers/{server_id}/hard-reboot | Принудительная перезагрузка сервера
 *ServersApi* | [**resetServerPassword**](docs/ServersApi.md#resetServerPassword) | **POST** /api/v1/servers/{server_id}/reset-password | Сброс пароля сервера
+*ServersApi* | [**rollbackRestorePoint**](docs/ServersApi.md#rollbackRestorePoint) | **POST** /api/v1/restore-points/{vds_id}/rollback | Откат к снапшоту
 *ServersApi* | [**shutdownServer**](docs/ServersApi.md#shutdownServer) | **POST** /api/v1/servers/{server_id}/shutdown | Выключение сервера
 *ServersApi* | [**startServer**](docs/ServersApi.md#startServer) | **POST** /api/v1/servers/{server_id}/start | Запуск сервера
 *ServersApi* | [**updateServer**](docs/ServersApi.md#updateServer) | **PATCH** /api/v1/servers/{server_id} | Изменение сервера
@@ -582,11 +587,6 @@ Class | Method | HTTP request | Description
 *ServersApi* | [**updateServerIP**](docs/ServersApi.md#updateServerIP) | **PATCH** /api/v1/servers/{server_id}/ips | Изменение IP-адреса сервера
 *ServersApi* | [**updateServerNAT**](docs/ServersApi.md#updateServerNAT) | **PATCH** /api/v1/servers/{server_id}/local-networks/nat-mode | Изменение правил маршрутизации трафика сервера (NAT)
 *ServersApi* | [**updateServerOSBootMode**](docs/ServersApi.md#updateServerOSBootMode) | **POST** /api/v1/servers/{server_id}/boot-mode | Выбор типа загрузки операционной системы сервера
-*SnapshotsApi* | [**commitRestorePoint**](docs/SnapshotsApi.md#commitRestorePoint) | **POST** /api/v1/restore-points/{vds_id}/commit | Фиксация снапшота
-*SnapshotsApi* | [**createRestorePoint**](docs/SnapshotsApi.md#createRestorePoint) | **POST** /api/v1/restore-points/{vds_id}/create | Создание снапшота
-*SnapshotsApi* | [**getRestorePoint**](docs/SnapshotsApi.md#getRestorePoint) | **GET** /api/v1/restore-points/{vds_id} | Получение снапшота сервера
-*SnapshotsApi* | [**getRestorePoints**](docs/SnapshotsApi.md#getRestorePoints) | **GET** /api/v1/restore-points | Получение списка снапшотов
-*SnapshotsApi* | [**rollbackRestorePoint**](docs/SnapshotsApi.md#rollbackRestorePoint) | **POST** /api/v1/restore-points/{vds_id}/rollback | Откат к снапшоту
 *SshApi* | [**addKeyToServer**](docs/SshApi.md#addKeyToServer) | **POST** /api/v1/servers/{server_id}/ssh-keys | Добавление SSH-ключей на сервер
 *SshApi* | [**createKey**](docs/SshApi.md#createKey) | **POST** /api/v1/ssh-keys | Создание SSH-ключа
 *SshApi* | [**deleteKey**](docs/SshApi.md#deleteKey) | **DELETE** /api/v1/ssh-keys/{ssh_key_id} | Удаление SSH-ключа по ID

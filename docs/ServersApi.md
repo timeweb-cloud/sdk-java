@@ -6,6 +6,8 @@ All URIs are relative to *https://api.timeweb.cloud*
 |------------- | ------------- | -------------|
 | [**addServerIP**](ServersApi.md#addServerIP) | **POST** /api/v1/servers/{server_id}/ips | Добавление IP-адреса сервера |
 | [**cloneServer**](ServersApi.md#cloneServer) | **POST** /api/v1/servers/{server_id}/clone | Клонирование сервера |
+| [**commitRestorePoint**](ServersApi.md#commitRestorePoint) | **POST** /api/v1/restore-points/{vds_id}/commit | Фиксация снапшота |
+| [**createRestorePoint**](ServersApi.md#createRestorePoint) | **POST** /api/v1/restore-points/{vds_id}/create | Создание снапшота |
 | [**createServer**](ServersApi.md#createServer) | **POST** /api/v1/servers | Создание сервера |
 | [**createServerDisk**](ServersApi.md#createServerDisk) | **POST** /api/v1/servers/{server_id}/disks | Создание диска сервера |
 | [**createServerDiskBackup**](ServersApi.md#createServerDiskBackup) | **POST** /api/v1/servers/{server_id}/disks/{disk_id}/backups | Создание бэкапа диска сервера |
@@ -15,6 +17,8 @@ All URIs are relative to *https://api.timeweb.cloud*
 | [**deleteServerIP**](ServersApi.md#deleteServerIP) | **DELETE** /api/v1/servers/{server_id}/ips | Удаление IP-адреса сервера |
 | [**getConfigurators**](ServersApi.md#getConfigurators) | **GET** /api/v1/configurator/servers | Получение списка конфигураторов серверов |
 | [**getOsList**](ServersApi.md#getOsList) | **GET** /api/v1/os/servers | Получение списка операционных систем |
+| [**getRestorePoint**](ServersApi.md#getRestorePoint) | **GET** /api/v1/restore-points/{vds_id} | Получение снапшота сервера |
+| [**getRestorePoints**](ServersApi.md#getRestorePoints) | **GET** /api/v1/restore-points | Получение списка снапшотов |
 | [**getServer**](ServersApi.md#getServer) | **GET** /api/v1/servers/{server_id} | Получение сервера |
 | [**getServerDisk**](ServersApi.md#getServerDisk) | **GET** /api/v1/servers/{server_id}/disks/{disk_id} | Получение диска сервера |
 | [**getServerDiskAutoBackupSettings**](ServersApi.md#getServerDiskAutoBackupSettings) | **GET** /api/v1/servers/{server_id}/disks/{disk_id}/auto-backups | Получить настройки автобэкапов диска сервера |
@@ -35,6 +39,7 @@ All URIs are relative to *https://api.timeweb.cloud*
 | [**rebootServer**](ServersApi.md#rebootServer) | **POST** /api/v1/servers/{server_id}/reboot | Перезагрузка сервера |
 | [**rebootServerHard**](ServersApi.md#rebootServerHard) | **POST** /api/v1/servers/{server_id}/hard-reboot | Принудительная перезагрузка сервера |
 | [**resetServerPassword**](ServersApi.md#resetServerPassword) | **POST** /api/v1/servers/{server_id}/reset-password | Сброс пароля сервера |
+| [**rollbackRestorePoint**](ServersApi.md#rollbackRestorePoint) | **POST** /api/v1/restore-points/{vds_id}/rollback | Откат к снапшоту |
 | [**shutdownServer**](ServersApi.md#shutdownServer) | **POST** /api/v1/servers/{server_id}/shutdown | Выключение сервера |
 | [**startServer**](ServersApi.md#startServer) | **POST** /api/v1/servers/{server_id}/start | Запуск сервера |
 | [**updateServer**](ServersApi.md#updateServer) | **PATCH** /api/v1/servers/{server_id} | Изменение сервера |
@@ -192,6 +197,151 @@ public class Example {
 | **401** | Не авторизован |  -  |
 | **403** | Запрещено |  -  |
 | **409** | Конфликт |  -  |
+| **429** | Слишком много запросов |  -  |
+| **500** | Внутренняя ошибка сервера |  -  |
+
+<a id="commitRestorePoint"></a>
+# **commitRestorePoint**
+> commitRestorePoint(vdsId)
+
+Фиксация снапшота
+
+Чтобы зафиксировать (применить) снапшот облачного сервера (VDS), отправьте POST-запрос на &#x60;/api/v1/restore-points/{vds_id}/commit&#x60;.  Фиксация подтверждает текущее состояние сервера. Действие выполняется асинхронно, ответ не содержит тела.  Для выполнения действия сервер должен быть включён, иначе вернётся ошибка &#x60;403&#x60;.
+
+### Example
+```java
+// Import classes:
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.ServersApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.timeweb.cloud");
+    
+    // Configure HTTP bearer authorization: Bearer
+    HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
+    Bearer.setBearerToken("BEARER TOKEN");
+
+    ServersApi apiInstance = new ServersApi(defaultClient);
+    Integer vdsId = 1051; // Integer | ID облачного сервера (VDS).
+    try {
+      apiInstance.commitRestorePoint(vdsId);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ServersApi#commitRestorePoint");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **vdsId** | **Integer**| ID облачного сервера (VDS). | |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | Действие над снапшотом запущено |  -  |
+| **400** | Некорректный запрос |  -  |
+| **401** | Не авторизован |  -  |
+| **403** | Запрещено |  -  |
+| **404** | Не найдено |  -  |
+| **429** | Слишком много запросов |  -  |
+| **500** | Внутренняя ошибка сервера |  -  |
+
+<a id="createRestorePoint"></a>
+# **createRestorePoint**
+> GetRestorePoint200Response createRestorePoint(vdsId)
+
+Создание снапшота
+
+Чтобы создать снапшот облачного сервера (VDS), отправьте POST-запрос на &#x60;/api/v1/restore-points/{vds_id}/create&#x60;.  Тело ответа будет содержать объект JSON с ключом &#x60;restore_point&#x60; и информацией о созданном снапшоте. Сразу после создания снапшот может находиться в статусе &#x60;creating&#x60;.  Для создания снапшота сервер должен быть включён, иначе вернётся ошибка &#x60;403&#x60;.
+
+### Example
+```java
+// Import classes:
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.ServersApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.timeweb.cloud");
+    
+    // Configure HTTP bearer authorization: Bearer
+    HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
+    Bearer.setBearerToken("BEARER TOKEN");
+
+    ServersApi apiInstance = new ServersApi(defaultClient);
+    Integer vdsId = 1051; // Integer | ID облачного сервера (VDS).
+    try {
+      GetRestorePoint200Response result = apiInstance.createRestorePoint(vdsId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ServersApi#createRestorePoint");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **vdsId** | **Integer**| ID облачного сервера (VDS). | |
+
+### Return type
+
+[**GetRestorePoint200Response**](GetRestorePoint200Response.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Объект JSON c ключом &#x60;restore_point&#x60; |  -  |
+| **400** | Некорректный запрос |  -  |
+| **401** | Не авторизован |  -  |
+| **403** | Запрещено |  -  |
+| **404** | Не найдено |  -  |
 | **429** | Слишком много запросов |  -  |
 | **500** | Внутренняя ошибка сервера |  -  |
 
@@ -861,6 +1011,145 @@ This endpoint does not need any parameter.
 | **401** | Не авторизован |  -  |
 | **403** | Запрещено |  -  |
 | **404** | Не найдено |  -  |
+| **429** | Слишком много запросов |  -  |
+| **500** | Внутренняя ошибка сервера |  -  |
+
+<a id="getRestorePoint"></a>
+# **getRestorePoint**
+> GetRestorePoint200Response getRestorePoint(vdsId)
+
+Получение снапшота сервера
+
+Чтобы получить снапшот облачного сервера (VDS), отправьте GET-запрос на &#x60;/api/v1/restore-points/{vds_id}&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;restore_point&#x60;.
+
+### Example
+```java
+// Import classes:
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.ServersApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.timeweb.cloud");
+    
+    // Configure HTTP bearer authorization: Bearer
+    HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
+    Bearer.setBearerToken("BEARER TOKEN");
+
+    ServersApi apiInstance = new ServersApi(defaultClient);
+    Integer vdsId = 1051; // Integer | ID облачного сервера (VDS).
+    try {
+      GetRestorePoint200Response result = apiInstance.getRestorePoint(vdsId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ServersApi#getRestorePoint");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **vdsId** | **Integer**| ID облачного сервера (VDS). | |
+
+### Return type
+
+[**GetRestorePoint200Response**](GetRestorePoint200Response.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Объект JSON c ключом &#x60;restore_point&#x60; |  -  |
+| **400** | Некорректный запрос |  -  |
+| **401** | Не авторизован |  -  |
+| **404** | Не найдено |  -  |
+| **429** | Слишком много запросов |  -  |
+| **500** | Внутренняя ошибка сервера |  -  |
+
+<a id="getRestorePoints"></a>
+# **getRestorePoints**
+> GetRestorePoints200Response getRestorePoints()
+
+Получение списка снапшотов
+
+Чтобы получить список снапшотов аккаунта, отправьте GET-запрос на &#x60;/api/v1/restore-points&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;restore_points&#x60;.  Снапшот — это снимок состояния облачного сервера (VDS), к которому можно вернуться. Каждому снапшоту соответствует один сервер.
+
+### Example
+```java
+// Import classes:
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.ServersApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.timeweb.cloud");
+    
+    // Configure HTTP bearer authorization: Bearer
+    HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
+    Bearer.setBearerToken("BEARER TOKEN");
+
+    ServersApi apiInstance = new ServersApi(defaultClient);
+    try {
+      GetRestorePoints200Response result = apiInstance.getRestorePoints();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ServersApi#getRestorePoints");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**GetRestorePoints200Response**](GetRestorePoints200Response.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Объект JSON c ключом &#x60;restore_points&#x60; |  -  |
+| **400** | Некорректный запрос |  -  |
+| **401** | Не авторизован |  -  |
 | **429** | Слишком много запросов |  -  |
 | **500** | Внутренняя ошибка сервера |  -  |
 
@@ -2348,6 +2637,78 @@ null (empty response body)
 | **400** | Некорректный запрос |  -  |
 | **401** | Не авторизован |  -  |
 | **409** | Конфликт |  -  |
+| **429** | Слишком много запросов |  -  |
+| **500** | Внутренняя ошибка сервера |  -  |
+
+<a id="rollbackRestorePoint"></a>
+# **rollbackRestorePoint**
+> rollbackRestorePoint(vdsId)
+
+Откат к снапшоту
+
+Чтобы откатить облачный сервер (VDS) к снапшоту, отправьте POST-запрос на &#x60;/api/v1/restore-points/{vds_id}/rollback&#x60;.  Откат возвращает сервер к состоянию, сохранённому в снапшоте. Действие выполняется асинхронно, ответ не содержит тела.  Для выполнения действия сервер должен быть включён, иначе вернётся ошибка &#x60;403&#x60;.
+
+### Example
+```java
+// Import classes:
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.ServersApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.timeweb.cloud");
+    
+    // Configure HTTP bearer authorization: Bearer
+    HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
+    Bearer.setBearerToken("BEARER TOKEN");
+
+    ServersApi apiInstance = new ServersApi(defaultClient);
+    Integer vdsId = 1051; // Integer | ID облачного сервера (VDS).
+    try {
+      apiInstance.rollbackRestorePoint(vdsId);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ServersApi#rollbackRestorePoint");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **vdsId** | **Integer**| ID облачного сервера (VDS). | |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | Действие над снапшотом запущено |  -  |
+| **400** | Некорректный запрос |  -  |
+| **401** | Не авторизован |  -  |
+| **403** | Запрещено |  -  |
+| **404** | Не найдено |  -  |
 | **429** | Слишком много запросов |  -  |
 | **500** | Внутренняя ошибка сервера |  -  |
 
