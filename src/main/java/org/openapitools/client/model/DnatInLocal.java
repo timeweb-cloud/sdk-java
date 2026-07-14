@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * Локальный (приватный) адрес назначения
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-07-13T14:48:50.006639Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-07-14T06:41:04.594716Z[Etc/UTC]")
 public class DnatInLocal {
   public static final String SERIALIZED_NAME_IP = "ip";
   @SerializedName(SERIALIZED_NAME_IP)
