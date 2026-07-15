@@ -35,6 +35,7 @@ import org.openapitools.client.model.CreateDnsV2;
 import org.openapitools.client.model.CreateDomainDNSRecord201Response;
 import org.openapitools.client.model.CreateDomainDNSRecordV2201Response;
 import org.openapitools.client.model.CreateDomainRequest201Response;
+import org.openapitools.client.model.CreatePerson201Response;
 import org.openapitools.client.model.DomainRegister;
 import org.openapitools.client.model.GetDomain200Response;
 import org.openapitools.client.model.GetDomainDNSRecords200Response;
@@ -46,11 +47,14 @@ import org.openapitools.client.model.GetFinances401Response;
 import org.openapitools.client.model.GetFinances429Response;
 import org.openapitools.client.model.GetFinances500Response;
 import org.openapitools.client.model.GetImage404Response;
+import org.openapitools.client.model.GetPersons200Response;
 import org.openapitools.client.model.GetTLD200Response;
 import org.openapitools.client.model.GetTLDs200Response;
+import org.openapitools.client.model.Person2;
 import org.openapitools.client.model.UpdateDomain;
 import org.openapitools.client.model.UpdateDomainAutoProlongation200Response;
 import org.openapitools.client.model.UpdateDomainNameServers;
+import org.openapitools.client.model.UpdatePerson;
 import org.openapitools.client.model.Use;
 
 import java.lang.reflect.Type;
@@ -990,6 +994,145 @@ public class DomainsApi {
         return localVarCall;
     }
     /**
+     * Build call for createPerson
+     * @param person2  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;person&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createPersonCall(Person2 person2, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = person2;
+
+        // create path and map variables
+        String localVarPath = "/api/v1/persons";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "Bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createPersonValidateBeforeCall(Person2 person2, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'person2' is set
+        if (person2 == null) {
+            throw new ApiException("Missing the required parameter 'person2' when calling createPerson(Async)");
+        }
+
+        return createPersonCall(person2, _callback);
+
+    }
+
+    /**
+     * Создание администратора доменов
+     * Чтобы создать администратора доменов, отправьте POST-запрос на &#x60;/api/v1/persons&#x60;, задав необходимые атрибуты. Набор полей зависит от типа администратора: физическое лицо (&#x60;person&#x60;), организация (&#x60;org&#x60;) или индивидуальный предприниматель (&#x60;ip&#x60;).   Тело ответа будет представлять собой объект JSON с ключом &#x60;person&#x60;.
+     * @param person2  (required)
+     * @return CreatePerson201Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;person&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreatePerson201Response createPerson(Person2 person2) throws ApiException {
+        ApiResponse<CreatePerson201Response> localVarResp = createPersonWithHttpInfo(person2);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Создание администратора доменов
+     * Чтобы создать администратора доменов, отправьте POST-запрос на &#x60;/api/v1/persons&#x60;, задав необходимые атрибуты. Набор полей зависит от типа администратора: физическое лицо (&#x60;person&#x60;), организация (&#x60;org&#x60;) или индивидуальный предприниматель (&#x60;ip&#x60;).   Тело ответа будет представлять собой объект JSON с ключом &#x60;person&#x60;.
+     * @param person2  (required)
+     * @return ApiResponse&lt;CreatePerson201Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;person&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreatePerson201Response> createPersonWithHttpInfo(Person2 person2) throws ApiException {
+        okhttp3.Call localVarCall = createPersonValidateBeforeCall(person2, null);
+        Type localVarReturnType = new TypeToken<CreatePerson201Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Создание администратора доменов (asynchronously)
+     * Чтобы создать администратора доменов, отправьте POST-запрос на &#x60;/api/v1/persons&#x60;, задав необходимые атрибуты. Набор полей зависит от типа администратора: физическое лицо (&#x60;person&#x60;), организация (&#x60;org&#x60;) или индивидуальный предприниматель (&#x60;ip&#x60;).   Тело ответа будет представлять собой объект JSON с ключом &#x60;person&#x60;.
+     * @param person2  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;person&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createPersonAsync(Person2 person2, final ApiCallback<CreatePerson201Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createPersonValidateBeforeCall(person2, _callback);
+        Type localVarReturnType = new TypeToken<CreatePerson201Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for deleteDomain
      * @param fqdn Полное имя домена. (required)
      * @param _callback Callback for upload/download progress
@@ -1436,6 +1579,145 @@ public class DomainsApi {
     public okhttp3.Call deleteDomainDNSRecordV2Async(String fqdn, Integer recordId, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteDomainDNSRecordV2ValidateBeforeCall(fqdn, recordId, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for deletePerson
+     * @param personId ID администратора домена. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Администратор доменов успешно удален. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deletePersonCall(Integer personId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/v1/persons/{person_id}"
+            .replace("{" + "person_id" + "}", localVarApiClient.escapeString(personId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "Bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deletePersonValidateBeforeCall(Integer personId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'personId' is set
+        if (personId == null) {
+            throw new ApiException("Missing the required parameter 'personId' when calling deletePerson(Async)");
+        }
+
+        return deletePersonCall(personId, _callback);
+
+    }
+
+    /**
+     * Удаление администратора доменов
+     * Чтобы удалить администратора доменов, отправьте DELETE-запрос на &#x60;/api/v1/persons/{person_id}&#x60;.
+     * @param personId ID администратора домена. (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Администратор доменов успешно удален. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public void deletePerson(Integer personId) throws ApiException {
+        deletePersonWithHttpInfo(personId);
+    }
+
+    /**
+     * Удаление администратора доменов
+     * Чтобы удалить администратора доменов, отправьте DELETE-запрос на &#x60;/api/v1/persons/{person_id}&#x60;.
+     * @param personId ID администратора домена. (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Администратор доменов успешно удален. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> deletePersonWithHttpInfo(Integer personId) throws ApiException {
+        okhttp3.Call localVarCall = deletePersonValidateBeforeCall(personId, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Удаление администратора доменов (asynchronously)
+     * Чтобы удалить администратора доменов, отправьте DELETE-запрос на &#x60;/api/v1/persons/{person_id}&#x60;.
+     * @param personId ID администратора домена. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Администратор доменов успешно удален. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deletePersonAsync(Integer personId, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deletePersonValidateBeforeCall(personId, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
@@ -2654,6 +2936,302 @@ public class DomainsApi {
         return localVarCall;
     }
     /**
+     * Build call for getPerson
+     * @param personId ID администратора домена. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;person&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getPersonCall(Integer personId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/v1/persons/{person_id}"
+            .replace("{" + "person_id" + "}", localVarApiClient.escapeString(personId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "Bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getPersonValidateBeforeCall(Integer personId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'personId' is set
+        if (personId == null) {
+            throw new ApiException("Missing the required parameter 'personId' when calling getPerson(Async)");
+        }
+
+        return getPersonCall(personId, _callback);
+
+    }
+
+    /**
+     * Получение администратора доменов
+     * Чтобы получить администратора доменов, отправьте GET-запрос на &#x60;/api/v1/persons/{person_id}&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;person&#x60;.
+     * @param personId ID администратора домена. (required)
+     * @return CreatePerson201Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;person&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreatePerson201Response getPerson(Integer personId) throws ApiException {
+        ApiResponse<CreatePerson201Response> localVarResp = getPersonWithHttpInfo(personId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Получение администратора доменов
+     * Чтобы получить администратора доменов, отправьте GET-запрос на &#x60;/api/v1/persons/{person_id}&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;person&#x60;.
+     * @param personId ID администратора домена. (required)
+     * @return ApiResponse&lt;CreatePerson201Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;person&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreatePerson201Response> getPersonWithHttpInfo(Integer personId) throws ApiException {
+        okhttp3.Call localVarCall = getPersonValidateBeforeCall(personId, null);
+        Type localVarReturnType = new TypeToken<CreatePerson201Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Получение администратора доменов (asynchronously)
+     * Чтобы получить администратора доменов, отправьте GET-запрос на &#x60;/api/v1/persons/{person_id}&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;person&#x60;.
+     * @param personId ID администратора домена. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;person&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getPersonAsync(Integer personId, final ApiCallback<CreatePerson201Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getPersonValidateBeforeCall(personId, _callback);
+        Type localVarReturnType = new TypeToken<CreatePerson201Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getPersons
+     * @param limit Обозначает количество записей, которое необходимо вернуть. (optional, default to 100)
+     * @param offset Указывает на смещение относительно начала списка. (optional, default to 0)
+     * @param isClosed Фильтр по закрытым администраторам: &#x60;true&#x60; — вернуть только закрытых, &#x60;false&#x60; — только активных. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;persons&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getPersonsCall(Integer limit, Integer offset, Boolean isClosed, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/v1/persons";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (offset != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("offset", offset));
+        }
+
+        if (isClosed != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("is_closed", isClosed));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "Bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getPersonsValidateBeforeCall(Integer limit, Integer offset, Boolean isClosed, final ApiCallback _callback) throws ApiException {
+        return getPersonsCall(limit, offset, isClosed, _callback);
+
+    }
+
+    /**
+     * Получение списка администраторов доменов
+     * Чтобы получить список администраторов доменов на вашем аккаунте, отправьте GET-запрос на &#x60;/api/v1/persons&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;persons&#x60;.
+     * @param limit Обозначает количество записей, которое необходимо вернуть. (optional, default to 100)
+     * @param offset Указывает на смещение относительно начала списка. (optional, default to 0)
+     * @param isClosed Фильтр по закрытым администраторам: &#x60;true&#x60; — вернуть только закрытых, &#x60;false&#x60; — только активных. (optional)
+     * @return GetPersons200Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;persons&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetPersons200Response getPersons(Integer limit, Integer offset, Boolean isClosed) throws ApiException {
+        ApiResponse<GetPersons200Response> localVarResp = getPersonsWithHttpInfo(limit, offset, isClosed);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Получение списка администраторов доменов
+     * Чтобы получить список администраторов доменов на вашем аккаунте, отправьте GET-запрос на &#x60;/api/v1/persons&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;persons&#x60;.
+     * @param limit Обозначает количество записей, которое необходимо вернуть. (optional, default to 100)
+     * @param offset Указывает на смещение относительно начала списка. (optional, default to 0)
+     * @param isClosed Фильтр по закрытым администраторам: &#x60;true&#x60; — вернуть только закрытых, &#x60;false&#x60; — только активных. (optional)
+     * @return ApiResponse&lt;GetPersons200Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;persons&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetPersons200Response> getPersonsWithHttpInfo(Integer limit, Integer offset, Boolean isClosed) throws ApiException {
+        okhttp3.Call localVarCall = getPersonsValidateBeforeCall(limit, offset, isClosed, null);
+        Type localVarReturnType = new TypeToken<GetPersons200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Получение списка администраторов доменов (asynchronously)
+     * Чтобы получить список администраторов доменов на вашем аккаунте, отправьте GET-запрос на &#x60;/api/v1/persons&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;persons&#x60;.
+     * @param limit Обозначает количество записей, которое необходимо вернуть. (optional, default to 100)
+     * @param offset Указывает на смещение относительно начала списка. (optional, default to 0)
+     * @param isClosed Фильтр по закрытым администраторам: &#x60;true&#x60; — вернуть только закрытых, &#x60;false&#x60; — только активных. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;persons&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getPersonsAsync(Integer limit, Integer offset, Boolean isClosed, final ApiCallback<GetPersons200Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getPersonsValidateBeforeCall(limit, offset, isClosed, _callback);
+        Type localVarReturnType = new TypeToken<GetPersons200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for getTLD
      * @param tldId ID доменной зоны. (required)
      * @param _callback Callback for upload/download progress
@@ -3744,6 +4322,159 @@ public class DomainsApi {
 
         okhttp3.Call localVarCall = updateDomainRequestValidateBeforeCall(requestId, use, _callback);
         Type localVarReturnType = new TypeToken<CreateDomainRequest201Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for updatePerson
+     * @param personId ID администратора домена. (required)
+     * @param updatePerson  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;person&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updatePersonCall(Integer personId, UpdatePerson updatePerson, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = updatePerson;
+
+        // create path and map variables
+        String localVarPath = "/api/v1/persons/{person_id}"
+            .replace("{" + "person_id" + "}", localVarApiClient.escapeString(personId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "Bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call updatePersonValidateBeforeCall(Integer personId, UpdatePerson updatePerson, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'personId' is set
+        if (personId == null) {
+            throw new ApiException("Missing the required parameter 'personId' when calling updatePerson(Async)");
+        }
+
+        // verify the required parameter 'updatePerson' is set
+        if (updatePerson == null) {
+            throw new ApiException("Missing the required parameter 'updatePerson' when calling updatePerson(Async)");
+        }
+
+        return updatePersonCall(personId, updatePerson, _callback);
+
+    }
+
+    /**
+     * Обновление контактных данных администратора доменов
+     * Чтобы обновить контактные данные администратора доменов, отправьте PUT-запрос на &#x60;/api/v1/persons/{person_id}&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;person&#x60;.
+     * @param personId ID администратора домена. (required)
+     * @param updatePerson  (required)
+     * @return CreatePerson201Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;person&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreatePerson201Response updatePerson(Integer personId, UpdatePerson updatePerson) throws ApiException {
+        ApiResponse<CreatePerson201Response> localVarResp = updatePersonWithHttpInfo(personId, updatePerson);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Обновление контактных данных администратора доменов
+     * Чтобы обновить контактные данные администратора доменов, отправьте PUT-запрос на &#x60;/api/v1/persons/{person_id}&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;person&#x60;.
+     * @param personId ID администратора домена. (required)
+     * @param updatePerson  (required)
+     * @return ApiResponse&lt;CreatePerson201Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;person&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreatePerson201Response> updatePersonWithHttpInfo(Integer personId, UpdatePerson updatePerson) throws ApiException {
+        okhttp3.Call localVarCall = updatePersonValidateBeforeCall(personId, updatePerson, null);
+        Type localVarReturnType = new TypeToken<CreatePerson201Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Обновление контактных данных администратора доменов (asynchronously)
+     * Чтобы обновить контактные данные администратора доменов, отправьте PUT-запрос на &#x60;/api/v1/persons/{person_id}&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;person&#x60;.
+     * @param personId ID администратора домена. (required)
+     * @param updatePerson  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;person&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updatePersonAsync(Integer personId, UpdatePerson updatePerson, final ApiCallback<CreatePerson201Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updatePersonValidateBeforeCall(personId, updatePerson, _callback);
+        Type localVarReturnType = new TypeToken<CreatePerson201Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

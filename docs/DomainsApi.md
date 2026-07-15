@@ -10,9 +10,11 @@ All URIs are relative to *https://api.timeweb.cloud*
 | [**createDomainDNSRecord**](DomainsApi.md#createDomainDNSRecord) | **POST** /api/v1/domains/{fqdn}/dns-records | Добавить информацию о DNS-записи для домена или поддомена |
 | [**createDomainDNSRecordV2**](DomainsApi.md#createDomainDNSRecordV2) | **POST** /api/v2/domains/{fqdn}/dns-records | Добавить информацию о DNS-записи для домена или поддомена |
 | [**createDomainRequest**](DomainsApi.md#createDomainRequest) | **POST** /api/v1/domains-requests | Создание заявки на регистрацию/продление/трансфер домена |
+| [**createPerson**](DomainsApi.md#createPerson) | **POST** /api/v1/persons | Создание администратора доменов |
 | [**deleteDomain**](DomainsApi.md#deleteDomain) | **DELETE** /api/v1/domains/{fqdn} | Удаление домена |
 | [**deleteDomainDNSRecord**](DomainsApi.md#deleteDomainDNSRecord) | **DELETE** /api/v1/domains/{fqdn}/dns-records/{record_id} | Удалить информацию о DNS-записи для домена или поддомена |
 | [**deleteDomainDNSRecordV2**](DomainsApi.md#deleteDomainDNSRecordV2) | **DELETE** /api/v2/domains/{fqdn}/dns-records/{record_id} | Удалить информацию о DNS-записи для домена или поддомена |
+| [**deletePerson**](DomainsApi.md#deletePerson) | **DELETE** /api/v1/persons/{person_id} | Удаление администратора доменов |
 | [**deleteSubdomain**](DomainsApi.md#deleteSubdomain) | **DELETE** /api/v1/domains/{fqdn}/subdomains/{subdomain} | Удаление поддомена |
 | [**getDomain**](DomainsApi.md#getDomain) | **GET** /api/v1/domains/{fqdn} | Получение информации о домене |
 | [**getDomainDNSRecords**](DomainsApi.md#getDomainDNSRecords) | **GET** /api/v1/domains/{fqdn}/dns-records | Получить информацию обо всех пользовательских DNS-записях домена или поддомена |
@@ -21,6 +23,8 @@ All URIs are relative to *https://api.timeweb.cloud*
 | [**getDomainRequest**](DomainsApi.md#getDomainRequest) | **GET** /api/v1/domains-requests/{request_id} | Получение заявки на регистрацию/продление/трансфер домена |
 | [**getDomainRequests**](DomainsApi.md#getDomainRequests) | **GET** /api/v1/domains-requests | Получение списка заявок на регистрацию/продление/трансфер домена |
 | [**getDomains**](DomainsApi.md#getDomains) | **GET** /api/v1/domains | Получение списка всех доменов |
+| [**getPerson**](DomainsApi.md#getPerson) | **GET** /api/v1/persons/{person_id} | Получение администратора доменов |
+| [**getPersons**](DomainsApi.md#getPersons) | **GET** /api/v1/persons | Получение списка администраторов доменов |
 | [**getTLD**](DomainsApi.md#getTLD) | **GET** /api/v1/tlds/{tld_id} | Получить информацию о доменной зоне по ID |
 | [**getTLDs**](DomainsApi.md#getTLDs) | **GET** /api/v1/tlds | Получить информацию о доменных зонах |
 | [**updateDomainAutoProlongation**](DomainsApi.md#updateDomainAutoProlongation) | **PATCH** /api/v1/domains/{fqdn} | Включение/выключение автопродления домена |
@@ -28,6 +32,7 @@ All URIs are relative to *https://api.timeweb.cloud*
 | [**updateDomainDNSRecordV2**](DomainsApi.md#updateDomainDNSRecordV2) | **PATCH** /api/v2/domains/{fqdn}/dns-records/{record_id} | Обновить информацию о DNS-записи домена или поддомена |
 | [**updateDomainNameServers**](DomainsApi.md#updateDomainNameServers) | **PUT** /api/v1/domains/{fqdn}/name-servers | Изменение name-серверов домена |
 | [**updateDomainRequest**](DomainsApi.md#updateDomainRequest) | **PATCH** /api/v1/domains-requests/{request_id} | Оплата/обновление заявки на регистрацию/продление/трансфер домена |
+| [**updatePerson**](DomainsApi.md#updatePerson) | **PUT** /api/v1/persons/{person_id} | Обновление контактных данных администратора доменов |
 
 
 <a id="addDomain"></a>
@@ -467,6 +472,77 @@ public class Example {
 | **429** | Слишком много запросов |  -  |
 | **500** | Внутренняя ошибка сервера |  -  |
 
+<a id="createPerson"></a>
+# **createPerson**
+> CreatePerson201Response createPerson(person2)
+
+Создание администратора доменов
+
+Чтобы создать администратора доменов, отправьте POST-запрос на &#x60;/api/v1/persons&#x60;, задав необходимые атрибуты. Набор полей зависит от типа администратора: физическое лицо (&#x60;person&#x60;), организация (&#x60;org&#x60;) или индивидуальный предприниматель (&#x60;ip&#x60;).   Тело ответа будет представлять собой объект JSON с ключом &#x60;person&#x60;.
+
+### Example
+```java
+// Import classes:
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.DomainsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.timeweb.cloud");
+    
+    // Configure HTTP bearer authorization: Bearer
+    HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
+    Bearer.setBearerToken("BEARER TOKEN");
+
+    DomainsApi apiInstance = new DomainsApi(defaultClient);
+    Person2 person2 = new Person2(); // Person2 | 
+    try {
+      CreatePerson201Response result = apiInstance.createPerson(person2);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DomainsApi#createPerson");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **person2** | [**Person2**](Person2.md)|  | |
+
+### Return type
+
+[**CreatePerson201Response**](CreatePerson201Response.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Ответ будет представлять собой объект JSON c ключом &#x60;person&#x60;. |  -  |
+| **400** | Некорректный запрос |  -  |
+| **401** | Не авторизован |  -  |
+| **429** | Слишком много запросов |  -  |
+| **500** | Внутренняя ошибка сервера |  -  |
+
 <a id="deleteDomain"></a>
 # **deleteDomain**
 > deleteDomain(fqdn)
@@ -679,6 +755,77 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | Информация о DNS-записи успешно удалена. |  -  |
+| **400** | Некорректный запрос |  -  |
+| **401** | Не авторизован |  -  |
+| **404** | Не найдено |  -  |
+| **429** | Слишком много запросов |  -  |
+| **500** | Внутренняя ошибка сервера |  -  |
+
+<a id="deletePerson"></a>
+# **deletePerson**
+> deletePerson(personId)
+
+Удаление администратора доменов
+
+Чтобы удалить администратора доменов, отправьте DELETE-запрос на &#x60;/api/v1/persons/{person_id}&#x60;.
+
+### Example
+```java
+// Import classes:
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.DomainsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.timeweb.cloud");
+    
+    // Configure HTTP bearer authorization: Bearer
+    HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
+    Bearer.setBearerToken("BEARER TOKEN");
+
+    DomainsApi apiInstance = new DomainsApi(defaultClient);
+    Integer personId = 123; // Integer | ID администратора домена.
+    try {
+      apiInstance.deletePerson(personId);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DomainsApi#deletePerson");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **personId** | **Integer**| ID администратора домена. | |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | Администратор доменов успешно удален. |  -  |
 | **400** | Некорректный запрос |  -  |
 | **401** | Не авторизован |  -  |
 | **404** | Не найдено |  -  |
@@ -1279,6 +1426,153 @@ public class Example {
 | **429** | Слишком много запросов |  -  |
 | **500** | Внутренняя ошибка сервера |  -  |
 
+<a id="getPerson"></a>
+# **getPerson**
+> CreatePerson201Response getPerson(personId)
+
+Получение администратора доменов
+
+Чтобы получить администратора доменов, отправьте GET-запрос на &#x60;/api/v1/persons/{person_id}&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;person&#x60;.
+
+### Example
+```java
+// Import classes:
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.DomainsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.timeweb.cloud");
+    
+    // Configure HTTP bearer authorization: Bearer
+    HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
+    Bearer.setBearerToken("BEARER TOKEN");
+
+    DomainsApi apiInstance = new DomainsApi(defaultClient);
+    Integer personId = 123; // Integer | ID администратора домена.
+    try {
+      CreatePerson201Response result = apiInstance.getPerson(personId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DomainsApi#getPerson");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **personId** | **Integer**| ID администратора домена. | |
+
+### Return type
+
+[**CreatePerson201Response**](CreatePerson201Response.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Ответ будет представлять собой объект JSON c ключом &#x60;person&#x60;. |  -  |
+| **400** | Некорректный запрос |  -  |
+| **401** | Не авторизован |  -  |
+| **404** | Не найдено |  -  |
+| **429** | Слишком много запросов |  -  |
+| **500** | Внутренняя ошибка сервера |  -  |
+
+<a id="getPersons"></a>
+# **getPersons**
+> GetPersons200Response getPersons(limit, offset, isClosed)
+
+Получение списка администраторов доменов
+
+Чтобы получить список администраторов доменов на вашем аккаунте, отправьте GET-запрос на &#x60;/api/v1/persons&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;persons&#x60;.
+
+### Example
+```java
+// Import classes:
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.DomainsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.timeweb.cloud");
+    
+    // Configure HTTP bearer authorization: Bearer
+    HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
+    Bearer.setBearerToken("BEARER TOKEN");
+
+    DomainsApi apiInstance = new DomainsApi(defaultClient);
+    Integer limit = 100; // Integer | Обозначает количество записей, которое необходимо вернуть.
+    Integer offset = 0; // Integer | Указывает на смещение относительно начала списка.
+    Boolean isClosed = false; // Boolean | Фильтр по закрытым администраторам: `true` — вернуть только закрытых, `false` — только активных.
+    try {
+      GetPersons200Response result = apiInstance.getPersons(limit, offset, isClosed);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DomainsApi#getPersons");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **limit** | **Integer**| Обозначает количество записей, которое необходимо вернуть. | [optional] [default to 100] |
+| **offset** | **Integer**| Указывает на смещение относительно начала списка. | [optional] [default to 0] |
+| **isClosed** | **Boolean**| Фильтр по закрытым администраторам: &#x60;true&#x60; — вернуть только закрытых, &#x60;false&#x60; — только активных. | [optional] |
+
+### Return type
+
+[**GetPersons200Response**](GetPersons200Response.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Ответ будет представлять собой объект JSON c ключом &#x60;persons&#x60;. |  -  |
+| **400** | Некорректный запрос |  -  |
+| **401** | Не авторизован |  -  |
+| **429** | Слишком много запросов |  -  |
+| **500** | Внутренняя ошибка сервера |  -  |
+
 <a id="getTLD"></a>
 # **getTLD**
 > GetTLD200Response getTLD(tldId)
@@ -1798,6 +2092,80 @@ public class Example {
 | **401** | Не авторизован |  -  |
 | **404** | Не найдено |  -  |
 | **409** | Конфликт |  -  |
+| **429** | Слишком много запросов |  -  |
+| **500** | Внутренняя ошибка сервера |  -  |
+
+<a id="updatePerson"></a>
+# **updatePerson**
+> CreatePerson201Response updatePerson(personId, updatePerson)
+
+Обновление контактных данных администратора доменов
+
+Чтобы обновить контактные данные администратора доменов, отправьте PUT-запрос на &#x60;/api/v1/persons/{person_id}&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;person&#x60;.
+
+### Example
+```java
+// Import classes:
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.DomainsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.timeweb.cloud");
+    
+    // Configure HTTP bearer authorization: Bearer
+    HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
+    Bearer.setBearerToken("BEARER TOKEN");
+
+    DomainsApi apiInstance = new DomainsApi(defaultClient);
+    Integer personId = 123; // Integer | ID администратора домена.
+    UpdatePerson updatePerson = new UpdatePerson(); // UpdatePerson | 
+    try {
+      CreatePerson201Response result = apiInstance.updatePerson(personId, updatePerson);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DomainsApi#updatePerson");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **personId** | **Integer**| ID администратора домена. | |
+| **updatePerson** | [**UpdatePerson**](UpdatePerson.md)|  | |
+
+### Return type
+
+[**CreatePerson201Response**](CreatePerson201Response.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Ответ будет представлять собой объект JSON c ключом &#x60;person&#x60;. |  -  |
+| **400** | Некорректный запрос |  -  |
+| **401** | Не авторизован |  -  |
+| **404** | Не найдено |  -  |
 | **429** | Слишком много запросов |  -  |
 | **500** | Внутренняя ошибка сервера |  -  |
 

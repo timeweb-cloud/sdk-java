@@ -22,6 +22,7 @@ import org.openapitools.client.model.CreateDnsV2;
 import org.openapitools.client.model.CreateDomainDNSRecord201Response;
 import org.openapitools.client.model.CreateDomainDNSRecordV2201Response;
 import org.openapitools.client.model.CreateDomainRequest201Response;
+import org.openapitools.client.model.CreatePerson201Response;
 import org.openapitools.client.model.DomainRegister;
 import org.openapitools.client.model.GetDomain200Response;
 import org.openapitools.client.model.GetDomainDNSRecords200Response;
@@ -33,11 +34,14 @@ import org.openapitools.client.model.GetFinances401Response;
 import org.openapitools.client.model.GetFinances429Response;
 import org.openapitools.client.model.GetFinances500Response;
 import org.openapitools.client.model.GetImage404Response;
+import org.openapitools.client.model.GetPersons200Response;
 import org.openapitools.client.model.GetTLD200Response;
 import org.openapitools.client.model.GetTLDs200Response;
+import org.openapitools.client.model.Person2;
 import org.openapitools.client.model.UpdateDomain;
 import org.openapitools.client.model.UpdateDomainAutoProlongation200Response;
 import org.openapitools.client.model.UpdateDomainNameServers;
+import org.openapitools.client.model.UpdatePerson;
 import org.openapitools.client.model.Use;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -143,6 +147,20 @@ public class DomainsApiTest {
     }
 
     /**
+     * Создание администратора доменов
+     *
+     * Чтобы создать администратора доменов, отправьте POST-запрос на &#x60;/api/v1/persons&#x60;, задав необходимые атрибуты. Набор полей зависит от типа администратора: физическое лицо (&#x60;person&#x60;), организация (&#x60;org&#x60;) или индивидуальный предприниматель (&#x60;ip&#x60;).   Тело ответа будет представлять собой объект JSON с ключом &#x60;person&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void createPersonTest() throws ApiException {
+        Person2 person2 = null;
+        CreatePerson201Response response = api.createPerson(person2);
+        // TODO: test validations
+    }
+
+    /**
      * Удаление домена
      *
      * Чтобы удалить домен, отправьте запрос DELETE на &#x60;/api/v1/domains/{fqdn}&#x60;.
@@ -183,6 +201,20 @@ public class DomainsApiTest {
         String fqdn = null;
         Integer recordId = null;
         api.deleteDomainDNSRecordV2(fqdn, recordId);
+        // TODO: test validations
+    }
+
+    /**
+     * Удаление администратора доменов
+     *
+     * Чтобы удалить администратора доменов, отправьте DELETE-запрос на &#x60;/api/v1/persons/{person_id}&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void deletePersonTest() throws ApiException {
+        Integer personId = null;
+        api.deletePerson(personId);
         // TODO: test validations
     }
 
@@ -309,6 +341,36 @@ public class DomainsApiTest {
     }
 
     /**
+     * Получение администратора доменов
+     *
+     * Чтобы получить администратора доменов, отправьте GET-запрос на &#x60;/api/v1/persons/{person_id}&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;person&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void getPersonTest() throws ApiException {
+        Integer personId = null;
+        CreatePerson201Response response = api.getPerson(personId);
+        // TODO: test validations
+    }
+
+    /**
+     * Получение списка администраторов доменов
+     *
+     * Чтобы получить список администраторов доменов на вашем аккаунте, отправьте GET-запрос на &#x60;/api/v1/persons&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;persons&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void getPersonsTest() throws ApiException {
+        Integer limit = null;
+        Integer offset = null;
+        Boolean isClosed = null;
+        GetPersons200Response response = api.getPersons(limit, offset, isClosed);
+        // TODO: test validations
+    }
+
+    /**
      * Получить информацию о доменной зоне по ID
      *
      * Чтобы получить информацию о доменной зоне по ID, отправьте запрос GET на &#x60;/api/v1/tlds/{tld_id}&#x60;.
@@ -411,6 +473,21 @@ public class DomainsApiTest {
         Integer requestId = null;
         Use use = null;
         CreateDomainRequest201Response response = api.updateDomainRequest(requestId, use);
+        // TODO: test validations
+    }
+
+    /**
+     * Обновление контактных данных администратора доменов
+     *
+     * Чтобы обновить контактные данные администратора доменов, отправьте PUT-запрос на &#x60;/api/v1/persons/{person_id}&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;person&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void updatePersonTest() throws ApiException {
+        Integer personId = null;
+        UpdatePerson updatePerson = null;
+        CreatePerson201Response response = api.updatePerson(personId, updatePerson);
         // TODO: test validations
     }
 
