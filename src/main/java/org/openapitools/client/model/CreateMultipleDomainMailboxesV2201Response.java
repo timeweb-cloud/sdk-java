@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * CreateMultipleDomainMailboxesV2201Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-07-15T15:12:57.348357Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-07-22T11:19:14.654686Z[Etc/UTC]")
 public class CreateMultipleDomainMailboxesV2201Response {
   public static final String SERIALIZED_NAME_MAILBOXES_BATCH = "mailboxes_batch";
   @SerializedName(SERIALIZED_NAME_MAILBOXES_BATCH)

@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * Параметры Valkey (&#x60;valkey&#x60; | &#x60;valkey7&#x60; | &#x60;valkey8_1&#x60; | &#x60;valkey9_1&#x60;)
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-07-15T15:12:57.348357Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-07-22T11:19:14.654686Z[Etc/UTC]")
 public class Valkey {
   public static final String SERIALIZED_NAME_CLIENT_OUTPUT_BUFFER_LIMIT_NORMAL = "client-output-buffer-limit normal";
   @SerializedName(SERIALIZED_NAME_CLIENT_OUTPUT_BUFFER_LIMIT_NORMAL)
