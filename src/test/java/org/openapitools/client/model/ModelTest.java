@@ -20,6 +20,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.time.OffsetDateTime;
 import org.openapitools.client.model.ModelParamsInfo;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.junit.jupiter.api.Disabled;
@@ -85,6 +86,22 @@ public class ModelTest {
     @Test
     public void isDeprecatedTest() {
         // TODO: test isDeprecated
+    }
+
+    /**
+     * Test the property 'isStopped'
+     */
+    @Test
+    public void isStoppedTest() {
+        // TODO: test isStopped
+    }
+
+    /**
+     * Test the property 'deprecationDate'
+     */
+    @Test
+    public void deprecationDateTest() {
+        // TODO: test deprecationDate
     }
 
     /**

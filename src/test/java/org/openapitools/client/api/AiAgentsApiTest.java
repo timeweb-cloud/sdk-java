@@ -17,6 +17,7 @@ import org.openapitools.client.ApiException;
 import org.openapitools.client.model.AddTokenPackage;
 import org.openapitools.client.model.CreateAgent;
 import org.openapitools.client.model.CreateAgent201Response;
+import org.openapitools.client.model.CreateAgentV2;
 import org.openapitools.client.model.GetAccountStatus403Response;
 import org.openapitools.client.model.GetAgentStatistics200Response;
 import org.openapitools.client.model.GetAgents200Response;
@@ -71,6 +72,20 @@ public class AiAgentsApiTest {
     public void createAgentTest() throws ApiException {
         CreateAgent createAgent = null;
         CreateAgent201Response response = api.createAgent(createAgent);
+        // TODO: test validations
+    }
+
+    /**
+     * Создание AI агента
+     *
+     * Чтобы создать AI агента, отправьте POST-запрос на &#x60;/api/v2/cloud-ai/agents&#x60;, задав необходимые атрибуты.  Агент будет создан с использованием предоставленной информации. Тело ответа будет содержать объект JSON с информацией о созданном агенте.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void createAgentV2Test() throws ApiException {
+        CreateAgentV2 createAgentV2 = null;
+        CreateAgent201Response response = api.createAgentV2(createAgentV2);
         // TODO: test validations
     }
 

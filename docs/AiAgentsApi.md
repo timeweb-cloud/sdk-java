@@ -6,6 +6,7 @@ All URIs are relative to *https://api.timeweb.cloud*
 |------------- | ------------- | -------------|
 | [**addAdditionalTokenPackage**](AiAgentsApi.md#addAdditionalTokenPackage) | **POST** /api/v1/cloud-ai/agents/{id}/add-additional-token-package | Добавление дополнительного пакета токенов |
 | [**createAgent**](AiAgentsApi.md#createAgent) | **POST** /api/v1/cloud-ai/agents | Создание AI агента |
+| [**createAgentV2**](AiAgentsApi.md#createAgentV2) | **POST** /api/v2/cloud-ai/agents | Создание AI агента |
 | [**deleteAgent**](AiAgentsApi.md#deleteAgent) | **DELETE** /api/v1/cloud-ai/agents/{id} | Удаление AI агента |
 | [**getAgent**](AiAgentsApi.md#getAgent) | **GET** /api/v1/cloud-ai/agents/{id} | Получение AI агента |
 | [**getAgentStatistics**](AiAgentsApi.md#getAgentStatistics) | **GET** /api/v1/cloud-ai/agents/{id}/statistic | Получение статистики использования токенов агента |
@@ -138,6 +139,78 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **createAgent** | [**CreateAgent**](CreateAgent.md)|  | |
+
+### Return type
+
+[**CreateAgent201Response**](CreateAgent201Response.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Объект JSON c ключом &#x60;agent&#x60; |  -  |
+| **400** | Некорректный запрос |  -  |
+| **401** | Не авторизован |  -  |
+| **403** | Запрещено |  -  |
+| **429** | Слишком много запросов |  -  |
+| **500** | Внутренняя ошибка сервера |  -  |
+
+<a id="createAgentV2"></a>
+# **createAgentV2**
+> CreateAgent201Response createAgentV2(createAgentV2)
+
+Создание AI агента
+
+Чтобы создать AI агента, отправьте POST-запрос на &#x60;/api/v2/cloud-ai/agents&#x60;, задав необходимые атрибуты.  Агент будет создан с использованием предоставленной информации. Тело ответа будет содержать объект JSON с информацией о созданном агенте.
+
+### Example
+```java
+// Import classes:
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.AiAgentsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.timeweb.cloud");
+    
+    // Configure HTTP bearer authorization: Bearer
+    HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
+    Bearer.setBearerToken("BEARER TOKEN");
+
+    AiAgentsApi apiInstance = new AiAgentsApi(defaultClient);
+    CreateAgentV2 createAgentV2 = new CreateAgentV2(); // CreateAgentV2 | 
+    try {
+      CreateAgent201Response result = apiInstance.createAgentV2(createAgentV2);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling AiAgentsApi#createAgentV2");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **createAgentV2** | [**CreateAgentV2**](CreateAgentV2.md)|  | |
 
 ### Return type
 

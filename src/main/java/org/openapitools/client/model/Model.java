@@ -22,6 +22,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.time.OffsetDateTime;
 import org.openapitools.client.model.ModelParamsInfo;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -53,7 +54,7 @@ import org.openapitools.client.JSON;
 /**
  * Модель AI
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-07-22T11:19:14.654686Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-07-23T14:49:05.840449Z[Etc/UTC]")
 public class Model {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -125,6 +126,14 @@ public class Model {
   public static final String SERIALIZED_NAME_IS_DEPRECATED = "is_deprecated";
   @SerializedName(SERIALIZED_NAME_IS_DEPRECATED)
   private Boolean isDeprecated;
+
+  public static final String SERIALIZED_NAME_IS_STOPPED = "is_stopped";
+  @SerializedName(SERIALIZED_NAME_IS_STOPPED)
+  private Boolean isStopped;
+
+  public static final String SERIALIZED_NAME_DEPRECATION_DATE = "deprecation_date";
+  @SerializedName(SERIALIZED_NAME_DEPRECATION_DATE)
+  private OffsetDateTime deprecationDate;
 
   public static final String SERIALIZED_NAME_IS_REASONING = "is_reasoning";
   @SerializedName(SERIALIZED_NAME_IS_REASONING)
@@ -267,6 +276,48 @@ public class Model {
   }
 
 
+  public Model isStopped(Boolean isStopped) {
+    
+    this.isStopped = isStopped;
+    return this;
+  }
+
+   /**
+   * Признак, что поддержка модели остановлена в системе
+   * @return isStopped
+  **/
+  @javax.annotation.Nonnull
+  public Boolean getIsStopped() {
+    return isStopped;
+  }
+
+
+  public void setIsStopped(Boolean isStopped) {
+    this.isStopped = isStopped;
+  }
+
+
+  public Model deprecationDate(OffsetDateTime deprecationDate) {
+    
+    this.deprecationDate = deprecationDate;
+    return this;
+  }
+
+   /**
+   * Дата депрекейта модели у провайдера
+   * @return deprecationDate
+  **/
+  @javax.annotation.Nullable
+  public OffsetDateTime getDeprecationDate() {
+    return deprecationDate;
+  }
+
+
+  public void setDeprecationDate(OffsetDateTime deprecationDate) {
+    this.deprecationDate = deprecationDate;
+  }
+
+
   public Model isReasoning(Boolean isReasoning) {
     
     this.isReasoning = isReasoning;
@@ -346,6 +397,8 @@ public class Model {
         Objects.equals(this.publicName, model.publicName) &&
         Objects.equals(this.type, model.type) &&
         Objects.equals(this.isDeprecated, model.isDeprecated) &&
+        Objects.equals(this.isStopped, model.isStopped) &&
+        Objects.equals(this.deprecationDate, model.deprecationDate) &&
         Objects.equals(this.isReasoning, model.isReasoning) &&
         Objects.equals(this.version, model.version) &&
         Objects.equals(this.paramsInfo, model.paramsInfo);
@@ -357,7 +410,7 @@ public class Model {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, providerId, name, publicName, type, isDeprecated, isReasoning, version, paramsInfo);
+    return Objects.hash(id, providerId, name, publicName, type, isDeprecated, isStopped, deprecationDate, isReasoning, version, paramsInfo);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -377,6 +430,8 @@ public class Model {
     sb.append("    publicName: ").append(toIndentedString(publicName)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    isDeprecated: ").append(toIndentedString(isDeprecated)).append("\n");
+    sb.append("    isStopped: ").append(toIndentedString(isStopped)).append("\n");
+    sb.append("    deprecationDate: ").append(toIndentedString(deprecationDate)).append("\n");
     sb.append("    isReasoning: ").append(toIndentedString(isReasoning)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    paramsInfo: ").append(toIndentedString(paramsInfo)).append("\n");
@@ -408,6 +463,8 @@ public class Model {
     openapiFields.add("public_name");
     openapiFields.add("type");
     openapiFields.add("is_deprecated");
+    openapiFields.add("is_stopped");
+    openapiFields.add("deprecation_date");
     openapiFields.add("is_reasoning");
     openapiFields.add("version");
     openapiFields.add("params_info");
@@ -420,6 +477,7 @@ public class Model {
     openapiRequiredFields.add("public_name");
     openapiRequiredFields.add("type");
     openapiRequiredFields.add("is_deprecated");
+    openapiRequiredFields.add("is_stopped");
     openapiRequiredFields.add("is_reasoning");
     openapiRequiredFields.add("version");
   }

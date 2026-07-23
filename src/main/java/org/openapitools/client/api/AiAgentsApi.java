@@ -30,6 +30,7 @@ import java.io.IOException;
 import org.openapitools.client.model.AddTokenPackage;
 import org.openapitools.client.model.CreateAgent;
 import org.openapitools.client.model.CreateAgent201Response;
+import org.openapitools.client.model.CreateAgentV2;
 import org.openapitools.client.model.GetAccountStatus403Response;
 import org.openapitools.client.model.GetAgentStatistics200Response;
 import org.openapitools.client.model.GetAgents200Response;
@@ -250,7 +251,9 @@ public class AiAgentsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call createAgentCall(CreateAgent createAgent, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -296,6 +299,7 @@ public class AiAgentsApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createAgentValidateBeforeCall(CreateAgent createAgent, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'createAgent' is set
@@ -323,7 +327,9 @@ public class AiAgentsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public CreateAgent201Response createAgent(CreateAgent createAgent) throws ApiException {
         ApiResponse<CreateAgent201Response> localVarResp = createAgentWithHttpInfo(createAgent);
         return localVarResp.getData();
@@ -345,7 +351,9 @@ public class AiAgentsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<CreateAgent201Response> createAgentWithHttpInfo(CreateAgent createAgent) throws ApiException {
         okhttp3.Call localVarCall = createAgentValidateBeforeCall(createAgent, null);
         Type localVarReturnType = new TypeToken<CreateAgent201Response>(){}.getType();
@@ -369,10 +377,155 @@ public class AiAgentsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call createAgentAsync(CreateAgent createAgent, final ApiCallback<CreateAgent201Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createAgentValidateBeforeCall(createAgent, _callback);
+        Type localVarReturnType = new TypeToken<CreateAgent201Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createAgentV2
+     * @param createAgentV2  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Объект JSON c ключом &#x60;agent&#x60; </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createAgentV2Call(CreateAgentV2 createAgentV2, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = createAgentV2;
+
+        // create path and map variables
+        String localVarPath = "/api/v2/cloud-ai/agents";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "Bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createAgentV2ValidateBeforeCall(CreateAgentV2 createAgentV2, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'createAgentV2' is set
+        if (createAgentV2 == null) {
+            throw new ApiException("Missing the required parameter 'createAgentV2' when calling createAgentV2(Async)");
+        }
+
+        return createAgentV2Call(createAgentV2, _callback);
+
+    }
+
+    /**
+     * Создание AI агента
+     * Чтобы создать AI агента, отправьте POST-запрос на &#x60;/api/v2/cloud-ai/agents&#x60;, задав необходимые атрибуты.  Агент будет создан с использованием предоставленной информации. Тело ответа будет содержать объект JSON с информацией о созданном агенте.
+     * @param createAgentV2  (required)
+     * @return CreateAgent201Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Объект JSON c ключом &#x60;agent&#x60; </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateAgent201Response createAgentV2(CreateAgentV2 createAgentV2) throws ApiException {
+        ApiResponse<CreateAgent201Response> localVarResp = createAgentV2WithHttpInfo(createAgentV2);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Создание AI агента
+     * Чтобы создать AI агента, отправьте POST-запрос на &#x60;/api/v2/cloud-ai/agents&#x60;, задав необходимые атрибуты.  Агент будет создан с использованием предоставленной информации. Тело ответа будет содержать объект JSON с информацией о созданном агенте.
+     * @param createAgentV2  (required)
+     * @return ApiResponse&lt;CreateAgent201Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Объект JSON c ключом &#x60;agent&#x60; </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateAgent201Response> createAgentV2WithHttpInfo(CreateAgentV2 createAgentV2) throws ApiException {
+        okhttp3.Call localVarCall = createAgentV2ValidateBeforeCall(createAgentV2, null);
+        Type localVarReturnType = new TypeToken<CreateAgent201Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Создание AI агента (asynchronously)
+     * Чтобы создать AI агента, отправьте POST-запрос на &#x60;/api/v2/cloud-ai/agents&#x60;, задав необходимые атрибуты.  Агент будет создан с использованием предоставленной информации. Тело ответа будет содержать объект JSON с информацией о созданном агенте.
+     * @param createAgentV2  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Объект JSON c ключом &#x60;agent&#x60; </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createAgentV2Async(CreateAgentV2 createAgentV2, final ApiCallback<CreateAgent201Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createAgentV2ValidateBeforeCall(createAgentV2, _callback);
         Type localVarReturnType = new TypeToken<CreateAgent201Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

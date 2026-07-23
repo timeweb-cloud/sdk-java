@@ -109,6 +109,7 @@ docs/ContainerRegistryRepositoriesInner.md
 docs/CreateAdmin.md
 docs/CreateAgent.md
 docs/CreateAgent201Response.md
+docs/CreateAgentV2.md
 docs/CreateApp.md
 docs/CreateApp201Response.md
 docs/CreateBalancer.md
@@ -751,6 +752,7 @@ src/main/java/org/openapitools/client/model/ContainerRegistryRepositoriesInner.j
 src/main/java/org/openapitools/client/model/CreateAdmin.java
 src/main/java/org/openapitools/client/model/CreateAgent.java
 src/main/java/org/openapitools/client/model/CreateAgent201Response.java
+src/main/java/org/openapitools/client/model/CreateAgentV2.java
 src/main/java/org/openapitools/client/model/CreateApp.java
 src/main/java/org/openapitools/client/model/CreateApp201Response.java
 src/main/java/org/openapitools/client/model/CreateBalancer.java
@@ -1348,6 +1350,7 @@ src/test/java/org/openapitools/client/model/ContainerRegistryRepositoriesInnerTe
 src/test/java/org/openapitools/client/model/CreateAdminTest.java
 src/test/java/org/openapitools/client/model/CreateAgent201ResponseTest.java
 src/test/java/org/openapitools/client/model/CreateAgentTest.java
+src/test/java/org/openapitools/client/model/CreateAgentV2Test.java
 src/test/java/org/openapitools/client/model/CreateApp201ResponseTest.java
 src/test/java/org/openapitools/client/model/CreateAppTest.java
 src/test/java/org/openapitools/client/model/CreateBalancer200ResponseTest.java

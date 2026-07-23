@@ -2,7 +2,7 @@
 
 Timeweb Cloud API
 - API version: 1.0.0
-  - Build date: 2026-07-22T11:19:14.654686Z[Etc/UTC]
+  - Build date: 2026-07-23T14:49:05.840449Z[Etc/UTC]
 
 # Введение
 API Timeweb Cloud позволяет вам управлять ресурсами в облаке программным способом с использованием обычных HTTP-запросов.
@@ -278,6 +278,7 @@ Class | Method | HTTP request | Description
 *AccountApi* | [**updateNotificationSettings**](docs/AccountApi.md#updateNotificationSettings) | **PATCH** /api/v1/account/notification-settings | Изменение настроек уведомлений аккаунта
 *AiAgentsApi* | [**addAdditionalTokenPackage**](docs/AiAgentsApi.md#addAdditionalTokenPackage) | **POST** /api/v1/cloud-ai/agents/{id}/add-additional-token-package | Добавление дополнительного пакета токенов
 *AiAgentsApi* | [**createAgent**](docs/AiAgentsApi.md#createAgent) | **POST** /api/v1/cloud-ai/agents | Создание AI агента
+*AiAgentsApi* | [**createAgentV2**](docs/AiAgentsApi.md#createAgentV2) | **POST** /api/v2/cloud-ai/agents | Создание AI агента
 *AiAgentsApi* | [**deleteAgent**](docs/AiAgentsApi.md#deleteAgent) | **DELETE** /api/v1/cloud-ai/agents/{id} | Удаление AI агента
 *AiAgentsApi* | [**getAgent**](docs/AiAgentsApi.md#getAgent) | **GET** /api/v1/cloud-ai/agents/{id} | Получение AI агента
 *AiAgentsApi* | [**getAgentStatistics**](docs/AiAgentsApi.md#getAgentStatistics) | **GET** /api/v1/cloud-ai/agents/{id}/statistic | Получение статистики использования токенов агента
@@ -708,6 +709,7 @@ Class | Method | HTTP request | Description
  - [CreateAdmin](docs/CreateAdmin.md)
  - [CreateAgent](docs/CreateAgent.md)
  - [CreateAgent201Response](docs/CreateAgent201Response.md)
+ - [CreateAgentV2](docs/CreateAgentV2.md)
  - [CreateApp](docs/CreateApp.md)
  - [CreateApp201Response](docs/CreateApp201Response.md)
  - [CreateBalancer](docs/CreateBalancer.md)

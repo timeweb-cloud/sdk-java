@@ -14,6 +14,8 @@
 |**publicName** | **String** | Публичное имя модели |  |
 |**type** | [**TypeEnum**](#TypeEnum) | Тип модели (llm - языковая модель, embedding - модель для эмбеддингов) |  |
 |**isDeprecated** | **Boolean** | Признак, что модель устарела |  |
+|**isStopped** | **Boolean** | Признак, что поддержка модели остановлена в системе |  |
+|**deprecationDate** | **OffsetDateTime** | Дата депрекейта модели у провайдера |  [optional] |
 |**isReasoning** | **Boolean** | Признак поддержки режима рассуждения |  |
 |**version** | **String** | Версия модели |  |
 |**paramsInfo** | [**ModelParamsInfo**](ModelParamsInfo.md) |  |  [optional] |
