@@ -21,7 +21,10 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+import org.openapitools.client.model.GetModelsV3200ResponseMeta;
+import org.openapitools.client.model.ModelV3;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -49,35 +52,68 @@ import java.util.Set;
 import org.openapitools.client.JSON;
 
 /**
- * GetModels200ResponseMeta
+ * GetModelsV3200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-07-23T14:49:05.840449Z[Etc/UTC]")
-public class GetModels200ResponseMeta {
-  public static final String SERIALIZED_NAME_TOTAL = "total";
-  @SerializedName(SERIALIZED_NAME_TOTAL)
-  private BigDecimal total;
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-07-28T16:28:31.821697Z[Etc/UTC]")
+public class GetModelsV3200Response {
+  public static final String SERIALIZED_NAME_MODELS = "models";
+  @SerializedName(SERIALIZED_NAME_MODELS)
+  private List<ModelV3> models = new ArrayList<>();
 
-  public GetModels200ResponseMeta() {
+  public static final String SERIALIZED_NAME_META = "meta";
+  @SerializedName(SERIALIZED_NAME_META)
+  private GetModelsV3200ResponseMeta meta;
+
+  public GetModelsV3200Response() {
   }
 
-  public GetModels200ResponseMeta total(BigDecimal total) {
+  public GetModelsV3200Response models(List<ModelV3> models) {
     
-    this.total = total;
+    this.models = models;
+    return this;
+  }
+
+  public GetModelsV3200Response addModelsItem(ModelV3 modelsItem) {
+    if (this.models == null) {
+      this.models = new ArrayList<>();
+    }
+    this.models.add(modelsItem);
     return this;
   }
 
    /**
-   * Общее количество моделей
-   * @return total
+   * Get models
+   * @return models
   **/
   @javax.annotation.Nonnull
-  public BigDecimal getTotal() {
-    return total;
+  public List<ModelV3> getModels() {
+    return models;
   }
 
 
-  public void setTotal(BigDecimal total) {
-    this.total = total;
+  public void setModels(List<ModelV3> models) {
+    this.models = models;
+  }
+
+
+  public GetModelsV3200Response meta(GetModelsV3200ResponseMeta meta) {
+    
+    this.meta = meta;
+    return this;
+  }
+
+   /**
+   * Get meta
+   * @return meta
+  **/
+  @javax.annotation.Nonnull
+  public GetModelsV3200ResponseMeta getMeta() {
+    return meta;
+  }
+
+
+  public void setMeta(GetModelsV3200ResponseMeta meta) {
+    this.meta = meta;
   }
 
 
@@ -90,20 +126,22 @@ public class GetModels200ResponseMeta {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    GetModels200ResponseMeta getModels200ResponseMeta = (GetModels200ResponseMeta) o;
-    return Objects.equals(this.total, getModels200ResponseMeta.total);
+    GetModelsV3200Response getModelsV3200Response = (GetModelsV3200Response) o;
+    return Objects.equals(this.models, getModelsV3200Response.models) &&
+        Objects.equals(this.meta, getModelsV3200Response.meta);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(total);
+    return Objects.hash(models, meta);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class GetModels200ResponseMeta {\n");
-    sb.append("    total: ").append(toIndentedString(total)).append("\n");
+    sb.append("class GetModelsV3200Response {\n");
+    sb.append("    models: ").append(toIndentedString(models)).append("\n");
+    sb.append("    meta: ").append(toIndentedString(meta)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -126,63 +164,77 @@ public class GetModels200ResponseMeta {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("total");
+    openapiFields.add("models");
+    openapiFields.add("meta");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("total");
+    openapiRequiredFields.add("models");
+    openapiRequiredFields.add("meta");
   }
 
  /**
   * Validates the JSON Element and throws an exception if issues found
   *
   * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to GetModels200ResponseMeta
+  * @throws IOException if the JSON Element is invalid with respect to GetModelsV3200Response
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!GetModels200ResponseMeta.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in GetModels200ResponseMeta is not found in the empty JSON string", GetModels200ResponseMeta.openapiRequiredFields.toString()));
+        if (!GetModelsV3200Response.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in GetModelsV3200Response is not found in the empty JSON string", GetModelsV3200Response.openapiRequiredFields.toString()));
         }
       }
 
       Set<Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Entry<String, JsonElement> entry : entries) {
-        if (!GetModels200ResponseMeta.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `GetModels200ResponseMeta` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!GetModelsV3200Response.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `GetModelsV3200Response` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : GetModels200ResponseMeta.openapiRequiredFields) {
+      for (String requiredField : GetModelsV3200Response.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      // ensure the json data is an array
+      if (!jsonObj.get("models").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `models` to be an array in the JSON string but got `%s`", jsonObj.get("models").toString()));
+      }
+
+      JsonArray jsonArraymodels = jsonObj.getAsJsonArray("models");
+      // validate the required field `models` (array)
+      for (int i = 0; i < jsonArraymodels.size(); i++) {
+        ModelV3.validateJsonElement(jsonArraymodels.get(i));
+      };
+      // validate the required field `meta`
+      GetModelsV3200ResponseMeta.validateJsonElement(jsonObj.get("meta"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!GetModels200ResponseMeta.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'GetModels200ResponseMeta' and its subtypes
+       if (!GetModelsV3200Response.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'GetModelsV3200Response' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<GetModels200ResponseMeta> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(GetModels200ResponseMeta.class));
+       final TypeAdapter<GetModelsV3200Response> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(GetModelsV3200Response.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<GetModels200ResponseMeta>() {
+       return (TypeAdapter<T>) new TypeAdapter<GetModelsV3200Response>() {
            @Override
-           public void write(JsonWriter out, GetModels200ResponseMeta value) throws IOException {
+           public void write(JsonWriter out, GetModelsV3200Response value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public GetModels200ResponseMeta read(JsonReader in) throws IOException {
+           public GetModelsV3200Response read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -193,18 +245,18 @@ public class GetModels200ResponseMeta {
   }
 
  /**
-  * Create an instance of GetModels200ResponseMeta given an JSON string
+  * Create an instance of GetModelsV3200Response given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of GetModels200ResponseMeta
-  * @throws IOException if the JSON string is invalid with respect to GetModels200ResponseMeta
+  * @return An instance of GetModelsV3200Response
+  * @throws IOException if the JSON string is invalid with respect to GetModelsV3200Response
   */
-  public static GetModels200ResponseMeta fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, GetModels200ResponseMeta.class);
+  public static GetModelsV3200Response fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, GetModelsV3200Response.class);
   }
 
  /**
-  * Convert an instance of GetModels200ResponseMeta to an JSON string
+  * Convert an instance of GetModelsV3200Response to an JSON string
   *
   * @return JSON string
   */

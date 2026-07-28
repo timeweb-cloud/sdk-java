@@ -2,7 +2,7 @@
 
 Timeweb Cloud API
 - API version: 1.0.0
-  - Build date: 2026-07-23T14:49:05.840449Z[Etc/UTC]
+  - Build date: 2026-07-28T16:28:31.821697Z[Etc/UTC]
 
 # Введение
 API Timeweb Cloud позволяет вам управлять ресурсами в облаке программным способом с использованием обычных HTTP-запросов.
@@ -286,6 +286,7 @@ Class | Method | HTTP request | Description
 *AiAgentsApi* | [**getAgentsTokenPackages**](docs/AiAgentsApi.md#getAgentsTokenPackages) | **GET** /api/v1/cloud-ai/token-packages/agents | Получение списка пакетов токенов для агентов
 *AiAgentsApi* | [**getKnowledgebasesTokenPackages**](docs/AiAgentsApi.md#getKnowledgebasesTokenPackages) | **GET** /api/v1/cloud-ai/token-packages/knowledge-bases | Получение списка пакетов токенов для баз знаний
 *AiAgentsApi* | [**getModels**](docs/AiAgentsApi.md#getModels) | **GET** /api/v1/cloud-ai/models | Получение списка моделей
+*AiAgentsApi* | [**getModelsV3**](docs/AiAgentsApi.md#getModelsV3) | **GET** /api/v3/cloud-ai/models | Получение списка моделей
 *AiAgentsApi* | [**updateAgent**](docs/AiAgentsApi.md#updateAgent) | **PATCH** /api/v1/cloud-ai/agents/{id} | Обновление AI агента
 *AppsApi* | [**addProvider**](docs/AppsApi.md#addProvider) | **POST** /api/v1/vcs-provider | Привязка vcs провайдера
 *AppsApi* | [**createApp**](docs/AppsApi.md#createApp) | **POST** /api/v1/apps | Создание приложения
@@ -908,7 +909,8 @@ Class | Method | HTTP request | Description
  - [GetLocations200Response](docs/GetLocations200Response.md)
  - [GetMailboxes200Response](docs/GetMailboxes200Response.md)
  - [GetModels200Response](docs/GetModels200Response.md)
- - [GetModels200ResponseMeta](docs/GetModels200ResponseMeta.md)
+ - [GetModelsV3200Response](docs/GetModelsV3200Response.md)
+ - [GetModelsV3200ResponseMeta](docs/GetModelsV3200ResponseMeta.md)
  - [GetNetworkDrives200Response](docs/GetNetworkDrives200Response.md)
  - [GetNetworkDrivesAvailableResources200Response](docs/GetNetworkDrivesAvailableResources200Response.md)
  - [GetNetworkDrivesPresets200Response](docs/GetNetworkDrivesPresets200Response.md)
@@ -989,6 +991,7 @@ Class | Method | HTTP request | Description
  - [ModelParamsInfoMaxTokens](docs/ModelParamsInfoMaxTokens.md)
  - [ModelParamsInfoReasoningEffort](docs/ModelParamsInfoReasoningEffort.md)
  - [ModelParamsInfoTemperature](docs/ModelParamsInfoTemperature.md)
+ - [ModelV3](docs/ModelV3.md)
  - [Mongodb](docs/Mongodb.md)
  - [MountNetworkDrive](docs/MountNetworkDrive.md)
  - [Mysql](docs/Mysql.md)

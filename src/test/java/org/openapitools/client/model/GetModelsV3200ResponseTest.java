@@ -19,30 +19,41 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+import org.openapitools.client.model.GetModelsV3200ResponseMeta;
+import org.openapitools.client.model.ModelV3;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
- * Model tests for GetModels200ResponseMeta
+ * Model tests for GetModelsV3200Response
  */
-public class GetModels200ResponseMetaTest {
-    private final GetModels200ResponseMeta model = new GetModels200ResponseMeta();
+public class GetModelsV3200ResponseTest {
+    private final GetModelsV3200Response model = new GetModelsV3200Response();
 
     /**
-     * Model tests for GetModels200ResponseMeta
+     * Model tests for GetModelsV3200Response
      */
     @Test
-    public void testGetModels200ResponseMeta() {
-        // TODO: test GetModels200ResponseMeta
+    public void testGetModelsV3200Response() {
+        // TODO: test GetModelsV3200Response
     }
 
     /**
-     * Test the property 'total'
+     * Test the property 'models'
      */
     @Test
-    public void totalTest() {
-        // TODO: test total
+    public void modelsTest() {
+        // TODO: test models
+    }
+
+    /**
+     * Test the property 'meta'
+     */
+    @Test
+    public void metaTest() {
+        // TODO: test meta
     }
 
 }

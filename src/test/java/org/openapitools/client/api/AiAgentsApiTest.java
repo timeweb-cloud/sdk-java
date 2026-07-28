@@ -28,6 +28,7 @@ import org.openapitools.client.model.GetFinances429Response;
 import org.openapitools.client.model.GetFinances500Response;
 import org.openapitools.client.model.GetImage404Response;
 import org.openapitools.client.model.GetModels200Response;
+import org.openapitools.client.model.GetModelsV3200Response;
 import java.time.OffsetDateTime;
 import org.openapitools.client.model.UpdateAgent;
 import org.junit.jupiter.api.Disabled;
@@ -150,7 +151,7 @@ public class AiAgentsApiTest {
     /**
      * Получение списка пакетов токенов для агентов
      *
-     * Чтобы получить список доступных пакетов токенов для AI агентов, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/token-packages/agents&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;token_packages&#x60;.
+     * Метод устарел.  Чтобы получить список доступных пакетов токенов для AI агентов, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/token-packages/agents&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;token_packages&#x60;.
      *
      * @throws ApiException if the Api call fails
      */
@@ -176,13 +177,26 @@ public class AiAgentsApiTest {
     /**
      * Получение списка моделей
      *
-     * Чтобы получить список доступных AI моделей, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/models&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;models&#x60;.
+     * Метод устарел — используйте &#x60;GET /api/v3/cloud-ai/models&#x60;.  Чтобы получить список доступных AI моделей, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/models&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;models&#x60;.
      *
      * @throws ApiException if the Api call fails
      */
     @Test
     public void getModelsTest() throws ApiException {
         GetModels200Response response = api.getModels();
+        // TODO: test validations
+    }
+
+    /**
+     * Получение списка моделей
+     *
+     * Чтобы получить список доступных AI моделей с их характеристиками, отправьте GET-запрос на &#x60;/api/v3/cloud-ai/models&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;models&#x60;.  Характеристики модели (цены, лимиты, возможности) возвращаются в словаре &#x60;parameter_values&#x60;. Актуальные цены за токены — в ключах &#x60;parameter_values.cost_in&#x60; и &#x60;parameter_values.cost_out&#x60; (в рублях за 1 токен).
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void getModelsV3Test() throws ApiException {
+        GetModelsV3200Response response = api.getModelsV3();
         // TODO: test validations
     }
 

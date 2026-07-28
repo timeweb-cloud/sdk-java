@@ -14,6 +14,7 @@ All URIs are relative to *https://api.timeweb.cloud*
 | [**getAgentsTokenPackages**](AiAgentsApi.md#getAgentsTokenPackages) | **GET** /api/v1/cloud-ai/token-packages/agents | Получение списка пакетов токенов для агентов |
 | [**getKnowledgebasesTokenPackages**](AiAgentsApi.md#getKnowledgebasesTokenPackages) | **GET** /api/v1/cloud-ai/token-packages/knowledge-bases | Получение списка пакетов токенов для баз знаний |
 | [**getModels**](AiAgentsApi.md#getModels) | **GET** /api/v1/cloud-ai/models | Получение списка моделей |
+| [**getModelsV3**](AiAgentsApi.md#getModelsV3) | **GET** /api/v3/cloud-ai/models | Получение списка моделей |
 | [**updateAgent**](AiAgentsApi.md#updateAgent) | **PATCH** /api/v1/cloud-ai/agents/{id} | Обновление AI агента |
 
 
@@ -534,7 +535,7 @@ This endpoint does not need any parameter.
 
 Получение списка пакетов токенов для агентов
 
-Чтобы получить список доступных пакетов токенов для AI агентов, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/token-packages/agents&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;token_packages&#x60;.
+Метод устарел.  Чтобы получить список доступных пакетов токенов для AI агентов, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/token-packages/agents&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;token_packages&#x60;.
 
 ### Example
 ```java
@@ -672,7 +673,7 @@ This endpoint does not need any parameter.
 
 Получение списка моделей
 
-Чтобы получить список доступных AI моделей, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/models&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;models&#x60;.
+Метод устарел — используйте &#x60;GET /api/v3/cloud-ai/models&#x60;.  Чтобы получить список доступных AI моделей, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/models&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;models&#x60;.
 
 ### Example
 ```java
@@ -714,6 +715,75 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**GetModels200Response**](GetModels200Response.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Объект JSON c ключами &#x60;models&#x60; и &#x60;meta&#x60; |  -  |
+| **400** | Некорректный запрос |  -  |
+| **401** | Не авторизован |  -  |
+| **403** | Запрещено |  -  |
+| **404** | Не найдено |  -  |
+| **429** | Слишком много запросов |  -  |
+| **500** | Внутренняя ошибка сервера |  -  |
+
+<a id="getModelsV3"></a>
+# **getModelsV3**
+> GetModelsV3200Response getModelsV3()
+
+Получение списка моделей
+
+Чтобы получить список доступных AI моделей с их характеристиками, отправьте GET-запрос на &#x60;/api/v3/cloud-ai/models&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;models&#x60;.  Характеристики модели (цены, лимиты, возможности) возвращаются в словаре &#x60;parameter_values&#x60;. Актуальные цены за токены — в ключах &#x60;parameter_values.cost_in&#x60; и &#x60;parameter_values.cost_out&#x60; (в рублях за 1 токен).
+
+### Example
+```java
+// Import classes:
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.AiAgentsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.timeweb.cloud");
+    
+    // Configure HTTP bearer authorization: Bearer
+    HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
+    Bearer.setBearerToken("BEARER TOKEN");
+
+    AiAgentsApi apiInstance = new AiAgentsApi(defaultClient);
+    try {
+      GetModelsV3200Response result = apiInstance.getModelsV3();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling AiAgentsApi#getModelsV3");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**GetModelsV3200Response**](GetModelsV3200Response.md)
 
 ### Authorization
 

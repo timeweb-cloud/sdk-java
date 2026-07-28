@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * CreateNetworkDrive
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-07-23T14:49:05.840449Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-07-28T16:28:31.821697Z[Etc/UTC]")
 public class CreateNetworkDrive {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)

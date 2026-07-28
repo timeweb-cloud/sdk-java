@@ -41,6 +41,7 @@ import org.openapitools.client.model.GetFinances429Response;
 import org.openapitools.client.model.GetFinances500Response;
 import org.openapitools.client.model.GetImage404Response;
 import org.openapitools.client.model.GetModels200Response;
+import org.openapitools.client.model.GetModelsV3200Response;
 import java.time.OffsetDateTime;
 import org.openapitools.client.model.UpdateAgent;
 
@@ -1144,7 +1145,9 @@ public class AiAgentsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call getAgentsTokenPackagesCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -1189,6 +1192,7 @@ public class AiAgentsApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getAgentsTokenPackagesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
         return getAgentsTokenPackagesCall(_callback);
@@ -1197,7 +1201,7 @@ public class AiAgentsApi {
 
     /**
      * Получение списка пакетов токенов для агентов
-     * Чтобы получить список доступных пакетов токенов для AI агентов, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/token-packages/agents&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;token_packages&#x60;.
+     * Метод устарел.  Чтобы получить список доступных пакетов токенов для AI агентов, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/token-packages/agents&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;token_packages&#x60;.
      * @return GetAgentsTokenPackages200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1211,7 +1215,9 @@ public class AiAgentsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public GetAgentsTokenPackages200Response getAgentsTokenPackages() throws ApiException {
         ApiResponse<GetAgentsTokenPackages200Response> localVarResp = getAgentsTokenPackagesWithHttpInfo();
         return localVarResp.getData();
@@ -1219,7 +1225,7 @@ public class AiAgentsApi {
 
     /**
      * Получение списка пакетов токенов для агентов
-     * Чтобы получить список доступных пакетов токенов для AI агентов, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/token-packages/agents&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;token_packages&#x60;.
+     * Метод устарел.  Чтобы получить список доступных пакетов токенов для AI агентов, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/token-packages/agents&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;token_packages&#x60;.
      * @return ApiResponse&lt;GetAgentsTokenPackages200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1233,7 +1239,9 @@ public class AiAgentsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<GetAgentsTokenPackages200Response> getAgentsTokenPackagesWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getAgentsTokenPackagesValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<GetAgentsTokenPackages200Response>(){}.getType();
@@ -1242,7 +1250,7 @@ public class AiAgentsApi {
 
     /**
      * Получение списка пакетов токенов для агентов (asynchronously)
-     * Чтобы получить список доступных пакетов токенов для AI агентов, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/token-packages/agents&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;token_packages&#x60;.
+     * Метод устарел.  Чтобы получить список доступных пакетов токенов для AI агентов, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/token-packages/agents&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;token_packages&#x60;.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1257,7 +1265,9 @@ public class AiAgentsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call getAgentsTokenPackagesAsync(final ApiCallback<GetAgentsTokenPackages200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAgentsTokenPackagesValidateBeforeCall(_callback);
@@ -1418,7 +1428,9 @@ public class AiAgentsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call getModelsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -1463,6 +1475,7 @@ public class AiAgentsApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getModelsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
         return getModelsCall(_callback);
@@ -1471,7 +1484,7 @@ public class AiAgentsApi {
 
     /**
      * Получение списка моделей
-     * Чтобы получить список доступных AI моделей, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/models&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;models&#x60;.
+     * Метод устарел — используйте &#x60;GET /api/v3/cloud-ai/models&#x60;.  Чтобы получить список доступных AI моделей, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/models&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;models&#x60;.
      * @return GetModels200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1485,7 +1498,9 @@ public class AiAgentsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public GetModels200Response getModels() throws ApiException {
         ApiResponse<GetModels200Response> localVarResp = getModelsWithHttpInfo();
         return localVarResp.getData();
@@ -1493,7 +1508,7 @@ public class AiAgentsApi {
 
     /**
      * Получение списка моделей
-     * Чтобы получить список доступных AI моделей, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/models&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;models&#x60;.
+     * Метод устарел — используйте &#x60;GET /api/v3/cloud-ai/models&#x60;.  Чтобы получить список доступных AI моделей, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/models&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;models&#x60;.
      * @return ApiResponse&lt;GetModels200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1507,7 +1522,9 @@ public class AiAgentsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<GetModels200Response> getModelsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getModelsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<GetModels200Response>(){}.getType();
@@ -1516,7 +1533,146 @@ public class AiAgentsApi {
 
     /**
      * Получение списка моделей (asynchronously)
-     * Чтобы получить список доступных AI моделей, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/models&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;models&#x60;.
+     * Метод устарел — используйте &#x60;GET /api/v3/cloud-ai/models&#x60;.  Чтобы получить список доступных AI моделей, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/models&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;models&#x60;.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключами &#x60;models&#x60; и &#x60;meta&#x60; </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     * @deprecated
+     */
+    @Deprecated
+    public okhttp3.Call getModelsAsync(final ApiCallback<GetModels200Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getModelsValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<GetModels200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getModelsV3
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключами &#x60;models&#x60; и &#x60;meta&#x60; </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getModelsV3Call(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/v3/cloud-ai/models";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "Bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getModelsV3ValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getModelsV3Call(_callback);
+
+    }
+
+    /**
+     * Получение списка моделей
+     * Чтобы получить список доступных AI моделей с их характеристиками, отправьте GET-запрос на &#x60;/api/v3/cloud-ai/models&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;models&#x60;.  Характеристики модели (цены, лимиты, возможности) возвращаются в словаре &#x60;parameter_values&#x60;. Актуальные цены за токены — в ключах &#x60;parameter_values.cost_in&#x60; и &#x60;parameter_values.cost_out&#x60; (в рублях за 1 токен).
+     * @return GetModelsV3200Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключами &#x60;models&#x60; и &#x60;meta&#x60; </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetModelsV3200Response getModelsV3() throws ApiException {
+        ApiResponse<GetModelsV3200Response> localVarResp = getModelsV3WithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Получение списка моделей
+     * Чтобы получить список доступных AI моделей с их характеристиками, отправьте GET-запрос на &#x60;/api/v3/cloud-ai/models&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;models&#x60;.  Характеристики модели (цены, лимиты, возможности) возвращаются в словаре &#x60;parameter_values&#x60;. Актуальные цены за токены — в ключах &#x60;parameter_values.cost_in&#x60; и &#x60;parameter_values.cost_out&#x60; (в рублях за 1 токен).
+     * @return ApiResponse&lt;GetModelsV3200Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключами &#x60;models&#x60; и &#x60;meta&#x60; </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetModelsV3200Response> getModelsV3WithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getModelsV3ValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<GetModelsV3200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Получение списка моделей (asynchronously)
+     * Чтобы получить список доступных AI моделей с их характеристиками, отправьте GET-запрос на &#x60;/api/v3/cloud-ai/models&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;models&#x60;.  Характеристики модели (цены, лимиты, возможности) возвращаются в словаре &#x60;parameter_values&#x60;. Актуальные цены за токены — в ключах &#x60;parameter_values.cost_in&#x60; и &#x60;parameter_values.cost_out&#x60; (в рублях за 1 токен).
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1532,10 +1688,10 @@ public class AiAgentsApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getModelsAsync(final ApiCallback<GetModels200Response> _callback) throws ApiException {
+    public okhttp3.Call getModelsV3Async(final ApiCallback<GetModelsV3200Response> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getModelsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<GetModels200Response>(){}.getType();
+        okhttp3.Call localVarCall = getModelsV3ValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<GetModelsV3200Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

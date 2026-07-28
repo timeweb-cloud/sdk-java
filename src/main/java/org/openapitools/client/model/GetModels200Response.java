@@ -23,7 +23,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import org.openapitools.client.model.GetModels200ResponseMeta;
+import org.openapitools.client.model.GetModelsV3200ResponseMeta;
 import org.openapitools.client.model.Model;
 
 import com.google.gson.Gson;
@@ -54,7 +54,7 @@ import org.openapitools.client.JSON;
 /**
  * GetModels200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-07-23T14:49:05.840449Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-07-28T16:28:31.821697Z[Etc/UTC]")
 public class GetModels200Response {
   public static final String SERIALIZED_NAME_MODELS = "models";
   @SerializedName(SERIALIZED_NAME_MODELS)
@@ -62,7 +62,7 @@ public class GetModels200Response {
 
   public static final String SERIALIZED_NAME_META = "meta";
   @SerializedName(SERIALIZED_NAME_META)
-  private GetModels200ResponseMeta meta;
+  private GetModelsV3200ResponseMeta meta;
 
   public GetModels200Response() {
   }
@@ -96,7 +96,7 @@ public class GetModels200Response {
   }
 
 
-  public GetModels200Response meta(GetModels200ResponseMeta meta) {
+  public GetModels200Response meta(GetModelsV3200ResponseMeta meta) {
     
     this.meta = meta;
     return this;
@@ -107,12 +107,12 @@ public class GetModels200Response {
    * @return meta
   **/
   @javax.annotation.Nonnull
-  public GetModels200ResponseMeta getMeta() {
+  public GetModelsV3200ResponseMeta getMeta() {
     return meta;
   }
 
 
-  public void setMeta(GetModels200ResponseMeta meta) {
+  public void setMeta(GetModelsV3200ResponseMeta meta) {
     this.meta = meta;
   }
 
@@ -212,7 +212,7 @@ public class GetModels200Response {
         Model.validateJsonElement(jsonArraymodels.get(i));
       };
       // validate the required field `meta`
-      GetModels200ResponseMeta.validateJsonElement(jsonObj.get("meta"));
+      GetModelsV3200ResponseMeta.validateJsonElement(jsonObj.get("meta"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

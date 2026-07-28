@@ -313,7 +313,8 @@ docs/GetKnowledgebasesV2200ResponseMeta.md
 docs/GetLocations200Response.md
 docs/GetMailboxes200Response.md
 docs/GetModels200Response.md
-docs/GetModels200ResponseMeta.md
+docs/GetModelsV3200Response.md
+docs/GetModelsV3200ResponseMeta.md
 docs/GetNetworkDrives200Response.md
 docs/GetNetworkDrivesAvailableResources200Response.md
 docs/GetNetworkDrivesPresets200Response.md
@@ -399,6 +400,7 @@ docs/ModelParamsInfo.md
 docs/ModelParamsInfoMaxTokens.md
 docs/ModelParamsInfoReasoningEffort.md
 docs/ModelParamsInfoTemperature.md
+docs/ModelV3.md
 docs/Mongodb.md
 docs/MountNetworkDrive.md
 docs/Mysql.md
@@ -951,7 +953,8 @@ src/main/java/org/openapitools/client/model/GetKnowledgebasesV2200ResponseMeta.j
 src/main/java/org/openapitools/client/model/GetLocations200Response.java
 src/main/java/org/openapitools/client/model/GetMailboxes200Response.java
 src/main/java/org/openapitools/client/model/GetModels200Response.java
-src/main/java/org/openapitools/client/model/GetModels200ResponseMeta.java
+src/main/java/org/openapitools/client/model/GetModelsV3200Response.java
+src/main/java/org/openapitools/client/model/GetModelsV3200ResponseMeta.java
 src/main/java/org/openapitools/client/model/GetNetworkDrives200Response.java
 src/main/java/org/openapitools/client/model/GetNetworkDrivesAvailableResources200Response.java
 src/main/java/org/openapitools/client/model/GetNetworkDrivesPresets200Response.java
@@ -1032,6 +1035,7 @@ src/main/java/org/openapitools/client/model/ModelParamsInfo.java
 src/main/java/org/openapitools/client/model/ModelParamsInfoMaxTokens.java
 src/main/java/org/openapitools/client/model/ModelParamsInfoReasoningEffort.java
 src/main/java/org/openapitools/client/model/ModelParamsInfoTemperature.java
+src/main/java/org/openapitools/client/model/ModelV3.java
 src/main/java/org/openapitools/client/model/Mongodb.java
 src/main/java/org/openapitools/client/model/MountNetworkDrive.java
 src/main/java/org/openapitools/client/model/Mysql.java
@@ -1548,8 +1552,9 @@ src/test/java/org/openapitools/client/model/GetKnowledgebasesV2200ResponseMetaTe
 src/test/java/org/openapitools/client/model/GetKnowledgebasesV2200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetLocations200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetMailboxes200ResponseTest.java
-src/test/java/org/openapitools/client/model/GetModels200ResponseMetaTest.java
 src/test/java/org/openapitools/client/model/GetModels200ResponseTest.java
+src/test/java/org/openapitools/client/model/GetModelsV3200ResponseMetaTest.java
+src/test/java/org/openapitools/client/model/GetModelsV3200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetNetworkDrives200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetNetworkDrivesAvailableResources200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetNetworkDrivesPresets200ResponseTest.java
@@ -1630,6 +1635,7 @@ src/test/java/org/openapitools/client/model/ModelParamsInfoReasoningEffortTest.j
 src/test/java/org/openapitools/client/model/ModelParamsInfoTemperatureTest.java
 src/test/java/org/openapitools/client/model/ModelParamsInfoTest.java
 src/test/java/org/openapitools/client/model/ModelTest.java
+src/test/java/org/openapitools/client/model/ModelV3Test.java
 src/test/java/org/openapitools/client/model/MongodbTest.java
 src/test/java/org/openapitools/client/model/MountNetworkDriveTest.java
 src/test/java/org/openapitools/client/model/MysqlTest.java

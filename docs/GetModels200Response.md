@@ -8,7 +8,7 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**models** | [**List&lt;Model&gt;**](Model.md) |  |  |
-|**meta** | [**GetModels200ResponseMeta**](GetModels200ResponseMeta.md) |  |  |
+|**meta** | [**GetModelsV3200ResponseMeta**](GetModelsV3200ResponseMeta.md) |  |  |
 
 
 

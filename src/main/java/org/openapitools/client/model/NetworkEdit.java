@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * NetworkEdit
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-07-23T14:49:05.840449Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-07-28T16:28:31.821697Z[Etc/UTC]")
 public class NetworkEdit {
   public static final String SERIALIZED_NAME_IS_DHCP_ENABLED = "is_dhcp_enabled";
   @SerializedName(SERIALIZED_NAME_IS_DHCP_ENABLED)

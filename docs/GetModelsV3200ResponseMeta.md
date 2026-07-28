@@ -1,6 +1,6 @@
 
 
-# GetModels200ResponseMeta
+# GetModelsV3200ResponseMeta
 
 
 ## Properties
