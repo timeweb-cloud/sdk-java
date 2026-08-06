@@ -54,8 +54,12 @@ import org.openapitools.client.JSON;
 /**
  * UpdateAdmin
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-06T14:58:49.219742Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-06T15:06:51.562821Z[Etc/UTC]")
 public class UpdateAdmin {
+  public static final String SERIALIZED_NAME_LOGIN = "login";
+  @SerializedName(SERIALIZED_NAME_LOGIN)
+  private String login;
+
   public static final String SERIALIZED_NAME_PASSWORD = "password";
   @SerializedName(SERIALIZED_NAME_PASSWORD)
   private String password;
@@ -72,8 +76,33 @@ public class UpdateAdmin {
   @SerializedName(SERIALIZED_NAME_INSTANCE_ID)
   private BigDecimal instanceId;
 
+  public static final String SERIALIZED_NAME_FOR_ALL = "for_all";
+  @SerializedName(SERIALIZED_NAME_FOR_ALL)
+  private Boolean forAll;
+
   public UpdateAdmin() {
   }
+
+  public UpdateAdmin login(String login) {
+    
+    this.login = login;
+    return this;
+  }
+
+   /**
+   * Новое имя пользователя базы данных. Переименование доступно только в кластерах PostgreSQL
+   * @return login
+  **/
+  @javax.annotation.Nullable
+  public String getLogin() {
+    return login;
+  }
+
+
+  public void setLogin(String login) {
+    this.login = login;
+  }
+
 
   public UpdateAdmin password(String password) {
     
@@ -167,6 +196,27 @@ public class UpdateAdmin {
   }
 
 
+  public UpdateAdmin forAll(Boolean forAll) {
+    
+    this.forAll = forAll;
+    return this;
+  }
+
+   /**
+   * Выдать привилегии на все инстансы базы данных
+   * @return forAll
+  **/
+  @javax.annotation.Nullable
+  public Boolean getForAll() {
+    return forAll;
+  }
+
+
+  public void setForAll(Boolean forAll) {
+    this.forAll = forAll;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -177,25 +227,29 @@ public class UpdateAdmin {
       return false;
     }
     UpdateAdmin updateAdmin = (UpdateAdmin) o;
-    return Objects.equals(this.password, updateAdmin.password) &&
+    return Objects.equals(this.login, updateAdmin.login) &&
+        Objects.equals(this.password, updateAdmin.password) &&
         Objects.equals(this.privileges, updateAdmin.privileges) &&
         Objects.equals(this.description, updateAdmin.description) &&
-        Objects.equals(this.instanceId, updateAdmin.instanceId);
+        Objects.equals(this.instanceId, updateAdmin.instanceId) &&
+        Objects.equals(this.forAll, updateAdmin.forAll);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(password, privileges, description, instanceId);
+    return Objects.hash(login, password, privileges, description, instanceId, forAll);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class UpdateAdmin {\n");
+    sb.append("    login: ").append(toIndentedString(login)).append("\n");
     sb.append("    password: ").append(toIndentedString(password)).append("\n");
     sb.append("    privileges: ").append(toIndentedString(privileges)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    instanceId: ").append(toIndentedString(instanceId)).append("\n");
+    sb.append("    forAll: ").append(toIndentedString(forAll)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -218,10 +272,12 @@ public class UpdateAdmin {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("login");
     openapiFields.add("password");
     openapiFields.add("privileges");
     openapiFields.add("description");
     openapiFields.add("instance_id");
+    openapiFields.add("for_all");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -248,6 +304,9 @@ public class UpdateAdmin {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("login") != null && !jsonObj.get("login").isJsonNull()) && !jsonObj.get("login").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `login` to be a primitive type in the JSON string but got `%s`", jsonObj.get("login").toString()));
+      }
       if ((jsonObj.get("password") != null && !jsonObj.get("password").isJsonNull()) && !jsonObj.get("password").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `password` to be a primitive type in the JSON string but got `%s`", jsonObj.get("password").toString()));
       }

@@ -7,8 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**type** | [**TypeEnum**](#TypeEnum) | Тип IP-адреса сети |  |
-|**ip** | **String** | IP-адрес сети |  |
+|**type** | [**TypeEnum**](#TypeEnum) | Тип IP-адреса сети. |  |
+|**ip** | **String** | IP-адрес сети. |  |
 
 
 
@@ -16,8 +16,8 @@
 
 | Name | Value |
 |---- | -----|
-| IPV4 | &quot;ipv4&quot; |
-| IPV6 | &quot;ipv6&quot; |
+| _4 | &quot;ipv_4&quot; |
+| _6 | &quot;ipv_6&quot; |
 
 
 

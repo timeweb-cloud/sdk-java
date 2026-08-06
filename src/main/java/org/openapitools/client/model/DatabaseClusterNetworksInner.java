@@ -51,18 +51,16 @@ import java.util.Set;
 import org.openapitools.client.JSON;
 
 /**
- * DatabaseClusterNetworksInner
+ * Публичная сеть кластера базы данных.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-06T14:58:49.219742Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-06T15:06:51.562821Z[Etc/UTC]")
 public class DatabaseClusterNetworksInner {
   /**
    * Тип сети.
    */
   @JsonAdapter(TypeEnum.Adapter.class)
   public enum TypeEnum {
-    PUBLIC("public"),
-    
-    LOCAL("local");
+    PUBLIC("public");
 
     private String value;
 

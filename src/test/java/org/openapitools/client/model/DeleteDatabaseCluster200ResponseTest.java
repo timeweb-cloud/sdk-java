@@ -19,6 +19,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import org.openapitools.client.model.DeleteDatabaseCluster200ResponseDatabaseDelete;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -37,11 +38,11 @@ public class DeleteDatabaseCluster200ResponseTest {
     }
 
     /**
-     * Test the property 'hash'
+     * Test the property 'databaseDelete'
      */
     @Test
-    public void hashTest() {
-        // TODO: test hash
+    public void databaseDeleteTest() {
+        // TODO: test databaseDelete
     }
 
 }

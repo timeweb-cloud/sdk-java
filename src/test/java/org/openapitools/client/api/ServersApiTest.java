@@ -17,7 +17,6 @@ import org.openapitools.client.ApiException;
 import org.openapitools.client.model.AddServerIP201Response;
 import org.openapitools.client.model.AddServerIPRequest;
 import org.openapitools.client.model.AutoBackup;
-import org.openapitools.client.model.CreateDatabaseBackup409Response;
 import org.openapitools.client.model.CreateServer;
 import org.openapitools.client.model.CreateServer201Response;
 import org.openapitools.client.model.CreateServerDisk201Response;
@@ -28,6 +27,7 @@ import org.openapitools.client.model.DeleteServer200Response;
 import org.openapitools.client.model.DeleteServerIPRequest;
 import org.openapitools.client.model.GetAccountStatus403Response;
 import org.openapitools.client.model.GetConfigurators200Response;
+import org.openapitools.client.model.GetDatabaseAutoBackupsSettings200Response;
 import org.openapitools.client.model.GetFinances400Response;
 import org.openapitools.client.model.GetFinances401Response;
 import org.openapitools.client.model.GetFinances429Response;
@@ -36,7 +36,6 @@ import org.openapitools.client.model.GetImage404Response;
 import org.openapitools.client.model.GetOsList200Response;
 import org.openapitools.client.model.GetRestorePoint200Response;
 import org.openapitools.client.model.GetRestorePoints200Response;
-import org.openapitools.client.model.GetServerDiskAutoBackupSettings200Response;
 import org.openapitools.client.model.GetServerDiskBackup200Response;
 import org.openapitools.client.model.GetServerDiskBackups200Response;
 import org.openapitools.client.model.GetServerDisks200Response;
@@ -49,6 +48,7 @@ import org.openapitools.client.model.GetServersPresets200Response;
 import org.openapitools.client.model.GetSoftware200Response;
 import org.openapitools.client.model.PerformActionOnBackupRequest;
 import org.openapitools.client.model.PerformActionOnServerRequest;
+import org.openapitools.client.model.UpdateDatabaseInstance409Response;
 import org.openapitools.client.model.UpdateServer;
 import org.openapitools.client.model.UpdateServerDiskBackupRequest;
 import org.openapitools.client.model.UpdateServerDiskRequest;
@@ -328,7 +328,7 @@ public class ServersApiTest {
     public void getServerDiskAutoBackupSettingsTest() throws ApiException {
         Integer serverId = null;
         Integer diskId = null;
-        GetServerDiskAutoBackupSettings200Response response = api.getServerDiskAutoBackupSettings(serverId, diskId);
+        GetDatabaseAutoBackupsSettings200Response response = api.getServerDiskAutoBackupSettings(serverId, diskId);
         // TODO: test validations
     }
 
@@ -669,7 +669,7 @@ public class ServersApiTest {
         Integer serverId = null;
         Integer diskId = null;
         AutoBackup autoBackup = null;
-        GetServerDiskAutoBackupSettings200Response response = api.updateServerDiskAutoBackupSettings(serverId, diskId, autoBackup);
+        GetDatabaseAutoBackupsSettings200Response response = api.updateServerDiskAutoBackupSettings(serverId, diskId, autoBackup);
         // TODO: test validations
     }
 

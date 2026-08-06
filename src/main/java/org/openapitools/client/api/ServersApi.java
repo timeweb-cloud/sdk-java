@@ -30,7 +30,6 @@ import java.io.IOException;
 import org.openapitools.client.model.AddServerIP201Response;
 import org.openapitools.client.model.AddServerIPRequest;
 import org.openapitools.client.model.AutoBackup;
-import org.openapitools.client.model.CreateDatabaseBackup409Response;
 import org.openapitools.client.model.CreateServer;
 import org.openapitools.client.model.CreateServer201Response;
 import org.openapitools.client.model.CreateServerDisk201Response;
@@ -41,6 +40,7 @@ import org.openapitools.client.model.DeleteServer200Response;
 import org.openapitools.client.model.DeleteServerIPRequest;
 import org.openapitools.client.model.GetAccountStatus403Response;
 import org.openapitools.client.model.GetConfigurators200Response;
+import org.openapitools.client.model.GetDatabaseAutoBackupsSettings200Response;
 import org.openapitools.client.model.GetFinances400Response;
 import org.openapitools.client.model.GetFinances401Response;
 import org.openapitools.client.model.GetFinances429Response;
@@ -49,7 +49,6 @@ import org.openapitools.client.model.GetImage404Response;
 import org.openapitools.client.model.GetOsList200Response;
 import org.openapitools.client.model.GetRestorePoint200Response;
 import org.openapitools.client.model.GetRestorePoints200Response;
-import org.openapitools.client.model.GetServerDiskAutoBackupSettings200Response;
 import org.openapitools.client.model.GetServerDiskBackup200Response;
 import org.openapitools.client.model.GetServerDiskBackups200Response;
 import org.openapitools.client.model.GetServerDisks200Response;
@@ -62,6 +61,7 @@ import org.openapitools.client.model.GetServersPresets200Response;
 import org.openapitools.client.model.GetSoftware200Response;
 import org.openapitools.client.model.PerformActionOnBackupRequest;
 import org.openapitools.client.model.PerformActionOnServerRequest;
+import org.openapitools.client.model.UpdateDatabaseInstance409Response;
 import org.openapitools.client.model.UpdateServer;
 import org.openapitools.client.model.UpdateServerDiskBackupRequest;
 import org.openapitools.client.model.UpdateServerDiskRequest;
@@ -2767,7 +2767,7 @@ public class ServersApi {
      * Чтобы полученить настройки автобэкапов диска сервера, отправьте GET-запрос на &#x60;/api/v1/servers/{server_id}/disks/{disk_id}/auto-backups&#x60;.
      * @param serverId ID облачного сервера. (required)
      * @param diskId ID диска сервера. (required)
-     * @return GetServerDiskAutoBackupSettings200Response
+     * @return GetDatabaseAutoBackupsSettings200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2781,8 +2781,8 @@ public class ServersApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public GetServerDiskAutoBackupSettings200Response getServerDiskAutoBackupSettings(Integer serverId, Integer diskId) throws ApiException {
-        ApiResponse<GetServerDiskAutoBackupSettings200Response> localVarResp = getServerDiskAutoBackupSettingsWithHttpInfo(serverId, diskId);
+    public GetDatabaseAutoBackupsSettings200Response getServerDiskAutoBackupSettings(Integer serverId, Integer diskId) throws ApiException {
+        ApiResponse<GetDatabaseAutoBackupsSettings200Response> localVarResp = getServerDiskAutoBackupSettingsWithHttpInfo(serverId, diskId);
         return localVarResp.getData();
     }
 
@@ -2791,7 +2791,7 @@ public class ServersApi {
      * Чтобы полученить настройки автобэкапов диска сервера, отправьте GET-запрос на &#x60;/api/v1/servers/{server_id}/disks/{disk_id}/auto-backups&#x60;.
      * @param serverId ID облачного сервера. (required)
      * @param diskId ID диска сервера. (required)
-     * @return ApiResponse&lt;GetServerDiskAutoBackupSettings200Response&gt;
+     * @return ApiResponse&lt;GetDatabaseAutoBackupsSettings200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2805,9 +2805,9 @@ public class ServersApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GetServerDiskAutoBackupSettings200Response> getServerDiskAutoBackupSettingsWithHttpInfo(Integer serverId, Integer diskId) throws ApiException {
+    public ApiResponse<GetDatabaseAutoBackupsSettings200Response> getServerDiskAutoBackupSettingsWithHttpInfo(Integer serverId, Integer diskId) throws ApiException {
         okhttp3.Call localVarCall = getServerDiskAutoBackupSettingsValidateBeforeCall(serverId, diskId, null);
-        Type localVarReturnType = new TypeToken<GetServerDiskAutoBackupSettings200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<GetDatabaseAutoBackupsSettings200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -2831,10 +2831,10 @@ public class ServersApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getServerDiskAutoBackupSettingsAsync(Integer serverId, Integer diskId, final ApiCallback<GetServerDiskAutoBackupSettings200Response> _callback) throws ApiException {
+    public okhttp3.Call getServerDiskAutoBackupSettingsAsync(Integer serverId, Integer diskId, final ApiCallback<GetDatabaseAutoBackupsSettings200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getServerDiskAutoBackupSettingsValidateBeforeCall(serverId, diskId, _callback);
-        Type localVarReturnType = new TypeToken<GetServerDiskAutoBackupSettings200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<GetDatabaseAutoBackupsSettings200Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -6310,7 +6310,7 @@ public class ServersApi {
      * @param serverId ID облачного сервера. (required)
      * @param diskId ID диска сервера. (required)
      * @param autoBackup При значении &#x60;is_enabled&#x60;: &#x60;true&#x60;, поля &#x60;copy_count&#x60;, &#x60;creation_start_at&#x60;, &#x60;interval&#x60; являются обязательными (optional)
-     * @return GetServerDiskAutoBackupSettings200Response
+     * @return GetDatabaseAutoBackupsSettings200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -6324,8 +6324,8 @@ public class ServersApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public GetServerDiskAutoBackupSettings200Response updateServerDiskAutoBackupSettings(Integer serverId, Integer diskId, AutoBackup autoBackup) throws ApiException {
-        ApiResponse<GetServerDiskAutoBackupSettings200Response> localVarResp = updateServerDiskAutoBackupSettingsWithHttpInfo(serverId, diskId, autoBackup);
+    public GetDatabaseAutoBackupsSettings200Response updateServerDiskAutoBackupSettings(Integer serverId, Integer diskId, AutoBackup autoBackup) throws ApiException {
+        ApiResponse<GetDatabaseAutoBackupsSettings200Response> localVarResp = updateServerDiskAutoBackupSettingsWithHttpInfo(serverId, diskId, autoBackup);
         return localVarResp.getData();
     }
 
@@ -6335,7 +6335,7 @@ public class ServersApi {
      * @param serverId ID облачного сервера. (required)
      * @param diskId ID диска сервера. (required)
      * @param autoBackup При значении &#x60;is_enabled&#x60;: &#x60;true&#x60;, поля &#x60;copy_count&#x60;, &#x60;creation_start_at&#x60;, &#x60;interval&#x60; являются обязательными (optional)
-     * @return ApiResponse&lt;GetServerDiskAutoBackupSettings200Response&gt;
+     * @return ApiResponse&lt;GetDatabaseAutoBackupsSettings200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -6349,9 +6349,9 @@ public class ServersApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GetServerDiskAutoBackupSettings200Response> updateServerDiskAutoBackupSettingsWithHttpInfo(Integer serverId, Integer diskId, AutoBackup autoBackup) throws ApiException {
+    public ApiResponse<GetDatabaseAutoBackupsSettings200Response> updateServerDiskAutoBackupSettingsWithHttpInfo(Integer serverId, Integer diskId, AutoBackup autoBackup) throws ApiException {
         okhttp3.Call localVarCall = updateServerDiskAutoBackupSettingsValidateBeforeCall(serverId, diskId, autoBackup, null);
-        Type localVarReturnType = new TypeToken<GetServerDiskAutoBackupSettings200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<GetDatabaseAutoBackupsSettings200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -6376,10 +6376,10 @@ public class ServersApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateServerDiskAutoBackupSettingsAsync(Integer serverId, Integer diskId, AutoBackup autoBackup, final ApiCallback<GetServerDiskAutoBackupSettings200Response> _callback) throws ApiException {
+    public okhttp3.Call updateServerDiskAutoBackupSettingsAsync(Integer serverId, Integer diskId, AutoBackup autoBackup, final ApiCallback<GetDatabaseAutoBackupsSettings200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = updateServerDiskAutoBackupSettingsValidateBeforeCall(serverId, diskId, autoBackup, _callback);
-        Type localVarReturnType = new TypeToken<GetServerDiskAutoBackupSettings200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<GetDatabaseAutoBackupsSettings200Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

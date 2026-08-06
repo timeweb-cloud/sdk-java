@@ -21,6 +21,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import org.openapitools.client.model.DeleteDatabaseCluster200ResponseDatabaseDelete;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -50,33 +51,33 @@ import org.openapitools.client.JSON;
 /**
  * DeleteDatabaseCluster200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-06T14:58:49.219742Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-06T15:06:51.562821Z[Etc/UTC]")
 public class DeleteDatabaseCluster200Response {
-  public static final String SERIALIZED_NAME_HASH = "hash";
-  @SerializedName(SERIALIZED_NAME_HASH)
-  private String hash;
+  public static final String SERIALIZED_NAME_DATABASE_DELETE = "database_delete";
+  @SerializedName(SERIALIZED_NAME_DATABASE_DELETE)
+  private DeleteDatabaseCluster200ResponseDatabaseDelete databaseDelete;
 
   public DeleteDatabaseCluster200Response() {
   }
 
-  public DeleteDatabaseCluster200Response hash(String hash) {
+  public DeleteDatabaseCluster200Response databaseDelete(DeleteDatabaseCluster200ResponseDatabaseDelete databaseDelete) {
     
-    this.hash = hash;
+    this.databaseDelete = databaseDelete;
     return this;
   }
 
    /**
-   * Хеш, который совместно с кодом авторизации надо будет отправить для удаления
-   * @return hash
+   * Get databaseDelete
+   * @return databaseDelete
   **/
   @javax.annotation.Nonnull
-  public String getHash() {
-    return hash;
+  public DeleteDatabaseCluster200ResponseDatabaseDelete getDatabaseDelete() {
+    return databaseDelete;
   }
 
 
-  public void setHash(String hash) {
-    this.hash = hash;
+  public void setDatabaseDelete(DeleteDatabaseCluster200ResponseDatabaseDelete databaseDelete) {
+    this.databaseDelete = databaseDelete;
   }
 
 
@@ -90,19 +91,19 @@ public class DeleteDatabaseCluster200Response {
       return false;
     }
     DeleteDatabaseCluster200Response deleteDatabaseCluster200Response = (DeleteDatabaseCluster200Response) o;
-    return Objects.equals(this.hash, deleteDatabaseCluster200Response.hash);
+    return Objects.equals(this.databaseDelete, deleteDatabaseCluster200Response.databaseDelete);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(hash);
+    return Objects.hash(databaseDelete);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class DeleteDatabaseCluster200Response {\n");
-    sb.append("    hash: ").append(toIndentedString(hash)).append("\n");
+    sb.append("    databaseDelete: ").append(toIndentedString(databaseDelete)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -125,11 +126,11 @@ public class DeleteDatabaseCluster200Response {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("hash");
+    openapiFields.add("database_delete");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("hash");
+    openapiRequiredFields.add("database_delete");
   }
 
  /**
@@ -160,9 +161,8 @@ public class DeleteDatabaseCluster200Response {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("hash").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `hash` to be a primitive type in the JSON string but got `%s`", jsonObj.get("hash").toString()));
-      }
+      // validate the required field `database_delete`
+      DeleteDatabaseCluster200ResponseDatabaseDelete.validateJsonElement(jsonObj.get("database_delete"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

@@ -22,11 +22,16 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import org.openapitools.client.model.AvailabilityZone;
+import org.openapitools.client.model.DatabaseClusterChildServicesInner;
 import org.openapitools.client.model.DatabaseClusterDisk;
+import org.openapitools.client.model.DatabaseClusterDiskAutoscaling;
+import org.openapitools.client.model.DatabaseClusterDomainsInner;
+import org.openapitools.client.model.DatabaseClusterMaintenanceSlot;
 import org.openapitools.client.model.DatabaseClusterNetworksInner;
-import org.openapitools.client.model.DbType;
+import org.openapitools.client.model.DatabaseClusterParentServicesInner;
+import org.openapitools.client.model.DatabaseClusterReplicaListInner;
 import org.openapitools.client.model.Mysql;
-import org.openapitools.jackson.nullable.JsonNullable;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -77,6 +82,14 @@ public class DatabaseClusterTest {
     }
 
     /**
+     * Test the property 'description'
+     */
+    @Test
+    public void descriptionTest() {
+        // TODO: test description
+    }
+
+    /**
      * Test the property 'networks'
      */
     @Test
@@ -85,11 +98,11 @@ public class DatabaseClusterTest {
     }
 
     /**
-     * Test the property 'isPublicIpv6'
+     * Test the property 'isEnabledPublicIpv6'
      */
     @Test
-    public void isPublicIpv6Test() {
-        // TODO: test isPublicIpv6
+    public void isEnabledPublicIpv6Test() {
+        // TODO: test isEnabledPublicIpv6
     }
 
     /**
@@ -141,11 +154,67 @@ public class DatabaseClusterTest {
     }
 
     /**
+     * Test the property 'configuratorId'
+     */
+    @Test
+    public void configuratorIdTest() {
+        // TODO: test configuratorId
+    }
+
+    /**
+     * Test the property 'cpu'
+     */
+    @Test
+    public void cpuTest() {
+        // TODO: test cpu
+    }
+
+    /**
+     * Test the property 'cpuFrequency'
+     */
+    @Test
+    public void cpuFrequencyTest() {
+        // TODO: test cpuFrequency
+    }
+
+    /**
+     * Test the property 'isDedicatedCpu'
+     */
+    @Test
+    public void isDedicatedCpuTest() {
+        // TODO: test isDedicatedCpu
+    }
+
+    /**
+     * Test the property 'ram'
+     */
+    @Test
+    public void ramTest() {
+        // TODO: test ram
+    }
+
+    /**
      * Test the property 'disk'
      */
     @Test
     public void diskTest() {
         // TODO: test disk
+    }
+
+    /**
+     * Test the property 'hasAdditionalDisk'
+     */
+    @Test
+    public void hasAdditionalDiskTest() {
+        // TODO: test hasAdditionalDisk
+    }
+
+    /**
+     * Test the property 'diskAutoscaling'
+     */
+    @Test
+    public void diskAutoscalingTest() {
+        // TODO: test diskAutoscaling
     }
 
     /**
@@ -162,6 +231,86 @@ public class DatabaseClusterTest {
     @Test
     public void isEnabledPublicNetworkTest() {
         // TODO: test isEnabledPublicNetwork
+    }
+
+    /**
+     * Test the property 'isSecureConnectionEnabled'
+     */
+    @Test
+    public void isSecureConnectionEnabledTest() {
+        // TODO: test isSecureConnectionEnabled
+    }
+
+    /**
+     * Test the property 'isAutobackupsEnabled'
+     */
+    @Test
+    public void isAutobackupsEnabledTest() {
+        // TODO: test isAutobackupsEnabled
+    }
+
+    /**
+     * Test the property 'isBackupScheduleEnabled'
+     */
+    @Test
+    public void isBackupScheduleEnabledTest() {
+        // TODO: test isBackupScheduleEnabled
+    }
+
+    /**
+     * Test the property 'availabilityZone'
+     */
+    @Test
+    public void availabilityZoneTest() {
+        // TODO: test availabilityZone
+    }
+
+    /**
+     * Test the property 'projectId'
+     */
+    @Test
+    public void projectIdTest() {
+        // TODO: test projectId
+    }
+
+    /**
+     * Test the property 'replicaList'
+     */
+    @Test
+    public void replicaListTest() {
+        // TODO: test replicaList
+    }
+
+    /**
+     * Test the property 'domains'
+     */
+    @Test
+    public void domainsTest() {
+        // TODO: test domains
+    }
+
+    /**
+     * Test the property 'childServices'
+     */
+    @Test
+    public void childServicesTest() {
+        // TODO: test childServices
+    }
+
+    /**
+     * Test the property 'parentServices'
+     */
+    @Test
+    public void parentServicesTest() {
+        // TODO: test parentServices
+    }
+
+    /**
+     * Test the property 'maintenanceSlot'
+     */
+    @Test
+    public void maintenanceSlotTest() {
+        // TODO: test maintenanceSlot
     }
 
 }

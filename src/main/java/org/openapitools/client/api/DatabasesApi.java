@@ -27,23 +27,35 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import org.openapitools.client.model.AutoBackup;
-import org.openapitools.client.model.ConfigParameters;
+import org.openapitools.client.model.BackupDownloadUrlRequest;
+import org.openapitools.client.model.ClusterAction;
 import org.openapitools.client.model.CreateAdmin;
 import org.openapitools.client.model.CreateCluster;
 import org.openapitools.client.model.CreateDatabaseBackup201Response;
-import org.openapitools.client.model.CreateDatabaseBackup409Response;
+import org.openapitools.client.model.CreateDatabaseBackupDownloadUrl201Response;
 import org.openapitools.client.model.CreateDatabaseCluster201Response;
 import org.openapitools.client.model.CreateDatabaseInstance201Response;
+import org.openapitools.client.model.CreateDatabaseS3Backup201Response;
 import org.openapitools.client.model.CreateDatabaseUser201Response;
 import org.openapitools.client.model.CreateInstance;
+import org.openapitools.client.model.CreateS3Backup;
+import org.openapitools.client.model.DbParametersByType;
+import org.openapitools.client.model.DbsCreateBackup;
+import org.openapitools.client.model.DbsUpdateBackup;
 import org.openapitools.client.model.DeleteDatabaseCluster200Response;
 import org.openapitools.client.model.GetAccountStatus403Response;
 import org.openapitools.client.model.GetDatabaseAutoBackupsSettings200Response;
+import org.openapitools.client.model.GetDatabaseBackup200Response;
 import org.openapitools.client.model.GetDatabaseBackups200Response;
+import org.openapitools.client.model.GetDatabaseClusterReplicas200Response;
 import org.openapitools.client.model.GetDatabaseClusterTypes200Response;
 import org.openapitools.client.model.GetDatabaseClusters200Response;
+import org.openapitools.client.model.GetDatabaseConfigurators200Response;
+import org.openapitools.client.model.GetDatabaseDefaultParameters200Response;
 import org.openapitools.client.model.GetDatabaseInstances200Response;
+import org.openapitools.client.model.GetDatabasePreset200Response;
+import org.openapitools.client.model.GetDatabasePrivileges200Response;
+import org.openapitools.client.model.GetDatabaseS3Backups200Response;
 import org.openapitools.client.model.GetDatabaseUsers200Response;
 import org.openapitools.client.model.GetDatabasesPresets200Response;
 import org.openapitools.client.model.GetFinances400Response;
@@ -51,9 +63,15 @@ import org.openapitools.client.model.GetFinances401Response;
 import org.openapitools.client.model.GetFinances429Response;
 import org.openapitools.client.model.GetFinances500Response;
 import org.openapitools.client.model.GetImage404Response;
+import java.util.UUID;
 import org.openapitools.client.model.UpdateAdmin;
+import org.openapitools.client.model.UpdateAutoBackup;
 import org.openapitools.client.model.UpdateCluster;
+import org.openapitools.client.model.UpdateClusterV2;
+import org.openapitools.client.model.UpdateDatabaseCluster200Response;
+import org.openapitools.client.model.UpdateDatabaseInstance409Response;
 import org.openapitools.client.model.UpdateInstance;
+import org.openapitools.client.model.UpdateS3Backup;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -101,14 +119,14 @@ public class DatabasesApi {
     /**
      * Build call for createDatabaseBackup
      * @param dbId ID базы данных (required)
-     * @param comment Описание бэкапа (optional)
+     * @param dbsCreateBackup  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Ответ будет представлять собой объект JSON с ключом &#x60;backup&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Ответ будет представлять собой объект JSON с ключом &#x60;backup&#x60;. Для кластеров PostgreSQL из нескольких нод значение ключа &#x60;backup&#x60; будет равно &#x60;null&#x60;. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -118,7 +136,7 @@ public class DatabasesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createDatabaseBackupCall(Integer dbId, String comment, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createDatabaseBackupCall(Integer dbId, DbsCreateBackup dbsCreateBackup, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -132,7 +150,7 @@ public class DatabasesApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = dbsCreateBackup;
 
         // create path and map variables
         String localVarPath = "/api/v1/dbs/{db_id}/backups"
@@ -144,10 +162,6 @@ public class DatabasesApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        if (comment != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("comment", comment));
-        }
-
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -157,6 +171,7 @@ public class DatabasesApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -168,13 +183,13 @@ public class DatabasesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createDatabaseBackupValidateBeforeCall(Integer dbId, String comment, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createDatabaseBackupValidateBeforeCall(Integer dbId, DbsCreateBackup dbsCreateBackup, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'dbId' is set
         if (dbId == null) {
             throw new ApiException("Missing the required parameter 'dbId' when calling createDatabaseBackup(Async)");
         }
 
-        return createDatabaseBackupCall(dbId, comment, _callback);
+        return createDatabaseBackupCall(dbId, dbsCreateBackup, _callback);
 
     }
 
@@ -182,13 +197,13 @@ public class DatabasesApi {
      * Создание бэкапа базы данных
      * Чтобы создать бэкап базы данных, отправьте запрос POST в &#x60;api/v1/dbs/{db_id}/backups&#x60;. 
      * @param dbId ID базы данных (required)
-     * @param comment Описание бэкапа (optional)
+     * @param dbsCreateBackup  (optional)
      * @return CreateDatabaseBackup201Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Ответ будет представлять собой объект JSON с ключом &#x60;backup&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Ответ будет представлять собой объект JSON с ключом &#x60;backup&#x60;. Для кластеров PostgreSQL из нескольких нод значение ключа &#x60;backup&#x60; будет равно &#x60;null&#x60;. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -198,8 +213,8 @@ public class DatabasesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public CreateDatabaseBackup201Response createDatabaseBackup(Integer dbId, String comment) throws ApiException {
-        ApiResponse<CreateDatabaseBackup201Response> localVarResp = createDatabaseBackupWithHttpInfo(dbId, comment);
+    public CreateDatabaseBackup201Response createDatabaseBackup(Integer dbId, DbsCreateBackup dbsCreateBackup) throws ApiException {
+        ApiResponse<CreateDatabaseBackup201Response> localVarResp = createDatabaseBackupWithHttpInfo(dbId, dbsCreateBackup);
         return localVarResp.getData();
     }
 
@@ -207,13 +222,13 @@ public class DatabasesApi {
      * Создание бэкапа базы данных
      * Чтобы создать бэкап базы данных, отправьте запрос POST в &#x60;api/v1/dbs/{db_id}/backups&#x60;. 
      * @param dbId ID базы данных (required)
-     * @param comment Описание бэкапа (optional)
+     * @param dbsCreateBackup  (optional)
      * @return ApiResponse&lt;CreateDatabaseBackup201Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Ответ будет представлять собой объект JSON с ключом &#x60;backup&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Ответ будет представлять собой объект JSON с ключом &#x60;backup&#x60;. Для кластеров PostgreSQL из нескольких нод значение ключа &#x60;backup&#x60; будет равно &#x60;null&#x60;. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -223,8 +238,8 @@ public class DatabasesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CreateDatabaseBackup201Response> createDatabaseBackupWithHttpInfo(Integer dbId, String comment) throws ApiException {
-        okhttp3.Call localVarCall = createDatabaseBackupValidateBeforeCall(dbId, comment, null);
+    public ApiResponse<CreateDatabaseBackup201Response> createDatabaseBackupWithHttpInfo(Integer dbId, DbsCreateBackup dbsCreateBackup) throws ApiException {
+        okhttp3.Call localVarCall = createDatabaseBackupValidateBeforeCall(dbId, dbsCreateBackup, null);
         Type localVarReturnType = new TypeToken<CreateDatabaseBackup201Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -233,14 +248,14 @@ public class DatabasesApi {
      * Создание бэкапа базы данных (asynchronously)
      * Чтобы создать бэкап базы данных, отправьте запрос POST в &#x60;api/v1/dbs/{db_id}/backups&#x60;. 
      * @param dbId ID базы данных (required)
-     * @param comment Описание бэкапа (optional)
+     * @param dbsCreateBackup  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Ответ будет представлять собой объект JSON с ключом &#x60;backup&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Ответ будет представлять собой объект JSON с ключом &#x60;backup&#x60;. Для кластеров PostgreSQL из нескольких нод значение ключа &#x60;backup&#x60; будет равно &#x60;null&#x60;. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -250,10 +265,181 @@ public class DatabasesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createDatabaseBackupAsync(Integer dbId, String comment, final ApiCallback<CreateDatabaseBackup201Response> _callback) throws ApiException {
+    public okhttp3.Call createDatabaseBackupAsync(Integer dbId, DbsCreateBackup dbsCreateBackup, final ApiCallback<CreateDatabaseBackup201Response> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createDatabaseBackupValidateBeforeCall(dbId, comment, _callback);
+        okhttp3.Call localVarCall = createDatabaseBackupValidateBeforeCall(dbId, dbsCreateBackup, _callback);
         Type localVarReturnType = new TypeToken<CreateDatabaseBackup201Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createDatabaseBackupDownloadUrl
+     * @param dbId ID базы данных (required)
+     * @param backupId ID резервной копии (required)
+     * @param backupDownloadUrlRequest  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Ответ будет представлять собой объект JSON с ключом &#x60;backup_url&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createDatabaseBackupDownloadUrlCall(Integer dbId, Integer backupId, BackupDownloadUrlRequest backupDownloadUrlRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = backupDownloadUrlRequest;
+
+        // create path and map variables
+        String localVarPath = "/api/v1/dbs/{db_id}/backups/{backup_id}/download-url"
+            .replace("{" + "db_id" + "}", localVarApiClient.escapeString(dbId.toString()))
+            .replace("{" + "backup_id" + "}", localVarApiClient.escapeString(backupId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "Bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createDatabaseBackupDownloadUrlValidateBeforeCall(Integer dbId, Integer backupId, BackupDownloadUrlRequest backupDownloadUrlRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'dbId' is set
+        if (dbId == null) {
+            throw new ApiException("Missing the required parameter 'dbId' when calling createDatabaseBackupDownloadUrl(Async)");
+        }
+
+        // verify the required parameter 'backupId' is set
+        if (backupId == null) {
+            throw new ApiException("Missing the required parameter 'backupId' when calling createDatabaseBackupDownloadUrl(Async)");
+        }
+
+        // verify the required parameter 'backupDownloadUrlRequest' is set
+        if (backupDownloadUrlRequest == null) {
+            throw new ApiException("Missing the required parameter 'backupDownloadUrlRequest' when calling createDatabaseBackupDownloadUrl(Async)");
+        }
+
+        return createDatabaseBackupDownloadUrlCall(dbId, backupId, backupDownloadUrlRequest, _callback);
+
+    }
+
+    /**
+     * Получение ссылки для скачивания бэкапа базы данных
+     * Чтобы получить ссылку для скачивания резервной копии базы данных, отправьте POST-запрос на &#x60;/api/v1/dbs/{db_id}/backups/{backup_id}/download-url&#x60;.   Скачивание резервных копий доступно не для всех кластеров. Если для вашего кластера оно недоступно, метод вернет ошибку со статусом &#x60;400&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;backup_url&#x60;.
+     * @param dbId ID базы данных (required)
+     * @param backupId ID резервной копии (required)
+     * @param backupDownloadUrlRequest  (required)
+     * @return CreateDatabaseBackupDownloadUrl201Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Ответ будет представлять собой объект JSON с ключом &#x60;backup_url&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateDatabaseBackupDownloadUrl201Response createDatabaseBackupDownloadUrl(Integer dbId, Integer backupId, BackupDownloadUrlRequest backupDownloadUrlRequest) throws ApiException {
+        ApiResponse<CreateDatabaseBackupDownloadUrl201Response> localVarResp = createDatabaseBackupDownloadUrlWithHttpInfo(dbId, backupId, backupDownloadUrlRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Получение ссылки для скачивания бэкапа базы данных
+     * Чтобы получить ссылку для скачивания резервной копии базы данных, отправьте POST-запрос на &#x60;/api/v1/dbs/{db_id}/backups/{backup_id}/download-url&#x60;.   Скачивание резервных копий доступно не для всех кластеров. Если для вашего кластера оно недоступно, метод вернет ошибку со статусом &#x60;400&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;backup_url&#x60;.
+     * @param dbId ID базы данных (required)
+     * @param backupId ID резервной копии (required)
+     * @param backupDownloadUrlRequest  (required)
+     * @return ApiResponse&lt;CreateDatabaseBackupDownloadUrl201Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Ответ будет представлять собой объект JSON с ключом &#x60;backup_url&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateDatabaseBackupDownloadUrl201Response> createDatabaseBackupDownloadUrlWithHttpInfo(Integer dbId, Integer backupId, BackupDownloadUrlRequest backupDownloadUrlRequest) throws ApiException {
+        okhttp3.Call localVarCall = createDatabaseBackupDownloadUrlValidateBeforeCall(dbId, backupId, backupDownloadUrlRequest, null);
+        Type localVarReturnType = new TypeToken<CreateDatabaseBackupDownloadUrl201Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Получение ссылки для скачивания бэкапа базы данных (asynchronously)
+     * Чтобы получить ссылку для скачивания резервной копии базы данных, отправьте POST-запрос на &#x60;/api/v1/dbs/{db_id}/backups/{backup_id}/download-url&#x60;.   Скачивание резервных копий доступно не для всех кластеров. Если для вашего кластера оно недоступно, метод вернет ошибку со статусом &#x60;400&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;backup_url&#x60;.
+     * @param dbId ID базы данных (required)
+     * @param backupId ID резервной копии (required)
+     * @param backupDownloadUrlRequest  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Ответ будет представлять собой объект JSON с ключом &#x60;backup_url&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createDatabaseBackupDownloadUrlAsync(Integer dbId, Integer backupId, BackupDownloadUrlRequest backupDownloadUrlRequest, final ApiCallback<CreateDatabaseBackupDownloadUrl201Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createDatabaseBackupDownloadUrlValidateBeforeCall(dbId, backupId, backupDownloadUrlRequest, _callback);
+        Type localVarReturnType = new TypeToken<CreateDatabaseBackupDownloadUrl201Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -333,7 +519,7 @@ public class DatabasesApi {
 
     /**
      * Создание кластера базы данных
-     * Чтобы создать кластер базы данных на вашем аккаунте, отправьте POST-запрос на &#x60;/api/v1/databases&#x60;.   Вместе с кластером будет создан один инстанс базы данных и один пользователь.
+     * Чтобы создать кластер базы данных на вашем аккаунте, отправьте POST-запрос на &#x60;/api/v1/databases&#x60;.   Вместе с кластером будет создан один инстанс базы данных и один пользователь.   Размер кластера задается либо тарифом (&#x60;preset_id&#x60;), либо конфигуратором (&#x60;configuration&#x60;). Эти поля взаимоисключающие, но одно из них передать обязательно — запрос без обоих вернется с ошибкой.
      * @param createCluster  (required)
      * @return CreateDatabaseCluster201Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -356,7 +542,7 @@ public class DatabasesApi {
 
     /**
      * Создание кластера базы данных
-     * Чтобы создать кластер базы данных на вашем аккаунте, отправьте POST-запрос на &#x60;/api/v1/databases&#x60;.   Вместе с кластером будет создан один инстанс базы данных и один пользователь.
+     * Чтобы создать кластер базы данных на вашем аккаунте, отправьте POST-запрос на &#x60;/api/v1/databases&#x60;.   Вместе с кластером будет создан один инстанс базы данных и один пользователь.   Размер кластера задается либо тарифом (&#x60;preset_id&#x60;), либо конфигуратором (&#x60;configuration&#x60;). Эти поля взаимоисключающие, но одно из них передать обязательно — запрос без обоих вернется с ошибкой.
      * @param createCluster  (required)
      * @return ApiResponse&lt;CreateDatabaseCluster201Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -380,7 +566,7 @@ public class DatabasesApi {
 
     /**
      * Создание кластера базы данных (asynchronously)
-     * Чтобы создать кластер базы данных на вашем аккаунте, отправьте POST-запрос на &#x60;/api/v1/databases&#x60;.   Вместе с кластером будет создан один инстанс базы данных и один пользователь.
+     * Чтобы создать кластер базы данных на вашем аккаунте, отправьте POST-запрос на &#x60;/api/v1/databases&#x60;.   Вместе с кластером будет создан один инстанс базы данных и один пользователь.   Размер кластера задается либо тарифом (&#x60;preset_id&#x60;), либо конфигуратором (&#x60;configuration&#x60;). Эти поля взаимоисключающие, но одно из них передать обязательно — запрос без обоих вернется с ошибкой.
      * @param createCluster  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -562,6 +748,162 @@ public class DatabasesApi {
         return localVarCall;
     }
     /**
+     * Build call for createDatabaseS3Backup
+     * @param dbId ID базы данных (required)
+     * @param createS3Backup  (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Ответ будет представлять собой объект JSON с ключом &#x60;backup&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createDatabaseS3BackupCall(Integer dbId, CreateS3Backup createS3Backup, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = createS3Backup;
+
+        // create path and map variables
+        String localVarPath = "/api/v2/databases/{db_id}/backups"
+            .replace("{" + "db_id" + "}", localVarApiClient.escapeString(dbId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "Bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createDatabaseS3BackupValidateBeforeCall(Integer dbId, CreateS3Backup createS3Backup, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'dbId' is set
+        if (dbId == null) {
+            throw new ApiException("Missing the required parameter 'dbId' when calling createDatabaseS3Backup(Async)");
+        }
+
+        return createDatabaseS3BackupCall(dbId, createS3Backup, _callback);
+
+    }
+
+    /**
+     * Создание S3-бэкапа базы данных
+     * Чтобы создать резервную копию кластера базы данных в объектном хранилище, отправьте POST-запрос на &#x60;/api/v2/databases/{db_id}/backups&#x60;.   Тело запроса необязательно: единственное поле &#x60;comment&#x60; можно не передавать. Тело ответа будет представлять собой объект JSON с ключом &#x60;backup&#x60;.   Копия создается асинхронно. Пока она создается, ее статус — &#x60;running&#x60;, и восстановиться из нее нельзя. Дождитесь статуса &#x60;success&#x60;, опрашивая &#x60;/api/v2/databases/{db_id}/backups/{backup_id}&#x60;.
+     * @param dbId ID базы данных (required)
+     * @param createS3Backup  (optional)
+     * @return CreateDatabaseS3Backup201Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Ответ будет представлять собой объект JSON с ключом &#x60;backup&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateDatabaseS3Backup201Response createDatabaseS3Backup(Integer dbId, CreateS3Backup createS3Backup) throws ApiException {
+        ApiResponse<CreateDatabaseS3Backup201Response> localVarResp = createDatabaseS3BackupWithHttpInfo(dbId, createS3Backup);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Создание S3-бэкапа базы данных
+     * Чтобы создать резервную копию кластера базы данных в объектном хранилище, отправьте POST-запрос на &#x60;/api/v2/databases/{db_id}/backups&#x60;.   Тело запроса необязательно: единственное поле &#x60;comment&#x60; можно не передавать. Тело ответа будет представлять собой объект JSON с ключом &#x60;backup&#x60;.   Копия создается асинхронно. Пока она создается, ее статус — &#x60;running&#x60;, и восстановиться из нее нельзя. Дождитесь статуса &#x60;success&#x60;, опрашивая &#x60;/api/v2/databases/{db_id}/backups/{backup_id}&#x60;.
+     * @param dbId ID базы данных (required)
+     * @param createS3Backup  (optional)
+     * @return ApiResponse&lt;CreateDatabaseS3Backup201Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Ответ будет представлять собой объект JSON с ключом &#x60;backup&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateDatabaseS3Backup201Response> createDatabaseS3BackupWithHttpInfo(Integer dbId, CreateS3Backup createS3Backup) throws ApiException {
+        okhttp3.Call localVarCall = createDatabaseS3BackupValidateBeforeCall(dbId, createS3Backup, null);
+        Type localVarReturnType = new TypeToken<CreateDatabaseS3Backup201Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Создание S3-бэкапа базы данных (asynchronously)
+     * Чтобы создать резервную копию кластера базы данных в объектном хранилище, отправьте POST-запрос на &#x60;/api/v2/databases/{db_id}/backups&#x60;.   Тело запроса необязательно: единственное поле &#x60;comment&#x60; можно не передавать. Тело ответа будет представлять собой объект JSON с ключом &#x60;backup&#x60;.   Копия создается асинхронно. Пока она создается, ее статус — &#x60;running&#x60;, и восстановиться из нее нельзя. Дождитесь статуса &#x60;success&#x60;, опрашивая &#x60;/api/v2/databases/{db_id}/backups/{backup_id}&#x60;.
+     * @param dbId ID базы данных (required)
+     * @param createS3Backup  (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Ответ будет представлять собой объект JSON с ключом &#x60;backup&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createDatabaseS3BackupAsync(Integer dbId, CreateS3Backup createS3Backup, final ApiCallback<CreateDatabaseS3Backup201Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createDatabaseS3BackupValidateBeforeCall(dbId, createS3Backup, _callback);
+        Type localVarReturnType = new TypeToken<CreateDatabaseS3Backup201Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for createDatabaseUser
      * @param dbClusterId ID кластера базы данных (required)
      * @param createAdmin  (required)
@@ -733,6 +1075,7 @@ public class DatabasesApi {
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -813,6 +1156,7 @@ public class DatabasesApi {
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -836,6 +1180,7 @@ public class DatabasesApi {
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -861,6 +1206,7 @@ public class DatabasesApi {
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -874,15 +1220,13 @@ public class DatabasesApi {
     /**
      * Build call for deleteDatabaseCluster
      * @param dbClusterId ID кластера базы данных (required)
-     * @param hash Хеш, который совместно с кодом авторизации надо отправить для удаления, если включено подтверждение удаления сервисов через Телеграм. (optional)
-     * @param code Код подтверждения, который придет к вам в Телеграм, после запроса удаления, если включено подтверждение удаления сервисов.  При помощи API токена сервисы можно удалять без подтверждения, если параметр токена &#x60;is_able_to_delete&#x60; установлен в значение &#x60;true&#x60; (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;hash&#x60; </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Если для удаления кластера требуется подтверждение, кластер не удаляется сразу: ответ будет представлять собой объект JSON c ключом &#x60;database_delete&#x60;. </td><td>  -  </td></tr>
         <tr><td> 204 </td><td> Кластер базы данных удален. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
@@ -892,7 +1236,7 @@ public class DatabasesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteDatabaseClusterCall(Integer dbClusterId, String hash, String code, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteDatabaseClusterCall(Integer dbClusterId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -918,14 +1262,6 @@ public class DatabasesApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        if (hash != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("hash", hash));
-        }
-
-        if (code != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("code", code));
-        }
-
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -946,13 +1282,13 @@ public class DatabasesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteDatabaseClusterValidateBeforeCall(Integer dbClusterId, String hash, String code, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteDatabaseClusterValidateBeforeCall(Integer dbClusterId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'dbClusterId' is set
         if (dbClusterId == null) {
             throw new ApiException("Missing the required parameter 'dbClusterId' when calling deleteDatabaseCluster(Async)");
         }
 
-        return deleteDatabaseClusterCall(dbClusterId, hash, code, _callback);
+        return deleteDatabaseClusterCall(dbClusterId, _callback);
 
     }
 
@@ -960,14 +1296,12 @@ public class DatabasesApi {
      * Удаление кластера базы данных
      * Чтобы удалить кластер базы данных, отправьте DELETE-запрос на &#x60;/api/v1/databases/{db_cluster_id}&#x60;.
      * @param dbClusterId ID кластера базы данных (required)
-     * @param hash Хеш, который совместно с кодом авторизации надо отправить для удаления, если включено подтверждение удаления сервисов через Телеграм. (optional)
-     * @param code Код подтверждения, который придет к вам в Телеграм, после запроса удаления, если включено подтверждение удаления сервисов.  При помощи API токена сервисы можно удалять без подтверждения, если параметр токена &#x60;is_able_to_delete&#x60; установлен в значение &#x60;true&#x60; (optional)
      * @return DeleteDatabaseCluster200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;hash&#x60; </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Если для удаления кластера требуется подтверждение, кластер не удаляется сразу: ответ будет представлять собой объект JSON c ключом &#x60;database_delete&#x60;. </td><td>  -  </td></tr>
         <tr><td> 204 </td><td> Кластер базы данных удален. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
@@ -977,8 +1311,8 @@ public class DatabasesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public DeleteDatabaseCluster200Response deleteDatabaseCluster(Integer dbClusterId, String hash, String code) throws ApiException {
-        ApiResponse<DeleteDatabaseCluster200Response> localVarResp = deleteDatabaseClusterWithHttpInfo(dbClusterId, hash, code);
+    public DeleteDatabaseCluster200Response deleteDatabaseCluster(Integer dbClusterId) throws ApiException {
+        ApiResponse<DeleteDatabaseCluster200Response> localVarResp = deleteDatabaseClusterWithHttpInfo(dbClusterId);
         return localVarResp.getData();
     }
 
@@ -986,14 +1320,12 @@ public class DatabasesApi {
      * Удаление кластера базы данных
      * Чтобы удалить кластер базы данных, отправьте DELETE-запрос на &#x60;/api/v1/databases/{db_cluster_id}&#x60;.
      * @param dbClusterId ID кластера базы данных (required)
-     * @param hash Хеш, который совместно с кодом авторизации надо отправить для удаления, если включено подтверждение удаления сервисов через Телеграм. (optional)
-     * @param code Код подтверждения, который придет к вам в Телеграм, после запроса удаления, если включено подтверждение удаления сервисов.  При помощи API токена сервисы можно удалять без подтверждения, если параметр токена &#x60;is_able_to_delete&#x60; установлен в значение &#x60;true&#x60; (optional)
      * @return ApiResponse&lt;DeleteDatabaseCluster200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;hash&#x60; </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Если для удаления кластера требуется подтверждение, кластер не удаляется сразу: ответ будет представлять собой объект JSON c ключом &#x60;database_delete&#x60;. </td><td>  -  </td></tr>
         <tr><td> 204 </td><td> Кластер базы данных удален. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
@@ -1003,8 +1335,8 @@ public class DatabasesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DeleteDatabaseCluster200Response> deleteDatabaseClusterWithHttpInfo(Integer dbClusterId, String hash, String code) throws ApiException {
-        okhttp3.Call localVarCall = deleteDatabaseClusterValidateBeforeCall(dbClusterId, hash, code, null);
+    public ApiResponse<DeleteDatabaseCluster200Response> deleteDatabaseClusterWithHttpInfo(Integer dbClusterId) throws ApiException {
+        okhttp3.Call localVarCall = deleteDatabaseClusterValidateBeforeCall(dbClusterId, null);
         Type localVarReturnType = new TypeToken<DeleteDatabaseCluster200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1013,15 +1345,13 @@ public class DatabasesApi {
      * Удаление кластера базы данных (asynchronously)
      * Чтобы удалить кластер базы данных, отправьте DELETE-запрос на &#x60;/api/v1/databases/{db_cluster_id}&#x60;.
      * @param dbClusterId ID кластера базы данных (required)
-     * @param hash Хеш, который совместно с кодом авторизации надо отправить для удаления, если включено подтверждение удаления сервисов через Телеграм. (optional)
-     * @param code Код подтверждения, который придет к вам в Телеграм, после запроса удаления, если включено подтверждение удаления сервисов.  При помощи API токена сервисы можно удалять без подтверждения, если параметр токена &#x60;is_able_to_delete&#x60; установлен в значение &#x60;true&#x60; (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;hash&#x60; </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Если для удаления кластера требуется подтверждение, кластер не удаляется сразу: ответ будет представлять собой объект JSON c ключом &#x60;database_delete&#x60;. </td><td>  -  </td></tr>
         <tr><td> 204 </td><td> Кластер базы данных удален. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
@@ -1031,9 +1361,9 @@ public class DatabasesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteDatabaseClusterAsync(Integer dbClusterId, String hash, String code, final ApiCallback<DeleteDatabaseCluster200Response> _callback) throws ApiException {
+    public okhttp3.Call deleteDatabaseClusterAsync(Integer dbClusterId, final ApiCallback<DeleteDatabaseCluster200Response> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteDatabaseClusterValidateBeforeCall(dbClusterId, hash, code, _callback);
+        okhttp3.Call localVarCall = deleteDatabaseClusterValidateBeforeCall(dbClusterId, _callback);
         Type localVarReturnType = new TypeToken<DeleteDatabaseCluster200Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1188,6 +1518,163 @@ public class DatabasesApi {
     public okhttp3.Call deleteDatabaseInstanceAsync(Integer dbClusterId, Integer instanceId, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteDatabaseInstanceValidateBeforeCall(dbClusterId, instanceId, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for deleteDatabaseS3Backup
+     * @param dbId ID базы данных (required)
+     * @param backupId ID резервной копии в формате UUID (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Резервная копия успешно удалена. Тело ответа пустое. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteDatabaseS3BackupCall(Integer dbId, UUID backupId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/v2/databases/{db_id}/backups/{backup_id}"
+            .replace("{" + "db_id" + "}", localVarApiClient.escapeString(dbId.toString()))
+            .replace("{" + "backup_id" + "}", localVarApiClient.escapeString(backupId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "Bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteDatabaseS3BackupValidateBeforeCall(Integer dbId, UUID backupId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'dbId' is set
+        if (dbId == null) {
+            throw new ApiException("Missing the required parameter 'dbId' when calling deleteDatabaseS3Backup(Async)");
+        }
+
+        // verify the required parameter 'backupId' is set
+        if (backupId == null) {
+            throw new ApiException("Missing the required parameter 'backupId' when calling deleteDatabaseS3Backup(Async)");
+        }
+
+        return deleteDatabaseS3BackupCall(dbId, backupId, _callback);
+
+    }
+
+    /**
+     * Удаление S3-бэкапа базы данных
+     * Чтобы удалить резервную копию кластера базы данных из объектного хранилища, отправьте DELETE-запрос на &#x60;/api/v2/databases/{db_id}/backups/{backup_id}&#x60;.   Копия удаляется безвозвратно, тело ответа пустое. На резервные копии из &#x60;/api/v1/dbs/{db_id}/backups/{backup_id}&#x60; этот метод не действует — они удаляются отдельным запросом.
+     * @param dbId ID базы данных (required)
+     * @param backupId ID резервной копии в формате UUID (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Резервная копия успешно удалена. Тело ответа пустое. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public void deleteDatabaseS3Backup(Integer dbId, UUID backupId) throws ApiException {
+        deleteDatabaseS3BackupWithHttpInfo(dbId, backupId);
+    }
+
+    /**
+     * Удаление S3-бэкапа базы данных
+     * Чтобы удалить резервную копию кластера базы данных из объектного хранилища, отправьте DELETE-запрос на &#x60;/api/v2/databases/{db_id}/backups/{backup_id}&#x60;.   Копия удаляется безвозвратно, тело ответа пустое. На резервные копии из &#x60;/api/v1/dbs/{db_id}/backups/{backup_id}&#x60; этот метод не действует — они удаляются отдельным запросом.
+     * @param dbId ID базы данных (required)
+     * @param backupId ID резервной копии в формате UUID (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Резервная копия успешно удалена. Тело ответа пустое. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> deleteDatabaseS3BackupWithHttpInfo(Integer dbId, UUID backupId) throws ApiException {
+        okhttp3.Call localVarCall = deleteDatabaseS3BackupValidateBeforeCall(dbId, backupId, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Удаление S3-бэкапа базы данных (asynchronously)
+     * Чтобы удалить резервную копию кластера базы данных из объектного хранилища, отправьте DELETE-запрос на &#x60;/api/v2/databases/{db_id}/backups/{backup_id}&#x60;.   Копия удаляется безвозвратно, тело ответа пустое. На резервные копии из &#x60;/api/v1/dbs/{db_id}/backups/{backup_id}&#x60; этот метод не действует — они удаляются отдельным запросом.
+     * @param dbId ID базы данных (required)
+     * @param backupId ID резервной копии в формате UUID (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Резервная копия успешно удалена. Тело ответа пустое. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteDatabaseS3BackupAsync(Integer dbId, UUID backupId, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteDatabaseS3BackupValidateBeforeCall(dbId, backupId, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
@@ -1358,6 +1845,7 @@ public class DatabasesApi {
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -1432,6 +1920,7 @@ public class DatabasesApi {
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -1455,6 +1944,7 @@ public class DatabasesApi {
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -1480,6 +1970,7 @@ public class DatabasesApi {
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -1506,6 +1997,7 @@ public class DatabasesApi {
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -1577,7 +2069,7 @@ public class DatabasesApi {
      * Чтобы получить бэкап базы данных, отправьте запрос GET в &#x60;api/v1/dbs/{db_id}/backups/{backup_id}&#x60;. 
      * @param dbId ID базы данных (required)
      * @param backupId ID резервной копии (required)
-     * @return CreateDatabaseBackup201Response
+     * @return GetDatabaseBackup200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1587,12 +2079,13 @@ public class DatabasesApi {
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public CreateDatabaseBackup201Response getDatabaseBackup(Integer dbId, Integer backupId) throws ApiException {
-        ApiResponse<CreateDatabaseBackup201Response> localVarResp = getDatabaseBackupWithHttpInfo(dbId, backupId);
+    public GetDatabaseBackup200Response getDatabaseBackup(Integer dbId, Integer backupId) throws ApiException {
+        ApiResponse<GetDatabaseBackup200Response> localVarResp = getDatabaseBackupWithHttpInfo(dbId, backupId);
         return localVarResp.getData();
     }
 
@@ -1601,7 +2094,7 @@ public class DatabasesApi {
      * Чтобы получить бэкап базы данных, отправьте запрос GET в &#x60;api/v1/dbs/{db_id}/backups/{backup_id}&#x60;. 
      * @param dbId ID базы данных (required)
      * @param backupId ID резервной копии (required)
-     * @return ApiResponse&lt;CreateDatabaseBackup201Response&gt;
+     * @return ApiResponse&lt;GetDatabaseBackup200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1611,13 +2104,14 @@ public class DatabasesApi {
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CreateDatabaseBackup201Response> getDatabaseBackupWithHttpInfo(Integer dbId, Integer backupId) throws ApiException {
+    public ApiResponse<GetDatabaseBackup200Response> getDatabaseBackupWithHttpInfo(Integer dbId, Integer backupId) throws ApiException {
         okhttp3.Call localVarCall = getDatabaseBackupValidateBeforeCall(dbId, backupId, null);
-        Type localVarReturnType = new TypeToken<CreateDatabaseBackup201Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<GetDatabaseBackup200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1637,14 +2131,15 @@ public class DatabasesApi {
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getDatabaseBackupAsync(Integer dbId, Integer backupId, final ApiCallback<CreateDatabaseBackup201Response> _callback) throws ApiException {
+    public okhttp3.Call getDatabaseBackupAsync(Integer dbId, Integer backupId, final ApiCallback<GetDatabaseBackup200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getDatabaseBackupValidateBeforeCall(dbId, backupId, _callback);
-        Type localVarReturnType = new TypeToken<CreateDatabaseBackup201Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<GetDatabaseBackup200Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1820,7 +2315,7 @@ public class DatabasesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;db&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;db&#x60;. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -1894,7 +2389,7 @@ public class DatabasesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;db&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;db&#x60;. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -1917,7 +2412,7 @@ public class DatabasesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;db&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;db&#x60;. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -1942,7 +2437,7 @@ public class DatabasesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;db&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;db&#x60;. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -1955,6 +2450,153 @@ public class DatabasesApi {
 
         okhttp3.Call localVarCall = getDatabaseClusterValidateBeforeCall(dbClusterId, _callback);
         Type localVarReturnType = new TypeToken<CreateDatabaseCluster201Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getDatabaseClusterReplicas
+     * @param dbClusterId ID кластера базы данных (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;replicas&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getDatabaseClusterReplicasCall(Integer dbClusterId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/v1/databases/{db_cluster_id}/replicas"
+            .replace("{" + "db_cluster_id" + "}", localVarApiClient.escapeString(dbClusterId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "Bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getDatabaseClusterReplicasValidateBeforeCall(Integer dbClusterId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'dbClusterId' is set
+        if (dbClusterId == null) {
+            throw new ApiException("Missing the required parameter 'dbClusterId' when calling getDatabaseClusterReplicas(Async)");
+        }
+
+        return getDatabaseClusterReplicasCall(dbClusterId, _callback);
+
+    }
+
+    /**
+     * Получение списка реплик кластера базы данных
+     * Чтобы получить список реплик кластера базы данных, отправьте GET-запрос на &#x60;/api/v1/databases/{db_cluster_id}/replicas&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;replicas&#x60;.
+     * @param dbClusterId ID кластера базы данных (required)
+     * @return GetDatabaseClusterReplicas200Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;replicas&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetDatabaseClusterReplicas200Response getDatabaseClusterReplicas(Integer dbClusterId) throws ApiException {
+        ApiResponse<GetDatabaseClusterReplicas200Response> localVarResp = getDatabaseClusterReplicasWithHttpInfo(dbClusterId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Получение списка реплик кластера базы данных
+     * Чтобы получить список реплик кластера базы данных, отправьте GET-запрос на &#x60;/api/v1/databases/{db_cluster_id}/replicas&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;replicas&#x60;.
+     * @param dbClusterId ID кластера базы данных (required)
+     * @return ApiResponse&lt;GetDatabaseClusterReplicas200Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;replicas&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetDatabaseClusterReplicas200Response> getDatabaseClusterReplicasWithHttpInfo(Integer dbClusterId) throws ApiException {
+        okhttp3.Call localVarCall = getDatabaseClusterReplicasValidateBeforeCall(dbClusterId, null);
+        Type localVarReturnType = new TypeToken<GetDatabaseClusterReplicas200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Получение списка реплик кластера базы данных (asynchronously)
+     * Чтобы получить список реплик кластера базы данных, отправьте GET-запрос на &#x60;/api/v1/databases/{db_cluster_id}/replicas&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;replicas&#x60;.
+     * @param dbClusterId ID кластера базы данных (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;replicas&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getDatabaseClusterReplicasAsync(Integer dbClusterId, final ApiCallback<GetDatabaseClusterReplicas200Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getDatabaseClusterReplicasValidateBeforeCall(dbClusterId, _callback);
+        Type localVarReturnType = new TypeToken<GetDatabaseClusterReplicas200Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2245,6 +2887,330 @@ public class DatabasesApi {
 
         okhttp3.Call localVarCall = getDatabaseClustersValidateBeforeCall(limit, offset, _callback);
         Type localVarReturnType = new TypeToken<GetDatabaseClusters200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getDatabaseConfigurators
+     * @param clusterId ID кластера базы данных. Возвращает конфигураторы группы, в пределах которой доступна смена конфигурации этого кластера (сценарий изменения кластера). (optional)
+     * @param withUnavailable Включить в ответ конфигураторы, недоступные к заказу из-за нехватки свободных ресурсов. Учитывается только при запросе без &#x60;cluster_id&#x60;. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Конфигураторы успешно получены. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getDatabaseConfiguratorsCall(Integer clusterId, Boolean withUnavailable, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/v1/configurator/databases";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (clusterId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("cluster_id", clusterId));
+        }
+
+        if (withUnavailable != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("with_unavailable", withUnavailable));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "Bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getDatabaseConfiguratorsValidateBeforeCall(Integer clusterId, Boolean withUnavailable, final ApiCallback _callback) throws ApiException {
+        return getDatabaseConfiguratorsCall(clusterId, withUnavailable, _callback);
+
+    }
+
+    /**
+     * Получение списка конфигураторов баз данных
+     * Чтобы получить список конфигураторов баз данных, отправьте GET-запрос на &#x60;/api/v1/configurator/databases&#x60;.   Конфигуратор позволяет создать кластер с произвольным количеством ресурсов вместо готового тарифа: его ID передается при создании кластера в поле &#x60;configuration.configurator_id&#x60;, а допустимые значения ресурсов ограничены объектом &#x60;requirements&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;database_configurators&#x60;.
+     * @param clusterId ID кластера базы данных. Возвращает конфигураторы группы, в пределах которой доступна смена конфигурации этого кластера (сценарий изменения кластера). (optional)
+     * @param withUnavailable Включить в ответ конфигураторы, недоступные к заказу из-за нехватки свободных ресурсов. Учитывается только при запросе без &#x60;cluster_id&#x60;. (optional)
+     * @return GetDatabaseConfigurators200Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Конфигураторы успешно получены. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetDatabaseConfigurators200Response getDatabaseConfigurators(Integer clusterId, Boolean withUnavailable) throws ApiException {
+        ApiResponse<GetDatabaseConfigurators200Response> localVarResp = getDatabaseConfiguratorsWithHttpInfo(clusterId, withUnavailable);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Получение списка конфигураторов баз данных
+     * Чтобы получить список конфигураторов баз данных, отправьте GET-запрос на &#x60;/api/v1/configurator/databases&#x60;.   Конфигуратор позволяет создать кластер с произвольным количеством ресурсов вместо готового тарифа: его ID передается при создании кластера в поле &#x60;configuration.configurator_id&#x60;, а допустимые значения ресурсов ограничены объектом &#x60;requirements&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;database_configurators&#x60;.
+     * @param clusterId ID кластера базы данных. Возвращает конфигураторы группы, в пределах которой доступна смена конфигурации этого кластера (сценарий изменения кластера). (optional)
+     * @param withUnavailable Включить в ответ конфигураторы, недоступные к заказу из-за нехватки свободных ресурсов. Учитывается только при запросе без &#x60;cluster_id&#x60;. (optional)
+     * @return ApiResponse&lt;GetDatabaseConfigurators200Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Конфигураторы успешно получены. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetDatabaseConfigurators200Response> getDatabaseConfiguratorsWithHttpInfo(Integer clusterId, Boolean withUnavailable) throws ApiException {
+        okhttp3.Call localVarCall = getDatabaseConfiguratorsValidateBeforeCall(clusterId, withUnavailable, null);
+        Type localVarReturnType = new TypeToken<GetDatabaseConfigurators200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Получение списка конфигураторов баз данных (asynchronously)
+     * Чтобы получить список конфигураторов баз данных, отправьте GET-запрос на &#x60;/api/v1/configurator/databases&#x60;.   Конфигуратор позволяет создать кластер с произвольным количеством ресурсов вместо готового тарифа: его ID передается при создании кластера в поле &#x60;configuration.configurator_id&#x60;, а допустимые значения ресурсов ограничены объектом &#x60;requirements&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;database_configurators&#x60;.
+     * @param clusterId ID кластера базы данных. Возвращает конфигураторы группы, в пределах которой доступна смена конфигурации этого кластера (сценарий изменения кластера). (optional)
+     * @param withUnavailable Включить в ответ конфигураторы, недоступные к заказу из-за нехватки свободных ресурсов. Учитывается только при запросе без &#x60;cluster_id&#x60;. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Конфигураторы успешно получены. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getDatabaseConfiguratorsAsync(Integer clusterId, Boolean withUnavailable, final ApiCallback<GetDatabaseConfigurators200Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getDatabaseConfiguratorsValidateBeforeCall(clusterId, withUnavailable, _callback);
+        Type localVarReturnType = new TypeToken<GetDatabaseConfigurators200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getDatabaseDefaultParameters
+     * @param type Тип кластера базы данных. (required)
+     * @param ram Объём оперативной памяти кластера (в Мб). (required)
+     * @param replicaCount Количество нод (реплик) кластера. (optional, default to 1)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Рекомендуемые значения параметров успешно получены. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getDatabaseDefaultParametersCall(String type, Integer ram, Integer replicaCount, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/v1/dbs/default-parameters";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (type != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("type", type));
+        }
+
+        if (ram != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("ram", ram));
+        }
+
+        if (replicaCount != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("replica_count", replicaCount));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "Bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getDatabaseDefaultParametersValidateBeforeCall(String type, Integer ram, Integer replicaCount, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'type' is set
+        if (type == null) {
+            throw new ApiException("Missing the required parameter 'type' when calling getDatabaseDefaultParameters(Async)");
+        }
+
+        // verify the required parameter 'ram' is set
+        if (ram == null) {
+            throw new ApiException("Missing the required parameter 'ram' when calling getDatabaseDefaultParameters(Async)");
+        }
+
+        return getDatabaseDefaultParametersCall(type, ram, replicaCount, _callback);
+
+    }
+
+    /**
+     * Получение рекомендуемых значений параметров баз данных
+     * Чтобы получить рекомендуемые значения параметров базы данных, отправьте GET-запрос на &#x60;/api/v1/dbs/default-parameters&#x60;.   Значения рассчитываются для указанного типа кластера, объема оперативной памяти и количества реплик — их можно передать при создании кластера в поле &#x60;config_parameters&#x60;. Список имен параметров, доступных для каждого типа кластера, возвращает &#x60;GET /api/v1/dbs/parameters&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;config_params&#x60;. Рекомендуемые значения рассчитываются только для кластеров MySQL, PostgreSQL и Valkey — для остальных типов возвращается пустой объект.
+     * @param type Тип кластера базы данных. (required)
+     * @param ram Объём оперативной памяти кластера (в Мб). (required)
+     * @param replicaCount Количество нод (реплик) кластера. (optional, default to 1)
+     * @return GetDatabaseDefaultParameters200Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Рекомендуемые значения параметров успешно получены. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetDatabaseDefaultParameters200Response getDatabaseDefaultParameters(String type, Integer ram, Integer replicaCount) throws ApiException {
+        ApiResponse<GetDatabaseDefaultParameters200Response> localVarResp = getDatabaseDefaultParametersWithHttpInfo(type, ram, replicaCount);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Получение рекомендуемых значений параметров баз данных
+     * Чтобы получить рекомендуемые значения параметров базы данных, отправьте GET-запрос на &#x60;/api/v1/dbs/default-parameters&#x60;.   Значения рассчитываются для указанного типа кластера, объема оперативной памяти и количества реплик — их можно передать при создании кластера в поле &#x60;config_parameters&#x60;. Список имен параметров, доступных для каждого типа кластера, возвращает &#x60;GET /api/v1/dbs/parameters&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;config_params&#x60;. Рекомендуемые значения рассчитываются только для кластеров MySQL, PostgreSQL и Valkey — для остальных типов возвращается пустой объект.
+     * @param type Тип кластера базы данных. (required)
+     * @param ram Объём оперативной памяти кластера (в Мб). (required)
+     * @param replicaCount Количество нод (реплик) кластера. (optional, default to 1)
+     * @return ApiResponse&lt;GetDatabaseDefaultParameters200Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Рекомендуемые значения параметров успешно получены. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetDatabaseDefaultParameters200Response> getDatabaseDefaultParametersWithHttpInfo(String type, Integer ram, Integer replicaCount) throws ApiException {
+        okhttp3.Call localVarCall = getDatabaseDefaultParametersValidateBeforeCall(type, ram, replicaCount, null);
+        Type localVarReturnType = new TypeToken<GetDatabaseDefaultParameters200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Получение рекомендуемых значений параметров баз данных (asynchronously)
+     * Чтобы получить рекомендуемые значения параметров базы данных, отправьте GET-запрос на &#x60;/api/v1/dbs/default-parameters&#x60;.   Значения рассчитываются для указанного типа кластера, объема оперативной памяти и количества реплик — их можно передать при создании кластера в поле &#x60;config_parameters&#x60;. Список имен параметров, доступных для каждого типа кластера, возвращает &#x60;GET /api/v1/dbs/parameters&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;config_params&#x60;. Рекомендуемые значения рассчитываются только для кластеров MySQL, PostgreSQL и Valkey — для остальных типов возвращается пустой объект.
+     * @param type Тип кластера базы данных. (required)
+     * @param ram Объём оперативной памяти кластера (в Мб). (required)
+     * @param replicaCount Количество нод (реплик) кластера. (optional, default to 1)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Рекомендуемые значения параметров успешно получены. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getDatabaseDefaultParametersAsync(String type, Integer ram, Integer replicaCount, final ApiCallback<GetDatabaseDefaultParameters200Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getDatabaseDefaultParametersValidateBeforeCall(type, ram, replicaCount, _callback);
+        Type localVarReturnType = new TypeToken<GetDatabaseDefaultParameters200Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2560,7 +3526,7 @@ public class DatabasesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c типами баз данных и их параметров. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON, ключи которого — типы кластеров баз данных, а значения — массивы имён доступных параметров. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -2621,13 +3587,13 @@ public class DatabasesApi {
 
     /**
      * Получение списка параметров баз данных
-     * Чтобы получить список параметров баз данных, отправьте GET-запрос на &#x60;/api/v1/dbs/parameters&#x60;.
-     * @return ConfigParameters
+     * Чтобы получить список параметров баз данных, отправьте GET-запрос на &#x60;/api/v1/dbs/parameters&#x60;.   Ответ содержит только имена параметров, доступных для каждого типа кластера. Рекомендуемые значения этих параметров для конкретной конфигурации возвращает &#x60;GET /api/v1/dbs/default-parameters&#x60;.
+     * @return DbParametersByType
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c типами баз данных и их параметров. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON, ключи которого — типы кластеров баз данных, а значения — массивы имён доступных параметров. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -2636,20 +3602,20 @@ public class DatabasesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ConfigParameters getDatabaseParameters() throws ApiException {
-        ApiResponse<ConfigParameters> localVarResp = getDatabaseParametersWithHttpInfo();
+    public DbParametersByType getDatabaseParameters() throws ApiException {
+        ApiResponse<DbParametersByType> localVarResp = getDatabaseParametersWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Получение списка параметров баз данных
-     * Чтобы получить список параметров баз данных, отправьте GET-запрос на &#x60;/api/v1/dbs/parameters&#x60;.
-     * @return ApiResponse&lt;ConfigParameters&gt;
+     * Чтобы получить список параметров баз данных, отправьте GET-запрос на &#x60;/api/v1/dbs/parameters&#x60;.   Ответ содержит только имена параметров, доступных для каждого типа кластера. Рекомендуемые значения этих параметров для конкретной конфигурации возвращает &#x60;GET /api/v1/dbs/default-parameters&#x60;.
+     * @return ApiResponse&lt;DbParametersByType&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c типами баз данных и их параметров. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON, ключи которого — типы кластеров баз данных, а значения — массивы имён доступных параметров. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -2658,22 +3624,22 @@ public class DatabasesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ConfigParameters> getDatabaseParametersWithHttpInfo() throws ApiException {
+    public ApiResponse<DbParametersByType> getDatabaseParametersWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getDatabaseParametersValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<ConfigParameters>(){}.getType();
+        Type localVarReturnType = new TypeToken<DbParametersByType>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Получение списка параметров баз данных (asynchronously)
-     * Чтобы получить список параметров баз данных, отправьте GET-запрос на &#x60;/api/v1/dbs/parameters&#x60;.
+     * Чтобы получить список параметров баз данных, отправьте GET-запрос на &#x60;/api/v1/dbs/parameters&#x60;.   Ответ содержит только имена параметров, доступных для каждого типа кластера. Рекомендуемые значения этих параметров для конкретной конфигурации возвращает &#x60;GET /api/v1/dbs/default-parameters&#x60;.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c типами баз данных и их параметров. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON, ключи которого — типы кластеров баз данных, а значения — массивы имён доступных параметров. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -2682,10 +3648,608 @@ public class DatabasesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getDatabaseParametersAsync(final ApiCallback<ConfigParameters> _callback) throws ApiException {
+    public okhttp3.Call getDatabaseParametersAsync(final ApiCallback<DbParametersByType> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getDatabaseParametersValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<ConfigParameters>(){}.getType();
+        Type localVarReturnType = new TypeToken<DbParametersByType>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getDatabasePreset
+     * @param presetId ID тарифа (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Тариф успешно получен. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getDatabasePresetCall(Integer presetId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/v2/dbs/presets/{preset_id}"
+            .replace("{" + "preset_id" + "}", localVarApiClient.escapeString(presetId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "Bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getDatabasePresetValidateBeforeCall(Integer presetId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'presetId' is set
+        if (presetId == null) {
+            throw new ApiException("Missing the required parameter 'presetId' when calling getDatabasePreset(Async)");
+        }
+
+        return getDatabasePresetCall(presetId, _callback);
+
+    }
+
+    /**
+     * Получение тарифа для базы данных
+     * Чтобы получить тариф для базы данных, отправьте GET-запрос на &#x60;/api/v2/dbs/presets/{preset_id}&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;databases_preset&#x60;.
+     * @param presetId ID тарифа (required)
+     * @return GetDatabasePreset200Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Тариф успешно получен. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetDatabasePreset200Response getDatabasePreset(Integer presetId) throws ApiException {
+        ApiResponse<GetDatabasePreset200Response> localVarResp = getDatabasePresetWithHttpInfo(presetId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Получение тарифа для базы данных
+     * Чтобы получить тариф для базы данных, отправьте GET-запрос на &#x60;/api/v2/dbs/presets/{preset_id}&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;databases_preset&#x60;.
+     * @param presetId ID тарифа (required)
+     * @return ApiResponse&lt;GetDatabasePreset200Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Тариф успешно получен. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetDatabasePreset200Response> getDatabasePresetWithHttpInfo(Integer presetId) throws ApiException {
+        okhttp3.Call localVarCall = getDatabasePresetValidateBeforeCall(presetId, null);
+        Type localVarReturnType = new TypeToken<GetDatabasePreset200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Получение тарифа для базы данных (asynchronously)
+     * Чтобы получить тариф для базы данных, отправьте GET-запрос на &#x60;/api/v2/dbs/presets/{preset_id}&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;databases_preset&#x60;.
+     * @param presetId ID тарифа (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Тариф успешно получен. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getDatabasePresetAsync(Integer presetId, final ApiCallback<GetDatabasePreset200Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getDatabasePresetValidateBeforeCall(presetId, _callback);
+        Type localVarReturnType = new TypeToken<GetDatabasePreset200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getDatabasePrivileges
+     * @param dbClusterId ID кластера базы данных (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;privileges&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getDatabasePrivilegesCall(Integer dbClusterId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/v1/databases/{db_cluster_id}/privileges"
+            .replace("{" + "db_cluster_id" + "}", localVarApiClient.escapeString(dbClusterId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "Bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getDatabasePrivilegesValidateBeforeCall(Integer dbClusterId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'dbClusterId' is set
+        if (dbClusterId == null) {
+            throw new ApiException("Missing the required parameter 'dbClusterId' when calling getDatabasePrivileges(Async)");
+        }
+
+        return getDatabasePrivilegesCall(dbClusterId, _callback);
+
+    }
+
+    /**
+     * Получение привилегий кластера базы данных
+     * Чтобы получить список привилегий, которые можно выдать пользователям кластера базы данных, отправьте GET-запрос на &#x60;/api/v1/databases/{db_cluster_id}/privileges&#x60;.\\    Список зависит от типа СУБД кластера и определяется сервером автоматически: возвращаются только те привилегии, которые допустимы для этого кластера. Используйте его, чтобы заполнить поле &#x60;privileges&#x60; при &lt;a href&#x3D;&#39;#tag/Bazy-dannyh/operation/createDatabaseUser&#39;&gt;создании&lt;/a&gt; или &lt;a href&#x3D;&#39;#tag/Bazy-dannyh/operation/updateDatabaseUser&#39;&gt;изменении&lt;/a&gt; пользователя базы данных.
+     * @param dbClusterId ID кластера базы данных (required)
+     * @return GetDatabasePrivileges200Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;privileges&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetDatabasePrivileges200Response getDatabasePrivileges(Integer dbClusterId) throws ApiException {
+        ApiResponse<GetDatabasePrivileges200Response> localVarResp = getDatabasePrivilegesWithHttpInfo(dbClusterId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Получение привилегий кластера базы данных
+     * Чтобы получить список привилегий, которые можно выдать пользователям кластера базы данных, отправьте GET-запрос на &#x60;/api/v1/databases/{db_cluster_id}/privileges&#x60;.\\    Список зависит от типа СУБД кластера и определяется сервером автоматически: возвращаются только те привилегии, которые допустимы для этого кластера. Используйте его, чтобы заполнить поле &#x60;privileges&#x60; при &lt;a href&#x3D;&#39;#tag/Bazy-dannyh/operation/createDatabaseUser&#39;&gt;создании&lt;/a&gt; или &lt;a href&#x3D;&#39;#tag/Bazy-dannyh/operation/updateDatabaseUser&#39;&gt;изменении&lt;/a&gt; пользователя базы данных.
+     * @param dbClusterId ID кластера базы данных (required)
+     * @return ApiResponse&lt;GetDatabasePrivileges200Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;privileges&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetDatabasePrivileges200Response> getDatabasePrivilegesWithHttpInfo(Integer dbClusterId) throws ApiException {
+        okhttp3.Call localVarCall = getDatabasePrivilegesValidateBeforeCall(dbClusterId, null);
+        Type localVarReturnType = new TypeToken<GetDatabasePrivileges200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Получение привилегий кластера базы данных (asynchronously)
+     * Чтобы получить список привилегий, которые можно выдать пользователям кластера базы данных, отправьте GET-запрос на &#x60;/api/v1/databases/{db_cluster_id}/privileges&#x60;.\\    Список зависит от типа СУБД кластера и определяется сервером автоматически: возвращаются только те привилегии, которые допустимы для этого кластера. Используйте его, чтобы заполнить поле &#x60;privileges&#x60; при &lt;a href&#x3D;&#39;#tag/Bazy-dannyh/operation/createDatabaseUser&#39;&gt;создании&lt;/a&gt; или &lt;a href&#x3D;&#39;#tag/Bazy-dannyh/operation/updateDatabaseUser&#39;&gt;изменении&lt;/a&gt; пользователя базы данных.
+     * @param dbClusterId ID кластера базы данных (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;privileges&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getDatabasePrivilegesAsync(Integer dbClusterId, final ApiCallback<GetDatabasePrivileges200Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getDatabasePrivilegesValidateBeforeCall(dbClusterId, _callback);
+        Type localVarReturnType = new TypeToken<GetDatabasePrivileges200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getDatabaseS3Backup
+     * @param dbId ID базы данных (required)
+     * @param backupId ID резервной копии в формате UUID (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON с ключом &#x60;backup&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getDatabaseS3BackupCall(Integer dbId, UUID backupId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/v2/databases/{db_id}/backups/{backup_id}"
+            .replace("{" + "db_id" + "}", localVarApiClient.escapeString(dbId.toString()))
+            .replace("{" + "backup_id" + "}", localVarApiClient.escapeString(backupId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "Bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getDatabaseS3BackupValidateBeforeCall(Integer dbId, UUID backupId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'dbId' is set
+        if (dbId == null) {
+            throw new ApiException("Missing the required parameter 'dbId' when calling getDatabaseS3Backup(Async)");
+        }
+
+        // verify the required parameter 'backupId' is set
+        if (backupId == null) {
+            throw new ApiException("Missing the required parameter 'backupId' when calling getDatabaseS3Backup(Async)");
+        }
+
+        return getDatabaseS3BackupCall(dbId, backupId, _callback);
+
+    }
+
+    /**
+     * Получение S3-бэкапа базы данных
+     * Чтобы получить информацию о резервной копии кластера базы данных в объектном хранилище, отправьте GET-запрос на &#x60;/api/v2/databases/{db_id}/backups/{backup_id}&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;backup&#x60;. Обратите внимание, что &#x60;backup_id&#x60; здесь — строка в формате UUID, а не число, как в &#x60;/api/v1/dbs/{db_id}/backups/{backup_id}&#x60;.
+     * @param dbId ID базы данных (required)
+     * @param backupId ID резервной копии в формате UUID (required)
+     * @return CreateDatabaseS3Backup201Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON с ключом &#x60;backup&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateDatabaseS3Backup201Response getDatabaseS3Backup(Integer dbId, UUID backupId) throws ApiException {
+        ApiResponse<CreateDatabaseS3Backup201Response> localVarResp = getDatabaseS3BackupWithHttpInfo(dbId, backupId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Получение S3-бэкапа базы данных
+     * Чтобы получить информацию о резервной копии кластера базы данных в объектном хранилище, отправьте GET-запрос на &#x60;/api/v2/databases/{db_id}/backups/{backup_id}&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;backup&#x60;. Обратите внимание, что &#x60;backup_id&#x60; здесь — строка в формате UUID, а не число, как в &#x60;/api/v1/dbs/{db_id}/backups/{backup_id}&#x60;.
+     * @param dbId ID базы данных (required)
+     * @param backupId ID резервной копии в формате UUID (required)
+     * @return ApiResponse&lt;CreateDatabaseS3Backup201Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON с ключом &#x60;backup&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateDatabaseS3Backup201Response> getDatabaseS3BackupWithHttpInfo(Integer dbId, UUID backupId) throws ApiException {
+        okhttp3.Call localVarCall = getDatabaseS3BackupValidateBeforeCall(dbId, backupId, null);
+        Type localVarReturnType = new TypeToken<CreateDatabaseS3Backup201Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Получение S3-бэкапа базы данных (asynchronously)
+     * Чтобы получить информацию о резервной копии кластера базы данных в объектном хранилище, отправьте GET-запрос на &#x60;/api/v2/databases/{db_id}/backups/{backup_id}&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;backup&#x60;. Обратите внимание, что &#x60;backup_id&#x60; здесь — строка в формате UUID, а не число, как в &#x60;/api/v1/dbs/{db_id}/backups/{backup_id}&#x60;.
+     * @param dbId ID базы данных (required)
+     * @param backupId ID резервной копии в формате UUID (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON с ключом &#x60;backup&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getDatabaseS3BackupAsync(Integer dbId, UUID backupId, final ApiCallback<CreateDatabaseS3Backup201Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getDatabaseS3BackupValidateBeforeCall(dbId, backupId, _callback);
+        Type localVarReturnType = new TypeToken<CreateDatabaseS3Backup201Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getDatabaseS3Backups
+     * @param dbId ID базы данных (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON с ключом &#x60;backups&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getDatabaseS3BackupsCall(Integer dbId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/v2/databases/{db_id}/backups"
+            .replace("{" + "db_id" + "}", localVarApiClient.escapeString(dbId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "Bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getDatabaseS3BackupsValidateBeforeCall(Integer dbId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'dbId' is set
+        if (dbId == null) {
+            throw new ApiException("Missing the required parameter 'dbId' when calling getDatabaseS3Backups(Async)");
+        }
+
+        return getDatabaseS3BackupsCall(dbId, _callback);
+
+    }
+
+    /**
+     * Список S3-бэкапов базы данных
+     * Чтобы получить список резервных копий кластера базы данных в объектном хранилище, отправьте GET-запрос на &#x60;/api/v2/databases/{db_id}/backups&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;backups&#x60;. Копии отсортированы по дате создания по убыванию — сначала самые свежие.   Резервное копирование в объектное хранилище доступно для кластеров MySQL и PostgreSQL. Идентификатор такой копии — строка в формате UUID; это отдельный от &#x60;/api/v1/dbs/{db_id}/backups&#x60; механизм, и идентификаторы копий между ними не взаимозаменяемы.
+     * @param dbId ID базы данных (required)
+     * @return GetDatabaseS3Backups200Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON с ключом &#x60;backups&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetDatabaseS3Backups200Response getDatabaseS3Backups(Integer dbId) throws ApiException {
+        ApiResponse<GetDatabaseS3Backups200Response> localVarResp = getDatabaseS3BackupsWithHttpInfo(dbId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Список S3-бэкапов базы данных
+     * Чтобы получить список резервных копий кластера базы данных в объектном хранилище, отправьте GET-запрос на &#x60;/api/v2/databases/{db_id}/backups&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;backups&#x60;. Копии отсортированы по дате создания по убыванию — сначала самые свежие.   Резервное копирование в объектное хранилище доступно для кластеров MySQL и PostgreSQL. Идентификатор такой копии — строка в формате UUID; это отдельный от &#x60;/api/v1/dbs/{db_id}/backups&#x60; механизм, и идентификаторы копий между ними не взаимозаменяемы.
+     * @param dbId ID базы данных (required)
+     * @return ApiResponse&lt;GetDatabaseS3Backups200Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON с ключом &#x60;backups&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetDatabaseS3Backups200Response> getDatabaseS3BackupsWithHttpInfo(Integer dbId) throws ApiException {
+        okhttp3.Call localVarCall = getDatabaseS3BackupsValidateBeforeCall(dbId, null);
+        Type localVarReturnType = new TypeToken<GetDatabaseS3Backups200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Список S3-бэкапов базы данных (asynchronously)
+     * Чтобы получить список резервных копий кластера базы данных в объектном хранилище, отправьте GET-запрос на &#x60;/api/v2/databases/{db_id}/backups&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;backups&#x60;. Копии отсортированы по дате создания по убыванию — сначала самые свежие.   Резервное копирование в объектное хранилище доступно для кластеров MySQL и PostgreSQL. Идентификатор такой копии — строка в формате UUID; это отдельный от &#x60;/api/v1/dbs/{db_id}/backups&#x60; механизм, и идентификаторы копий между ними не взаимозаменяемы.
+     * @param dbId ID базы данных (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON с ключом &#x60;backups&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getDatabaseS3BackupsAsync(Integer dbId, final ApiCallback<GetDatabaseS3Backups200Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getDatabaseS3BackupsValidateBeforeCall(dbId, _callback);
+        Type localVarReturnType = new TypeToken<GetDatabaseS3Backups200Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2995,7 +4559,8 @@ public class DatabasesApi {
     }
     /**
      * Build call for getDatabasesPresets
-     * @param dbId ID базы данных (optional)
+     * @param clusterId ID кластера базы данных. Возвращает тарифы группы, в пределах которой доступна смена тарифа этого кластера (сценарий изменения кластера). (optional)
+     * @param withUnavailable Включить в ответ тарифы, недоступные к заказу из-за нехватки свободных ресурсов. Учитывается только при запросе без &#x60;cluster_id&#x60;: вместе с &#x60;cluster_id&#x60; фильтр по свободным ресурсам и так не применяется. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3011,7 +4576,7 @@ public class DatabasesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getDatabasesPresetsCall(Integer dbId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getDatabasesPresetsCall(Integer clusterId, Boolean withUnavailable, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3036,8 +4601,12 @@ public class DatabasesApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        if (dbId != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("db_id", dbId));
+        if (clusterId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("cluster_id", clusterId));
+        }
+
+        if (withUnavailable != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("with_unavailable", withUnavailable));
         }
 
         final String[] localVarAccepts = {
@@ -3060,15 +4629,16 @@ public class DatabasesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getDatabasesPresetsValidateBeforeCall(Integer dbId, final ApiCallback _callback) throws ApiException {
-        return getDatabasesPresetsCall(dbId, _callback);
+    private okhttp3.Call getDatabasesPresetsValidateBeforeCall(Integer clusterId, Boolean withUnavailable, final ApiCallback _callback) throws ApiException {
+        return getDatabasesPresetsCall(clusterId, withUnavailable, _callback);
 
     }
 
     /**
      * Получение списка тарифов для баз данных
-     * Чтобы получить список тарифов для баз данных, отправьте GET-запрос на &#x60;/api/v2/presets/dbs&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;databases_presets&#x60;.
-     * @param dbId ID базы данных (optional)
+     * Чтобы получить список тарифов для баз данных, отправьте GET-запрос на &#x60;/api/v2/presets/dbs&#x60;.   Без параметров возвращаются тарифы, доступные к заказу — этот список используется при создании кластера. Если передать &#x60;cluster_id&#x60;, вернутся тарифы группы, в пределах которой можно сменить тариф указанного кластера.   Тело ответа будет представлять собой объект JSON с ключом &#x60;databases_presets&#x60;.
+     * @param clusterId ID кластера базы данных. Возвращает тарифы группы, в пределах которой доступна смена тарифа этого кластера (сценарий изменения кластера). (optional)
+     * @param withUnavailable Включить в ответ тарифы, недоступные к заказу из-за нехватки свободных ресурсов. Учитывается только при запросе без &#x60;cluster_id&#x60;: вместе с &#x60;cluster_id&#x60; фильтр по свободным ресурсам и так не применяется. (optional)
      * @return GetDatabasesPresets200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3083,15 +4653,16 @@ public class DatabasesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public GetDatabasesPresets200Response getDatabasesPresets(Integer dbId) throws ApiException {
-        ApiResponse<GetDatabasesPresets200Response> localVarResp = getDatabasesPresetsWithHttpInfo(dbId);
+    public GetDatabasesPresets200Response getDatabasesPresets(Integer clusterId, Boolean withUnavailable) throws ApiException {
+        ApiResponse<GetDatabasesPresets200Response> localVarResp = getDatabasesPresetsWithHttpInfo(clusterId, withUnavailable);
         return localVarResp.getData();
     }
 
     /**
      * Получение списка тарифов для баз данных
-     * Чтобы получить список тарифов для баз данных, отправьте GET-запрос на &#x60;/api/v2/presets/dbs&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;databases_presets&#x60;.
-     * @param dbId ID базы данных (optional)
+     * Чтобы получить список тарифов для баз данных, отправьте GET-запрос на &#x60;/api/v2/presets/dbs&#x60;.   Без параметров возвращаются тарифы, доступные к заказу — этот список используется при создании кластера. Если передать &#x60;cluster_id&#x60;, вернутся тарифы группы, в пределах которой можно сменить тариф указанного кластера.   Тело ответа будет представлять собой объект JSON с ключом &#x60;databases_presets&#x60;.
+     * @param clusterId ID кластера базы данных. Возвращает тарифы группы, в пределах которой доступна смена тарифа этого кластера (сценарий изменения кластера). (optional)
+     * @param withUnavailable Включить в ответ тарифы, недоступные к заказу из-за нехватки свободных ресурсов. Учитывается только при запросе без &#x60;cluster_id&#x60;: вместе с &#x60;cluster_id&#x60; фильтр по свободным ресурсам и так не применяется. (optional)
      * @return ApiResponse&lt;GetDatabasesPresets200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3106,16 +4677,17 @@ public class DatabasesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GetDatabasesPresets200Response> getDatabasesPresetsWithHttpInfo(Integer dbId) throws ApiException {
-        okhttp3.Call localVarCall = getDatabasesPresetsValidateBeforeCall(dbId, null);
+    public ApiResponse<GetDatabasesPresets200Response> getDatabasesPresetsWithHttpInfo(Integer clusterId, Boolean withUnavailable) throws ApiException {
+        okhttp3.Call localVarCall = getDatabasesPresetsValidateBeforeCall(clusterId, withUnavailable, null);
         Type localVarReturnType = new TypeToken<GetDatabasesPresets200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Получение списка тарифов для баз данных (asynchronously)
-     * Чтобы получить список тарифов для баз данных, отправьте GET-запрос на &#x60;/api/v2/presets/dbs&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;databases_presets&#x60;.
-     * @param dbId ID базы данных (optional)
+     * Чтобы получить список тарифов для баз данных, отправьте GET-запрос на &#x60;/api/v2/presets/dbs&#x60;.   Без параметров возвращаются тарифы, доступные к заказу — этот список используется при создании кластера. Если передать &#x60;cluster_id&#x60;, вернутся тарифы группы, в пределах которой можно сменить тариф указанного кластера.   Тело ответа будет представлять собой объект JSON с ключом &#x60;databases_presets&#x60;.
+     * @param clusterId ID кластера базы данных. Возвращает тарифы группы, в пределах которой доступна смена тарифа этого кластера (сценарий изменения кластера). (optional)
+     * @param withUnavailable Включить в ответ тарифы, недоступные к заказу из-за нехватки свободных ресурсов. Учитывается только при запросе без &#x60;cluster_id&#x60;: вместе с &#x60;cluster_id&#x60; фильтр по свободным ресурсам и так не применяется. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3131,11 +4703,164 @@ public class DatabasesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getDatabasesPresetsAsync(Integer dbId, final ApiCallback<GetDatabasesPresets200Response> _callback) throws ApiException {
+    public okhttp3.Call getDatabasesPresetsAsync(Integer clusterId, Boolean withUnavailable, final ApiCallback<GetDatabasesPresets200Response> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getDatabasesPresetsValidateBeforeCall(dbId, _callback);
+        okhttp3.Call localVarCall = getDatabasesPresetsValidateBeforeCall(clusterId, withUnavailable, _callback);
         Type localVarReturnType = new TypeToken<GetDatabasesPresets200Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for performDatabaseClusterAction
+     * @param dbClusterId ID кластера базы данных (required)
+     * @param clusterAction  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Действие принято к выполнению. Тело ответа пустое. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call performDatabaseClusterActionCall(Integer dbClusterId, ClusterAction clusterAction, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = clusterAction;
+
+        // create path and map variables
+        String localVarPath = "/api/v1/databases/{db_cluster_id}/action"
+            .replace("{" + "db_cluster_id" + "}", localVarApiClient.escapeString(dbClusterId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "Bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call performDatabaseClusterActionValidateBeforeCall(Integer dbClusterId, ClusterAction clusterAction, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'dbClusterId' is set
+        if (dbClusterId == null) {
+            throw new ApiException("Missing the required parameter 'dbClusterId' when calling performDatabaseClusterAction(Async)");
+        }
+
+        // verify the required parameter 'clusterAction' is set
+        if (clusterAction == null) {
+            throw new ApiException("Missing the required parameter 'clusterAction' when calling performDatabaseClusterAction(Async)");
+        }
+
+        return performDatabaseClusterActionCall(dbClusterId, clusterAction, _callback);
+
+    }
+
+    /**
+     * Выполнение действия над кластером базы данных
+     * Чтобы выполнить действие над кластером базы данных, отправьте POST-запрос на &#x60;/api/v1/databases/{db_cluster_id}/action&#x60;.   Доступные действия: &#x60;reboot&#x60; — перезагрузка кластера, &#x60;shutdown&#x60; — выключение кластера, &#x60;start&#x60; — включение кластера.
+     * @param dbClusterId ID кластера базы данных (required)
+     * @param clusterAction  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Действие принято к выполнению. Тело ответа пустое. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public void performDatabaseClusterAction(Integer dbClusterId, ClusterAction clusterAction) throws ApiException {
+        performDatabaseClusterActionWithHttpInfo(dbClusterId, clusterAction);
+    }
+
+    /**
+     * Выполнение действия над кластером базы данных
+     * Чтобы выполнить действие над кластером базы данных, отправьте POST-запрос на &#x60;/api/v1/databases/{db_cluster_id}/action&#x60;.   Доступные действия: &#x60;reboot&#x60; — перезагрузка кластера, &#x60;shutdown&#x60; — выключение кластера, &#x60;start&#x60; — включение кластера.
+     * @param dbClusterId ID кластера базы данных (required)
+     * @param clusterAction  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Действие принято к выполнению. Тело ответа пустое. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> performDatabaseClusterActionWithHttpInfo(Integer dbClusterId, ClusterAction clusterAction) throws ApiException {
+        okhttp3.Call localVarCall = performDatabaseClusterActionValidateBeforeCall(dbClusterId, clusterAction, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Выполнение действия над кластером базы данных (asynchronously)
+     * Чтобы выполнить действие над кластером базы данных, отправьте POST-запрос на &#x60;/api/v1/databases/{db_cluster_id}/action&#x60;.   Доступные действия: &#x60;reboot&#x60; — перезагрузка кластера, &#x60;shutdown&#x60; — выключение кластера, &#x60;start&#x60; — включение кластера.
+     * @param dbClusterId ID кластера базы данных (required)
+     * @param clusterAction  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Действие принято к выполнению. Тело ответа пустое. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call performDatabaseClusterActionAsync(Integer dbClusterId, ClusterAction clusterAction, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = performDatabaseClusterActionValidateBeforeCall(dbClusterId, clusterAction, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
@@ -3296,25 +5021,26 @@ public class DatabasesApi {
         return localVarCall;
     }
     /**
-     * Build call for updateDatabaseAutoBackupsSettings
+     * Build call for restoreDatabaseFromS3Backup
      * @param dbId ID базы данных (required)
-     * @param autoBackup При значении &#x60;is_enabled&#x60;: &#x60;true&#x60;, поля &#x60;copy_count&#x60;, &#x60;creation_start_at&#x60;, &#x60;interval&#x60; являются обязательными (optional)
+     * @param backupId ID резервной копии в формате UUID (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON с ключом &#x60;auto_backups_settings&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Восстановление успешно запущено. Тело ответа пустое. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateDatabaseAutoBackupsSettingsCall(Integer dbId, AutoBackup autoBackup, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call restoreDatabaseFromS3BackupCall(Integer dbId, UUID backupId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3328,7 +5054,164 @@ public class DatabasesApi {
             basePath = null;
         }
 
-        Object localVarPostBody = autoBackup;
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/v2/databases/{db_id}/backups/{backup_id}/restore"
+            .replace("{" + "db_id" + "}", localVarApiClient.escapeString(dbId.toString()))
+            .replace("{" + "backup_id" + "}", localVarApiClient.escapeString(backupId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "Bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call restoreDatabaseFromS3BackupValidateBeforeCall(Integer dbId, UUID backupId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'dbId' is set
+        if (dbId == null) {
+            throw new ApiException("Missing the required parameter 'dbId' when calling restoreDatabaseFromS3Backup(Async)");
+        }
+
+        // verify the required parameter 'backupId' is set
+        if (backupId == null) {
+            throw new ApiException("Missing the required parameter 'backupId' when calling restoreDatabaseFromS3Backup(Async)");
+        }
+
+        return restoreDatabaseFromS3BackupCall(dbId, backupId, _callback);
+
+    }
+
+    /**
+     * Восстановление базы данных из S3-бэкапа
+     * Чтобы восстановить кластер базы данных из резервной копии в объектном хранилище, отправьте POST-запрос на &#x60;/api/v2/databases/{db_id}/backups/{backup_id}/restore&#x60;.   Тела запроса нет, тело ответа пустое. Восстановиться можно только из копии со статусом &#x60;success&#x60;.   Сразу после запуска кластер переходит в статус &#x60;backup_recovery&#x60;. Пока восстановление не завершится, создание, изменение и удаление резервных копий, а также повторный запуск восстановления недоступны.
+     * @param dbId ID базы данных (required)
+     * @param backupId ID резервной копии в формате UUID (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Восстановление успешно запущено. Тело ответа пустое. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public void restoreDatabaseFromS3Backup(Integer dbId, UUID backupId) throws ApiException {
+        restoreDatabaseFromS3BackupWithHttpInfo(dbId, backupId);
+    }
+
+    /**
+     * Восстановление базы данных из S3-бэкапа
+     * Чтобы восстановить кластер базы данных из резервной копии в объектном хранилище, отправьте POST-запрос на &#x60;/api/v2/databases/{db_id}/backups/{backup_id}/restore&#x60;.   Тела запроса нет, тело ответа пустое. Восстановиться можно только из копии со статусом &#x60;success&#x60;.   Сразу после запуска кластер переходит в статус &#x60;backup_recovery&#x60;. Пока восстановление не завершится, создание, изменение и удаление резервных копий, а также повторный запуск восстановления недоступны.
+     * @param dbId ID базы данных (required)
+     * @param backupId ID резервной копии в формате UUID (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Восстановление успешно запущено. Тело ответа пустое. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> restoreDatabaseFromS3BackupWithHttpInfo(Integer dbId, UUID backupId) throws ApiException {
+        okhttp3.Call localVarCall = restoreDatabaseFromS3BackupValidateBeforeCall(dbId, backupId, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Восстановление базы данных из S3-бэкапа (asynchronously)
+     * Чтобы восстановить кластер базы данных из резервной копии в объектном хранилище, отправьте POST-запрос на &#x60;/api/v2/databases/{db_id}/backups/{backup_id}/restore&#x60;.   Тела запроса нет, тело ответа пустое. Восстановиться можно только из копии со статусом &#x60;success&#x60;.   Сразу после запуска кластер переходит в статус &#x60;backup_recovery&#x60;. Пока восстановление не завершится, создание, изменение и удаление резервных копий, а также повторный запуск восстановления недоступны.
+     * @param dbId ID базы данных (required)
+     * @param backupId ID резервной копии в формате UUID (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Восстановление успешно запущено. Тело ответа пустое. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call restoreDatabaseFromS3BackupAsync(Integer dbId, UUID backupId, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = restoreDatabaseFromS3BackupValidateBeforeCall(dbId, backupId, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for updateDatabaseAutoBackupsSettings
+     * @param dbId ID базы данных (required)
+     * @param updateAutoBackup При значении &#x60;is_enabled&#x60;: &#x60;true&#x60;, поля &#x60;copy_count&#x60;, &#x60;creation_start_at&#x60;, &#x60;interval&#x60; являются обязательными (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON с ключом &#x60;auto_backups_settings&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateDatabaseAutoBackupsSettingsCall(Integer dbId, UpdateAutoBackup updateAutoBackup, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = updateAutoBackup;
 
         // create path and map variables
         String localVarPath = "/api/v1/dbs/{db_id}/auto-backups"
@@ -3361,13 +5244,18 @@ public class DatabasesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateDatabaseAutoBackupsSettingsValidateBeforeCall(Integer dbId, AutoBackup autoBackup, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateDatabaseAutoBackupsSettingsValidateBeforeCall(Integer dbId, UpdateAutoBackup updateAutoBackup, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'dbId' is set
         if (dbId == null) {
             throw new ApiException("Missing the required parameter 'dbId' when calling updateDatabaseAutoBackupsSettings(Async)");
         }
 
-        return updateDatabaseAutoBackupsSettingsCall(dbId, autoBackup, _callback);
+        // verify the required parameter 'updateAutoBackup' is set
+        if (updateAutoBackup == null) {
+            throw new ApiException("Missing the required parameter 'updateAutoBackup' when calling updateDatabaseAutoBackupsSettings(Async)");
+        }
+
+        return updateDatabaseAutoBackupsSettingsCall(dbId, updateAutoBackup, _callback);
 
     }
 
@@ -3375,7 +5263,7 @@ public class DatabasesApi {
      * Изменение настроек автобэкапов базы данных
      * Чтобы изменить список настроек автобэкапов базы данных, отправьте запрос PATCH в &#x60;api/v1/dbs/{db_id}/auto-backups&#x60;
      * @param dbId ID базы данных (required)
-     * @param autoBackup При значении &#x60;is_enabled&#x60;: &#x60;true&#x60;, поля &#x60;copy_count&#x60;, &#x60;creation_start_at&#x60;, &#x60;interval&#x60; являются обязательными (optional)
+     * @param updateAutoBackup При значении &#x60;is_enabled&#x60;: &#x60;true&#x60;, поля &#x60;copy_count&#x60;, &#x60;creation_start_at&#x60;, &#x60;interval&#x60; являются обязательными (required)
      * @return GetDatabaseAutoBackupsSettings200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3386,12 +5274,13 @@ public class DatabasesApi {
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public GetDatabaseAutoBackupsSettings200Response updateDatabaseAutoBackupsSettings(Integer dbId, AutoBackup autoBackup) throws ApiException {
-        ApiResponse<GetDatabaseAutoBackupsSettings200Response> localVarResp = updateDatabaseAutoBackupsSettingsWithHttpInfo(dbId, autoBackup);
+    public GetDatabaseAutoBackupsSettings200Response updateDatabaseAutoBackupsSettings(Integer dbId, UpdateAutoBackup updateAutoBackup) throws ApiException {
+        ApiResponse<GetDatabaseAutoBackupsSettings200Response> localVarResp = updateDatabaseAutoBackupsSettingsWithHttpInfo(dbId, updateAutoBackup);
         return localVarResp.getData();
     }
 
@@ -3399,7 +5288,7 @@ public class DatabasesApi {
      * Изменение настроек автобэкапов базы данных
      * Чтобы изменить список настроек автобэкапов базы данных, отправьте запрос PATCH в &#x60;api/v1/dbs/{db_id}/auto-backups&#x60;
      * @param dbId ID базы данных (required)
-     * @param autoBackup При значении &#x60;is_enabled&#x60;: &#x60;true&#x60;, поля &#x60;copy_count&#x60;, &#x60;creation_start_at&#x60;, &#x60;interval&#x60; являются обязательными (optional)
+     * @param updateAutoBackup При значении &#x60;is_enabled&#x60;: &#x60;true&#x60;, поля &#x60;copy_count&#x60;, &#x60;creation_start_at&#x60;, &#x60;interval&#x60; являются обязательными (required)
      * @return ApiResponse&lt;GetDatabaseAutoBackupsSettings200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3410,12 +5299,13 @@ public class DatabasesApi {
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GetDatabaseAutoBackupsSettings200Response> updateDatabaseAutoBackupsSettingsWithHttpInfo(Integer dbId, AutoBackup autoBackup) throws ApiException {
-        okhttp3.Call localVarCall = updateDatabaseAutoBackupsSettingsValidateBeforeCall(dbId, autoBackup, null);
+    public ApiResponse<GetDatabaseAutoBackupsSettings200Response> updateDatabaseAutoBackupsSettingsWithHttpInfo(Integer dbId, UpdateAutoBackup updateAutoBackup) throws ApiException {
+        okhttp3.Call localVarCall = updateDatabaseAutoBackupsSettingsValidateBeforeCall(dbId, updateAutoBackup, null);
         Type localVarReturnType = new TypeToken<GetDatabaseAutoBackupsSettings200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -3424,7 +5314,7 @@ public class DatabasesApi {
      * Изменение настроек автобэкапов базы данных (asynchronously)
      * Чтобы изменить список настроек автобэкапов базы данных, отправьте запрос PATCH в &#x60;api/v1/dbs/{db_id}/auto-backups&#x60;
      * @param dbId ID базы данных (required)
-     * @param autoBackup При значении &#x60;is_enabled&#x60;: &#x60;true&#x60;, поля &#x60;copy_count&#x60;, &#x60;creation_start_at&#x60;, &#x60;interval&#x60; являются обязательными (optional)
+     * @param updateAutoBackup При значении &#x60;is_enabled&#x60;: &#x60;true&#x60;, поля &#x60;copy_count&#x60;, &#x60;creation_start_at&#x60;, &#x60;interval&#x60; являются обязательными (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3436,14 +5326,186 @@ public class DatabasesApi {
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateDatabaseAutoBackupsSettingsAsync(Integer dbId, AutoBackup autoBackup, final ApiCallback<GetDatabaseAutoBackupsSettings200Response> _callback) throws ApiException {
+    public okhttp3.Call updateDatabaseAutoBackupsSettingsAsync(Integer dbId, UpdateAutoBackup updateAutoBackup, final ApiCallback<GetDatabaseAutoBackupsSettings200Response> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = updateDatabaseAutoBackupsSettingsValidateBeforeCall(dbId, autoBackup, _callback);
+        okhttp3.Call localVarCall = updateDatabaseAutoBackupsSettingsValidateBeforeCall(dbId, updateAutoBackup, _callback);
         Type localVarReturnType = new TypeToken<GetDatabaseAutoBackupsSettings200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for updateDatabaseBackup
+     * @param dbId ID базы данных (required)
+     * @param backupId ID резервной копии (required)
+     * @param dbsUpdateBackup  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON с ключом &#x60;backup&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateDatabaseBackupCall(Integer dbId, Integer backupId, DbsUpdateBackup dbsUpdateBackup, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = dbsUpdateBackup;
+
+        // create path and map variables
+        String localVarPath = "/api/v1/dbs/{db_id}/backups/{backup_id}"
+            .replace("{" + "db_id" + "}", localVarApiClient.escapeString(dbId.toString()))
+            .replace("{" + "backup_id" + "}", localVarApiClient.escapeString(backupId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "Bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call updateDatabaseBackupValidateBeforeCall(Integer dbId, Integer backupId, DbsUpdateBackup dbsUpdateBackup, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'dbId' is set
+        if (dbId == null) {
+            throw new ApiException("Missing the required parameter 'dbId' when calling updateDatabaseBackup(Async)");
+        }
+
+        // verify the required parameter 'backupId' is set
+        if (backupId == null) {
+            throw new ApiException("Missing the required parameter 'backupId' when calling updateDatabaseBackup(Async)");
+        }
+
+        // verify the required parameter 'dbsUpdateBackup' is set
+        if (dbsUpdateBackup == null) {
+            throw new ApiException("Missing the required parameter 'dbsUpdateBackup' when calling updateDatabaseBackup(Async)");
+        }
+
+        return updateDatabaseBackupCall(dbId, backupId, dbsUpdateBackup, _callback);
+
+    }
+
+    /**
+     * Изменение комментария к бэкапу базы данных
+     * Чтобы изменить комментарий к бэкапу базы данных, отправьте PATCH-запрос на &#x60;/api/v1/dbs/{db_id}/backups/{backup_id}&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;backup&#x60;. 
+     * @param dbId ID базы данных (required)
+     * @param backupId ID резервной копии (required)
+     * @param dbsUpdateBackup  (required)
+     * @return GetDatabaseBackup200Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON с ключом &#x60;backup&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetDatabaseBackup200Response updateDatabaseBackup(Integer dbId, Integer backupId, DbsUpdateBackup dbsUpdateBackup) throws ApiException {
+        ApiResponse<GetDatabaseBackup200Response> localVarResp = updateDatabaseBackupWithHttpInfo(dbId, backupId, dbsUpdateBackup);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Изменение комментария к бэкапу базы данных
+     * Чтобы изменить комментарий к бэкапу базы данных, отправьте PATCH-запрос на &#x60;/api/v1/dbs/{db_id}/backups/{backup_id}&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;backup&#x60;. 
+     * @param dbId ID базы данных (required)
+     * @param backupId ID резервной копии (required)
+     * @param dbsUpdateBackup  (required)
+     * @return ApiResponse&lt;GetDatabaseBackup200Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON с ключом &#x60;backup&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetDatabaseBackup200Response> updateDatabaseBackupWithHttpInfo(Integer dbId, Integer backupId, DbsUpdateBackup dbsUpdateBackup) throws ApiException {
+        okhttp3.Call localVarCall = updateDatabaseBackupValidateBeforeCall(dbId, backupId, dbsUpdateBackup, null);
+        Type localVarReturnType = new TypeToken<GetDatabaseBackup200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Изменение комментария к бэкапу базы данных (asynchronously)
+     * Чтобы изменить комментарий к бэкапу базы данных, отправьте PATCH-запрос на &#x60;/api/v1/dbs/{db_id}/backups/{backup_id}&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;backup&#x60;. 
+     * @param dbId ID базы данных (required)
+     * @param backupId ID резервной копии (required)
+     * @param dbsUpdateBackup  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON с ключом &#x60;backup&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateDatabaseBackupAsync(Integer dbId, Integer backupId, DbsUpdateBackup dbsUpdateBackup, final ApiCallback<GetDatabaseBackup200Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updateDatabaseBackupValidateBeforeCall(dbId, backupId, dbsUpdateBackup, _callback);
+        Type localVarReturnType = new TypeToken<GetDatabaseBackup200Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -3530,10 +5592,10 @@ public class DatabasesApi {
 
     /**
      * Изменение кластера базы данных
-     * Чтобы изменить кластер базы данных на вашем аккаунте, отправьте PATCH-запрос на &#x60;/api/v1/databases/{db_cluster_id}&#x60;.
+     * Чтобы изменить кластер базы данных на вашем аккаунте, отправьте PATCH-запрос на &#x60;/api/v1/databases/{db_cluster_id}&#x60;.   Размер кластера задается либо тарифом (&#x60;preset_id&#x60;), либо конфигуратором (&#x60;configuration&#x60;) — эти поля взаимоисключающие.
      * @param dbClusterId ID кластера базы данных (required)
      * @param updateCluster  (required)
-     * @return CreateDatabaseCluster201Response
+     * @return UpdateDatabaseCluster200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -3547,17 +5609,17 @@ public class DatabasesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public CreateDatabaseCluster201Response updateDatabaseCluster(Integer dbClusterId, UpdateCluster updateCluster) throws ApiException {
-        ApiResponse<CreateDatabaseCluster201Response> localVarResp = updateDatabaseClusterWithHttpInfo(dbClusterId, updateCluster);
+    public UpdateDatabaseCluster200Response updateDatabaseCluster(Integer dbClusterId, UpdateCluster updateCluster) throws ApiException {
+        ApiResponse<UpdateDatabaseCluster200Response> localVarResp = updateDatabaseClusterWithHttpInfo(dbClusterId, updateCluster);
         return localVarResp.getData();
     }
 
     /**
      * Изменение кластера базы данных
-     * Чтобы изменить кластер базы данных на вашем аккаунте, отправьте PATCH-запрос на &#x60;/api/v1/databases/{db_cluster_id}&#x60;.
+     * Чтобы изменить кластер базы данных на вашем аккаунте, отправьте PATCH-запрос на &#x60;/api/v1/databases/{db_cluster_id}&#x60;.   Размер кластера задается либо тарифом (&#x60;preset_id&#x60;), либо конфигуратором (&#x60;configuration&#x60;) — эти поля взаимоисключающие.
      * @param dbClusterId ID кластера базы данных (required)
      * @param updateCluster  (required)
-     * @return ApiResponse&lt;CreateDatabaseCluster201Response&gt;
+     * @return ApiResponse&lt;UpdateDatabaseCluster200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -3571,15 +5633,15 @@ public class DatabasesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CreateDatabaseCluster201Response> updateDatabaseClusterWithHttpInfo(Integer dbClusterId, UpdateCluster updateCluster) throws ApiException {
+    public ApiResponse<UpdateDatabaseCluster200Response> updateDatabaseClusterWithHttpInfo(Integer dbClusterId, UpdateCluster updateCluster) throws ApiException {
         okhttp3.Call localVarCall = updateDatabaseClusterValidateBeforeCall(dbClusterId, updateCluster, null);
-        Type localVarReturnType = new TypeToken<CreateDatabaseCluster201Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<UpdateDatabaseCluster200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Изменение кластера базы данных (asynchronously)
-     * Чтобы изменить кластер базы данных на вашем аккаунте, отправьте PATCH-запрос на &#x60;/api/v1/databases/{db_cluster_id}&#x60;.
+     * Чтобы изменить кластер базы данных на вашем аккаунте, отправьте PATCH-запрос на &#x60;/api/v1/databases/{db_cluster_id}&#x60;.   Размер кластера задается либо тарифом (&#x60;preset_id&#x60;), либо конфигуратором (&#x60;configuration&#x60;) — эти поля взаимоисключающие.
      * @param dbClusterId ID кластера базы данных (required)
      * @param updateCluster  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -3597,24 +5659,24 @@ public class DatabasesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateDatabaseClusterAsync(Integer dbClusterId, UpdateCluster updateCluster, final ApiCallback<CreateDatabaseCluster201Response> _callback) throws ApiException {
+    public okhttp3.Call updateDatabaseClusterAsync(Integer dbClusterId, UpdateCluster updateCluster, final ApiCallback<UpdateDatabaseCluster200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = updateDatabaseClusterValidateBeforeCall(dbClusterId, updateCluster, _callback);
-        Type localVarReturnType = new TypeToken<CreateDatabaseCluster201Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<UpdateDatabaseCluster200Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for updateDatabaseInstance
+     * Build call for updateDatabaseClusterV2
      * @param dbClusterId ID кластера базы данных (required)
-     * @param updateInstance  (required)
+     * @param updateClusterV2  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;instance&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;db&#x60;. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -3623,7 +5685,7 @@ public class DatabasesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateDatabaseInstanceCall(Integer dbClusterId, UpdateInstance updateInstance, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call updateDatabaseClusterV2Call(Integer dbClusterId, UpdateClusterV2 updateClusterV2, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3637,10 +5699,10 @@ public class DatabasesApi {
             basePath = null;
         }
 
-        Object localVarPostBody = updateInstance;
+        Object localVarPostBody = updateClusterV2;
 
         // create path and map variables
-        String localVarPath = "/api/v1/databases/{db_cluster_id}/instances/{instance_id}"
+        String localVarPath = "/api/v2/databases/{db_cluster_id}"
             .replace("{" + "db_cluster_id" + "}", localVarApiClient.escapeString(dbClusterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -3670,10 +5732,175 @@ public class DatabasesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateDatabaseInstanceValidateBeforeCall(Integer dbClusterId, UpdateInstance updateInstance, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateDatabaseClusterV2ValidateBeforeCall(Integer dbClusterId, UpdateClusterV2 updateClusterV2, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'dbClusterId' is set
+        if (dbClusterId == null) {
+            throw new ApiException("Missing the required parameter 'dbClusterId' when calling updateDatabaseClusterV2(Async)");
+        }
+
+        // verify the required parameter 'updateClusterV2' is set
+        if (updateClusterV2 == null) {
+            throw new ApiException("Missing the required parameter 'updateClusterV2' when calling updateDatabaseClusterV2(Async)");
+        }
+
+        return updateDatabaseClusterV2Call(dbClusterId, updateClusterV2, _callback);
+
+    }
+
+    /**
+     * Изменение кластера базы данных (v2)
+     * Чтобы изменить кластер базы данных на вашем аккаунте, отправьте PATCH-запрос на &#x60;/api/v2/databases/{db_cluster_id}&#x60;.   В отличие от &#x60;/api/v1/databases/{db_cluster_id}&#x60;, эта версия дополнительно позволяет привязать плавающий IP-адрес (&#x60;floating_ip&#x60;).   Размер кластера задается либо тарифом (&#x60;preset_id&#x60;), либо конфигуратором (&#x60;configuration&#x60;) — эти поля взаимоисключающие.
+     * @param dbClusterId ID кластера базы данных (required)
+     * @param updateClusterV2  (required)
+     * @return UpdateDatabaseCluster200Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;db&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public UpdateDatabaseCluster200Response updateDatabaseClusterV2(Integer dbClusterId, UpdateClusterV2 updateClusterV2) throws ApiException {
+        ApiResponse<UpdateDatabaseCluster200Response> localVarResp = updateDatabaseClusterV2WithHttpInfo(dbClusterId, updateClusterV2);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Изменение кластера базы данных (v2)
+     * Чтобы изменить кластер базы данных на вашем аккаунте, отправьте PATCH-запрос на &#x60;/api/v2/databases/{db_cluster_id}&#x60;.   В отличие от &#x60;/api/v1/databases/{db_cluster_id}&#x60;, эта версия дополнительно позволяет привязать плавающий IP-адрес (&#x60;floating_ip&#x60;).   Размер кластера задается либо тарифом (&#x60;preset_id&#x60;), либо конфигуратором (&#x60;configuration&#x60;) — эти поля взаимоисключающие.
+     * @param dbClusterId ID кластера базы данных (required)
+     * @param updateClusterV2  (required)
+     * @return ApiResponse&lt;UpdateDatabaseCluster200Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;db&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<UpdateDatabaseCluster200Response> updateDatabaseClusterV2WithHttpInfo(Integer dbClusterId, UpdateClusterV2 updateClusterV2) throws ApiException {
+        okhttp3.Call localVarCall = updateDatabaseClusterV2ValidateBeforeCall(dbClusterId, updateClusterV2, null);
+        Type localVarReturnType = new TypeToken<UpdateDatabaseCluster200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Изменение кластера базы данных (v2) (asynchronously)
+     * Чтобы изменить кластер базы данных на вашем аккаунте, отправьте PATCH-запрос на &#x60;/api/v2/databases/{db_cluster_id}&#x60;.   В отличие от &#x60;/api/v1/databases/{db_cluster_id}&#x60;, эта версия дополнительно позволяет привязать плавающий IP-адрес (&#x60;floating_ip&#x60;).   Размер кластера задается либо тарифом (&#x60;preset_id&#x60;), либо конфигуратором (&#x60;configuration&#x60;) — эти поля взаимоисключающие.
+     * @param dbClusterId ID кластера базы данных (required)
+     * @param updateClusterV2  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;db&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateDatabaseClusterV2Async(Integer dbClusterId, UpdateClusterV2 updateClusterV2, final ApiCallback<UpdateDatabaseCluster200Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updateDatabaseClusterV2ValidateBeforeCall(dbClusterId, updateClusterV2, _callback);
+        Type localVarReturnType = new TypeToken<UpdateDatabaseCluster200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for updateDatabaseInstance
+     * @param dbClusterId ID кластера базы данных (required)
+     * @param instanceId ID инстанса базы данных (required)
+     * @param updateInstance  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;instance&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateDatabaseInstanceCall(Integer dbClusterId, Integer instanceId, UpdateInstance updateInstance, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = updateInstance;
+
+        // create path and map variables
+        String localVarPath = "/api/v1/databases/{db_cluster_id}/instances/{instance_id}"
+            .replace("{" + "db_cluster_id" + "}", localVarApiClient.escapeString(dbClusterId.toString()))
+            .replace("{" + "instance_id" + "}", localVarApiClient.escapeString(instanceId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "Bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call updateDatabaseInstanceValidateBeforeCall(Integer dbClusterId, Integer instanceId, UpdateInstance updateInstance, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'dbClusterId' is set
         if (dbClusterId == null) {
             throw new ApiException("Missing the required parameter 'dbClusterId' when calling updateDatabaseInstance(Async)");
+        }
+
+        // verify the required parameter 'instanceId' is set
+        if (instanceId == null) {
+            throw new ApiException("Missing the required parameter 'instanceId' when calling updateDatabaseInstance(Async)");
         }
 
         // verify the required parameter 'updateInstance' is set
@@ -3681,14 +5908,15 @@ public class DatabasesApi {
             throw new ApiException("Missing the required parameter 'updateInstance' when calling updateDatabaseInstance(Async)");
         }
 
-        return updateDatabaseInstanceCall(dbClusterId, updateInstance, _callback);
+        return updateDatabaseInstanceCall(dbClusterId, instanceId, updateInstance, _callback);
 
     }
 
     /**
      * Изменение инстанса базы данных
-     * Чтобы изменить инстанс базы данных, отправьте PATCH-запрос на &#x60;/api/v1/databases/{db_cluster_id}/instances/{instance_id}&#x60;.
+     * Чтобы изменить инстанс базы данных, отправьте PATCH-запрос на &#x60;/api/v1/databases/{db_cluster_id}/instances/{instance_id}&#x60;.   Изменить название базы данных (&#x60;name&#x60;) и ее владельца (&#x60;owner_id&#x60;) можно только в кластере PostgreSQL, а настройки топика (&#x60;config_parameters&#x60;) — только в кластере Kafka. Если один из этих трех параметров передан для неподходящего типа кластера, запрос вернется с ошибкой 409.   Расширения (&#x60;extensions&#x60;) применимы к кластерам PostgreSQL и RabbitMQ.
      * @param dbClusterId ID кластера базы данных (required)
+     * @param instanceId ID инстанса базы данных (required)
      * @param updateInstance  (required)
      * @return CreateDatabaseInstance201Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3700,19 +5928,21 @@ public class DatabasesApi {
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public CreateDatabaseInstance201Response updateDatabaseInstance(Integer dbClusterId, UpdateInstance updateInstance) throws ApiException {
-        ApiResponse<CreateDatabaseInstance201Response> localVarResp = updateDatabaseInstanceWithHttpInfo(dbClusterId, updateInstance);
+    public CreateDatabaseInstance201Response updateDatabaseInstance(Integer dbClusterId, Integer instanceId, UpdateInstance updateInstance) throws ApiException {
+        ApiResponse<CreateDatabaseInstance201Response> localVarResp = updateDatabaseInstanceWithHttpInfo(dbClusterId, instanceId, updateInstance);
         return localVarResp.getData();
     }
 
     /**
      * Изменение инстанса базы данных
-     * Чтобы изменить инстанс базы данных, отправьте PATCH-запрос на &#x60;/api/v1/databases/{db_cluster_id}/instances/{instance_id}&#x60;.
+     * Чтобы изменить инстанс базы данных, отправьте PATCH-запрос на &#x60;/api/v1/databases/{db_cluster_id}/instances/{instance_id}&#x60;.   Изменить название базы данных (&#x60;name&#x60;) и ее владельца (&#x60;owner_id&#x60;) можно только в кластере PostgreSQL, а настройки топика (&#x60;config_parameters&#x60;) — только в кластере Kafka. Если один из этих трех параметров передан для неподходящего типа кластера, запрос вернется с ошибкой 409.   Расширения (&#x60;extensions&#x60;) применимы к кластерам PostgreSQL и RabbitMQ.
      * @param dbClusterId ID кластера базы данных (required)
+     * @param instanceId ID инстанса базы данных (required)
      * @param updateInstance  (required)
      * @return ApiResponse&lt;CreateDatabaseInstance201Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3724,20 +5954,22 @@ public class DatabasesApi {
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CreateDatabaseInstance201Response> updateDatabaseInstanceWithHttpInfo(Integer dbClusterId, UpdateInstance updateInstance) throws ApiException {
-        okhttp3.Call localVarCall = updateDatabaseInstanceValidateBeforeCall(dbClusterId, updateInstance, null);
+    public ApiResponse<CreateDatabaseInstance201Response> updateDatabaseInstanceWithHttpInfo(Integer dbClusterId, Integer instanceId, UpdateInstance updateInstance) throws ApiException {
+        okhttp3.Call localVarCall = updateDatabaseInstanceValidateBeforeCall(dbClusterId, instanceId, updateInstance, null);
         Type localVarReturnType = new TypeToken<CreateDatabaseInstance201Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Изменение инстанса базы данных (asynchronously)
-     * Чтобы изменить инстанс базы данных, отправьте PATCH-запрос на &#x60;/api/v1/databases/{db_cluster_id}/instances/{instance_id}&#x60;.
+     * Чтобы изменить инстанс базы данных, отправьте PATCH-запрос на &#x60;/api/v1/databases/{db_cluster_id}/instances/{instance_id}&#x60;.   Изменить название базы данных (&#x60;name&#x60;) и ее владельца (&#x60;owner_id&#x60;) можно только в кластере PostgreSQL, а настройки топика (&#x60;config_parameters&#x60;) — только в кластере Kafka. Если один из этих трех параметров передан для неподходящего типа кластера, запрос вернется с ошибкой 409.   Расширения (&#x60;extensions&#x60;) применимы к кластерам PostgreSQL и RabbitMQ.
      * @param dbClusterId ID кластера базы данных (required)
+     * @param instanceId ID инстанса базы данных (required)
      * @param updateInstance  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -3750,14 +5982,181 @@ public class DatabasesApi {
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateDatabaseInstanceAsync(Integer dbClusterId, UpdateInstance updateInstance, final ApiCallback<CreateDatabaseInstance201Response> _callback) throws ApiException {
+    public okhttp3.Call updateDatabaseInstanceAsync(Integer dbClusterId, Integer instanceId, UpdateInstance updateInstance, final ApiCallback<CreateDatabaseInstance201Response> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = updateDatabaseInstanceValidateBeforeCall(dbClusterId, updateInstance, _callback);
+        okhttp3.Call localVarCall = updateDatabaseInstanceValidateBeforeCall(dbClusterId, instanceId, updateInstance, _callback);
         Type localVarReturnType = new TypeToken<CreateDatabaseInstance201Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for updateDatabaseS3Backup
+     * @param dbId ID базы данных (required)
+     * @param backupId ID резервной копии в формате UUID (required)
+     * @param updateS3Backup  (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON с ключом &#x60;backup&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateDatabaseS3BackupCall(Integer dbId, UUID backupId, UpdateS3Backup updateS3Backup, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = updateS3Backup;
+
+        // create path and map variables
+        String localVarPath = "/api/v2/databases/{db_id}/backups/{backup_id}"
+            .replace("{" + "db_id" + "}", localVarApiClient.escapeString(dbId.toString()))
+            .replace("{" + "backup_id" + "}", localVarApiClient.escapeString(backupId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "Bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call updateDatabaseS3BackupValidateBeforeCall(Integer dbId, UUID backupId, UpdateS3Backup updateS3Backup, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'dbId' is set
+        if (dbId == null) {
+            throw new ApiException("Missing the required parameter 'dbId' when calling updateDatabaseS3Backup(Async)");
+        }
+
+        // verify the required parameter 'backupId' is set
+        if (backupId == null) {
+            throw new ApiException("Missing the required parameter 'backupId' when calling updateDatabaseS3Backup(Async)");
+        }
+
+        return updateDatabaseS3BackupCall(dbId, backupId, updateS3Backup, _callback);
+
+    }
+
+    /**
+     * Изменение комментария S3-бэкапа базы данных
+     * Чтобы изменить комментарий к резервной копии кластера базы данных, отправьте PATCH-запрос на &#x60;/api/v2/databases/{db_id}/backups/{backup_id}&#x60;.   Изменить можно только комментарий: других полей метод не принимает, сама резервная копия при этом не пересоздается. Тело ответа будет представлять собой объект JSON с ключом &#x60;backup&#x60;.
+     * @param dbId ID базы данных (required)
+     * @param backupId ID резервной копии в формате UUID (required)
+     * @param updateS3Backup  (optional)
+     * @return CreateDatabaseS3Backup201Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON с ключом &#x60;backup&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateDatabaseS3Backup201Response updateDatabaseS3Backup(Integer dbId, UUID backupId, UpdateS3Backup updateS3Backup) throws ApiException {
+        ApiResponse<CreateDatabaseS3Backup201Response> localVarResp = updateDatabaseS3BackupWithHttpInfo(dbId, backupId, updateS3Backup);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Изменение комментария S3-бэкапа базы данных
+     * Чтобы изменить комментарий к резервной копии кластера базы данных, отправьте PATCH-запрос на &#x60;/api/v2/databases/{db_id}/backups/{backup_id}&#x60;.   Изменить можно только комментарий: других полей метод не принимает, сама резервная копия при этом не пересоздается. Тело ответа будет представлять собой объект JSON с ключом &#x60;backup&#x60;.
+     * @param dbId ID базы данных (required)
+     * @param backupId ID резервной копии в формате UUID (required)
+     * @param updateS3Backup  (optional)
+     * @return ApiResponse&lt;CreateDatabaseS3Backup201Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON с ключом &#x60;backup&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateDatabaseS3Backup201Response> updateDatabaseS3BackupWithHttpInfo(Integer dbId, UUID backupId, UpdateS3Backup updateS3Backup) throws ApiException {
+        okhttp3.Call localVarCall = updateDatabaseS3BackupValidateBeforeCall(dbId, backupId, updateS3Backup, null);
+        Type localVarReturnType = new TypeToken<CreateDatabaseS3Backup201Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Изменение комментария S3-бэкапа базы данных (asynchronously)
+     * Чтобы изменить комментарий к резервной копии кластера базы данных, отправьте PATCH-запрос на &#x60;/api/v2/databases/{db_id}/backups/{backup_id}&#x60;.   Изменить можно только комментарий: других полей метод не принимает, сама резервная копия при этом не пересоздается. Тело ответа будет представлять собой объект JSON с ключом &#x60;backup&#x60;.
+     * @param dbId ID базы данных (required)
+     * @param backupId ID резервной копии в формате UUID (required)
+     * @param updateS3Backup  (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON с ключом &#x60;backup&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateDatabaseS3BackupAsync(Integer dbId, UUID backupId, UpdateS3Backup updateS3Backup, final ApiCallback<CreateDatabaseS3Backup201Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updateDatabaseS3BackupValidateBeforeCall(dbId, backupId, updateS3Backup, _callback);
+        Type localVarReturnType = new TypeToken<CreateDatabaseS3Backup201Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

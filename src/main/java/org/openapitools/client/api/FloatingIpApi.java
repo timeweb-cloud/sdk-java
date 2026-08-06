@@ -28,7 +28,6 @@ import java.io.IOException;
 
 
 import org.openapitools.client.model.BindFloatingIp;
-import org.openapitools.client.model.CreateDatabaseBackup409Response;
 import org.openapitools.client.model.CreateFloatingIp;
 import org.openapitools.client.model.CreateFloatingIp201Response;
 import org.openapitools.client.model.GetAccountStatus403Response;
@@ -38,6 +37,7 @@ import org.openapitools.client.model.GetFinances429Response;
 import org.openapitools.client.model.GetFinances500Response;
 import org.openapitools.client.model.GetFloatingIps200Response;
 import org.openapitools.client.model.GetImage404Response;
+import org.openapitools.client.model.UpdateDatabaseInstance409Response;
 import org.openapitools.client.model.UpdateFloatingIp;
 
 import java.lang.reflect.Type;

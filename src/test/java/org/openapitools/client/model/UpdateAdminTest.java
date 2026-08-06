@@ -41,6 +41,14 @@ public class UpdateAdminTest {
     }
 
     /**
+     * Test the property 'login'
+     */
+    @Test
+    public void loginTest() {
+        // TODO: test login
+    }
+
+    /**
      * Test the property 'password'
      */
     @Test
@@ -70,6 +78,14 @@ public class UpdateAdminTest {
     @Test
     public void instanceIdTest() {
         // TODO: test instanceId
+    }
+
+    /**
+     * Test the property 'forAll'
+     */
+    @Test
+    public void forAllTest() {
+        // TODO: test forAll
     }
 
 }

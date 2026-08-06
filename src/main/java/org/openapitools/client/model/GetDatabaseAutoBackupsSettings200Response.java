@@ -21,10 +21,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import org.openapitools.client.model.AutoBackup;
-import org.openapitools.client.model.Meta;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -54,51 +51,18 @@ import org.openapitools.client.JSON;
 /**
  * GetDatabaseAutoBackupsSettings200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-06T14:58:49.219742Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-06T15:06:51.562821Z[Etc/UTC]")
 public class GetDatabaseAutoBackupsSettings200Response {
-  public static final String SERIALIZED_NAME_META = "meta";
-  @SerializedName(SERIALIZED_NAME_META)
-  private Meta meta;
-
   public static final String SERIALIZED_NAME_AUTO_BACKUPS_SETTINGS = "auto_backups_settings";
   @SerializedName(SERIALIZED_NAME_AUTO_BACKUPS_SETTINGS)
-  private List<AutoBackup> autoBackupsSettings = new ArrayList<>();
+  private AutoBackup autoBackupsSettings;
 
   public GetDatabaseAutoBackupsSettings200Response() {
   }
 
-  public GetDatabaseAutoBackupsSettings200Response meta(Meta meta) {
-    
-    this.meta = meta;
-    return this;
-  }
-
-   /**
-   * Get meta
-   * @return meta
-  **/
-  @javax.annotation.Nonnull
-  public Meta getMeta() {
-    return meta;
-  }
-
-
-  public void setMeta(Meta meta) {
-    this.meta = meta;
-  }
-
-
-  public GetDatabaseAutoBackupsSettings200Response autoBackupsSettings(List<AutoBackup> autoBackupsSettings) {
+  public GetDatabaseAutoBackupsSettings200Response autoBackupsSettings(AutoBackup autoBackupsSettings) {
     
     this.autoBackupsSettings = autoBackupsSettings;
-    return this;
-  }
-
-  public GetDatabaseAutoBackupsSettings200Response addAutoBackupsSettingsItem(AutoBackup autoBackupsSettingsItem) {
-    if (this.autoBackupsSettings == null) {
-      this.autoBackupsSettings = new ArrayList<>();
-    }
-    this.autoBackupsSettings.add(autoBackupsSettingsItem);
     return this;
   }
 
@@ -107,12 +71,12 @@ public class GetDatabaseAutoBackupsSettings200Response {
    * @return autoBackupsSettings
   **/
   @javax.annotation.Nonnull
-  public List<AutoBackup> getAutoBackupsSettings() {
+  public AutoBackup getAutoBackupsSettings() {
     return autoBackupsSettings;
   }
 
 
-  public void setAutoBackupsSettings(List<AutoBackup> autoBackupsSettings) {
+  public void setAutoBackupsSettings(AutoBackup autoBackupsSettings) {
     this.autoBackupsSettings = autoBackupsSettings;
   }
 
@@ -127,20 +91,18 @@ public class GetDatabaseAutoBackupsSettings200Response {
       return false;
     }
     GetDatabaseAutoBackupsSettings200Response getDatabaseAutoBackupsSettings200Response = (GetDatabaseAutoBackupsSettings200Response) o;
-    return Objects.equals(this.meta, getDatabaseAutoBackupsSettings200Response.meta) &&
-        Objects.equals(this.autoBackupsSettings, getDatabaseAutoBackupsSettings200Response.autoBackupsSettings);
+    return Objects.equals(this.autoBackupsSettings, getDatabaseAutoBackupsSettings200Response.autoBackupsSettings);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(meta, autoBackupsSettings);
+    return Objects.hash(autoBackupsSettings);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetDatabaseAutoBackupsSettings200Response {\n");
-    sb.append("    meta: ").append(toIndentedString(meta)).append("\n");
     sb.append("    autoBackupsSettings: ").append(toIndentedString(autoBackupsSettings)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -164,12 +126,10 @@ public class GetDatabaseAutoBackupsSettings200Response {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("meta");
     openapiFields.add("auto_backups_settings");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("meta");
     openapiRequiredFields.add("auto_backups_settings");
   }
 
@@ -201,18 +161,8 @@ public class GetDatabaseAutoBackupsSettings200Response {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the required field `meta`
-      Meta.validateJsonElement(jsonObj.get("meta"));
-      // ensure the json data is an array
-      if (!jsonObj.get("auto_backups_settings").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `auto_backups_settings` to be an array in the JSON string but got `%s`", jsonObj.get("auto_backups_settings").toString()));
-      }
-
-      JsonArray jsonArrayautoBackupsSettings = jsonObj.getAsJsonArray("auto_backups_settings");
-      // validate the required field `auto_backups_settings` (array)
-      for (int i = 0; i < jsonArrayautoBackupsSettings.size(); i++) {
-        AutoBackup.validateJsonElement(jsonArrayautoBackupsSettings.get(i));
-      };
+      // validate the required field `auto_backups_settings`
+      AutoBackup.validateJsonElement(jsonObj.get("auto_backups_settings"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

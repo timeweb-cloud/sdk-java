@@ -21,6 +21,9 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.math.BigDecimal;
+import org.openapitools.client.model.DatabaseExtensions;
+import org.openapitools.client.model.UpdateKafkaConfigParameters;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -50,7 +53,7 @@ import org.openapitools.client.JSON;
 /**
  * UpdateInstance
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-06T14:58:49.219742Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-06T15:06:51.562821Z[Etc/UTC]")
 public class UpdateInstance {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -59,6 +62,18 @@ public class UpdateInstance {
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
+
+  public static final String SERIALIZED_NAME_OWNER_ID = "owner_id";
+  @SerializedName(SERIALIZED_NAME_OWNER_ID)
+  private BigDecimal ownerId;
+
+  public static final String SERIALIZED_NAME_EXTENSIONS = "extensions";
+  @SerializedName(SERIALIZED_NAME_EXTENSIONS)
+  private DatabaseExtensions extensions;
+
+  public static final String SERIALIZED_NAME_CONFIG_PARAMETERS = "config_parameters";
+  @SerializedName(SERIALIZED_NAME_CONFIG_PARAMETERS)
+  private UpdateKafkaConfigParameters configParameters;
 
   public UpdateInstance() {
   }
@@ -105,6 +120,69 @@ public class UpdateInstance {
   }
 
 
+  public UpdateInstance ownerId(BigDecimal ownerId) {
+    
+    this.ownerId = ownerId;
+    return this;
+  }
+
+   /**
+   * ID пользователя базы данных, который станет владельцем инстанса. Доступно только в кластерах PostgreSQL
+   * @return ownerId
+  **/
+  @javax.annotation.Nullable
+  public BigDecimal getOwnerId() {
+    return ownerId;
+  }
+
+
+  public void setOwnerId(BigDecimal ownerId) {
+    this.ownerId = ownerId;
+  }
+
+
+  public UpdateInstance extensions(DatabaseExtensions extensions) {
+    
+    this.extensions = extensions;
+    return this;
+  }
+
+   /**
+   * Get extensions
+   * @return extensions
+  **/
+  @javax.annotation.Nullable
+  public DatabaseExtensions getExtensions() {
+    return extensions;
+  }
+
+
+  public void setExtensions(DatabaseExtensions extensions) {
+    this.extensions = extensions;
+  }
+
+
+  public UpdateInstance configParameters(UpdateKafkaConfigParameters configParameters) {
+    
+    this.configParameters = configParameters;
+    return this;
+  }
+
+   /**
+   * Get configParameters
+   * @return configParameters
+  **/
+  @javax.annotation.Nullable
+  public UpdateKafkaConfigParameters getConfigParameters() {
+    return configParameters;
+  }
+
+
+  public void setConfigParameters(UpdateKafkaConfigParameters configParameters) {
+    this.configParameters = configParameters;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -116,12 +194,15 @@ public class UpdateInstance {
     }
     UpdateInstance updateInstance = (UpdateInstance) o;
     return Objects.equals(this.name, updateInstance.name) &&
-        Objects.equals(this.description, updateInstance.description);
+        Objects.equals(this.description, updateInstance.description) &&
+        Objects.equals(this.ownerId, updateInstance.ownerId) &&
+        Objects.equals(this.extensions, updateInstance.extensions) &&
+        Objects.equals(this.configParameters, updateInstance.configParameters);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description);
+    return Objects.hash(name, description, ownerId, extensions, configParameters);
   }
 
   @Override
@@ -130,6 +211,9 @@ public class UpdateInstance {
     sb.append("class UpdateInstance {\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    ownerId: ").append(toIndentedString(ownerId)).append("\n");
+    sb.append("    extensions: ").append(toIndentedString(extensions)).append("\n");
+    sb.append("    configParameters: ").append(toIndentedString(configParameters)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -154,6 +238,9 @@ public class UpdateInstance {
     openapiFields = new HashSet<String>();
     openapiFields.add("name");
     openapiFields.add("description");
+    openapiFields.add("owner_id");
+    openapiFields.add("extensions");
+    openapiFields.add("config_parameters");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -185,6 +272,14 @@ public class UpdateInstance {
       }
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
+      }
+      // validate the optional field `extensions`
+      if (jsonObj.get("extensions") != null && !jsonObj.get("extensions").isJsonNull()) {
+        DatabaseExtensions.validateJsonElement(jsonObj.get("extensions"));
+      }
+      // validate the optional field `config_parameters`
+      if (jsonObj.get("config_parameters") != null && !jsonObj.get("config_parameters").isJsonNull()) {
+        UpdateKafkaConfigParameters.validateJsonElement(jsonObj.get("config_parameters"));
       }
   }
 

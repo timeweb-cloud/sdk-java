@@ -21,7 +21,11 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import org.openapitools.client.model.AvailabilityZone;
 import org.openapitools.client.model.CreateClusterAdmin;
+import org.openapitools.client.model.CreateClusterBackupSchedule;
+import org.openapitools.client.model.CreateClusterConfiguration;
+import org.openapitools.client.model.CreateClusterDiskAutoscaling;
 import org.openapitools.client.model.CreateClusterInstance;
+import org.openapitools.client.model.CreateClusterMaintenanceSlot;
 import org.openapitools.client.model.CreateDbAutoBackups;
 import org.openapitools.client.model.DbReplication;
 import org.openapitools.client.model.DbType;
@@ -93,11 +97,11 @@ public class CreateClusterTest {
     }
 
     /**
-     * Test the property 'configuratorId'
+     * Test the property '_configuration'
      */
     @Test
-    public void configuratorIdTest() {
-        // TODO: test configuratorId
+    public void _configurationTest() {
+        // TODO: test _configuration
     }
 
     /**
@@ -162,6 +166,30 @@ public class CreateClusterTest {
     @Test
     public void autoBackupsTest() {
         // TODO: test autoBackups
+    }
+
+    /**
+     * Test the property 'backupSchedule'
+     */
+    @Test
+    public void backupScheduleTest() {
+        // TODO: test backupSchedule
+    }
+
+    /**
+     * Test the property 'maintenanceSlot'
+     */
+    @Test
+    public void maintenanceSlotTest() {
+        // TODO: test maintenanceSlot
+    }
+
+    /**
+     * Test the property 'diskAutoscaling'
+     */
+    @Test
+    public void diskAutoscalingTest() {
+        // TODO: test diskAutoscaling
     }
 
 }

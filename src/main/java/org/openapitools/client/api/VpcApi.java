@@ -27,7 +27,6 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import org.openapitools.client.model.CreateDatabaseBackup409Response;
 import org.openapitools.client.model.CreateVPC201Response;
 import org.openapitools.client.model.CreateVpc;
 import org.openapitools.client.model.GetAccountStatus403Response;
@@ -39,6 +38,7 @@ import org.openapitools.client.model.GetImage404Response;
 import org.openapitools.client.model.GetVPCPorts200Response;
 import org.openapitools.client.model.GetVPCServices200Response;
 import org.openapitools.client.model.GetVPCs200Response;
+import org.openapitools.client.model.UpdateDatabaseInstance409Response;
 import org.openapitools.client.model.UpdateVpc;
 
 import java.lang.reflect.Type;

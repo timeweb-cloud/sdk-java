@@ -19,10 +19,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import org.openapitools.client.model.AutoBackup;
-import org.openapitools.client.model.Meta;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -38,14 +35,6 @@ public class GetDatabaseAutoBackupsSettings200ResponseTest {
     @Test
     public void testGetDatabaseAutoBackupsSettings200Response() {
         // TODO: test GetDatabaseAutoBackupsSettings200Response
-    }
-
-    /**
-     * Test the property 'meta'
-     */
-    @Test
-    public void metaTest() {
-        // TODO: test meta
     }
 
     /**

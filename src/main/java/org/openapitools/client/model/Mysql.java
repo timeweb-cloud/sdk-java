@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * Параметры MySQL (&#x60;mysql5&#x60; | &#x60;mysql&#x60; | &#x60;mysql8_4&#x60;)
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-06T14:58:49.219742Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-06T15:06:51.562821Z[Etc/UTC]")
 public class Mysql {
   public static final String SERIALIZED_NAME_JOIN_BUFFER_SIZE = "join_buffer_size";
   @SerializedName(SERIALIZED_NAME_JOIN_BUFFER_SIZE)
@@ -123,6 +123,10 @@ public class Mysql {
   public static final String SERIALIZED_NAME_QUERY_CACHE_SIZE = "query_cache_size";
   @SerializedName(SERIALIZED_NAME_QUERY_CACHE_SIZE)
   private String queryCacheSize;
+
+  public static final String SERIALIZED_NAME_QUERY_CACHE_LIMIT = "query_cache_limit";
+  @SerializedName(SERIALIZED_NAME_QUERY_CACHE_LIMIT)
+  private String queryCacheLimit;
 
   public static final String SERIALIZED_NAME_INNODB_FLUSH_LOG_AT_TRX_COMMIT = "innodb_flush_log_at_trx_commit";
   @SerializedName(SERIALIZED_NAME_INNODB_FLUSH_LOG_AT_TRX_COMMIT)
@@ -594,7 +598,7 @@ public class Mysql {
   }
 
    /**
-   * Тип кэша запросов (&#x60;mysql5&#x60; | &#x60;mysql&#x60; | &#x60;mysql8_4&#x60;).
+   * Тип кэша запросов (&#x60;mysql5&#x60;).
    * @return queryCacheType
   **/
   @javax.annotation.Nullable
@@ -615,7 +619,7 @@ public class Mysql {
   }
 
    /**
-   * Объем памяти, выделяемый для кэширования результатов запросов (&#x60;mysql5&#x60; | &#x60;mysql&#x60; | &#x60;mysql8_4&#x60;).
+   * Объем памяти, выделяемый для кэширования результатов запросов (&#x60;mysql5&#x60;).
    * @return queryCacheSize
   **/
   @javax.annotation.Nullable
@@ -626,6 +630,27 @@ public class Mysql {
 
   public void setQueryCacheSize(String queryCacheSize) {
     this.queryCacheSize = queryCacheSize;
+  }
+
+
+  public Mysql queryCacheLimit(String queryCacheLimit) {
+    
+    this.queryCacheLimit = queryCacheLimit;
+    return this;
+  }
+
+   /**
+   * Максимальный размер результата запроса, который может быть закэширован (&#x60;mysql5&#x60;).
+   * @return queryCacheLimit
+  **/
+  @javax.annotation.Nullable
+  public String getQueryCacheLimit() {
+    return queryCacheLimit;
+  }
+
+
+  public void setQueryCacheLimit(String queryCacheLimit) {
+    this.queryCacheLimit = queryCacheLimit;
   }
 
 
@@ -1308,6 +1333,7 @@ public class Mysql {
         Objects.equals(this.sqlMode, mysql.sqlMode) &&
         Objects.equals(this.queryCacheType, mysql.queryCacheType) &&
         Objects.equals(this.queryCacheSize, mysql.queryCacheSize) &&
+        Objects.equals(this.queryCacheLimit, mysql.queryCacheLimit) &&
         Objects.equals(this.innodbFlushLogAtTrxCommit, mysql.innodbFlushLogAtTrxCommit) &&
         Objects.equals(this.transactionIsolation, mysql.transactionIsolation) &&
         Objects.equals(this.longQueryTime, mysql.longQueryTime) &&
@@ -1343,7 +1369,7 @@ public class Mysql {
 
   @Override
   public int hashCode() {
-    return Objects.hash(joinBufferSize, maxConnections, sortBufferSize, threadCacheSize, innodbBufferPoolSize, autoIncrementIncrement, autoIncrementOffset, innodbIoCapacity, innodbPurgeThreads, innodbReadIoThreads, innodbThreadConcurrency, innodbWriteIoThreads, innodbLogFileSize, maxAllowedPacket, maxHeapTableSize, sqlMode, queryCacheType, queryCacheSize, innodbFlushLogAtTrxCommit, transactionIsolation, longQueryTime, tmpTableSize, tableOpenCache, tableOpenCacheInstances, innodbFlushMethod, innodbStrictMode, slowQueryLog, binlogCacheSize, binlogGroupCommitSyncDelay, binlogRowImage, binlogRowsQueryLogEvents, characterSetServer, explicitDefaultsForTimestamp, groupConcatMaxLen, innodbAdaptiveHashIndex, innodbLockWaitTimeout, innodbNumaInterleave, netReadTimeout, netWriteTimeout, regexpTimeLimit, syncBinlog, tableDefinitionCache, logBinTrustFunctionCreators, skipNameResolve, innodbRedoLogCapacity, waitTimeout, interactiveTimeout, defaultTimeZone, pxcStrictMode);
+    return Objects.hash(joinBufferSize, maxConnections, sortBufferSize, threadCacheSize, innodbBufferPoolSize, autoIncrementIncrement, autoIncrementOffset, innodbIoCapacity, innodbPurgeThreads, innodbReadIoThreads, innodbThreadConcurrency, innodbWriteIoThreads, innodbLogFileSize, maxAllowedPacket, maxHeapTableSize, sqlMode, queryCacheType, queryCacheSize, queryCacheLimit, innodbFlushLogAtTrxCommit, transactionIsolation, longQueryTime, tmpTableSize, tableOpenCache, tableOpenCacheInstances, innodbFlushMethod, innodbStrictMode, slowQueryLog, binlogCacheSize, binlogGroupCommitSyncDelay, binlogRowImage, binlogRowsQueryLogEvents, characterSetServer, explicitDefaultsForTimestamp, groupConcatMaxLen, innodbAdaptiveHashIndex, innodbLockWaitTimeout, innodbNumaInterleave, netReadTimeout, netWriteTimeout, regexpTimeLimit, syncBinlog, tableDefinitionCache, logBinTrustFunctionCreators, skipNameResolve, innodbRedoLogCapacity, waitTimeout, interactiveTimeout, defaultTimeZone, pxcStrictMode);
   }
 
   @Override
@@ -1368,6 +1394,7 @@ public class Mysql {
     sb.append("    sqlMode: ").append(toIndentedString(sqlMode)).append("\n");
     sb.append("    queryCacheType: ").append(toIndentedString(queryCacheType)).append("\n");
     sb.append("    queryCacheSize: ").append(toIndentedString(queryCacheSize)).append("\n");
+    sb.append("    queryCacheLimit: ").append(toIndentedString(queryCacheLimit)).append("\n");
     sb.append("    innodbFlushLogAtTrxCommit: ").append(toIndentedString(innodbFlushLogAtTrxCommit)).append("\n");
     sb.append("    transactionIsolation: ").append(toIndentedString(transactionIsolation)).append("\n");
     sb.append("    longQueryTime: ").append(toIndentedString(longQueryTime)).append("\n");
@@ -1439,6 +1466,7 @@ public class Mysql {
     openapiFields.add("sql_mode");
     openapiFields.add("query_cache_type");
     openapiFields.add("query_cache_size");
+    openapiFields.add("query_cache_limit");
     openapiFields.add("innodb_flush_log_at_trx_commit");
     openapiFields.add("transaction_isolation");
     openapiFields.add("long_query_time");
@@ -1549,6 +1577,9 @@ public class Mysql {
       }
       if ((jsonObj.get("query_cache_size") != null && !jsonObj.get("query_cache_size").isJsonNull()) && !jsonObj.get("query_cache_size").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `query_cache_size` to be a primitive type in the JSON string but got `%s`", jsonObj.get("query_cache_size").toString()));
+      }
+      if ((jsonObj.get("query_cache_limit") != null && !jsonObj.get("query_cache_limit").isJsonNull()) && !jsonObj.get("query_cache_limit").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `query_cache_limit` to be a primitive type in the JSON string but got `%s`", jsonObj.get("query_cache_limit").toString()));
       }
       if ((jsonObj.get("innodb_flush_log_at_trx_commit") != null && !jsonObj.get("innodb_flush_log_at_trx_commit").isJsonNull()) && !jsonObj.get("innodb_flush_log_at_trx_commit").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `innodb_flush_log_at_trx_commit` to be a primitive type in the JSON string but got `%s`", jsonObj.get("innodb_flush_log_at_trx_commit").toString()));

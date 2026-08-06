@@ -22,6 +22,8 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
+import org.openapitools.client.model.DatabaseExtensions;
+import org.openapitools.client.model.KafkaConfigParameters;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -51,7 +53,7 @@ import org.openapitools.client.JSON;
 /**
  * База данных
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-06T14:58:49.219742Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-06T15:06:51.562821Z[Etc/UTC]")
 public class DatabaseInstance {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -68,6 +70,18 @@ public class DatabaseInstance {
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
+
+  public static final String SERIALIZED_NAME_EXTENSIONS = "extensions";
+  @SerializedName(SERIALIZED_NAME_EXTENSIONS)
+  private DatabaseExtensions extensions;
+
+  public static final String SERIALIZED_NAME_OWNER_ID = "owner_id";
+  @SerializedName(SERIALIZED_NAME_OWNER_ID)
+  private BigDecimal ownerId;
+
+  public static final String SERIALIZED_NAME_CONFIG_PARAMETERS = "config_parameters";
+  @SerializedName(SERIALIZED_NAME_CONFIG_PARAMETERS)
+  private KafkaConfigParameters configParameters;
 
   public DatabaseInstance() {
   }
@@ -156,6 +170,69 @@ public class DatabaseInstance {
   }
 
 
+  public DatabaseInstance extensions(DatabaseExtensions extensions) {
+    
+    this.extensions = extensions;
+    return this;
+  }
+
+   /**
+   * Get extensions
+   * @return extensions
+  **/
+  @javax.annotation.Nonnull
+  public DatabaseExtensions getExtensions() {
+    return extensions;
+  }
+
+
+  public void setExtensions(DatabaseExtensions extensions) {
+    this.extensions = extensions;
+  }
+
+
+  public DatabaseInstance ownerId(BigDecimal ownerId) {
+    
+    this.ownerId = ownerId;
+    return this;
+  }
+
+   /**
+   * ID администратора базы данных, который является владельцем этой базы данных. &#x60;null&#x60;, если владелец не задан.
+   * @return ownerId
+  **/
+  @javax.annotation.Nullable
+  public BigDecimal getOwnerId() {
+    return ownerId;
+  }
+
+
+  public void setOwnerId(BigDecimal ownerId) {
+    this.ownerId = ownerId;
+  }
+
+
+  public DatabaseInstance configParameters(KafkaConfigParameters configParameters) {
+    
+    this.configParameters = configParameters;
+    return this;
+  }
+
+   /**
+   * Get configParameters
+   * @return configParameters
+  **/
+  @javax.annotation.Nonnull
+  public KafkaConfigParameters getConfigParameters() {
+    return configParameters;
+  }
+
+
+  public void setConfigParameters(KafkaConfigParameters configParameters) {
+    this.configParameters = configParameters;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -169,12 +246,15 @@ public class DatabaseInstance {
     return Objects.equals(this.id, databaseInstance.id) &&
         Objects.equals(this.createdAt, databaseInstance.createdAt) &&
         Objects.equals(this.name, databaseInstance.name) &&
-        Objects.equals(this.description, databaseInstance.description);
+        Objects.equals(this.description, databaseInstance.description) &&
+        Objects.equals(this.extensions, databaseInstance.extensions) &&
+        Objects.equals(this.ownerId, databaseInstance.ownerId) &&
+        Objects.equals(this.configParameters, databaseInstance.configParameters);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, name, description);
+    return Objects.hash(id, createdAt, name, description, extensions, ownerId, configParameters);
   }
 
   @Override
@@ -185,6 +265,9 @@ public class DatabaseInstance {
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    extensions: ").append(toIndentedString(extensions)).append("\n");
+    sb.append("    ownerId: ").append(toIndentedString(ownerId)).append("\n");
+    sb.append("    configParameters: ").append(toIndentedString(configParameters)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -211,6 +294,9 @@ public class DatabaseInstance {
     openapiFields.add("created_at");
     openapiFields.add("name");
     openapiFields.add("description");
+    openapiFields.add("extensions");
+    openapiFields.add("owner_id");
+    openapiFields.add("config_parameters");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -218,6 +304,9 @@ public class DatabaseInstance {
     openapiRequiredFields.add("created_at");
     openapiRequiredFields.add("name");
     openapiRequiredFields.add("description");
+    openapiRequiredFields.add("extensions");
+    openapiRequiredFields.add("owner_id");
+    openapiRequiredFields.add("config_parameters");
   }
 
  /**
@@ -257,6 +346,10 @@ public class DatabaseInstance {
       if (!jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
+      // validate the required field `extensions`
+      DatabaseExtensions.validateJsonElement(jsonObj.get("extensions"));
+      // validate the required field `config_parameters`
+      KafkaConfigParameters.validateJsonElement(jsonObj.get("config_parameters"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

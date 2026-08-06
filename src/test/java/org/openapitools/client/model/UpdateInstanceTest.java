@@ -19,6 +19,9 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.math.BigDecimal;
+import org.openapitools.client.model.DatabaseExtensions;
+import org.openapitools.client.model.UpdateKafkaConfigParameters;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -50,6 +53,30 @@ public class UpdateInstanceTest {
     @Test
     public void descriptionTest() {
         // TODO: test description
+    }
+
+    /**
+     * Test the property 'ownerId'
+     */
+    @Test
+    public void ownerIdTest() {
+        // TODO: test ownerId
+    }
+
+    /**
+     * Test the property 'extensions'
+     */
+    @Test
+    public void extensionsTest() {
+        // TODO: test extensions
+    }
+
+    /**
+     * Test the property 'configParameters'
+     */
+    @Test
+    public void configParametersTest() {
+        // TODO: test configParameters
     }
 
 }

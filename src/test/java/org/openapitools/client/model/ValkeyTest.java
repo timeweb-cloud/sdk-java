@@ -45,6 +45,14 @@ public class ValkeyTest {
     }
 
     /**
+     * Test the property 'notifyKeyspaceEvents'
+     */
+    @Test
+    public void notifyKeyspaceEventsTest() {
+        // TODO: test notifyKeyspaceEvents
+    }
+
+    /**
      * Test the property 'clientOutputBufferLimitPubsub'
      */
     @Test

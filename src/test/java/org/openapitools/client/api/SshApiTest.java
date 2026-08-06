@@ -15,7 +15,6 @@ package org.openapitools.client.api;
 
 import org.openapitools.client.ApiException;
 import org.openapitools.client.model.AddKeyToServerRequest;
-import org.openapitools.client.model.CreateDatabaseBackup409Response;
 import org.openapitools.client.model.CreateKey201Response;
 import org.openapitools.client.model.CreateKeyRequest;
 import org.openapitools.client.model.GetAccountStatus403Response;
@@ -26,6 +25,7 @@ import org.openapitools.client.model.GetFinances500Response;
 import org.openapitools.client.model.GetImage404Response;
 import org.openapitools.client.model.GetKey200Response;
 import org.openapitools.client.model.GetKeys200Response;
+import org.openapitools.client.model.UpdateDatabaseInstance409Response;
 import org.openapitools.client.model.UpdateKeyRequest;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;

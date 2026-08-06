@@ -24,11 +24,16 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import org.openapitools.client.model.AvailabilityZone;
+import org.openapitools.client.model.DatabaseClusterChildServicesInner;
 import org.openapitools.client.model.DatabaseClusterDisk;
+import org.openapitools.client.model.DatabaseClusterDiskAutoscaling;
+import org.openapitools.client.model.DatabaseClusterDomainsInner;
+import org.openapitools.client.model.DatabaseClusterMaintenanceSlot;
 import org.openapitools.client.model.DatabaseClusterNetworksInner;
-import org.openapitools.client.model.DbType;
+import org.openapitools.client.model.DatabaseClusterParentServicesInner;
+import org.openapitools.client.model.DatabaseClusterReplicaListInner;
 import org.openapitools.client.model.Mysql;
-import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -58,7 +63,7 @@ import org.openapitools.client.JSON;
 /**
  * Кластер базы данных
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-06T14:58:49.219742Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-06T15:06:51.562821Z[Etc/UTC]")
 public class DatabaseCluster {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -77,9 +82,15 @@ public class DatabaseCluster {
     
     RU_3("ru-3"),
     
+    PL_1("pl-1"),
+    
     NL_1("nl-1"),
     
-    DE_1("de-1");
+    DE_1("de-1"),
+    
+    US_2("us-2"),
+    
+    US_3("us-3");
 
     private String value;
 
@@ -127,17 +138,122 @@ public class DatabaseCluster {
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
 
+  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
+  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  private String description;
+
   public static final String SERIALIZED_NAME_NETWORKS = "networks";
   @SerializedName(SERIALIZED_NAME_NETWORKS)
   private List<DatabaseClusterNetworksInner> networks = new ArrayList<>();
 
-  public static final String SERIALIZED_NAME_IS_PUBLIC_IPV6 = "is_public_ipv6";
-  @SerializedName(SERIALIZED_NAME_IS_PUBLIC_IPV6)
-  private Boolean isPublicIpv6;
+  public static final String SERIALIZED_NAME_IS_ENABLED_PUBLIC_IPV6 = "is_enabled_public_ipv6";
+  @SerializedName(SERIALIZED_NAME_IS_ENABLED_PUBLIC_IPV6)
+  private Boolean isEnabledPublicIpv6;
+
+  /**
+   * Тип базы данных. Список возможных значений шире, чем список типов, доступных при создании нового кластера.
+   */
+  @JsonAdapter(TypeEnum.Adapter.class)
+  public enum TypeEnum {
+    MYSQL("mysql"),
+    
+    MYSQL5("mysql5"),
+    
+    MYSQL8_4("mysql8_4"),
+    
+    POSTGRES("postgres"),
+    
+    POSTGRES14("postgres14"),
+    
+    POSTGRES15("postgres15"),
+    
+    POSTGRES16("postgres16"),
+    
+    POSTGRES17("postgres17"),
+    
+    POSTGRES18("postgres18"),
+    
+    REDIS("redis"),
+    
+    REDIS7("redis7"),
+    
+    REDIS8_1("redis8_1"),
+    
+    VALKEY("valkey"),
+    
+    VALKEY7("valkey7"),
+    
+    VALKEY8_1("valkey8_1"),
+    
+    VALKEY9_1("valkey9_1"),
+    
+    MONGODB("mongodb"),
+    
+    MONGODB4("mongodb4"),
+    
+    MONGODB6("mongodb6"),
+    
+    MONGODB7("mongodb7"),
+    
+    MONGODB8_0("mongodb8_0"),
+    
+    OPENSEARCH("opensearch"),
+    
+    OPENSEARCH2_19("opensearch2_19"),
+    
+    CLICKHOUSE("clickhouse"),
+    
+    CLICKHOUSE24("clickhouse24"),
+    
+    CLICKHOUSE25("clickhouse25"),
+    
+    KAFKA("kafka"),
+    
+    RABBITMQ("rabbitmq"),
+    
+    RABBITMQ4_0("rabbitmq4_0");
+
+    private String value;
+
+    TypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static TypeEnum fromValue(String value) {
+      for (TypeEnum b : TypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<TypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public TypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return TypeEnum.fromValue(value);
+      }
+    }
+  }
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
-  private DbType type;
+  private TypeEnum type;
 
   /**
    * Тип хеширования кластера базы данных (mysql5 | mysql | postgres).
@@ -201,7 +317,7 @@ public class DatabaseCluster {
   private Integer port;
 
   /**
-   * Текущий статус кластера базы данных.
+   * Текущий статус кластера базы данных. Значение &#x60;read_only&#x60; означает, что запись в кластер заблокирована из-за переполнения диска — чтобы снять блокировку, освободите место или увеличьте размер диска.
    */
   @JsonAdapter(StatusEnum.Adapter.class)
   public enum StatusEnum {
@@ -221,11 +337,17 @@ public class DatabaseCluster {
     
     BACKUP_RECOVERY("backup_recovery"),
     
+    TRANSFER("transfer"),
+    
     REBOOTING("rebooting"),
     
     TURNING_OFF("turning_off"),
     
-    TURNING_ON("turning_on");
+    TURNING_ON("turning_on"),
+    
+    READ_ONLY("read_only"),
+    
+    USER_TRANSFER("user_transfer");
 
     private String value;
 
@@ -273,9 +395,37 @@ public class DatabaseCluster {
   @SerializedName(SERIALIZED_NAME_PRESET_ID)
   private Integer presetId;
 
+  public static final String SERIALIZED_NAME_CONFIGURATOR_ID = "configurator_id";
+  @SerializedName(SERIALIZED_NAME_CONFIGURATOR_ID)
+  private Integer configuratorId;
+
+  public static final String SERIALIZED_NAME_CPU = "cpu";
+  @SerializedName(SERIALIZED_NAME_CPU)
+  private Integer cpu;
+
+  public static final String SERIALIZED_NAME_CPU_FREQUENCY = "cpu_frequency";
+  @SerializedName(SERIALIZED_NAME_CPU_FREQUENCY)
+  private String cpuFrequency;
+
+  public static final String SERIALIZED_NAME_IS_DEDICATED_CPU = "is_dedicated_cpu";
+  @SerializedName(SERIALIZED_NAME_IS_DEDICATED_CPU)
+  private Boolean isDedicatedCpu;
+
+  public static final String SERIALIZED_NAME_RAM = "ram";
+  @SerializedName(SERIALIZED_NAME_RAM)
+  private Integer ram;
+
   public static final String SERIALIZED_NAME_DISK = "disk";
   @SerializedName(SERIALIZED_NAME_DISK)
   private DatabaseClusterDisk disk;
+
+  public static final String SERIALIZED_NAME_HAS_ADDITIONAL_DISK = "has_additional_disk";
+  @SerializedName(SERIALIZED_NAME_HAS_ADDITIONAL_DISK)
+  private Boolean hasAdditionalDisk;
+
+  public static final String SERIALIZED_NAME_DISK_AUTOSCALING = "disk_autoscaling";
+  @SerializedName(SERIALIZED_NAME_DISK_AUTOSCALING)
+  private DatabaseClusterDiskAutoscaling diskAutoscaling;
 
   public static final String SERIALIZED_NAME_CONFIG_PARAMETERS = "config_parameters";
   @SerializedName(SERIALIZED_NAME_CONFIG_PARAMETERS)
@@ -284,6 +434,46 @@ public class DatabaseCluster {
   public static final String SERIALIZED_NAME_IS_ENABLED_PUBLIC_NETWORK = "is_enabled_public_network";
   @SerializedName(SERIALIZED_NAME_IS_ENABLED_PUBLIC_NETWORK)
   private Boolean isEnabledPublicNetwork;
+
+  public static final String SERIALIZED_NAME_IS_SECURE_CONNECTION_ENABLED = "is_secure_connection_enabled";
+  @SerializedName(SERIALIZED_NAME_IS_SECURE_CONNECTION_ENABLED)
+  private Boolean isSecureConnectionEnabled;
+
+  public static final String SERIALIZED_NAME_IS_AUTOBACKUPS_ENABLED = "is_autobackups_enabled";
+  @SerializedName(SERIALIZED_NAME_IS_AUTOBACKUPS_ENABLED)
+  private Boolean isAutobackupsEnabled;
+
+  public static final String SERIALIZED_NAME_IS_BACKUP_SCHEDULE_ENABLED = "is_backup_schedule_enabled";
+  @SerializedName(SERIALIZED_NAME_IS_BACKUP_SCHEDULE_ENABLED)
+  private Boolean isBackupScheduleEnabled;
+
+  public static final String SERIALIZED_NAME_AVAILABILITY_ZONE = "availability_zone";
+  @SerializedName(SERIALIZED_NAME_AVAILABILITY_ZONE)
+  private AvailabilityZone availabilityZone;
+
+  public static final String SERIALIZED_NAME_PROJECT_ID = "project_id";
+  @SerializedName(SERIALIZED_NAME_PROJECT_ID)
+  private Integer projectId;
+
+  public static final String SERIALIZED_NAME_REPLICA_LIST = "replica_list";
+  @SerializedName(SERIALIZED_NAME_REPLICA_LIST)
+  private List<DatabaseClusterReplicaListInner> replicaList = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_DOMAINS = "domains";
+  @SerializedName(SERIALIZED_NAME_DOMAINS)
+  private List<DatabaseClusterDomainsInner> domains = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_CHILD_SERVICES = "child_services";
+  @SerializedName(SERIALIZED_NAME_CHILD_SERVICES)
+  private List<DatabaseClusterChildServicesInner> childServices = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_PARENT_SERVICES = "parent_services";
+  @SerializedName(SERIALIZED_NAME_PARENT_SERVICES)
+  private List<DatabaseClusterParentServicesInner> parentServices = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_MAINTENANCE_SLOT = "maintenance_slot";
+  @SerializedName(SERIALIZED_NAME_MAINTENANCE_SLOT)
+  private DatabaseClusterMaintenanceSlot maintenanceSlot;
 
   public DatabaseCluster() {
   }
@@ -372,6 +562,27 @@ public class DatabaseCluster {
   }
 
 
+  public DatabaseCluster description(String description) {
+    
+    this.description = description;
+    return this;
+  }
+
+   /**
+   * Описание кластера базы данных.
+   * @return description
+  **/
+  @javax.annotation.Nonnull
+  public String getDescription() {
+    return description;
+  }
+
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+
   public DatabaseCluster networks(List<DatabaseClusterNetworksInner> networks) {
     
     this.networks = networks;
@@ -401,44 +612,44 @@ public class DatabaseCluster {
   }
 
 
-  public DatabaseCluster isPublicIpv6(Boolean isPublicIpv6) {
+  public DatabaseCluster isEnabledPublicIpv6(Boolean isEnabledPublicIpv6) {
     
-    this.isPublicIpv6 = isPublicIpv6;
+    this.isEnabledPublicIpv6 = isEnabledPublicIpv6;
     return this;
   }
 
    /**
-   * Использование IPv6 адреса.
-   * @return isPublicIpv6
+   * Использование публичного IPv6-адреса.
+   * @return isEnabledPublicIpv6
   **/
-  @javax.annotation.Nullable
-  public Boolean getIsPublicIpv6() {
-    return isPublicIpv6;
+  @javax.annotation.Nonnull
+  public Boolean getIsEnabledPublicIpv6() {
+    return isEnabledPublicIpv6;
   }
 
 
-  public void setIsPublicIpv6(Boolean isPublicIpv6) {
-    this.isPublicIpv6 = isPublicIpv6;
+  public void setIsEnabledPublicIpv6(Boolean isEnabledPublicIpv6) {
+    this.isEnabledPublicIpv6 = isEnabledPublicIpv6;
   }
 
 
-  public DatabaseCluster type(DbType type) {
+  public DatabaseCluster type(TypeEnum type) {
     
     this.type = type;
     return this;
   }
 
    /**
-   * Get type
+   * Тип базы данных. Список возможных значений шире, чем список типов, доступных при создании нового кластера.
    * @return type
   **/
-  @javax.annotation.Nonnull
-  public DbType getType() {
+  @javax.annotation.Nullable
+  public TypeEnum getType() {
     return type;
   }
 
 
-  public void setType(DbType type) {
+  public void setType(TypeEnum type) {
     this.type = type;
   }
 
@@ -513,7 +724,7 @@ public class DatabaseCluster {
   }
 
    /**
-   * Текущий статус кластера базы данных.
+   * Текущий статус кластера базы данных. Значение &#x60;read_only&#x60; означает, что запись в кластер заблокирована из-за переполнения диска — чтобы снять блокировку, освободите место или увеличьте размер диска.
    * @return status
   **/
   @javax.annotation.Nonnull
@@ -534,10 +745,10 @@ public class DatabaseCluster {
   }
 
    /**
-   * ID тарифа.
+   * ID тарифа. Равен &#x60;null&#x60; у кластеров, созданных через конфигуратор — в этом случае заполнен &#x60;configurator_id&#x60;.
    * @return presetId
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getPresetId() {
     return presetId;
   }
@@ -545,6 +756,111 @@ public class DatabaseCluster {
 
   public void setPresetId(Integer presetId) {
     this.presetId = presetId;
+  }
+
+
+  public DatabaseCluster configuratorId(Integer configuratorId) {
+    
+    this.configuratorId = configuratorId;
+    return this;
+  }
+
+   /**
+   * ID конфигуратора. Равен &#x60;null&#x60; у кластеров, созданных по тарифу.
+   * @return configuratorId
+  **/
+  @javax.annotation.Nullable
+  public Integer getConfiguratorId() {
+    return configuratorId;
+  }
+
+
+  public void setConfiguratorId(Integer configuratorId) {
+    this.configuratorId = configuratorId;
+  }
+
+
+  public DatabaseCluster cpu(Integer cpu) {
+    
+    this.cpu = cpu;
+    return this;
+  }
+
+   /**
+   * Количество ядер процессора.
+   * @return cpu
+  **/
+  @javax.annotation.Nullable
+  public Integer getCpu() {
+    return cpu;
+  }
+
+
+  public void setCpu(Integer cpu) {
+    this.cpu = cpu;
+  }
+
+
+  public DatabaseCluster cpuFrequency(String cpuFrequency) {
+    
+    this.cpuFrequency = cpuFrequency;
+    return this;
+  }
+
+   /**
+   * Частота процессора.
+   * @return cpuFrequency
+  **/
+  @javax.annotation.Nullable
+  public String getCpuFrequency() {
+    return cpuFrequency;
+  }
+
+
+  public void setCpuFrequency(String cpuFrequency) {
+    this.cpuFrequency = cpuFrequency;
+  }
+
+
+  public DatabaseCluster isDedicatedCpu(Boolean isDedicatedCpu) {
+    
+    this.isDedicatedCpu = isDedicatedCpu;
+    return this;
+  }
+
+   /**
+   * Используются ли выделенные ядра процессора.
+   * @return isDedicatedCpu
+  **/
+  @javax.annotation.Nonnull
+  public Boolean getIsDedicatedCpu() {
+    return isDedicatedCpu;
+  }
+
+
+  public void setIsDedicatedCpu(Boolean isDedicatedCpu) {
+    this.isDedicatedCpu = isDedicatedCpu;
+  }
+
+
+  public DatabaseCluster ram(Integer ram) {
+    
+    this.ram = ram;
+    return this;
+  }
+
+   /**
+   * Объем оперативной памяти (в Мб).
+   * @return ram
+  **/
+  @javax.annotation.Nullable
+  public Integer getRam() {
+    return ram;
+  }
+
+
+  public void setRam(Integer ram) {
+    this.ram = ram;
   }
 
 
@@ -566,6 +882,48 @@ public class DatabaseCluster {
 
   public void setDisk(DatabaseClusterDisk disk) {
     this.disk = disk;
+  }
+
+
+  public DatabaseCluster hasAdditionalDisk(Boolean hasAdditionalDisk) {
+    
+    this.hasAdditionalDisk = hasAdditionalDisk;
+    return this;
+  }
+
+   /**
+   * Подключен ли к кластеру дополнительный диск.
+   * @return hasAdditionalDisk
+  **/
+  @javax.annotation.Nonnull
+  public Boolean getHasAdditionalDisk() {
+    return hasAdditionalDisk;
+  }
+
+
+  public void setHasAdditionalDisk(Boolean hasAdditionalDisk) {
+    this.hasAdditionalDisk = hasAdditionalDisk;
+  }
+
+
+  public DatabaseCluster diskAutoscaling(DatabaseClusterDiskAutoscaling diskAutoscaling) {
+    
+    this.diskAutoscaling = diskAutoscaling;
+    return this;
+  }
+
+   /**
+   * Get diskAutoscaling
+   * @return diskAutoscaling
+  **/
+  @javax.annotation.Nullable
+  public DatabaseClusterDiskAutoscaling getDiskAutoscaling() {
+    return diskAutoscaling;
+  }
+
+
+  public void setDiskAutoscaling(DatabaseClusterDiskAutoscaling diskAutoscaling) {
+    this.diskAutoscaling = diskAutoscaling;
   }
 
 
@@ -611,6 +969,248 @@ public class DatabaseCluster {
   }
 
 
+  public DatabaseCluster isSecureConnectionEnabled(Boolean isSecureConnectionEnabled) {
+    
+    this.isSecureConnectionEnabled = isSecureConnectionEnabled;
+    return this;
+  }
+
+   /**
+   * Включено ли защищенное подключение к кластеру базы данных.
+   * @return isSecureConnectionEnabled
+  **/
+  @javax.annotation.Nonnull
+  public Boolean getIsSecureConnectionEnabled() {
+    return isSecureConnectionEnabled;
+  }
+
+
+  public void setIsSecureConnectionEnabled(Boolean isSecureConnectionEnabled) {
+    this.isSecureConnectionEnabled = isSecureConnectionEnabled;
+  }
+
+
+  public DatabaseCluster isAutobackupsEnabled(Boolean isAutobackupsEnabled) {
+    
+    this.isAutobackupsEnabled = isAutobackupsEnabled;
+    return this;
+  }
+
+   /**
+   * Включены ли автоматические резервные копии кластера базы данных.
+   * @return isAutobackupsEnabled
+  **/
+  @javax.annotation.Nonnull
+  public Boolean getIsAutobackupsEnabled() {
+    return isAutobackupsEnabled;
+  }
+
+
+  public void setIsAutobackupsEnabled(Boolean isAutobackupsEnabled) {
+    this.isAutobackupsEnabled = isAutobackupsEnabled;
+  }
+
+
+  public DatabaseCluster isBackupScheduleEnabled(Boolean isBackupScheduleEnabled) {
+    
+    this.isBackupScheduleEnabled = isBackupScheduleEnabled;
+    return this;
+  }
+
+   /**
+   * Включено ли расписание резервного копирования кластера базы данных.
+   * @return isBackupScheduleEnabled
+  **/
+  @javax.annotation.Nonnull
+  public Boolean getIsBackupScheduleEnabled() {
+    return isBackupScheduleEnabled;
+  }
+
+
+  public void setIsBackupScheduleEnabled(Boolean isBackupScheduleEnabled) {
+    this.isBackupScheduleEnabled = isBackupScheduleEnabled;
+  }
+
+
+  public DatabaseCluster availabilityZone(AvailabilityZone availabilityZone) {
+    
+    this.availabilityZone = availabilityZone;
+    return this;
+  }
+
+   /**
+   * Get availabilityZone
+   * @return availabilityZone
+  **/
+  @javax.annotation.Nonnull
+  public AvailabilityZone getAvailabilityZone() {
+    return availabilityZone;
+  }
+
+
+  public void setAvailabilityZone(AvailabilityZone availabilityZone) {
+    this.availabilityZone = availabilityZone;
+  }
+
+
+  public DatabaseCluster projectId(Integer projectId) {
+    
+    this.projectId = projectId;
+    return this;
+  }
+
+   /**
+   * ID проекта, в котором находится кластер базы данных.
+   * @return projectId
+  **/
+  @javax.annotation.Nullable
+  public Integer getProjectId() {
+    return projectId;
+  }
+
+
+  public void setProjectId(Integer projectId) {
+    this.projectId = projectId;
+  }
+
+
+  public DatabaseCluster replicaList(List<DatabaseClusterReplicaListInner> replicaList) {
+    
+    this.replicaList = replicaList;
+    return this;
+  }
+
+  public DatabaseCluster addReplicaListItem(DatabaseClusterReplicaListInner replicaListItem) {
+    if (this.replicaList == null) {
+      this.replicaList = new ArrayList<>();
+    }
+    this.replicaList.add(replicaListItem);
+    return this;
+  }
+
+   /**
+   * Список реплик кластера базы данных.
+   * @return replicaList
+  **/
+  @javax.annotation.Nonnull
+  public List<DatabaseClusterReplicaListInner> getReplicaList() {
+    return replicaList;
+  }
+
+
+  public void setReplicaList(List<DatabaseClusterReplicaListInner> replicaList) {
+    this.replicaList = replicaList;
+  }
+
+
+  public DatabaseCluster domains(List<DatabaseClusterDomainsInner> domains) {
+    
+    this.domains = domains;
+    return this;
+  }
+
+  public DatabaseCluster addDomainsItem(DatabaseClusterDomainsInner domainsItem) {
+    if (this.domains == null) {
+      this.domains = new ArrayList<>();
+    }
+    this.domains.add(domainsItem);
+    return this;
+  }
+
+   /**
+   * Список доменов кластера базы данных. Если публичная сеть отключена (&#x60;is_enabled_public_network: false&#x60;), список всегда пустой.
+   * @return domains
+  **/
+  @javax.annotation.Nonnull
+  public List<DatabaseClusterDomainsInner> getDomains() {
+    return domains;
+  }
+
+
+  public void setDomains(List<DatabaseClusterDomainsInner> domains) {
+    this.domains = domains;
+  }
+
+
+  public DatabaseCluster childServices(List<DatabaseClusterChildServicesInner> childServices) {
+    
+    this.childServices = childServices;
+    return this;
+  }
+
+  public DatabaseCluster addChildServicesItem(DatabaseClusterChildServicesInner childServicesItem) {
+    if (this.childServices == null) {
+      this.childServices = new ArrayList<>();
+    }
+    this.childServices.add(childServicesItem);
+    return this;
+  }
+
+   /**
+   * Список дочерних сервисов кластера базы данных.
+   * @return childServices
+  **/
+  @javax.annotation.Nonnull
+  public List<DatabaseClusterChildServicesInner> getChildServices() {
+    return childServices;
+  }
+
+
+  public void setChildServices(List<DatabaseClusterChildServicesInner> childServices) {
+    this.childServices = childServices;
+  }
+
+
+  public DatabaseCluster parentServices(List<DatabaseClusterParentServicesInner> parentServices) {
+    
+    this.parentServices = parentServices;
+    return this;
+  }
+
+  public DatabaseCluster addParentServicesItem(DatabaseClusterParentServicesInner parentServicesItem) {
+    if (this.parentServices == null) {
+      this.parentServices = new ArrayList<>();
+    }
+    this.parentServices.add(parentServicesItem);
+    return this;
+  }
+
+   /**
+   * Список родительских сервисов кластера базы данных.
+   * @return parentServices
+  **/
+  @javax.annotation.Nonnull
+  public List<DatabaseClusterParentServicesInner> getParentServices() {
+    return parentServices;
+  }
+
+
+  public void setParentServices(List<DatabaseClusterParentServicesInner> parentServices) {
+    this.parentServices = parentServices;
+  }
+
+
+  public DatabaseCluster maintenanceSlot(DatabaseClusterMaintenanceSlot maintenanceSlot) {
+    
+    this.maintenanceSlot = maintenanceSlot;
+    return this;
+  }
+
+   /**
+   * Get maintenanceSlot
+   * @return maintenanceSlot
+  **/
+  @javax.annotation.Nonnull
+  public DatabaseClusterMaintenanceSlot getMaintenanceSlot() {
+    return maintenanceSlot;
+  }
+
+
+  public void setMaintenanceSlot(DatabaseClusterMaintenanceSlot maintenanceSlot) {
+    this.maintenanceSlot = maintenanceSlot;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -625,33 +1225,40 @@ public class DatabaseCluster {
         Objects.equals(this.createdAt, databaseCluster.createdAt) &&
         Objects.equals(this.location, databaseCluster.location) &&
         Objects.equals(this.name, databaseCluster.name) &&
+        Objects.equals(this.description, databaseCluster.description) &&
         Objects.equals(this.networks, databaseCluster.networks) &&
-        Objects.equals(this.isPublicIpv6, databaseCluster.isPublicIpv6) &&
+        Objects.equals(this.isEnabledPublicIpv6, databaseCluster.isEnabledPublicIpv6) &&
         Objects.equals(this.type, databaseCluster.type) &&
         Objects.equals(this.hashType, databaseCluster.hashType) &&
         Objects.equals(this.avatarLink, databaseCluster.avatarLink) &&
         Objects.equals(this.port, databaseCluster.port) &&
         Objects.equals(this.status, databaseCluster.status) &&
         Objects.equals(this.presetId, databaseCluster.presetId) &&
+        Objects.equals(this.configuratorId, databaseCluster.configuratorId) &&
+        Objects.equals(this.cpu, databaseCluster.cpu) &&
+        Objects.equals(this.cpuFrequency, databaseCluster.cpuFrequency) &&
+        Objects.equals(this.isDedicatedCpu, databaseCluster.isDedicatedCpu) &&
+        Objects.equals(this.ram, databaseCluster.ram) &&
         Objects.equals(this.disk, databaseCluster.disk) &&
+        Objects.equals(this.hasAdditionalDisk, databaseCluster.hasAdditionalDisk) &&
+        Objects.equals(this.diskAutoscaling, databaseCluster.diskAutoscaling) &&
         Objects.equals(this.configParameters, databaseCluster.configParameters) &&
-        Objects.equals(this.isEnabledPublicNetwork, databaseCluster.isEnabledPublicNetwork);
-  }
-
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+        Objects.equals(this.isEnabledPublicNetwork, databaseCluster.isEnabledPublicNetwork) &&
+        Objects.equals(this.isSecureConnectionEnabled, databaseCluster.isSecureConnectionEnabled) &&
+        Objects.equals(this.isAutobackupsEnabled, databaseCluster.isAutobackupsEnabled) &&
+        Objects.equals(this.isBackupScheduleEnabled, databaseCluster.isBackupScheduleEnabled) &&
+        Objects.equals(this.availabilityZone, databaseCluster.availabilityZone) &&
+        Objects.equals(this.projectId, databaseCluster.projectId) &&
+        Objects.equals(this.replicaList, databaseCluster.replicaList) &&
+        Objects.equals(this.domains, databaseCluster.domains) &&
+        Objects.equals(this.childServices, databaseCluster.childServices) &&
+        Objects.equals(this.parentServices, databaseCluster.parentServices) &&
+        Objects.equals(this.maintenanceSlot, databaseCluster.maintenanceSlot);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, location, name, networks, isPublicIpv6, type, hashType, avatarLink, port, status, presetId, disk, configParameters, isEnabledPublicNetwork);
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
+    return Objects.hash(id, createdAt, location, name, description, networks, isEnabledPublicIpv6, type, hashType, avatarLink, port, status, presetId, configuratorId, cpu, cpuFrequency, isDedicatedCpu, ram, disk, hasAdditionalDisk, diskAutoscaling, configParameters, isEnabledPublicNetwork, isSecureConnectionEnabled, isAutobackupsEnabled, isBackupScheduleEnabled, availabilityZone, projectId, replicaList, domains, childServices, parentServices, maintenanceSlot);
   }
 
   @Override
@@ -662,17 +1269,35 @@ public class DatabaseCluster {
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    location: ").append(toIndentedString(location)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    networks: ").append(toIndentedString(networks)).append("\n");
-    sb.append("    isPublicIpv6: ").append(toIndentedString(isPublicIpv6)).append("\n");
+    sb.append("    isEnabledPublicIpv6: ").append(toIndentedString(isEnabledPublicIpv6)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    hashType: ").append(toIndentedString(hashType)).append("\n");
     sb.append("    avatarLink: ").append(toIndentedString(avatarLink)).append("\n");
     sb.append("    port: ").append(toIndentedString(port)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    presetId: ").append(toIndentedString(presetId)).append("\n");
+    sb.append("    configuratorId: ").append(toIndentedString(configuratorId)).append("\n");
+    sb.append("    cpu: ").append(toIndentedString(cpu)).append("\n");
+    sb.append("    cpuFrequency: ").append(toIndentedString(cpuFrequency)).append("\n");
+    sb.append("    isDedicatedCpu: ").append(toIndentedString(isDedicatedCpu)).append("\n");
+    sb.append("    ram: ").append(toIndentedString(ram)).append("\n");
     sb.append("    disk: ").append(toIndentedString(disk)).append("\n");
+    sb.append("    hasAdditionalDisk: ").append(toIndentedString(hasAdditionalDisk)).append("\n");
+    sb.append("    diskAutoscaling: ").append(toIndentedString(diskAutoscaling)).append("\n");
     sb.append("    configParameters: ").append(toIndentedString(configParameters)).append("\n");
     sb.append("    isEnabledPublicNetwork: ").append(toIndentedString(isEnabledPublicNetwork)).append("\n");
+    sb.append("    isSecureConnectionEnabled: ").append(toIndentedString(isSecureConnectionEnabled)).append("\n");
+    sb.append("    isAutobackupsEnabled: ").append(toIndentedString(isAutobackupsEnabled)).append("\n");
+    sb.append("    isBackupScheduleEnabled: ").append(toIndentedString(isBackupScheduleEnabled)).append("\n");
+    sb.append("    availabilityZone: ").append(toIndentedString(availabilityZone)).append("\n");
+    sb.append("    projectId: ").append(toIndentedString(projectId)).append("\n");
+    sb.append("    replicaList: ").append(toIndentedString(replicaList)).append("\n");
+    sb.append("    domains: ").append(toIndentedString(domains)).append("\n");
+    sb.append("    childServices: ").append(toIndentedString(childServices)).append("\n");
+    sb.append("    parentServices: ").append(toIndentedString(parentServices)).append("\n");
+    sb.append("    maintenanceSlot: ").append(toIndentedString(maintenanceSlot)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -699,17 +1324,35 @@ public class DatabaseCluster {
     openapiFields.add("created_at");
     openapiFields.add("location");
     openapiFields.add("name");
+    openapiFields.add("description");
     openapiFields.add("networks");
-    openapiFields.add("is_public_ipv6");
+    openapiFields.add("is_enabled_public_ipv6");
     openapiFields.add("type");
     openapiFields.add("hash_type");
     openapiFields.add("avatar_link");
     openapiFields.add("port");
     openapiFields.add("status");
     openapiFields.add("preset_id");
+    openapiFields.add("configurator_id");
+    openapiFields.add("cpu");
+    openapiFields.add("cpu_frequency");
+    openapiFields.add("is_dedicated_cpu");
+    openapiFields.add("ram");
     openapiFields.add("disk");
+    openapiFields.add("has_additional_disk");
+    openapiFields.add("disk_autoscaling");
     openapiFields.add("config_parameters");
     openapiFields.add("is_enabled_public_network");
+    openapiFields.add("is_secure_connection_enabled");
+    openapiFields.add("is_autobackups_enabled");
+    openapiFields.add("is_backup_schedule_enabled");
+    openapiFields.add("availability_zone");
+    openapiFields.add("project_id");
+    openapiFields.add("replica_list");
+    openapiFields.add("domains");
+    openapiFields.add("child_services");
+    openapiFields.add("parent_services");
+    openapiFields.add("maintenance_slot");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -717,15 +1360,34 @@ public class DatabaseCluster {
     openapiRequiredFields.add("created_at");
     openapiRequiredFields.add("location");
     openapiRequiredFields.add("name");
+    openapiRequiredFields.add("description");
     openapiRequiredFields.add("networks");
+    openapiRequiredFields.add("is_enabled_public_ipv6");
     openapiRequiredFields.add("type");
     openapiRequiredFields.add("hash_type");
     openapiRequiredFields.add("avatar_link");
     openapiRequiredFields.add("port");
     openapiRequiredFields.add("status");
     openapiRequiredFields.add("preset_id");
+    openapiRequiredFields.add("configurator_id");
+    openapiRequiredFields.add("cpu");
+    openapiRequiredFields.add("cpu_frequency");
+    openapiRequiredFields.add("is_dedicated_cpu");
+    openapiRequiredFields.add("ram");
+    openapiRequiredFields.add("disk");
+    openapiRequiredFields.add("has_additional_disk");
+    openapiRequiredFields.add("disk_autoscaling");
     openapiRequiredFields.add("config_parameters");
     openapiRequiredFields.add("is_enabled_public_network");
+    openapiRequiredFields.add("is_secure_connection_enabled");
+    openapiRequiredFields.add("is_autobackups_enabled");
+    openapiRequiredFields.add("is_backup_schedule_enabled");
+    openapiRequiredFields.add("availability_zone");
+    openapiRequiredFields.add("replica_list");
+    openapiRequiredFields.add("domains");
+    openapiRequiredFields.add("child_services");
+    openapiRequiredFields.add("parent_services");
+    openapiRequiredFields.add("maintenance_slot");
   }
 
  /**
@@ -765,6 +1427,9 @@ public class DatabaseCluster {
       if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
+      if (!jsonObj.get("description").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
+      }
       // ensure the json data is an array
       if (!jsonObj.get("networks").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `networks` to be an array in the JSON string but got `%s`", jsonObj.get("networks").toString()));
@@ -775,6 +1440,9 @@ public class DatabaseCluster {
       for (int i = 0; i < jsonArraynetworks.size(); i++) {
         DatabaseClusterNetworksInner.validateJsonElement(jsonArraynetworks.get(i));
       };
+      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+      }
       if ((jsonObj.get("hash_type") != null && !jsonObj.get("hash_type").isJsonNull()) && !jsonObj.get("hash_type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `hash_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("hash_type").toString()));
       }
@@ -784,12 +1452,57 @@ public class DatabaseCluster {
       if (!jsonObj.get("status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
       }
-      // validate the optional field `disk`
-      if (jsonObj.get("disk") != null && !jsonObj.get("disk").isJsonNull()) {
-        DatabaseClusterDisk.validateJsonElement(jsonObj.get("disk"));
+      if ((jsonObj.get("cpu_frequency") != null && !jsonObj.get("cpu_frequency").isJsonNull()) && !jsonObj.get("cpu_frequency").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `cpu_frequency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cpu_frequency").toString()));
       }
+      // validate the required field `disk`
+      DatabaseClusterDisk.validateJsonElement(jsonObj.get("disk"));
+      // validate the required field `disk_autoscaling`
+      DatabaseClusterDiskAutoscaling.validateJsonElement(jsonObj.get("disk_autoscaling"));
       // validate the required field `config_parameters`
       Mysql.validateJsonElement(jsonObj.get("config_parameters"));
+      // ensure the json data is an array
+      if (!jsonObj.get("replica_list").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `replica_list` to be an array in the JSON string but got `%s`", jsonObj.get("replica_list").toString()));
+      }
+
+      JsonArray jsonArrayreplicaList = jsonObj.getAsJsonArray("replica_list");
+      // validate the required field `replica_list` (array)
+      for (int i = 0; i < jsonArrayreplicaList.size(); i++) {
+        DatabaseClusterReplicaListInner.validateJsonElement(jsonArrayreplicaList.get(i));
+      };
+      // ensure the json data is an array
+      if (!jsonObj.get("domains").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `domains` to be an array in the JSON string but got `%s`", jsonObj.get("domains").toString()));
+      }
+
+      JsonArray jsonArraydomains = jsonObj.getAsJsonArray("domains");
+      // validate the required field `domains` (array)
+      for (int i = 0; i < jsonArraydomains.size(); i++) {
+        DatabaseClusterDomainsInner.validateJsonElement(jsonArraydomains.get(i));
+      };
+      // ensure the json data is an array
+      if (!jsonObj.get("child_services").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `child_services` to be an array in the JSON string but got `%s`", jsonObj.get("child_services").toString()));
+      }
+
+      JsonArray jsonArraychildServices = jsonObj.getAsJsonArray("child_services");
+      // validate the required field `child_services` (array)
+      for (int i = 0; i < jsonArraychildServices.size(); i++) {
+        DatabaseClusterChildServicesInner.validateJsonElement(jsonArraychildServices.get(i));
+      };
+      // ensure the json data is an array
+      if (!jsonObj.get("parent_services").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `parent_services` to be an array in the JSON string but got `%s`", jsonObj.get("parent_services").toString()));
+      }
+
+      JsonArray jsonArrayparentServices = jsonObj.getAsJsonArray("parent_services");
+      // validate the required field `parent_services` (array)
+      for (int i = 0; i < jsonArrayparentServices.size(); i++) {
+        DatabaseClusterParentServicesInner.validateJsonElement(jsonArrayparentServices.get(i));
+      };
+      // validate the required field `maintenance_slot`
+      DatabaseClusterMaintenanceSlot.validateJsonElement(jsonObj.get("maintenance_slot"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

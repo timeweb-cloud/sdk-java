@@ -20,7 +20,8 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
-import org.openapitools.client.model.DbType;
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -71,6 +72,14 @@ public class PresetsDbsTest {
     }
 
     /**
+     * Test the property 'cpuFrequency'
+     */
+    @Test
+    public void cpuFrequencyTest() {
+        // TODO: test cpuFrequency
+    }
+
+    /**
      * Test the property 'ram'
      */
     @Test
@@ -108,6 +117,14 @@ public class PresetsDbsTest {
     @Test
     public void locationTest() {
         // TODO: test location
+    }
+
+    /**
+     * Test the property 'tags'
+     */
+    @Test
+    public void tagsTest() {
+        // TODO: test tags
     }
 
 }

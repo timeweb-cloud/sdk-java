@@ -54,7 +54,7 @@ import org.openapitools.client.JSON;
 /**
  * CreateAdmin
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-06T14:58:49.219742Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-06T15:06:51.562821Z[Etc/UTC]")
 public class CreateAdmin {
   public static final String SERIALIZED_NAME_LOGIN = "login";
   @SerializedName(SERIALIZED_NAME_LOGIN)
@@ -72,9 +72,13 @@ public class CreateAdmin {
   @SerializedName(SERIALIZED_NAME_INSTANCE_ID)
   private BigDecimal instanceId;
 
+  public static final String SERIALIZED_NAME_FOR_ALL = "for_all";
+  @SerializedName(SERIALIZED_NAME_FOR_ALL)
+  private Boolean forAll;
+
   public static final String SERIALIZED_NAME_PRIVILEGES = "privileges";
   @SerializedName(SERIALIZED_NAME_PRIVILEGES)
-  private List<PropertiesMysql> privileges = new ArrayList<>();
+  private List<PropertiesMysql> privileges;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
@@ -167,6 +171,27 @@ public class CreateAdmin {
   }
 
 
+  public CreateAdmin forAll(Boolean forAll) {
+    
+    this.forAll = forAll;
+    return this;
+  }
+
+   /**
+   * Выдать привилегии на все инстансы базы данных
+   * @return forAll
+  **/
+  @javax.annotation.Nullable
+  public Boolean getForAll() {
+    return forAll;
+  }
+
+
+  public void setForAll(Boolean forAll) {
+    this.forAll = forAll;
+  }
+
+
   public CreateAdmin privileges(List<PropertiesMysql> privileges) {
     
     this.privileges = privileges;
@@ -185,7 +210,7 @@ public class CreateAdmin {
    * Список привилегий пользователя базы данных
    * @return privileges
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public List<PropertiesMysql> getPrivileges() {
     return privileges;
   }
@@ -231,13 +256,14 @@ public class CreateAdmin {
         Objects.equals(this.password, createAdmin.password) &&
         Objects.equals(this.host, createAdmin.host) &&
         Objects.equals(this.instanceId, createAdmin.instanceId) &&
+        Objects.equals(this.forAll, createAdmin.forAll) &&
         Objects.equals(this.privileges, createAdmin.privileges) &&
         Objects.equals(this.description, createAdmin.description);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(login, password, host, instanceId, privileges, description);
+    return Objects.hash(login, password, host, instanceId, forAll, privileges, description);
   }
 
   @Override
@@ -248,6 +274,7 @@ public class CreateAdmin {
     sb.append("    password: ").append(toIndentedString(password)).append("\n");
     sb.append("    host: ").append(toIndentedString(host)).append("\n");
     sb.append("    instanceId: ").append(toIndentedString(instanceId)).append("\n");
+    sb.append("    forAll: ").append(toIndentedString(forAll)).append("\n");
     sb.append("    privileges: ").append(toIndentedString(privileges)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("}");
@@ -276,6 +303,7 @@ public class CreateAdmin {
     openapiFields.add("password");
     openapiFields.add("host");
     openapiFields.add("instance_id");
+    openapiFields.add("for_all");
     openapiFields.add("privileges");
     openapiFields.add("description");
 
@@ -283,7 +311,6 @@ public class CreateAdmin {
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("login");
     openapiRequiredFields.add("password");
-    openapiRequiredFields.add("privileges");
   }
 
  /**
@@ -323,10 +350,8 @@ public class CreateAdmin {
       if ((jsonObj.get("host") != null && !jsonObj.get("host").isJsonNull()) && !jsonObj.get("host").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `host` to be a primitive type in the JSON string but got `%s`", jsonObj.get("host").toString()));
       }
-      // ensure the required json array is present
-      if (jsonObj.get("privileges") == null) {
-        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
-      } else if (!jsonObj.get("privileges").isJsonArray()) {
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("privileges") != null && !jsonObj.get("privileges").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `privileges` to be an array in the JSON string but got `%s`", jsonObj.get("privileges").toString()));
       }
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {

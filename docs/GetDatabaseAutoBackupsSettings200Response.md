@@ -7,8 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**meta** | [**Meta**](Meta.md) |  |  |
-|**autoBackupsSettings** | [**List&lt;AutoBackup&gt;**](AutoBackup.md) |  |  |
+|**autoBackupsSettings** | [**AutoBackup**](AutoBackup.md) |  |  |
 
 
 

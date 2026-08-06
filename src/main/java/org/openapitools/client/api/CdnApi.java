@@ -31,7 +31,6 @@ import org.openapitools.client.model.AddCdnCertificate422Response;
 import org.openapitools.client.model.AddCertificate;
 import org.openapitools.client.model.ClearCache;
 import org.openapitools.client.model.CreateCdnResource201Response;
-import org.openapitools.client.model.CreateDatabaseBackup409Response;
 import org.openapitools.client.model.CreateHttpResource;
 import org.openapitools.client.model.GetAccountStatus403Response;
 import org.openapitools.client.model.GetCdnCertificateTasks200Response;
@@ -50,6 +49,7 @@ import org.openapitools.client.model.GetImage404Response;
 import org.openapitools.client.model.IssueCertificate;
 import java.time.OffsetDateTime;
 import org.openapitools.client.model.PreloadCache;
+import org.openapitools.client.model.UpdateDatabaseInstance409Response;
 import org.openapitools.client.model.UpdateHttpResource;
 
 import java.lang.reflect.Type;

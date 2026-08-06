@@ -22,7 +22,8 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
-import org.openapitools.client.model.DbType;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -52,7 +53,7 @@ import org.openapitools.client.JSON;
 /**
  * PresetsDbs
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-06T14:58:49.219742Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-06T15:06:51.562821Z[Etc/UTC]")
 public class PresetsDbs {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -70,6 +71,10 @@ public class PresetsDbs {
   @SerializedName(SERIALIZED_NAME_CPU)
   private BigDecimal cpu;
 
+  public static final String SERIALIZED_NAME_CPU_FREQUENCY = "cpu_frequency";
+  @SerializedName(SERIALIZED_NAME_CPU_FREQUENCY)
+  private String cpuFrequency;
+
   public static final String SERIALIZED_NAME_RAM = "ram";
   @SerializedName(SERIALIZED_NAME_RAM)
   private BigDecimal ram;
@@ -78,9 +83,70 @@ public class PresetsDbs {
   @SerializedName(SERIALIZED_NAME_DISK)
   private BigDecimal disk;
 
+  /**
+   * Семейство СУБД тарифа. Значение не совпадает с типом кластера, который передаётся в поле &#x60;type&#x60; при создании кластера (&#x60;POST /api/v1/databases&#x60;): там используется версионированный тип, например &#x60;postgres17&#x60;. Тарифы для Valkey возвращаются со значением &#x60;redis&#x60; — отдельного значения &#x60;valkey&#x60; в этом поле не бывает.
+   */
+  @JsonAdapter(TypeEnum.Adapter.class)
+  public enum TypeEnum {
+    MYSQL("mysql"),
+    
+    MYSQL5("mysql5"),
+    
+    POSTGRES("postgres"),
+    
+    REDIS("redis"),
+    
+    MONGODB("mongodb"),
+    
+    OPENSEARCH("opensearch"),
+    
+    CLICKHOUSE("clickhouse"),
+    
+    KAFKA("kafka"),
+    
+    RABBITMQ("rabbitmq");
+
+    private String value;
+
+    TypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static TypeEnum fromValue(String value) {
+      for (TypeEnum b : TypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<TypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public TypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return TypeEnum.fromValue(value);
+      }
+    }
+  }
+
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
-  private DbType type;
+  private TypeEnum type;
 
   public static final String SERIALIZED_NAME_PRICE = "price";
   @SerializedName(SERIALIZED_NAME_PRICE)
@@ -93,9 +159,17 @@ public class PresetsDbs {
   public enum LocationEnum {
     RU_1("ru-1"),
     
+    RU_3("ru-3"),
+    
     PL_1("pl-1"),
     
-    KZ_1("kz-1");
+    NL_1("nl-1"),
+    
+    DE_1("de-1"),
+    
+    US_2("us-2"),
+    
+    US_3("us-3");
 
     private String value;
 
@@ -138,6 +212,10 @@ public class PresetsDbs {
   public static final String SERIALIZED_NAME_LOCATION = "location";
   @SerializedName(SERIALIZED_NAME_LOCATION)
   private LocationEnum location;
+
+  public static final String SERIALIZED_NAME_TAGS = "tags";
+  @SerializedName(SERIALIZED_NAME_TAGS)
+  private List<String> tags;
 
   public PresetsDbs() {
   }
@@ -212,7 +290,7 @@ public class PresetsDbs {
   }
 
    /**
-   * Описание процессора тарифа.
+   * Количество ядер процессора тарифа.
    * @return cpu
   **/
   @javax.annotation.Nullable
@@ -226,6 +304,27 @@ public class PresetsDbs {
   }
 
 
+  public PresetsDbs cpuFrequency(String cpuFrequency) {
+    
+    this.cpuFrequency = cpuFrequency;
+    return this;
+  }
+
+   /**
+   * Частота процессора (в ГГц).
+   * @return cpuFrequency
+  **/
+  @javax.annotation.Nullable
+  public String getCpuFrequency() {
+    return cpuFrequency;
+  }
+
+
+  public void setCpuFrequency(String cpuFrequency) {
+    this.cpuFrequency = cpuFrequency;
+  }
+
+
   public PresetsDbs ram(BigDecimal ram) {
     
     this.ram = ram;
@@ -233,7 +332,7 @@ public class PresetsDbs {
   }
 
    /**
-   * Описание ОЗУ тарифа.
+   * Объём оперативной памяти тарифа (в Мб).
    * @return ram
   **/
   @javax.annotation.Nullable
@@ -254,7 +353,7 @@ public class PresetsDbs {
   }
 
    /**
-   * Описание диска тарифа.
+   * Размер диска тарифа (в Мб).
    * @return disk
   **/
   @javax.annotation.Nullable
@@ -268,23 +367,23 @@ public class PresetsDbs {
   }
 
 
-  public PresetsDbs type(DbType type) {
+  public PresetsDbs type(TypeEnum type) {
     
     this.type = type;
     return this;
   }
 
    /**
-   * Get type
+   * Семейство СУБД тарифа. Значение не совпадает с типом кластера, который передаётся в поле &#x60;type&#x60; при создании кластера (&#x60;POST /api/v1/databases&#x60;): там используется версионированный тип, например &#x60;postgres17&#x60;. Тарифы для Valkey возвращаются со значением &#x60;redis&#x60; — отдельного значения &#x60;valkey&#x60; в этом поле не бывает.
    * @return type
   **/
   @javax.annotation.Nullable
-  public DbType getType() {
+  public TypeEnum getType() {
     return type;
   }
 
 
-  public void setType(DbType type) {
+  public void setType(TypeEnum type) {
     this.type = type;
   }
 
@@ -331,6 +430,35 @@ public class PresetsDbs {
   }
 
 
+  public PresetsDbs tags(List<String> tags) {
+    
+    this.tags = tags;
+    return this;
+  }
+
+  public PresetsDbs addTagsItem(String tagsItem) {
+    if (this.tags == null) {
+      this.tags = new ArrayList<>();
+    }
+    this.tags.add(tagsItem);
+    return this;
+  }
+
+   /**
+   * Теги тарифа, в том числе тег группы тарифов, в пределах которой доступна смена тарифа.
+   * @return tags
+  **/
+  @javax.annotation.Nullable
+  public List<String> getTags() {
+    return tags;
+  }
+
+
+  public void setTags(List<String> tags) {
+    this.tags = tags;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -345,16 +473,18 @@ public class PresetsDbs {
         Objects.equals(this.description, presetsDbs.description) &&
         Objects.equals(this.descriptionShort, presetsDbs.descriptionShort) &&
         Objects.equals(this.cpu, presetsDbs.cpu) &&
+        Objects.equals(this.cpuFrequency, presetsDbs.cpuFrequency) &&
         Objects.equals(this.ram, presetsDbs.ram) &&
         Objects.equals(this.disk, presetsDbs.disk) &&
         Objects.equals(this.type, presetsDbs.type) &&
         Objects.equals(this.price, presetsDbs.price) &&
-        Objects.equals(this.location, presetsDbs.location);
+        Objects.equals(this.location, presetsDbs.location) &&
+        Objects.equals(this.tags, presetsDbs.tags);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, description, descriptionShort, cpu, ram, disk, type, price, location);
+    return Objects.hash(id, description, descriptionShort, cpu, cpuFrequency, ram, disk, type, price, location, tags);
   }
 
   @Override
@@ -365,11 +495,13 @@ public class PresetsDbs {
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    descriptionShort: ").append(toIndentedString(descriptionShort)).append("\n");
     sb.append("    cpu: ").append(toIndentedString(cpu)).append("\n");
+    sb.append("    cpuFrequency: ").append(toIndentedString(cpuFrequency)).append("\n");
     sb.append("    ram: ").append(toIndentedString(ram)).append("\n");
     sb.append("    disk: ").append(toIndentedString(disk)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    price: ").append(toIndentedString(price)).append("\n");
     sb.append("    location: ").append(toIndentedString(location)).append("\n");
+    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -396,11 +528,13 @@ public class PresetsDbs {
     openapiFields.add("description");
     openapiFields.add("description_short");
     openapiFields.add("cpu");
+    openapiFields.add("cpu_frequency");
     openapiFields.add("ram");
     openapiFields.add("disk");
     openapiFields.add("type");
     openapiFields.add("price");
     openapiFields.add("location");
+    openapiFields.add("tags");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -433,8 +567,18 @@ public class PresetsDbs {
       if ((jsonObj.get("description_short") != null && !jsonObj.get("description_short").isJsonNull()) && !jsonObj.get("description_short").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description_short` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description_short").toString()));
       }
+      if ((jsonObj.get("cpu_frequency") != null && !jsonObj.get("cpu_frequency").isJsonNull()) && !jsonObj.get("cpu_frequency").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `cpu_frequency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cpu_frequency").toString()));
+      }
+      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+      }
       if ((jsonObj.get("location") != null && !jsonObj.get("location").isJsonNull()) && !jsonObj.get("location").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `location` to be a primitive type in the JSON string but got `%s`", jsonObj.get("location").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `tags` to be an array in the JSON string but got `%s`", jsonObj.get("tags").toString()));
       }
   }
 

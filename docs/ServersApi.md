@@ -1305,7 +1305,7 @@ public class Example {
 
 <a id="getServerDiskAutoBackupSettings"></a>
 # **getServerDiskAutoBackupSettings**
-> GetServerDiskAutoBackupSettings200Response getServerDiskAutoBackupSettings(serverId, diskId)
+> GetDatabaseAutoBackupsSettings200Response getServerDiskAutoBackupSettings(serverId, diskId)
 
 Получить настройки автобэкапов диска сервера
 
@@ -1334,7 +1334,7 @@ public class Example {
     Integer serverId = 1051; // Integer | ID облачного сервера.
     Integer diskId = 1051; // Integer | ID диска сервера.
     try {
-      GetServerDiskAutoBackupSettings200Response result = apiInstance.getServerDiskAutoBackupSettings(serverId, diskId);
+      GetDatabaseAutoBackupsSettings200Response result = apiInstance.getServerDiskAutoBackupSettings(serverId, diskId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ServersApi#getServerDiskAutoBackupSettings");
@@ -1356,7 +1356,7 @@ public class Example {
 
 ### Return type
 
-[**GetServerDiskAutoBackupSettings200Response**](GetServerDiskAutoBackupSettings200Response.md)
+[**GetDatabaseAutoBackupsSettings200Response**](GetDatabaseAutoBackupsSettings200Response.md)
 
 ### Authorization
 
@@ -3011,7 +3011,7 @@ public class Example {
 
 <a id="updateServerDiskAutoBackupSettings"></a>
 # **updateServerDiskAutoBackupSettings**
-> GetServerDiskAutoBackupSettings200Response updateServerDiskAutoBackupSettings(serverId, diskId, autoBackup)
+> GetDatabaseAutoBackupsSettings200Response updateServerDiskAutoBackupSettings(serverId, diskId, autoBackup)
 
 Изменение настроек автобэкапов диска сервера
 
@@ -3041,7 +3041,7 @@ public class Example {
     Integer diskId = 1051; // Integer | ID диска сервера.
     AutoBackup autoBackup = new AutoBackup(); // AutoBackup | При значении `is_enabled`: `true`, поля `copy_count`, `creation_start_at`, `interval` являются обязательными
     try {
-      GetServerDiskAutoBackupSettings200Response result = apiInstance.updateServerDiskAutoBackupSettings(serverId, diskId, autoBackup);
+      GetDatabaseAutoBackupsSettings200Response result = apiInstance.updateServerDiskAutoBackupSettings(serverId, diskId, autoBackup);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ServersApi#updateServerDiskAutoBackupSettings");
@@ -3064,7 +3064,7 @@ public class Example {
 
 ### Return type
 
-[**GetServerDiskAutoBackupSettings200Response**](GetServerDiskAutoBackupSettings200Response.md)
+[**GetDatabaseAutoBackupsSettings200Response**](GetDatabaseAutoBackupsSettings200Response.md)
 
 ### Authorization
 

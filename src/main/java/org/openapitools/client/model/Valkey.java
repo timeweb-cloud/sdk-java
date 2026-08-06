@@ -50,11 +50,15 @@ import org.openapitools.client.JSON;
 /**
  * Параметры Valkey (&#x60;valkey&#x60; | &#x60;valkey7&#x60; | &#x60;valkey8_1&#x60; | &#x60;valkey9_1&#x60;)
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-06T14:58:49.219742Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-06T15:06:51.562821Z[Etc/UTC]")
 public class Valkey {
   public static final String SERIALIZED_NAME_CLIENT_OUTPUT_BUFFER_LIMIT_NORMAL = "client-output-buffer-limit normal";
   @SerializedName(SERIALIZED_NAME_CLIENT_OUTPUT_BUFFER_LIMIT_NORMAL)
   private String clientOutputBufferLimitNormal;
+
+  public static final String SERIALIZED_NAME_NOTIFY_KEYSPACE_EVENTS = "notify-keyspace-events";
+  @SerializedName(SERIALIZED_NAME_NOTIFY_KEYSPACE_EVENTS)
+  private String notifyKeyspaceEvents;
 
   public static final String SERIALIZED_NAME_CLIENT_OUTPUT_BUFFER_LIMIT_PUBSUB = "client-output-buffer-limit pubsub";
   @SerializedName(SERIALIZED_NAME_CLIENT_OUTPUT_BUFFER_LIMIT_PUBSUB)
@@ -117,6 +121,27 @@ public class Valkey {
 
   public void setClientOutputBufferLimitNormal(String clientOutputBufferLimitNormal) {
     this.clientOutputBufferLimitNormal = clientOutputBufferLimitNormal;
+  }
+
+
+  public Valkey notifyKeyspaceEvents(String notifyKeyspaceEvents) {
+    
+    this.notifyKeyspaceEvents = notifyKeyspaceEvents;
+    return this;
+  }
+
+   /**
+   * Настройка уведомлений о событиях пространства ключей (&#x60;valkey&#x60; | &#x60;valkey7&#x60; | &#x60;valkey8_1&#x60; | &#x60;valkey9_1&#x60;).
+   * @return notifyKeyspaceEvents
+  **/
+  @javax.annotation.Nullable
+  public String getNotifyKeyspaceEvents() {
+    return notifyKeyspaceEvents;
+  }
+
+
+  public void setNotifyKeyspaceEvents(String notifyKeyspaceEvents) {
+    this.notifyKeyspaceEvents = notifyKeyspaceEvents;
   }
 
 
@@ -341,6 +366,7 @@ public class Valkey {
     }
     Valkey valkey = (Valkey) o;
     return Objects.equals(this.clientOutputBufferLimitNormal, valkey.clientOutputBufferLimitNormal) &&
+        Objects.equals(this.notifyKeyspaceEvents, valkey.notifyKeyspaceEvents) &&
         Objects.equals(this.clientOutputBufferLimitPubsub, valkey.clientOutputBufferLimitPubsub) &&
         Objects.equals(this.databases, valkey.databases) &&
         Objects.equals(this.timeout, valkey.timeout) &&
@@ -355,7 +381,7 @@ public class Valkey {
 
   @Override
   public int hashCode() {
-    return Objects.hash(clientOutputBufferLimitNormal, clientOutputBufferLimitPubsub, databases, timeout, maxmemoryPolicy, slowlogLogSlowerThan, slowlogMaxLen, save, appendonly, appendfsync, tcpKeepalive);
+    return Objects.hash(clientOutputBufferLimitNormal, notifyKeyspaceEvents, clientOutputBufferLimitPubsub, databases, timeout, maxmemoryPolicy, slowlogLogSlowerThan, slowlogMaxLen, save, appendonly, appendfsync, tcpKeepalive);
   }
 
   @Override
@@ -363,6 +389,7 @@ public class Valkey {
     StringBuilder sb = new StringBuilder();
     sb.append("class Valkey {\n");
     sb.append("    clientOutputBufferLimitNormal: ").append(toIndentedString(clientOutputBufferLimitNormal)).append("\n");
+    sb.append("    notifyKeyspaceEvents: ").append(toIndentedString(notifyKeyspaceEvents)).append("\n");
     sb.append("    clientOutputBufferLimitPubsub: ").append(toIndentedString(clientOutputBufferLimitPubsub)).append("\n");
     sb.append("    databases: ").append(toIndentedString(databases)).append("\n");
     sb.append("    timeout: ").append(toIndentedString(timeout)).append("\n");
@@ -396,6 +423,7 @@ public class Valkey {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("client-output-buffer-limit normal");
+    openapiFields.add("notify-keyspace-events");
     openapiFields.add("client-output-buffer-limit pubsub");
     openapiFields.add("databases");
     openapiFields.add("timeout");
@@ -434,6 +462,9 @@ public class Valkey {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("client-output-buffer-limit normal") != null && !jsonObj.get("client-output-buffer-limit normal").isJsonNull()) && !jsonObj.get("client-output-buffer-limit normal").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `client-output-buffer-limit normal` to be a primitive type in the JSON string but got `%s`", jsonObj.get("client-output-buffer-limit normal").toString()));
+      }
+      if ((jsonObj.get("notify-keyspace-events") != null && !jsonObj.get("notify-keyspace-events").isJsonNull()) && !jsonObj.get("notify-keyspace-events").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `notify-keyspace-events` to be a primitive type in the JSON string but got `%s`", jsonObj.get("notify-keyspace-events").toString()));
       }
       if ((jsonObj.get("client-output-buffer-limit pubsub") != null && !jsonObj.get("client-output-buffer-limit pubsub").isJsonNull()) && !jsonObj.get("client-output-buffer-limit pubsub").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `client-output-buffer-limit pubsub` to be a primitive type in the JSON string but got `%s`", jsonObj.get("client-output-buffer-limit pubsub").toString()));

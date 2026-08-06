@@ -181,6 +181,14 @@ public class MysqlTest {
     }
 
     /**
+     * Test the property 'queryCacheLimit'
+     */
+    @Test
+    public void queryCacheLimitTest() {
+        // TODO: test queryCacheLimit
+    }
+
+    /**
      * Test the property 'innodbFlushLogAtTrxCommit'
      */
     @Test

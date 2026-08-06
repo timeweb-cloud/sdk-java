@@ -73,6 +73,14 @@ public class CreateAdminTest {
     }
 
     /**
+     * Test the property 'forAll'
+     */
+    @Test
+    public void forAllTest() {
+        // TODO: test forAll
+    }
+
+    /**
      * Test the property 'privileges'
      */
     @Test

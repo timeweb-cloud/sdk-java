@@ -14,7 +14,6 @@
 package org.openapitools.client.api;
 
 import org.openapitools.client.ApiException;
-import org.openapitools.client.model.CreateDatabaseBackup409Response;
 import org.openapitools.client.model.CreateDomainMailbox201Response;
 import org.openapitools.client.model.CreateDomainMailboxRequest;
 import org.openapitools.client.model.CreateDomainMailboxV2201Response;
@@ -32,6 +31,7 @@ import org.openapitools.client.model.GetFinances429Response;
 import org.openapitools.client.model.GetFinances500Response;
 import org.openapitools.client.model.GetImage404Response;
 import org.openapitools.client.model.GetMailboxes200Response;
+import org.openapitools.client.model.UpdateDatabaseInstance409Response;
 import org.openapitools.client.model.UpdateDomainMailInfoRequest;
 import org.openapitools.client.model.UpdateMailbox;
 import org.openapitools.client.model.UpdateMailboxV2;

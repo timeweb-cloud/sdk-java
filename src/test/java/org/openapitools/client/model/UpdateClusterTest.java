@@ -19,7 +19,10 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import org.openapitools.client.model.CreateClusterDiskAutoscaling;
+import org.openapitools.client.model.CreateClusterMaintenanceSlot;
 import org.openapitools.client.model.Mysql;
+import org.openapitools.client.model.UpdateClusterConfiguration;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -54,11 +57,27 @@ public class UpdateClusterTest {
     }
 
     /**
+     * Test the property '_configuration'
+     */
+    @Test
+    public void _configurationTest() {
+        // TODO: test _configuration
+    }
+
+    /**
      * Test the property 'configParameters'
      */
     @Test
     public void configParametersTest() {
         // TODO: test configParameters
+    }
+
+    /**
+     * Test the property 'hashType'
+     */
+    @Test
+    public void hashTypeTest() {
+        // TODO: test hashType
     }
 
     /**
@@ -78,11 +97,35 @@ public class UpdateClusterTest {
     }
 
     /**
-     * Test the property 'isPublicIpv6'
+     * Test the property 'isEnabledPublicIpv6'
      */
     @Test
-    public void isPublicIpv6Test() {
-        // TODO: test isPublicIpv6
+    public void isEnabledPublicIpv6Test() {
+        // TODO: test isEnabledPublicIpv6
+    }
+
+    /**
+     * Test the property 'isSecureConnectionEnable'
+     */
+    @Test
+    public void isSecureConnectionEnableTest() {
+        // TODO: test isSecureConnectionEnable
+    }
+
+    /**
+     * Test the property 'maintenanceSlot'
+     */
+    @Test
+    public void maintenanceSlotTest() {
+        // TODO: test maintenanceSlot
+    }
+
+    /**
+     * Test the property 'diskAutoscaling'
+     */
+    @Test
+    public void diskAutoscalingTest() {
+        // TODO: test diskAutoscaling
     }
 
 }

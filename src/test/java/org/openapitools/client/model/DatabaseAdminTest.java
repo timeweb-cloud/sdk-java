@@ -89,6 +89,22 @@ public class DatabaseAdminTest {
     }
 
     /**
+     * Test the property 'forAll'
+     */
+    @Test
+    public void forAllTest() {
+        // TODO: test forAll
+    }
+
+    /**
+     * Test the property 'isResetPassword'
+     */
+    @Test
+    public void isResetPasswordTest() {
+        // TODO: test isResetPassword
+    }
+
+    /**
      * Test the property 'instances'
      */
     @Test

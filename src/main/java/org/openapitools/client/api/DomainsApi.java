@@ -29,7 +29,6 @@ import java.io.IOException;
 
 import org.openapitools.client.model.AddSubdomain201Response;
 import org.openapitools.client.model.CheckDomain200Response;
-import org.openapitools.client.model.CreateDatabaseBackup409Response;
 import org.openapitools.client.model.CreateDns;
 import org.openapitools.client.model.CreateDnsV2;
 import org.openapitools.client.model.CreateDomainDNSRecord201Response;
@@ -51,6 +50,7 @@ import org.openapitools.client.model.GetPersons200Response;
 import org.openapitools.client.model.GetTLD200Response;
 import org.openapitools.client.model.GetTLDs200Response;
 import org.openapitools.client.model.Person2;
+import org.openapitools.client.model.UpdateDatabaseInstance409Response;
 import org.openapitools.client.model.UpdateDomain;
 import org.openapitools.client.model.UpdateDomainAutoProlongation200Response;
 import org.openapitools.client.model.UpdateDomainNameServers;

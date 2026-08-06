@@ -33,7 +33,6 @@ import org.openapitools.client.model.AppsPresets;
 import org.openapitools.client.model.AvailableFrameworks;
 import org.openapitools.client.model.CreateApp;
 import org.openapitools.client.model.CreateApp201Response;
-import org.openapitools.client.model.CreateDatabaseBackup409Response;
 import org.openapitools.client.model.CreateDeploy201Response;
 import org.openapitools.client.model.CreateDeployRequest;
 import org.openapitools.client.model.GetAccountStatus403Response;
@@ -53,6 +52,7 @@ import org.openapitools.client.model.GetProviders200Response;
 import org.openapitools.client.model.GetRepositories200Response;
 import org.openapitools.client.model.GetServerStatistics200Response;
 import org.openapitools.client.model.UpdateAppSettings200Response;
+import org.openapitools.client.model.UpdateDatabaseInstance409Response;
 import org.openapitools.client.model.UpdateSettings;
 
 import java.lang.reflect.Type;

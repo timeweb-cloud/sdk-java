@@ -54,7 +54,7 @@ import org.openapitools.client.JSON;
 /**
  * Пользователь базы данных
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-06T14:58:49.219742Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-06T15:06:51.562821Z[Etc/UTC]")
 public class DatabaseAdmin {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -79,6 +79,14 @@ public class DatabaseAdmin {
   public static final String SERIALIZED_NAME_HOST = "host";
   @SerializedName(SERIALIZED_NAME_HOST)
   private String host;
+
+  public static final String SERIALIZED_NAME_FOR_ALL = "for_all";
+  @SerializedName(SERIALIZED_NAME_FOR_ALL)
+  private Boolean forAll;
+
+  public static final String SERIALIZED_NAME_IS_RESET_PASSWORD = "is_reset_password";
+  @SerializedName(SERIALIZED_NAME_IS_RESET_PASSWORD)
+  private Boolean isResetPassword;
 
   public static final String SERIALIZED_NAME_INSTANCES = "instances";
   @SerializedName(SERIALIZED_NAME_INSTANCES)
@@ -115,7 +123,7 @@ public class DatabaseAdmin {
   }
 
    /**
-   * Значение времени, указанное в комбинированном формате даты и времени ISO8601, которое представляет, когда была создана база данных.
+   * Значение времени, указанное в комбинированном формате даты и времени ISO8601, которое представляет, когда был создан пользователь базы данных.
    * @return createdAt
   **/
   @javax.annotation.Nonnull
@@ -213,6 +221,48 @@ public class DatabaseAdmin {
   }
 
 
+  public DatabaseAdmin forAll(Boolean forAll) {
+    
+    this.forAll = forAll;
+    return this;
+  }
+
+   /**
+   * Флаг, выданы ли пользователю привилегии на все инстансы базы данных
+   * @return forAll
+  **/
+  @javax.annotation.Nonnull
+  public Boolean getForAll() {
+    return forAll;
+  }
+
+
+  public void setForAll(Boolean forAll) {
+    this.forAll = forAll;
+  }
+
+
+  public DatabaseAdmin isResetPassword(Boolean isResetPassword) {
+    
+    this.isResetPassword = isResetPassword;
+    return this;
+  }
+
+   /**
+   * Флаг, был ли сброшен пароль пользователя
+   * @return isResetPassword
+  **/
+  @javax.annotation.Nonnull
+  public Boolean getIsResetPassword() {
+    return isResetPassword;
+  }
+
+
+  public void setIsResetPassword(Boolean isResetPassword) {
+    this.isResetPassword = isResetPassword;
+  }
+
+
   public DatabaseAdmin instances(List<DatabaseAdminInstancesInner> instances) {
     
     this.instances = instances;
@@ -258,12 +308,14 @@ public class DatabaseAdmin {
         Objects.equals(this.password, databaseAdmin.password) &&
         Objects.equals(this.description, databaseAdmin.description) &&
         Objects.equals(this.host, databaseAdmin.host) &&
+        Objects.equals(this.forAll, databaseAdmin.forAll) &&
+        Objects.equals(this.isResetPassword, databaseAdmin.isResetPassword) &&
         Objects.equals(this.instances, databaseAdmin.instances);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, login, password, description, host, instances);
+    return Objects.hash(id, createdAt, login, password, description, host, forAll, isResetPassword, instances);
   }
 
   @Override
@@ -276,6 +328,8 @@ public class DatabaseAdmin {
     sb.append("    password: ").append(toIndentedString(password)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    host: ").append(toIndentedString(host)).append("\n");
+    sb.append("    forAll: ").append(toIndentedString(forAll)).append("\n");
+    sb.append("    isResetPassword: ").append(toIndentedString(isResetPassword)).append("\n");
     sb.append("    instances: ").append(toIndentedString(instances)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -305,6 +359,8 @@ public class DatabaseAdmin {
     openapiFields.add("password");
     openapiFields.add("description");
     openapiFields.add("host");
+    openapiFields.add("for_all");
+    openapiFields.add("is_reset_password");
     openapiFields.add("instances");
 
     // a set of required properties/fields (JSON key names)
@@ -315,6 +371,8 @@ public class DatabaseAdmin {
     openapiRequiredFields.add("password");
     openapiRequiredFields.add("description");
     openapiRequiredFields.add("host");
+    openapiRequiredFields.add("for_all");
+    openapiRequiredFields.add("is_reset_password");
     openapiRequiredFields.add("instances");
   }
 

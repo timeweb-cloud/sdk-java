@@ -21,7 +21,10 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import org.openapitools.client.model.CreateClusterDiskAutoscaling;
+import org.openapitools.client.model.CreateClusterMaintenanceSlot;
 import org.openapitools.client.model.Mysql;
+import org.openapitools.client.model.UpdateClusterConfiguration;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -51,7 +54,7 @@ import org.openapitools.client.JSON;
 /**
  * UpdateCluster
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-06T14:58:49.219742Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-06T15:06:51.562821Z[Etc/UTC]")
 public class UpdateCluster {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -61,9 +64,64 @@ public class UpdateCluster {
   @SerializedName(SERIALIZED_NAME_PRESET_ID)
   private Integer presetId;
 
+  public static final String SERIALIZED_NAME_CONFIGURATION = "configuration";
+  @SerializedName(SERIALIZED_NAME_CONFIGURATION)
+  private UpdateClusterConfiguration _configuration;
+
   public static final String SERIALIZED_NAME_CONFIG_PARAMETERS = "config_parameters";
   @SerializedName(SERIALIZED_NAME_CONFIG_PARAMETERS)
   private Mysql configParameters;
+
+  /**
+   * Тип хеширования базы данных (mysql | postgres).
+   */
+  @JsonAdapter(HashTypeEnum.Adapter.class)
+  public enum HashTypeEnum {
+    CACHING_SHA2("caching_sha2"),
+    
+    MYSQL_NATIVE("mysql_native");
+
+    private String value;
+
+    HashTypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static HashTypeEnum fromValue(String value) {
+      for (HashTypeEnum b : HashTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<HashTypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final HashTypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public HashTypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return HashTypeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_HASH_TYPE = "hash_type";
+  @SerializedName(SERIALIZED_NAME_HASH_TYPE)
+  private HashTypeEnum hashType;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
@@ -73,9 +131,21 @@ public class UpdateCluster {
   @SerializedName(SERIALIZED_NAME_IS_ENABLED_PUBLIC_NETWORK)
   private Boolean isEnabledPublicNetwork;
 
-  public static final String SERIALIZED_NAME_IS_PUBLIC_IPV6 = "is_public_ipv6";
-  @SerializedName(SERIALIZED_NAME_IS_PUBLIC_IPV6)
-  private Boolean isPublicIpv6;
+  public static final String SERIALIZED_NAME_IS_ENABLED_PUBLIC_IPV6 = "is_enabled_public_ipv6";
+  @SerializedName(SERIALIZED_NAME_IS_ENABLED_PUBLIC_IPV6)
+  private Boolean isEnabledPublicIpv6;
+
+  public static final String SERIALIZED_NAME_IS_SECURE_CONNECTION_ENABLE = "is_secure_connection_enable";
+  @SerializedName(SERIALIZED_NAME_IS_SECURE_CONNECTION_ENABLE)
+  private Boolean isSecureConnectionEnable;
+
+  public static final String SERIALIZED_NAME_MAINTENANCE_SLOT = "maintenance_slot";
+  @SerializedName(SERIALIZED_NAME_MAINTENANCE_SLOT)
+  private CreateClusterMaintenanceSlot maintenanceSlot;
+
+  public static final String SERIALIZED_NAME_DISK_AUTOSCALING = "disk_autoscaling";
+  @SerializedName(SERIALIZED_NAME_DISK_AUTOSCALING)
+  private CreateClusterDiskAutoscaling diskAutoscaling;
 
   public UpdateCluster() {
   }
@@ -108,7 +178,7 @@ public class UpdateCluster {
   }
 
    /**
-   * ID тарифа.
+   * ID тарифа. Нельзя передавать вместе с &#x60;configuration&#x60;
    * @return presetId
   **/
   @javax.annotation.Nullable
@@ -119,6 +189,27 @@ public class UpdateCluster {
 
   public void setPresetId(Integer presetId) {
     this.presetId = presetId;
+  }
+
+
+  public UpdateCluster _configuration(UpdateClusterConfiguration _configuration) {
+    
+    this._configuration = _configuration;
+    return this;
+  }
+
+   /**
+   * Get _configuration
+   * @return _configuration
+  **/
+  @javax.annotation.Nullable
+  public UpdateClusterConfiguration getConfiguration() {
+    return _configuration;
+  }
+
+
+  public void setConfiguration(UpdateClusterConfiguration _configuration) {
+    this._configuration = _configuration;
   }
 
 
@@ -140,6 +231,27 @@ public class UpdateCluster {
 
   public void setConfigParameters(Mysql configParameters) {
     this.configParameters = configParameters;
+  }
+
+
+  public UpdateCluster hashType(HashTypeEnum hashType) {
+    
+    this.hashType = hashType;
+    return this;
+  }
+
+   /**
+   * Тип хеширования базы данных (mysql | postgres).
+   * @return hashType
+  **/
+  @javax.annotation.Nullable
+  public HashTypeEnum getHashType() {
+    return hashType;
+  }
+
+
+  public void setHashType(HashTypeEnum hashType) {
+    this.hashType = hashType;
   }
 
 
@@ -185,24 +297,87 @@ public class UpdateCluster {
   }
 
 
-  public UpdateCluster isPublicIpv6(Boolean isPublicIpv6) {
+  public UpdateCluster isEnabledPublicIpv6(Boolean isEnabledPublicIpv6) {
     
-    this.isPublicIpv6 = isPublicIpv6;
+    this.isEnabledPublicIpv6 = isEnabledPublicIpv6;
     return this;
   }
 
    /**
-   * Использование IPv6 адреса.
-   * @return isPublicIpv6
+   * Использование публичного IPv6-адреса.
+   * @return isEnabledPublicIpv6
   **/
   @javax.annotation.Nullable
-  public Boolean getIsPublicIpv6() {
-    return isPublicIpv6;
+  public Boolean getIsEnabledPublicIpv6() {
+    return isEnabledPublicIpv6;
   }
 
 
-  public void setIsPublicIpv6(Boolean isPublicIpv6) {
-    this.isPublicIpv6 = isPublicIpv6;
+  public void setIsEnabledPublicIpv6(Boolean isEnabledPublicIpv6) {
+    this.isEnabledPublicIpv6 = isEnabledPublicIpv6;
+  }
+
+
+  public UpdateCluster isSecureConnectionEnable(Boolean isSecureConnectionEnable) {
+    
+    this.isSecureConnectionEnable = isSecureConnectionEnable;
+    return this;
+  }
+
+   /**
+   * Включить защищенное подключение к кластеру базы данных
+   * @return isSecureConnectionEnable
+  **/
+  @javax.annotation.Nullable
+  public Boolean getIsSecureConnectionEnable() {
+    return isSecureConnectionEnable;
+  }
+
+
+  public void setIsSecureConnectionEnable(Boolean isSecureConnectionEnable) {
+    this.isSecureConnectionEnable = isSecureConnectionEnable;
+  }
+
+
+  public UpdateCluster maintenanceSlot(CreateClusterMaintenanceSlot maintenanceSlot) {
+    
+    this.maintenanceSlot = maintenanceSlot;
+    return this;
+  }
+
+   /**
+   * Get maintenanceSlot
+   * @return maintenanceSlot
+  **/
+  @javax.annotation.Nullable
+  public CreateClusterMaintenanceSlot getMaintenanceSlot() {
+    return maintenanceSlot;
+  }
+
+
+  public void setMaintenanceSlot(CreateClusterMaintenanceSlot maintenanceSlot) {
+    this.maintenanceSlot = maintenanceSlot;
+  }
+
+
+  public UpdateCluster diskAutoscaling(CreateClusterDiskAutoscaling diskAutoscaling) {
+    
+    this.diskAutoscaling = diskAutoscaling;
+    return this;
+  }
+
+   /**
+   * Get diskAutoscaling
+   * @return diskAutoscaling
+  **/
+  @javax.annotation.Nullable
+  public CreateClusterDiskAutoscaling getDiskAutoscaling() {
+    return diskAutoscaling;
+  }
+
+
+  public void setDiskAutoscaling(CreateClusterDiskAutoscaling diskAutoscaling) {
+    this.diskAutoscaling = diskAutoscaling;
   }
 
 
@@ -218,15 +393,20 @@ public class UpdateCluster {
     UpdateCluster updateCluster = (UpdateCluster) o;
     return Objects.equals(this.name, updateCluster.name) &&
         Objects.equals(this.presetId, updateCluster.presetId) &&
+        Objects.equals(this._configuration, updateCluster._configuration) &&
         Objects.equals(this.configParameters, updateCluster.configParameters) &&
+        Objects.equals(this.hashType, updateCluster.hashType) &&
         Objects.equals(this.description, updateCluster.description) &&
         Objects.equals(this.isEnabledPublicNetwork, updateCluster.isEnabledPublicNetwork) &&
-        Objects.equals(this.isPublicIpv6, updateCluster.isPublicIpv6);
+        Objects.equals(this.isEnabledPublicIpv6, updateCluster.isEnabledPublicIpv6) &&
+        Objects.equals(this.isSecureConnectionEnable, updateCluster.isSecureConnectionEnable) &&
+        Objects.equals(this.maintenanceSlot, updateCluster.maintenanceSlot) &&
+        Objects.equals(this.diskAutoscaling, updateCluster.diskAutoscaling);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, presetId, configParameters, description, isEnabledPublicNetwork, isPublicIpv6);
+    return Objects.hash(name, presetId, _configuration, configParameters, hashType, description, isEnabledPublicNetwork, isEnabledPublicIpv6, isSecureConnectionEnable, maintenanceSlot, diskAutoscaling);
   }
 
   @Override
@@ -235,10 +415,15 @@ public class UpdateCluster {
     sb.append("class UpdateCluster {\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    presetId: ").append(toIndentedString(presetId)).append("\n");
+    sb.append("    _configuration: ").append(toIndentedString(_configuration)).append("\n");
     sb.append("    configParameters: ").append(toIndentedString(configParameters)).append("\n");
+    sb.append("    hashType: ").append(toIndentedString(hashType)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    isEnabledPublicNetwork: ").append(toIndentedString(isEnabledPublicNetwork)).append("\n");
-    sb.append("    isPublicIpv6: ").append(toIndentedString(isPublicIpv6)).append("\n");
+    sb.append("    isEnabledPublicIpv6: ").append(toIndentedString(isEnabledPublicIpv6)).append("\n");
+    sb.append("    isSecureConnectionEnable: ").append(toIndentedString(isSecureConnectionEnable)).append("\n");
+    sb.append("    maintenanceSlot: ").append(toIndentedString(maintenanceSlot)).append("\n");
+    sb.append("    diskAutoscaling: ").append(toIndentedString(diskAutoscaling)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -263,10 +448,15 @@ public class UpdateCluster {
     openapiFields = new HashSet<String>();
     openapiFields.add("name");
     openapiFields.add("preset_id");
+    openapiFields.add("configuration");
     openapiFields.add("config_parameters");
+    openapiFields.add("hash_type");
     openapiFields.add("description");
     openapiFields.add("is_enabled_public_network");
-    openapiFields.add("is_public_ipv6");
+    openapiFields.add("is_enabled_public_ipv6");
+    openapiFields.add("is_secure_connection_enable");
+    openapiFields.add("maintenance_slot");
+    openapiFields.add("disk_autoscaling");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -296,12 +486,27 @@ public class UpdateCluster {
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
+      // validate the optional field `configuration`
+      if (jsonObj.get("configuration") != null && !jsonObj.get("configuration").isJsonNull()) {
+        UpdateClusterConfiguration.validateJsonElement(jsonObj.get("configuration"));
+      }
       // validate the optional field `config_parameters`
       if (jsonObj.get("config_parameters") != null && !jsonObj.get("config_parameters").isJsonNull()) {
         Mysql.validateJsonElement(jsonObj.get("config_parameters"));
       }
+      if ((jsonObj.get("hash_type") != null && !jsonObj.get("hash_type").isJsonNull()) && !jsonObj.get("hash_type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `hash_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("hash_type").toString()));
+      }
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
+      }
+      // validate the optional field `maintenance_slot`
+      if (jsonObj.get("maintenance_slot") != null && !jsonObj.get("maintenance_slot").isJsonNull()) {
+        CreateClusterMaintenanceSlot.validateJsonElement(jsonObj.get("maintenance_slot"));
+      }
+      // validate the optional field `disk_autoscaling`
+      if (jsonObj.get("disk_autoscaling") != null && !jsonObj.get("disk_autoscaling").isJsonNull()) {
+        CreateClusterDiskAutoscaling.validateJsonElement(jsonObj.get("disk_autoscaling"));
       }
   }
 

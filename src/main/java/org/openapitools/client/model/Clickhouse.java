@@ -29,21 +29,15 @@ import com.google.gson.stream.JsonWriter;
 @JsonAdapter(Clickhouse.Adapter.class)
 public enum Clickhouse {
   
-  ALTER("ALTER"),
-  
   ALTER_TABLE("ALTER_TABLE"),
   
   ALTER_VIEW("ALTER_VIEW"),
-  
-  CREATE("CREATE"),
   
   CREATE_VIEW("CREATE_VIEW"),
   
   CREATE_DICTIONARY("CREATE_DICTIONARY"),
   
   CREATE_TABLE("CREATE_TABLE"),
-  
-  DROP("DROP"),
   
   DROP_TABLE("DROP_TABLE"),
   

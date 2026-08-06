@@ -50,16 +50,16 @@ import org.openapitools.client.JSON;
 /**
  * DatabaseClusterNetworksInnerIpsInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-06T14:58:49.219742Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-06T15:06:51.562821Z[Etc/UTC]")
 public class DatabaseClusterNetworksInnerIpsInner {
   /**
-   * Тип IP-адреса сети
+   * Тип IP-адреса сети.
    */
   @JsonAdapter(TypeEnum.Adapter.class)
   public enum TypeEnum {
-    IPV4("ipv4"),
+    _4("ipv_4"),
     
-    IPV6("ipv6");
+    _6("ipv_6");
 
     private String value;
 
@@ -117,7 +117,7 @@ public class DatabaseClusterNetworksInnerIpsInner {
   }
 
    /**
-   * Тип IP-адреса сети
+   * Тип IP-адреса сети.
    * @return type
   **/
   @javax.annotation.Nonnull
@@ -138,10 +138,10 @@ public class DatabaseClusterNetworksInnerIpsInner {
   }
 
    /**
-   * IP-адрес сети
+   * IP-адрес сети.
    * @return ip
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getIp() {
     return ip;
   }
@@ -239,7 +239,7 @@ public class DatabaseClusterNetworksInnerIpsInner {
       if (!jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
-      if (!jsonObj.get("ip").isJsonPrimitive()) {
+      if ((jsonObj.get("ip") != null && !jsonObj.get("ip").isJsonNull()) && !jsonObj.get("ip").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `ip` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ip").toString()));
       }
   }

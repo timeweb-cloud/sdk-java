@@ -14,23 +14,35 @@
 package org.openapitools.client.api;
 
 import org.openapitools.client.ApiException;
-import org.openapitools.client.model.AutoBackup;
-import org.openapitools.client.model.ConfigParameters;
+import org.openapitools.client.model.BackupDownloadUrlRequest;
+import org.openapitools.client.model.ClusterAction;
 import org.openapitools.client.model.CreateAdmin;
 import org.openapitools.client.model.CreateCluster;
 import org.openapitools.client.model.CreateDatabaseBackup201Response;
-import org.openapitools.client.model.CreateDatabaseBackup409Response;
+import org.openapitools.client.model.CreateDatabaseBackupDownloadUrl201Response;
 import org.openapitools.client.model.CreateDatabaseCluster201Response;
 import org.openapitools.client.model.CreateDatabaseInstance201Response;
+import org.openapitools.client.model.CreateDatabaseS3Backup201Response;
 import org.openapitools.client.model.CreateDatabaseUser201Response;
 import org.openapitools.client.model.CreateInstance;
+import org.openapitools.client.model.CreateS3Backup;
+import org.openapitools.client.model.DbParametersByType;
+import org.openapitools.client.model.DbsCreateBackup;
+import org.openapitools.client.model.DbsUpdateBackup;
 import org.openapitools.client.model.DeleteDatabaseCluster200Response;
 import org.openapitools.client.model.GetAccountStatus403Response;
 import org.openapitools.client.model.GetDatabaseAutoBackupsSettings200Response;
+import org.openapitools.client.model.GetDatabaseBackup200Response;
 import org.openapitools.client.model.GetDatabaseBackups200Response;
+import org.openapitools.client.model.GetDatabaseClusterReplicas200Response;
 import org.openapitools.client.model.GetDatabaseClusterTypes200Response;
 import org.openapitools.client.model.GetDatabaseClusters200Response;
+import org.openapitools.client.model.GetDatabaseConfigurators200Response;
+import org.openapitools.client.model.GetDatabaseDefaultParameters200Response;
 import org.openapitools.client.model.GetDatabaseInstances200Response;
+import org.openapitools.client.model.GetDatabasePreset200Response;
+import org.openapitools.client.model.GetDatabasePrivileges200Response;
+import org.openapitools.client.model.GetDatabaseS3Backups200Response;
 import org.openapitools.client.model.GetDatabaseUsers200Response;
 import org.openapitools.client.model.GetDatabasesPresets200Response;
 import org.openapitools.client.model.GetFinances400Response;
@@ -38,9 +50,15 @@ import org.openapitools.client.model.GetFinances401Response;
 import org.openapitools.client.model.GetFinances429Response;
 import org.openapitools.client.model.GetFinances500Response;
 import org.openapitools.client.model.GetImage404Response;
+import java.util.UUID;
 import org.openapitools.client.model.UpdateAdmin;
+import org.openapitools.client.model.UpdateAutoBackup;
 import org.openapitools.client.model.UpdateCluster;
+import org.openapitools.client.model.UpdateClusterV2;
+import org.openapitools.client.model.UpdateDatabaseCluster200Response;
+import org.openapitools.client.model.UpdateDatabaseInstance409Response;
 import org.openapitools.client.model.UpdateInstance;
+import org.openapitools.client.model.UpdateS3Backup;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -67,15 +85,31 @@ public class DatabasesApiTest {
     @Test
     public void createDatabaseBackupTest() throws ApiException {
         Integer dbId = null;
-        String comment = null;
-        CreateDatabaseBackup201Response response = api.createDatabaseBackup(dbId, comment);
+        DbsCreateBackup dbsCreateBackup = null;
+        CreateDatabaseBackup201Response response = api.createDatabaseBackup(dbId, dbsCreateBackup);
+        // TODO: test validations
+    }
+
+    /**
+     * Получение ссылки для скачивания бэкапа базы данных
+     *
+     * Чтобы получить ссылку для скачивания резервной копии базы данных, отправьте POST-запрос на &#x60;/api/v1/dbs/{db_id}/backups/{backup_id}/download-url&#x60;.   Скачивание резервных копий доступно не для всех кластеров. Если для вашего кластера оно недоступно, метод вернет ошибку со статусом &#x60;400&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;backup_url&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void createDatabaseBackupDownloadUrlTest() throws ApiException {
+        Integer dbId = null;
+        Integer backupId = null;
+        BackupDownloadUrlRequest backupDownloadUrlRequest = null;
+        CreateDatabaseBackupDownloadUrl201Response response = api.createDatabaseBackupDownloadUrl(dbId, backupId, backupDownloadUrlRequest);
         // TODO: test validations
     }
 
     /**
      * Создание кластера базы данных
      *
-     * Чтобы создать кластер базы данных на вашем аккаунте, отправьте POST-запрос на &#x60;/api/v1/databases&#x60;.   Вместе с кластером будет создан один инстанс базы данных и один пользователь.
+     * Чтобы создать кластер базы данных на вашем аккаунте, отправьте POST-запрос на &#x60;/api/v1/databases&#x60;.   Вместе с кластером будет создан один инстанс базы данных и один пользователь.   Размер кластера задается либо тарифом (&#x60;preset_id&#x60;), либо конфигуратором (&#x60;configuration&#x60;). Эти поля взаимоисключающие, но одно из них передать обязательно — запрос без обоих вернется с ошибкой.
      *
      * @throws ApiException if the Api call fails
      */
@@ -98,6 +132,21 @@ public class DatabasesApiTest {
         Integer dbClusterId = null;
         CreateInstance createInstance = null;
         CreateDatabaseInstance201Response response = api.createDatabaseInstance(dbClusterId, createInstance);
+        // TODO: test validations
+    }
+
+    /**
+     * Создание S3-бэкапа базы данных
+     *
+     * Чтобы создать резервную копию кластера базы данных в объектном хранилище, отправьте POST-запрос на &#x60;/api/v2/databases/{db_id}/backups&#x60;.   Тело запроса необязательно: единственное поле &#x60;comment&#x60; можно не передавать. Тело ответа будет представлять собой объект JSON с ключом &#x60;backup&#x60;.   Копия создается асинхронно. Пока она создается, ее статус — &#x60;running&#x60;, и восстановиться из нее нельзя. Дождитесь статуса &#x60;success&#x60;, опрашивая &#x60;/api/v2/databases/{db_id}/backups/{backup_id}&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void createDatabaseS3BackupTest() throws ApiException {
+        Integer dbId = null;
+        CreateS3Backup createS3Backup = null;
+        CreateDatabaseS3Backup201Response response = api.createDatabaseS3Backup(dbId, createS3Backup);
         // TODO: test validations
     }
 
@@ -141,9 +190,7 @@ public class DatabasesApiTest {
     @Test
     public void deleteDatabaseClusterTest() throws ApiException {
         Integer dbClusterId = null;
-        String hash = null;
-        String code = null;
-        DeleteDatabaseCluster200Response response = api.deleteDatabaseCluster(dbClusterId, hash, code);
+        DeleteDatabaseCluster200Response response = api.deleteDatabaseCluster(dbClusterId);
         // TODO: test validations
     }
 
@@ -159,6 +206,21 @@ public class DatabasesApiTest {
         Integer dbClusterId = null;
         Integer instanceId = null;
         api.deleteDatabaseInstance(dbClusterId, instanceId);
+        // TODO: test validations
+    }
+
+    /**
+     * Удаление S3-бэкапа базы данных
+     *
+     * Чтобы удалить резервную копию кластера базы данных из объектного хранилища, отправьте DELETE-запрос на &#x60;/api/v2/databases/{db_id}/backups/{backup_id}&#x60;.   Копия удаляется безвозвратно, тело ответа пустое. На резервные копии из &#x60;/api/v1/dbs/{db_id}/backups/{backup_id}&#x60; этот метод не действует — они удаляются отдельным запросом.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void deleteDatabaseS3BackupTest() throws ApiException {
+        Integer dbId = null;
+        UUID backupId = null;
+        api.deleteDatabaseS3Backup(dbId, backupId);
         // TODO: test validations
     }
 
@@ -202,7 +264,7 @@ public class DatabasesApiTest {
     public void getDatabaseBackupTest() throws ApiException {
         Integer dbId = null;
         Integer backupId = null;
-        CreateDatabaseBackup201Response response = api.getDatabaseBackup(dbId, backupId);
+        GetDatabaseBackup200Response response = api.getDatabaseBackup(dbId, backupId);
         // TODO: test validations
     }
 
@@ -237,6 +299,20 @@ public class DatabasesApiTest {
     }
 
     /**
+     * Получение списка реплик кластера базы данных
+     *
+     * Чтобы получить список реплик кластера базы данных, отправьте GET-запрос на &#x60;/api/v1/databases/{db_cluster_id}/replicas&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;replicas&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void getDatabaseClusterReplicasTest() throws ApiException {
+        Integer dbClusterId = null;
+        GetDatabaseClusterReplicas200Response response = api.getDatabaseClusterReplicas(dbClusterId);
+        // TODO: test validations
+    }
+
+    /**
      * Получение списка типов кластеров баз данных
      *
      * Чтобы получить список типов баз данных на вашем аккаунте, отправьте GET-запрос на &#x60;/api/v1/database-types&#x60;.
@@ -261,6 +337,37 @@ public class DatabasesApiTest {
         Integer limit = null;
         Integer offset = null;
         GetDatabaseClusters200Response response = api.getDatabaseClusters(limit, offset);
+        // TODO: test validations
+    }
+
+    /**
+     * Получение списка конфигураторов баз данных
+     *
+     * Чтобы получить список конфигураторов баз данных, отправьте GET-запрос на &#x60;/api/v1/configurator/databases&#x60;.   Конфигуратор позволяет создать кластер с произвольным количеством ресурсов вместо готового тарифа: его ID передается при создании кластера в поле &#x60;configuration.configurator_id&#x60;, а допустимые значения ресурсов ограничены объектом &#x60;requirements&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;database_configurators&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void getDatabaseConfiguratorsTest() throws ApiException {
+        Integer clusterId = null;
+        Boolean withUnavailable = null;
+        GetDatabaseConfigurators200Response response = api.getDatabaseConfigurators(clusterId, withUnavailable);
+        // TODO: test validations
+    }
+
+    /**
+     * Получение рекомендуемых значений параметров баз данных
+     *
+     * Чтобы получить рекомендуемые значения параметров базы данных, отправьте GET-запрос на &#x60;/api/v1/dbs/default-parameters&#x60;.   Значения рассчитываются для указанного типа кластера, объема оперативной памяти и количества реплик — их можно передать при создании кластера в поле &#x60;config_parameters&#x60;. Список имен параметров, доступных для каждого типа кластера, возвращает &#x60;GET /api/v1/dbs/parameters&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;config_params&#x60;. Рекомендуемые значения рассчитываются только для кластеров MySQL, PostgreSQL и Valkey — для остальных типов возвращается пустой объект.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void getDatabaseDefaultParametersTest() throws ApiException {
+        String type = null;
+        Integer ram = null;
+        Integer replicaCount = null;
+        GetDatabaseDefaultParameters200Response response = api.getDatabaseDefaultParameters(type, ram, replicaCount);
         // TODO: test validations
     }
 
@@ -296,13 +403,70 @@ public class DatabasesApiTest {
     /**
      * Получение списка параметров баз данных
      *
-     * Чтобы получить список параметров баз данных, отправьте GET-запрос на &#x60;/api/v1/dbs/parameters&#x60;.
+     * Чтобы получить список параметров баз данных, отправьте GET-запрос на &#x60;/api/v1/dbs/parameters&#x60;.   Ответ содержит только имена параметров, доступных для каждого типа кластера. Рекомендуемые значения этих параметров для конкретной конфигурации возвращает &#x60;GET /api/v1/dbs/default-parameters&#x60;.
      *
      * @throws ApiException if the Api call fails
      */
     @Test
     public void getDatabaseParametersTest() throws ApiException {
-        ConfigParameters response = api.getDatabaseParameters();
+        DbParametersByType response = api.getDatabaseParameters();
+        // TODO: test validations
+    }
+
+    /**
+     * Получение тарифа для базы данных
+     *
+     * Чтобы получить тариф для базы данных, отправьте GET-запрос на &#x60;/api/v2/dbs/presets/{preset_id}&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;databases_preset&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void getDatabasePresetTest() throws ApiException {
+        Integer presetId = null;
+        GetDatabasePreset200Response response = api.getDatabasePreset(presetId);
+        // TODO: test validations
+    }
+
+    /**
+     * Получение привилегий кластера базы данных
+     *
+     * Чтобы получить список привилегий, которые можно выдать пользователям кластера базы данных, отправьте GET-запрос на &#x60;/api/v1/databases/{db_cluster_id}/privileges&#x60;.\\    Список зависит от типа СУБД кластера и определяется сервером автоматически: возвращаются только те привилегии, которые допустимы для этого кластера. Используйте его, чтобы заполнить поле &#x60;privileges&#x60; при &lt;a href&#x3D;&#39;#tag/Bazy-dannyh/operation/createDatabaseUser&#39;&gt;создании&lt;/a&gt; или &lt;a href&#x3D;&#39;#tag/Bazy-dannyh/operation/updateDatabaseUser&#39;&gt;изменении&lt;/a&gt; пользователя базы данных.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void getDatabasePrivilegesTest() throws ApiException {
+        Integer dbClusterId = null;
+        GetDatabasePrivileges200Response response = api.getDatabasePrivileges(dbClusterId);
+        // TODO: test validations
+    }
+
+    /**
+     * Получение S3-бэкапа базы данных
+     *
+     * Чтобы получить информацию о резервной копии кластера базы данных в объектном хранилище, отправьте GET-запрос на &#x60;/api/v2/databases/{db_id}/backups/{backup_id}&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;backup&#x60;. Обратите внимание, что &#x60;backup_id&#x60; здесь — строка в формате UUID, а не число, как в &#x60;/api/v1/dbs/{db_id}/backups/{backup_id}&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void getDatabaseS3BackupTest() throws ApiException {
+        Integer dbId = null;
+        UUID backupId = null;
+        CreateDatabaseS3Backup201Response response = api.getDatabaseS3Backup(dbId, backupId);
+        // TODO: test validations
+    }
+
+    /**
+     * Список S3-бэкапов базы данных
+     *
+     * Чтобы получить список резервных копий кластера базы данных в объектном хранилище, отправьте GET-запрос на &#x60;/api/v2/databases/{db_id}/backups&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;backups&#x60;. Копии отсортированы по дате создания по убыванию — сначала самые свежие.   Резервное копирование в объектное хранилище доступно для кластеров MySQL и PostgreSQL. Идентификатор такой копии — строка в формате UUID; это отдельный от &#x60;/api/v1/dbs/{db_id}/backups&#x60; механизм, и идентификаторы копий между ними не взаимозаменяемы.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void getDatabaseS3BackupsTest() throws ApiException {
+        Integer dbId = null;
+        GetDatabaseS3Backups200Response response = api.getDatabaseS3Backups(dbId);
         // TODO: test validations
     }
 
@@ -338,14 +502,30 @@ public class DatabasesApiTest {
     /**
      * Получение списка тарифов для баз данных
      *
-     * Чтобы получить список тарифов для баз данных, отправьте GET-запрос на &#x60;/api/v2/presets/dbs&#x60;.   Тело ответа будет представлять собой объект JSON с ключом &#x60;databases_presets&#x60;.
+     * Чтобы получить список тарифов для баз данных, отправьте GET-запрос на &#x60;/api/v2/presets/dbs&#x60;.   Без параметров возвращаются тарифы, доступные к заказу — этот список используется при создании кластера. Если передать &#x60;cluster_id&#x60;, вернутся тарифы группы, в пределах которой можно сменить тариф указанного кластера.   Тело ответа будет представлять собой объект JSON с ключом &#x60;databases_presets&#x60;.
      *
      * @throws ApiException if the Api call fails
      */
     @Test
     public void getDatabasesPresetsTest() throws ApiException {
-        Integer dbId = null;
-        GetDatabasesPresets200Response response = api.getDatabasesPresets(dbId);
+        Integer clusterId = null;
+        Boolean withUnavailable = null;
+        GetDatabasesPresets200Response response = api.getDatabasesPresets(clusterId, withUnavailable);
+        // TODO: test validations
+    }
+
+    /**
+     * Выполнение действия над кластером базы данных
+     *
+     * Чтобы выполнить действие над кластером базы данных, отправьте POST-запрос на &#x60;/api/v1/databases/{db_cluster_id}/action&#x60;.   Доступные действия: &#x60;reboot&#x60; — перезагрузка кластера, &#x60;shutdown&#x60; — выключение кластера, &#x60;start&#x60; — включение кластера.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void performDatabaseClusterActionTest() throws ApiException {
+        Integer dbClusterId = null;
+        ClusterAction clusterAction = null;
+        api.performDatabaseClusterAction(dbClusterId, clusterAction);
         // TODO: test validations
     }
 
@@ -365,6 +545,21 @@ public class DatabasesApiTest {
     }
 
     /**
+     * Восстановление базы данных из S3-бэкапа
+     *
+     * Чтобы восстановить кластер базы данных из резервной копии в объектном хранилище, отправьте POST-запрос на &#x60;/api/v2/databases/{db_id}/backups/{backup_id}/restore&#x60;.   Тела запроса нет, тело ответа пустое. Восстановиться можно только из копии со статусом &#x60;success&#x60;.   Сразу после запуска кластер переходит в статус &#x60;backup_recovery&#x60;. Пока восстановление не завершится, создание, изменение и удаление резервных копий, а также повторный запуск восстановления недоступны.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void restoreDatabaseFromS3BackupTest() throws ApiException {
+        Integer dbId = null;
+        UUID backupId = null;
+        api.restoreDatabaseFromS3Backup(dbId, backupId);
+        // TODO: test validations
+    }
+
+    /**
      * Изменение настроек автобэкапов базы данных
      *
      * Чтобы изменить список настроек автобэкапов базы данных, отправьте запрос PATCH в &#x60;api/v1/dbs/{db_id}/auto-backups&#x60;
@@ -374,15 +569,31 @@ public class DatabasesApiTest {
     @Test
     public void updateDatabaseAutoBackupsSettingsTest() throws ApiException {
         Integer dbId = null;
-        AutoBackup autoBackup = null;
-        GetDatabaseAutoBackupsSettings200Response response = api.updateDatabaseAutoBackupsSettings(dbId, autoBackup);
+        UpdateAutoBackup updateAutoBackup = null;
+        GetDatabaseAutoBackupsSettings200Response response = api.updateDatabaseAutoBackupsSettings(dbId, updateAutoBackup);
+        // TODO: test validations
+    }
+
+    /**
+     * Изменение комментария к бэкапу базы данных
+     *
+     * Чтобы изменить комментарий к бэкапу базы данных, отправьте PATCH-запрос на &#x60;/api/v1/dbs/{db_id}/backups/{backup_id}&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;backup&#x60;. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void updateDatabaseBackupTest() throws ApiException {
+        Integer dbId = null;
+        Integer backupId = null;
+        DbsUpdateBackup dbsUpdateBackup = null;
+        GetDatabaseBackup200Response response = api.updateDatabaseBackup(dbId, backupId, dbsUpdateBackup);
         // TODO: test validations
     }
 
     /**
      * Изменение кластера базы данных
      *
-     * Чтобы изменить кластер базы данных на вашем аккаунте, отправьте PATCH-запрос на &#x60;/api/v1/databases/{db_cluster_id}&#x60;.
+     * Чтобы изменить кластер базы данных на вашем аккаунте, отправьте PATCH-запрос на &#x60;/api/v1/databases/{db_cluster_id}&#x60;.   Размер кластера задается либо тарифом (&#x60;preset_id&#x60;), либо конфигуратором (&#x60;configuration&#x60;) — эти поля взаимоисключающие.
      *
      * @throws ApiException if the Api call fails
      */
@@ -390,22 +601,54 @@ public class DatabasesApiTest {
     public void updateDatabaseClusterTest() throws ApiException {
         Integer dbClusterId = null;
         UpdateCluster updateCluster = null;
-        CreateDatabaseCluster201Response response = api.updateDatabaseCluster(dbClusterId, updateCluster);
+        UpdateDatabaseCluster200Response response = api.updateDatabaseCluster(dbClusterId, updateCluster);
+        // TODO: test validations
+    }
+
+    /**
+     * Изменение кластера базы данных (v2)
+     *
+     * Чтобы изменить кластер базы данных на вашем аккаунте, отправьте PATCH-запрос на &#x60;/api/v2/databases/{db_cluster_id}&#x60;.   В отличие от &#x60;/api/v1/databases/{db_cluster_id}&#x60;, эта версия дополнительно позволяет привязать плавающий IP-адрес (&#x60;floating_ip&#x60;).   Размер кластера задается либо тарифом (&#x60;preset_id&#x60;), либо конфигуратором (&#x60;configuration&#x60;) — эти поля взаимоисключающие.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void updateDatabaseClusterV2Test() throws ApiException {
+        Integer dbClusterId = null;
+        UpdateClusterV2 updateClusterV2 = null;
+        UpdateDatabaseCluster200Response response = api.updateDatabaseClusterV2(dbClusterId, updateClusterV2);
         // TODO: test validations
     }
 
     /**
      * Изменение инстанса базы данных
      *
-     * Чтобы изменить инстанс базы данных, отправьте PATCH-запрос на &#x60;/api/v1/databases/{db_cluster_id}/instances/{instance_id}&#x60;.
+     * Чтобы изменить инстанс базы данных, отправьте PATCH-запрос на &#x60;/api/v1/databases/{db_cluster_id}/instances/{instance_id}&#x60;.   Изменить название базы данных (&#x60;name&#x60;) и ее владельца (&#x60;owner_id&#x60;) можно только в кластере PostgreSQL, а настройки топика (&#x60;config_parameters&#x60;) — только в кластере Kafka. Если один из этих трех параметров передан для неподходящего типа кластера, запрос вернется с ошибкой 409.   Расширения (&#x60;extensions&#x60;) применимы к кластерам PostgreSQL и RabbitMQ.
      *
      * @throws ApiException if the Api call fails
      */
     @Test
     public void updateDatabaseInstanceTest() throws ApiException {
         Integer dbClusterId = null;
+        Integer instanceId = null;
         UpdateInstance updateInstance = null;
-        CreateDatabaseInstance201Response response = api.updateDatabaseInstance(dbClusterId, updateInstance);
+        CreateDatabaseInstance201Response response = api.updateDatabaseInstance(dbClusterId, instanceId, updateInstance);
+        // TODO: test validations
+    }
+
+    /**
+     * Изменение комментария S3-бэкапа базы данных
+     *
+     * Чтобы изменить комментарий к резервной копии кластера базы данных, отправьте PATCH-запрос на &#x60;/api/v2/databases/{db_id}/backups/{backup_id}&#x60;.   Изменить можно только комментарий: других полей метод не принимает, сама резервная копия при этом не пересоздается. Тело ответа будет представлять собой объект JSON с ключом &#x60;backup&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void updateDatabaseS3BackupTest() throws ApiException {
+        Integer dbId = null;
+        UUID backupId = null;
+        UpdateS3Backup updateS3Backup = null;
+        CreateDatabaseS3Backup201Response response = api.updateDatabaseS3Backup(dbId, backupId, updateS3Backup);
         // TODO: test validations
     }
 

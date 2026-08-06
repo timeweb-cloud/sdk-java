@@ -23,7 +23,11 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import org.openapitools.client.model.AvailabilityZone;
 import org.openapitools.client.model.CreateClusterAdmin;
+import org.openapitools.client.model.CreateClusterBackupSchedule;
+import org.openapitools.client.model.CreateClusterConfiguration;
+import org.openapitools.client.model.CreateClusterDiskAutoscaling;
 import org.openapitools.client.model.CreateClusterInstance;
+import org.openapitools.client.model.CreateClusterMaintenanceSlot;
 import org.openapitools.client.model.CreateDbAutoBackups;
 import org.openapitools.client.model.DbReplication;
 import org.openapitools.client.model.DbType;
@@ -58,7 +62,7 @@ import org.openapitools.client.JSON;
 /**
  * CreateCluster
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-06T14:58:49.219742Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-06T15:06:51.562821Z[Etc/UTC]")
 public class CreateCluster {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -131,9 +135,9 @@ public class CreateCluster {
   @SerializedName(SERIALIZED_NAME_PRESET_ID)
   private Integer presetId;
 
-  public static final String SERIALIZED_NAME_CONFIGURATOR_ID = "configurator_id";
-  @SerializedName(SERIALIZED_NAME_CONFIGURATOR_ID)
-  private Integer configuratorId;
+  public static final String SERIALIZED_NAME_CONFIGURATION = "configuration";
+  @SerializedName(SERIALIZED_NAME_CONFIGURATION)
+  private CreateClusterConfiguration _configuration;
 
   public static final String SERIALIZED_NAME_PROJECT_ID = "project_id";
   @SerializedName(SERIALIZED_NAME_PROJECT_ID)
@@ -166,6 +170,18 @@ public class CreateCluster {
   public static final String SERIALIZED_NAME_AUTO_BACKUPS = "auto_backups";
   @SerializedName(SERIALIZED_NAME_AUTO_BACKUPS)
   private CreateDbAutoBackups autoBackups;
+
+  public static final String SERIALIZED_NAME_BACKUP_SCHEDULE = "backup_schedule";
+  @SerializedName(SERIALIZED_NAME_BACKUP_SCHEDULE)
+  private CreateClusterBackupSchedule backupSchedule;
+
+  public static final String SERIALIZED_NAME_MAINTENANCE_SLOT = "maintenance_slot";
+  @SerializedName(SERIALIZED_NAME_MAINTENANCE_SLOT)
+  private CreateClusterMaintenanceSlot maintenanceSlot;
+
+  public static final String SERIALIZED_NAME_DISK_AUTOSCALING = "disk_autoscaling";
+  @SerializedName(SERIALIZED_NAME_DISK_AUTOSCALING)
+  private CreateClusterDiskAutoscaling diskAutoscaling;
 
   public CreateCluster() {
   }
@@ -282,7 +298,7 @@ public class CreateCluster {
   }
 
    /**
-   * ID тарифа. Нельзя передавать вместе с &#x60;configurator_id&#x60;
+   * ID тарифа. Нельзя передавать вместе с &#x60;configuration&#x60;
    * @return presetId
   **/
   @javax.annotation.Nullable
@@ -296,24 +312,24 @@ public class CreateCluster {
   }
 
 
-  public CreateCluster configuratorId(Integer configuratorId) {
+  public CreateCluster _configuration(CreateClusterConfiguration _configuration) {
     
-    this.configuratorId = configuratorId;
+    this._configuration = _configuration;
     return this;
   }
 
    /**
-   * ID конфигуратора. Нельзя передавать вместе с &#x60;preset_id&#x60;
-   * @return configuratorId
+   * Get _configuration
+   * @return _configuration
   **/
   @javax.annotation.Nullable
-  public Integer getConfiguratorId() {
-    return configuratorId;
+  public CreateClusterConfiguration getConfiguration() {
+    return _configuration;
   }
 
 
-  public void setConfiguratorId(Integer configuratorId) {
-    this.configuratorId = configuratorId;
+  public void setConfiguration(CreateClusterConfiguration _configuration) {
+    this._configuration = _configuration;
   }
 
 
@@ -485,6 +501,69 @@ public class CreateCluster {
   }
 
 
+  public CreateCluster backupSchedule(CreateClusterBackupSchedule backupSchedule) {
+    
+    this.backupSchedule = backupSchedule;
+    return this;
+  }
+
+   /**
+   * Get backupSchedule
+   * @return backupSchedule
+  **/
+  @javax.annotation.Nullable
+  public CreateClusterBackupSchedule getBackupSchedule() {
+    return backupSchedule;
+  }
+
+
+  public void setBackupSchedule(CreateClusterBackupSchedule backupSchedule) {
+    this.backupSchedule = backupSchedule;
+  }
+
+
+  public CreateCluster maintenanceSlot(CreateClusterMaintenanceSlot maintenanceSlot) {
+    
+    this.maintenanceSlot = maintenanceSlot;
+    return this;
+  }
+
+   /**
+   * Get maintenanceSlot
+   * @return maintenanceSlot
+  **/
+  @javax.annotation.Nullable
+  public CreateClusterMaintenanceSlot getMaintenanceSlot() {
+    return maintenanceSlot;
+  }
+
+
+  public void setMaintenanceSlot(CreateClusterMaintenanceSlot maintenanceSlot) {
+    this.maintenanceSlot = maintenanceSlot;
+  }
+
+
+  public CreateCluster diskAutoscaling(CreateClusterDiskAutoscaling diskAutoscaling) {
+    
+    this.diskAutoscaling = diskAutoscaling;
+    return this;
+  }
+
+   /**
+   * Get diskAutoscaling
+   * @return diskAutoscaling
+  **/
+  @javax.annotation.Nullable
+  public CreateClusterDiskAutoscaling getDiskAutoscaling() {
+    return diskAutoscaling;
+  }
+
+
+  public void setDiskAutoscaling(CreateClusterDiskAutoscaling diskAutoscaling) {
+    this.diskAutoscaling = diskAutoscaling;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -501,7 +580,7 @@ public class CreateCluster {
         Objects.equals(this.instance, createCluster.instance) &&
         Objects.equals(this.hashType, createCluster.hashType) &&
         Objects.equals(this.presetId, createCluster.presetId) &&
-        Objects.equals(this.configuratorId, createCluster.configuratorId) &&
+        Objects.equals(this._configuration, createCluster._configuration) &&
         Objects.equals(this.projectId, createCluster.projectId) &&
         Objects.equals(this.configParameters, createCluster.configParameters) &&
         Objects.equals(this.replication, createCluster.replication) &&
@@ -509,12 +588,15 @@ public class CreateCluster {
         Objects.equals(this.isPublicIpv6, createCluster.isPublicIpv6) &&
         Objects.equals(this.description, createCluster.description) &&
         Objects.equals(this.availabilityZone, createCluster.availabilityZone) &&
-        Objects.equals(this.autoBackups, createCluster.autoBackups);
+        Objects.equals(this.autoBackups, createCluster.autoBackups) &&
+        Objects.equals(this.backupSchedule, createCluster.backupSchedule) &&
+        Objects.equals(this.maintenanceSlot, createCluster.maintenanceSlot) &&
+        Objects.equals(this.diskAutoscaling, createCluster.diskAutoscaling);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, type, admin, instance, hashType, presetId, configuratorId, projectId, configParameters, replication, network, isPublicIpv6, description, availabilityZone, autoBackups);
+    return Objects.hash(name, type, admin, instance, hashType, presetId, _configuration, projectId, configParameters, replication, network, isPublicIpv6, description, availabilityZone, autoBackups, backupSchedule, maintenanceSlot, diskAutoscaling);
   }
 
   @Override
@@ -527,7 +609,7 @@ public class CreateCluster {
     sb.append("    instance: ").append(toIndentedString(instance)).append("\n");
     sb.append("    hashType: ").append(toIndentedString(hashType)).append("\n");
     sb.append("    presetId: ").append(toIndentedString(presetId)).append("\n");
-    sb.append("    configuratorId: ").append(toIndentedString(configuratorId)).append("\n");
+    sb.append("    _configuration: ").append(toIndentedString(_configuration)).append("\n");
     sb.append("    projectId: ").append(toIndentedString(projectId)).append("\n");
     sb.append("    configParameters: ").append(toIndentedString(configParameters)).append("\n");
     sb.append("    replication: ").append(toIndentedString(replication)).append("\n");
@@ -536,6 +618,9 @@ public class CreateCluster {
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    availabilityZone: ").append(toIndentedString(availabilityZone)).append("\n");
     sb.append("    autoBackups: ").append(toIndentedString(autoBackups)).append("\n");
+    sb.append("    backupSchedule: ").append(toIndentedString(backupSchedule)).append("\n");
+    sb.append("    maintenanceSlot: ").append(toIndentedString(maintenanceSlot)).append("\n");
+    sb.append("    diskAutoscaling: ").append(toIndentedString(diskAutoscaling)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -564,7 +649,7 @@ public class CreateCluster {
     openapiFields.add("instance");
     openapiFields.add("hash_type");
     openapiFields.add("preset_id");
-    openapiFields.add("configurator_id");
+    openapiFields.add("configuration");
     openapiFields.add("project_id");
     openapiFields.add("config_parameters");
     openapiFields.add("replication");
@@ -573,6 +658,9 @@ public class CreateCluster {
     openapiFields.add("description");
     openapiFields.add("availability_zone");
     openapiFields.add("auto_backups");
+    openapiFields.add("backup_schedule");
+    openapiFields.add("maintenance_slot");
+    openapiFields.add("disk_autoscaling");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -622,6 +710,10 @@ public class CreateCluster {
       if ((jsonObj.get("hash_type") != null && !jsonObj.get("hash_type").isJsonNull()) && !jsonObj.get("hash_type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `hash_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("hash_type").toString()));
       }
+      // validate the optional field `configuration`
+      if (jsonObj.get("configuration") != null && !jsonObj.get("configuration").isJsonNull()) {
+        CreateClusterConfiguration.validateJsonElement(jsonObj.get("configuration"));
+      }
       // validate the optional field `config_parameters`
       if (jsonObj.get("config_parameters") != null && !jsonObj.get("config_parameters").isJsonNull()) {
         Mysql.validateJsonElement(jsonObj.get("config_parameters"));
@@ -640,6 +732,18 @@ public class CreateCluster {
       // validate the optional field `auto_backups`
       if (jsonObj.get("auto_backups") != null && !jsonObj.get("auto_backups").isJsonNull()) {
         CreateDbAutoBackups.validateJsonElement(jsonObj.get("auto_backups"));
+      }
+      // validate the optional field `backup_schedule`
+      if (jsonObj.get("backup_schedule") != null && !jsonObj.get("backup_schedule").isJsonNull()) {
+        CreateClusterBackupSchedule.validateJsonElement(jsonObj.get("backup_schedule"));
+      }
+      // validate the optional field `maintenance_slot`
+      if (jsonObj.get("maintenance_slot") != null && !jsonObj.get("maintenance_slot").isJsonNull()) {
+        CreateClusterMaintenanceSlot.validateJsonElement(jsonObj.get("maintenance_slot"));
+      }
+      // validate the optional field `disk_autoscaling`
+      if (jsonObj.get("disk_autoscaling") != null && !jsonObj.get("disk_autoscaling").isJsonNull()) {
+        CreateClusterDiskAutoscaling.validateJsonElement(jsonObj.get("disk_autoscaling"));
       }
   }
 

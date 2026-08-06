@@ -2,7 +2,7 @@
 
 Timeweb Cloud API
 - API version: 1.0.0
-  - Build date: 2026-08-06T14:58:49.219742Z[Etc/UTC]
+  - Build date: 2026-08-06T15:06:51.562821Z[Etc/UTC]
 
 # Введение
 API Timeweb Cloud позволяет вам управлять ресурсами в облаке программным способом с использованием обычных HTTP-запросов.
@@ -350,29 +350,44 @@ Class | Method | HTTP request | Description
 *ContainerRegistryApi* | [**getRegistryRepositories**](docs/ContainerRegistryApi.md#getRegistryRepositories) | **GET** /api/v1/container-registry/{registry_id}/repositories | Получение списка репозиториев
 *ContainerRegistryApi* | [**updateRegistry**](docs/ContainerRegistryApi.md#updateRegistry) | **PATCH** /api/v1/container-registry/{registry_id} | Обновление информации о реестре
 *DatabasesApi* | [**createDatabaseBackup**](docs/DatabasesApi.md#createDatabaseBackup) | **POST** /api/v1/dbs/{db_id}/backups | Создание бэкапа базы данных
+*DatabasesApi* | [**createDatabaseBackupDownloadUrl**](docs/DatabasesApi.md#createDatabaseBackupDownloadUrl) | **POST** /api/v1/dbs/{db_id}/backups/{backup_id}/download-url | Получение ссылки для скачивания бэкапа базы данных
 *DatabasesApi* | [**createDatabaseCluster**](docs/DatabasesApi.md#createDatabaseCluster) | **POST** /api/v1/databases | Создание кластера базы данных
 *DatabasesApi* | [**createDatabaseInstance**](docs/DatabasesApi.md#createDatabaseInstance) | **POST** /api/v1/databases/{db_cluster_id}/instances | Создание инстанса базы данных
+*DatabasesApi* | [**createDatabaseS3Backup**](docs/DatabasesApi.md#createDatabaseS3Backup) | **POST** /api/v2/databases/{db_id}/backups | Создание S3-бэкапа базы данных
 *DatabasesApi* | [**createDatabaseUser**](docs/DatabasesApi.md#createDatabaseUser) | **POST** /api/v1/databases/{db_cluster_id}/admins | Создание пользователя базы данных
 *DatabasesApi* | [**deleteDatabaseBackup**](docs/DatabasesApi.md#deleteDatabaseBackup) | **DELETE** /api/v1/dbs/{db_id}/backups/{backup_id} | Удаление бэкапа базы данных
 *DatabasesApi* | [**deleteDatabaseCluster**](docs/DatabasesApi.md#deleteDatabaseCluster) | **DELETE** /api/v1/databases/{db_cluster_id} | Удаление кластера базы данных
 *DatabasesApi* | [**deleteDatabaseInstance**](docs/DatabasesApi.md#deleteDatabaseInstance) | **DELETE** /api/v1/databases/{db_cluster_id}/instances/{instance_id} | Удаление инстанса базы данных
+*DatabasesApi* | [**deleteDatabaseS3Backup**](docs/DatabasesApi.md#deleteDatabaseS3Backup) | **DELETE** /api/v2/databases/{db_id}/backups/{backup_id} | Удаление S3-бэкапа базы данных
 *DatabasesApi* | [**deleteDatabaseUser**](docs/DatabasesApi.md#deleteDatabaseUser) | **DELETE** /api/v1/databases/{db_cluster_id}/admins/{admin_id} | Удаление пользователя базы данных
 *DatabasesApi* | [**getDatabaseAutoBackupsSettings**](docs/DatabasesApi.md#getDatabaseAutoBackupsSettings) | **GET** /api/v1/dbs/{db_id}/auto-backups | Получение настроек автобэкапов базы данных
 *DatabasesApi* | [**getDatabaseBackup**](docs/DatabasesApi.md#getDatabaseBackup) | **GET** /api/v1/dbs/{db_id}/backups/{backup_id} | Получение бэкапа базы данных
 *DatabasesApi* | [**getDatabaseBackups**](docs/DatabasesApi.md#getDatabaseBackups) | **GET** /api/v1/dbs/{db_id}/backups | Список бэкапов базы данных
 *DatabasesApi* | [**getDatabaseCluster**](docs/DatabasesApi.md#getDatabaseCluster) | **GET** /api/v1/databases/{db_cluster_id} | Получение кластера базы данных
+*DatabasesApi* | [**getDatabaseClusterReplicas**](docs/DatabasesApi.md#getDatabaseClusterReplicas) | **GET** /api/v1/databases/{db_cluster_id}/replicas | Получение списка реплик кластера базы данных
 *DatabasesApi* | [**getDatabaseClusterTypes**](docs/DatabasesApi.md#getDatabaseClusterTypes) | **GET** /api/v1/database-types | Получение списка типов кластеров баз данных
 *DatabasesApi* | [**getDatabaseClusters**](docs/DatabasesApi.md#getDatabaseClusters) | **GET** /api/v1/databases | Получение списка кластеров баз данных
+*DatabasesApi* | [**getDatabaseConfigurators**](docs/DatabasesApi.md#getDatabaseConfigurators) | **GET** /api/v1/configurator/databases | Получение списка конфигураторов баз данных
+*DatabasesApi* | [**getDatabaseDefaultParameters**](docs/DatabasesApi.md#getDatabaseDefaultParameters) | **GET** /api/v1/dbs/default-parameters | Получение рекомендуемых значений параметров баз данных
 *DatabasesApi* | [**getDatabaseInstance**](docs/DatabasesApi.md#getDatabaseInstance) | **GET** /api/v1/databases/{db_cluster_id}/instances/{instance_id} | Получение инстанса базы данных
 *DatabasesApi* | [**getDatabaseInstances**](docs/DatabasesApi.md#getDatabaseInstances) | **GET** /api/v1/databases/{db_cluster_id}/instances | Получение списка инстансов баз данных
 *DatabasesApi* | [**getDatabaseParameters**](docs/DatabasesApi.md#getDatabaseParameters) | **GET** /api/v1/dbs/parameters | Получение списка параметров баз данных
+*DatabasesApi* | [**getDatabasePreset**](docs/DatabasesApi.md#getDatabasePreset) | **GET** /api/v2/dbs/presets/{preset_id} | Получение тарифа для базы данных
+*DatabasesApi* | [**getDatabasePrivileges**](docs/DatabasesApi.md#getDatabasePrivileges) | **GET** /api/v1/databases/{db_cluster_id}/privileges | Получение привилегий кластера базы данных
+*DatabasesApi* | [**getDatabaseS3Backup**](docs/DatabasesApi.md#getDatabaseS3Backup) | **GET** /api/v2/databases/{db_id}/backups/{backup_id} | Получение S3-бэкапа базы данных
+*DatabasesApi* | [**getDatabaseS3Backups**](docs/DatabasesApi.md#getDatabaseS3Backups) | **GET** /api/v2/databases/{db_id}/backups | Список S3-бэкапов базы данных
 *DatabasesApi* | [**getDatabaseUser**](docs/DatabasesApi.md#getDatabaseUser) | **GET** /api/v1/databases/{db_cluster_id}/admins/{admin_id} | Получение пользователя базы данных
 *DatabasesApi* | [**getDatabaseUsers**](docs/DatabasesApi.md#getDatabaseUsers) | **GET** /api/v1/databases/{db_cluster_id}/admins | Получение списка пользователей базы данных
 *DatabasesApi* | [**getDatabasesPresets**](docs/DatabasesApi.md#getDatabasesPresets) | **GET** /api/v2/presets/dbs | Получение списка тарифов для баз данных
+*DatabasesApi* | [**performDatabaseClusterAction**](docs/DatabasesApi.md#performDatabaseClusterAction) | **POST** /api/v1/databases/{db_cluster_id}/action | Выполнение действия над кластером базы данных
 *DatabasesApi* | [**restoreDatabaseFromBackup**](docs/DatabasesApi.md#restoreDatabaseFromBackup) | **PUT** /api/v1/dbs/{db_id}/backups/{backup_id} | Восстановление базы данных из бэкапа
+*DatabasesApi* | [**restoreDatabaseFromS3Backup**](docs/DatabasesApi.md#restoreDatabaseFromS3Backup) | **POST** /api/v2/databases/{db_id}/backups/{backup_id}/restore | Восстановление базы данных из S3-бэкапа
 *DatabasesApi* | [**updateDatabaseAutoBackupsSettings**](docs/DatabasesApi.md#updateDatabaseAutoBackupsSettings) | **PATCH** /api/v1/dbs/{db_id}/auto-backups | Изменение настроек автобэкапов базы данных
+*DatabasesApi* | [**updateDatabaseBackup**](docs/DatabasesApi.md#updateDatabaseBackup) | **PATCH** /api/v1/dbs/{db_id}/backups/{backup_id} | Изменение комментария к бэкапу базы данных
 *DatabasesApi* | [**updateDatabaseCluster**](docs/DatabasesApi.md#updateDatabaseCluster) | **PATCH** /api/v1/databases/{db_cluster_id} | Изменение кластера базы данных
+*DatabasesApi* | [**updateDatabaseClusterV2**](docs/DatabasesApi.md#updateDatabaseClusterV2) | **PATCH** /api/v2/databases/{db_cluster_id} | Изменение кластера базы данных (v2)
 *DatabasesApi* | [**updateDatabaseInstance**](docs/DatabasesApi.md#updateDatabaseInstance) | **PATCH** /api/v1/databases/{db_cluster_id}/instances/{instance_id} | Изменение инстанса базы данных
+*DatabasesApi* | [**updateDatabaseS3Backup**](docs/DatabasesApi.md#updateDatabaseS3Backup) | **PATCH** /api/v2/databases/{db_id}/backups/{backup_id} | Изменение комментария S3-бэкапа базы данных
 *DatabasesApi* | [**updateDatabaseUser**](docs/DatabasesApi.md#updateDatabaseUser) | **PATCH** /api/v1/databases/{db_cluster_id}/admins/{admin_id} | Изменение пользователя базы данных
 *DedicatedServersApi* | [**createDedicatedServer**](docs/DedicatedServersApi.md#createDedicatedServer) | **POST** /api/v1/dedicated-servers | Создание выделенного сервера
 *DedicatedServersApi* | [**deleteDedicatedServer**](docs/DedicatedServersApi.md#deleteDedicatedServer) | **DELETE** /api/v1/dedicated-servers/{dedicated_id} | Удаление выделенного сервера
@@ -693,6 +708,8 @@ Class | Method | HTTP request | Description
  - [AvailableStaticRouteSubnetsInner](docs/AvailableStaticRouteSubnetsInner.md)
  - [AvailableStaticRoutesResponse](docs/AvailableStaticRoutesResponse.md)
  - [Backup](docs/Backup.md)
+ - [BackupDownloadUrl](docs/BackupDownloadUrl.md)
+ - [BackupDownloadUrlRequest](docs/BackupDownloadUrlRequest.md)
  - [Balancer](docs/Balancer.md)
  - [BalancerNetworksInner](docs/BalancerNetworksInner.md)
  - [BalancerNetworksInnerIpsInner](docs/BalancerNetworksInnerIpsInner.md)
@@ -710,6 +727,7 @@ Class | Method | HTTP request | Description
  - [CheckDomain200Response](docs/CheckDomain200Response.md)
  - [ClearCache](docs/ClearCache.md)
  - [Clickhouse](docs/Clickhouse.md)
+ - [ClusterAction](docs/ClusterAction.md)
  - [ClusterEdit](docs/ClusterEdit.md)
  - [ClusterEditOidcProvider](docs/ClusterEditOidcProvider.md)
  - [ClusterIn](docs/ClusterIn.md)
@@ -741,10 +759,6 @@ Class | Method | HTTP request | Description
  - [ConfigHttpHeadersCors](docs/ConfigHttpHeadersCors.md)
  - [ConfigOrigin](docs/ConfigOrigin.md)
  - [ConfigOriginAws](docs/ConfigOriginAws.md)
- - [ConfigParameters](docs/ConfigParameters.md)
- - [ConfigParametersMysql](docs/ConfigParametersMysql.md)
- - [ConfigParametersPostgres](docs/ConfigParametersPostgres.md)
- - [ConfigParametersValkey](docs/ConfigParametersValkey.md)
  - [ConfigRobots](docs/ConfigRobots.md)
  - [ConfigSecurity](docs/ConfigSecurity.md)
  - [ConfigSecuritySecureToken](docs/ConfigSecuritySecureToken.md)
@@ -763,11 +777,16 @@ Class | Method | HTTP request | Description
  - [CreateCdnResource201Response](docs/CreateCdnResource201Response.md)
  - [CreateCluster](docs/CreateCluster.md)
  - [CreateClusterAdmin](docs/CreateClusterAdmin.md)
+ - [CreateClusterBackupSchedule](docs/CreateClusterBackupSchedule.md)
+ - [CreateClusterConfiguration](docs/CreateClusterConfiguration.md)
+ - [CreateClusterDiskAutoscaling](docs/CreateClusterDiskAutoscaling.md)
  - [CreateClusterInstance](docs/CreateClusterInstance.md)
+ - [CreateClusterMaintenanceSlot](docs/CreateClusterMaintenanceSlot.md)
  - [CreateDatabaseBackup201Response](docs/CreateDatabaseBackup201Response.md)
- - [CreateDatabaseBackup409Response](docs/CreateDatabaseBackup409Response.md)
+ - [CreateDatabaseBackupDownloadUrl201Response](docs/CreateDatabaseBackupDownloadUrl201Response.md)
  - [CreateDatabaseCluster201Response](docs/CreateDatabaseCluster201Response.md)
  - [CreateDatabaseInstance201Response](docs/CreateDatabaseInstance201Response.md)
+ - [CreateDatabaseS3Backup201Response](docs/CreateDatabaseS3Backup201Response.md)
  - [CreateDatabaseUser201Response](docs/CreateDatabaseUser201Response.md)
  - [CreateDbAutoBackups](docs/CreateDbAutoBackups.md)
  - [CreateDedicatedServer](docs/CreateDedicatedServer.md)
@@ -802,6 +821,7 @@ Class | Method | HTTP request | Description
  - [CreateProject](docs/CreateProject.md)
  - [CreateProject201Response](docs/CreateProject201Response.md)
  - [CreateRule](docs/CreateRule.md)
+ - [CreateS3Backup](docs/CreateS3Backup.md)
  - [CreateServer](docs/CreateServer.md)
  - [CreateServer201Response](docs/CreateServer201Response.md)
  - [CreateServerConfiguration](docs/CreateServerConfiguration.md)
@@ -818,16 +838,32 @@ Class | Method | HTTP request | Description
  - [DatabaseAdmin](docs/DatabaseAdmin.md)
  - [DatabaseAdminInstancesInner](docs/DatabaseAdminInstancesInner.md)
  - [DatabaseCluster](docs/DatabaseCluster.md)
+ - [DatabaseClusterChildServicesInner](docs/DatabaseClusterChildServicesInner.md)
  - [DatabaseClusterDisk](docs/DatabaseClusterDisk.md)
+ - [DatabaseClusterDiskAutoscaling](docs/DatabaseClusterDiskAutoscaling.md)
+ - [DatabaseClusterDomainsInner](docs/DatabaseClusterDomainsInner.md)
+ - [DatabaseClusterMaintenanceSlot](docs/DatabaseClusterMaintenanceSlot.md)
  - [DatabaseClusterNetworksInner](docs/DatabaseClusterNetworksInner.md)
  - [DatabaseClusterNetworksInnerIpsInner](docs/DatabaseClusterNetworksInnerIpsInner.md)
+ - [DatabaseClusterParentServicesInner](docs/DatabaseClusterParentServicesInner.md)
+ - [DatabaseClusterReplicaListInner](docs/DatabaseClusterReplicaListInner.md)
+ - [DatabaseClusterReplicaListInnerDisk](docs/DatabaseClusterReplicaListInnerDisk.md)
+ - [DatabaseConfigurator](docs/DatabaseConfigurator.md)
+ - [DatabaseConfiguratorPrices](docs/DatabaseConfiguratorPrices.md)
+ - [DatabaseConfiguratorRequirements](docs/DatabaseConfiguratorRequirements.md)
+ - [DatabaseExtensions](docs/DatabaseExtensions.md)
  - [DatabaseInstance](docs/DatabaseInstance.md)
  - [DatabaseType](docs/DatabaseType.md)
  - [DatabaseTypeRequirements](docs/DatabaseTypeRequirements.md)
  - [Db](docs/Db.md)
  - [DbDiskStats](docs/DbDiskStats.md)
+ - [DbExtension](docs/DbExtension.md)
+ - [DbParametersByType](docs/DbParametersByType.md)
+ - [DbPrivilegeGroup](docs/DbPrivilegeGroup.md)
  - [DbReplication](docs/DbReplication.md)
  - [DbType](docs/DbType.md)
+ - [DbsCreateBackup](docs/DbsCreateBackup.md)
+ - [DbsUpdateBackup](docs/DbsUpdateBackup.md)
  - [DedicatedServer](docs/DedicatedServer.md)
  - [DedicatedServerAdditionalService](docs/DedicatedServerAdditionalService.md)
  - [DedicatedServerPreset](docs/DedicatedServerPreset.md)
@@ -839,6 +875,7 @@ Class | Method | HTTP request | Description
  - [DeleteCountriesFromAllowedList200Response](docs/DeleteCountriesFromAllowedList200Response.md)
  - [DeleteCountriesFromAllowedListRequest](docs/DeleteCountriesFromAllowedListRequest.md)
  - [DeleteDatabaseCluster200Response](docs/DeleteDatabaseCluster200Response.md)
+ - [DeleteDatabaseCluster200ResponseDatabaseDelete](docs/DeleteDatabaseCluster200ResponseDatabaseDelete.md)
  - [DeleteIPsFromAllowedList200Response](docs/DeleteIPsFromAllowedList200Response.md)
  - [DeleteIPsFromAllowedListRequest](docs/DeleteIPsFromAllowedListRequest.md)
  - [DeleteServer200Response](docs/DeleteServer200Response.md)
@@ -927,10 +964,18 @@ Class | Method | HTTP request | Description
  - [GetConfigurators200Response](docs/GetConfigurators200Response.md)
  - [GetCountries200Response](docs/GetCountries200Response.md)
  - [GetDatabaseAutoBackupsSettings200Response](docs/GetDatabaseAutoBackupsSettings200Response.md)
+ - [GetDatabaseBackup200Response](docs/GetDatabaseBackup200Response.md)
  - [GetDatabaseBackups200Response](docs/GetDatabaseBackups200Response.md)
+ - [GetDatabaseClusterReplicas200Response](docs/GetDatabaseClusterReplicas200Response.md)
  - [GetDatabaseClusterTypes200Response](docs/GetDatabaseClusterTypes200Response.md)
  - [GetDatabaseClusters200Response](docs/GetDatabaseClusters200Response.md)
+ - [GetDatabaseConfigurators200Response](docs/GetDatabaseConfigurators200Response.md)
+ - [GetDatabaseDefaultParameters200Response](docs/GetDatabaseDefaultParameters200Response.md)
+ - [GetDatabaseDefaultParameters200ResponseConfigParams](docs/GetDatabaseDefaultParameters200ResponseConfigParams.md)
  - [GetDatabaseInstances200Response](docs/GetDatabaseInstances200Response.md)
+ - [GetDatabasePreset200Response](docs/GetDatabasePreset200Response.md)
+ - [GetDatabasePrivileges200Response](docs/GetDatabasePrivileges200Response.md)
+ - [GetDatabaseS3Backups200Response](docs/GetDatabaseS3Backups200Response.md)
  - [GetDatabaseUsers200Response](docs/GetDatabaseUsers200Response.md)
  - [GetDatabasesPresets200Response](docs/GetDatabasesPresets200Response.md)
  - [GetDedicatedServerPresetAdditionalServices200Response](docs/GetDedicatedServerPresetAdditionalServices200Response.md)
@@ -981,7 +1026,6 @@ Class | Method | HTTP request | Description
  - [GetRepositories200Response](docs/GetRepositories200Response.md)
  - [GetRestorePoint200Response](docs/GetRestorePoint200Response.md)
  - [GetRestorePoints200Response](docs/GetRestorePoints200Response.md)
- - [GetServerDiskAutoBackupSettings200Response](docs/GetServerDiskAutoBackupSettings200Response.md)
  - [GetServerDiskBackup200Response](docs/GetServerDiskBackup200Response.md)
  - [GetServerDiskBackups200Response](docs/GetServerDiskBackups200Response.md)
  - [GetServerDisks200Response](docs/GetServerDisks200Response.md)
@@ -1027,6 +1071,7 @@ Class | Method | HTTP request | Description
  - [IssueCertificate](docs/IssueCertificate.md)
  - [K8SVersionsResponse](docs/K8SVersionsResponse.md)
  - [Kafka](docs/Kafka.md)
+ - [KafkaConfigParameters](docs/KafkaConfigParameters.md)
  - [Knowledgebase](docs/Knowledgebase.md)
  - [KnowledgebaseV2](docs/KnowledgebaseV2.md)
  - [Location](docs/Location.md)
@@ -1113,6 +1158,8 @@ Class | Method | HTTP request | Description
  - [RegistryResponse](docs/RegistryResponse.md)
  - [RemoveCountries](docs/RemoveCountries.md)
  - [RemoveIps](docs/RemoveIps.md)
+ - [Replica](docs/Replica.md)
+ - [ReplicaDisk](docs/ReplicaDisk.md)
  - [RepositoriesResponse](docs/RepositoriesResponse.md)
  - [Repository](docs/Repository.md)
  - [Resource](docs/Resource.md)
@@ -1143,6 +1190,7 @@ Class | Method | HTTP request | Description
  - [RouterStatisticsResponse](docs/RouterStatisticsResponse.md)
  - [RoutersResponse](docs/RoutersResponse.md)
  - [Rule](docs/Rule.md)
+ - [S3Backup](docs/S3Backup.md)
  - [S3Subdomain](docs/S3Subdomain.md)
  - [SchemasBaseError](docs/SchemasBaseError.md)
  - [SchemasMeta](docs/SchemasMeta.md)
@@ -1200,8 +1248,15 @@ Class | Method | HTTP request | Description
  - [UpdateAgentSettings](docs/UpdateAgentSettings.md)
  - [UpdateAppSettings200Response](docs/UpdateAppSettings200Response.md)
  - [UpdateAuthRestrictionsByCountriesRequest](docs/UpdateAuthRestrictionsByCountriesRequest.md)
+ - [UpdateAutoBackup](docs/UpdateAutoBackup.md)
  - [UpdateBalancer](docs/UpdateBalancer.md)
  - [UpdateCluster](docs/UpdateCluster.md)
+ - [UpdateClusterConfiguration](docs/UpdateClusterConfiguration.md)
+ - [UpdateClusterV2](docs/UpdateClusterV2.md)
+ - [UpdateClusterV2DiskAutoscaling](docs/UpdateClusterV2DiskAutoscaling.md)
+ - [UpdateClusterV2MaintenanceSlot](docs/UpdateClusterV2MaintenanceSlot.md)
+ - [UpdateDatabaseCluster200Response](docs/UpdateDatabaseCluster200Response.md)
+ - [UpdateDatabaseInstance409Response](docs/UpdateDatabaseInstance409Response.md)
  - [UpdateDedicatedServerRequest](docs/UpdateDedicatedServerRequest.md)
  - [UpdateDomain](docs/UpdateDomain.md)
  - [UpdateDomainAutoProlongation200Response](docs/UpdateDomainAutoProlongation200Response.md)
@@ -1211,6 +1266,7 @@ Class | Method | HTTP request | Description
  - [UpdateFloatingIp](docs/UpdateFloatingIp.md)
  - [UpdateHttpResource](docs/UpdateHttpResource.md)
  - [UpdateInstance](docs/UpdateInstance.md)
+ - [UpdateKafkaConfigParameters](docs/UpdateKafkaConfigParameters.md)
  - [UpdateKeyRequest](docs/UpdateKeyRequest.md)
  - [UpdateKnowledgebase](docs/UpdateKnowledgebase.md)
  - [UpdateMailbox](docs/UpdateMailbox.md)
@@ -1223,6 +1279,7 @@ Class | Method | HTTP request | Description
  - [UpdatePerson](docs/UpdatePerson.md)
  - [UpdateProject](docs/UpdateProject.md)
  - [UpdateRule](docs/UpdateRule.md)
+ - [UpdateS3Backup](docs/UpdateS3Backup.md)
  - [UpdateServer](docs/UpdateServer.md)
  - [UpdateServerConfigurator](docs/UpdateServerConfigurator.md)
  - [UpdateServerDiskBackupRequest](docs/UpdateServerDiskBackupRequest.md)

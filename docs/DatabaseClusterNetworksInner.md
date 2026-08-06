@@ -2,6 +2,7 @@
 
 # DatabaseClusterNetworksInner
 
+Публичная сеть кластера базы данных.
 
 ## Properties
 
@@ -17,7 +18,6 @@
 | Name | Value |
 |---- | -----|
 | PUBLIC | &quot;public&quot; |
-| LOCAL | &quot;local&quot; |
 
 
 
