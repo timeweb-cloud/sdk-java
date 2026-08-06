@@ -55,7 +55,7 @@ import org.openapitools.client.JSON;
 /**
  * Модель AI (v3). Идентификация и управляющие поля находятся на верхнем уровне, все сравнимые характеристики (цены, лимиты, возможности) — в словаре &#x60;parameter_values&#x60;
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-07-28T16:28:31.821697Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-06T09:16:26.141714Z[Etc/UTC]")
 public class ModelV3 {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)

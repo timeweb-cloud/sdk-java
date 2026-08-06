@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * CreateDnsV2
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-07-28T16:28:31.821697Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-06T09:16:26.141714Z[Etc/UTC]")
 public class CreateDnsV2 {
   /**
    * Тип DNS-записи.
