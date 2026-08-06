@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * Ключи для доступа к источнику, совместимому с Amazon S3 API. &#x60;null&#x60; — не использовать авторизацию AWS.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-06T09:16:26.141714Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-06T14:58:49.219742Z[Etc/UTC]")
 public class ConfigOriginAws {
   public static final String SERIALIZED_NAME_ACCESS_KEY = "access_key";
   @SerializedName(SERIALIZED_NAME_ACCESS_KEY)

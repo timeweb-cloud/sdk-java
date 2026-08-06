@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * OutgoingIsDisabled
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-06T09:16:26.141714Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-06T14:58:49.219742Z[Etc/UTC]")
 public class OutgoingIsDisabled {
   public static final String SERIALIZED_NAME_IS_ENABLED = "is_enabled";
   @SerializedName(SERIALIZED_NAME_IS_ENABLED)

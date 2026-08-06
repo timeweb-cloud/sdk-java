@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * Параметры изменения CDN-ресурса. Передавайте только те поля, которые нужно изменить.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-06T09:16:26.141714Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-06T14:58:49.219742Z[Etc/UTC]")
 public class UpdateHttpResource {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)

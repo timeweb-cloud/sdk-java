@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * Данные DNS-записи. Состав полей зависит от типа записи.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-06T09:16:26.141714Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-06T14:58:49.219742Z[Etc/UTC]")
 public class DnsRecordV2Data {
   public static final String SERIALIZED_NAME_PRIORITY = "priority";
   @SerializedName(SERIALIZED_NAME_PRIORITY)

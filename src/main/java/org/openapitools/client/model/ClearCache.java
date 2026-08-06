@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * Параметры очистки кэша
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-06T09:16:26.141714Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-06T14:58:49.219742Z[Etc/UTC]")
 public class ClearCache {
   /**
    * Тип очистки. - &#x60;full&#x60; — очистить весь кэш ресурса; - &#x60;partial&#x60; — очистить кэш только по путям из &#x60;paths&#x60;.

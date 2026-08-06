@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * Параметры MySQL (&#x60;mysql5&#x60; | &#x60;mysql&#x60; | &#x60;mysql8_4&#x60;)
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-06T09:16:26.141714Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-06T14:58:49.219742Z[Etc/UTC]")
 public class Mysql {
   public static final String SERIALIZED_NAME_JOIN_BUFFER_SIZE = "join_buffer_size";
   @SerializedName(SERIALIZED_NAME_JOIN_BUFFER_SIZE)

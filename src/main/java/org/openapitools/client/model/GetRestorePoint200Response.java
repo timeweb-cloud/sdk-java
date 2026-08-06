@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * GetRestorePoint200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-06T09:16:26.141714Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-06T14:58:49.219742Z[Etc/UTC]")
 public class GetRestorePoint200Response {
   public static final String SERIALIZED_NAME_RESTORE_POINT = "restore_point";
   @SerializedName(SERIALIZED_NAME_RESTORE_POINT)
