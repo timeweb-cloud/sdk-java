@@ -35,11 +35,19 @@ public enum Location {
   
   RU_3("ru-3"),
   
+  RU_4("ru-4"),
+  
+  RU_5("ru-5"),
+  
   PL_1("pl-1"),
   
   KZ_1("kz-1"),
   
-  NL_1("nl-1");
+  NL_1("nl-1"),
+  
+  DE_1("de-1"),
+  
+  US_4("us-4");
 
   private String value;
 

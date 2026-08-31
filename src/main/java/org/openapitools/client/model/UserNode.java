@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * Узел CDN, который раздает контент ресурса пользователям
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-06T15:06:51.562821Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-31T10:55:12.417047Z[Etc/UTC]")
 public class UserNode {
   public static final String SERIALIZED_NAME_IPV4_ADDRESS = "ipv4_address";
   @SerializedName(SERIALIZED_NAME_IPV4_ADDRESS)

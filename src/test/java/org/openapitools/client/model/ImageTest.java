@@ -20,6 +20,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import org.openapitools.client.model.ImageStatus;
+import org.openapitools.client.model.Location;
 import org.openapitools.client.model.OS;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;

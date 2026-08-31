@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * GetDatabaseAutoBackupsSettings200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-06T15:06:51.562821Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-31T10:55:12.417047Z[Etc/UTC]")
 public class GetDatabaseAutoBackupsSettings200Response {
   public static final String SERIALIZED_NAME_AUTO_BACKUPS_SETTINGS = "auto_backups_settings";
   @SerializedName(SERIALIZED_NAME_AUTO_BACKUPS_SETTINGS)

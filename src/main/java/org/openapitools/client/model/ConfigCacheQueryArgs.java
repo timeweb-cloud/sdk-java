@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * Правила учета query-параметров в ключе кэша. &#x60;null&#x60; — не учитывать query-параметры.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-06T15:06:51.562821Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-31T10:55:12.417047Z[Etc/UTC]")
 public class ConfigCacheQueryArgs {
   /**
    * Режим учета query-параметров. - &#x60;all&#x60; — учитывать все параметры; - &#x60;whitelist&#x60; — учитывать только параметры из &#x60;list&#x60;; - &#x60;blacklist&#x60; — учитывать все параметры, кроме перечисленных в &#x60;list&#x60;.

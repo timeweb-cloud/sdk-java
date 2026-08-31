@@ -22,6 +22,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import org.openapitools.client.model.ImageStatus;
+import org.openapitools.client.model.Location;
 import org.openapitools.client.model.OS;
 
 import com.google.gson.Gson;
@@ -52,7 +53,7 @@ import org.openapitools.client.JSON;
 /**
  * Image
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-06T15:06:51.562821Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-31T10:55:12.417047Z[Etc/UTC]")
 public class Image {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -90,62 +91,9 @@ public class Image {
   @SerializedName(SERIALIZED_NAME_DISK_ID)
   private Integer diskId;
 
-  /**
-   * Локация образа.
-   */
-  @JsonAdapter(LocationEnum.Adapter.class)
-  public enum LocationEnum {
-    RU_1("ru-1"),
-    
-    RU_2("ru-2"),
-    
-    PL_1("pl-1"),
-    
-    KZ_1("kz-1"),
-    
-    NL_1("nl-1");
-
-    private String value;
-
-    LocationEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static LocationEnum fromValue(String value) {
-      for (LocationEnum b : LocationEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<LocationEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final LocationEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public LocationEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return LocationEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_LOCATION = "location";
   @SerializedName(SERIALIZED_NAME_LOCATION)
-  private LocationEnum location;
+  private Location location;
 
   public static final String SERIALIZED_NAME_OS = "os";
   @SerializedName(SERIALIZED_NAME_OS)
@@ -402,23 +350,23 @@ public class Image {
   }
 
 
-  public Image location(LocationEnum location) {
+  public Image location(Location location) {
     
     this.location = location;
     return this;
   }
 
    /**
-   * Локация образа.
+   * Get location
    * @return location
   **/
   @javax.annotation.Nonnull
-  public LocationEnum getLocation() {
+  public Location getLocation() {
     return location;
   }
 
 
-  public void setLocation(LocationEnum location) {
+  public void setLocation(Location location) {
     this.location = location;
   }
 
@@ -653,9 +601,6 @@ public class Image {
       }
       if (!jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
-      }
-      if (!jsonObj.get("location").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `location` to be a primitive type in the JSON string but got `%s`", jsonObj.get("location").toString()));
       }
       if (!jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));

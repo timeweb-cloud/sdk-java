@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * Действие над кластером базы данных
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-06T15:06:51.562821Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-31T10:55:12.417047Z[Etc/UTC]")
 public class ClusterAction {
   /**
    * Действие над кластером базы данных: &#x60;reboot&#x60; — перезагрузить, &#x60;shutdown&#x60; — выключить, &#x60;start&#x60; — включить.

@@ -16,23 +16,11 @@
 |**name** | **String** | Имя образа. |  |
 |**description** | **String** | Описание образа. |  |
 |**diskId** | **Integer** | ID связанного с образом диска. |  |
-|**location** | [**LocationEnum**](#LocationEnum) | Локация образа. |  |
+|**location** | **Location** |  |  |
 |**os** | **OS** |  |  |
 |**progress** | **Integer** | Процент создания образа. |  |
 |**isCustom** | **Boolean** | Логическое значение, которое показывает, является ли образ кастомным. |  |
 |**type** | [**TypeEnum**](#TypeEnum) | Тип образа. |  |
-
-
-
-## Enum: LocationEnum
-
-| Name | Value |
-|---- | -----|
-| RU_1 | &quot;ru-1&quot; |
-| RU_2 | &quot;ru-2&quot; |
-| PL_1 | &quot;pl-1&quot; |
-| KZ_1 | &quot;kz-1&quot; |
-| NL_1 | &quot;nl-1&quot; |
 
 
 
