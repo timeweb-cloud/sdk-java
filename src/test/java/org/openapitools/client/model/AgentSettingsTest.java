@@ -19,8 +19,11 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import org.openapitools.client.model.AgentAdditionalModel;
 import org.openapitools.client.model.AgentModelSettings;
-import org.openapitools.client.model.AgentSettingsWidget;
+import org.openapitools.client.model.AgentWidgetSettings;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -63,11 +66,35 @@ public class AgentSettingsTest {
     }
 
     /**
+     * Test the property 'memoryEnabled'
+     */
+    @Test
+    public void memoryEnabledTest() {
+        // TODO: test memoryEnabled
+    }
+
+    /**
      * Test the property 'widget'
      */
     @Test
     public void widgetTest() {
         // TODO: test widget
+    }
+
+    /**
+     * Test the property 'webSearchAllowedSites'
+     */
+    @Test
+    public void webSearchAllowedSitesTest() {
+        // TODO: test webSearchAllowedSites
+    }
+
+    /**
+     * Test the property 'additionalModels'
+     */
+    @Test
+    public void additionalModelsTest() {
+        // TODO: test additionalModels
     }
 
 }

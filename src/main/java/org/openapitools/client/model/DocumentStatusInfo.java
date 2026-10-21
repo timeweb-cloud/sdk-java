@@ -50,12 +50,12 @@ import java.util.Set;
 import org.openapitools.client.JSON;
 
 /**
- * Детальная информация о текущем состоянии документа в базе знаний
+ * Подробности о состоянии индексации документа. &#x60;null&#x60;, если информации нет
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-31T10:55:12.417047Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-21T20:10:29.240516Z[Etc/UTC]")
 public class DocumentStatusInfo {
   /**
-   * Тип статуса документа
+   * Тип состояния, совпадает со статусом документа
    */
   @JsonAdapter(TypeEnum.Adapter.class)
   public enum TypeEnum {
@@ -114,7 +114,7 @@ public class DocumentStatusInfo {
   private OffsetDateTime timestamp;
 
   /**
-   * Код ошибки (только для type: &#39;error&#39;)
+   * Код ошибки, только для &#x60;type: error&#x60;: - &#x60;INSUFFICIENT_TOKENS&#x60; — недостаточно токенов для индексации - &#x60;CRITICAL_BALANCE&#x60; — критически низкий остаток токенов - &#x60;NEGATIVE_BALANCE&#x60; — отрицательный остаток токенов - &#x60;INDEXING_ERROR&#x60; — не удалось обработать документ
    */
   @JsonAdapter(ErrorCodeEnum.Adapter.class)
   public enum ErrorCodeEnum {
@@ -168,6 +168,14 @@ public class DocumentStatusInfo {
   @SerializedName(SERIALIZED_NAME_ERROR_CODE)
   private ErrorCodeEnum errorCode;
 
+  public static final String SERIALIZED_NAME_STAGE = "stage";
+  @SerializedName(SERIALIZED_NAME_STAGE)
+  private String stage;
+
+  public static final String SERIALIZED_NAME_TRACE_ID = "trace_id";
+  @SerializedName(SERIALIZED_NAME_TRACE_ID)
+  private String traceId;
+
   public static final String SERIALIZED_NAME_DETAILS = "details";
   @SerializedName(SERIALIZED_NAME_DETAILS)
   private DocumentStatusInfoDetails details;
@@ -182,7 +190,7 @@ public class DocumentStatusInfo {
   }
 
    /**
-   * Тип статуса документа
+   * Тип состояния, совпадает со статусом документа
    * @return type
   **/
   @javax.annotation.Nonnull
@@ -203,7 +211,7 @@ public class DocumentStatusInfo {
   }
 
    /**
-   * Время записи информации (ISO string)
+   * Время, когда записано состояние
    * @return timestamp
   **/
   @javax.annotation.Nonnull
@@ -224,7 +232,7 @@ public class DocumentStatusInfo {
   }
 
    /**
-   * Код ошибки (только для type: &#39;error&#39;)
+   * Код ошибки, только для &#x60;type: error&#x60;: - &#x60;INSUFFICIENT_TOKENS&#x60; — недостаточно токенов для индексации - &#x60;CRITICAL_BALANCE&#x60; — критически низкий остаток токенов - &#x60;NEGATIVE_BALANCE&#x60; — отрицательный остаток токенов - &#x60;INDEXING_ERROR&#x60; — не удалось обработать документ
    * @return errorCode
   **/
   @javax.annotation.Nullable
@@ -235,6 +243,48 @@ public class DocumentStatusInfo {
 
   public void setErrorCode(ErrorCodeEnum errorCode) {
     this.errorCode = errorCode;
+  }
+
+
+  public DocumentStatusInfo stage(String stage) {
+    
+    this.stage = stage;
+    return this;
+  }
+
+   /**
+   * Этап индексации, на котором произошла ошибка
+   * @return stage
+  **/
+  @javax.annotation.Nullable
+  public String getStage() {
+    return stage;
+  }
+
+
+  public void setStage(String stage) {
+    this.stage = stage;
+  }
+
+
+  public DocumentStatusInfo traceId(String traceId) {
+    
+    this.traceId = traceId;
+    return this;
+  }
+
+   /**
+   * Идентификатор операции индексации — укажите его при обращении в поддержку
+   * @return traceId
+  **/
+  @javax.annotation.Nullable
+  public String getTraceId() {
+    return traceId;
+  }
+
+
+  public void setTraceId(String traceId) {
+    this.traceId = traceId;
   }
 
 
@@ -272,12 +322,14 @@ public class DocumentStatusInfo {
     return Objects.equals(this.type, documentStatusInfo.type) &&
         Objects.equals(this.timestamp, documentStatusInfo.timestamp) &&
         Objects.equals(this.errorCode, documentStatusInfo.errorCode) &&
+        Objects.equals(this.stage, documentStatusInfo.stage) &&
+        Objects.equals(this.traceId, documentStatusInfo.traceId) &&
         Objects.equals(this.details, documentStatusInfo.details);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, timestamp, errorCode, details);
+    return Objects.hash(type, timestamp, errorCode, stage, traceId, details);
   }
 
   @Override
@@ -287,6 +339,8 @@ public class DocumentStatusInfo {
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    timestamp: ").append(toIndentedString(timestamp)).append("\n");
     sb.append("    errorCode: ").append(toIndentedString(errorCode)).append("\n");
+    sb.append("    stage: ").append(toIndentedString(stage)).append("\n");
+    sb.append("    traceId: ").append(toIndentedString(traceId)).append("\n");
     sb.append("    details: ").append(toIndentedString(details)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -313,6 +367,8 @@ public class DocumentStatusInfo {
     openapiFields.add("type");
     openapiFields.add("timestamp");
     openapiFields.add("error_code");
+    openapiFields.add("stage");
+    openapiFields.add("trace_id");
     openapiFields.add("details");
 
     // a set of required properties/fields (JSON key names)
@@ -355,9 +411,11 @@ public class DocumentStatusInfo {
       if ((jsonObj.get("error_code") != null && !jsonObj.get("error_code").isJsonNull()) && !jsonObj.get("error_code").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `error_code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("error_code").toString()));
       }
-      // validate the optional field `details`
-      if (jsonObj.get("details") != null && !jsonObj.get("details").isJsonNull()) {
-        DocumentStatusInfoDetails.validateJsonElement(jsonObj.get("details"));
+      if ((jsonObj.get("stage") != null && !jsonObj.get("stage").isJsonNull()) && !jsonObj.get("stage").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `stage` to be a primitive type in the JSON string but got `%s`", jsonObj.get("stage").toString()));
+      }
+      if ((jsonObj.get("trace_id") != null && !jsonObj.get("trace_id").isJsonNull()) && !jsonObj.get("trace_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `trace_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("trace_id").toString()));
       }
   }
 

@@ -21,8 +21,8 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import org.openapitools.client.model.AgentTokenStatistic;
 import org.openapitools.client.model.GetAgentStatistics200ResponseMeta;
-import org.openapitools.client.model.TokenStatistic;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 

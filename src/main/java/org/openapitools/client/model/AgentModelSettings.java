@@ -49,9 +49,9 @@ import java.util.Set;
 import org.openapitools.client.JSON;
 
 /**
- * Настройки модели агента
+ * Параметры модели агента. Допустимые параметры и их границы зависят от модели (см. параметры модели в разделе «AI Модели»): параметры, которые модель не поддерживает, отбрасываются при сохранении, а значения вне допустимых границ отклоняются с ошибкой 400.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-31T10:55:12.417047Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-21T20:10:29.240516Z[Etc/UTC]")
 public class AgentModelSettings {
   public static final String SERIALIZED_NAME_TEMPERATURE = "temperature";
   @SerializedName(SERIALIZED_NAME_TEMPERATURE)
@@ -63,7 +63,7 @@ public class AgentModelSettings {
 
   public static final String SERIALIZED_NAME_MAX_TOKENS = "max_tokens";
   @SerializedName(SERIALIZED_NAME_MAX_TOKENS)
-  private BigDecimal maxTokens;
+  private Integer maxTokens;
 
   public static final String SERIALIZED_NAME_FREQUENCY_PENALTY = "frequency_penalty";
   @SerializedName(SERIALIZED_NAME_FREQUENCY_PENALTY)
@@ -72,6 +72,10 @@ public class AgentModelSettings {
   public static final String SERIALIZED_NAME_PRESENCE_PENALTY = "presence_penalty";
   @SerializedName(SERIALIZED_NAME_PRESENCE_PENALTY)
   private BigDecimal presencePenalty;
+
+  public static final String SERIALIZED_NAME_ENABLE_THINKING = "enable_thinking";
+  @SerializedName(SERIALIZED_NAME_ENABLE_THINKING)
+  private Boolean enableThinking;
 
   public AgentModelSettings() {
   }
@@ -83,7 +87,7 @@ public class AgentModelSettings {
   }
 
    /**
-   * Контролирует случайность вывода модели.
+   * Температура: чем выше, тем случайнее ответы модели.
    * @return temperature
   **/
   @javax.annotation.Nullable
@@ -104,7 +108,7 @@ public class AgentModelSettings {
   }
 
    /**
-   * Контролирует разнообразие вывода модели.
+   * Nucleus sampling: доля вероятностной массы, из которой выбираются токены.
    * @return topP
   **/
   @javax.annotation.Nullable
@@ -118,23 +122,23 @@ public class AgentModelSettings {
   }
 
 
-  public AgentModelSettings maxTokens(BigDecimal maxTokens) {
+  public AgentModelSettings maxTokens(Integer maxTokens) {
     
     this.maxTokens = maxTokens;
     return this;
   }
 
    /**
-   * Максимальное количество токенов в выводе.
+   * Максимальное количество токенов в ответе модели.
    * @return maxTokens
   **/
   @javax.annotation.Nullable
-  public BigDecimal getMaxTokens() {
+  public Integer getMaxTokens() {
     return maxTokens;
   }
 
 
-  public void setMaxTokens(BigDecimal maxTokens) {
+  public void setMaxTokens(Integer maxTokens) {
     this.maxTokens = maxTokens;
   }
 
@@ -146,7 +150,7 @@ public class AgentModelSettings {
   }
 
    /**
-   * Положительные значения штрафуют новые токены на основе их существующей частоты.
+   * Штраф за частоту: положительные значения снижают повторы уже использованных токенов.
    * @return frequencyPenalty
   **/
   @javax.annotation.Nullable
@@ -167,7 +171,7 @@ public class AgentModelSettings {
   }
 
    /**
-   * Положительные значения штрафуют новые токены на основе того, встречались ли они в тексте ранее.
+   * Штраф за присутствие: положительные значения поощряют новые темы.
    * @return presencePenalty
   **/
   @javax.annotation.Nullable
@@ -180,6 +184,71 @@ public class AgentModelSettings {
     this.presencePenalty = presencePenalty;
   }
 
+
+  public AgentModelSettings enableThinking(Boolean enableThinking) {
+    
+    this.enableThinking = enableThinking;
+    return this;
+  }
+
+   /**
+   * Включает режим рассуждений (thinking) для моделей, которые его поддерживают.
+   * @return enableThinking
+  **/
+  @javax.annotation.Nullable
+  public Boolean getEnableThinking() {
+    return enableThinking;
+  }
+
+
+  public void setEnableThinking(Boolean enableThinking) {
+    this.enableThinking = enableThinking;
+  }
+
+  /**
+   * A container for additional, undeclared properties.
+   * This is a holder for any undeclared properties as specified with
+   * the 'additionalProperties' keyword in the OAS document.
+   */
+  private Map<String, Object> additionalProperties;
+
+  /**
+   * Set the additional (undeclared) property with the specified name and value.
+   * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the AgentModelSettings instance itself
+   */
+  public AgentModelSettings putAdditionalProperty(String key, Object value) {
+    if (this.additionalProperties == null) {
+        this.additionalProperties = new HashMap<String, Object>();
+    }
+    this.additionalProperties.put(key, value);
+    return this;
+  }
+
+  /**
+   * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
+   */
+  public Map<String, Object> getAdditionalProperties() {
+    return additionalProperties;
+  }
+
+  /**
+   * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
+   */
+  public Object getAdditionalProperty(String key) {
+    if (this.additionalProperties == null) {
+        return null;
+    }
+    return this.additionalProperties.get(key);
+  }
 
 
   @Override
@@ -195,12 +264,14 @@ public class AgentModelSettings {
         Objects.equals(this.topP, agentModelSettings.topP) &&
         Objects.equals(this.maxTokens, agentModelSettings.maxTokens) &&
         Objects.equals(this.frequencyPenalty, agentModelSettings.frequencyPenalty) &&
-        Objects.equals(this.presencePenalty, agentModelSettings.presencePenalty);
+        Objects.equals(this.presencePenalty, agentModelSettings.presencePenalty) &&
+        Objects.equals(this.enableThinking, agentModelSettings.enableThinking)&&
+        Objects.equals(this.additionalProperties, agentModelSettings.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(temperature, topP, maxTokens, frequencyPenalty, presencePenalty);
+    return Objects.hash(temperature, topP, maxTokens, frequencyPenalty, presencePenalty, enableThinking, additionalProperties);
   }
 
   @Override
@@ -212,6 +283,8 @@ public class AgentModelSettings {
     sb.append("    maxTokens: ").append(toIndentedString(maxTokens)).append("\n");
     sb.append("    frequencyPenalty: ").append(toIndentedString(frequencyPenalty)).append("\n");
     sb.append("    presencePenalty: ").append(toIndentedString(presencePenalty)).append("\n");
+    sb.append("    enableThinking: ").append(toIndentedString(enableThinking)).append("\n");
+    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -239,6 +312,7 @@ public class AgentModelSettings {
     openapiFields.add("max_tokens");
     openapiFields.add("frequency_penalty");
     openapiFields.add("presence_penalty");
+    openapiFields.add("enable_thinking");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -254,14 +328,6 @@ public class AgentModelSettings {
       if (jsonElement == null) {
         if (!AgentModelSettings.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in AgentModelSettings is not found in the empty JSON string", AgentModelSettings.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!AgentModelSettings.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `AgentModelSettings` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
@@ -282,6 +348,23 @@ public class AgentModelSettings {
            @Override
            public void write(JsonWriter out, AgentModelSettings value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             obj.remove("additionalProperties");
+             // serialize additional properties
+             if (value.getAdditionalProperties() != null) {
+               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
+                 if (entry.getValue() instanceof String)
+                   obj.addProperty(entry.getKey(), (String) entry.getValue());
+                 else if (entry.getValue() instanceof Number)
+                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
+                 else if (entry.getValue() instanceof Boolean)
+                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
+                 else if (entry.getValue() instanceof Character)
+                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
+                 else {
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                 }
+               }
+             }
              elementAdapter.write(out, obj);
            }
 
@@ -289,7 +372,28 @@ public class AgentModelSettings {
            public AgentModelSettings read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
+             JsonObject jsonObj = jsonElement.getAsJsonObject();
+             // store additional fields in the deserialized instance
+             AgentModelSettings instance = thisAdapter.fromJsonTree(jsonObj);
+             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
+               if (!openapiFields.contains(entry.getKey())) {
+                 if (entry.getValue().isJsonPrimitive()) { // primitive type
+                   if (entry.getValue().getAsJsonPrimitive().isString())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
+                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
+                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
+                   else
+                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 }
+               }
+             }
+             return instance;
            }
 
        }.nullSafe();

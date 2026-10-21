@@ -23,9 +23,13 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.client.model.ModelBatch;
+import org.openapitools.client.model.ModelParamInfo;
+import org.openapitools.client.model.ModelPriceTier;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -53,17 +57,17 @@ import java.util.Set;
 import org.openapitools.client.JSON;
 
 /**
- * Модель AI (v3). Идентификация и управляющие поля находятся на верхнем уровне, все сравнимые характеристики (цены, лимиты, возможности) — в словаре &#x60;parameter_values&#x60;
+ * AI модель с характеристиками для сравнения (v3). Цены и характеристики — в &#x60;parameter_values&#x60;
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-31T10:55:12.417047Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-21T20:10:29.240516Z[Etc/UTC]")
 public class ModelV3 {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private BigDecimal id;
+  private Integer id;
 
   public static final String SERIALIZED_NAME_PROVIDER_ID = "provider_id";
   @SerializedName(SERIALIZED_NAME_PROVIDER_ID)
-  private BigDecimal providerId;
+  private Integer providerId;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -78,7 +82,7 @@ public class ModelV3 {
   private String modelName;
 
   /**
-   * Тип модели (llm — языковая модель, hosted-llm — self-hosted языковая модель, embedding — модель для эмбеддингов, image — генерация изображений, audio — работа с аудио, moderation — модерация контента)
+   * Тип модели: - &#x60;llm&#x60; — языковая модель - &#x60;hosted-llm&#x60; — языковая модель, размещённая в Timeweb Cloud - &#x60;embedding&#x60; — модель эмбеддингов - &#x60;image&#x60; — генерация изображений - &#x60;audio&#x60; — работа с аудио - &#x60;video&#x60; — генерация видео - &#x60;moderation&#x60; — модерация контента - &#x60;system-one&#x60; — служебная модель с собственным API
    */
   @JsonAdapter(TypeEnum.Adapter.class)
   public enum TypeEnum {
@@ -92,7 +96,11 @@ public class ModelV3 {
     
     AUDIO("audio"),
     
-    MODERATION("moderation");
+    VIDEO("video"),
+    
+    MODERATION("moderation"),
+    
+    SYSTEM_ONE("system-one");
 
     private String value;
 
@@ -162,53 +170,61 @@ public class ModelV3 {
 
   public static final String SERIALIZED_NAME_PARAMS_INFO = "params_info";
   @SerializedName(SERIALIZED_NAME_PARAMS_INFO)
-  private Object paramsInfo;
+  private Map<String, ModelParamInfo> paramsInfo;
 
   public static final String SERIALIZED_NAME_PARAMETER_VALUES = "parameter_values";
   @SerializedName(SERIALIZED_NAME_PARAMETER_VALUES)
-  private Map<String, Object> parameterValues = new HashMap<>();
+  private Map<String, BigDecimal> parameterValues = new HashMap<>();
+
+  public static final String SERIALIZED_NAME_PRICE_TIERS = "price_tiers";
+  @SerializedName(SERIALIZED_NAME_PRICE_TIERS)
+  private List<ModelPriceTier> priceTiers = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_BATCH = "batch";
+  @SerializedName(SERIALIZED_NAME_BATCH)
+  private ModelBatch batch;
 
   public ModelV3() {
   }
 
-  public ModelV3 id(BigDecimal id) {
+  public ModelV3 id(Integer id) {
     
     this.id = id;
     return this;
   }
 
    /**
-   * Уникальный идентификатор модели
+   * ID модели
    * @return id
   **/
   @javax.annotation.Nonnull
-  public BigDecimal getId() {
+  public Integer getId() {
     return id;
   }
 
 
-  public void setId(BigDecimal id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
 
-  public ModelV3 providerId(BigDecimal providerId) {
+  public ModelV3 providerId(Integer providerId) {
     
     this.providerId = providerId;
     return this;
   }
 
    /**
-   * ID провайдера, который предоставляет модель
+   * ID провайдера модели
    * @return providerId
   **/
   @javax.annotation.Nonnull
-  public BigDecimal getProviderId() {
+  public Integer getProviderId() {
     return providerId;
   }
 
 
-  public void setProviderId(BigDecimal providerId) {
+  public void setProviderId(Integer providerId) {
     this.providerId = providerId;
   }
 
@@ -220,7 +236,7 @@ public class ModelV3 {
   }
 
    /**
-   * Название модели
+   * Семейство модели
    * @return name
   **/
   @javax.annotation.Nonnull
@@ -241,7 +257,7 @@ public class ModelV3 {
   }
 
    /**
-   * Публичное имя модели
+   * Отображаемое название модели
    * @return publicName
   **/
   @javax.annotation.Nonnull
@@ -262,7 +278,7 @@ public class ModelV3 {
   }
 
    /**
-   * Идентификатор модели, который передаётся в поле &#x60;model&#x60; тела запроса
+   * Идентификатор модели с префиксом провайдера — передаётся в поле &#x60;model&#x60; запросов к AI Gateway
    * @return modelName
   **/
   @javax.annotation.Nonnull
@@ -283,7 +299,7 @@ public class ModelV3 {
   }
 
    /**
-   * Тип модели (llm — языковая модель, hosted-llm — self-hosted языковая модель, embedding — модель для эмбеддингов, image — генерация изображений, audio — работа с аудио, moderation — модерация контента)
+   * Тип модели: - &#x60;llm&#x60; — языковая модель - &#x60;hosted-llm&#x60; — языковая модель, размещённая в Timeweb Cloud - &#x60;embedding&#x60; — модель эмбеддингов - &#x60;image&#x60; — генерация изображений - &#x60;audio&#x60; — работа с аудио - &#x60;video&#x60; — генерация видео - &#x60;moderation&#x60; — модерация контента - &#x60;system-one&#x60; — служебная модель с собственным API
    * @return type
   **/
   @javax.annotation.Nonnull
@@ -325,7 +341,7 @@ public class ModelV3 {
   }
 
    /**
-   * Признак, что модель устарела
+   * Модель устарела и недоступна для выбора в новых агентах
    * @return isDeprecated
   **/
   @javax.annotation.Nonnull
@@ -346,7 +362,7 @@ public class ModelV3 {
   }
 
    /**
-   * Признак, что поддержка модели остановлена
+   * Поддержка модели остановлена: запросы к ней не выполняются
    * @return isStopped
   **/
   @javax.annotation.Nonnull
@@ -409,7 +425,7 @@ public class ModelV3 {
   }
 
    /**
-   * Дата и время последнего обновления модели
+   * Дата и время последнего изменения модели
    * @return updatedAt
   **/
   @javax.annotation.Nonnull
@@ -423,34 +439,42 @@ public class ModelV3 {
   }
 
 
-  public ModelV3 paramsInfo(Object paramsInfo) {
+  public ModelV3 paramsInfo(Map<String, ModelParamInfo> paramsInfo) {
     
     this.paramsInfo = paramsInfo;
     return this;
   }
 
+  public ModelV3 putParamsInfoItem(String key, ModelParamInfo paramsInfoItem) {
+    if (this.paramsInfo == null) {
+      this.paramsInfo = new HashMap<>();
+    }
+    this.paramsInfo.put(key, paramsInfoItem);
+    return this;
+  }
+
    /**
-   * Информация о доступных параметрах модели с их ограничениями. Ключ — название параметра, значение — его тип, ограничения и значение по умолчанию
+   * Параметры генерации, которые можно настроить у агента с этой моделью. Ключ — имя параметра (&#x60;temperature&#x60;, &#x60;top_p&#x60;, &#x60;max_tokens&#x60;, &#x60;reasoning_effort&#x60; и т.д.). &#x60;null&#x60;, если параметры не заданы
    * @return paramsInfo
   **/
   @javax.annotation.Nullable
-  public Object getParamsInfo() {
+  public Map<String, ModelParamInfo> getParamsInfo() {
     return paramsInfo;
   }
 
 
-  public void setParamsInfo(Object paramsInfo) {
+  public void setParamsInfo(Map<String, ModelParamInfo> paramsInfo) {
     this.paramsInfo = paramsInfo;
   }
 
 
-  public ModelV3 parameterValues(Map<String, Object> parameterValues) {
+  public ModelV3 parameterValues(Map<String, BigDecimal> parameterValues) {
     
     this.parameterValues = parameterValues;
     return this;
   }
 
-  public ModelV3 putParameterValuesItem(String key, Object parameterValuesItem) {
+  public ModelV3 putParameterValuesItem(String key, BigDecimal parameterValuesItem) {
     if (this.parameterValues == null) {
       this.parameterValues = new HashMap<>();
     }
@@ -459,17 +483,67 @@ public class ModelV3 {
   }
 
    /**
-   * Характеристики модели. Ключ — код характеристики, значение — число, строка, булево значение или массив строк.  Основные коды: - &#x60;cost_in&#x60; — цена за 1 входной токен в рублях - &#x60;cost_out&#x60; — цена за 1 выходной токен в рублях - &#x60;context_window&#x60; — размер контекстного окна в токенах - &#x60;max_output_tokens&#x60; — максимальное количество токенов в ответе - &#x60;is_reasoning&#x60; — поддержка режима рассуждений - &#x60;supports_function_calling&#x60; — поддержка function calling - &#x60;supported_input_modalities&#x60; — поддерживаемые входные модальности (например, &#x60;text&#x60;, &#x60;image&#x60;) - &#x60;supported_output_modalities&#x60; — поддерживаемые выходные модальности - &#x60;avg_speed&#x60; — средняя скорость генерации в токенах в секунду - &#x60;aa_intelligence_index&#x60;, &#x60;aa_coding_index&#x60;, &#x60;aa_agentic_index&#x60; — индексы качества Artificial Analysis - &#x60;release_date&#x60; — дата релиза модели
+   * Характеристики модели. Ключ — &#x60;code&#x60; из справочника &#x60;GET /api/v3/cloud-ai/model-parameters&#x60;, значение — число, строка, булево значение или массив строк. Если значение неизвестно, ключа нет.  Основные коды: - &#x60;cost_in&#x60;, &#x60;cost_out&#x60; — цена 1 входного / выходного токена в рублях - &#x60;cost_cache_read&#x60;, &#x60;cost_cache_write&#x60; — цена 1 токена чтения / записи кэша промпта в рублях; ключа нет, если отдельной цены нет (тарифицируется по &#x60;cost_in&#x60;) - &#x60;pricing_unit&#x60; — единица тарификации: &#x60;token&#x60; (по умолчанию), &#x60;megapixel&#x60;, &#x60;credit&#x60; - &#x60;cost_per_image&#x60; — цена изображения базового размера (1 МП) в рублях - &#x60;credits_from&#x60;, &#x60;cost_per_second_from&#x60; — минимальная ставка в кредитах провайдера и цена от, в рублях, за секунду видео - &#x60;context_window&#x60;, &#x60;max_output_tokens&#x60; — размер контекста и максимум токенов в ответе - &#x60;is_reasoning&#x60;, &#x60;supports_function_calling&#x60; — поддержка рассуждений и вызова инструментов - &#x60;supported_input_modalities&#x60;, &#x60;supported_output_modalities&#x60; — входные и выходные модальности (&#x60;text&#x60;, &#x60;image&#x60;, ...) - &#x60;avg_speed&#x60; — средняя скорость генерации, токенов в секунду - &#x60;aa_intelligence_index&#x60;, &#x60;aa_coding_index&#x60;, &#x60;aa_agentic_index&#x60; — индексы Artificial Analysis - &#x60;release_date&#x60; — дата релиза (&#x60;YYYY-MM-DD&#x60;)
    * @return parameterValues
   **/
   @javax.annotation.Nonnull
-  public Map<String, Object> getParameterValues() {
+  public Map<String, BigDecimal> getParameterValues() {
     return parameterValues;
   }
 
 
-  public void setParameterValues(Map<String, Object> parameterValues) {
+  public void setParameterValues(Map<String, BigDecimal> parameterValues) {
     this.parameterValues = parameterValues;
+  }
+
+
+  public ModelV3 priceTiers(List<ModelPriceTier> priceTiers) {
+    
+    this.priceTiers = priceTiers;
+    return this;
+  }
+
+  public ModelV3 addPriceTiersItem(ModelPriceTier priceTiersItem) {
+    if (this.priceTiers == null) {
+      this.priceTiers = new ArrayList<>();
+    }
+    this.priceTiers.add(priceTiersItem);
+    return this;
+  }
+
+   /**
+   * Ступени цены по размеру входного контекста, по возрастанию порога. Пустой массив — у модели одна цена при любом контексте
+   * @return priceTiers
+  **/
+  @javax.annotation.Nonnull
+  public List<ModelPriceTier> getPriceTiers() {
+    return priceTiers;
+  }
+
+
+  public void setPriceTiers(List<ModelPriceTier> priceTiers) {
+    this.priceTiers = priceTiers;
+  }
+
+
+  public ModelV3 batch(ModelBatch batch) {
+    
+    this.batch = batch;
+    return this;
+  }
+
+   /**
+   * Get batch
+   * @return batch
+  **/
+  @javax.annotation.Nonnull
+  public ModelBatch getBatch() {
+    return batch;
+  }
+
+
+  public void setBatch(ModelBatch batch) {
+    this.batch = batch;
   }
 
 
@@ -496,23 +570,14 @@ public class ModelV3 {
         Objects.equals(this.createdAt, modelV3.createdAt) &&
         Objects.equals(this.updatedAt, modelV3.updatedAt) &&
         Objects.equals(this.paramsInfo, modelV3.paramsInfo) &&
-        Objects.equals(this.parameterValues, modelV3.parameterValues);
-  }
-
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+        Objects.equals(this.parameterValues, modelV3.parameterValues) &&
+        Objects.equals(this.priceTiers, modelV3.priceTiers) &&
+        Objects.equals(this.batch, modelV3.batch);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, providerId, name, publicName, modelName, type, version, isDeprecated, isStopped, deprecationDate, createdAt, updatedAt, paramsInfo, parameterValues);
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
+    return Objects.hash(id, providerId, name, publicName, modelName, type, version, isDeprecated, isStopped, deprecationDate, createdAt, updatedAt, paramsInfo, parameterValues, priceTiers, batch);
   }
 
   @Override
@@ -533,6 +598,8 @@ public class ModelV3 {
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("    paramsInfo: ").append(toIndentedString(paramsInfo)).append("\n");
     sb.append("    parameterValues: ").append(toIndentedString(parameterValues)).append("\n");
+    sb.append("    priceTiers: ").append(toIndentedString(priceTiers)).append("\n");
+    sb.append("    batch: ").append(toIndentedString(batch)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -569,6 +636,8 @@ public class ModelV3 {
     openapiFields.add("updated_at");
     openapiFields.add("params_info");
     openapiFields.add("parameter_values");
+    openapiFields.add("price_tiers");
+    openapiFields.add("batch");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -581,9 +650,13 @@ public class ModelV3 {
     openapiRequiredFields.add("version");
     openapiRequiredFields.add("is_deprecated");
     openapiRequiredFields.add("is_stopped");
+    openapiRequiredFields.add("deprecation_date");
     openapiRequiredFields.add("created_at");
     openapiRequiredFields.add("updated_at");
+    openapiRequiredFields.add("params_info");
     openapiRequiredFields.add("parameter_values");
+    openapiRequiredFields.add("price_tiers");
+    openapiRequiredFields.add("batch");
   }
 
  /**
@@ -629,6 +702,18 @@ public class ModelV3 {
       if (!jsonObj.get("version").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `version` to be a primitive type in the JSON string but got `%s`", jsonObj.get("version").toString()));
       }
+      // ensure the json data is an array
+      if (!jsonObj.get("price_tiers").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `price_tiers` to be an array in the JSON string but got `%s`", jsonObj.get("price_tiers").toString()));
+      }
+
+      JsonArray jsonArraypriceTiers = jsonObj.getAsJsonArray("price_tiers");
+      // validate the required field `price_tiers` (array)
+      for (int i = 0; i < jsonArraypriceTiers.size(); i++) {
+        ModelPriceTier.validateJsonElement(jsonArraypriceTiers.get(i));
+      };
+      // validate the required field `batch`
+      ModelBatch.validateJsonElement(jsonObj.get("batch"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

@@ -38,6 +38,14 @@ public class StatusTest {
     }
 
     /**
+     * Test the property 'login'
+     */
+    @Test
+    public void loginTest() {
+        // TODO: test login
+    }
+
+    /**
      * Test the property 'isBlocked'
      */
     @Test

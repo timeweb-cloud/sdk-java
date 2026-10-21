@@ -77,4 +77,12 @@ public class AgentModelSettingsTest {
         // TODO: test presencePenalty
     }
 
+    /**
+     * Test the property 'enableThinking'
+     */
+    @Test
+    public void enableThinkingTest() {
+        // TODO: test enableThinking
+    }
+
 }

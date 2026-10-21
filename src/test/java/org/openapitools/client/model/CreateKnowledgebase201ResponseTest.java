@@ -38,11 +38,11 @@ public class CreateKnowledgebase201ResponseTest {
     }
 
     /**
-     * Test the property 'knowledgebase'
+     * Test the property 'knowledgeBase'
      */
     @Test
-    public void knowledgebaseTest() {
-        // TODO: test knowledgebase
+    public void knowledgeBaseTest() {
+        // TODO: test knowledgeBase
     }
 
 }

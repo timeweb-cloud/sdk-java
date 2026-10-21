@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**knowledgebaseDocuments** | [**List&lt;Document&gt;**](Document.md) | Список документов |  |
+|**knowledgebaseDocuments** | [**List&lt;Document&gt;**](Document.md) | Документы |  |
 |**meta** | [**GetKnowledgebaseDocumentsV2200ResponseMeta**](GetKnowledgebaseDocumentsV2200ResponseMeta.md) |  |  |
 
 

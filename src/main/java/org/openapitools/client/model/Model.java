@@ -21,10 +21,10 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.time.OffsetDateTime;
-import org.openapitools.client.model.ModelParamsInfo;
-import org.openapitools.jackson.nullable.JsonNullable;
+import java.util.HashMap;
+import java.util.Map;
+import org.openapitools.client.model.ModelParamInfo;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -52,17 +52,17 @@ import java.util.Set;
 import org.openapitools.client.JSON;
 
 /**
- * Модель AI
+ * AI модель
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-31T10:55:12.417047Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-21T20:10:29.240516Z[Etc/UTC]")
 public class Model {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private BigDecimal id;
+  private Integer id;
 
   public static final String SERIALIZED_NAME_PROVIDER_ID = "provider_id";
   @SerializedName(SERIALIZED_NAME_PROVIDER_ID)
-  private BigDecimal providerId;
+  private Integer providerId;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -72,14 +72,30 @@ public class Model {
   @SerializedName(SERIALIZED_NAME_PUBLIC_NAME)
   private String publicName;
 
+  public static final String SERIALIZED_NAME_MODEL_NAME = "model_name";
+  @SerializedName(SERIALIZED_NAME_MODEL_NAME)
+  private String modelName;
+
   /**
-   * Тип модели (llm - языковая модель, embedding - модель для эмбеддингов)
+   * Тип модели: - &#x60;llm&#x60; — языковая модель - &#x60;hosted-llm&#x60; — языковая модель, размещённая в Timeweb Cloud - &#x60;embedding&#x60; — модель эмбеддингов - &#x60;image&#x60; — генерация изображений - &#x60;audio&#x60; — работа с аудио - &#x60;video&#x60; — генерация видео - &#x60;moderation&#x60; — модерация контента - &#x60;system-one&#x60; — служебная модель с собственным API
    */
   @JsonAdapter(TypeEnum.Adapter.class)
   public enum TypeEnum {
     LLM("llm"),
     
-    EMBEDDING("embedding");
+    HOSTED_LLM("hosted-llm"),
+    
+    EMBEDDING("embedding"),
+    
+    IMAGE("image"),
+    
+    AUDIO("audio"),
+    
+    VIDEO("video"),
+    
+    MODERATION("moderation"),
+    
+    SYSTEM_ONE("system-one");
 
     private String value;
 
@@ -123,6 +139,10 @@ public class Model {
   @SerializedName(SERIALIZED_NAME_TYPE)
   private TypeEnum type;
 
+  public static final String SERIALIZED_NAME_VERSION = "version";
+  @SerializedName(SERIALIZED_NAME_VERSION)
+  private String version;
+
   public static final String SERIALIZED_NAME_IS_DEPRECATED = "is_deprecated";
   @SerializedName(SERIALIZED_NAME_IS_DEPRECATED)
   private Boolean isDeprecated;
@@ -139,55 +159,51 @@ public class Model {
   @SerializedName(SERIALIZED_NAME_IS_REASONING)
   private Boolean isReasoning;
 
-  public static final String SERIALIZED_NAME_VERSION = "version";
-  @SerializedName(SERIALIZED_NAME_VERSION)
-  private String version;
-
   public static final String SERIALIZED_NAME_PARAMS_INFO = "params_info";
   @SerializedName(SERIALIZED_NAME_PARAMS_INFO)
-  private ModelParamsInfo paramsInfo;
+  private Map<String, ModelParamInfo> paramsInfo;
 
   public Model() {
   }
 
-  public Model id(BigDecimal id) {
+  public Model id(Integer id) {
     
     this.id = id;
     return this;
   }
 
    /**
-   * Уникальный идентификатор модели
+   * ID модели
    * @return id
   **/
   @javax.annotation.Nonnull
-  public BigDecimal getId() {
+  public Integer getId() {
     return id;
   }
 
 
-  public void setId(BigDecimal id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
 
-  public Model providerId(BigDecimal providerId) {
+  public Model providerId(Integer providerId) {
     
     this.providerId = providerId;
     return this;
   }
 
    /**
-   * ID провайдера, который предоставляет модель
+   * ID провайдера модели
    * @return providerId
   **/
   @javax.annotation.Nonnull
-  public BigDecimal getProviderId() {
+  public Integer getProviderId() {
     return providerId;
   }
 
 
-  public void setProviderId(BigDecimal providerId) {
+  public void setProviderId(Integer providerId) {
     this.providerId = providerId;
   }
 
@@ -199,7 +215,7 @@ public class Model {
   }
 
    /**
-   * Название модели
+   * Семейство модели
    * @return name
   **/
   @javax.annotation.Nonnull
@@ -220,7 +236,7 @@ public class Model {
   }
 
    /**
-   * Публичное имя модели
+   * Отображаемое название модели
    * @return publicName
   **/
   @javax.annotation.Nonnull
@@ -234,6 +250,27 @@ public class Model {
   }
 
 
+  public Model modelName(String modelName) {
+    
+    this.modelName = modelName;
+    return this;
+  }
+
+   /**
+   * Идентификатор модели с префиксом провайдера — передаётся в поле &#x60;model&#x60; запросов к AI Gateway
+   * @return modelName
+  **/
+  @javax.annotation.Nonnull
+  public String getModelName() {
+    return modelName;
+  }
+
+
+  public void setModelName(String modelName) {
+    this.modelName = modelName;
+  }
+
+
   public Model type(TypeEnum type) {
     
     this.type = type;
@@ -241,7 +278,7 @@ public class Model {
   }
 
    /**
-   * Тип модели (llm - языковая модель, embedding - модель для эмбеддингов)
+   * Тип модели: - &#x60;llm&#x60; — языковая модель - &#x60;hosted-llm&#x60; — языковая модель, размещённая в Timeweb Cloud - &#x60;embedding&#x60; — модель эмбеддингов - &#x60;image&#x60; — генерация изображений - &#x60;audio&#x60; — работа с аудио - &#x60;video&#x60; — генерация видео - &#x60;moderation&#x60; — модерация контента - &#x60;system-one&#x60; — служебная модель с собственным API
    * @return type
   **/
   @javax.annotation.Nonnull
@@ -252,90 +289,6 @@ public class Model {
 
   public void setType(TypeEnum type) {
     this.type = type;
-  }
-
-
-  public Model isDeprecated(Boolean isDeprecated) {
-    
-    this.isDeprecated = isDeprecated;
-    return this;
-  }
-
-   /**
-   * Признак, что модель устарела
-   * @return isDeprecated
-  **/
-  @javax.annotation.Nonnull
-  public Boolean getIsDeprecated() {
-    return isDeprecated;
-  }
-
-
-  public void setIsDeprecated(Boolean isDeprecated) {
-    this.isDeprecated = isDeprecated;
-  }
-
-
-  public Model isStopped(Boolean isStopped) {
-    
-    this.isStopped = isStopped;
-    return this;
-  }
-
-   /**
-   * Признак, что поддержка модели остановлена в системе
-   * @return isStopped
-  **/
-  @javax.annotation.Nonnull
-  public Boolean getIsStopped() {
-    return isStopped;
-  }
-
-
-  public void setIsStopped(Boolean isStopped) {
-    this.isStopped = isStopped;
-  }
-
-
-  public Model deprecationDate(OffsetDateTime deprecationDate) {
-    
-    this.deprecationDate = deprecationDate;
-    return this;
-  }
-
-   /**
-   * Дата депрекейта модели у провайдера
-   * @return deprecationDate
-  **/
-  @javax.annotation.Nullable
-  public OffsetDateTime getDeprecationDate() {
-    return deprecationDate;
-  }
-
-
-  public void setDeprecationDate(OffsetDateTime deprecationDate) {
-    this.deprecationDate = deprecationDate;
-  }
-
-
-  public Model isReasoning(Boolean isReasoning) {
-    
-    this.isReasoning = isReasoning;
-    return this;
-  }
-
-   /**
-   * Признак поддержки режима рассуждения
-   * @return isReasoning
-  **/
-  @javax.annotation.Nonnull
-  public Boolean getIsReasoning() {
-    return isReasoning;
-  }
-
-
-  public void setIsReasoning(Boolean isReasoning) {
-    this.isReasoning = isReasoning;
   }
 
 
@@ -360,23 +313,115 @@ public class Model {
   }
 
 
-  public Model paramsInfo(ModelParamsInfo paramsInfo) {
+  public Model isDeprecated(Boolean isDeprecated) {
+    
+    this.isDeprecated = isDeprecated;
+    return this;
+  }
+
+   /**
+   * Модель устарела и недоступна для выбора в новых агентах
+   * @return isDeprecated
+  **/
+  @javax.annotation.Nonnull
+  public Boolean getIsDeprecated() {
+    return isDeprecated;
+  }
+
+
+  public void setIsDeprecated(Boolean isDeprecated) {
+    this.isDeprecated = isDeprecated;
+  }
+
+
+  public Model isStopped(Boolean isStopped) {
+    
+    this.isStopped = isStopped;
+    return this;
+  }
+
+   /**
+   * Поддержка модели остановлена: запросы к ней не выполняются
+   * @return isStopped
+  **/
+  @javax.annotation.Nonnull
+  public Boolean getIsStopped() {
+    return isStopped;
+  }
+
+
+  public void setIsStopped(Boolean isStopped) {
+    this.isStopped = isStopped;
+  }
+
+
+  public Model deprecationDate(OffsetDateTime deprecationDate) {
+    
+    this.deprecationDate = deprecationDate;
+    return this;
+  }
+
+   /**
+   * Дата отключения модели у провайдера. &#x60;null&#x60;, если отключение не запланировано
+   * @return deprecationDate
+  **/
+  @javax.annotation.Nullable
+  public OffsetDateTime getDeprecationDate() {
+    return deprecationDate;
+  }
+
+
+  public void setDeprecationDate(OffsetDateTime deprecationDate) {
+    this.deprecationDate = deprecationDate;
+  }
+
+
+  public Model isReasoning(Boolean isReasoning) {
+    
+    this.isReasoning = isReasoning;
+    return this;
+  }
+
+   /**
+   * Модель поддерживает режим рассуждений
+   * @return isReasoning
+  **/
+  @javax.annotation.Nonnull
+  public Boolean getIsReasoning() {
+    return isReasoning;
+  }
+
+
+  public void setIsReasoning(Boolean isReasoning) {
+    this.isReasoning = isReasoning;
+  }
+
+
+  public Model paramsInfo(Map<String, ModelParamInfo> paramsInfo) {
     
     this.paramsInfo = paramsInfo;
     return this;
   }
 
+  public Model putParamsInfoItem(String key, ModelParamInfo paramsInfoItem) {
+    if (this.paramsInfo == null) {
+      this.paramsInfo = new HashMap<>();
+    }
+    this.paramsInfo.put(key, paramsInfoItem);
+    return this;
+  }
+
    /**
-   * Get paramsInfo
+   * Параметры генерации, которые можно настроить у агента с этой моделью. Ключ — имя параметра (&#x60;temperature&#x60;, &#x60;top_p&#x60;, &#x60;max_tokens&#x60;, &#x60;reasoning_effort&#x60; и т.д.). &#x60;null&#x60;, если параметры не заданы
    * @return paramsInfo
   **/
   @javax.annotation.Nullable
-  public ModelParamsInfo getParamsInfo() {
+  public Map<String, ModelParamInfo> getParamsInfo() {
     return paramsInfo;
   }
 
 
-  public void setParamsInfo(ModelParamsInfo paramsInfo) {
+  public void setParamsInfo(Map<String, ModelParamInfo> paramsInfo) {
     this.paramsInfo = paramsInfo;
   }
 
@@ -395,29 +440,19 @@ public class Model {
         Objects.equals(this.providerId, model.providerId) &&
         Objects.equals(this.name, model.name) &&
         Objects.equals(this.publicName, model.publicName) &&
+        Objects.equals(this.modelName, model.modelName) &&
         Objects.equals(this.type, model.type) &&
+        Objects.equals(this.version, model.version) &&
         Objects.equals(this.isDeprecated, model.isDeprecated) &&
         Objects.equals(this.isStopped, model.isStopped) &&
         Objects.equals(this.deprecationDate, model.deprecationDate) &&
         Objects.equals(this.isReasoning, model.isReasoning) &&
-        Objects.equals(this.version, model.version) &&
         Objects.equals(this.paramsInfo, model.paramsInfo);
-  }
-
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, providerId, name, publicName, type, isDeprecated, isStopped, deprecationDate, isReasoning, version, paramsInfo);
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
+    return Objects.hash(id, providerId, name, publicName, modelName, type, version, isDeprecated, isStopped, deprecationDate, isReasoning, paramsInfo);
   }
 
   @Override
@@ -428,12 +463,13 @@ public class Model {
     sb.append("    providerId: ").append(toIndentedString(providerId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    publicName: ").append(toIndentedString(publicName)).append("\n");
+    sb.append("    modelName: ").append(toIndentedString(modelName)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    isDeprecated: ").append(toIndentedString(isDeprecated)).append("\n");
     sb.append("    isStopped: ").append(toIndentedString(isStopped)).append("\n");
     sb.append("    deprecationDate: ").append(toIndentedString(deprecationDate)).append("\n");
     sb.append("    isReasoning: ").append(toIndentedString(isReasoning)).append("\n");
-    sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    paramsInfo: ").append(toIndentedString(paramsInfo)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -461,12 +497,13 @@ public class Model {
     openapiFields.add("provider_id");
     openapiFields.add("name");
     openapiFields.add("public_name");
+    openapiFields.add("model_name");
     openapiFields.add("type");
+    openapiFields.add("version");
     openapiFields.add("is_deprecated");
     openapiFields.add("is_stopped");
     openapiFields.add("deprecation_date");
     openapiFields.add("is_reasoning");
-    openapiFields.add("version");
     openapiFields.add("params_info");
 
     // a set of required properties/fields (JSON key names)
@@ -475,11 +512,14 @@ public class Model {
     openapiRequiredFields.add("provider_id");
     openapiRequiredFields.add("name");
     openapiRequiredFields.add("public_name");
+    openapiRequiredFields.add("model_name");
     openapiRequiredFields.add("type");
+    openapiRequiredFields.add("version");
     openapiRequiredFields.add("is_deprecated");
     openapiRequiredFields.add("is_stopped");
+    openapiRequiredFields.add("deprecation_date");
     openapiRequiredFields.add("is_reasoning");
-    openapiRequiredFields.add("version");
+    openapiRequiredFields.add("params_info");
   }
 
  /**
@@ -516,15 +556,14 @@ public class Model {
       if (!jsonObj.get("public_name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `public_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("public_name").toString()));
       }
+      if (!jsonObj.get("model_name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `model_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("model_name").toString()));
+      }
       if (!jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
       if (!jsonObj.get("version").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `version` to be a primitive type in the JSON string but got `%s`", jsonObj.get("version").toString()));
-      }
-      // validate the optional field `params_info`
-      if (jsonObj.get("params_info") != null && !jsonObj.get("params_info").isJsonNull()) {
-        ModelParamsInfo.validateJsonElement(jsonObj.get("params_info"));
       }
   }
 

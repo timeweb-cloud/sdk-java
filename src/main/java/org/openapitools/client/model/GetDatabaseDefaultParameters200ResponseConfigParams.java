@@ -60,7 +60,7 @@ import com.google.gson.JsonParseException;
 
 import org.openapitools.client.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-31T10:55:12.417047Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-21T20:10:29.240516Z[Etc/UTC]")
 public class GetDatabaseDefaultParameters200ResponseConfigParams extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(GetDatabaseDefaultParameters200ResponseConfigParams.class.getName());
 

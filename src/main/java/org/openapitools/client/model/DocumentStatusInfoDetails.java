@@ -50,9 +50,9 @@ import java.util.Set;
 import org.openapitools.client.JSON;
 
 /**
- * Дополнительные детали, зависящие от типа статуса
+ * Подробности, набор полей зависит от состояния. Могут присутствовать и другие поля
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-31T10:55:12.417047Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-21T20:10:29.240516Z[Etc/UTC]")
 public class DocumentStatusInfoDetails {
   public static final String SERIALIZED_NAME_STARTED_AT = "started_at";
   @SerializedName(SERIALIZED_NAME_STARTED_AT)
@@ -66,6 +66,42 @@ public class DocumentStatusInfoDetails {
   @SerializedName(SERIALIZED_NAME_PROGRESS)
   private BigDecimal progress;
 
+  public static final String SERIALIZED_NAME_INDEXING_DURATION_MS = "indexing_duration_ms";
+  @SerializedName(SERIALIZED_NAME_INDEXING_DURATION_MS)
+  private BigDecimal indexingDurationMs;
+
+  public static final String SERIALIZED_NAME_TOKENS_USED = "tokens_used";
+  @SerializedName(SERIALIZED_NAME_TOKENS_USED)
+  private BigDecimal tokensUsed;
+
+  public static final String SERIALIZED_NAME_TOKENS_ESTIMATED = "tokens_estimated";
+  @SerializedName(SERIALIZED_NAME_TOKENS_ESTIMATED)
+  private BigDecimal tokensEstimated;
+
+  public static final String SERIALIZED_NAME_CHUNKS_COUNT = "chunks_count";
+  @SerializedName(SERIALIZED_NAME_CHUNKS_COUNT)
+  private BigDecimal chunksCount;
+
+  public static final String SERIALIZED_NAME_NEEDED = "needed";
+  @SerializedName(SERIALIZED_NAME_NEEDED)
+  private BigDecimal needed;
+
+  public static final String SERIALIZED_NAME_AVAILABLE = "available";
+  @SerializedName(SERIALIZED_NAME_AVAILABLE)
+  private BigDecimal available;
+
+  public static final String SERIALIZED_NAME_ESTIMATED = "estimated";
+  @SerializedName(SERIALIZED_NAME_ESTIMATED)
+  private BigDecimal estimated;
+
+  public static final String SERIALIZED_NAME_BALANCE = "balance";
+  @SerializedName(SERIALIZED_NAME_BALANCE)
+  private BigDecimal balance;
+
+  public static final String SERIALIZED_NAME_MIN_REQUIRED = "min_required";
+  @SerializedName(SERIALIZED_NAME_MIN_REQUIRED)
+  private BigDecimal minRequired;
+
   public DocumentStatusInfoDetails() {
   }
 
@@ -76,7 +112,7 @@ public class DocumentStatusInfoDetails {
   }
 
    /**
-   * Время начала индексации
+   * &#x60;indexing&#x60;: время начала индексации
    * @return startedAt
   **/
   @javax.annotation.Nullable
@@ -97,7 +133,7 @@ public class DocumentStatusInfoDetails {
   }
 
    /**
-   * Текущий этап индексации
+   * &#x60;indexing&#x60;: текущий этап
    * @return currentStage
   **/
   @javax.annotation.Nullable
@@ -118,7 +154,7 @@ public class DocumentStatusInfoDetails {
   }
 
    /**
-   * Прогресс в процентах (0-100)
+   * &#x60;indexing&#x60;: прогресс в процентах
    * minimum: 0
    * maximum: 100
    * @return progress
@@ -134,6 +170,239 @@ public class DocumentStatusInfoDetails {
   }
 
 
+  public DocumentStatusInfoDetails indexingDurationMs(BigDecimal indexingDurationMs) {
+    
+    this.indexingDurationMs = indexingDurationMs;
+    return this;
+  }
+
+   /**
+   * &#x60;indexed&#x60;: длительность индексации в миллисекундах
+   * @return indexingDurationMs
+  **/
+  @javax.annotation.Nullable
+  public BigDecimal getIndexingDurationMs() {
+    return indexingDurationMs;
+  }
+
+
+  public void setIndexingDurationMs(BigDecimal indexingDurationMs) {
+    this.indexingDurationMs = indexingDurationMs;
+  }
+
+
+  public DocumentStatusInfoDetails tokensUsed(BigDecimal tokensUsed) {
+    
+    this.tokensUsed = tokensUsed;
+    return this;
+  }
+
+   /**
+   * &#x60;indexed&#x60;: израсходовано токенов
+   * @return tokensUsed
+  **/
+  @javax.annotation.Nullable
+  public BigDecimal getTokensUsed() {
+    return tokensUsed;
+  }
+
+
+  public void setTokensUsed(BigDecimal tokensUsed) {
+    this.tokensUsed = tokensUsed;
+  }
+
+
+  public DocumentStatusInfoDetails tokensEstimated(BigDecimal tokensEstimated) {
+    
+    this.tokensEstimated = tokensEstimated;
+    return this;
+  }
+
+   /**
+   * &#x60;indexed&#x60;: оценка количества токенов перед индексацией
+   * @return tokensEstimated
+  **/
+  @javax.annotation.Nullable
+  public BigDecimal getTokensEstimated() {
+    return tokensEstimated;
+  }
+
+
+  public void setTokensEstimated(BigDecimal tokensEstimated) {
+    this.tokensEstimated = tokensEstimated;
+  }
+
+
+  public DocumentStatusInfoDetails chunksCount(BigDecimal chunksCount) {
+    
+    this.chunksCount = chunksCount;
+    return this;
+  }
+
+   /**
+   * &#x60;indexed&#x60;: количество фрагментов, на которые разбит документ
+   * @return chunksCount
+  **/
+  @javax.annotation.Nullable
+  public BigDecimal getChunksCount() {
+    return chunksCount;
+  }
+
+
+  public void setChunksCount(BigDecimal chunksCount) {
+    this.chunksCount = chunksCount;
+  }
+
+
+  public DocumentStatusInfoDetails needed(BigDecimal needed) {
+    
+    this.needed = needed;
+    return this;
+  }
+
+   /**
+   * &#x60;INSUFFICIENT_TOKENS&#x60;: сколько токенов нужно
+   * @return needed
+  **/
+  @javax.annotation.Nullable
+  public BigDecimal getNeeded() {
+    return needed;
+  }
+
+
+  public void setNeeded(BigDecimal needed) {
+    this.needed = needed;
+  }
+
+
+  public DocumentStatusInfoDetails available(BigDecimal available) {
+    
+    this.available = available;
+    return this;
+  }
+
+   /**
+   * &#x60;INSUFFICIENT_TOKENS&#x60;: сколько токенов доступно
+   * @return available
+  **/
+  @javax.annotation.Nullable
+  public BigDecimal getAvailable() {
+    return available;
+  }
+
+
+  public void setAvailable(BigDecimal available) {
+    this.available = available;
+  }
+
+
+  public DocumentStatusInfoDetails estimated(BigDecimal estimated) {
+    
+    this.estimated = estimated;
+    return this;
+  }
+
+   /**
+   * &#x60;INSUFFICIENT_TOKENS&#x60;: оценка без запаса
+   * @return estimated
+  **/
+  @javax.annotation.Nullable
+  public BigDecimal getEstimated() {
+    return estimated;
+  }
+
+
+  public void setEstimated(BigDecimal estimated) {
+    this.estimated = estimated;
+  }
+
+
+  public DocumentStatusInfoDetails balance(BigDecimal balance) {
+    
+    this.balance = balance;
+    return this;
+  }
+
+   /**
+   * &#x60;CRITICAL_BALANCE&#x60;, &#x60;NEGATIVE_BALANCE&#x60;: текущий остаток токенов
+   * @return balance
+  **/
+  @javax.annotation.Nullable
+  public BigDecimal getBalance() {
+    return balance;
+  }
+
+
+  public void setBalance(BigDecimal balance) {
+    this.balance = balance;
+  }
+
+
+  public DocumentStatusInfoDetails minRequired(BigDecimal minRequired) {
+    
+    this.minRequired = minRequired;
+    return this;
+  }
+
+   /**
+   * &#x60;CRITICAL_BALANCE&#x60;: минимально необходимый остаток
+   * @return minRequired
+  **/
+  @javax.annotation.Nullable
+  public BigDecimal getMinRequired() {
+    return minRequired;
+  }
+
+
+  public void setMinRequired(BigDecimal minRequired) {
+    this.minRequired = minRequired;
+  }
+
+  /**
+   * A container for additional, undeclared properties.
+   * This is a holder for any undeclared properties as specified with
+   * the 'additionalProperties' keyword in the OAS document.
+   */
+  private Map<String, Object> additionalProperties;
+
+  /**
+   * Set the additional (undeclared) property with the specified name and value.
+   * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the DocumentStatusInfoDetails instance itself
+   */
+  public DocumentStatusInfoDetails putAdditionalProperty(String key, Object value) {
+    if (this.additionalProperties == null) {
+        this.additionalProperties = new HashMap<String, Object>();
+    }
+    this.additionalProperties.put(key, value);
+    return this;
+  }
+
+  /**
+   * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
+   */
+  public Map<String, Object> getAdditionalProperties() {
+    return additionalProperties;
+  }
+
+  /**
+   * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
+   */
+  public Object getAdditionalProperty(String key) {
+    if (this.additionalProperties == null) {
+        return null;
+    }
+    return this.additionalProperties.get(key);
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -146,12 +415,22 @@ public class DocumentStatusInfoDetails {
     DocumentStatusInfoDetails documentStatusInfoDetails = (DocumentStatusInfoDetails) o;
     return Objects.equals(this.startedAt, documentStatusInfoDetails.startedAt) &&
         Objects.equals(this.currentStage, documentStatusInfoDetails.currentStage) &&
-        Objects.equals(this.progress, documentStatusInfoDetails.progress);
+        Objects.equals(this.progress, documentStatusInfoDetails.progress) &&
+        Objects.equals(this.indexingDurationMs, documentStatusInfoDetails.indexingDurationMs) &&
+        Objects.equals(this.tokensUsed, documentStatusInfoDetails.tokensUsed) &&
+        Objects.equals(this.tokensEstimated, documentStatusInfoDetails.tokensEstimated) &&
+        Objects.equals(this.chunksCount, documentStatusInfoDetails.chunksCount) &&
+        Objects.equals(this.needed, documentStatusInfoDetails.needed) &&
+        Objects.equals(this.available, documentStatusInfoDetails.available) &&
+        Objects.equals(this.estimated, documentStatusInfoDetails.estimated) &&
+        Objects.equals(this.balance, documentStatusInfoDetails.balance) &&
+        Objects.equals(this.minRequired, documentStatusInfoDetails.minRequired)&&
+        Objects.equals(this.additionalProperties, documentStatusInfoDetails.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(startedAt, currentStage, progress);
+    return Objects.hash(startedAt, currentStage, progress, indexingDurationMs, tokensUsed, tokensEstimated, chunksCount, needed, available, estimated, balance, minRequired, additionalProperties);
   }
 
   @Override
@@ -161,6 +440,16 @@ public class DocumentStatusInfoDetails {
     sb.append("    startedAt: ").append(toIndentedString(startedAt)).append("\n");
     sb.append("    currentStage: ").append(toIndentedString(currentStage)).append("\n");
     sb.append("    progress: ").append(toIndentedString(progress)).append("\n");
+    sb.append("    indexingDurationMs: ").append(toIndentedString(indexingDurationMs)).append("\n");
+    sb.append("    tokensUsed: ").append(toIndentedString(tokensUsed)).append("\n");
+    sb.append("    tokensEstimated: ").append(toIndentedString(tokensEstimated)).append("\n");
+    sb.append("    chunksCount: ").append(toIndentedString(chunksCount)).append("\n");
+    sb.append("    needed: ").append(toIndentedString(needed)).append("\n");
+    sb.append("    available: ").append(toIndentedString(available)).append("\n");
+    sb.append("    estimated: ").append(toIndentedString(estimated)).append("\n");
+    sb.append("    balance: ").append(toIndentedString(balance)).append("\n");
+    sb.append("    minRequired: ").append(toIndentedString(minRequired)).append("\n");
+    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -186,6 +475,15 @@ public class DocumentStatusInfoDetails {
     openapiFields.add("started_at");
     openapiFields.add("current_stage");
     openapiFields.add("progress");
+    openapiFields.add("indexing_duration_ms");
+    openapiFields.add("tokens_used");
+    openapiFields.add("tokens_estimated");
+    openapiFields.add("chunks_count");
+    openapiFields.add("needed");
+    openapiFields.add("available");
+    openapiFields.add("estimated");
+    openapiFields.add("balance");
+    openapiFields.add("min_required");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -201,14 +499,6 @@ public class DocumentStatusInfoDetails {
       if (jsonElement == null) {
         if (!DocumentStatusInfoDetails.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in DocumentStatusInfoDetails is not found in the empty JSON string", DocumentStatusInfoDetails.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!DocumentStatusInfoDetails.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `DocumentStatusInfoDetails` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
@@ -232,6 +522,23 @@ public class DocumentStatusInfoDetails {
            @Override
            public void write(JsonWriter out, DocumentStatusInfoDetails value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             obj.remove("additionalProperties");
+             // serialize additional properties
+             if (value.getAdditionalProperties() != null) {
+               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
+                 if (entry.getValue() instanceof String)
+                   obj.addProperty(entry.getKey(), (String) entry.getValue());
+                 else if (entry.getValue() instanceof Number)
+                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
+                 else if (entry.getValue() instanceof Boolean)
+                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
+                 else if (entry.getValue() instanceof Character)
+                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
+                 else {
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                 }
+               }
+             }
              elementAdapter.write(out, obj);
            }
 
@@ -239,7 +546,28 @@ public class DocumentStatusInfoDetails {
            public DocumentStatusInfoDetails read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
+             JsonObject jsonObj = jsonElement.getAsJsonObject();
+             // store additional fields in the deserialized instance
+             DocumentStatusInfoDetails instance = thisAdapter.fromJsonTree(jsonObj);
+             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
+               if (!openapiFields.contains(entry.getKey())) {
+                 if (entry.getValue().isJsonPrimitive()) { // primitive type
+                   if (entry.getValue().getAsJsonPrimitive().isString())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
+                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
+                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
+                   else
+                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 }
+               }
+             }
+             return instance;
            }
 
        }.nullSafe();

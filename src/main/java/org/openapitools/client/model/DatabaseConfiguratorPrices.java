@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * Стоимость единицы каждого ресурса. Объект возвращается только для конфигураторов с поресурсной тарификацией.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-31T10:55:12.417047Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-21T20:10:29.240516Z[Etc/UTC]")
 public class DatabaseConfiguratorPrices {
   public static final String SERIALIZED_NAME_CPU = "cpu";
   @SerializedName(SERIALIZED_NAME_CPU)

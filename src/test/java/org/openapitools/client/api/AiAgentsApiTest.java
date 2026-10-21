@@ -15,22 +15,33 @@ package org.openapitools.client.api;
 
 import org.openapitools.client.ApiException;
 import org.openapitools.client.model.AddTokenPackage;
+import org.openapitools.client.model.ChangeAgentModel;
 import org.openapitools.client.model.CreateAgent;
 import org.openapitools.client.model.CreateAgent201Response;
+import org.openapitools.client.model.CreateAgentEntityLimit;
+import org.openapitools.client.model.CreateAgentEntityLimit201Response;
 import org.openapitools.client.model.CreateAgentV2;
+import org.openapitools.client.model.DeleteAgent;
+import org.openapitools.client.model.ExportAgentChatsCsv200Response;
 import org.openapitools.client.model.GetAccountStatus403Response;
+import org.openapitools.client.model.GetAgentChatList200Response;
+import org.openapitools.client.model.GetAgentChatMessages200Response;
+import org.openapitools.client.model.GetAgentEntityLimits200Response;
 import org.openapitools.client.model.GetAgentStatistics200Response;
+import org.openapitools.client.model.GetAgentV3200Response;
 import org.openapitools.client.model.GetAgents200Response;
-import org.openapitools.client.model.GetAgentsTokenPackages200Response;
+import org.openapitools.client.model.GetAgentsV3200Response;
 import org.openapitools.client.model.GetFinances400Response;
 import org.openapitools.client.model.GetFinances401Response;
 import org.openapitools.client.model.GetFinances429Response;
 import org.openapitools.client.model.GetFinances500Response;
 import org.openapitools.client.model.GetImage404Response;
-import org.openapitools.client.model.GetModels200Response;
-import org.openapitools.client.model.GetModelsV3200Response;
 import java.time.OffsetDateTime;
+import org.openapitools.client.model.SyncAgentEntityLimits;
+import java.util.UUID;
 import org.openapitools.client.model.UpdateAgent;
+import org.openapitools.client.model.UpdateAgentEntityLimit;
+import org.openapitools.client.model.UpdateDatabaseInstance409Response;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -50,7 +61,7 @@ public class AiAgentsApiTest {
     /**
      * Добавление дополнительного пакета токенов
      *
-     * Чтобы добавить дополнительный пакет токенов для AI агента, отправьте POST-запрос на &#x60;/api/v1/cloud-ai/agents/{id}/add-additional-token-package&#x60;.
+     * Чтобы докупить дополнительные пакеты токенов для AI агента, отправьте POST-запрос на &#x60;/api/v1/cloud-ai/agents/{id}/add-additional-token-package&#x60;.  Метод относится к устаревшей схеме оплаты пакетами токенов и работает только для агентов с пакетом (&#x60;token_package_id&#x60; в ответе агента). Для агентов с поресурсной оплатой вернётся 400 &#x60;per-resource_agents_do_not_support_additional_token_packages&#x60;. Стоимость (цена дополнительного пакета модели агента × &#x60;count&#x60;) сразу списывается с баланса; при нехватке средств — 400 &#x60;insufficient_balance&#x60;, если подписка агента истекла — 400 &#x60;subscription_expired&#x60;. После покупки заблокированный агент разблокируется.  Для токенов дополнительных пользователей аккаунта нужна роль &#x60;ai:write&#x60;.
      *
      * @throws ApiException if the Api call fails
      */
@@ -63,9 +74,24 @@ public class AiAgentsApiTest {
     }
 
     /**
+     * Смена модели AI агента
+     *
+     * Чтобы сменить основную модель AI агента, отправьте PATCH-запрос на &#x60;/api/v1/cloud-ai/agents/{id}/model&#x60;.  Параметры модели из &#x60;settings.model&#x60;, которые новая модель не поддерживает, отбрасываются. Смена модели доступна только агентам с поресурсной оплатой (для агента с пакетом токенов — 400 &#x60;model_change_is_allowed_only_for_per-resource_account_and_agent&#x60;). Если модель не найдена или недоступна — 404 &#x60;model_not_found&#x60;.  Для токенов дополнительных пользователей аккаунта нужна роль &#x60;ai:write&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void changeAgentModelTest() throws ApiException {
+        Integer id = null;
+        ChangeAgentModel changeAgentModel = null;
+        CreateAgent201Response response = api.changeAgentModel(id, changeAgentModel);
+        // TODO: test validations
+    }
+
+    /**
      * Создание AI агента
      *
-     * Чтобы создать AI агента, отправьте POST-запрос на &#x60;/api/v1/cloud-ai/agents&#x60;, задав необходимые атрибуты.  Агент будет создан с использованием предоставленной информации. Тело ответа будет содержать объект JSON с информацией о созданном агенте.
+     * Чтобы создать AI агента, отправьте POST-запрос на &#x60;/api/v1/cloud-ai/agents&#x60;, задав необходимые атрибуты.  Метод устарел — используйте &#x60;POST /api/v2/cloud-ai/agents&#x60;. Поле &#x60;token_package_id&#x60; обязательно, но не учитывается: агент всегда создаётся с поресурсной оплатой (оплачиваются фактические запросы к модели).  Для токенов дополнительных пользователей аккаунта нужна роль &#x60;ai:write&#x60;.
      *
      * @throws ApiException if the Api call fails
      */
@@ -77,9 +103,24 @@ public class AiAgentsApiTest {
     }
 
     /**
+     * Создание лимита агента
+     *
+     * Чтобы создать лимит AI агента, отправьте POST-запрос на &#x60;/api/v1/cloud-ai/agents/{id}/entity-limits&#x60;.  Лимиты агента ограничивают расход на его запросы за период (&#x60;hour&#x60;, &#x60;day&#x60;, &#x60;week&#x60;, &#x60;month&#x60;) — в токенах (&#x60;limit&#x60;) или в деньгах (&#x60;money_limit&#x60;, приоритетнее). Лимит действует на все модели агента (&#x60;model_id&#x60; &#x3D; &#x60;null&#x60;) или на одну модель. При достижении лимита запросы к агенту отклоняются до конца периода.  Нужно передать &#x60;limit&#x60; или &#x60;money_limit&#x60; (иначе — 400 &#x60;entity_keys_limit_value_required&#x60;). Если лимит с тем же периодом и моделью уже есть — 409 &#x60;entity_keys_limit_already_exists&#x60; (измените его или используйте синхронизацию).  Для токенов дополнительных пользователей аккаунта нужна роль &#x60;ai:write&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void createAgentEntityLimitTest() throws ApiException {
+        Integer id = null;
+        CreateAgentEntityLimit createAgentEntityLimit = null;
+        CreateAgentEntityLimit201Response response = api.createAgentEntityLimit(id, createAgentEntityLimit);
+        // TODO: test validations
+    }
+
+    /**
      * Создание AI агента
      *
-     * Чтобы создать AI агента, отправьте POST-запрос на &#x60;/api/v2/cloud-ai/agents&#x60;, задав необходимые атрибуты.  Агент будет создан с использованием предоставленной информации. Тело ответа будет содержать объект JSON с информацией о созданном агенте.
+     * Чтобы создать AI агента, отправьте POST-запрос на &#x60;/api/v2/cloud-ai/agents&#x60;, задав необходимые атрибуты.  Агент создаётся с поресурсной оплатой: оплачиваются фактические запросы к модели. Если не переданы настройки виджета, подставляются значения по умолчанию. Дневной лимит расходов можно задать сразу полем &#x60;money_limit&#x60;, остальные лимиты — через лимиты агента (&#x60;/api/v1/cloud-ai/agents/{id}/entity-limits&#x60;).  Если модель не найдена или недоступна, вернётся 404 &#x60;model_not_found&#x60;; если модель не поддерживается — 400 &#x60;model_not_supported&#x60;; недопустимые параметры модели в &#x60;settings.model&#x60; — 400.  Вызывать созданного агента из своих приложений можно через OpenAI-совместимое API по его &#x60;access_id&#x60; — см. [документацию](https://agent.timeweb.cloud/docs).  Для токенов дополнительных пользователей аккаунта нужна роль &#x60;ai:write&#x60;.
      *
      * @throws ApiException if the Api call fails
      */
@@ -93,21 +134,57 @@ public class AiAgentsApiTest {
     /**
      * Удаление AI агента
      *
-     * Чтобы удалить AI агента, отправьте DELETE-запрос на &#x60;/api/v1/cloud-ai/agents/{id}&#x60;.
+     * Чтобы удалить AI агента, отправьте DELETE-запрос на &#x60;/api/v1/cloud-ai/agents/{id}&#x60;.  Вместе с агентом отключаются его базы знаний, навыки и интеграции (Telegram, MAX, Jivo, Crisp). В теле запроса можно необязательно указать причину удаления.  Для токенов дополнительных пользователей аккаунта нужна роль &#x60;ai:write&#x60;.
      *
      * @throws ApiException if the Api call fails
      */
     @Test
     public void deleteAgentTest() throws ApiException {
         Integer id = null;
-        api.deleteAgent(id);
+        DeleteAgent deleteAgent = null;
+        api.deleteAgent(id, deleteAgent);
+        // TODO: test validations
+    }
+
+    /**
+     * Удаление лимита агента
+     *
+     * Чтобы удалить лимит AI агента, отправьте DELETE-запрос на &#x60;/api/v1/cloud-ai/agents/{id}/entity-limits/{limit_id}&#x60;.  Для токенов дополнительных пользователей аккаунта нужна роль &#x60;ai:write&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void deleteAgentEntityLimitTest() throws ApiException {
+        Integer id = null;
+        UUID limitId = null;
+        api.deleteAgentEntityLimit(id, limitId);
+        // TODO: test validations
+    }
+
+    /**
+     * Выгрузка чатов агента в CSV
+     *
+     * Чтобы выгрузить чаты AI агента в формате CSV, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/agents/{id}/chats/docs&#x60;.  CSV возвращается строкой в поле &#x60;chats_csv.csv&#x60; тела JSON. &#x60;limit&#x60; и &#x60;offset&#x60; применяются к сообщениям, а не к чатам. Если передан &#x60;from&#x60;, выгружаются сообщения от &#x60;from&#x60; до &#x60;to&#x60; (по умолчанию — до текущего момента). Чаты внешнего чата не выгружаются.  Для токенов дополнительных пользователей аккаунта нужна роль &#x60;ai:read&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void exportAgentChatsCsvTest() throws ApiException {
+        Integer id = null;
+        Integer offset = null;
+        Integer limit = null;
+        String order = null;
+        OffsetDateTime from = null;
+        OffsetDateTime to = null;
+        String locale = null;
+        ExportAgentChatsCsv200Response response = api.exportAgentChatsCsv(id, offset, limit, order, from, to, locale);
         // TODO: test validations
     }
 
     /**
      * Получение AI агента
      *
-     * Чтобы получить информацию об AI агенте, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/agents/{id}&#x60;.
+     * Чтобы получить информацию об AI агенте, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/agents/{id}&#x60;.  Для токенов дополнительных пользователей аккаунта нужна роль &#x60;ai:read&#x60;.
      *
      * @throws ApiException if the Api call fails
      */
@@ -119,9 +196,80 @@ public class AiAgentsApiTest {
     }
 
     /**
+     * Получение списка чатов агента
+     *
+     * Чтобы получить список чатов (диалогов) AI агента, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/agents/{id}/chat-list&#x60;.  Для каждого чата возвращаются первое сообщение пользователя, количество оценок и среднее время ответа. Чаты внешнего чата сюда не входят. Фильтр по периоду применяется, только если переданы оба параметра &#x60;from&#x60; и &#x60;to&#x60;. В &#x60;meta.metrics&#x60; — сводка по чатам для фильтров.  Для токенов дополнительных пользователей аккаунта нужна роль &#x60;ai:read&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void getAgentChatListTest() throws ApiException {
+        Integer id = null;
+        Integer offset = null;
+        Integer limit = null;
+        String order = null;
+        OffsetDateTime from = null;
+        OffsetDateTime to = null;
+        String reactionType = null;
+        List<String> responseTimeRanges = null;
+        GetAgentChatList200Response response = api.getAgentChatList(id, offset, limit, order, from, to, reactionType, responseTimeRanges);
+        // TODO: test validations
+    }
+
+    /**
+     * Получение сообщений чата агента
+     *
+     * Чтобы получить сообщения чата AI агента, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/agents/{id}/chat-list/{chat_id}/messages&#x60;.  Возвращаются сообщения пользователя и ответы агента. Фильтр по периоду применяется, только если переданы оба параметра &#x60;from&#x60; и &#x60;to&#x60;.  Для токенов дополнительных пользователей аккаунта нужна роль &#x60;ai:read&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void getAgentChatMessagesTest() throws ApiException {
+        Integer id = null;
+        String chatId = null;
+        Integer offset = null;
+        Integer limit = null;
+        String order = null;
+        OffsetDateTime from = null;
+        OffsetDateTime to = null;
+        GetAgentChatMessages200Response response = api.getAgentChatMessages(id, chatId, offset, limit, order, from, to);
+        // TODO: test validations
+    }
+
+    /**
+     * Получение лимита агента
+     *
+     * Чтобы получить лимит AI агента, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/agents/{id}/entity-limits/{limit_id}&#x60;.  Для токенов дополнительных пользователей аккаунта нужна роль &#x60;ai:read&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void getAgentEntityLimitTest() throws ApiException {
+        Integer id = null;
+        UUID limitId = null;
+        CreateAgentEntityLimit201Response response = api.getAgentEntityLimit(id, limitId);
+        // TODO: test validations
+    }
+
+    /**
+     * Получение лимитов агента
+     *
+     * Чтобы получить лимиты AI агента, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/agents/{id}/entity-limits&#x60;.  Лимиты агента ограничивают расход на его запросы за период (&#x60;hour&#x60;, &#x60;day&#x60;, &#x60;week&#x60;, &#x60;month&#x60;) — в токенах (&#x60;limit&#x60;) или в деньгах (&#x60;money_limit&#x60;, приоритетнее). Лимит действует на все модели агента (&#x60;model_id&#x60; &#x3D; &#x60;null&#x60;) или на одну модель. При достижении лимита запросы к агенту отклоняются до конца периода.  Для токенов дополнительных пользователей аккаунта нужна роль &#x60;ai:read&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void getAgentEntityLimitsTest() throws ApiException {
+        Integer id = null;
+        String limitType = null;
+        GetAgentEntityLimits200Response response = api.getAgentEntityLimits(id, limitType);
+        // TODO: test validations
+    }
+
+    /**
      * Получение статистики использования токенов агента
      *
-     * Чтобы получить статистику использования токенов AI агента, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/agents/{id}/statistic&#x60;.  Можно указать временной диапазон и интервал агрегации.
+     * Чтобы получить статистику использования токенов AI агента, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/agents/{id}/statistic&#x60;.  Статистика разбита на интервалы длиной &#x60;interval&#x60; минут: для каждого интервала возвращается по точке на каждую модель, к которой были запросы за период, а для интервалов без запросов — одна нулевая точка без &#x60;model_name&#x60;. По умолчанию возвращаются последние 24 часа.  Для токенов дополнительных пользователей аккаунта нужна роль &#x60;ai:read&#x60;.
      *
      * @throws ApiException if the Api call fails
      */
@@ -130,15 +278,29 @@ public class AiAgentsApiTest {
         Integer id = null;
         OffsetDateTime startTime = null;
         OffsetDateTime endTime = null;
-        BigDecimal interval = null;
+        Integer interval = null;
         GetAgentStatistics200Response response = api.getAgentStatistics(id, startTime, endTime, interval);
+        // TODO: test validations
+    }
+
+    /**
+     * Получение AI агента (v3)
+     *
+     * Чтобы получить информацию об AI агенте, отправьте GET-запрос на &#x60;/api/v3/cloud-ai/agents/{id}&#x60;.  Отличается от &#x60;/api/v1/cloud-ai/agents/{id}&#x60; тем, что вместо &#x60;knowledge_bases_ids&#x60; возвращает &#x60;knowledge_bases&#x60; — подключённые базы знаний с режимом поиска.  Для токенов дополнительных пользователей аккаунта нужна роль &#x60;ai:read&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void getAgentV3Test() throws ApiException {
+        Integer id = null;
+        GetAgentV3200Response response = api.getAgentV3(id);
         // TODO: test validations
     }
 
     /**
      * Получение списка AI агентов
      *
-     * Чтобы получить список AI агентов, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/agents&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;agents&#x60;.
+     * Чтобы получить список AI агентов, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/agents&#x60;.  Возвращаются все агенты аккаунта (без пагинации), включая приостановленных и заблокированных. Тело ответа будет представлять собой объект JSON с ключами &#x60;agents&#x60; и &#x60;meta&#x60;. Подключённые базы знаний вместе с режимом поиска возвращает метод &#x60;/api/v3/cloud-ai/agents&#x60;.  Для токенов дополнительных пользователей аккаунта нужна роль &#x60;ai:read&#x60;.
      *
      * @throws ApiException if the Api call fails
      */
@@ -149,61 +311,37 @@ public class AiAgentsApiTest {
     }
 
     /**
-     * Получение списка пакетов токенов для агентов
+     * Получение списка AI агентов (v3)
      *
-     * Метод устарел.  Чтобы получить список доступных пакетов токенов для AI агентов, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/token-packages/agents&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;token_packages&#x60;.
+     * Чтобы получить список AI агентов, отправьте GET-запрос на &#x60;/api/v3/cloud-ai/agents&#x60;.  Отличается от &#x60;/api/v1/cloud-ai/agents&#x60; тем, что вместо &#x60;knowledge_bases_ids&#x60; возвращает &#x60;knowledge_bases&#x60; — подключённые базы знаний с режимом поиска.  Для токенов дополнительных пользователей аккаунта нужна роль &#x60;ai:read&#x60;.
      *
      * @throws ApiException if the Api call fails
      */
     @Test
-    public void getAgentsTokenPackagesTest() throws ApiException {
-        GetAgentsTokenPackages200Response response = api.getAgentsTokenPackages();
+    public void getAgentsV3Test() throws ApiException {
+        GetAgentsV3200Response response = api.getAgentsV3();
         // TODO: test validations
     }
 
     /**
-     * Получение списка пакетов токенов для баз знаний
+     * Синхронизация лимитов агента за период
      *
-     * Чтобы получить список доступных пакетов токенов для баз знаний, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/token-packages/knowledge-bases&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;token_packages&#x60;.
-     *
-     * @throws ApiException if the Api call fails
-     */
-    @Test
-    public void getKnowledgebasesTokenPackagesTest() throws ApiException {
-        GetAgentsTokenPackages200Response response = api.getKnowledgebasesTokenPackages();
-        // TODO: test validations
-    }
-
-    /**
-     * Получение списка моделей
-     *
-     * Метод устарел — используйте &#x60;GET /api/v3/cloud-ai/models&#x60;.  Чтобы получить список доступных AI моделей, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/models&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;models&#x60;.
+     * Чтобы задать полный набор лимитов AI агента за период, отправьте PUT-запрос на &#x60;/api/v1/cloud-ai/agents/{id}/entity-limits/sync&#x60;.  Лимиты из запроса создаются или обновляются (сопоставление по &#x60;model_id&#x60;), а лимиты этого периода, которых нет в запросе, удаляются. Лимиты других периодов не затрагиваются. В ответе — актуальные лимиты периода. Если лимиты одновременно изменил другой запрос, вернётся 409 &#x60;entity_keys_limits_sync_conflict&#x60; — повторите запрос.  Для токенов дополнительных пользователей аккаунта нужна роль &#x60;ai:write&#x60;.
      *
      * @throws ApiException if the Api call fails
      */
     @Test
-    public void getModelsTest() throws ApiException {
-        GetModels200Response response = api.getModels();
-        // TODO: test validations
-    }
-
-    /**
-     * Получение списка моделей
-     *
-     * Чтобы получить список доступных AI моделей с их характеристиками, отправьте GET-запрос на &#x60;/api/v3/cloud-ai/models&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;models&#x60;.  Характеристики модели (цены, лимиты, возможности) возвращаются в словаре &#x60;parameter_values&#x60;. Актуальные цены за токены — в ключах &#x60;parameter_values.cost_in&#x60; и &#x60;parameter_values.cost_out&#x60; (в рублях за 1 токен).
-     *
-     * @throws ApiException if the Api call fails
-     */
-    @Test
-    public void getModelsV3Test() throws ApiException {
-        GetModelsV3200Response response = api.getModelsV3();
+    public void syncAgentEntityLimitsTest() throws ApiException {
+        Integer id = null;
+        SyncAgentEntityLimits syncAgentEntityLimits = null;
+        GetAgentEntityLimits200Response response = api.syncAgentEntityLimits(id, syncAgentEntityLimits);
         // TODO: test validations
     }
 
     /**
      * Обновление AI агента
      *
-     * Чтобы обновить AI агента, отправьте PATCH-запрос на &#x60;/api/v1/cloud-ai/agents/{id}&#x60;.
+     * Чтобы обновить AI агента, отправьте PATCH-запрос на &#x60;/api/v1/cloud-ai/agents/{id}&#x60;, передав изменяемые поля.  Особенности: - &#x60;settings&#x60; заменяются целиком (кроме &#x60;web_search_allowed_sites&#x60;, &#x60;additional_models&#x60; и &#x60;memory_enabled&#x60;, которые сохраняются, если не переданы) — передавайте полный объект настроек, включая &#x60;widget&#x60;; - основную модель меняет отдельный метод &#x60;PATCH /api/v1/cloud-ai/agents/{id}/model&#x60;; - поле &#x60;token_limit&#x60; больше не поддерживается: запрос с ним отклоняется с кодом 410 — лимиты задаются через &#x60;/api/v1/cloud-ai/agents/{id}/entity-limits&#x60;; - ошибки привязки &#x60;ai_gateway_key_id&#x60;: 400 &#x60;ai_gateway_key_not_found&#x60;, &#x60;agent_is_already_migrated_to_another_ai_gateway_key&#x60;, &#x60;agent_is_not_eligible_for_ai_gateway_migration&#x60;; 503 — проверку временно не удалось выполнить; - изменить статус заблокированного или удалённого агента нельзя (400 &#x60;agent_can&#39;t_change_status&#x60;).  Для токенов дополнительных пользователей аккаунта нужна роль &#x60;ai:write&#x60;.
      *
      * @throws ApiException if the Api call fails
      */
@@ -212,6 +350,22 @@ public class AiAgentsApiTest {
         Integer id = null;
         UpdateAgent updateAgent = null;
         CreateAgent201Response response = api.updateAgent(id, updateAgent);
+        // TODO: test validations
+    }
+
+    /**
+     * Изменение лимита агента
+     *
+     * Чтобы изменить значение лимита AI агента, отправьте PATCH-запрос на &#x60;/api/v1/cloud-ai/agents/{id}/entity-limits/{limit_id}&#x60;.  Непереданные поля не меняются. Снять денежный лимит (&#x60;money_limit&#x60;: &#x60;null&#x60;) можно только вместе с передачей &#x60;limit&#x60;.  Для токенов дополнительных пользователей аккаунта нужна роль &#x60;ai:write&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void updateAgentEntityLimitTest() throws ApiException {
+        Integer id = null;
+        UUID limitId = null;
+        UpdateAgentEntityLimit updateAgentEntityLimit = null;
+        CreateAgentEntityLimit201Response response = api.updateAgentEntityLimit(id, limitId, updateAgentEntityLimit);
         // TODO: test validations
     }
 

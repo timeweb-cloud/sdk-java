@@ -21,7 +21,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -49,110 +48,161 @@ import java.util.Set;
 import org.openapitools.client.JSON;
 
 /**
- * Resource
+ * Ресурс MCP
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-31T10:55:12.417047Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-21T20:10:29.240516Z[Etc/UTC]")
 public class Resource {
-  public static final String SERIALIZED_NAME_REQUESTED = "requested";
-  @SerializedName(SERIALIZED_NAME_REQUESTED)
-  private BigDecimal requested = new BigDecimal("0");
+  /**
+   * URI ресурса
+   */
+  @JsonAdapter(UriEnum.Adapter.class)
+  public enum UriEnum {
+    BILLING_ME_FINANCES("billing://me/finances"),
+    
+    SERVICES_ME_ACTIVE("services://me/active"),
+    
+    SERVICES_CLOUD_CATALOG("services://cloud/catalog"),
+    
+    LOCATIONS_CLOUD_LIST("locations://cloud/list");
 
-  public static final String SERIALIZED_NAME_ALLOCATABLE = "allocatable";
-  @SerializedName(SERIALIZED_NAME_ALLOCATABLE)
-  private BigDecimal allocatable = new BigDecimal("0");
+    private String value;
 
-  public static final String SERIALIZED_NAME_CAPACITY = "capacity";
-  @SerializedName(SERIALIZED_NAME_CAPACITY)
-  private BigDecimal capacity = new BigDecimal("0");
+    UriEnum(String value) {
+      this.value = value;
+    }
 
-  public static final String SERIALIZED_NAME_USED = "used";
-  @SerializedName(SERIALIZED_NAME_USED)
-  private BigDecimal used = new BigDecimal("0");
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static UriEnum fromValue(String value) {
+      for (UriEnum b : UriEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<UriEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final UriEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public UriEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return UriEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_URI = "uri";
+  @SerializedName(SERIALIZED_NAME_URI)
+  private UriEnum uri;
+
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  private String name;
+
+  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
+  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  private String description;
+
+  public static final String SERIALIZED_NAME_MIME_TYPE = "mimeType";
+  @SerializedName(SERIALIZED_NAME_MIME_TYPE)
+  private String mimeType;
 
   public Resource() {
   }
 
-  public Resource requested(BigDecimal requested) {
+  public Resource uri(UriEnum uri) {
     
-    this.requested = requested;
+    this.uri = uri;
     return this;
   }
 
    /**
-   * Запрошенное количество ресурса
-   * @return requested
+   * URI ресурса
+   * @return uri
   **/
-  @javax.annotation.Nullable
-  public BigDecimal getRequested() {
-    return requested;
+  @javax.annotation.Nonnull
+  public UriEnum getUri() {
+    return uri;
   }
 
 
-  public void setRequested(BigDecimal requested) {
-    this.requested = requested;
+  public void setUri(UriEnum uri) {
+    this.uri = uri;
   }
 
 
-  public Resource allocatable(BigDecimal allocatable) {
+  public Resource name(String name) {
     
-    this.allocatable = allocatable;
+    this.name = name;
     return this;
   }
 
    /**
-   * Доступное количество
-   * @return allocatable
+   * Имя ресурса
+   * @return name
   **/
-  @javax.annotation.Nullable
-  public BigDecimal getAllocatable() {
-    return allocatable;
+  @javax.annotation.Nonnull
+  public String getName() {
+    return name;
   }
 
 
-  public void setAllocatable(BigDecimal allocatable) {
-    this.allocatable = allocatable;
+  public void setName(String name) {
+    this.name = name;
   }
 
 
-  public Resource capacity(BigDecimal capacity) {
+  public Resource description(String description) {
     
-    this.capacity = capacity;
+    this.description = description;
     return this;
   }
 
    /**
-   * Общее количество
-   * @return capacity
+   * Описание ресурса
+   * @return description
   **/
   @javax.annotation.Nullable
-  public BigDecimal getCapacity() {
-    return capacity;
+  public String getDescription() {
+    return description;
   }
 
 
-  public void setCapacity(BigDecimal capacity) {
-    this.capacity = capacity;
+  public void setDescription(String description) {
+    this.description = description;
   }
 
 
-  public Resource used(BigDecimal used) {
+  public Resource mimeType(String mimeType) {
     
-    this.used = used;
+    this.mimeType = mimeType;
     return this;
   }
 
    /**
-   * Используемое количество
-   * @return used
+   * Тип содержимого
+   * @return mimeType
   **/
   @javax.annotation.Nullable
-  public BigDecimal getUsed() {
-    return used;
+  public String getMimeType() {
+    return mimeType;
   }
 
 
-  public void setUsed(BigDecimal used) {
-    this.used = used;
+  public void setMimeType(String mimeType) {
+    this.mimeType = mimeType;
   }
 
 
@@ -166,25 +216,25 @@ public class Resource {
       return false;
     }
     Resource resource = (Resource) o;
-    return Objects.equals(this.requested, resource.requested) &&
-        Objects.equals(this.allocatable, resource.allocatable) &&
-        Objects.equals(this.capacity, resource.capacity) &&
-        Objects.equals(this.used, resource.used);
+    return Objects.equals(this.uri, resource.uri) &&
+        Objects.equals(this.name, resource.name) &&
+        Objects.equals(this.description, resource.description) &&
+        Objects.equals(this.mimeType, resource.mimeType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(requested, allocatable, capacity, used);
+    return Objects.hash(uri, name, description, mimeType);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Resource {\n");
-    sb.append("    requested: ").append(toIndentedString(requested)).append("\n");
-    sb.append("    allocatable: ").append(toIndentedString(allocatable)).append("\n");
-    sb.append("    capacity: ").append(toIndentedString(capacity)).append("\n");
-    sb.append("    used: ").append(toIndentedString(used)).append("\n");
+    sb.append("    uri: ").append(toIndentedString(uri)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    mimeType: ").append(toIndentedString(mimeType)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -207,13 +257,15 @@ public class Resource {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("requested");
-    openapiFields.add("allocatable");
-    openapiFields.add("capacity");
-    openapiFields.add("used");
+    openapiFields.add("uri");
+    openapiFields.add("name");
+    openapiFields.add("description");
+    openapiFields.add("mimeType");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("uri");
+    openapiRequiredFields.add("name");
   }
 
  /**
@@ -236,7 +288,26 @@ public class Resource {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Resource` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : Resource.openapiRequiredFields) {
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+        }
+      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if (!jsonObj.get("uri").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `uri` to be a primitive type in the JSON string but got `%s`", jsonObj.get("uri").toString()));
+      }
+      if (!jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
+      }
+      if ((jsonObj.get("mimeType") != null && !jsonObj.get("mimeType").isJsonNull()) && !jsonObj.get("mimeType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `mimeType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("mimeType").toString()));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

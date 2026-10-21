@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * UpdateServerOSBootModeRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-31T10:55:12.417047Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-21T20:10:29.240516Z[Etc/UTC]")
 public class UpdateServerOSBootModeRequest {
   /**
    * Тип загрузки операционной системы. \\  Параметры: &#x60;default&#x60; – стандартный режим, &#x60;single&#x60; – однопользовательский режим (**deprecated**, оставлен для обратной совместимости, выбор недоступен), &#x60;recovery_disk&#x60; – загрузка с диска восстановления.

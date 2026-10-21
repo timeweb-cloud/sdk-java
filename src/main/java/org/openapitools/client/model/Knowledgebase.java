@@ -21,12 +21,10 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import org.openapitools.client.model.Document;
-import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -54,13 +52,13 @@ import java.util.Set;
 import org.openapitools.client.JSON;
 
 /**
- * База знаний
+ * База знаний со списком документов
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-31T10:55:12.417047Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-21T20:10:29.240516Z[Etc/UTC]")
 public class Knowledgebase {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private BigDecimal id;
+  private Integer id;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -70,12 +68,16 @@ public class Knowledgebase {
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
 
+  public static final String SERIALIZED_NAME_PROJECT_ID = "project_id";
+  @SerializedName(SERIALIZED_NAME_PROJECT_ID)
+  private Integer projectId;
+
   public static final String SERIALIZED_NAME_DBAAS_ID = "dbaas_id";
   @SerializedName(SERIALIZED_NAME_DBAAS_ID)
-  private BigDecimal dbaasId;
+  private Integer dbaasId;
 
   /**
-   * Статус базы знаний
+   * Статус базы знаний: - &#x60;creating&#x60; — создаётся кластер базы данных, документы будут проиндексированы после перехода в &#x60;active&#x60; - &#x60;active&#x60; — база знаний работает - &#x60;blocked&#x60; — заблокирована: закончились токены или не удалось продлить подписку - &#x60;deleted&#x60; — удалена
    */
   @JsonAdapter(StatusEnum.Adapter.class)
   public enum StatusEnum {
@@ -135,19 +137,19 @@ public class Knowledgebase {
 
   public static final String SERIALIZED_NAME_TOTAL_TOKENS = "total_tokens";
   @SerializedName(SERIALIZED_NAME_TOTAL_TOKENS)
-  private BigDecimal totalTokens;
+  private Integer totalTokens;
 
   public static final String SERIALIZED_NAME_USED_TOKENS = "used_tokens";
   @SerializedName(SERIALIZED_NAME_USED_TOKENS)
-  private BigDecimal usedTokens;
+  private Integer usedTokens;
 
   public static final String SERIALIZED_NAME_REMAINING_TOKENS = "remaining_tokens";
   @SerializedName(SERIALIZED_NAME_REMAINING_TOKENS)
-  private BigDecimal remainingTokens;
+  private Integer remainingTokens;
 
   public static final String SERIALIZED_NAME_TOKEN_PACKAGE_ID = "token_package_id";
   @SerializedName(SERIALIZED_NAME_TOKEN_PACKAGE_ID)
-  private BigDecimal tokenPackageId;
+  private Integer tokenPackageId;
 
   public static final String SERIALIZED_NAME_SUBSCRIPTION_RENEWAL_DATE = "subscription_renewal_date";
   @SerializedName(SERIALIZED_NAME_SUBSCRIPTION_RENEWAL_DATE)
@@ -159,7 +161,7 @@ public class Knowledgebase {
 
   public static final String SERIALIZED_NAME_AGENTS_IDS = "agents_ids";
   @SerializedName(SERIALIZED_NAME_AGENTS_IDS)
-  private List<BigDecimal> agentsIds = new ArrayList<>();
+  private List<Integer> agentsIds = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_CREATED_AT = "created_at";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
@@ -168,23 +170,23 @@ public class Knowledgebase {
   public Knowledgebase() {
   }
 
-  public Knowledgebase id(BigDecimal id) {
+  public Knowledgebase id(Integer id) {
     
     this.id = id;
     return this;
   }
 
    /**
-   * Уникальный идентификатор базы знаний
+   * ID базы знаний
    * @return id
   **/
   @javax.annotation.Nonnull
-  public BigDecimal getId() {
+  public Integer getId() {
     return id;
   }
 
 
-  public void setId(BigDecimal id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
@@ -231,23 +233,44 @@ public class Knowledgebase {
   }
 
 
-  public Knowledgebase dbaasId(BigDecimal dbaasId) {
+  public Knowledgebase projectId(Integer projectId) {
+    
+    this.projectId = projectId;
+    return this;
+  }
+
+   /**
+   * ID проекта, в котором находится база знаний. Поля нет, если проект не определён
+   * @return projectId
+  **/
+  @javax.annotation.Nullable
+  public Integer getProjectId() {
+    return projectId;
+  }
+
+
+  public void setProjectId(Integer projectId) {
+    this.projectId = projectId;
+  }
+
+
+  public Knowledgebase dbaasId(Integer dbaasId) {
     
     this.dbaasId = dbaasId;
     return this;
   }
 
    /**
-   * ID базы данных opensearch
+   * ID кластера базы данных OpenSearch, который создан для базы знаний в вашем аккаунте
    * @return dbaasId
   **/
   @javax.annotation.Nonnull
-  public BigDecimal getDbaasId() {
+  public Integer getDbaasId() {
     return dbaasId;
   }
 
 
-  public void setDbaasId(BigDecimal dbaasId) {
+  public void setDbaasId(Integer dbaasId) {
     this.dbaasId = dbaasId;
   }
 
@@ -259,7 +282,7 @@ public class Knowledgebase {
   }
 
    /**
-   * Статус базы знаний
+   * Статус базы знаний: - &#x60;creating&#x60; — создаётся кластер базы данных, документы будут проиндексированы после перехода в &#x60;active&#x60; - &#x60;active&#x60; — база знаний работает - &#x60;blocked&#x60; — заблокирована: закончились токены или не удалось продлить подписку - &#x60;deleted&#x60; — удалена
    * @return status
   **/
   @javax.annotation.Nonnull
@@ -280,7 +303,7 @@ public class Knowledgebase {
   }
 
    /**
-   * Дата последней синхронизации
+   * Дата и время последней синхронизации. &#x60;null&#x60;, если синхронизации не было
    * @return lastSync
   **/
   @javax.annotation.Nullable
@@ -294,86 +317,86 @@ public class Knowledgebase {
   }
 
 
-  public Knowledgebase totalTokens(BigDecimal totalTokens) {
+  public Knowledgebase totalTokens(Integer totalTokens) {
     
     this.totalTokens = totalTokens;
     return this;
   }
 
    /**
-   * Всего токенов выделено
+   * Количество токенов, доступных в текущем периоде подписки (пакет подписки и докупленные пакеты)
    * @return totalTokens
   **/
   @javax.annotation.Nonnull
-  public BigDecimal getTotalTokens() {
+  public Integer getTotalTokens() {
     return totalTokens;
   }
 
 
-  public void setTotalTokens(BigDecimal totalTokens) {
+  public void setTotalTokens(Integer totalTokens) {
     this.totalTokens = totalTokens;
   }
 
 
-  public Knowledgebase usedTokens(BigDecimal usedTokens) {
+  public Knowledgebase usedTokens(Integer usedTokens) {
     
     this.usedTokens = usedTokens;
     return this;
   }
 
    /**
-   * Использовано токенов
+   * Количество израсходованных токенов
    * @return usedTokens
   **/
   @javax.annotation.Nonnull
-  public BigDecimal getUsedTokens() {
+  public Integer getUsedTokens() {
     return usedTokens;
   }
 
 
-  public void setUsedTokens(BigDecimal usedTokens) {
+  public void setUsedTokens(Integer usedTokens) {
     this.usedTokens = usedTokens;
   }
 
 
-  public Knowledgebase remainingTokens(BigDecimal remainingTokens) {
+  public Knowledgebase remainingTokens(Integer remainingTokens) {
     
     this.remainingTokens = remainingTokens;
     return this;
   }
 
    /**
-   * Осталось токенов
+   * Количество оставшихся токенов
    * @return remainingTokens
   **/
   @javax.annotation.Nonnull
-  public BigDecimal getRemainingTokens() {
+  public Integer getRemainingTokens() {
     return remainingTokens;
   }
 
 
-  public void setRemainingTokens(BigDecimal remainingTokens) {
+  public void setRemainingTokens(Integer remainingTokens) {
     this.remainingTokens = remainingTokens;
   }
 
 
-  public Knowledgebase tokenPackageId(BigDecimal tokenPackageId) {
+  public Knowledgebase tokenPackageId(Integer tokenPackageId) {
     
     this.tokenPackageId = tokenPackageId;
     return this;
   }
 
    /**
-   * ID пакета токенов
+   * ID пакета токенов подписки базы знаний
    * @return tokenPackageId
   **/
   @javax.annotation.Nonnull
-  public BigDecimal getTokenPackageId() {
+  public Integer getTokenPackageId() {
     return tokenPackageId;
   }
 
 
-  public void setTokenPackageId(BigDecimal tokenPackageId) {
+  public void setTokenPackageId(Integer tokenPackageId) {
     this.tokenPackageId = tokenPackageId;
   }
 
@@ -385,10 +408,10 @@ public class Knowledgebase {
   }
 
    /**
-   * Дата обновления подписки
+   * Дата следующего продления подписки (списания стоимости пакета токенов)
    * @return subscriptionRenewalDate
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public OffsetDateTime getSubscriptionRenewalDate() {
     return subscriptionRenewalDate;
   }
@@ -414,7 +437,7 @@ public class Knowledgebase {
   }
 
    /**
-   * Документы в базе знаний
+   * Документы базы знаний
    * @return documents
   **/
   @javax.annotation.Nonnull
@@ -428,13 +451,13 @@ public class Knowledgebase {
   }
 
 
-  public Knowledgebase agentsIds(List<BigDecimal> agentsIds) {
+  public Knowledgebase agentsIds(List<Integer> agentsIds) {
     
     this.agentsIds = agentsIds;
     return this;
   }
 
-  public Knowledgebase addAgentsIdsItem(BigDecimal agentsIdsItem) {
+  public Knowledgebase addAgentsIdsItem(Integer agentsIdsItem) {
     if (this.agentsIds == null) {
       this.agentsIds = new ArrayList<>();
     }
@@ -443,16 +466,16 @@ public class Knowledgebase {
   }
 
    /**
-   * ID агентов, связанных с базой знаний
+   * ID агентов, к которым привязана база знаний
    * @return agentsIds
   **/
   @javax.annotation.Nonnull
-  public List<BigDecimal> getAgentsIds() {
+  public List<Integer> getAgentsIds() {
     return agentsIds;
   }
 
 
-  public void setAgentsIds(List<BigDecimal> agentsIds) {
+  public void setAgentsIds(List<Integer> agentsIds) {
     this.agentsIds = agentsIds;
   }
 
@@ -464,7 +487,7 @@ public class Knowledgebase {
   }
 
    /**
-   * Дата создания базы знаний
+   * Дата и время создания базы знаний
    * @return createdAt
   **/
   @javax.annotation.Nonnull
@@ -491,6 +514,7 @@ public class Knowledgebase {
     return Objects.equals(this.id, knowledgebase.id) &&
         Objects.equals(this.name, knowledgebase.name) &&
         Objects.equals(this.description, knowledgebase.description) &&
+        Objects.equals(this.projectId, knowledgebase.projectId) &&
         Objects.equals(this.dbaasId, knowledgebase.dbaasId) &&
         Objects.equals(this.status, knowledgebase.status) &&
         Objects.equals(this.lastSync, knowledgebase.lastSync) &&
@@ -504,20 +528,9 @@ public class Knowledgebase {
         Objects.equals(this.createdAt, knowledgebase.createdAt);
   }
 
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
-  }
-
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, description, dbaasId, status, lastSync, totalTokens, usedTokens, remainingTokens, tokenPackageId, subscriptionRenewalDate, documents, agentsIds, createdAt);
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
+    return Objects.hash(id, name, description, projectId, dbaasId, status, lastSync, totalTokens, usedTokens, remainingTokens, tokenPackageId, subscriptionRenewalDate, documents, agentsIds, createdAt);
   }
 
   @Override
@@ -527,6 +540,7 @@ public class Knowledgebase {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    projectId: ").append(toIndentedString(projectId)).append("\n");
     sb.append("    dbaasId: ").append(toIndentedString(dbaasId)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    lastSync: ").append(toIndentedString(lastSync)).append("\n");
@@ -563,6 +577,7 @@ public class Knowledgebase {
     openapiFields.add("id");
     openapiFields.add("name");
     openapiFields.add("description");
+    openapiFields.add("project_id");
     openapiFields.add("dbaas_id");
     openapiFields.add("status");
     openapiFields.add("last_sync");
@@ -579,8 +594,10 @@ public class Knowledgebase {
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("id");
     openapiRequiredFields.add("name");
+    openapiRequiredFields.add("description");
     openapiRequiredFields.add("dbaas_id");
     openapiRequiredFields.add("status");
+    openapiRequiredFields.add("last_sync");
     openapiRequiredFields.add("total_tokens");
     openapiRequiredFields.add("used_tokens");
     openapiRequiredFields.add("remaining_tokens");

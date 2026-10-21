@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * Имена параметров конфигурации, доступных для каждого типа кластера базы данных. Ключ объекта — тип кластера (значение поля &#x60;type&#x60; при создании кластера), значение — массив имён параметров, которые можно передать в &#x60;config_parameters&#x60; для кластера этого типа. Наборы параметров различаются между версиями одной СУБД. Значения параметров этот метод не возвращает — рекомендуемые значения можно получить в &#x60;GET /api/v1/dbs/default-parameters&#x60;.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-31T10:55:12.417047Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-21T20:10:29.240516Z[Etc/UTC]")
 public class DbParametersByType {
   public static final String SERIALIZED_NAME_MYSQL5 = "mysql5";
   @SerializedName(SERIALIZED_NAME_MYSQL5)

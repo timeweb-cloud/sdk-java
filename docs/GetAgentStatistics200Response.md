@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**agentStatistics** | [**List&lt;TokenStatistic&gt;**](TokenStatistic.md) |  |  |
+|**agentStatistics** | [**List&lt;AgentTokenStatistic&gt;**](AgentTokenStatistic.md) |  |  |
 |**meta** | [**GetAgentStatistics200ResponseMeta**](GetAgentStatistics200ResponseMeta.md) |  |  |
 
 

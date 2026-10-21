@@ -62,4 +62,76 @@ public class DocumentStatusInfoDetailsTest {
         // TODO: test progress
     }
 
+    /**
+     * Test the property 'indexingDurationMs'
+     */
+    @Test
+    public void indexingDurationMsTest() {
+        // TODO: test indexingDurationMs
+    }
+
+    /**
+     * Test the property 'tokensUsed'
+     */
+    @Test
+    public void tokensUsedTest() {
+        // TODO: test tokensUsed
+    }
+
+    /**
+     * Test the property 'tokensEstimated'
+     */
+    @Test
+    public void tokensEstimatedTest() {
+        // TODO: test tokensEstimated
+    }
+
+    /**
+     * Test the property 'chunksCount'
+     */
+    @Test
+    public void chunksCountTest() {
+        // TODO: test chunksCount
+    }
+
+    /**
+     * Test the property 'needed'
+     */
+    @Test
+    public void neededTest() {
+        // TODO: test needed
+    }
+
+    /**
+     * Test the property 'available'
+     */
+    @Test
+    public void availableTest() {
+        // TODO: test available
+    }
+
+    /**
+     * Test the property 'estimated'
+     */
+    @Test
+    public void estimatedTest() {
+        // TODO: test estimated
+    }
+
+    /**
+     * Test the property 'balance'
+     */
+    @Test
+    public void balanceTest() {
+        // TODO: test balance
+    }
+
+    /**
+     * Test the property 'minRequired'
+     */
+    @Test
+    public void minRequiredTest() {
+        // TODO: test minRequired
+    }
+
 }

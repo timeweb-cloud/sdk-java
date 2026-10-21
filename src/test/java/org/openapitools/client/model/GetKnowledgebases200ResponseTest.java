@@ -21,7 +21,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import org.openapitools.client.model.GetKnowledgebasesV2200ResponseMeta;
+import org.openapitools.client.model.GetKnowledgebasesV3200ResponseMeta;
 import org.openapitools.client.model.Knowledgebase;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -41,11 +41,11 @@ public class GetKnowledgebases200ResponseTest {
     }
 
     /**
-     * Test the property 'knowledgebases'
+     * Test the property 'knowledgeBases'
      */
     @Test
-    public void knowledgebasesTest() {
-        // TODO: test knowledgebases
+    public void knowledgeBasesTest() {
+        // TODO: test knowledgeBases
     }
 
     /**

@@ -23,8 +23,8 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import org.openapitools.client.model.AgentTokenStatistic;
 import org.openapitools.client.model.GetAgentStatistics200ResponseMeta;
-import org.openapitools.client.model.TokenStatistic;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -54,11 +54,11 @@ import org.openapitools.client.JSON;
 /**
  * GetAgentStatistics200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-31T10:55:12.417047Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-21T20:10:29.240516Z[Etc/UTC]")
 public class GetAgentStatistics200Response {
   public static final String SERIALIZED_NAME_AGENT_STATISTICS = "agent_statistics";
   @SerializedName(SERIALIZED_NAME_AGENT_STATISTICS)
-  private List<TokenStatistic> agentStatistics = new ArrayList<>();
+  private List<AgentTokenStatistic> agentStatistics = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_META = "meta";
   @SerializedName(SERIALIZED_NAME_META)
@@ -67,13 +67,13 @@ public class GetAgentStatistics200Response {
   public GetAgentStatistics200Response() {
   }
 
-  public GetAgentStatistics200Response agentStatistics(List<TokenStatistic> agentStatistics) {
+  public GetAgentStatistics200Response agentStatistics(List<AgentTokenStatistic> agentStatistics) {
     
     this.agentStatistics = agentStatistics;
     return this;
   }
 
-  public GetAgentStatistics200Response addAgentStatisticsItem(TokenStatistic agentStatisticsItem) {
+  public GetAgentStatistics200Response addAgentStatisticsItem(AgentTokenStatistic agentStatisticsItem) {
     if (this.agentStatistics == null) {
       this.agentStatistics = new ArrayList<>();
     }
@@ -86,12 +86,12 @@ public class GetAgentStatistics200Response {
    * @return agentStatistics
   **/
   @javax.annotation.Nonnull
-  public List<TokenStatistic> getAgentStatistics() {
+  public List<AgentTokenStatistic> getAgentStatistics() {
     return agentStatistics;
   }
 
 
-  public void setAgentStatistics(List<TokenStatistic> agentStatistics) {
+  public void setAgentStatistics(List<AgentTokenStatistic> agentStatistics) {
     this.agentStatistics = agentStatistics;
   }
 
@@ -209,7 +209,7 @@ public class GetAgentStatistics200Response {
       JsonArray jsonArrayagentStatistics = jsonObj.getAsJsonArray("agent_statistics");
       // validate the required field `agent_statistics` (array)
       for (int i = 0; i < jsonArrayagentStatistics.size(); i++) {
-        TokenStatistic.validateJsonElement(jsonArrayagentStatistics.get(i));
+        AgentTokenStatistic.validateJsonElement(jsonArrayagentStatistics.get(i));
       };
       // validate the required field `meta`
       GetAgentStatistics200ResponseMeta.validateJsonElement(jsonObj.get("meta"));

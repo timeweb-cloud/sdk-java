@@ -21,7 +21,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -51,32 +50,32 @@ import org.openapitools.client.JSON;
 /**
  * GetAgents200ResponseMeta
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-31T10:55:12.417047Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-21T20:10:29.240516Z[Etc/UTC]")
 public class GetAgents200ResponseMeta {
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)
-  private BigDecimal total;
+  private Integer total;
 
   public GetAgents200ResponseMeta() {
   }
 
-  public GetAgents200ResponseMeta total(BigDecimal total) {
+  public GetAgents200ResponseMeta total(Integer total) {
     
     this.total = total;
     return this;
   }
 
    /**
-   * Общее количество агентов
+   * Количество агентов
    * @return total
   **/
   @javax.annotation.Nonnull
-  public BigDecimal getTotal() {
+  public Integer getTotal() {
     return total;
   }
 
 
-  public void setTotal(BigDecimal total) {
+  public void setTotal(Integer total) {
     this.total = total;
   }
 

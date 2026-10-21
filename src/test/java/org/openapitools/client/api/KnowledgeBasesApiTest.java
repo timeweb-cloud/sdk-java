@@ -14,9 +14,10 @@
 package org.openapitools.client.api;
 
 import org.openapitools.client.ApiException;
-import org.openapitools.client.model.AddTokenPackage;
+import org.openapitools.client.model.CreateDocument;
 import org.openapitools.client.model.CreateKnowledgebase;
 import org.openapitools.client.model.CreateKnowledgebase201Response;
+import org.openapitools.client.model.CreateKnowledgebaseDocument201Response;
 import java.io.File;
 import org.openapitools.client.model.GetAccountStatus403Response;
 import org.openapitools.client.model.GetFinances400Response;
@@ -25,12 +26,15 @@ import org.openapitools.client.model.GetFinances429Response;
 import org.openapitools.client.model.GetFinances500Response;
 import org.openapitools.client.model.GetImage404Response;
 import org.openapitools.client.model.GetKnowledgebaseDocumentsV2200Response;
-import org.openapitools.client.model.GetKnowledgebaseStatistics200Response;
+import org.openapitools.client.model.GetKnowledgebaseV3200Response;
 import org.openapitools.client.model.GetKnowledgebases200Response;
 import org.openapitools.client.model.GetKnowledgebasesV2200Response;
-import java.time.OffsetDateTime;
+import org.openapitools.client.model.GetKnowledgebasesV3200Response;
+import org.openapitools.client.model.KnowledgebaseAddTokenPackage;
+import org.openapitools.client.model.LinkKnowledgebase;
+import org.openapitools.client.model.UpdateDocument;
 import org.openapitools.client.model.UpdateKnowledgebase;
-import org.openapitools.client.model.UploadFilesToKnowledgebase200Response;
+import org.openapitools.client.model.UploadResult;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -48,24 +52,24 @@ public class KnowledgeBasesApiTest {
     private final KnowledgeBasesApi api = new KnowledgeBasesApi();
 
     /**
-     * Добавление дополнительного пакета токенов
+     * Покупка дополнительных пакетов токенов
      *
-     * Чтобы добавить дополнительный пакет токенов для базы знаний, отправьте POST-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/add-additional-token-package&#x60;.
+     * Чтобы докупить токены для базы знаний, отправьте POST-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/add-additional-token-package&#x60;.  Покупается дополнительный пакет (&#x60;package_type: additional&#x60;) из &#x60;GET /api/v1/cloud-ai/token-packages/knowledge-bases&#x60; в количестве &#x60;count&#x60;. Стоимость списывается с баланса, токены добавляются к текущему периоду подписки, заблокированная база знаний разблокируется.  Возможные ошибки: - &#x60;400 insufficient_balance&#x60; — на балансе недостаточно средств - &#x60;400 subscription_expired&#x60; — база знаний заблокирована и дата продления подписки прошла: продлите подписку в панели управления - &#x60;404 additional_token_package_not_found&#x60; — дополнительный пакет недоступен
      *
      * @throws ApiException if the Api call fails
      */
     @Test
     public void addAdditionalTokenPackageToKnowledgebaseTest() throws ApiException {
         Integer id = null;
-        AddTokenPackage addTokenPackage = null;
-        api.addAdditionalTokenPackageToKnowledgebase(id, addTokenPackage);
+        KnowledgebaseAddTokenPackage knowledgebaseAddTokenPackage = null;
+        api.addAdditionalTokenPackageToKnowledgebase(id, knowledgebaseAddTokenPackage);
         // TODO: test validations
     }
 
     /**
      * Создание базы знаний
      *
-     * Чтобы создать базу знаний, отправьте POST-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases&#x60;, задав необходимые атрибуты.  База знаний будет создана с использованием предоставленной информации. Тело ответа будет содержать объект JSON с информацией о созданной базе знаний.
+     * Чтобы создать базу знаний, отправьте POST-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases&#x60;, задав необходимые атрибуты.  Для базы знаний в вашем аккаунте создаётся кластер базы данных OpenSearch по выбранному тарифу в указанной приватной сети, а с баланса сразу списывается стоимость пакета токенов. Подписка продлевается автоматически раз в период пакета.  Пока кластер создаётся, база знаний находится в статусе &#x60;creating&#x60;; документы, добавленные в это время, будут проиндексированы после перехода в &#x60;active&#x60;.  Возможные ошибки: - &#x60;404 token_package_not_found&#x60; — пакет токенов не найден или недоступен - &#x60;400 invalid_token_package_type&#x60; — пакет не является базовым пакетом для баз знаний - &#x60;400 insufficient_balance&#x60; — на балансе недостаточно средств для оплаты пакета  Тело ответа будет представлять собой объект JSON с ключом &#x60;knowledge_base&#x60;.
      *
      * @throws ApiException if the Api call fails
      */
@@ -77,9 +81,24 @@ public class KnowledgeBasesApiTest {
     }
 
     /**
+     * Добавление документа по ссылке
+     *
+     * Чтобы добавить в базу знаний документ по ссылке, отправьте POST-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/documents&#x60;.  Перед добавлением выполняется HEAD-запрос к &#x60;url&#x60;: адрес должен быть публично доступен, а ответ — содержать заголовок &#x60;Content-Type&#x60; одного из поддерживаемых форматов (текст, Markdown, HTML, XML, CSV, PDF, DOC, DOCX, XLS, XLSX; JSON не поддерживается). Документ сразу ставится в очередь на индексацию. Чтобы содержимое по ссылке переиндексировалось автоматически, задайте &#x60;indexing_schedule&#x60;.  Возможные ошибки: - &#x60;400 url_is_not_accessible&#x60; — адрес недоступен или вернул ошибку - &#x60;400 unsupported_file_type&#x60; — неподдерживаемый &#x60;Content-Type&#x60;  Тело ответа будет представлять собой объект JSON с ключом &#x60;document&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void createKnowledgebaseDocumentTest() throws ApiException {
+        Integer id = null;
+        CreateDocument createDocument = null;
+        CreateKnowledgebaseDocument201Response response = api.createKnowledgebaseDocument(id, createDocument);
+        // TODO: test validations
+    }
+
+    /**
      * Удаление документа из базы знаний
      *
-     * Чтобы удалить документ из базы знаний, отправьте DELETE-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id}&#x60;.
+     * Чтобы удалить документ из базы знаний, отправьте DELETE-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id}&#x60;.  Документ удаляется вместе с его фрагментами в поисковом индексе.
      *
      * @throws ApiException if the Api call fails
      */
@@ -94,7 +113,7 @@ public class KnowledgeBasesApiTest {
     /**
      * Удаление базы знаний
      *
-     * Чтобы удалить базу знаний, отправьте DELETE-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}&#x60;.
+     * Чтобы удалить базу знаний, отправьте DELETE-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}&#x60;.  База знаний отвязывается от всех агентов, её кластер базы данных OpenSearch удаляется, подписка закрывается.
      *
      * @throws ApiException if the Api call fails
      */
@@ -106,9 +125,9 @@ public class KnowledgeBasesApiTest {
     }
 
     /**
-     * Скачивание документа из базы знаний
+     * Скачивание файла документа
      *
-     * Чтобы скачать документ из базы знаний, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id}/download&#x60;.
+     * Чтобы скачать загруженный файл документа, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id}/download&#x60;.  Доступно только для документов типа &#x60;file&#x60;. Файл возвращается потоком с исходным MIME-типом в заголовке &#x60;Content-Type&#x60; и именем в &#x60;Content-Disposition&#x60;.
      *
      * @throws ApiException if the Api call fails
      */
@@ -121,9 +140,9 @@ public class KnowledgeBasesApiTest {
     }
 
     /**
-     * Получение базы знаний
+     * Получение базы знаний со списком документов
      *
-     * Чтобы получить информацию о базе знаний, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}&#x60;.
+     * Чтобы получить информацию о базе знаний вместе со всеми её документами, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;knowledge_base&#x60;.
      *
      * @throws ApiException if the Api call fails
      */
@@ -137,7 +156,7 @@ public class KnowledgeBasesApiTest {
     /**
      * Получение списка документов базы знаний
      *
-     * Чтобы получить список документов базы знаний, отправьте GET-запрос на &#x60;/api/v2/cloud-ai/knowledge-bases/{id}/documents&#x60;.  Тело ответа будет представлять собой объект JSON с ключами &#x60;knowledgebase_documents&#x60; и &#x60;meta&#x60;.
+     * Чтобы получить список документов базы знаний с пагинацией, отправьте GET-запрос на &#x60;/api/v2/cloud-ai/knowledge-bases/{id}/documents&#x60;.  Некорректные значения параметров пагинации и сортировки не приводят к ошибке — вместо них применяются значения по умолчанию.  Тело ответа будет представлять собой объект JSON с ключами &#x60;knowledgebase_documents&#x60; и &#x60;meta&#x60;.
      *
      * @throws ApiException if the Api call fails
      */
@@ -148,31 +167,29 @@ public class KnowledgeBasesApiTest {
         Integer offset = null;
         String sortBy = null;
         String sortOrder = null;
-        GetKnowledgebaseDocumentsV2200Response response = api.getKnowledgebaseDocumentsV2(id, limit, offset, sortBy, sortOrder);
+        String search = null;
+        GetKnowledgebaseDocumentsV2200Response response = api.getKnowledgebaseDocumentsV2(id, limit, offset, sortBy, sortOrder, search);
         // TODO: test validations
     }
 
     /**
-     * Получение статистики использования токенов базы знаний
+     * Получение базы знаний
      *
-     * Чтобы получить статистику использования токенов базы знаний, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/statistic&#x60;.  Можно указать временной диапазон и интервал агрегации.
+     * Чтобы получить информацию о базе знаний, отправьте GET-запрос на &#x60;/api/v3/cloud-ai/knowledge-bases/{id}&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;knowledge_base&#x60;.
      *
      * @throws ApiException if the Api call fails
      */
     @Test
-    public void getKnowledgebaseStatisticsTest() throws ApiException {
+    public void getKnowledgebaseV3Test() throws ApiException {
         Integer id = null;
-        OffsetDateTime startTime = null;
-        OffsetDateTime endTime = null;
-        BigDecimal interval = null;
-        GetKnowledgebaseStatistics200Response response = api.getKnowledgebaseStatistics(id, startTime, endTime, interval);
+        GetKnowledgebaseV3200Response response = api.getKnowledgebaseV3(id);
         // TODO: test validations
     }
 
     /**
-     * Получение списка баз знаний
+     * Получение списка баз знаний (v1)
      *
-     * Чтобы получить список баз знаний, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;knowledgebases&#x60;.
+     * Метод устарел — используйте &#x60;GET /api/v3/cloud-ai/knowledge-bases&#x60;.  Чтобы получить список баз знаний вместе со всеми их документами, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases&#x60;.  Тело ответа будет представлять собой объект JSON с ключами &#x60;knowledge_bases&#x60; и &#x60;meta&#x60;.
      *
      * @throws ApiException if the Api call fails
      */
@@ -185,7 +202,7 @@ public class KnowledgeBasesApiTest {
     /**
      * Получение списка баз знаний (v2)
      *
-     * Чтобы получить список баз знаний, отправьте GET-запрос на &#x60;/api/v2/cloud-ai/knowledge-bases&#x60;.  Версия API v2 возвращает оптимизированный ответ с количеством документов вместо полного списка документов.  Тело ответа будет представлять собой объект JSON с ключом &#x60;knowledgebases&#x60;.
+     * Чтобы получить список баз знаний, отправьте GET-запрос на &#x60;/api/v2/cloud-ai/knowledge-bases&#x60;.  Вместо списка документов возвращается их количество, привязанные агенты — списком ID. Режим поиска для каждого агента возвращает &#x60;GET /api/v3/cloud-ai/knowledge-bases&#x60;.  Тело ответа будет представлять собой объект JSON с ключами &#x60;knowledge_bases&#x60; и &#x60;meta&#x60;.
      *
      * @throws ApiException if the Api call fails
      */
@@ -196,9 +213,22 @@ public class KnowledgeBasesApiTest {
     }
 
     /**
+     * Получение списка баз знаний
+     *
+     * Чтобы получить список баз знаний, отправьте GET-запрос на &#x60;/api/v3/cloud-ai/knowledge-bases&#x60;.  Ответ содержит количество документов и привязанных агентов с режимом поиска. Документы базы знаний запрашивайте отдельно — &#x60;GET /api/v2/cloud-ai/knowledge-bases/{id}/documents&#x60;.  Тело ответа будет представлять собой объект JSON с ключами &#x60;knowledge_bases&#x60; и &#x60;meta&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void getKnowledgebasesV3Test() throws ApiException {
+        GetKnowledgebasesV3200Response response = api.getKnowledgebasesV3();
+        // TODO: test validations
+    }
+
+    /**
      * Привязка базы знаний к агенту
      *
-     * Чтобы привязать базу знаний к AI агенту, отправьте POST-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/link/{agent_id}&#x60;.
+     * Чтобы привязать базу знаний к AI агенту, отправьте POST-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/link/{agent_id}&#x60;.  Тело запроса необязательно: в нём можно выбрать режим поиска &#x60;retrievalMode&#x60; (по умолчанию &#x60;agentic&#x60;). Изменить режим для существующей привязки можно запросом PATCH на тот же адрес.  Возможные ошибки: &#x60;404 knowledgebase_not_found&#x60;, &#x60;404 agent_not_found&#x60;.
      *
      * @throws ApiException if the Api call fails
      */
@@ -206,14 +236,15 @@ public class KnowledgeBasesApiTest {
     public void linkKnowledgebaseToAgentTest() throws ApiException {
         Integer id = null;
         Integer agentId = null;
-        api.linkKnowledgebaseToAgent(id, agentId);
+        LinkKnowledgebase linkKnowledgebase = null;
+        api.linkKnowledgebaseToAgent(id, agentId, linkKnowledgebase);
         // TODO: test validations
     }
 
     /**
      * Переиндексация документа
      *
-     * Чтобы переиндексировать документ в базе знаний, отправьте POST-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id}/reindex&#x60;.
+     * Чтобы переиндексировать документ, отправьте POST-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id}/reindex&#x60;.  Документ ставится в очередь на индексацию; следите за полем &#x60;status&#x60; документа. Для документа по ссылке содержимое скачивается заново. Если база знаний не в статусе &#x60;active&#x60;, документ будет проиндексирован после активации.  Возможные ошибки: &#x60;404 knowledgebase_not_found&#x60;, &#x60;404 document_not_found&#x60;.
      *
      * @throws ApiException if the Api call fails
      */
@@ -228,7 +259,7 @@ public class KnowledgeBasesApiTest {
     /**
      * Отвязка базы знаний от агента
      *
-     * Чтобы отвязать базу знаний от AI агента, отправьте DELETE-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/link/{agent_id}&#x60;.
+     * Чтобы отвязать базу знаний от AI агента, отправьте DELETE-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/link/{agent_id}&#x60;.  Возможные ошибки: &#x60;404 knowledgebase_not_found&#x60;, &#x60;404 agent_not_found&#x60;.
      *
      * @throws ApiException if the Api call fails
      */
@@ -241,9 +272,9 @@ public class KnowledgeBasesApiTest {
     }
 
     /**
-     * Обновление базы знаний
+     * Изменение базы знаний
      *
-     * Чтобы обновить базу знаний, отправьте PATCH-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}&#x60;.
+     * Чтобы изменить название или описание базы знаний, отправьте PATCH-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;knowledge_base&#x60;.
      *
      * @throws ApiException if the Api call fails
      */
@@ -256,9 +287,41 @@ public class KnowledgeBasesApiTest {
     }
 
     /**
+     * Изменение режима поиска по базе знаний для агента
+     *
+     * Чтобы изменить режим поиска по привязанной базе знаний для AI агента, отправьте PATCH-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/link/{agent_id}&#x60;.  Если &#x60;retrievalMode&#x60; не передан, устанавливается &#x60;agentic&#x60;. Если база знаний не привязана к агенту, запрос ничего не меняет и также возвращает &#x60;204&#x60;.  Возможные ошибки: &#x60;404 knowledgebase_not_found&#x60;, &#x60;404 agent_not_found&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void updateKnowledgebaseAgentLinkTest() throws ApiException {
+        Integer id = null;
+        Integer agentId = null;
+        LinkKnowledgebase linkKnowledgebase = null;
+        api.updateKnowledgebaseAgentLink(id, agentId, linkKnowledgebase);
+        // TODO: test validations
+    }
+
+    /**
+     * Изменение документа
+     *
+     * Чтобы изменить документ базы знаний, отправьте PATCH-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id}&#x60;.  Можно изменить название, расписание переиндексации и — только для документов типа &#x60;link&#x60; — адрес. После смены адреса документ переиндексируется; изменение названия и расписания переиндексацию не запускает. Новый адрес проверяется так же, как при добавлении документа.  Тело ответа будет представлять собой объект JSON с ключом &#x60;document&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void updateKnowledgebaseDocumentTest() throws ApiException {
+        Integer id = null;
+        Integer documentId = null;
+        UpdateDocument updateDocument = null;
+        CreateKnowledgebaseDocument201Response response = api.updateKnowledgebaseDocument(id, documentId, updateDocument);
+        // TODO: test validations
+    }
+
+    /**
      * Загрузка файлов в базу знаний
      *
-     * Чтобы загрузить файлы в базу знаний, отправьте POST-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/upload&#x60; с файлами в формате multipart/form-data.  Поддерживаемые форматы: CSV, XML, Markdown (md), HTML, TXT. JSON не поддерживается. Максимум 10 файлов, до 10 МБ каждый.
+     * Чтобы загрузить файлы в базу знаний, отправьте POST-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/upload&#x60; с файлами в поле &#x60;files&#x60; формата &#x60;multipart/form-data&#x60;. Для каждого файла создаётся документ типа &#x60;file&#x60;, после загрузки документы ставятся в очередь на индексацию (если база знаний в статусе &#x60;active&#x60;; иначе — после активации).  Поддерживаемые форматы: TXT, Markdown (&#x60;md&#x60;, &#x60;markdown&#x60;), HTML (&#x60;html&#x60;, &#x60;htm&#x60;), XML, CSV, PDF, DOC, DOCX, XLS, XLSX, а также другие файлы с MIME-типом &#x60;text/_*&#x60;. JSON (&#x60;json&#x60;, &#x60;jsonl&#x60;, &#x60;ndjson&#x60;) не поддерживается. Размер одного файла — не более 50 МБ.  Если хотя бы один файл неподдерживаемого формата, запрос завершается ошибкой.  Тело ответа будет представлять собой объект JSON с ключами &#x60;uploadedFiles&#x60; и &#x60;documents&#x60;.
      *
      * @throws ApiException if the Api call fails
      */
@@ -266,7 +329,7 @@ public class KnowledgeBasesApiTest {
     public void uploadFilesToKnowledgebaseTest() throws ApiException {
         Integer id = null;
         List<File> files = null;
-        UploadFilesToKnowledgebase200Response response = api.uploadFilesToKnowledgebase(id, files);
+        UploadResult response = api.uploadFilesToKnowledgebase(id, files);
         // TODO: test validations
     }
 

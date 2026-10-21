@@ -19,10 +19,10 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.time.OffsetDateTime;
-import org.openapitools.client.model.ModelParamsInfo;
-import org.openapitools.jackson.nullable.JsonNullable;
+import java.util.HashMap;
+import java.util.Map;
+import org.openapitools.client.model.ModelParamInfo;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -73,11 +73,27 @@ public class ModelTest {
     }
 
     /**
+     * Test the property 'modelName'
+     */
+    @Test
+    public void modelNameTest() {
+        // TODO: test modelName
+    }
+
+    /**
      * Test the property 'type'
      */
     @Test
     public void typeTest() {
         // TODO: test type
+    }
+
+    /**
+     * Test the property 'version'
+     */
+    @Test
+    public void versionTest() {
+        // TODO: test version
     }
 
     /**
@@ -110,14 +126,6 @@ public class ModelTest {
     @Test
     public void isReasoningTest() {
         // TODO: test isReasoning
-    }
-
-    /**
-     * Test the property 'version'
-     */
-    @Test
-    public void versionTest() {
-        // TODO: test version
     }
 
     /**

@@ -21,7 +21,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -51,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * Данные для создания базы знаний
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-31T10:55:12.417047Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-21T20:10:29.240516Z[Etc/UTC]")
 public class CreateKnowledgebase {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -63,7 +62,7 @@ public class CreateKnowledgebase {
 
   public static final String SERIALIZED_NAME_DBAAS_PRESET_ID = "dbaas_preset_id";
   @SerializedName(SERIALIZED_NAME_DBAAS_PRESET_ID)
-  private BigDecimal dbaasPresetId;
+  private Integer dbaasPresetId;
 
   public static final String SERIALIZED_NAME_NETWORK_ID = "network_id";
   @SerializedName(SERIALIZED_NAME_NETWORK_ID)
@@ -71,11 +70,11 @@ public class CreateKnowledgebase {
 
   public static final String SERIALIZED_NAME_TOKEN_PACKAGE_ID = "token_package_id";
   @SerializedName(SERIALIZED_NAME_TOKEN_PACKAGE_ID)
-  private BigDecimal tokenPackageId;
+  private Integer tokenPackageId;
 
   public static final String SERIALIZED_NAME_PROJECT_ID = "project_id";
   @SerializedName(SERIALIZED_NAME_PROJECT_ID)
-  private BigDecimal projectId;
+  private Integer projectId;
 
   public CreateKnowledgebase() {
   }
@@ -122,23 +121,23 @@ public class CreateKnowledgebase {
   }
 
 
-  public CreateKnowledgebase dbaasPresetId(BigDecimal dbaasPresetId) {
+  public CreateKnowledgebase dbaasPresetId(Integer dbaasPresetId) {
     
     this.dbaasPresetId = dbaasPresetId;
     return this;
   }
 
    /**
-   * ID пресета базы данных
+   * ID тарифа кластера OpenSearch, который будет создан для базы знаний. Список тарифов баз данных — &#x60;GET /api/v2/presets/dbs&#x60;
    * @return dbaasPresetId
   **/
   @javax.annotation.Nonnull
-  public BigDecimal getDbaasPresetId() {
+  public Integer getDbaasPresetId() {
     return dbaasPresetId;
   }
 
 
-  public void setDbaasPresetId(BigDecimal dbaasPresetId) {
+  public void setDbaasPresetId(Integer dbaasPresetId) {
     this.dbaasPresetId = dbaasPresetId;
   }
 
@@ -150,7 +149,7 @@ public class CreateKnowledgebase {
   }
 
    /**
-   * ID сети
+   * ID приватной сети (VPC), в которой будет создан кластер
    * @return networkId
   **/
   @javax.annotation.Nonnull
@@ -164,44 +163,44 @@ public class CreateKnowledgebase {
   }
 
 
-  public CreateKnowledgebase tokenPackageId(BigDecimal tokenPackageId) {
+  public CreateKnowledgebase tokenPackageId(Integer tokenPackageId) {
     
     this.tokenPackageId = tokenPackageId;
     return this;
   }
 
    /**
-   * ID пакета токенов
+   * ID пакета токенов подписки. Подходят только базовые пакеты (&#x60;package_type: base&#x60;) из &#x60;GET /api/v1/cloud-ai/token-packages/knowledge-bases&#x60;
    * @return tokenPackageId
   **/
   @javax.annotation.Nonnull
-  public BigDecimal getTokenPackageId() {
+  public Integer getTokenPackageId() {
     return tokenPackageId;
   }
 
 
-  public void setTokenPackageId(BigDecimal tokenPackageId) {
+  public void setTokenPackageId(Integer tokenPackageId) {
     this.tokenPackageId = tokenPackageId;
   }
 
 
-  public CreateKnowledgebase projectId(BigDecimal projectId) {
+  public CreateKnowledgebase projectId(Integer projectId) {
     
     this.projectId = projectId;
     return this;
   }
 
    /**
-   * ID проекта
+   * ID проекта, в который нужно добавить базу знаний
    * @return projectId
   **/
   @javax.annotation.Nullable
-  public BigDecimal getProjectId() {
+  public Integer getProjectId() {
     return projectId;
   }
 
 
-  public void setProjectId(BigDecimal projectId) {
+  public void setProjectId(Integer projectId) {
     this.projectId = projectId;
   }
 

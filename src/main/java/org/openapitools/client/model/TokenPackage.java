@@ -22,7 +22,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
-import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -52,22 +51,26 @@ import org.openapitools.client.JSON;
 /**
  * Пакет токенов
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-31T10:55:12.417047Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-21T20:10:29.240516Z[Etc/UTC]")
 public class TokenPackage {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private BigDecimal id;
+  private Integer id;
 
   public static final String SERIALIZED_NAME_MODEL_ID = "model_id";
   @SerializedName(SERIALIZED_NAME_MODEL_ID)
-  private BigDecimal modelId;
+  private Integer modelId;
+
+  public static final String SERIALIZED_NAME_SERVICE_TYPE_ID = "service_type_id";
+  @SerializedName(SERIALIZED_NAME_SERVICE_TYPE_ID)
+  private Integer serviceTypeId;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
 
   /**
-   * Тип пакета (base - базовый, additional - дополнительный, promo - промо)
+   * Тип пакета: &#x60;base&#x60; — пакет подписки, &#x60;additional&#x60; — дополнительный пакет, &#x60;promo&#x60; — промо-пакет
    */
   @JsonAdapter(PackageTypeEnum.Adapter.class)
   public enum PackageTypeEnum {
@@ -120,7 +123,7 @@ public class TokenPackage {
   private PackageTypeEnum packageType;
 
   /**
-   * Тип сущности, к которой относится пакет (agent - агент, knowledgebase - база знаний)
+   * Для чего пакет: &#x60;agent&#x60; — AI агент, &#x60;knowledgebase&#x60; — база знаний
    */
   @JsonAdapter(TypeEnum.Adapter.class)
   public enum TypeEnum {
@@ -172,7 +175,7 @@ public class TokenPackage {
 
   public static final String SERIALIZED_NAME_TOKEN_AMOUNT = "token_amount";
   @SerializedName(SERIALIZED_NAME_TOKEN_AMOUNT)
-  private BigDecimal tokenAmount;
+  private Integer tokenAmount;
 
   public static final String SERIALIZED_NAME_PRICE = "price";
   @SerializedName(SERIALIZED_NAME_PRICE)
@@ -180,7 +183,7 @@ public class TokenPackage {
 
   public static final String SERIALIZED_NAME_DURATION_DAYS = "duration_days";
   @SerializedName(SERIALIZED_NAME_DURATION_DAYS)
-  private BigDecimal durationDays;
+  private Integer durationDays;
 
   public static final String SERIALIZED_NAME_IS_AVAILABLE = "is_available";
   @SerializedName(SERIALIZED_NAME_IS_AVAILABLE)
@@ -189,45 +192,66 @@ public class TokenPackage {
   public TokenPackage() {
   }
 
-  public TokenPackage id(BigDecimal id) {
+  public TokenPackage id(Integer id) {
     
     this.id = id;
     return this;
   }
 
    /**
-   * Уникальный идентификатор пакета
+   * ID пакета
    * @return id
   **/
   @javax.annotation.Nonnull
-  public BigDecimal getId() {
+  public Integer getId() {
     return id;
   }
 
 
-  public void setId(BigDecimal id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
 
-  public TokenPackage modelId(BigDecimal modelId) {
+  public TokenPackage modelId(Integer modelId) {
     
     this.modelId = modelId;
     return this;
   }
 
    /**
-   * ID модели, к которой применяется пакет токенов
+   * ID модели, к которой относится пакет
    * @return modelId
   **/
   @javax.annotation.Nonnull
-  public BigDecimal getModelId() {
+  public Integer getModelId() {
     return modelId;
   }
 
 
-  public void setModelId(BigDecimal modelId) {
+  public void setModelId(Integer modelId) {
     this.modelId = modelId;
+  }
+
+
+  public TokenPackage serviceTypeId(Integer serviceTypeId) {
+    
+    this.serviceTypeId = serviceTypeId;
+    return this;
+  }
+
+   /**
+   * ID тарифа пакета в биллинге
+   * @return serviceTypeId
+  **/
+  @javax.annotation.Nonnull
+  public Integer getServiceTypeId() {
+    return serviceTypeId;
+  }
+
+
+  public void setServiceTypeId(Integer serviceTypeId) {
+    this.serviceTypeId = serviceTypeId;
   }
 
 
@@ -238,7 +262,7 @@ public class TokenPackage {
   }
 
    /**
-   * Название пакета токенов
+   * Название пакета
    * @return name
   **/
   @javax.annotation.Nonnull
@@ -259,7 +283,7 @@ public class TokenPackage {
   }
 
    /**
-   * Тип пакета (base - базовый, additional - дополнительный, promo - промо)
+   * Тип пакета: &#x60;base&#x60; — пакет подписки, &#x60;additional&#x60; — дополнительный пакет, &#x60;promo&#x60; — промо-пакет
    * @return packageType
   **/
   @javax.annotation.Nonnull
@@ -280,7 +304,7 @@ public class TokenPackage {
   }
 
    /**
-   * Тип сущности, к которой относится пакет (agent - агент, knowledgebase - база знаний)
+   * Для чего пакет: &#x60;agent&#x60; — AI агент, &#x60;knowledgebase&#x60; — база знаний
    * @return type
   **/
   @javax.annotation.Nonnull
@@ -294,7 +318,7 @@ public class TokenPackage {
   }
 
 
-  public TokenPackage tokenAmount(BigDecimal tokenAmount) {
+  public TokenPackage tokenAmount(Integer tokenAmount) {
     
     this.tokenAmount = tokenAmount;
     return this;
@@ -305,12 +329,12 @@ public class TokenPackage {
    * @return tokenAmount
   **/
   @javax.annotation.Nonnull
-  public BigDecimal getTokenAmount() {
+  public Integer getTokenAmount() {
     return tokenAmount;
   }
 
 
-  public void setTokenAmount(BigDecimal tokenAmount) {
+  public void setTokenAmount(Integer tokenAmount) {
     this.tokenAmount = tokenAmount;
   }
 
@@ -322,7 +346,7 @@ public class TokenPackage {
   }
 
    /**
-   * Цена пакета в целых единицах
+   * Цена пакета в рублях
    * @return price
   **/
   @javax.annotation.Nonnull
@@ -336,23 +360,23 @@ public class TokenPackage {
   }
 
 
-  public TokenPackage durationDays(BigDecimal durationDays) {
+  public TokenPackage durationDays(Integer durationDays) {
     
     this.durationDays = durationDays;
     return this;
   }
 
    /**
-   * Продолжительность пакета в днях (null для дополнительных пакетов)
+   * Период подписки в днях. &#x60;null&#x60; для дополнительных пакетов
    * @return durationDays
   **/
   @javax.annotation.Nullable
-  public BigDecimal getDurationDays() {
+  public Integer getDurationDays() {
     return durationDays;
   }
 
 
-  public void setDurationDays(BigDecimal durationDays) {
+  public void setDurationDays(Integer durationDays) {
     this.durationDays = durationDays;
   }
 
@@ -364,7 +388,7 @@ public class TokenPackage {
   }
 
    /**
-   * Флаг, указывающий доступность пакета
+   * Пакет доступен для покупки
    * @return isAvailable
   **/
   @javax.annotation.Nonnull
@@ -390,6 +414,7 @@ public class TokenPackage {
     TokenPackage tokenPackage = (TokenPackage) o;
     return Objects.equals(this.id, tokenPackage.id) &&
         Objects.equals(this.modelId, tokenPackage.modelId) &&
+        Objects.equals(this.serviceTypeId, tokenPackage.serviceTypeId) &&
         Objects.equals(this.name, tokenPackage.name) &&
         Objects.equals(this.packageType, tokenPackage.packageType) &&
         Objects.equals(this.type, tokenPackage.type) &&
@@ -399,20 +424,9 @@ public class TokenPackage {
         Objects.equals(this.isAvailable, tokenPackage.isAvailable);
   }
 
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
-  }
-
   @Override
   public int hashCode() {
-    return Objects.hash(id, modelId, name, packageType, type, tokenAmount, price, durationDays, isAvailable);
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
+    return Objects.hash(id, modelId, serviceTypeId, name, packageType, type, tokenAmount, price, durationDays, isAvailable);
   }
 
   @Override
@@ -421,6 +435,7 @@ public class TokenPackage {
     sb.append("class TokenPackage {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    modelId: ").append(toIndentedString(modelId)).append("\n");
+    sb.append("    serviceTypeId: ").append(toIndentedString(serviceTypeId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    packageType: ").append(toIndentedString(packageType)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
@@ -452,6 +467,7 @@ public class TokenPackage {
     openapiFields = new HashSet<String>();
     openapiFields.add("id");
     openapiFields.add("model_id");
+    openapiFields.add("service_type_id");
     openapiFields.add("name");
     openapiFields.add("package_type");
     openapiFields.add("type");
@@ -464,11 +480,13 @@ public class TokenPackage {
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("id");
     openapiRequiredFields.add("model_id");
+    openapiRequiredFields.add("service_type_id");
     openapiRequiredFields.add("name");
     openapiRequiredFields.add("package_type");
     openapiRequiredFields.add("type");
     openapiRequiredFields.add("token_amount");
     openapiRequiredFields.add("price");
+    openapiRequiredFields.add("duration_days");
     openapiRequiredFields.add("is_available");
   }
 

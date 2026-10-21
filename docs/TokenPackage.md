@@ -8,15 +8,16 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**id** | **BigDecimal** | Уникальный идентификатор пакета |  |
-|**modelId** | **BigDecimal** | ID модели, к которой применяется пакет токенов |  |
-|**name** | **String** | Название пакета токенов |  |
-|**packageType** | [**PackageTypeEnum**](#PackageTypeEnum) | Тип пакета (base - базовый, additional - дополнительный, promo - промо) |  |
-|**type** | [**TypeEnum**](#TypeEnum) | Тип сущности, к которой относится пакет (agent - агент, knowledgebase - база знаний) |  |
-|**tokenAmount** | **BigDecimal** | Количество токенов в пакете |  |
-|**price** | **BigDecimal** | Цена пакета в целых единицах |  |
-|**durationDays** | **BigDecimal** | Продолжительность пакета в днях (null для дополнительных пакетов) |  [optional] |
-|**isAvailable** | **Boolean** | Флаг, указывающий доступность пакета |  |
+|**id** | **Integer** | ID пакета |  |
+|**modelId** | **Integer** | ID модели, к которой относится пакет |  |
+|**serviceTypeId** | **Integer** | ID тарифа пакета в биллинге |  |
+|**name** | **String** | Название пакета |  |
+|**packageType** | [**PackageTypeEnum**](#PackageTypeEnum) | Тип пакета: &#x60;base&#x60; — пакет подписки, &#x60;additional&#x60; — дополнительный пакет, &#x60;promo&#x60; — промо-пакет |  |
+|**type** | [**TypeEnum**](#TypeEnum) | Для чего пакет: &#x60;agent&#x60; — AI агент, &#x60;knowledgebase&#x60; — база знаний |  |
+|**tokenAmount** | **Integer** | Количество токенов в пакете |  |
+|**price** | **BigDecimal** | Цена пакета в рублях |  |
+|**durationDays** | **Integer** | Период подписки в днях. &#x60;null&#x60; для дополнительных пакетов |  |
+|**isAvailable** | **Boolean** | Пакет доступен для покупки |  |
 
 
 

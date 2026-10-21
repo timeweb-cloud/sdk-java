@@ -51,8 +51,12 @@ import org.openapitools.client.JSON;
 /**
  * Статус аккаунта
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-31T10:55:12.417047Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-21T20:10:29.240516Z[Etc/UTC]")
 public class Status {
+  public static final String SERIALIZED_NAME_LOGIN = "login";
+  @SerializedName(SERIALIZED_NAME_LOGIN)
+  private String login;
+
   public static final String SERIALIZED_NAME_IS_BLOCKED = "is_blocked";
   @SerializedName(SERIALIZED_NAME_IS_BLOCKED)
   private Boolean isBlocked;
@@ -79,6 +83,27 @@ public class Status {
 
   public Status() {
   }
+
+  public Status login(String login) {
+    
+    this.login = login;
+    return this;
+  }
+
+   /**
+   * Логин аккаунта.
+   * @return login
+  **/
+  @javax.annotation.Nonnull
+  public String getLogin() {
+    return login;
+  }
+
+
+  public void setLogin(String login) {
+    this.login = login;
+  }
+
 
   public Status isBlocked(Boolean isBlocked) {
     
@@ -216,7 +241,8 @@ public class Status {
       return false;
     }
     Status status = (Status) o;
-    return Objects.equals(this.isBlocked, status.isBlocked) &&
+    return Objects.equals(this.login, status.login) &&
+        Objects.equals(this.isBlocked, status.isBlocked) &&
         Objects.equals(this.isPermanentBlocked, status.isPermanentBlocked) &&
         Objects.equals(this.isSendBillLetters, status.isSendBillLetters) &&
         Objects.equals(this.companyInfo, status.companyInfo) &&
@@ -226,13 +252,14 @@ public class Status {
 
   @Override
   public int hashCode() {
-    return Objects.hash(isBlocked, isPermanentBlocked, isSendBillLetters, companyInfo, lastPasswordChangedAt, ymClientId);
+    return Objects.hash(login, isBlocked, isPermanentBlocked, isSendBillLetters, companyInfo, lastPasswordChangedAt, ymClientId);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Status {\n");
+    sb.append("    login: ").append(toIndentedString(login)).append("\n");
     sb.append("    isBlocked: ").append(toIndentedString(isBlocked)).append("\n");
     sb.append("    isPermanentBlocked: ").append(toIndentedString(isPermanentBlocked)).append("\n");
     sb.append("    isSendBillLetters: ").append(toIndentedString(isSendBillLetters)).append("\n");
@@ -261,6 +288,7 @@ public class Status {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("login");
     openapiFields.add("is_blocked");
     openapiFields.add("is_permanent_blocked");
     openapiFields.add("is_send_bill_letters");
@@ -270,6 +298,7 @@ public class Status {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("login");
     openapiRequiredFields.add("is_blocked");
     openapiRequiredFields.add("is_permanent_blocked");
     openapiRequiredFields.add("is_send_bill_letters");
@@ -306,6 +335,9 @@ public class Status {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if (!jsonObj.get("login").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `login` to be a primitive type in the JSON string but got `%s`", jsonObj.get("login").toString()));
+      }
       // validate the required field `company_info`
       StatusCompanyInfo.validateJsonElement(jsonObj.get("company_info"));
       if (!jsonObj.get("last_password_changed_at").isJsonPrimitive()) {

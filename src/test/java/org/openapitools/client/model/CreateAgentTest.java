@@ -19,7 +19,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.openapitools.client.model.AgentSettings;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -71,14 +70,6 @@ public class CreateAgentTest {
     }
 
     /**
-     * Test the property 'tokenPackageId'
-     */
-    @Test
-    public void tokenPackageIdTest() {
-        // TODO: test tokenPackageId
-    }
-
-    /**
      * Test the property 'settings'
      */
     @Test
@@ -92,6 +83,22 @@ public class CreateAgentTest {
     @Test
     public void projectIdTest() {
         // TODO: test projectId
+    }
+
+    /**
+     * Test the property 'isWebSearchEnabled'
+     */
+    @Test
+    public void isWebSearchEnabledTest() {
+        // TODO: test isWebSearchEnabled
+    }
+
+    /**
+     * Test the property 'tokenPackageId'
+     */
+    @Test
+    public void tokenPackageIdTest() {
+        // TODO: test tokenPackageId
     }
 
 }

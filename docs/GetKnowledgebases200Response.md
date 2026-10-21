@@ -7,8 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**knowledgebases** | [**List&lt;Knowledgebase&gt;**](Knowledgebase.md) |  |  |
-|**meta** | [**GetKnowledgebasesV2200ResponseMeta**](GetKnowledgebasesV2200ResponseMeta.md) |  |  |
+|**knowledgeBases** | [**List&lt;Knowledgebase&gt;**](Knowledgebase.md) |  |  |
+|**meta** | [**GetKnowledgebasesV3200ResponseMeta**](GetKnowledgebasesV3200ResponseMeta.md) |  |  |
 
 
 

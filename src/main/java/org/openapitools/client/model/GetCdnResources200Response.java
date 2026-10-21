@@ -54,7 +54,7 @@ import org.openapitools.client.JSON;
 /**
  * GetCdnResources200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-31T10:55:12.417047Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-21T20:10:29.240516Z[Etc/UTC]")
 public class GetCdnResources200Response {
   public static final String SERIALIZED_NAME_HTTP_RESOURCES = "http_resources";
   @SerializedName(SERIALIZED_NAME_HTTP_RESOURCES)

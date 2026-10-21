@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import org.openapitools.client.model.AgentAdditionalModel;
 import org.openapitools.client.model.AgentSettings;
 
 import com.google.gson.Gson;
@@ -52,9 +53,9 @@ import java.util.Set;
 import org.openapitools.client.JSON;
 
 /**
- * Данные для создания AI агента через API v2
+ * Данные для создания AI агента
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-31T10:55:12.417047Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-21T20:10:29.240516Z[Etc/UTC]")
 public class CreateAgentV2 {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -65,7 +66,7 @@ public class CreateAgentV2 {
   private String description;
 
   /**
-   * Тип доступа к агенту
+   * Тип доступа: &#x60;public&#x60; — агент отвечает анонимным посетителям сайта через виджет; &#x60;private&#x60; — только по токену аккаунта.
    */
   @JsonAdapter(AccessTypeEnum.Adapter.class)
   public enum AccessTypeEnum {
@@ -117,11 +118,7 @@ public class CreateAgentV2 {
 
   public static final String SERIALIZED_NAME_MODEL_ID = "model_id";
   @SerializedName(SERIALIZED_NAME_MODEL_ID)
-  private BigDecimal modelId;
-
-  public static final String SERIALIZED_NAME_TOKEN_LIMIT = "token_limit";
-  @SerializedName(SERIALIZED_NAME_TOKEN_LIMIT)
-  private BigDecimal tokenLimit;
+  private Integer modelId;
 
   public static final String SERIALIZED_NAME_SETTINGS = "settings";
   @SerializedName(SERIALIZED_NAME_SETTINGS)
@@ -129,15 +126,37 @@ public class CreateAgentV2 {
 
   public static final String SERIALIZED_NAME_PROJECT_ID = "project_id";
   @SerializedName(SERIALIZED_NAME_PROJECT_ID)
-  private BigDecimal projectId;
-
-  public static final String SERIALIZED_NAME_ADDITIONAL_MODEL_IDS = "additional_model_ids";
-  @SerializedName(SERIALIZED_NAME_ADDITIONAL_MODEL_IDS)
-  private List<BigDecimal> additionalModelIds;
+  private Integer projectId;
 
   public static final String SERIALIZED_NAME_IS_WEB_SEARCH_ENABLED = "is_web_search_enabled";
   @SerializedName(SERIALIZED_NAME_IS_WEB_SEARCH_ENABLED)
-  private Boolean isWebSearchEnabled;
+  private Boolean isWebSearchEnabled = false;
+
+  public static final String SERIALIZED_NAME_MONEY_LIMIT = "money_limit";
+  @SerializedName(SERIALIZED_NAME_MONEY_LIMIT)
+  private BigDecimal moneyLimit;
+
+  public static final String SERIALIZED_NAME_TOKEN_LIMIT = "token_limit";
+  @Deprecated
+  @SerializedName(SERIALIZED_NAME_TOKEN_LIMIT)
+  private Integer tokenLimit;
+
+  public static final String SERIALIZED_NAME_TOKEN_PACKAGE_ID = "token_package_id";
+  @Deprecated
+  @SerializedName(SERIALIZED_NAME_TOKEN_PACKAGE_ID)
+  private Integer tokenPackageId;
+
+  public static final String SERIALIZED_NAME_ADDITIONAL_MODEL_IDS = "additional_model_ids";
+  @SerializedName(SERIALIZED_NAME_ADDITIONAL_MODEL_IDS)
+  private List<Integer> additionalModelIds;
+
+  public static final String SERIALIZED_NAME_ADDITIONAL_MODELS = "additional_models";
+  @SerializedName(SERIALIZED_NAME_ADDITIONAL_MODELS)
+  private List<AgentAdditionalModel> additionalModels;
+
+  public static final String SERIALIZED_NAME_SKILL_IDS = "skill_ids";
+  @SerializedName(SERIALIZED_NAME_SKILL_IDS)
+  private List<Integer> skillIds;
 
   public CreateAgentV2() {
   }
@@ -191,7 +210,7 @@ public class CreateAgentV2 {
   }
 
    /**
-   * Тип доступа к агенту
+   * Тип доступа: &#x60;public&#x60; — агент отвечает анонимным посетителям сайта через виджет; &#x60;private&#x60; — только по токену аккаунта.
    * @return accessType
   **/
   @javax.annotation.Nonnull
@@ -205,46 +224,24 @@ public class CreateAgentV2 {
   }
 
 
-  public CreateAgentV2 modelId(BigDecimal modelId) {
+  public CreateAgentV2 modelId(Integer modelId) {
     
     this.modelId = modelId;
     return this;
   }
 
    /**
-   * ID основной модели
+   * ID основной модели агента
    * @return modelId
   **/
   @javax.annotation.Nonnull
-  public BigDecimal getModelId() {
+  public Integer getModelId() {
     return modelId;
   }
 
 
-  public void setModelId(BigDecimal modelId) {
+  public void setModelId(Integer modelId) {
     this.modelId = modelId;
-  }
-
-
-  public CreateAgentV2 tokenLimit(BigDecimal tokenLimit) {
-    
-    this.tokenLimit = tokenLimit;
-    return this;
-  }
-
-   /**
-   * Дневной лимит токенов для агента (0 — без лимита)
-   * minimum: 0
-   * @return tokenLimit
-  **/
-  @javax.annotation.Nullable
-  public BigDecimal getTokenLimit() {
-    return tokenLimit;
-  }
-
-
-  public void setTokenLimit(BigDecimal tokenLimit) {
-    this.tokenLimit = tokenLimit;
   }
 
 
@@ -269,53 +266,24 @@ public class CreateAgentV2 {
   }
 
 
-  public CreateAgentV2 projectId(BigDecimal projectId) {
+  public CreateAgentV2 projectId(Integer projectId) {
     
     this.projectId = projectId;
     return this;
   }
 
    /**
-   * ID проекта
+   * ID проекта, в который нужно добавить агента. По умолчанию — проект по умолчанию.
    * @return projectId
   **/
   @javax.annotation.Nullable
-  public BigDecimal getProjectId() {
+  public Integer getProjectId() {
     return projectId;
   }
 
 
-  public void setProjectId(BigDecimal projectId) {
+  public void setProjectId(Integer projectId) {
     this.projectId = projectId;
-  }
-
-
-  public CreateAgentV2 additionalModelIds(List<BigDecimal> additionalModelIds) {
-    
-    this.additionalModelIds = additionalModelIds;
-    return this;
-  }
-
-  public CreateAgentV2 addAdditionalModelIdsItem(BigDecimal additionalModelIdsItem) {
-    if (this.additionalModelIds == null) {
-      this.additionalModelIds = new ArrayList<>();
-    }
-    this.additionalModelIds.add(additionalModelIdsItem);
-    return this;
-  }
-
-   /**
-   * Список ID дополнительных моделей агента
-   * @return additionalModelIds
-  **/
-  @javax.annotation.Nullable
-  public List<BigDecimal> getAdditionalModelIds() {
-    return additionalModelIds;
-  }
-
-
-  public void setAdditionalModelIds(List<BigDecimal> additionalModelIds) {
-    this.additionalModelIds = additionalModelIds;
   }
 
 
@@ -326,7 +294,7 @@ public class CreateAgentV2 {
   }
 
    /**
-   * Признак использования веб-поиска агентом
+   * Включить веб-поиск
    * @return isWebSearchEnabled
   **/
   @javax.annotation.Nullable
@@ -337,6 +305,166 @@ public class CreateAgentV2 {
 
   public void setIsWebSearchEnabled(Boolean isWebSearchEnabled) {
     this.isWebSearchEnabled = isWebSearchEnabled;
+  }
+
+
+  public CreateAgentV2 moneyLimit(BigDecimal moneyLimit) {
+    
+    this.moneyLimit = moneyLimit;
+    return this;
+  }
+
+   /**
+   * Дневной лимит расходов агента в валюте аккаунта. &#x60;0&#x60; или не передан — без лимита. Создаётся как лимит агента с периодом &#x60;day&#x60;; изменить его можно через лимиты агента.
+   * minimum: 0
+   * @return moneyLimit
+  **/
+  @javax.annotation.Nullable
+  public BigDecimal getMoneyLimit() {
+    return moneyLimit;
+  }
+
+
+  public void setMoneyLimit(BigDecimal moneyLimit) {
+    this.moneyLimit = moneyLimit;
+  }
+
+
+  @Deprecated
+  public CreateAgentV2 tokenLimit(Integer tokenLimit) {
+    
+    this.tokenLimit = tokenLimit;
+    return this;
+  }
+
+   /**
+   * Устарело: дневной лимит агента в токенах. &#x60;0&#x60; или не передан — без лимита. Не учитывается, если передан &#x60;money_limit&#x60;.
+   * minimum: 0
+   * @return tokenLimit
+   * @deprecated
+  **/
+  @Deprecated
+  @javax.annotation.Nullable
+  public Integer getTokenLimit() {
+    return tokenLimit;
+  }
+
+
+  @Deprecated
+  public void setTokenLimit(Integer tokenLimit) {
+    this.tokenLimit = tokenLimit;
+  }
+
+
+  @Deprecated
+  public CreateAgentV2 tokenPackageId(Integer tokenPackageId) {
+    
+    this.tokenPackageId = tokenPackageId;
+    return this;
+  }
+
+   /**
+   * Устарело и не учитывается: агент всегда создаётся с поресурсной оплатой.
+   * @return tokenPackageId
+   * @deprecated
+  **/
+  @Deprecated
+  @javax.annotation.Nullable
+  public Integer getTokenPackageId() {
+    return tokenPackageId;
+  }
+
+
+  @Deprecated
+  public void setTokenPackageId(Integer tokenPackageId) {
+    this.tokenPackageId = tokenPackageId;
+  }
+
+
+  public CreateAgentV2 additionalModelIds(List<Integer> additionalModelIds) {
+    
+    this.additionalModelIds = additionalModelIds;
+    return this;
+  }
+
+  public CreateAgentV2 addAdditionalModelIdsItem(Integer additionalModelIdsItem) {
+    if (this.additionalModelIds == null) {
+      this.additionalModelIds = new ArrayList<>();
+    }
+    this.additionalModelIds.add(additionalModelIdsItem);
+    return this;
+  }
+
+   /**
+   * ID дополнительных моделей агента (например, для генерации изображений). Список заменяет текущий целиком.
+   * @return additionalModelIds
+  **/
+  @javax.annotation.Nullable
+  public List<Integer> getAdditionalModelIds() {
+    return additionalModelIds;
+  }
+
+
+  public void setAdditionalModelIds(List<Integer> additionalModelIds) {
+    this.additionalModelIds = additionalModelIds;
+  }
+
+
+  public CreateAgentV2 additionalModels(List<AgentAdditionalModel> additionalModels) {
+    
+    this.additionalModels = additionalModels;
+    return this;
+  }
+
+  public CreateAgentV2 addAdditionalModelsItem(AgentAdditionalModel additionalModelsItem) {
+    if (this.additionalModels == null) {
+      this.additionalModels = new ArrayList<>();
+    }
+    this.additionalModels.add(additionalModelsItem);
+    return this;
+  }
+
+   /**
+   * Дополнительные модели вместе с настройками (для моделей генерации изображений — &#x60;width&#x60;/&#x60;height&#x60;). Если переданы и &#x60;additional_models&#x60;, и &#x60;additional_model_ids&#x60;, используется &#x60;additional_models&#x60;.
+   * @return additionalModels
+  **/
+  @javax.annotation.Nullable
+  public List<AgentAdditionalModel> getAdditionalModels() {
+    return additionalModels;
+  }
+
+
+  public void setAdditionalModels(List<AgentAdditionalModel> additionalModels) {
+    this.additionalModels = additionalModels;
+  }
+
+
+  public CreateAgentV2 skillIds(List<Integer> skillIds) {
+    
+    this.skillIds = skillIds;
+    return this;
+  }
+
+  public CreateAgentV2 addSkillIdsItem(Integer skillIdsItem) {
+    if (this.skillIds == null) {
+      this.skillIds = new ArrayList<>();
+    }
+    this.skillIds.add(skillIdsItem);
+    return this;
+  }
+
+   /**
+   * ID навыков, которые нужно подключить к агенту сразу после создания (текущие версии навыков). Неизвестные ID пропускаются; ошибка подключения навыков не отменяет создание агента.
+   * @return skillIds
+  **/
+  @javax.annotation.Nullable
+  public List<Integer> getSkillIds() {
+    return skillIds;
+  }
+
+
+  public void setSkillIds(List<Integer> skillIds) {
+    this.skillIds = skillIds;
   }
 
 
@@ -354,16 +482,20 @@ public class CreateAgentV2 {
         Objects.equals(this.description, createAgentV2.description) &&
         Objects.equals(this.accessType, createAgentV2.accessType) &&
         Objects.equals(this.modelId, createAgentV2.modelId) &&
-        Objects.equals(this.tokenLimit, createAgentV2.tokenLimit) &&
         Objects.equals(this.settings, createAgentV2.settings) &&
         Objects.equals(this.projectId, createAgentV2.projectId) &&
+        Objects.equals(this.isWebSearchEnabled, createAgentV2.isWebSearchEnabled) &&
+        Objects.equals(this.moneyLimit, createAgentV2.moneyLimit) &&
+        Objects.equals(this.tokenLimit, createAgentV2.tokenLimit) &&
+        Objects.equals(this.tokenPackageId, createAgentV2.tokenPackageId) &&
         Objects.equals(this.additionalModelIds, createAgentV2.additionalModelIds) &&
-        Objects.equals(this.isWebSearchEnabled, createAgentV2.isWebSearchEnabled);
+        Objects.equals(this.additionalModels, createAgentV2.additionalModels) &&
+        Objects.equals(this.skillIds, createAgentV2.skillIds);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, accessType, modelId, tokenLimit, settings, projectId, additionalModelIds, isWebSearchEnabled);
+    return Objects.hash(name, description, accessType, modelId, settings, projectId, isWebSearchEnabled, moneyLimit, tokenLimit, tokenPackageId, additionalModelIds, additionalModels, skillIds);
   }
 
   @Override
@@ -374,11 +506,15 @@ public class CreateAgentV2 {
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    accessType: ").append(toIndentedString(accessType)).append("\n");
     sb.append("    modelId: ").append(toIndentedString(modelId)).append("\n");
-    sb.append("    tokenLimit: ").append(toIndentedString(tokenLimit)).append("\n");
     sb.append("    settings: ").append(toIndentedString(settings)).append("\n");
     sb.append("    projectId: ").append(toIndentedString(projectId)).append("\n");
-    sb.append("    additionalModelIds: ").append(toIndentedString(additionalModelIds)).append("\n");
     sb.append("    isWebSearchEnabled: ").append(toIndentedString(isWebSearchEnabled)).append("\n");
+    sb.append("    moneyLimit: ").append(toIndentedString(moneyLimit)).append("\n");
+    sb.append("    tokenLimit: ").append(toIndentedString(tokenLimit)).append("\n");
+    sb.append("    tokenPackageId: ").append(toIndentedString(tokenPackageId)).append("\n");
+    sb.append("    additionalModelIds: ").append(toIndentedString(additionalModelIds)).append("\n");
+    sb.append("    additionalModels: ").append(toIndentedString(additionalModels)).append("\n");
+    sb.append("    skillIds: ").append(toIndentedString(skillIds)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -405,11 +541,15 @@ public class CreateAgentV2 {
     openapiFields.add("description");
     openapiFields.add("access_type");
     openapiFields.add("model_id");
-    openapiFields.add("token_limit");
     openapiFields.add("settings");
     openapiFields.add("project_id");
-    openapiFields.add("additional_model_ids");
     openapiFields.add("is_web_search_enabled");
+    openapiFields.add("money_limit");
+    openapiFields.add("token_limit");
+    openapiFields.add("token_package_id");
+    openapiFields.add("additional_model_ids");
+    openapiFields.add("additional_models");
+    openapiFields.add("skill_ids");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -461,6 +601,24 @@ public class CreateAgentV2 {
       // ensure the optional json data is an array if present
       if (jsonObj.get("additional_model_ids") != null && !jsonObj.get("additional_model_ids").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `additional_model_ids` to be an array in the JSON string but got `%s`", jsonObj.get("additional_model_ids").toString()));
+      }
+      if (jsonObj.get("additional_models") != null && !jsonObj.get("additional_models").isJsonNull()) {
+        JsonArray jsonArrayadditionalModels = jsonObj.getAsJsonArray("additional_models");
+        if (jsonArrayadditionalModels != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("additional_models").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `additional_models` to be an array in the JSON string but got `%s`", jsonObj.get("additional_models").toString()));
+          }
+
+          // validate the optional field `additional_models` (array)
+          for (int i = 0; i < jsonArrayadditionalModels.size(); i++) {
+            AgentAdditionalModel.validateJsonElement(jsonArrayadditionalModels.get(i));
+          };
+        }
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("skill_ids") != null && !jsonObj.get("skill_ids").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `skill_ids` to be an array in the JSON string but got `%s`", jsonObj.get("skill_ids").toString()));
       }
   }
 

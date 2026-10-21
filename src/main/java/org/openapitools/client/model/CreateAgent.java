@@ -21,7 +21,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.openapitools.client.model.AgentSettings;
 
 import com.google.gson.Gson;
@@ -50,9 +49,9 @@ import java.util.Set;
 import org.openapitools.client.JSON;
 
 /**
- * Данные для создания AI агента
+ * Данные для создания AI агента (устаревший метод API v1)
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-31T10:55:12.417047Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-21T20:10:29.240516Z[Etc/UTC]")
 public class CreateAgent {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -63,7 +62,7 @@ public class CreateAgent {
   private String description;
 
   /**
-   * Тип доступа к агенту
+   * Тип доступа: &#x60;public&#x60; — агент отвечает анонимным посетителям сайта через виджет; &#x60;private&#x60; — только по токену аккаунта.
    */
   @JsonAdapter(AccessTypeEnum.Adapter.class)
   public enum AccessTypeEnum {
@@ -115,11 +114,7 @@ public class CreateAgent {
 
   public static final String SERIALIZED_NAME_MODEL_ID = "model_id";
   @SerializedName(SERIALIZED_NAME_MODEL_ID)
-  private BigDecimal modelId;
-
-  public static final String SERIALIZED_NAME_TOKEN_PACKAGE_ID = "token_package_id";
-  @SerializedName(SERIALIZED_NAME_TOKEN_PACKAGE_ID)
-  private BigDecimal tokenPackageId;
+  private Integer modelId;
 
   public static final String SERIALIZED_NAME_SETTINGS = "settings";
   @SerializedName(SERIALIZED_NAME_SETTINGS)
@@ -127,7 +122,15 @@ public class CreateAgent {
 
   public static final String SERIALIZED_NAME_PROJECT_ID = "project_id";
   @SerializedName(SERIALIZED_NAME_PROJECT_ID)
-  private BigDecimal projectId;
+  private Integer projectId;
+
+  public static final String SERIALIZED_NAME_IS_WEB_SEARCH_ENABLED = "is_web_search_enabled";
+  @SerializedName(SERIALIZED_NAME_IS_WEB_SEARCH_ENABLED)
+  private Boolean isWebSearchEnabled = false;
+
+  public static final String SERIALIZED_NAME_TOKEN_PACKAGE_ID = "token_package_id";
+  @SerializedName(SERIALIZED_NAME_TOKEN_PACKAGE_ID)
+  private Integer tokenPackageId;
 
   public CreateAgent() {
   }
@@ -181,7 +184,7 @@ public class CreateAgent {
   }
 
    /**
-   * Тип доступа к агенту
+   * Тип доступа: &#x60;public&#x60; — агент отвечает анонимным посетителям сайта через виджет; &#x60;private&#x60; — только по токену аккаунта.
    * @return accessType
   **/
   @javax.annotation.Nonnull
@@ -195,45 +198,24 @@ public class CreateAgent {
   }
 
 
-  public CreateAgent modelId(BigDecimal modelId) {
+  public CreateAgent modelId(Integer modelId) {
     
     this.modelId = modelId;
     return this;
   }
 
    /**
-   * ID модели
+   * ID основной модели агента
    * @return modelId
   **/
   @javax.annotation.Nonnull
-  public BigDecimal getModelId() {
+  public Integer getModelId() {
     return modelId;
   }
 
 
-  public void setModelId(BigDecimal modelId) {
+  public void setModelId(Integer modelId) {
     this.modelId = modelId;
-  }
-
-
-  public CreateAgent tokenPackageId(BigDecimal tokenPackageId) {
-    
-    this.tokenPackageId = tokenPackageId;
-    return this;
-  }
-
-   /**
-   * ID пакета токенов
-   * @return tokenPackageId
-  **/
-  @javax.annotation.Nonnull
-  public BigDecimal getTokenPackageId() {
-    return tokenPackageId;
-  }
-
-
-  public void setTokenPackageId(BigDecimal tokenPackageId) {
-    this.tokenPackageId = tokenPackageId;
   }
 
 
@@ -258,24 +240,66 @@ public class CreateAgent {
   }
 
 
-  public CreateAgent projectId(BigDecimal projectId) {
+  public CreateAgent projectId(Integer projectId) {
     
     this.projectId = projectId;
     return this;
   }
 
    /**
-   * ID проекта
+   * ID проекта, в который нужно добавить агента. По умолчанию — проект по умолчанию.
    * @return projectId
   **/
   @javax.annotation.Nullable
-  public BigDecimal getProjectId() {
+  public Integer getProjectId() {
     return projectId;
   }
 
 
-  public void setProjectId(BigDecimal projectId) {
+  public void setProjectId(Integer projectId) {
     this.projectId = projectId;
+  }
+
+
+  public CreateAgent isWebSearchEnabled(Boolean isWebSearchEnabled) {
+    
+    this.isWebSearchEnabled = isWebSearchEnabled;
+    return this;
+  }
+
+   /**
+   * Включить веб-поиск
+   * @return isWebSearchEnabled
+  **/
+  @javax.annotation.Nullable
+  public Boolean getIsWebSearchEnabled() {
+    return isWebSearchEnabled;
+  }
+
+
+  public void setIsWebSearchEnabled(Boolean isWebSearchEnabled) {
+    this.isWebSearchEnabled = isWebSearchEnabled;
+  }
+
+
+  public CreateAgent tokenPackageId(Integer tokenPackageId) {
+    
+    this.tokenPackageId = tokenPackageId;
+    return this;
+  }
+
+   /**
+   * ID пакета токенов. Обязателен для совместимости, но не учитывается: агент всегда создаётся с поресурсной оплатой.
+   * @return tokenPackageId
+  **/
+  @javax.annotation.Nonnull
+  public Integer getTokenPackageId() {
+    return tokenPackageId;
+  }
+
+
+  public void setTokenPackageId(Integer tokenPackageId) {
+    this.tokenPackageId = tokenPackageId;
   }
 
 
@@ -293,14 +317,15 @@ public class CreateAgent {
         Objects.equals(this.description, createAgent.description) &&
         Objects.equals(this.accessType, createAgent.accessType) &&
         Objects.equals(this.modelId, createAgent.modelId) &&
-        Objects.equals(this.tokenPackageId, createAgent.tokenPackageId) &&
         Objects.equals(this.settings, createAgent.settings) &&
-        Objects.equals(this.projectId, createAgent.projectId);
+        Objects.equals(this.projectId, createAgent.projectId) &&
+        Objects.equals(this.isWebSearchEnabled, createAgent.isWebSearchEnabled) &&
+        Objects.equals(this.tokenPackageId, createAgent.tokenPackageId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, accessType, modelId, tokenPackageId, settings, projectId);
+    return Objects.hash(name, description, accessType, modelId, settings, projectId, isWebSearchEnabled, tokenPackageId);
   }
 
   @Override
@@ -311,9 +336,10 @@ public class CreateAgent {
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    accessType: ").append(toIndentedString(accessType)).append("\n");
     sb.append("    modelId: ").append(toIndentedString(modelId)).append("\n");
-    sb.append("    tokenPackageId: ").append(toIndentedString(tokenPackageId)).append("\n");
     sb.append("    settings: ").append(toIndentedString(settings)).append("\n");
     sb.append("    projectId: ").append(toIndentedString(projectId)).append("\n");
+    sb.append("    isWebSearchEnabled: ").append(toIndentedString(isWebSearchEnabled)).append("\n");
+    sb.append("    tokenPackageId: ").append(toIndentedString(tokenPackageId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -340,17 +366,18 @@ public class CreateAgent {
     openapiFields.add("description");
     openapiFields.add("access_type");
     openapiFields.add("model_id");
-    openapiFields.add("token_package_id");
     openapiFields.add("settings");
     openapiFields.add("project_id");
+    openapiFields.add("is_web_search_enabled");
+    openapiFields.add("token_package_id");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("name");
     openapiRequiredFields.add("access_type");
     openapiRequiredFields.add("model_id");
-    openapiRequiredFields.add("token_package_id");
     openapiRequiredFields.add("settings");
+    openapiRequiredFields.add("token_package_id");
   }
 
  /**

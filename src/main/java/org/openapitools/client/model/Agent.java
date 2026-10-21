@@ -21,11 +21,14 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
+import org.openapitools.client.model.AgentAdditionalModel;
 import org.openapitools.client.model.AgentSettings;
+import org.openapitools.client.model.AgentToolsInner;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -53,13 +56,13 @@ import java.util.Set;
 import org.openapitools.client.JSON;
 
 /**
- * AI Agent
+ * AI агент
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-31T10:55:12.417047Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-21T20:10:29.240516Z[Etc/UTC]")
 public class Agent {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private BigDecimal id;
+  private Integer id;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -69,20 +72,24 @@ public class Agent {
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
 
+  public static final String SERIALIZED_NAME_PROJECT_ID = "project_id";
+  @SerializedName(SERIALIZED_NAME_PROJECT_ID)
+  private Integer projectId;
+
   public static final String SERIALIZED_NAME_MODEL_ID = "model_id";
   @SerializedName(SERIALIZED_NAME_MODEL_ID)
-  private BigDecimal modelId;
+  private Integer modelId;
 
   public static final String SERIALIZED_NAME_PROVIDER_ID = "provider_id";
   @SerializedName(SERIALIZED_NAME_PROVIDER_ID)
-  private BigDecimal providerId;
+  private Integer providerId;
 
   public static final String SERIALIZED_NAME_SETTINGS = "settings";
   @SerializedName(SERIALIZED_NAME_SETTINGS)
   private AgentSettings settings;
 
   /**
-   * Статус агента
+   * Статус агента: - &#x60;active&#x60; — работает; - &#x60;suspended&#x60; — приостановлен владельцем; - &#x60;blocked&#x60; — заблокирован (для агентов с пакетом токенов — закончились токены или подписка); - &#x60;deleted&#x60; — удалён.
    */
   @JsonAdapter(StatusEnum.Adapter.class)
   public enum StatusEnum {
@@ -137,7 +144,7 @@ public class Agent {
   private StatusEnum status;
 
   /**
-   * Тип доступа к агенту
+   * Тип доступа: &#x60;public&#x60; — агент отвечает анонимным посетителям сайта через виджет; &#x60;private&#x60; — только по токену аккаунта.
    */
   @JsonAdapter(AccessTypeEnum.Adapter.class)
   public enum AccessTypeEnum {
@@ -187,58 +194,87 @@ public class Agent {
   @SerializedName(SERIALIZED_NAME_ACCESS_TYPE)
   private AccessTypeEnum accessType;
 
+  public static final String SERIALIZED_NAME_ACCESS_ID = "access_id";
+  @SerializedName(SERIALIZED_NAME_ACCESS_ID)
+  private UUID accessId;
+
+  public static final String SERIALIZED_NAME_TOKEN_LIMIT = "token_limit";
+  @Deprecated
+  @SerializedName(SERIALIZED_NAME_TOKEN_LIMIT)
+  private Integer tokenLimit;
+
   public static final String SERIALIZED_NAME_TOTAL_TOKENS = "total_tokens";
   @SerializedName(SERIALIZED_NAME_TOTAL_TOKENS)
-  private BigDecimal totalTokens;
+  private Integer totalTokens;
 
   public static final String SERIALIZED_NAME_USED_TOKENS = "used_tokens";
   @SerializedName(SERIALIZED_NAME_USED_TOKENS)
-  private BigDecimal usedTokens;
+  private Integer usedTokens;
 
   public static final String SERIALIZED_NAME_REMAINING_TOKENS = "remaining_tokens";
   @SerializedName(SERIALIZED_NAME_REMAINING_TOKENS)
-  private BigDecimal remainingTokens;
+  private Integer remainingTokens;
 
   public static final String SERIALIZED_NAME_TOKEN_PACKAGE_ID = "token_package_id";
   @SerializedName(SERIALIZED_NAME_TOKEN_PACKAGE_ID)
-  private BigDecimal tokenPackageId;
+  private Integer tokenPackageId;
 
   public static final String SERIALIZED_NAME_SUBSCRIPTION_RENEWAL_DATE = "subscription_renewal_date";
   @SerializedName(SERIALIZED_NAME_SUBSCRIPTION_RENEWAL_DATE)
   private OffsetDateTime subscriptionRenewalDate;
 
-  public static final String SERIALIZED_NAME_KNOWLEDGE_BASES_IDS = "knowledge_bases_ids";
-  @SerializedName(SERIALIZED_NAME_KNOWLEDGE_BASES_IDS)
-  private List<BigDecimal> knowledgeBasesIds = new ArrayList<>();
+  public static final String SERIALIZED_NAME_AUTO_BUY_ADDITIONAL_TOKENS = "auto_buy_additional_tokens";
+  @SerializedName(SERIALIZED_NAME_AUTO_BUY_ADDITIONAL_TOKENS)
+  private Boolean autoBuyAdditionalTokens;
 
-  public static final String SERIALIZED_NAME_ACCESS_ID = "access_id";
-  @SerializedName(SERIALIZED_NAME_ACCESS_ID)
-  private BigDecimal accessId;
+  public static final String SERIALIZED_NAME_TOOLS = "tools";
+  @SerializedName(SERIALIZED_NAME_TOOLS)
+  private List<AgentToolsInner> tools = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_ADDITIONAL_MODEL_IDS = "additional_model_ids";
+  @SerializedName(SERIALIZED_NAME_ADDITIONAL_MODEL_IDS)
+  private List<Integer> additionalModelIds = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_ADDITIONAL_MODELS = "additional_models";
+  @SerializedName(SERIALIZED_NAME_ADDITIONAL_MODELS)
+  private List<AgentAdditionalModel> additionalModels = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_IS_WEB_SEARCH_ENABLED = "is_web_search_enabled";
+  @SerializedName(SERIALIZED_NAME_IS_WEB_SEARCH_ENABLED)
+  private Boolean isWebSearchEnabled;
+
+  public static final String SERIALIZED_NAME_AI_GATEWAY_KEY_ID = "ai_gateway_key_id";
+  @SerializedName(SERIALIZED_NAME_AI_GATEWAY_KEY_ID)
+  private UUID aiGatewayKeyId;
 
   public static final String SERIALIZED_NAME_CREATED_AT = "created_at";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
   private OffsetDateTime createdAt;
 
+  public static final String SERIALIZED_NAME_KNOWLEDGE_BASES_IDS = "knowledge_bases_ids";
+  @SerializedName(SERIALIZED_NAME_KNOWLEDGE_BASES_IDS)
+  private List<Integer> knowledgeBasesIds = new ArrayList<>();
+
   public Agent() {
   }
 
-  public Agent id(BigDecimal id) {
+  public Agent id(Integer id) {
     
     this.id = id;
     return this;
   }
 
    /**
-   * Уникальный идентификатор агента
+   * ID агента
    * @return id
   **/
   @javax.annotation.Nonnull
-  public BigDecimal getId() {
+  public Integer getId() {
     return id;
   }
 
 
-  public void setId(BigDecimal id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
@@ -274,7 +310,7 @@ public class Agent {
    * Описание агента
    * @return description
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getDescription() {
     return description;
   }
@@ -285,44 +321,65 @@ public class Agent {
   }
 
 
-  public Agent modelId(BigDecimal modelId) {
+  public Agent projectId(Integer projectId) {
+    
+    this.projectId = projectId;
+    return this;
+  }
+
+   /**
+   * ID проекта, в котором находится агент
+   * @return projectId
+  **/
+  @javax.annotation.Nullable
+  public Integer getProjectId() {
+    return projectId;
+  }
+
+
+  public void setProjectId(Integer projectId) {
+    this.projectId = projectId;
+  }
+
+
+  public Agent modelId(Integer modelId) {
     
     this.modelId = modelId;
     return this;
   }
 
    /**
-   * ID модели
+   * ID основной модели агента
    * @return modelId
   **/
   @javax.annotation.Nonnull
-  public BigDecimal getModelId() {
+  public Integer getModelId() {
     return modelId;
   }
 
 
-  public void setModelId(BigDecimal modelId) {
+  public void setModelId(Integer modelId) {
     this.modelId = modelId;
   }
 
 
-  public Agent providerId(BigDecimal providerId) {
+  public Agent providerId(Integer providerId) {
     
     this.providerId = providerId;
     return this;
   }
 
    /**
-   * ID провайдера
+   * ID провайдера модели
    * @return providerId
   **/
   @javax.annotation.Nonnull
-  public BigDecimal getProviderId() {
+  public Integer getProviderId() {
     return providerId;
   }
 
 
-  public void setProviderId(BigDecimal providerId) {
+  public void setProviderId(Integer providerId) {
     this.providerId = providerId;
   }
 
@@ -355,7 +412,7 @@ public class Agent {
   }
 
    /**
-   * Статус агента
+   * Статус агента: - &#x60;active&#x60; — работает; - &#x60;suspended&#x60; — приостановлен владельцем; - &#x60;blocked&#x60; — заблокирован (для агентов с пакетом токенов — закончились токены или подписка); - &#x60;deleted&#x60; — удалён.
    * @return status
   **/
   @javax.annotation.Nonnull
@@ -376,7 +433,7 @@ public class Agent {
   }
 
    /**
-   * Тип доступа к агенту
+   * Тип доступа: &#x60;public&#x60; — агент отвечает анонимным посетителям сайта через виджет; &#x60;private&#x60; — только по токену аккаунта.
    * @return accessType
   **/
   @javax.annotation.Nonnull
@@ -390,86 +447,132 @@ public class Agent {
   }
 
 
-  public Agent totalTokens(BigDecimal totalTokens) {
+  public Agent accessId(UUID accessId) {
+    
+    this.accessId = accessId;
+    return this;
+  }
+
+   /**
+   * Идентификатор доступа агента. Используется для вызова агента из своих приложений через OpenAI-совместимое API (см. https://agent.timeweb.cloud/docs) и для встраивания виджета.
+   * @return accessId
+  **/
+  @javax.annotation.Nonnull
+  public UUID getAccessId() {
+    return accessId;
+  }
+
+
+  public void setAccessId(UUID accessId) {
+    this.accessId = accessId;
+  }
+
+
+  @Deprecated
+  public Agent tokenLimit(Integer tokenLimit) {
+    
+    this.tokenLimit = tokenLimit;
+    return this;
+  }
+
+   /**
+   * Устарело. Дневной лимит агента в токенах без привязки к модели, если он задан; &#x60;0&#x60; — такого лимита нет. Лимиты в деньгах, по моделям и за другие периоды здесь не отражаются — используйте лимиты агента (&#x60;/api/v1/cloud-ai/agents/{id}/entity-limits&#x60;).
+   * @return tokenLimit
+   * @deprecated
+  **/
+  @Deprecated
+  @javax.annotation.Nonnull
+  public Integer getTokenLimit() {
+    return tokenLimit;
+  }
+
+
+  @Deprecated
+  public void setTokenLimit(Integer tokenLimit) {
+    this.tokenLimit = tokenLimit;
+  }
+
+
+  public Agent totalTokens(Integer totalTokens) {
     
     this.totalTokens = totalTokens;
     return this;
   }
 
    /**
-   * Всего токенов выделено агенту
+   * Всего токенов в пакете. Только для агентов с пакетом токенов (устаревшая схема оплаты).
    * @return totalTokens
   **/
-  @javax.annotation.Nonnull
-  public BigDecimal getTotalTokens() {
+  @javax.annotation.Nullable
+  public Integer getTotalTokens() {
     return totalTokens;
   }
 
 
-  public void setTotalTokens(BigDecimal totalTokens) {
+  public void setTotalTokens(Integer totalTokens) {
     this.totalTokens = totalTokens;
   }
 
 
-  public Agent usedTokens(BigDecimal usedTokens) {
+  public Agent usedTokens(Integer usedTokens) {
     
     this.usedTokens = usedTokens;
     return this;
   }
 
    /**
-   * Использовано токенов
+   * Использовано токенов пакета. Для агентов с поресурсной оплатой — &#x60;null&#x60;.
    * @return usedTokens
   **/
-  @javax.annotation.Nonnull
-  public BigDecimal getUsedTokens() {
+  @javax.annotation.Nullable
+  public Integer getUsedTokens() {
     return usedTokens;
   }
 
 
-  public void setUsedTokens(BigDecimal usedTokens) {
+  public void setUsedTokens(Integer usedTokens) {
     this.usedTokens = usedTokens;
   }
 
 
-  public Agent remainingTokens(BigDecimal remainingTokens) {
+  public Agent remainingTokens(Integer remainingTokens) {
     
     this.remainingTokens = remainingTokens;
     return this;
   }
 
    /**
-   * Осталось токенов
+   * Осталось токенов в пакете. Только для агентов с пакетом токенов.
    * @return remainingTokens
   **/
-  @javax.annotation.Nonnull
-  public BigDecimal getRemainingTokens() {
+  @javax.annotation.Nullable
+  public Integer getRemainingTokens() {
     return remainingTokens;
   }
 
 
-  public void setRemainingTokens(BigDecimal remainingTokens) {
+  public void setRemainingTokens(Integer remainingTokens) {
     this.remainingTokens = remainingTokens;
   }
 
 
-  public Agent tokenPackageId(BigDecimal tokenPackageId) {
+  public Agent tokenPackageId(Integer tokenPackageId) {
     
     this.tokenPackageId = tokenPackageId;
     return this;
   }
 
    /**
-   * ID пакета токенов
+   * ID пакета токенов. Только для агентов с пакетом токенов; у агентов с поресурсной оплатой поле отсутствует.
    * @return tokenPackageId
   **/
-  @javax.annotation.Nonnull
-  public BigDecimal getTokenPackageId() {
+  @javax.annotation.Nullable
+  public Integer getTokenPackageId() {
     return tokenPackageId;
   }
 
 
-  public void setTokenPackageId(BigDecimal tokenPackageId) {
+  public void setTokenPackageId(Integer tokenPackageId) {
     this.tokenPackageId = tokenPackageId;
   }
 
@@ -481,10 +584,10 @@ public class Agent {
   }
 
    /**
-   * Дата обновления подписки
+   * Дата продления подписки на пакет токенов. Только для агентов с пакетом токенов.
    * @return subscriptionRenewalDate
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public OffsetDateTime getSubscriptionRenewalDate() {
     return subscriptionRenewalDate;
   }
@@ -495,53 +598,153 @@ public class Agent {
   }
 
 
-  public Agent knowledgeBasesIds(List<BigDecimal> knowledgeBasesIds) {
+  public Agent autoBuyAdditionalTokens(Boolean autoBuyAdditionalTokens) {
     
-    this.knowledgeBasesIds = knowledgeBasesIds;
+    this.autoBuyAdditionalTokens = autoBuyAdditionalTokens;
     return this;
   }
 
-  public Agent addKnowledgeBasesIdsItem(BigDecimal knowledgeBasesIdsItem) {
-    if (this.knowledgeBasesIds == null) {
-      this.knowledgeBasesIds = new ArrayList<>();
+   /**
+   * Включена ли автоматическая докупка пакетов токенов
+   * @return autoBuyAdditionalTokens
+  **/
+  @javax.annotation.Nonnull
+  public Boolean getAutoBuyAdditionalTokens() {
+    return autoBuyAdditionalTokens;
+  }
+
+
+  public void setAutoBuyAdditionalTokens(Boolean autoBuyAdditionalTokens) {
+    this.autoBuyAdditionalTokens = autoBuyAdditionalTokens;
+  }
+
+
+  public Agent tools(List<AgentToolsInner> tools) {
+    
+    this.tools = tools;
+    return this;
+  }
+
+  public Agent addToolsItem(AgentToolsInner toolsItem) {
+    if (this.tools == null) {
+      this.tools = new ArrayList<>();
     }
-    this.knowledgeBasesIds.add(knowledgeBasesIdsItem);
+    this.tools.add(toolsItem);
     return this;
   }
 
    /**
-   * ID баз знаний, связанных с агентом
-   * @return knowledgeBasesIds
+   * Инструменты, подключённые к агенту
+   * @return tools
   **/
   @javax.annotation.Nonnull
-  public List<BigDecimal> getKnowledgeBasesIds() {
-    return knowledgeBasesIds;
+  public List<AgentToolsInner> getTools() {
+    return tools;
   }
 
 
-  public void setKnowledgeBasesIds(List<BigDecimal> knowledgeBasesIds) {
-    this.knowledgeBasesIds = knowledgeBasesIds;
+  public void setTools(List<AgentToolsInner> tools) {
+    this.tools = tools;
   }
 
 
-  public Agent accessId(BigDecimal accessId) {
+  public Agent additionalModelIds(List<Integer> additionalModelIds) {
     
-    this.accessId = accessId;
+    this.additionalModelIds = additionalModelIds;
+    return this;
+  }
+
+  public Agent addAdditionalModelIdsItem(Integer additionalModelIdsItem) {
+    if (this.additionalModelIds == null) {
+      this.additionalModelIds = new ArrayList<>();
+    }
+    this.additionalModelIds.add(additionalModelIdsItem);
     return this;
   }
 
    /**
-   * ID доступа
-   * @return accessId
+   * ID дополнительных моделей агента
+   * @return additionalModelIds
   **/
   @javax.annotation.Nonnull
-  public BigDecimal getAccessId() {
-    return accessId;
+  public List<Integer> getAdditionalModelIds() {
+    return additionalModelIds;
   }
 
 
-  public void setAccessId(BigDecimal accessId) {
-    this.accessId = accessId;
+  public void setAdditionalModelIds(List<Integer> additionalModelIds) {
+    this.additionalModelIds = additionalModelIds;
+  }
+
+
+  public Agent additionalModels(List<AgentAdditionalModel> additionalModels) {
+    
+    this.additionalModels = additionalModels;
+    return this;
+  }
+
+  public Agent addAdditionalModelsItem(AgentAdditionalModel additionalModelsItem) {
+    if (this.additionalModels == null) {
+      this.additionalModels = new ArrayList<>();
+    }
+    this.additionalModels.add(additionalModelsItem);
+    return this;
+  }
+
+   /**
+   * Дополнительные модели агента с настройками
+   * @return additionalModels
+  **/
+  @javax.annotation.Nonnull
+  public List<AgentAdditionalModel> getAdditionalModels() {
+    return additionalModels;
+  }
+
+
+  public void setAdditionalModels(List<AgentAdditionalModel> additionalModels) {
+    this.additionalModels = additionalModels;
+  }
+
+
+  public Agent isWebSearchEnabled(Boolean isWebSearchEnabled) {
+    
+    this.isWebSearchEnabled = isWebSearchEnabled;
+    return this;
+  }
+
+   /**
+   * Включён ли веб-поиск
+   * @return isWebSearchEnabled
+  **/
+  @javax.annotation.Nonnull
+  public Boolean getIsWebSearchEnabled() {
+    return isWebSearchEnabled;
+  }
+
+
+  public void setIsWebSearchEnabled(Boolean isWebSearchEnabled) {
+    this.isWebSearchEnabled = isWebSearchEnabled;
+  }
+
+
+  public Agent aiGatewayKeyId(UUID aiGatewayKeyId) {
+    
+    this.aiGatewayKeyId = aiGatewayKeyId;
+    return this;
+  }
+
+   /**
+   * ID ключа AI Gateway, к которому привязан агент. &#x60;null&#x60; — агента можно привязать к ключу (см. обновление агента); поле отсутствует — привязка недоступна.
+   * @return aiGatewayKeyId
+  **/
+  @javax.annotation.Nullable
+  public UUID getAiGatewayKeyId() {
+    return aiGatewayKeyId;
+  }
+
+
+  public void setAiGatewayKeyId(UUID aiGatewayKeyId) {
+    this.aiGatewayKeyId = aiGatewayKeyId;
   }
 
 
@@ -566,6 +769,35 @@ public class Agent {
   }
 
 
+  public Agent knowledgeBasesIds(List<Integer> knowledgeBasesIds) {
+    
+    this.knowledgeBasesIds = knowledgeBasesIds;
+    return this;
+  }
+
+  public Agent addKnowledgeBasesIdsItem(Integer knowledgeBasesIdsItem) {
+    if (this.knowledgeBasesIds == null) {
+      this.knowledgeBasesIds = new ArrayList<>();
+    }
+    this.knowledgeBasesIds.add(knowledgeBasesIdsItem);
+    return this;
+  }
+
+   /**
+   * ID баз знаний, подключённых к агенту
+   * @return knowledgeBasesIds
+  **/
+  @javax.annotation.Nonnull
+  public List<Integer> getKnowledgeBasesIds() {
+    return knowledgeBasesIds;
+  }
+
+
+  public void setKnowledgeBasesIds(List<Integer> knowledgeBasesIds) {
+    this.knowledgeBasesIds = knowledgeBasesIds;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -579,24 +811,43 @@ public class Agent {
     return Objects.equals(this.id, agent.id) &&
         Objects.equals(this.name, agent.name) &&
         Objects.equals(this.description, agent.description) &&
+        Objects.equals(this.projectId, agent.projectId) &&
         Objects.equals(this.modelId, agent.modelId) &&
         Objects.equals(this.providerId, agent.providerId) &&
         Objects.equals(this.settings, agent.settings) &&
         Objects.equals(this.status, agent.status) &&
         Objects.equals(this.accessType, agent.accessType) &&
+        Objects.equals(this.accessId, agent.accessId) &&
+        Objects.equals(this.tokenLimit, agent.tokenLimit) &&
         Objects.equals(this.totalTokens, agent.totalTokens) &&
         Objects.equals(this.usedTokens, agent.usedTokens) &&
         Objects.equals(this.remainingTokens, agent.remainingTokens) &&
         Objects.equals(this.tokenPackageId, agent.tokenPackageId) &&
         Objects.equals(this.subscriptionRenewalDate, agent.subscriptionRenewalDate) &&
-        Objects.equals(this.knowledgeBasesIds, agent.knowledgeBasesIds) &&
-        Objects.equals(this.accessId, agent.accessId) &&
-        Objects.equals(this.createdAt, agent.createdAt);
+        Objects.equals(this.autoBuyAdditionalTokens, agent.autoBuyAdditionalTokens) &&
+        Objects.equals(this.tools, agent.tools) &&
+        Objects.equals(this.additionalModelIds, agent.additionalModelIds) &&
+        Objects.equals(this.additionalModels, agent.additionalModels) &&
+        Objects.equals(this.isWebSearchEnabled, agent.isWebSearchEnabled) &&
+        Objects.equals(this.aiGatewayKeyId, agent.aiGatewayKeyId) &&
+        Objects.equals(this.createdAt, agent.createdAt) &&
+        Objects.equals(this.knowledgeBasesIds, agent.knowledgeBasesIds);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, description, modelId, providerId, settings, status, accessType, totalTokens, usedTokens, remainingTokens, tokenPackageId, subscriptionRenewalDate, knowledgeBasesIds, accessId, createdAt);
+    return Objects.hash(id, name, description, projectId, modelId, providerId, settings, status, accessType, accessId, tokenLimit, totalTokens, usedTokens, remainingTokens, tokenPackageId, subscriptionRenewalDate, autoBuyAdditionalTokens, tools, additionalModelIds, additionalModels, isWebSearchEnabled, aiGatewayKeyId, createdAt, knowledgeBasesIds);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -606,19 +857,27 @@ public class Agent {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    projectId: ").append(toIndentedString(projectId)).append("\n");
     sb.append("    modelId: ").append(toIndentedString(modelId)).append("\n");
     sb.append("    providerId: ").append(toIndentedString(providerId)).append("\n");
     sb.append("    settings: ").append(toIndentedString(settings)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    accessType: ").append(toIndentedString(accessType)).append("\n");
+    sb.append("    accessId: ").append(toIndentedString(accessId)).append("\n");
+    sb.append("    tokenLimit: ").append(toIndentedString(tokenLimit)).append("\n");
     sb.append("    totalTokens: ").append(toIndentedString(totalTokens)).append("\n");
     sb.append("    usedTokens: ").append(toIndentedString(usedTokens)).append("\n");
     sb.append("    remainingTokens: ").append(toIndentedString(remainingTokens)).append("\n");
     sb.append("    tokenPackageId: ").append(toIndentedString(tokenPackageId)).append("\n");
     sb.append("    subscriptionRenewalDate: ").append(toIndentedString(subscriptionRenewalDate)).append("\n");
-    sb.append("    knowledgeBasesIds: ").append(toIndentedString(knowledgeBasesIds)).append("\n");
-    sb.append("    accessId: ").append(toIndentedString(accessId)).append("\n");
+    sb.append("    autoBuyAdditionalTokens: ").append(toIndentedString(autoBuyAdditionalTokens)).append("\n");
+    sb.append("    tools: ").append(toIndentedString(tools)).append("\n");
+    sb.append("    additionalModelIds: ").append(toIndentedString(additionalModelIds)).append("\n");
+    sb.append("    additionalModels: ").append(toIndentedString(additionalModels)).append("\n");
+    sb.append("    isWebSearchEnabled: ").append(toIndentedString(isWebSearchEnabled)).append("\n");
+    sb.append("    aiGatewayKeyId: ").append(toIndentedString(aiGatewayKeyId)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    knowledgeBasesIds: ").append(toIndentedString(knowledgeBasesIds)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -644,19 +903,27 @@ public class Agent {
     openapiFields.add("id");
     openapiFields.add("name");
     openapiFields.add("description");
+    openapiFields.add("project_id");
     openapiFields.add("model_id");
     openapiFields.add("provider_id");
     openapiFields.add("settings");
     openapiFields.add("status");
     openapiFields.add("access_type");
+    openapiFields.add("access_id");
+    openapiFields.add("token_limit");
     openapiFields.add("total_tokens");
     openapiFields.add("used_tokens");
     openapiFields.add("remaining_tokens");
     openapiFields.add("token_package_id");
     openapiFields.add("subscription_renewal_date");
-    openapiFields.add("knowledge_bases_ids");
-    openapiFields.add("access_id");
+    openapiFields.add("auto_buy_additional_tokens");
+    openapiFields.add("tools");
+    openapiFields.add("additional_model_ids");
+    openapiFields.add("additional_models");
+    openapiFields.add("is_web_search_enabled");
+    openapiFields.add("ai_gateway_key_id");
     openapiFields.add("created_at");
+    openapiFields.add("knowledge_bases_ids");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -668,14 +935,16 @@ public class Agent {
     openapiRequiredFields.add("settings");
     openapiRequiredFields.add("status");
     openapiRequiredFields.add("access_type");
-    openapiRequiredFields.add("total_tokens");
-    openapiRequiredFields.add("used_tokens");
-    openapiRequiredFields.add("remaining_tokens");
-    openapiRequiredFields.add("token_package_id");
-    openapiRequiredFields.add("subscription_renewal_date");
-    openapiRequiredFields.add("knowledge_bases_ids");
     openapiRequiredFields.add("access_id");
+    openapiRequiredFields.add("token_limit");
+    openapiRequiredFields.add("used_tokens");
+    openapiRequiredFields.add("auto_buy_additional_tokens");
+    openapiRequiredFields.add("tools");
+    openapiRequiredFields.add("additional_model_ids");
+    openapiRequiredFields.add("additional_models");
+    openapiRequiredFields.add("is_web_search_enabled");
     openapiRequiredFields.add("created_at");
+    openapiRequiredFields.add("knowledge_bases_ids");
   }
 
  /**
@@ -709,7 +978,7 @@ public class Agent {
       if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
-      if (!jsonObj.get("description").isJsonPrimitive()) {
+      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
       // validate the required field `settings`
@@ -719,6 +988,38 @@ public class Agent {
       }
       if (!jsonObj.get("access_type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `access_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("access_type").toString()));
+      }
+      if (!jsonObj.get("access_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `access_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("access_id").toString()));
+      }
+      // ensure the json data is an array
+      if (!jsonObj.get("tools").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `tools` to be an array in the JSON string but got `%s`", jsonObj.get("tools").toString()));
+      }
+
+      JsonArray jsonArraytools = jsonObj.getAsJsonArray("tools");
+      // validate the required field `tools` (array)
+      for (int i = 0; i < jsonArraytools.size(); i++) {
+        AgentToolsInner.validateJsonElement(jsonArraytools.get(i));
+      };
+      // ensure the required json array is present
+      if (jsonObj.get("additional_model_ids") == null) {
+        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+      } else if (!jsonObj.get("additional_model_ids").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `additional_model_ids` to be an array in the JSON string but got `%s`", jsonObj.get("additional_model_ids").toString()));
+      }
+      // ensure the json data is an array
+      if (!jsonObj.get("additional_models").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `additional_models` to be an array in the JSON string but got `%s`", jsonObj.get("additional_models").toString()));
+      }
+
+      JsonArray jsonArrayadditionalModels = jsonObj.getAsJsonArray("additional_models");
+      // validate the required field `additional_models` (array)
+      for (int i = 0; i < jsonArrayadditionalModels.size(); i++) {
+        AgentAdditionalModel.validateJsonElement(jsonArrayadditionalModels.get(i));
+      };
+      if ((jsonObj.get("ai_gateway_key_id") != null && !jsonObj.get("ai_gateway_key_id").isJsonNull()) && !jsonObj.get("ai_gateway_key_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ai_gateway_key_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ai_gateway_key_id").toString()));
       }
       // ensure the required json array is present
       if (jsonObj.get("knowledge_bases_ids") == null) {

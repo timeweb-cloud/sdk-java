@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import org.openapitools.client.model.AgentAdditionalModel;
 import org.openapitools.client.model.AgentSettings;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -73,14 +74,6 @@ public class CreateAgentV2Test {
     }
 
     /**
-     * Test the property 'tokenLimit'
-     */
-    @Test
-    public void tokenLimitTest() {
-        // TODO: test tokenLimit
-    }
-
-    /**
      * Test the property 'settings'
      */
     @Test
@@ -97,6 +90,38 @@ public class CreateAgentV2Test {
     }
 
     /**
+     * Test the property 'isWebSearchEnabled'
+     */
+    @Test
+    public void isWebSearchEnabledTest() {
+        // TODO: test isWebSearchEnabled
+    }
+
+    /**
+     * Test the property 'moneyLimit'
+     */
+    @Test
+    public void moneyLimitTest() {
+        // TODO: test moneyLimit
+    }
+
+    /**
+     * Test the property 'tokenLimit'
+     */
+    @Test
+    public void tokenLimitTest() {
+        // TODO: test tokenLimit
+    }
+
+    /**
+     * Test the property 'tokenPackageId'
+     */
+    @Test
+    public void tokenPackageIdTest() {
+        // TODO: test tokenPackageId
+    }
+
+    /**
      * Test the property 'additionalModelIds'
      */
     @Test
@@ -105,11 +130,19 @@ public class CreateAgentV2Test {
     }
 
     /**
-     * Test the property 'isWebSearchEnabled'
+     * Test the property 'additionalModels'
      */
     @Test
-    public void isWebSearchEnabledTest() {
-        // TODO: test isWebSearchEnabled
+    public void additionalModelsTest() {
+        // TODO: test additionalModels
+    }
+
+    /**
+     * Test the property 'skillIds'
+     */
+    @Test
+    public void skillIdsTest() {
+        // TODO: test skillIds
     }
 
 }

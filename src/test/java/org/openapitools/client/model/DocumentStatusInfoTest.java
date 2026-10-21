@@ -63,6 +63,22 @@ public class DocumentStatusInfoTest {
     }
 
     /**
+     * Test the property 'stage'
+     */
+    @Test
+    public void stageTest() {
+        // TODO: test stage
+    }
+
+    /**
+     * Test the property 'traceId'
+     */
+    @Test
+    public void traceIdTest() {
+        // TODO: test traceId
+    }
+
+    /**
      * Test the property 'details'
      */
     @Test

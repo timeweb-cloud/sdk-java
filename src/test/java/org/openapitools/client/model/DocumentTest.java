@@ -19,10 +19,9 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import org.openapitools.client.model.DocumentStatusInfo;
-import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.client.model.IndexingSchedule;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -73,6 +72,22 @@ public class DocumentTest {
     }
 
     /**
+     * Test the property 'type'
+     */
+    @Test
+    public void typeTest() {
+        // TODO: test type
+    }
+
+    /**
+     * Test the property 'indexingSchedule'
+     */
+    @Test
+    public void indexingScheduleTest() {
+        // TODO: test indexingSchedule
+    }
+
+    /**
      * Test the property 'indexingVersion'
      */
     @Test
@@ -86,6 +101,14 @@ public class DocumentTest {
     @Test
     public void statusInfoTest() {
         // TODO: test statusInfo
+    }
+
+    /**
+     * Test the property 'link'
+     */
+    @Test
+    public void linkTest() {
+        // TODO: test link
     }
 
     /**

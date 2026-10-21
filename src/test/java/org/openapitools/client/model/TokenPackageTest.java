@@ -20,7 +20,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
-import org.openapitools.jackson.nullable.JsonNullable;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -52,6 +51,14 @@ public class TokenPackageTest {
     @Test
     public void modelIdTest() {
         // TODO: test modelId
+    }
+
+    /**
+     * Test the property 'serviceTypeId'
+     */
+    @Test
+    public void serviceTypeIdTest() {
+        // TODO: test serviceTypeId
     }
 
     /**

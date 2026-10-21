@@ -19,11 +19,14 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
+import org.openapitools.client.model.AgentAdditionalModel;
 import org.openapitools.client.model.AgentSettings;
+import org.openapitools.client.model.AgentToolsInner;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -63,6 +66,14 @@ public class AgentTest {
     @Test
     public void descriptionTest() {
         // TODO: test description
+    }
+
+    /**
+     * Test the property 'projectId'
+     */
+    @Test
+    public void projectIdTest() {
+        // TODO: test projectId
     }
 
     /**
@@ -106,6 +117,22 @@ public class AgentTest {
     }
 
     /**
+     * Test the property 'accessId'
+     */
+    @Test
+    public void accessIdTest() {
+        // TODO: test accessId
+    }
+
+    /**
+     * Test the property 'tokenLimit'
+     */
+    @Test
+    public void tokenLimitTest() {
+        // TODO: test tokenLimit
+    }
+
+    /**
      * Test the property 'totalTokens'
      */
     @Test
@@ -146,19 +173,51 @@ public class AgentTest {
     }
 
     /**
-     * Test the property 'knowledgeBasesIds'
+     * Test the property 'autoBuyAdditionalTokens'
      */
     @Test
-    public void knowledgeBasesIdsTest() {
-        // TODO: test knowledgeBasesIds
+    public void autoBuyAdditionalTokensTest() {
+        // TODO: test autoBuyAdditionalTokens
     }
 
     /**
-     * Test the property 'accessId'
+     * Test the property 'tools'
      */
     @Test
-    public void accessIdTest() {
-        // TODO: test accessId
+    public void toolsTest() {
+        // TODO: test tools
+    }
+
+    /**
+     * Test the property 'additionalModelIds'
+     */
+    @Test
+    public void additionalModelIdsTest() {
+        // TODO: test additionalModelIds
+    }
+
+    /**
+     * Test the property 'additionalModels'
+     */
+    @Test
+    public void additionalModelsTest() {
+        // TODO: test additionalModels
+    }
+
+    /**
+     * Test the property 'isWebSearchEnabled'
+     */
+    @Test
+    public void isWebSearchEnabledTest() {
+        // TODO: test isWebSearchEnabled
+    }
+
+    /**
+     * Test the property 'aiGatewayKeyId'
+     */
+    @Test
+    public void aiGatewayKeyIdTest() {
+        // TODO: test aiGatewayKeyId
     }
 
     /**
@@ -167,6 +226,14 @@ public class AgentTest {
     @Test
     public void createdAtTest() {
         // TODO: test createdAt
+    }
+
+    /**
+     * Test the property 'knowledgeBasesIds'
+     */
+    @Test
+    public void knowledgeBasesIdsTest() {
+        // TODO: test knowledgeBasesIds
     }
 
 }

@@ -21,8 +21,11 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import org.openapitools.client.model.AgentAdditionalModel;
 import org.openapitools.client.model.AgentModelSettings;
-import org.openapitools.client.model.AgentSettingsWidget;
+import org.openapitools.client.model.AgentWidgetSettings;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -52,7 +55,7 @@ import org.openapitools.client.JSON;
 /**
  * Настройки агента
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-31T10:55:12.417047Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-21T20:10:29.240516Z[Etc/UTC]")
 public class AgentSettings {
   public static final String SERIALIZED_NAME_MODEL = "model";
   @SerializedName(SERIALIZED_NAME_MODEL)
@@ -66,9 +69,21 @@ public class AgentSettings {
   @SerializedName(SERIALIZED_NAME_REFINE_QUERY)
   private Boolean refineQuery;
 
+  public static final String SERIALIZED_NAME_MEMORY_ENABLED = "memory_enabled";
+  @SerializedName(SERIALIZED_NAME_MEMORY_ENABLED)
+  private Boolean memoryEnabled = false;
+
   public static final String SERIALIZED_NAME_WIDGET = "widget";
   @SerializedName(SERIALIZED_NAME_WIDGET)
-  private AgentSettingsWidget widget;
+  private AgentWidgetSettings widget;
+
+  public static final String SERIALIZED_NAME_WEB_SEARCH_ALLOWED_SITES = "web_search_allowed_sites";
+  @SerializedName(SERIALIZED_NAME_WEB_SEARCH_ALLOWED_SITES)
+  private List<String> webSearchAllowedSites;
+
+  public static final String SERIALIZED_NAME_ADDITIONAL_MODELS = "additional_models";
+  @SerializedName(SERIALIZED_NAME_ADDITIONAL_MODELS)
+  private List<AgentAdditionalModel> additionalModels;
 
   public AgentSettings() {
   }
@@ -101,7 +116,7 @@ public class AgentSettings {
   }
 
    /**
-   * Системный промпт
+   * Системный промпт (инструкция) агента
    * @return systemPrompt
   **/
   @javax.annotation.Nonnull
@@ -122,7 +137,7 @@ public class AgentSettings {
   }
 
    /**
-   * Уточнять ли запрос перед обработкой
+   * Уточнять (переформулировать) запрос пользователя перед поиском по базам знаний
    * @return refineQuery
   **/
   @javax.annotation.Nonnull
@@ -136,7 +151,28 @@ public class AgentSettings {
   }
 
 
-  public AgentSettings widget(AgentSettingsWidget widget) {
+  public AgentSettings memoryEnabled(Boolean memoryEnabled) {
+    
+    this.memoryEnabled = memoryEnabled;
+    return this;
+  }
+
+   /**
+   * Запоминать факты о каждом авторизованном пользователе и учитывать их в ответах. В виджете не работает.
+   * @return memoryEnabled
+  **/
+  @javax.annotation.Nullable
+  public Boolean getMemoryEnabled() {
+    return memoryEnabled;
+  }
+
+
+  public void setMemoryEnabled(Boolean memoryEnabled) {
+    this.memoryEnabled = memoryEnabled;
+  }
+
+
+  public AgentSettings widget(AgentWidgetSettings widget) {
     
     this.widget = widget;
     return this;
@@ -147,13 +183,71 @@ public class AgentSettings {
    * @return widget
   **/
   @javax.annotation.Nullable
-  public AgentSettingsWidget getWidget() {
+  public AgentWidgetSettings getWidget() {
     return widget;
   }
 
 
-  public void setWidget(AgentSettingsWidget widget) {
+  public void setWidget(AgentWidgetSettings widget) {
     this.widget = widget;
+  }
+
+
+  public AgentSettings webSearchAllowedSites(List<String> webSearchAllowedSites) {
+    
+    this.webSearchAllowedSites = webSearchAllowedSites;
+    return this;
+  }
+
+  public AgentSettings addWebSearchAllowedSitesItem(String webSearchAllowedSitesItem) {
+    if (this.webSearchAllowedSites == null) {
+      this.webSearchAllowedSites = new ArrayList<>();
+    }
+    this.webSearchAllowedSites.add(webSearchAllowedSitesItem);
+    return this;
+  }
+
+   /**
+   * Домены, которыми ограничивается веб-поиск агента (не более 5). Каждый элемент — домен (&#x60;timeweb.ru&#x60;) или домен с путём (&#x60;timeweb.ru/docs&#x60;). Если поле не передано при обновлении, сохранённый список не меняется.
+   * @return webSearchAllowedSites
+  **/
+  @javax.annotation.Nullable
+  public List<String> getWebSearchAllowedSites() {
+    return webSearchAllowedSites;
+  }
+
+
+  public void setWebSearchAllowedSites(List<String> webSearchAllowedSites) {
+    this.webSearchAllowedSites = webSearchAllowedSites;
+  }
+
+
+  public AgentSettings additionalModels(List<AgentAdditionalModel> additionalModels) {
+    
+    this.additionalModels = additionalModels;
+    return this;
+  }
+
+  public AgentSettings addAdditionalModelsItem(AgentAdditionalModel additionalModelsItem) {
+    if (this.additionalModels == null) {
+      this.additionalModels = new ArrayList<>();
+    }
+    this.additionalModels.add(additionalModelsItem);
+    return this;
+  }
+
+   /**
+   * Настройки дополнительных моделей. Заполняется автоматически из поля &#x60;additional_models&#x60; запроса создания или обновления агента, передавать здесь не нужно.
+   * @return additionalModels
+  **/
+  @javax.annotation.Nullable
+  public List<AgentAdditionalModel> getAdditionalModels() {
+    return additionalModels;
+  }
+
+
+  public void setAdditionalModels(List<AgentAdditionalModel> additionalModels) {
+    this.additionalModels = additionalModels;
   }
 
 
@@ -170,12 +264,15 @@ public class AgentSettings {
     return Objects.equals(this.model, agentSettings.model) &&
         Objects.equals(this.systemPrompt, agentSettings.systemPrompt) &&
         Objects.equals(this.refineQuery, agentSettings.refineQuery) &&
-        Objects.equals(this.widget, agentSettings.widget);
+        Objects.equals(this.memoryEnabled, agentSettings.memoryEnabled) &&
+        Objects.equals(this.widget, agentSettings.widget) &&
+        Objects.equals(this.webSearchAllowedSites, agentSettings.webSearchAllowedSites) &&
+        Objects.equals(this.additionalModels, agentSettings.additionalModels);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(model, systemPrompt, refineQuery, widget);
+    return Objects.hash(model, systemPrompt, refineQuery, memoryEnabled, widget, webSearchAllowedSites, additionalModels);
   }
 
   @Override
@@ -185,7 +282,10 @@ public class AgentSettings {
     sb.append("    model: ").append(toIndentedString(model)).append("\n");
     sb.append("    systemPrompt: ").append(toIndentedString(systemPrompt)).append("\n");
     sb.append("    refineQuery: ").append(toIndentedString(refineQuery)).append("\n");
+    sb.append("    memoryEnabled: ").append(toIndentedString(memoryEnabled)).append("\n");
     sb.append("    widget: ").append(toIndentedString(widget)).append("\n");
+    sb.append("    webSearchAllowedSites: ").append(toIndentedString(webSearchAllowedSites)).append("\n");
+    sb.append("    additionalModels: ").append(toIndentedString(additionalModels)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -211,7 +311,10 @@ public class AgentSettings {
     openapiFields.add("model");
     openapiFields.add("system_prompt");
     openapiFields.add("refine_query");
+    openapiFields.add("memory_enabled");
     openapiFields.add("widget");
+    openapiFields.add("web_search_allowed_sites");
+    openapiFields.add("additional_models");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -248,14 +351,30 @@ public class AgentSettings {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the required field `model`
-      AgentModelSettings.validateJsonElement(jsonObj.get("model"));
       if (!jsonObj.get("system_prompt").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `system_prompt` to be a primitive type in the JSON string but got `%s`", jsonObj.get("system_prompt").toString()));
       }
       // validate the optional field `widget`
       if (jsonObj.get("widget") != null && !jsonObj.get("widget").isJsonNull()) {
-        AgentSettingsWidget.validateJsonElement(jsonObj.get("widget"));
+        AgentWidgetSettings.validateJsonElement(jsonObj.get("widget"));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("web_search_allowed_sites") != null && !jsonObj.get("web_search_allowed_sites").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `web_search_allowed_sites` to be an array in the JSON string but got `%s`", jsonObj.get("web_search_allowed_sites").toString()));
+      }
+      if (jsonObj.get("additional_models") != null && !jsonObj.get("additional_models").isJsonNull()) {
+        JsonArray jsonArrayadditionalModels = jsonObj.getAsJsonArray("additional_models");
+        if (jsonArrayadditionalModels != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("additional_models").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `additional_models` to be an array in the JSON string but got `%s`", jsonObj.get("additional_models").toString()));
+          }
+
+          // validate the optional field `additional_models` (array)
+          for (int i = 0; i < jsonArrayadditionalModels.size(); i++) {
+            AgentAdditionalModel.validateJsonElement(jsonArrayadditionalModels.get(i));
+          };
+        }
       }
   }
 

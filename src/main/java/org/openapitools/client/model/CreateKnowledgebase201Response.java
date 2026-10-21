@@ -51,33 +51,33 @@ import org.openapitools.client.JSON;
 /**
  * CreateKnowledgebase201Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-31T10:55:12.417047Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-21T20:10:29.240516Z[Etc/UTC]")
 public class CreateKnowledgebase201Response {
-  public static final String SERIALIZED_NAME_KNOWLEDGEBASE = "knowledgebase";
-  @SerializedName(SERIALIZED_NAME_KNOWLEDGEBASE)
-  private Knowledgebase knowledgebase;
+  public static final String SERIALIZED_NAME_KNOWLEDGE_BASE = "knowledge_base";
+  @SerializedName(SERIALIZED_NAME_KNOWLEDGE_BASE)
+  private Knowledgebase knowledgeBase;
 
   public CreateKnowledgebase201Response() {
   }
 
-  public CreateKnowledgebase201Response knowledgebase(Knowledgebase knowledgebase) {
+  public CreateKnowledgebase201Response knowledgeBase(Knowledgebase knowledgeBase) {
     
-    this.knowledgebase = knowledgebase;
+    this.knowledgeBase = knowledgeBase;
     return this;
   }
 
    /**
-   * Get knowledgebase
-   * @return knowledgebase
+   * Get knowledgeBase
+   * @return knowledgeBase
   **/
   @javax.annotation.Nonnull
-  public Knowledgebase getKnowledgebase() {
-    return knowledgebase;
+  public Knowledgebase getKnowledgeBase() {
+    return knowledgeBase;
   }
 
 
-  public void setKnowledgebase(Knowledgebase knowledgebase) {
-    this.knowledgebase = knowledgebase;
+  public void setKnowledgeBase(Knowledgebase knowledgeBase) {
+    this.knowledgeBase = knowledgeBase;
   }
 
 
@@ -91,19 +91,19 @@ public class CreateKnowledgebase201Response {
       return false;
     }
     CreateKnowledgebase201Response createKnowledgebase201Response = (CreateKnowledgebase201Response) o;
-    return Objects.equals(this.knowledgebase, createKnowledgebase201Response.knowledgebase);
+    return Objects.equals(this.knowledgeBase, createKnowledgebase201Response.knowledgeBase);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(knowledgebase);
+    return Objects.hash(knowledgeBase);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateKnowledgebase201Response {\n");
-    sb.append("    knowledgebase: ").append(toIndentedString(knowledgebase)).append("\n");
+    sb.append("    knowledgeBase: ").append(toIndentedString(knowledgeBase)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -126,11 +126,11 @@ public class CreateKnowledgebase201Response {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("knowledgebase");
+    openapiFields.add("knowledge_base");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("knowledgebase");
+    openapiRequiredFields.add("knowledge_base");
   }
 
  /**
@@ -161,8 +161,8 @@ public class CreateKnowledgebase201Response {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the required field `knowledgebase`
-      Knowledgebase.validateJsonElement(jsonObj.get("knowledgebase"));
+      // validate the required field `knowledge_base`
+      Knowledgebase.validateJsonElement(jsonObj.get("knowledge_base"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

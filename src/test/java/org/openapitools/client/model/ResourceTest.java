@@ -19,7 +19,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -38,35 +37,35 @@ public class ResourceTest {
     }
 
     /**
-     * Test the property 'requested'
+     * Test the property 'uri'
      */
     @Test
-    public void requestedTest() {
-        // TODO: test requested
+    public void uriTest() {
+        // TODO: test uri
     }
 
     /**
-     * Test the property 'allocatable'
+     * Test the property 'name'
      */
     @Test
-    public void allocatableTest() {
-        // TODO: test allocatable
+    public void nameTest() {
+        // TODO: test name
     }
 
     /**
-     * Test the property 'capacity'
+     * Test the property 'description'
      */
     @Test
-    public void capacityTest() {
-        // TODO: test capacity
+    public void descriptionTest() {
+        // TODO: test description
     }
 
     /**
-     * Test the property 'used'
+     * Test the property 'mimeType'
      */
     @Test
-    public void usedTest() {
-        // TODO: test used
+    public void mimeTypeTest() {
+        // TODO: test mimeType
     }
 
 }

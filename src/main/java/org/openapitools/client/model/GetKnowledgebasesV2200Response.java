@@ -23,7 +23,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import org.openapitools.client.model.GetKnowledgebasesV2200ResponseMeta;
+import org.openapitools.client.model.GetKnowledgebasesV3200ResponseMeta;
 import org.openapitools.client.model.KnowledgebaseV2;
 
 import com.google.gson.Gson;
@@ -54,49 +54,49 @@ import org.openapitools.client.JSON;
 /**
  * GetKnowledgebasesV2200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-31T10:55:12.417047Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-21T20:10:29.240516Z[Etc/UTC]")
 public class GetKnowledgebasesV2200Response {
-  public static final String SERIALIZED_NAME_KNOWLEDGEBASES = "knowledgebases";
-  @SerializedName(SERIALIZED_NAME_KNOWLEDGEBASES)
-  private List<KnowledgebaseV2> knowledgebases = new ArrayList<>();
+  public static final String SERIALIZED_NAME_KNOWLEDGE_BASES = "knowledge_bases";
+  @SerializedName(SERIALIZED_NAME_KNOWLEDGE_BASES)
+  private List<KnowledgebaseV2> knowledgeBases = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_META = "meta";
   @SerializedName(SERIALIZED_NAME_META)
-  private GetKnowledgebasesV2200ResponseMeta meta;
+  private GetKnowledgebasesV3200ResponseMeta meta;
 
   public GetKnowledgebasesV2200Response() {
   }
 
-  public GetKnowledgebasesV2200Response knowledgebases(List<KnowledgebaseV2> knowledgebases) {
+  public GetKnowledgebasesV2200Response knowledgeBases(List<KnowledgebaseV2> knowledgeBases) {
     
-    this.knowledgebases = knowledgebases;
+    this.knowledgeBases = knowledgeBases;
     return this;
   }
 
-  public GetKnowledgebasesV2200Response addKnowledgebasesItem(KnowledgebaseV2 knowledgebasesItem) {
-    if (this.knowledgebases == null) {
-      this.knowledgebases = new ArrayList<>();
+  public GetKnowledgebasesV2200Response addKnowledgeBasesItem(KnowledgebaseV2 knowledgeBasesItem) {
+    if (this.knowledgeBases == null) {
+      this.knowledgeBases = new ArrayList<>();
     }
-    this.knowledgebases.add(knowledgebasesItem);
+    this.knowledgeBases.add(knowledgeBasesItem);
     return this;
   }
 
    /**
-   * Get knowledgebases
-   * @return knowledgebases
+   * Get knowledgeBases
+   * @return knowledgeBases
   **/
   @javax.annotation.Nonnull
-  public List<KnowledgebaseV2> getKnowledgebases() {
-    return knowledgebases;
+  public List<KnowledgebaseV2> getKnowledgeBases() {
+    return knowledgeBases;
   }
 
 
-  public void setKnowledgebases(List<KnowledgebaseV2> knowledgebases) {
-    this.knowledgebases = knowledgebases;
+  public void setKnowledgeBases(List<KnowledgebaseV2> knowledgeBases) {
+    this.knowledgeBases = knowledgeBases;
   }
 
 
-  public GetKnowledgebasesV2200Response meta(GetKnowledgebasesV2200ResponseMeta meta) {
+  public GetKnowledgebasesV2200Response meta(GetKnowledgebasesV3200ResponseMeta meta) {
     
     this.meta = meta;
     return this;
@@ -107,12 +107,12 @@ public class GetKnowledgebasesV2200Response {
    * @return meta
   **/
   @javax.annotation.Nonnull
-  public GetKnowledgebasesV2200ResponseMeta getMeta() {
+  public GetKnowledgebasesV3200ResponseMeta getMeta() {
     return meta;
   }
 
 
-  public void setMeta(GetKnowledgebasesV2200ResponseMeta meta) {
+  public void setMeta(GetKnowledgebasesV3200ResponseMeta meta) {
     this.meta = meta;
   }
 
@@ -127,20 +127,20 @@ public class GetKnowledgebasesV2200Response {
       return false;
     }
     GetKnowledgebasesV2200Response getKnowledgebasesV2200Response = (GetKnowledgebasesV2200Response) o;
-    return Objects.equals(this.knowledgebases, getKnowledgebasesV2200Response.knowledgebases) &&
+    return Objects.equals(this.knowledgeBases, getKnowledgebasesV2200Response.knowledgeBases) &&
         Objects.equals(this.meta, getKnowledgebasesV2200Response.meta);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(knowledgebases, meta);
+    return Objects.hash(knowledgeBases, meta);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetKnowledgebasesV2200Response {\n");
-    sb.append("    knowledgebases: ").append(toIndentedString(knowledgebases)).append("\n");
+    sb.append("    knowledgeBases: ").append(toIndentedString(knowledgeBases)).append("\n");
     sb.append("    meta: ").append(toIndentedString(meta)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -164,12 +164,12 @@ public class GetKnowledgebasesV2200Response {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("knowledgebases");
+    openapiFields.add("knowledge_bases");
     openapiFields.add("meta");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("knowledgebases");
+    openapiRequiredFields.add("knowledge_bases");
     openapiRequiredFields.add("meta");
   }
 
@@ -202,17 +202,17 @@ public class GetKnowledgebasesV2200Response {
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       // ensure the json data is an array
-      if (!jsonObj.get("knowledgebases").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `knowledgebases` to be an array in the JSON string but got `%s`", jsonObj.get("knowledgebases").toString()));
+      if (!jsonObj.get("knowledge_bases").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `knowledge_bases` to be an array in the JSON string but got `%s`", jsonObj.get("knowledge_bases").toString()));
       }
 
-      JsonArray jsonArrayknowledgebases = jsonObj.getAsJsonArray("knowledgebases");
-      // validate the required field `knowledgebases` (array)
-      for (int i = 0; i < jsonArrayknowledgebases.size(); i++) {
-        KnowledgebaseV2.validateJsonElement(jsonArrayknowledgebases.get(i));
+      JsonArray jsonArrayknowledgeBases = jsonObj.getAsJsonArray("knowledge_bases");
+      // validate the required field `knowledge_bases` (array)
+      for (int i = 0; i < jsonArrayknowledgeBases.size(); i++) {
+        KnowledgebaseV2.validateJsonElement(jsonArrayknowledgeBases.get(i));
       };
       // validate the required field `meta`
-      GetKnowledgebasesV2200ResponseMeta.validateJsonElement(jsonObj.get("meta"));
+      GetKnowledgebasesV3200ResponseMeta.validateJsonElement(jsonObj.get("meta"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

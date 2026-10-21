@@ -21,8 +21,11 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
-import org.openapitools.client.model.UpdateAgentSettings;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+import org.openapitools.client.model.AgentAdditionalModel;
+import org.openapitools.client.model.AgentSettings;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -50,9 +53,9 @@ import java.util.Set;
 import org.openapitools.client.JSON;
 
 /**
- * Данные для обновления AI агента
+ * Данные для обновления AI агента. Передавайте только изменяемые поля.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-31T10:55:12.417047Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-21T20:10:29.240516Z[Etc/UTC]")
 public class UpdateAgent {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -63,7 +66,7 @@ public class UpdateAgent {
   private String description;
 
   /**
-   * Тип доступа к агенту
+   * Тип доступа
    */
   @JsonAdapter(AccessTypeEnum.Adapter.class)
   public enum AccessTypeEnum {
@@ -114,7 +117,7 @@ public class UpdateAgent {
   private AccessTypeEnum accessType;
 
   /**
-   * Статус агента
+   * Статус агента: &#x60;suspended&#x60; — приостановить, &#x60;active&#x60; — возобновить. Статус заблокированного или удалённого агента изменить нельзя.
    */
   @JsonAdapter(StatusEnum.Adapter.class)
   public enum StatusEnum {
@@ -164,17 +167,35 @@ public class UpdateAgent {
   @SerializedName(SERIALIZED_NAME_STATUS)
   private StatusEnum status;
 
-  public static final String SERIALIZED_NAME_TOKEN_PACKAGE_ID = "token_package_id";
-  @SerializedName(SERIALIZED_NAME_TOKEN_PACKAGE_ID)
-  private BigDecimal tokenPackageId;
-
   public static final String SERIALIZED_NAME_SETTINGS = "settings";
   @SerializedName(SERIALIZED_NAME_SETTINGS)
-  private UpdateAgentSettings settings;
+  private AgentSettings settings;
 
   public static final String SERIALIZED_NAME_PROJECT_ID = "project_id";
+  @Deprecated
   @SerializedName(SERIALIZED_NAME_PROJECT_ID)
-  private BigDecimal projectId;
+  private Integer projectId;
+
+  public static final String SERIALIZED_NAME_ADDITIONAL_MODEL_IDS = "additional_model_ids";
+  @SerializedName(SERIALIZED_NAME_ADDITIONAL_MODEL_IDS)
+  private List<Integer> additionalModelIds;
+
+  public static final String SERIALIZED_NAME_ADDITIONAL_MODELS = "additional_models";
+  @SerializedName(SERIALIZED_NAME_ADDITIONAL_MODELS)
+  private List<AgentAdditionalModel> additionalModels;
+
+  public static final String SERIALIZED_NAME_IS_WEB_SEARCH_ENABLED = "is_web_search_enabled";
+  @SerializedName(SERIALIZED_NAME_IS_WEB_SEARCH_ENABLED)
+  private Boolean isWebSearchEnabled;
+
+  public static final String SERIALIZED_NAME_AI_GATEWAY_KEY_ID = "ai_gateway_key_id";
+  @SerializedName(SERIALIZED_NAME_AI_GATEWAY_KEY_ID)
+  private UUID aiGatewayKeyId;
+
+  public static final String SERIALIZED_NAME_TOKEN_PACKAGE_ID = "token_package_id";
+  @Deprecated
+  @SerializedName(SERIALIZED_NAME_TOKEN_PACKAGE_ID)
+  private Integer tokenPackageId;
 
   public UpdateAgent() {
   }
@@ -228,7 +249,7 @@ public class UpdateAgent {
   }
 
    /**
-   * Тип доступа к агенту
+   * Тип доступа
    * @return accessType
   **/
   @javax.annotation.Nullable
@@ -249,7 +270,7 @@ public class UpdateAgent {
   }
 
    /**
-   * Статус агента
+   * Статус агента: &#x60;suspended&#x60; — приостановить, &#x60;active&#x60; — возобновить. Статус заблокированного или удалённого агента изменить нельзя.
    * @return status
   **/
   @javax.annotation.Nullable
@@ -263,28 +284,7 @@ public class UpdateAgent {
   }
 
 
-  public UpdateAgent tokenPackageId(BigDecimal tokenPackageId) {
-    
-    this.tokenPackageId = tokenPackageId;
-    return this;
-  }
-
-   /**
-   * ID пакета токенов
-   * @return tokenPackageId
-  **/
-  @javax.annotation.Nullable
-  public BigDecimal getTokenPackageId() {
-    return tokenPackageId;
-  }
-
-
-  public void setTokenPackageId(BigDecimal tokenPackageId) {
-    this.tokenPackageId = tokenPackageId;
-  }
-
-
-  public UpdateAgent settings(UpdateAgentSettings settings) {
+  public UpdateAgent settings(AgentSettings settings) {
     
     this.settings = settings;
     return this;
@@ -295,34 +295,163 @@ public class UpdateAgent {
    * @return settings
   **/
   @javax.annotation.Nullable
-  public UpdateAgentSettings getSettings() {
+  public AgentSettings getSettings() {
     return settings;
   }
 
 
-  public void setSettings(UpdateAgentSettings settings) {
+  public void setSettings(AgentSettings settings) {
     this.settings = settings;
   }
 
 
-  public UpdateAgent projectId(BigDecimal projectId) {
+  @Deprecated
+  public UpdateAgent projectId(Integer projectId) {
     
     this.projectId = projectId;
     return this;
   }
 
    /**
-   * ID проекта
+   * Не используется: перенести агента в другой проект можно методами проектов.
    * @return projectId
+   * @deprecated
   **/
+  @Deprecated
   @javax.annotation.Nullable
-  public BigDecimal getProjectId() {
+  public Integer getProjectId() {
     return projectId;
   }
 
 
-  public void setProjectId(BigDecimal projectId) {
+  @Deprecated
+  public void setProjectId(Integer projectId) {
     this.projectId = projectId;
+  }
+
+
+  public UpdateAgent additionalModelIds(List<Integer> additionalModelIds) {
+    
+    this.additionalModelIds = additionalModelIds;
+    return this;
+  }
+
+  public UpdateAgent addAdditionalModelIdsItem(Integer additionalModelIdsItem) {
+    if (this.additionalModelIds == null) {
+      this.additionalModelIds = new ArrayList<>();
+    }
+    this.additionalModelIds.add(additionalModelIdsItem);
+    return this;
+  }
+
+   /**
+   * ID дополнительных моделей агента (например, для генерации изображений). Список заменяет текущий целиком.
+   * @return additionalModelIds
+  **/
+  @javax.annotation.Nullable
+  public List<Integer> getAdditionalModelIds() {
+    return additionalModelIds;
+  }
+
+
+  public void setAdditionalModelIds(List<Integer> additionalModelIds) {
+    this.additionalModelIds = additionalModelIds;
+  }
+
+
+  public UpdateAgent additionalModels(List<AgentAdditionalModel> additionalModels) {
+    
+    this.additionalModels = additionalModels;
+    return this;
+  }
+
+  public UpdateAgent addAdditionalModelsItem(AgentAdditionalModel additionalModelsItem) {
+    if (this.additionalModels == null) {
+      this.additionalModels = new ArrayList<>();
+    }
+    this.additionalModels.add(additionalModelsItem);
+    return this;
+  }
+
+   /**
+   * Дополнительные модели вместе с настройками (для моделей генерации изображений — &#x60;width&#x60;/&#x60;height&#x60;). Если переданы и &#x60;additional_models&#x60;, и &#x60;additional_model_ids&#x60;, используется &#x60;additional_models&#x60;.
+   * @return additionalModels
+  **/
+  @javax.annotation.Nullable
+  public List<AgentAdditionalModel> getAdditionalModels() {
+    return additionalModels;
+  }
+
+
+  public void setAdditionalModels(List<AgentAdditionalModel> additionalModels) {
+    this.additionalModels = additionalModels;
+  }
+
+
+  public UpdateAgent isWebSearchEnabled(Boolean isWebSearchEnabled) {
+    
+    this.isWebSearchEnabled = isWebSearchEnabled;
+    return this;
+  }
+
+   /**
+   * Включить или выключить веб-поиск
+   * @return isWebSearchEnabled
+  **/
+  @javax.annotation.Nullable
+  public Boolean getIsWebSearchEnabled() {
+    return isWebSearchEnabled;
+  }
+
+
+  public void setIsWebSearchEnabled(Boolean isWebSearchEnabled) {
+    this.isWebSearchEnabled = isWebSearchEnabled;
+  }
+
+
+  public UpdateAgent aiGatewayKeyId(UUID aiGatewayKeyId) {
+    
+    this.aiGatewayKeyId = aiGatewayKeyId;
+    return this;
+  }
+
+   /**
+   * ID ключа AI Gateway, к которому нужно привязать агента. Привязка доступна, только если в ответе агента &#x60;ai_gateway_key_id&#x60; равен &#x60;null&#x60; (агент без баз знаний, инструментов и интеграций, созданный до 9 октября 2026 года), и делается один раз. При первой привязке на аккаунт однократно начисляется временная скидка 10% на запросы через ключи AI Gateway.
+   * @return aiGatewayKeyId
+  **/
+  @javax.annotation.Nullable
+  public UUID getAiGatewayKeyId() {
+    return aiGatewayKeyId;
+  }
+
+
+  public void setAiGatewayKeyId(UUID aiGatewayKeyId) {
+    this.aiGatewayKeyId = aiGatewayKeyId;
+  }
+
+
+  @Deprecated
+  public UpdateAgent tokenPackageId(Integer tokenPackageId) {
+    
+    this.tokenPackageId = tokenPackageId;
+    return this;
+  }
+
+   /**
+   * Новый пакет токенов. Только для агентов с пакетом токенов (устаревшая схема оплаты): пакет должен относиться к модели агента и быть не меньше текущего, его стоимость сразу списывается с баланса.
+   * @return tokenPackageId
+   * @deprecated
+  **/
+  @Deprecated
+  @javax.annotation.Nullable
+  public Integer getTokenPackageId() {
+    return tokenPackageId;
+  }
+
+
+  @Deprecated
+  public void setTokenPackageId(Integer tokenPackageId) {
+    this.tokenPackageId = tokenPackageId;
   }
 
 
@@ -340,14 +469,18 @@ public class UpdateAgent {
         Objects.equals(this.description, updateAgent.description) &&
         Objects.equals(this.accessType, updateAgent.accessType) &&
         Objects.equals(this.status, updateAgent.status) &&
-        Objects.equals(this.tokenPackageId, updateAgent.tokenPackageId) &&
         Objects.equals(this.settings, updateAgent.settings) &&
-        Objects.equals(this.projectId, updateAgent.projectId);
+        Objects.equals(this.projectId, updateAgent.projectId) &&
+        Objects.equals(this.additionalModelIds, updateAgent.additionalModelIds) &&
+        Objects.equals(this.additionalModels, updateAgent.additionalModels) &&
+        Objects.equals(this.isWebSearchEnabled, updateAgent.isWebSearchEnabled) &&
+        Objects.equals(this.aiGatewayKeyId, updateAgent.aiGatewayKeyId) &&
+        Objects.equals(this.tokenPackageId, updateAgent.tokenPackageId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, accessType, status, tokenPackageId, settings, projectId);
+    return Objects.hash(name, description, accessType, status, settings, projectId, additionalModelIds, additionalModels, isWebSearchEnabled, aiGatewayKeyId, tokenPackageId);
   }
 
   @Override
@@ -358,9 +491,13 @@ public class UpdateAgent {
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    accessType: ").append(toIndentedString(accessType)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    tokenPackageId: ").append(toIndentedString(tokenPackageId)).append("\n");
     sb.append("    settings: ").append(toIndentedString(settings)).append("\n");
     sb.append("    projectId: ").append(toIndentedString(projectId)).append("\n");
+    sb.append("    additionalModelIds: ").append(toIndentedString(additionalModelIds)).append("\n");
+    sb.append("    additionalModels: ").append(toIndentedString(additionalModels)).append("\n");
+    sb.append("    isWebSearchEnabled: ").append(toIndentedString(isWebSearchEnabled)).append("\n");
+    sb.append("    aiGatewayKeyId: ").append(toIndentedString(aiGatewayKeyId)).append("\n");
+    sb.append("    tokenPackageId: ").append(toIndentedString(tokenPackageId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -387,9 +524,13 @@ public class UpdateAgent {
     openapiFields.add("description");
     openapiFields.add("access_type");
     openapiFields.add("status");
-    openapiFields.add("token_package_id");
     openapiFields.add("settings");
     openapiFields.add("project_id");
+    openapiFields.add("additional_model_ids");
+    openapiFields.add("additional_models");
+    openapiFields.add("is_web_search_enabled");
+    openapiFields.add("ai_gateway_key_id");
+    openapiFields.add("token_package_id");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -430,7 +571,28 @@ public class UpdateAgent {
       }
       // validate the optional field `settings`
       if (jsonObj.get("settings") != null && !jsonObj.get("settings").isJsonNull()) {
-        UpdateAgentSettings.validateJsonElement(jsonObj.get("settings"));
+        AgentSettings.validateJsonElement(jsonObj.get("settings"));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("additional_model_ids") != null && !jsonObj.get("additional_model_ids").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `additional_model_ids` to be an array in the JSON string but got `%s`", jsonObj.get("additional_model_ids").toString()));
+      }
+      if (jsonObj.get("additional_models") != null && !jsonObj.get("additional_models").isJsonNull()) {
+        JsonArray jsonArrayadditionalModels = jsonObj.getAsJsonArray("additional_models");
+        if (jsonArrayadditionalModels != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("additional_models").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `additional_models` to be an array in the JSON string but got `%s`", jsonObj.get("additional_models").toString()));
+          }
+
+          // validate the optional field `additional_models` (array)
+          for (int i = 0; i < jsonArrayadditionalModels.size(); i++) {
+            AgentAdditionalModel.validateJsonElement(jsonArrayadditionalModels.get(i));
+          };
+        }
+      }
+      if ((jsonObj.get("ai_gateway_key_id") != null && !jsonObj.get("ai_gateway_key_id").isJsonNull()) && !jsonObj.get("ai_gateway_key_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ai_gateway_key_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ai_gateway_key_id").toString()));
       }
   }
 

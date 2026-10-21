@@ -27,9 +27,10 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import org.openapitools.client.model.AddTokenPackage;
+import org.openapitools.client.model.CreateDocument;
 import org.openapitools.client.model.CreateKnowledgebase;
 import org.openapitools.client.model.CreateKnowledgebase201Response;
+import org.openapitools.client.model.CreateKnowledgebaseDocument201Response;
 import java.io.File;
 import org.openapitools.client.model.GetAccountStatus403Response;
 import org.openapitools.client.model.GetFinances400Response;
@@ -38,12 +39,15 @@ import org.openapitools.client.model.GetFinances429Response;
 import org.openapitools.client.model.GetFinances500Response;
 import org.openapitools.client.model.GetImage404Response;
 import org.openapitools.client.model.GetKnowledgebaseDocumentsV2200Response;
-import org.openapitools.client.model.GetKnowledgebaseStatistics200Response;
+import org.openapitools.client.model.GetKnowledgebaseV3200Response;
 import org.openapitools.client.model.GetKnowledgebases200Response;
 import org.openapitools.client.model.GetKnowledgebasesV2200Response;
-import java.time.OffsetDateTime;
+import org.openapitools.client.model.GetKnowledgebasesV3200Response;
+import org.openapitools.client.model.KnowledgebaseAddTokenPackage;
+import org.openapitools.client.model.LinkKnowledgebase;
+import org.openapitools.client.model.UpdateDocument;
 import org.openapitools.client.model.UpdateKnowledgebase;
-import org.openapitools.client.model.UploadFilesToKnowledgebase200Response;
+import org.openapitools.client.model.UploadResult;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -91,14 +95,14 @@ public class KnowledgeBasesApi {
     /**
      * Build call for addAdditionalTokenPackageToKnowledgebase
      * @param id ID базы знаний (required)
-     * @param addTokenPackage  (optional)
+     * @param knowledgebaseAddTokenPackage  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Дополнительный пакет токенов успешно добавлен </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Пакеты токенов куплены </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -107,7 +111,7 @@ public class KnowledgeBasesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call addAdditionalTokenPackageToKnowledgebaseCall(Integer id, AddTokenPackage addTokenPackage, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call addAdditionalTokenPackageToKnowledgebaseCall(Integer id, KnowledgebaseAddTokenPackage knowledgebaseAddTokenPackage, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -121,7 +125,7 @@ public class KnowledgeBasesApi {
             basePath = null;
         }
 
-        Object localVarPostBody = addTokenPackage;
+        Object localVarPostBody = knowledgebaseAddTokenPackage;
 
         // create path and map variables
         String localVarPath = "/api/v1/cloud-ai/knowledge-bases/{id}/add-additional-token-package"
@@ -154,26 +158,26 @@ public class KnowledgeBasesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call addAdditionalTokenPackageToKnowledgebaseValidateBeforeCall(Integer id, AddTokenPackage addTokenPackage, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call addAdditionalTokenPackageToKnowledgebaseValidateBeforeCall(Integer id, KnowledgebaseAddTokenPackage knowledgebaseAddTokenPackage, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling addAdditionalTokenPackageToKnowledgebase(Async)");
         }
 
-        return addAdditionalTokenPackageToKnowledgebaseCall(id, addTokenPackage, _callback);
+        return addAdditionalTokenPackageToKnowledgebaseCall(id, knowledgebaseAddTokenPackage, _callback);
 
     }
 
     /**
-     * Добавление дополнительного пакета токенов
-     * Чтобы добавить дополнительный пакет токенов для базы знаний, отправьте POST-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/add-additional-token-package&#x60;.
+     * Покупка дополнительных пакетов токенов
+     * Чтобы докупить токены для базы знаний, отправьте POST-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/add-additional-token-package&#x60;.  Покупается дополнительный пакет (&#x60;package_type: additional&#x60;) из &#x60;GET /api/v1/cloud-ai/token-packages/knowledge-bases&#x60; в количестве &#x60;count&#x60;. Стоимость списывается с баланса, токены добавляются к текущему периоду подписки, заблокированная база знаний разблокируется.  Возможные ошибки: - &#x60;400 insufficient_balance&#x60; — на балансе недостаточно средств - &#x60;400 subscription_expired&#x60; — база знаний заблокирована и дата продления подписки прошла: продлите подписку в панели управления - &#x60;404 additional_token_package_not_found&#x60; — дополнительный пакет недоступен
      * @param id ID базы знаний (required)
-     * @param addTokenPackage  (optional)
+     * @param knowledgebaseAddTokenPackage  (optional)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Дополнительный пакет токенов успешно добавлен </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Пакеты токенов куплены </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -182,21 +186,21 @@ public class KnowledgeBasesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public void addAdditionalTokenPackageToKnowledgebase(Integer id, AddTokenPackage addTokenPackage) throws ApiException {
-        addAdditionalTokenPackageToKnowledgebaseWithHttpInfo(id, addTokenPackage);
+    public void addAdditionalTokenPackageToKnowledgebase(Integer id, KnowledgebaseAddTokenPackage knowledgebaseAddTokenPackage) throws ApiException {
+        addAdditionalTokenPackageToKnowledgebaseWithHttpInfo(id, knowledgebaseAddTokenPackage);
     }
 
     /**
-     * Добавление дополнительного пакета токенов
-     * Чтобы добавить дополнительный пакет токенов для базы знаний, отправьте POST-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/add-additional-token-package&#x60;.
+     * Покупка дополнительных пакетов токенов
+     * Чтобы докупить токены для базы знаний, отправьте POST-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/add-additional-token-package&#x60;.  Покупается дополнительный пакет (&#x60;package_type: additional&#x60;) из &#x60;GET /api/v1/cloud-ai/token-packages/knowledge-bases&#x60; в количестве &#x60;count&#x60;. Стоимость списывается с баланса, токены добавляются к текущему периоду подписки, заблокированная база знаний разблокируется.  Возможные ошибки: - &#x60;400 insufficient_balance&#x60; — на балансе недостаточно средств - &#x60;400 subscription_expired&#x60; — база знаний заблокирована и дата продления подписки прошла: продлите подписку в панели управления - &#x60;404 additional_token_package_not_found&#x60; — дополнительный пакет недоступен
      * @param id ID базы знаний (required)
-     * @param addTokenPackage  (optional)
+     * @param knowledgebaseAddTokenPackage  (optional)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Дополнительный пакет токенов успешно добавлен </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Пакеты токенов куплены </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -205,23 +209,23 @@ public class KnowledgeBasesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> addAdditionalTokenPackageToKnowledgebaseWithHttpInfo(Integer id, AddTokenPackage addTokenPackage) throws ApiException {
-        okhttp3.Call localVarCall = addAdditionalTokenPackageToKnowledgebaseValidateBeforeCall(id, addTokenPackage, null);
+    public ApiResponse<Void> addAdditionalTokenPackageToKnowledgebaseWithHttpInfo(Integer id, KnowledgebaseAddTokenPackage knowledgebaseAddTokenPackage) throws ApiException {
+        okhttp3.Call localVarCall = addAdditionalTokenPackageToKnowledgebaseValidateBeforeCall(id, knowledgebaseAddTokenPackage, null);
         return localVarApiClient.execute(localVarCall);
     }
 
     /**
-     * Добавление дополнительного пакета токенов (asynchronously)
-     * Чтобы добавить дополнительный пакет токенов для базы знаний, отправьте POST-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/add-additional-token-package&#x60;.
+     * Покупка дополнительных пакетов токенов (asynchronously)
+     * Чтобы докупить токены для базы знаний, отправьте POST-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/add-additional-token-package&#x60;.  Покупается дополнительный пакет (&#x60;package_type: additional&#x60;) из &#x60;GET /api/v1/cloud-ai/token-packages/knowledge-bases&#x60; в количестве &#x60;count&#x60;. Стоимость списывается с баланса, токены добавляются к текущему периоду подписки, заблокированная база знаний разблокируется.  Возможные ошибки: - &#x60;400 insufficient_balance&#x60; — на балансе недостаточно средств - &#x60;400 subscription_expired&#x60; — база знаний заблокирована и дата продления подписки прошла: продлите подписку в панели управления - &#x60;404 additional_token_package_not_found&#x60; — дополнительный пакет недоступен
      * @param id ID базы знаний (required)
-     * @param addTokenPackage  (optional)
+     * @param knowledgebaseAddTokenPackage  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Дополнительный пакет токенов успешно добавлен </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Пакеты токенов куплены </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -230,9 +234,9 @@ public class KnowledgeBasesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call addAdditionalTokenPackageToKnowledgebaseAsync(Integer id, AddTokenPackage addTokenPackage, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call addAdditionalTokenPackageToKnowledgebaseAsync(Integer id, KnowledgebaseAddTokenPackage knowledgebaseAddTokenPackage, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = addAdditionalTokenPackageToKnowledgebaseValidateBeforeCall(id, addTokenPackage, _callback);
+        okhttp3.Call localVarCall = addAdditionalTokenPackageToKnowledgebaseValidateBeforeCall(id, knowledgebaseAddTokenPackage, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
@@ -245,10 +249,11 @@ public class KnowledgeBasesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Объект JSON c ключом &#x60;knowledgebase&#x60; </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Объект JSON c ключом &#x60;knowledge_base&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -311,17 +316,18 @@ public class KnowledgeBasesApi {
 
     /**
      * Создание базы знаний
-     * Чтобы создать базу знаний, отправьте POST-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases&#x60;, задав необходимые атрибуты.  База знаний будет создана с использованием предоставленной информации. Тело ответа будет содержать объект JSON с информацией о созданной базе знаний.
+     * Чтобы создать базу знаний, отправьте POST-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases&#x60;, задав необходимые атрибуты.  Для базы знаний в вашем аккаунте создаётся кластер базы данных OpenSearch по выбранному тарифу в указанной приватной сети, а с баланса сразу списывается стоимость пакета токенов. Подписка продлевается автоматически раз в период пакета.  Пока кластер создаётся, база знаний находится в статусе &#x60;creating&#x60;; документы, добавленные в это время, будут проиндексированы после перехода в &#x60;active&#x60;.  Возможные ошибки: - &#x60;404 token_package_not_found&#x60; — пакет токенов не найден или недоступен - &#x60;400 invalid_token_package_type&#x60; — пакет не является базовым пакетом для баз знаний - &#x60;400 insufficient_balance&#x60; — на балансе недостаточно средств для оплаты пакета  Тело ответа будет представлять собой объект JSON с ключом &#x60;knowledge_base&#x60;.
      * @param createKnowledgebase  (required)
      * @return CreateKnowledgebase201Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Объект JSON c ключом &#x60;knowledgebase&#x60; </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Объект JSON c ключом &#x60;knowledge_base&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -333,17 +339,18 @@ public class KnowledgeBasesApi {
 
     /**
      * Создание базы знаний
-     * Чтобы создать базу знаний, отправьте POST-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases&#x60;, задав необходимые атрибуты.  База знаний будет создана с использованием предоставленной информации. Тело ответа будет содержать объект JSON с информацией о созданной базе знаний.
+     * Чтобы создать базу знаний, отправьте POST-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases&#x60;, задав необходимые атрибуты.  Для базы знаний в вашем аккаунте создаётся кластер базы данных OpenSearch по выбранному тарифу в указанной приватной сети, а с баланса сразу списывается стоимость пакета токенов. Подписка продлевается автоматически раз в период пакета.  Пока кластер создаётся, база знаний находится в статусе &#x60;creating&#x60;; документы, добавленные в это время, будут проиндексированы после перехода в &#x60;active&#x60;.  Возможные ошибки: - &#x60;404 token_package_not_found&#x60; — пакет токенов не найден или недоступен - &#x60;400 invalid_token_package_type&#x60; — пакет не является базовым пакетом для баз знаний - &#x60;400 insufficient_balance&#x60; — на балансе недостаточно средств для оплаты пакета  Тело ответа будет представлять собой объект JSON с ключом &#x60;knowledge_base&#x60;.
      * @param createKnowledgebase  (required)
      * @return ApiResponse&lt;CreateKnowledgebase201Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Объект JSON c ключом &#x60;knowledgebase&#x60; </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Объект JSON c ключом &#x60;knowledge_base&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -356,7 +363,7 @@ public class KnowledgeBasesApi {
 
     /**
      * Создание базы знаний (asynchronously)
-     * Чтобы создать базу знаний, отправьте POST-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases&#x60;, задав необходимые атрибуты.  База знаний будет создана с использованием предоставленной информации. Тело ответа будет содержать объект JSON с информацией о созданной базе знаний.
+     * Чтобы создать базу знаний, отправьте POST-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases&#x60;, задав необходимые атрибуты.  Для базы знаний в вашем аккаунте создаётся кластер базы данных OpenSearch по выбранному тарифу в указанной приватной сети, а с баланса сразу списывается стоимость пакета токенов. Подписка продлевается автоматически раз в период пакета.  Пока кластер создаётся, база знаний находится в статусе &#x60;creating&#x60;; документы, добавленные в это время, будут проиндексированы после перехода в &#x60;active&#x60;.  Возможные ошибки: - &#x60;404 token_package_not_found&#x60; — пакет токенов не найден или недоступен - &#x60;400 invalid_token_package_type&#x60; — пакет не является базовым пакетом для баз знаний - &#x60;400 insufficient_balance&#x60; — на балансе недостаточно средств для оплаты пакета  Тело ответа будет представлять собой объект JSON с ключом &#x60;knowledge_base&#x60;.
      * @param createKnowledgebase  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -364,10 +371,11 @@ public class KnowledgeBasesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Объект JSON c ключом &#x60;knowledgebase&#x60; </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Объект JSON c ключом &#x60;knowledge_base&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -376,6 +384,163 @@ public class KnowledgeBasesApi {
 
         okhttp3.Call localVarCall = createKnowledgebaseValidateBeforeCall(createKnowledgebase, _callback);
         Type localVarReturnType = new TypeToken<CreateKnowledgebase201Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createKnowledgebaseDocument
+     * @param id ID базы знаний (required)
+     * @param createDocument  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Объект JSON c ключом &#x60;document&#x60; </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createKnowledgebaseDocumentCall(Integer id, CreateDocument createDocument, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = createDocument;
+
+        // create path and map variables
+        String localVarPath = "/api/v1/cloud-ai/knowledge-bases/{id}/documents"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "Bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createKnowledgebaseDocumentValidateBeforeCall(Integer id, CreateDocument createDocument, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling createKnowledgebaseDocument(Async)");
+        }
+
+        // verify the required parameter 'createDocument' is set
+        if (createDocument == null) {
+            throw new ApiException("Missing the required parameter 'createDocument' when calling createKnowledgebaseDocument(Async)");
+        }
+
+        return createKnowledgebaseDocumentCall(id, createDocument, _callback);
+
+    }
+
+    /**
+     * Добавление документа по ссылке
+     * Чтобы добавить в базу знаний документ по ссылке, отправьте POST-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/documents&#x60;.  Перед добавлением выполняется HEAD-запрос к &#x60;url&#x60;: адрес должен быть публично доступен, а ответ — содержать заголовок &#x60;Content-Type&#x60; одного из поддерживаемых форматов (текст, Markdown, HTML, XML, CSV, PDF, DOC, DOCX, XLS, XLSX; JSON не поддерживается). Документ сразу ставится в очередь на индексацию. Чтобы содержимое по ссылке переиндексировалось автоматически, задайте &#x60;indexing_schedule&#x60;.  Возможные ошибки: - &#x60;400 url_is_not_accessible&#x60; — адрес недоступен или вернул ошибку - &#x60;400 unsupported_file_type&#x60; — неподдерживаемый &#x60;Content-Type&#x60;  Тело ответа будет представлять собой объект JSON с ключом &#x60;document&#x60;.
+     * @param id ID базы знаний (required)
+     * @param createDocument  (required)
+     * @return CreateKnowledgebaseDocument201Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Объект JSON c ключом &#x60;document&#x60; </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateKnowledgebaseDocument201Response createKnowledgebaseDocument(Integer id, CreateDocument createDocument) throws ApiException {
+        ApiResponse<CreateKnowledgebaseDocument201Response> localVarResp = createKnowledgebaseDocumentWithHttpInfo(id, createDocument);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Добавление документа по ссылке
+     * Чтобы добавить в базу знаний документ по ссылке, отправьте POST-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/documents&#x60;.  Перед добавлением выполняется HEAD-запрос к &#x60;url&#x60;: адрес должен быть публично доступен, а ответ — содержать заголовок &#x60;Content-Type&#x60; одного из поддерживаемых форматов (текст, Markdown, HTML, XML, CSV, PDF, DOC, DOCX, XLS, XLSX; JSON не поддерживается). Документ сразу ставится в очередь на индексацию. Чтобы содержимое по ссылке переиндексировалось автоматически, задайте &#x60;indexing_schedule&#x60;.  Возможные ошибки: - &#x60;400 url_is_not_accessible&#x60; — адрес недоступен или вернул ошибку - &#x60;400 unsupported_file_type&#x60; — неподдерживаемый &#x60;Content-Type&#x60;  Тело ответа будет представлять собой объект JSON с ключом &#x60;document&#x60;.
+     * @param id ID базы знаний (required)
+     * @param createDocument  (required)
+     * @return ApiResponse&lt;CreateKnowledgebaseDocument201Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Объект JSON c ключом &#x60;document&#x60; </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateKnowledgebaseDocument201Response> createKnowledgebaseDocumentWithHttpInfo(Integer id, CreateDocument createDocument) throws ApiException {
+        okhttp3.Call localVarCall = createKnowledgebaseDocumentValidateBeforeCall(id, createDocument, null);
+        Type localVarReturnType = new TypeToken<CreateKnowledgebaseDocument201Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Добавление документа по ссылке (asynchronously)
+     * Чтобы добавить в базу знаний документ по ссылке, отправьте POST-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/documents&#x60;.  Перед добавлением выполняется HEAD-запрос к &#x60;url&#x60;: адрес должен быть публично доступен, а ответ — содержать заголовок &#x60;Content-Type&#x60; одного из поддерживаемых форматов (текст, Markdown, HTML, XML, CSV, PDF, DOC, DOCX, XLS, XLSX; JSON не поддерживается). Документ сразу ставится в очередь на индексацию. Чтобы содержимое по ссылке переиндексировалось автоматически, задайте &#x60;indexing_schedule&#x60;.  Возможные ошибки: - &#x60;400 url_is_not_accessible&#x60; — адрес недоступен или вернул ошибку - &#x60;400 unsupported_file_type&#x60; — неподдерживаемый &#x60;Content-Type&#x60;  Тело ответа будет представлять собой объект JSON с ключом &#x60;document&#x60;.
+     * @param id ID базы знаний (required)
+     * @param createDocument  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Объект JSON c ключом &#x60;document&#x60; </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createKnowledgebaseDocumentAsync(Integer id, CreateDocument createDocument, final ApiCallback<CreateKnowledgebaseDocument201Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createKnowledgebaseDocumentValidateBeforeCall(id, createDocument, _callback);
+        Type localVarReturnType = new TypeToken<CreateKnowledgebaseDocument201Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -389,7 +554,7 @@ public class KnowledgeBasesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Документ успешно удален </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Документ удалён </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -462,14 +627,14 @@ public class KnowledgeBasesApi {
 
     /**
      * Удаление документа из базы знаний
-     * Чтобы удалить документ из базы знаний, отправьте DELETE-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id}&#x60;.
+     * Чтобы удалить документ из базы знаний, отправьте DELETE-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id}&#x60;.  Документ удаляется вместе с его фрагментами в поисковом индексе.
      * @param id ID базы знаний (required)
      * @param documentId ID документа (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Документ успешно удален </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Документ удалён </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -484,7 +649,7 @@ public class KnowledgeBasesApi {
 
     /**
      * Удаление документа из базы знаний
-     * Чтобы удалить документ из базы знаний, отправьте DELETE-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id}&#x60;.
+     * Чтобы удалить документ из базы знаний, отправьте DELETE-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id}&#x60;.  Документ удаляется вместе с его фрагментами в поисковом индексе.
      * @param id ID базы знаний (required)
      * @param documentId ID документа (required)
      * @return ApiResponse&lt;Void&gt;
@@ -492,7 +657,7 @@ public class KnowledgeBasesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Документ успешно удален </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Документ удалён </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -508,7 +673,7 @@ public class KnowledgeBasesApi {
 
     /**
      * Удаление документа из базы знаний (asynchronously)
-     * Чтобы удалить документ из базы знаний, отправьте DELETE-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id}&#x60;.
+     * Чтобы удалить документ из базы знаний, отправьте DELETE-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id}&#x60;.  Документ удаляется вместе с его фрагментами в поисковом индексе.
      * @param id ID базы знаний (required)
      * @param documentId ID документа (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -517,7 +682,7 @@ public class KnowledgeBasesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Документ успешно удален </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Документ удалён </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -541,7 +706,7 @@ public class KnowledgeBasesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> База знаний успешно удалена </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> База знаний удалена </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -608,13 +773,13 @@ public class KnowledgeBasesApi {
 
     /**
      * Удаление базы знаний
-     * Чтобы удалить базу знаний, отправьте DELETE-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}&#x60;.
+     * Чтобы удалить базу знаний, отправьте DELETE-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}&#x60;.  База знаний отвязывается от всех агентов, её кластер базы данных OpenSearch удаляется, подписка закрывается.
      * @param id ID базы знаний (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> База знаний успешно удалена </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> База знаний удалена </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -629,14 +794,14 @@ public class KnowledgeBasesApi {
 
     /**
      * Удаление базы знаний
-     * Чтобы удалить базу знаний, отправьте DELETE-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}&#x60;.
+     * Чтобы удалить базу знаний, отправьте DELETE-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}&#x60;.  База знаний отвязывается от всех агентов, её кластер базы данных OpenSearch удаляется, подписка закрывается.
      * @param id ID базы знаний (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> База знаний успешно удалена </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> База знаний удалена </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -652,7 +817,7 @@ public class KnowledgeBasesApi {
 
     /**
      * Удаление базы знаний (asynchronously)
-     * Чтобы удалить базу знаний, отправьте DELETE-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}&#x60;.
+     * Чтобы удалить базу знаний, отправьте DELETE-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}&#x60;.  База знаний отвязывается от всех агентов, её кластер базы данных OpenSearch удаляется, подписка закрывается.
      * @param id ID базы знаний (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -660,7 +825,7 @@ public class KnowledgeBasesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> База знаний успешно удалена </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> База знаний удалена </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -685,9 +850,10 @@ public class KnowledgeBasesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Файл документа </td><td>  * Content-Type - MIME тип файла <br>  * Content-Disposition - Attachment с именем файла <br>  * Content-Length - Размер файла в байтах <br>  </td></tr>
+        <tr><td> 200 </td><td> Содержимое файла </td><td>  * Content-Type - MIME-тип файла <br>  * Content-Disposition - &#x60;attachment&#x60; с именем файла (URL-кодированным) <br>  * Content-Length - Размер файла в байтах <br>  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -757,8 +923,8 @@ public class KnowledgeBasesApi {
     }
 
     /**
-     * Скачивание документа из базы знаний
-     * Чтобы скачать документ из базы знаний, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id}/download&#x60;.
+     * Скачивание файла документа
+     * Чтобы скачать загруженный файл документа, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id}/download&#x60;.  Доступно только для документов типа &#x60;file&#x60;. Файл возвращается потоком с исходным MIME-типом в заголовке &#x60;Content-Type&#x60; и именем в &#x60;Content-Disposition&#x60;.
      * @param id ID базы знаний (required)
      * @param documentId ID документа (required)
      * @return File
@@ -766,9 +932,10 @@ public class KnowledgeBasesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Файл документа </td><td>  * Content-Type - MIME тип файла <br>  * Content-Disposition - Attachment с именем файла <br>  * Content-Length - Размер файла в байтах <br>  </td></tr>
+        <tr><td> 200 </td><td> Содержимое файла </td><td>  * Content-Type - MIME-тип файла <br>  * Content-Disposition - &#x60;attachment&#x60; с именем файла (URL-кодированным) <br>  * Content-Length - Размер файла в байтах <br>  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -780,8 +947,8 @@ public class KnowledgeBasesApi {
     }
 
     /**
-     * Скачивание документа из базы знаний
-     * Чтобы скачать документ из базы знаний, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id}/download&#x60;.
+     * Скачивание файла документа
+     * Чтобы скачать загруженный файл документа, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id}/download&#x60;.  Доступно только для документов типа &#x60;file&#x60;. Файл возвращается потоком с исходным MIME-типом в заголовке &#x60;Content-Type&#x60; и именем в &#x60;Content-Disposition&#x60;.
      * @param id ID базы знаний (required)
      * @param documentId ID документа (required)
      * @return ApiResponse&lt;File&gt;
@@ -789,9 +956,10 @@ public class KnowledgeBasesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Файл документа </td><td>  * Content-Type - MIME тип файла <br>  * Content-Disposition - Attachment с именем файла <br>  * Content-Length - Размер файла в байтах <br>  </td></tr>
+        <tr><td> 200 </td><td> Содержимое файла </td><td>  * Content-Type - MIME-тип файла <br>  * Content-Disposition - &#x60;attachment&#x60; с именем файла (URL-кодированным) <br>  * Content-Length - Размер файла в байтах <br>  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -804,8 +972,8 @@ public class KnowledgeBasesApi {
     }
 
     /**
-     * Скачивание документа из базы знаний (asynchronously)
-     * Чтобы скачать документ из базы знаний, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id}/download&#x60;.
+     * Скачивание файла документа (asynchronously)
+     * Чтобы скачать загруженный файл документа, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id}/download&#x60;.  Доступно только для документов типа &#x60;file&#x60;. Файл возвращается потоком с исходным MIME-типом в заголовке &#x60;Content-Type&#x60; и именем в &#x60;Content-Disposition&#x60;.
      * @param id ID базы знаний (required)
      * @param documentId ID документа (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -814,9 +982,10 @@ public class KnowledgeBasesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Файл документа </td><td>  * Content-Type - MIME тип файла <br>  * Content-Disposition - Attachment с именем файла <br>  * Content-Length - Размер файла в байтах <br>  </td></tr>
+        <tr><td> 200 </td><td> Содержимое файла </td><td>  * Content-Type - MIME-тип файла <br>  * Content-Disposition - &#x60;attachment&#x60; с именем файла (URL-кодированным) <br>  * Content-Length - Размер файла в байтах <br>  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
@@ -838,7 +1007,7 @@ public class KnowledgeBasesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;knowledgebase&#x60; </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;knowledge_base&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -904,15 +1073,15 @@ public class KnowledgeBasesApi {
     }
 
     /**
-     * Получение базы знаний
-     * Чтобы получить информацию о базе знаний, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}&#x60;.
+     * Получение базы знаний со списком документов
+     * Чтобы получить информацию о базе знаний вместе со всеми её документами, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;knowledge_base&#x60;.
      * @param id ID базы знаний (required)
      * @return CreateKnowledgebase201Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;knowledgebase&#x60; </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;knowledge_base&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -927,15 +1096,15 @@ public class KnowledgeBasesApi {
     }
 
     /**
-     * Получение базы знаний
-     * Чтобы получить информацию о базе знаний, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}&#x60;.
+     * Получение базы знаний со списком документов
+     * Чтобы получить информацию о базе знаний вместе со всеми её документами, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;knowledge_base&#x60;.
      * @param id ID базы знаний (required)
      * @return ApiResponse&lt;CreateKnowledgebase201Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;knowledgebase&#x60; </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;knowledge_base&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -951,8 +1120,8 @@ public class KnowledgeBasesApi {
     }
 
     /**
-     * Получение базы знаний (asynchronously)
-     * Чтобы получить информацию о базе знаний, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}&#x60;.
+     * Получение базы знаний со списком документов (asynchronously)
+     * Чтобы получить информацию о базе знаний вместе со всеми её документами, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;knowledge_base&#x60;.
      * @param id ID базы знаний (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -960,7 +1129,7 @@ public class KnowledgeBasesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;knowledgebase&#x60; </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;knowledge_base&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -979,10 +1148,11 @@ public class KnowledgeBasesApi {
     /**
      * Build call for getKnowledgebaseDocumentsV2
      * @param id ID базы знаний (required)
-     * @param limit Количество документов на странице (по умолчанию: 10, максимум: 100) (optional, default to 10)
-     * @param offset Количество документов для пропуска (по умолчанию: 0) (optional, default to 0)
-     * @param sortBy Поле для сортировки (по умолчанию: indexing_timestamp - время последней индексации документа) (optional, default to indexing_timestamp)
-     * @param sortOrder Порядок сортировки (по умолчанию: DESC) (optional, default to DESC)
+     * @param limit Количество документов на странице. Значения больше 100 уменьшаются до 100 (optional, default to 10)
+     * @param offset Количество документов, которые нужно пропустить (optional, default to 0)
+     * @param sortBy Поле сортировки. &#x60;indexing_timestamp&#x60; — время последнего изменения документа (optional, default to indexing_timestamp)
+     * @param sortOrder Порядок сортировки (optional, default to DESC)
+     * @param search Фильтр по подстроке в названии документа (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -998,7 +1168,7 @@ public class KnowledgeBasesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getKnowledgebaseDocumentsV2Call(Integer id, Integer limit, Integer offset, String sortBy, String sortOrder, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getKnowledgebaseDocumentsV2Call(Integer id, Integer limit, Integer offset, String sortBy, String sortOrder, String search, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1040,6 +1210,10 @@ public class KnowledgeBasesApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("sort_order", sortOrder));
         }
 
+        if (search != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("search", search));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -1060,24 +1234,25 @@ public class KnowledgeBasesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getKnowledgebaseDocumentsV2ValidateBeforeCall(Integer id, Integer limit, Integer offset, String sortBy, String sortOrder, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getKnowledgebaseDocumentsV2ValidateBeforeCall(Integer id, Integer limit, Integer offset, String sortBy, String sortOrder, String search, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling getKnowledgebaseDocumentsV2(Async)");
         }
 
-        return getKnowledgebaseDocumentsV2Call(id, limit, offset, sortBy, sortOrder, _callback);
+        return getKnowledgebaseDocumentsV2Call(id, limit, offset, sortBy, sortOrder, search, _callback);
 
     }
 
     /**
      * Получение списка документов базы знаний
-     * Чтобы получить список документов базы знаний, отправьте GET-запрос на &#x60;/api/v2/cloud-ai/knowledge-bases/{id}/documents&#x60;.  Тело ответа будет представлять собой объект JSON с ключами &#x60;knowledgebase_documents&#x60; и &#x60;meta&#x60;.
+     * Чтобы получить список документов базы знаний с пагинацией, отправьте GET-запрос на &#x60;/api/v2/cloud-ai/knowledge-bases/{id}/documents&#x60;.  Некорректные значения параметров пагинации и сортировки не приводят к ошибке — вместо них применяются значения по умолчанию.  Тело ответа будет представлять собой объект JSON с ключами &#x60;knowledgebase_documents&#x60; и &#x60;meta&#x60;.
      * @param id ID базы знаний (required)
-     * @param limit Количество документов на странице (по умолчанию: 10, максимум: 100) (optional, default to 10)
-     * @param offset Количество документов для пропуска (по умолчанию: 0) (optional, default to 0)
-     * @param sortBy Поле для сортировки (по умолчанию: indexing_timestamp - время последней индексации документа) (optional, default to indexing_timestamp)
-     * @param sortOrder Порядок сортировки (по умолчанию: DESC) (optional, default to DESC)
+     * @param limit Количество документов на странице. Значения больше 100 уменьшаются до 100 (optional, default to 10)
+     * @param offset Количество документов, которые нужно пропустить (optional, default to 0)
+     * @param sortBy Поле сортировки. &#x60;indexing_timestamp&#x60; — время последнего изменения документа (optional, default to indexing_timestamp)
+     * @param sortOrder Порядок сортировки (optional, default to DESC)
+     * @param search Фильтр по подстроке в названии документа (optional)
      * @return GetKnowledgebaseDocumentsV2200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1092,19 +1267,20 @@ public class KnowledgeBasesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public GetKnowledgebaseDocumentsV2200Response getKnowledgebaseDocumentsV2(Integer id, Integer limit, Integer offset, String sortBy, String sortOrder) throws ApiException {
-        ApiResponse<GetKnowledgebaseDocumentsV2200Response> localVarResp = getKnowledgebaseDocumentsV2WithHttpInfo(id, limit, offset, sortBy, sortOrder);
+    public GetKnowledgebaseDocumentsV2200Response getKnowledgebaseDocumentsV2(Integer id, Integer limit, Integer offset, String sortBy, String sortOrder, String search) throws ApiException {
+        ApiResponse<GetKnowledgebaseDocumentsV2200Response> localVarResp = getKnowledgebaseDocumentsV2WithHttpInfo(id, limit, offset, sortBy, sortOrder, search);
         return localVarResp.getData();
     }
 
     /**
      * Получение списка документов базы знаний
-     * Чтобы получить список документов базы знаний, отправьте GET-запрос на &#x60;/api/v2/cloud-ai/knowledge-bases/{id}/documents&#x60;.  Тело ответа будет представлять собой объект JSON с ключами &#x60;knowledgebase_documents&#x60; и &#x60;meta&#x60;.
+     * Чтобы получить список документов базы знаний с пагинацией, отправьте GET-запрос на &#x60;/api/v2/cloud-ai/knowledge-bases/{id}/documents&#x60;.  Некорректные значения параметров пагинации и сортировки не приводят к ошибке — вместо них применяются значения по умолчанию.  Тело ответа будет представлять собой объект JSON с ключами &#x60;knowledgebase_documents&#x60; и &#x60;meta&#x60;.
      * @param id ID базы знаний (required)
-     * @param limit Количество документов на странице (по умолчанию: 10, максимум: 100) (optional, default to 10)
-     * @param offset Количество документов для пропуска (по умолчанию: 0) (optional, default to 0)
-     * @param sortBy Поле для сортировки (по умолчанию: indexing_timestamp - время последней индексации документа) (optional, default to indexing_timestamp)
-     * @param sortOrder Порядок сортировки (по умолчанию: DESC) (optional, default to DESC)
+     * @param limit Количество документов на странице. Значения больше 100 уменьшаются до 100 (optional, default to 10)
+     * @param offset Количество документов, которые нужно пропустить (optional, default to 0)
+     * @param sortBy Поле сортировки. &#x60;indexing_timestamp&#x60; — время последнего изменения документа (optional, default to indexing_timestamp)
+     * @param sortOrder Порядок сортировки (optional, default to DESC)
+     * @param search Фильтр по подстроке в названии документа (optional)
      * @return ApiResponse&lt;GetKnowledgebaseDocumentsV2200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1119,20 +1295,21 @@ public class KnowledgeBasesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GetKnowledgebaseDocumentsV2200Response> getKnowledgebaseDocumentsV2WithHttpInfo(Integer id, Integer limit, Integer offset, String sortBy, String sortOrder) throws ApiException {
-        okhttp3.Call localVarCall = getKnowledgebaseDocumentsV2ValidateBeforeCall(id, limit, offset, sortBy, sortOrder, null);
+    public ApiResponse<GetKnowledgebaseDocumentsV2200Response> getKnowledgebaseDocumentsV2WithHttpInfo(Integer id, Integer limit, Integer offset, String sortBy, String sortOrder, String search) throws ApiException {
+        okhttp3.Call localVarCall = getKnowledgebaseDocumentsV2ValidateBeforeCall(id, limit, offset, sortBy, sortOrder, search, null);
         Type localVarReturnType = new TypeToken<GetKnowledgebaseDocumentsV2200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Получение списка документов базы знаний (asynchronously)
-     * Чтобы получить список документов базы знаний, отправьте GET-запрос на &#x60;/api/v2/cloud-ai/knowledge-bases/{id}/documents&#x60;.  Тело ответа будет представлять собой объект JSON с ключами &#x60;knowledgebase_documents&#x60; и &#x60;meta&#x60;.
+     * Чтобы получить список документов базы знаний с пагинацией, отправьте GET-запрос на &#x60;/api/v2/cloud-ai/knowledge-bases/{id}/documents&#x60;.  Некорректные значения параметров пагинации и сортировки не приводят к ошибке — вместо них применяются значения по умолчанию.  Тело ответа будет представлять собой объект JSON с ключами &#x60;knowledgebase_documents&#x60; и &#x60;meta&#x60;.
      * @param id ID базы знаний (required)
-     * @param limit Количество документов на странице (по умолчанию: 10, максимум: 100) (optional, default to 10)
-     * @param offset Количество документов для пропуска (по умолчанию: 0) (optional, default to 0)
-     * @param sortBy Поле для сортировки (по умолчанию: indexing_timestamp - время последней индексации документа) (optional, default to indexing_timestamp)
-     * @param sortOrder Порядок сортировки (по умолчанию: DESC) (optional, default to DESC)
+     * @param limit Количество документов на странице. Значения больше 100 уменьшаются до 100 (optional, default to 10)
+     * @param offset Количество документов, которые нужно пропустить (optional, default to 0)
+     * @param sortBy Поле сортировки. &#x60;indexing_timestamp&#x60; — время последнего изменения документа (optional, default to indexing_timestamp)
+     * @param sortOrder Порядок сортировки (optional, default to DESC)
+     * @param search Фильтр по подстроке в названии документа (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1148,26 +1325,23 @@ public class KnowledgeBasesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getKnowledgebaseDocumentsV2Async(Integer id, Integer limit, Integer offset, String sortBy, String sortOrder, final ApiCallback<GetKnowledgebaseDocumentsV2200Response> _callback) throws ApiException {
+    public okhttp3.Call getKnowledgebaseDocumentsV2Async(Integer id, Integer limit, Integer offset, String sortBy, String sortOrder, String search, final ApiCallback<GetKnowledgebaseDocumentsV2200Response> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getKnowledgebaseDocumentsV2ValidateBeforeCall(id, limit, offset, sortBy, sortOrder, _callback);
+        okhttp3.Call localVarCall = getKnowledgebaseDocumentsV2ValidateBeforeCall(id, limit, offset, sortBy, sortOrder, search, _callback);
         Type localVarReturnType = new TypeToken<GetKnowledgebaseDocumentsV2200Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getKnowledgebaseStatistics
+     * Build call for getKnowledgebaseV3
      * @param id ID базы знаний (required)
-     * @param startTime Начало временного диапазона (ISO 8601) (optional)
-     * @param endTime Конец временного диапазона (ISO 8601) (optional)
-     * @param interval Интервал в минутах (по умолчанию 60) (optional, default to 60)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Объект JSON c ключами &#x60;knowledgebase_statistics&#x60; и &#x60;meta&#x60; </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;knowledge_base&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -1176,7 +1350,7 @@ public class KnowledgeBasesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getKnowledgebaseStatisticsCall(Integer id, OffsetDateTime startTime, OffsetDateTime endTime, BigDecimal interval, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getKnowledgebaseV3Call(Integer id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1193,7 +1367,7 @@ public class KnowledgeBasesApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/v1/cloud-ai/knowledge-bases/{id}/statistic"
+        String localVarPath = "/api/v3/cloud-ai/knowledge-bases/{id}"
             .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -1201,18 +1375,6 @@ public class KnowledgeBasesApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (startTime != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("startTime", startTime));
-        }
-
-        if (endTime != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("endTime", endTime));
-        }
-
-        if (interval != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("interval", interval));
-        }
 
         final String[] localVarAccepts = {
             "application/json"
@@ -1234,29 +1396,26 @@ public class KnowledgeBasesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getKnowledgebaseStatisticsValidateBeforeCall(Integer id, OffsetDateTime startTime, OffsetDateTime endTime, BigDecimal interval, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getKnowledgebaseV3ValidateBeforeCall(Integer id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getKnowledgebaseStatistics(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getKnowledgebaseV3(Async)");
         }
 
-        return getKnowledgebaseStatisticsCall(id, startTime, endTime, interval, _callback);
+        return getKnowledgebaseV3Call(id, _callback);
 
     }
 
     /**
-     * Получение статистики использования токенов базы знаний
-     * Чтобы получить статистику использования токенов базы знаний, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/statistic&#x60;.  Можно указать временной диапазон и интервал агрегации.
+     * Получение базы знаний
+     * Чтобы получить информацию о базе знаний, отправьте GET-запрос на &#x60;/api/v3/cloud-ai/knowledge-bases/{id}&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;knowledge_base&#x60;.
      * @param id ID базы знаний (required)
-     * @param startTime Начало временного диапазона (ISO 8601) (optional)
-     * @param endTime Конец временного диапазона (ISO 8601) (optional)
-     * @param interval Интервал в минутах (по умолчанию 60) (optional, default to 60)
-     * @return GetKnowledgebaseStatistics200Response
+     * @return GetKnowledgebaseV3200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Объект JSON c ключами &#x60;knowledgebase_statistics&#x60; и &#x60;meta&#x60; </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;knowledge_base&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -1265,24 +1424,21 @@ public class KnowledgeBasesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public GetKnowledgebaseStatistics200Response getKnowledgebaseStatistics(Integer id, OffsetDateTime startTime, OffsetDateTime endTime, BigDecimal interval) throws ApiException {
-        ApiResponse<GetKnowledgebaseStatistics200Response> localVarResp = getKnowledgebaseStatisticsWithHttpInfo(id, startTime, endTime, interval);
+    public GetKnowledgebaseV3200Response getKnowledgebaseV3(Integer id) throws ApiException {
+        ApiResponse<GetKnowledgebaseV3200Response> localVarResp = getKnowledgebaseV3WithHttpInfo(id);
         return localVarResp.getData();
     }
 
     /**
-     * Получение статистики использования токенов базы знаний
-     * Чтобы получить статистику использования токенов базы знаний, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/statistic&#x60;.  Можно указать временной диапазон и интервал агрегации.
+     * Получение базы знаний
+     * Чтобы получить информацию о базе знаний, отправьте GET-запрос на &#x60;/api/v3/cloud-ai/knowledge-bases/{id}&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;knowledge_base&#x60;.
      * @param id ID базы знаний (required)
-     * @param startTime Начало временного диапазона (ISO 8601) (optional)
-     * @param endTime Конец временного диапазона (ISO 8601) (optional)
-     * @param interval Интервал в минутах (по умолчанию 60) (optional, default to 60)
-     * @return ApiResponse&lt;GetKnowledgebaseStatistics200Response&gt;
+     * @return ApiResponse&lt;GetKnowledgebaseV3200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Объект JSON c ключами &#x60;knowledgebase_statistics&#x60; и &#x60;meta&#x60; </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;knowledge_base&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -1291,26 +1447,23 @@ public class KnowledgeBasesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GetKnowledgebaseStatistics200Response> getKnowledgebaseStatisticsWithHttpInfo(Integer id, OffsetDateTime startTime, OffsetDateTime endTime, BigDecimal interval) throws ApiException {
-        okhttp3.Call localVarCall = getKnowledgebaseStatisticsValidateBeforeCall(id, startTime, endTime, interval, null);
-        Type localVarReturnType = new TypeToken<GetKnowledgebaseStatistics200Response>(){}.getType();
+    public ApiResponse<GetKnowledgebaseV3200Response> getKnowledgebaseV3WithHttpInfo(Integer id) throws ApiException {
+        okhttp3.Call localVarCall = getKnowledgebaseV3ValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<GetKnowledgebaseV3200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Получение статистики использования токенов базы знаний (asynchronously)
-     * Чтобы получить статистику использования токенов базы знаний, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/statistic&#x60;.  Можно указать временной диапазон и интервал агрегации.
+     * Получение базы знаний (asynchronously)
+     * Чтобы получить информацию о базе знаний, отправьте GET-запрос на &#x60;/api/v3/cloud-ai/knowledge-bases/{id}&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;knowledge_base&#x60;.
      * @param id ID базы знаний (required)
-     * @param startTime Начало временного диапазона (ISO 8601) (optional)
-     * @param endTime Конец временного диапазона (ISO 8601) (optional)
-     * @param interval Интервал в минутах (по умолчанию 60) (optional, default to 60)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Объект JSON c ключами &#x60;knowledgebase_statistics&#x60; и &#x60;meta&#x60; </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;knowledge_base&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -1319,10 +1472,10 @@ public class KnowledgeBasesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getKnowledgebaseStatisticsAsync(Integer id, OffsetDateTime startTime, OffsetDateTime endTime, BigDecimal interval, final ApiCallback<GetKnowledgebaseStatistics200Response> _callback) throws ApiException {
+    public okhttp3.Call getKnowledgebaseV3Async(Integer id, final ApiCallback<GetKnowledgebaseV3200Response> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getKnowledgebaseStatisticsValidateBeforeCall(id, startTime, endTime, interval, _callback);
-        Type localVarReturnType = new TypeToken<GetKnowledgebaseStatistics200Response>(){}.getType();
+        okhttp3.Call localVarCall = getKnowledgebaseV3ValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<GetKnowledgebaseV3200Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1334,11 +1487,10 @@ public class KnowledgeBasesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Объект JSON c ключами &#x60;knowledgebases&#x60; и &#x60;meta&#x60; </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключами &#x60;knowledge_bases&#x60; и &#x60;meta&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -1397,18 +1549,17 @@ public class KnowledgeBasesApi {
     }
 
     /**
-     * Получение списка баз знаний
-     * Чтобы получить список баз знаний, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;knowledgebases&#x60;.
+     * Получение списка баз знаний (v1)
+     * Метод устарел — используйте &#x60;GET /api/v3/cloud-ai/knowledge-bases&#x60;.  Чтобы получить список баз знаний вместе со всеми их документами, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases&#x60;.  Тело ответа будет представлять собой объект JSON с ключами &#x60;knowledge_bases&#x60; и &#x60;meta&#x60;.
      * @return GetKnowledgebases200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Объект JSON c ключами &#x60;knowledgebases&#x60; и &#x60;meta&#x60; </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключами &#x60;knowledge_bases&#x60; и &#x60;meta&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -1421,18 +1572,17 @@ public class KnowledgeBasesApi {
     }
 
     /**
-     * Получение списка баз знаний
-     * Чтобы получить список баз знаний, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;knowledgebases&#x60;.
+     * Получение списка баз знаний (v1)
+     * Метод устарел — используйте &#x60;GET /api/v3/cloud-ai/knowledge-bases&#x60;.  Чтобы получить список баз знаний вместе со всеми их документами, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases&#x60;.  Тело ответа будет представлять собой объект JSON с ключами &#x60;knowledge_bases&#x60; и &#x60;meta&#x60;.
      * @return ApiResponse&lt;GetKnowledgebases200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Объект JSON c ключами &#x60;knowledgebases&#x60; и &#x60;meta&#x60; </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключами &#x60;knowledge_bases&#x60; и &#x60;meta&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -1446,19 +1596,18 @@ public class KnowledgeBasesApi {
     }
 
     /**
-     * Получение списка баз знаний (asynchronously)
-     * Чтобы получить список баз знаний, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;knowledgebases&#x60;.
+     * Получение списка баз знаний (v1) (asynchronously)
+     * Метод устарел — используйте &#x60;GET /api/v3/cloud-ai/knowledge-bases&#x60;.  Чтобы получить список баз знаний вместе со всеми их документами, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases&#x60;.  Тело ответа будет представлять собой объект JSON с ключами &#x60;knowledge_bases&#x60; и &#x60;meta&#x60;.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Объект JSON c ключами &#x60;knowledgebases&#x60; и &#x60;meta&#x60; </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключами &#x60;knowledge_bases&#x60; и &#x60;meta&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -1480,11 +1629,10 @@ public class KnowledgeBasesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Объект JSON c ключами &#x60;knowledgebases&#x60; и &#x60;meta&#x60; </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключами &#x60;knowledge_bases&#x60; и &#x60;meta&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -1541,17 +1689,16 @@ public class KnowledgeBasesApi {
 
     /**
      * Получение списка баз знаний (v2)
-     * Чтобы получить список баз знаний, отправьте GET-запрос на &#x60;/api/v2/cloud-ai/knowledge-bases&#x60;.  Версия API v2 возвращает оптимизированный ответ с количеством документов вместо полного списка документов.  Тело ответа будет представлять собой объект JSON с ключом &#x60;knowledgebases&#x60;.
+     * Чтобы получить список баз знаний, отправьте GET-запрос на &#x60;/api/v2/cloud-ai/knowledge-bases&#x60;.  Вместо списка документов возвращается их количество, привязанные агенты — списком ID. Режим поиска для каждого агента возвращает &#x60;GET /api/v3/cloud-ai/knowledge-bases&#x60;.  Тело ответа будет представлять собой объект JSON с ключами &#x60;knowledge_bases&#x60; и &#x60;meta&#x60;.
      * @return GetKnowledgebasesV2200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Объект JSON c ключами &#x60;knowledgebases&#x60; и &#x60;meta&#x60; </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключами &#x60;knowledge_bases&#x60; и &#x60;meta&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -1563,17 +1710,16 @@ public class KnowledgeBasesApi {
 
     /**
      * Получение списка баз знаний (v2)
-     * Чтобы получить список баз знаний, отправьте GET-запрос на &#x60;/api/v2/cloud-ai/knowledge-bases&#x60;.  Версия API v2 возвращает оптимизированный ответ с количеством документов вместо полного списка документов.  Тело ответа будет представлять собой объект JSON с ключом &#x60;knowledgebases&#x60;.
+     * Чтобы получить список баз знаний, отправьте GET-запрос на &#x60;/api/v2/cloud-ai/knowledge-bases&#x60;.  Вместо списка документов возвращается их количество, привязанные агенты — списком ID. Режим поиска для каждого агента возвращает &#x60;GET /api/v3/cloud-ai/knowledge-bases&#x60;.  Тело ответа будет представлять собой объект JSON с ключами &#x60;knowledge_bases&#x60; и &#x60;meta&#x60;.
      * @return ApiResponse&lt;GetKnowledgebasesV2200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Объект JSON c ключами &#x60;knowledgebases&#x60; и &#x60;meta&#x60; </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключами &#x60;knowledge_bases&#x60; и &#x60;meta&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -1586,18 +1732,17 @@ public class KnowledgeBasesApi {
 
     /**
      * Получение списка баз знаний (v2) (asynchronously)
-     * Чтобы получить список баз знаний, отправьте GET-запрос на &#x60;/api/v2/cloud-ai/knowledge-bases&#x60;.  Версия API v2 возвращает оптимизированный ответ с количеством документов вместо полного списка документов.  Тело ответа будет представлять собой объект JSON с ключом &#x60;knowledgebases&#x60;.
+     * Чтобы получить список баз знаний, отправьте GET-запрос на &#x60;/api/v2/cloud-ai/knowledge-bases&#x60;.  Вместо списка документов возвращается их количество, привязанные агенты — списком ID. Режим поиска для каждого агента возвращает &#x60;GET /api/v3/cloud-ai/knowledge-bases&#x60;.  Тело ответа будет представлять собой объект JSON с ключами &#x60;knowledge_bases&#x60; и &#x60;meta&#x60;.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Объект JSON c ключами &#x60;knowledgebases&#x60; и &#x60;meta&#x60; </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключами &#x60;knowledge_bases&#x60; и &#x60;meta&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
@@ -1610,25 +1755,22 @@ public class KnowledgeBasesApi {
         return localVarCall;
     }
     /**
-     * Build call for linkKnowledgebaseToAgent
-     * @param id ID базы знаний (required)
-     * @param agentId ID агента (required)
+     * Build call for getKnowledgebasesV3
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> База знаний успешно привязана к агенту </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключами &#x60;knowledge_bases&#x60; и &#x60;meta&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call linkKnowledgebaseToAgentCall(Integer id, Integer agentId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getKnowledgebasesV3Call(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1645,9 +1787,7 @@ public class KnowledgeBasesApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/v1/cloud-ai/knowledge-bases/{id}/link/{agent_id}"
-            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()))
-            .replace("{" + "agent_id" + "}", localVarApiClient.escapeString(agentId.toString()));
+        String localVarPath = "/api/v3/cloud-ai/knowledge-bases";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1671,11 +1811,151 @@ public class KnowledgeBasesApi {
         }
 
         String[] localVarAuthNames = new String[] { "Bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getKnowledgebasesV3ValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getKnowledgebasesV3Call(_callback);
+
+    }
+
+    /**
+     * Получение списка баз знаний
+     * Чтобы получить список баз знаний, отправьте GET-запрос на &#x60;/api/v3/cloud-ai/knowledge-bases&#x60;.  Ответ содержит количество документов и привязанных агентов с режимом поиска. Документы базы знаний запрашивайте отдельно — &#x60;GET /api/v2/cloud-ai/knowledge-bases/{id}/documents&#x60;.  Тело ответа будет представлять собой объект JSON с ключами &#x60;knowledge_bases&#x60; и &#x60;meta&#x60;.
+     * @return GetKnowledgebasesV3200Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключами &#x60;knowledge_bases&#x60; и &#x60;meta&#x60; </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetKnowledgebasesV3200Response getKnowledgebasesV3() throws ApiException {
+        ApiResponse<GetKnowledgebasesV3200Response> localVarResp = getKnowledgebasesV3WithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Получение списка баз знаний
+     * Чтобы получить список баз знаний, отправьте GET-запрос на &#x60;/api/v3/cloud-ai/knowledge-bases&#x60;.  Ответ содержит количество документов и привязанных агентов с режимом поиска. Документы базы знаний запрашивайте отдельно — &#x60;GET /api/v2/cloud-ai/knowledge-bases/{id}/documents&#x60;.  Тело ответа будет представлять собой объект JSON с ключами &#x60;knowledge_bases&#x60; и &#x60;meta&#x60;.
+     * @return ApiResponse&lt;GetKnowledgebasesV3200Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключами &#x60;knowledge_bases&#x60; и &#x60;meta&#x60; </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetKnowledgebasesV3200Response> getKnowledgebasesV3WithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getKnowledgebasesV3ValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<GetKnowledgebasesV3200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Получение списка баз знаний (asynchronously)
+     * Чтобы получить список баз знаний, отправьте GET-запрос на &#x60;/api/v3/cloud-ai/knowledge-bases&#x60;.  Ответ содержит количество документов и привязанных агентов с режимом поиска. Документы базы знаний запрашивайте отдельно — &#x60;GET /api/v2/cloud-ai/knowledge-bases/{id}/documents&#x60;.  Тело ответа будет представлять собой объект JSON с ключами &#x60;knowledge_bases&#x60; и &#x60;meta&#x60;.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключами &#x60;knowledge_bases&#x60; и &#x60;meta&#x60; </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getKnowledgebasesV3Async(final ApiCallback<GetKnowledgebasesV3200Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getKnowledgebasesV3ValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<GetKnowledgebasesV3200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for linkKnowledgebaseToAgent
+     * @param id ID базы знаний (required)
+     * @param agentId ID AI агента (required)
+     * @param linkKnowledgebase  (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> База знаний привязана к агенту </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call linkKnowledgebaseToAgentCall(Integer id, Integer agentId, LinkKnowledgebase linkKnowledgebase, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = linkKnowledgebase;
+
+        // create path and map variables
+        String localVarPath = "/api/v1/cloud-ai/knowledge-bases/{id}/link/{agent_id}"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()))
+            .replace("{" + "agent_id" + "}", localVarApiClient.escapeString(agentId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "Bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call linkKnowledgebaseToAgentValidateBeforeCall(Integer id, Integer agentId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call linkKnowledgebaseToAgentValidateBeforeCall(Integer id, Integer agentId, LinkKnowledgebase linkKnowledgebase, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling linkKnowledgebaseToAgent(Async)");
@@ -1686,20 +1966,21 @@ public class KnowledgeBasesApi {
             throw new ApiException("Missing the required parameter 'agentId' when calling linkKnowledgebaseToAgent(Async)");
         }
 
-        return linkKnowledgebaseToAgentCall(id, agentId, _callback);
+        return linkKnowledgebaseToAgentCall(id, agentId, linkKnowledgebase, _callback);
 
     }
 
     /**
      * Привязка базы знаний к агенту
-     * Чтобы привязать базу знаний к AI агенту, отправьте POST-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/link/{agent_id}&#x60;.
+     * Чтобы привязать базу знаний к AI агенту, отправьте POST-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/link/{agent_id}&#x60;.  Тело запроса необязательно: в нём можно выбрать режим поиска &#x60;retrievalMode&#x60; (по умолчанию &#x60;agentic&#x60;). Изменить режим для существующей привязки можно запросом PATCH на тот же адрес.  Возможные ошибки: &#x60;404 knowledgebase_not_found&#x60;, &#x60;404 agent_not_found&#x60;.
      * @param id ID базы знаний (required)
-     * @param agentId ID агента (required)
+     * @param agentId ID AI агента (required)
+     * @param linkKnowledgebase  (optional)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> База знаний успешно привязана к агенту </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> База знаний привязана к агенту </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -1708,21 +1989,22 @@ public class KnowledgeBasesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public void linkKnowledgebaseToAgent(Integer id, Integer agentId) throws ApiException {
-        linkKnowledgebaseToAgentWithHttpInfo(id, agentId);
+    public void linkKnowledgebaseToAgent(Integer id, Integer agentId, LinkKnowledgebase linkKnowledgebase) throws ApiException {
+        linkKnowledgebaseToAgentWithHttpInfo(id, agentId, linkKnowledgebase);
     }
 
     /**
      * Привязка базы знаний к агенту
-     * Чтобы привязать базу знаний к AI агенту, отправьте POST-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/link/{agent_id}&#x60;.
+     * Чтобы привязать базу знаний к AI агенту, отправьте POST-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/link/{agent_id}&#x60;.  Тело запроса необязательно: в нём можно выбрать режим поиска &#x60;retrievalMode&#x60; (по умолчанию &#x60;agentic&#x60;). Изменить режим для существующей привязки можно запросом PATCH на тот же адрес.  Возможные ошибки: &#x60;404 knowledgebase_not_found&#x60;, &#x60;404 agent_not_found&#x60;.
      * @param id ID базы знаний (required)
-     * @param agentId ID агента (required)
+     * @param agentId ID AI агента (required)
+     * @param linkKnowledgebase  (optional)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> База знаний успешно привязана к агенту </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> База знаний привязана к агенту </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -1731,23 +2013,24 @@ public class KnowledgeBasesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> linkKnowledgebaseToAgentWithHttpInfo(Integer id, Integer agentId) throws ApiException {
-        okhttp3.Call localVarCall = linkKnowledgebaseToAgentValidateBeforeCall(id, agentId, null);
+    public ApiResponse<Void> linkKnowledgebaseToAgentWithHttpInfo(Integer id, Integer agentId, LinkKnowledgebase linkKnowledgebase) throws ApiException {
+        okhttp3.Call localVarCall = linkKnowledgebaseToAgentValidateBeforeCall(id, agentId, linkKnowledgebase, null);
         return localVarApiClient.execute(localVarCall);
     }
 
     /**
      * Привязка базы знаний к агенту (asynchronously)
-     * Чтобы привязать базу знаний к AI агенту, отправьте POST-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/link/{agent_id}&#x60;.
+     * Чтобы привязать базу знаний к AI агенту, отправьте POST-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/link/{agent_id}&#x60;.  Тело запроса необязательно: в нём можно выбрать режим поиска &#x60;retrievalMode&#x60; (по умолчанию &#x60;agentic&#x60;). Изменить режим для существующей привязки можно запросом PATCH на тот же адрес.  Возможные ошибки: &#x60;404 knowledgebase_not_found&#x60;, &#x60;404 agent_not_found&#x60;.
      * @param id ID базы знаний (required)
-     * @param agentId ID агента (required)
+     * @param agentId ID AI агента (required)
+     * @param linkKnowledgebase  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> База знаний успешно привязана к агенту </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> База знаний привязана к агенту </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -1756,9 +2039,9 @@ public class KnowledgeBasesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call linkKnowledgebaseToAgentAsync(Integer id, Integer agentId, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call linkKnowledgebaseToAgentAsync(Integer id, Integer agentId, LinkKnowledgebase linkKnowledgebase, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = linkKnowledgebaseToAgentValidateBeforeCall(id, agentId, _callback);
+        okhttp3.Call localVarCall = linkKnowledgebaseToAgentValidateBeforeCall(id, agentId, linkKnowledgebase, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
@@ -1772,7 +2055,7 @@ public class KnowledgeBasesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Переиндексация документа начата </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Документ поставлен в очередь на индексацию </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -1845,14 +2128,14 @@ public class KnowledgeBasesApi {
 
     /**
      * Переиндексация документа
-     * Чтобы переиндексировать документ в базе знаний, отправьте POST-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id}/reindex&#x60;.
+     * Чтобы переиндексировать документ, отправьте POST-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id}/reindex&#x60;.  Документ ставится в очередь на индексацию; следите за полем &#x60;status&#x60; документа. Для документа по ссылке содержимое скачивается заново. Если база знаний не в статусе &#x60;active&#x60;, документ будет проиндексирован после активации.  Возможные ошибки: &#x60;404 knowledgebase_not_found&#x60;, &#x60;404 document_not_found&#x60;.
      * @param id ID базы знаний (required)
      * @param documentId ID документа (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Переиндексация документа начата </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Документ поставлен в очередь на индексацию </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -1867,7 +2150,7 @@ public class KnowledgeBasesApi {
 
     /**
      * Переиндексация документа
-     * Чтобы переиндексировать документ в базе знаний, отправьте POST-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id}/reindex&#x60;.
+     * Чтобы переиндексировать документ, отправьте POST-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id}/reindex&#x60;.  Документ ставится в очередь на индексацию; следите за полем &#x60;status&#x60; документа. Для документа по ссылке содержимое скачивается заново. Если база знаний не в статусе &#x60;active&#x60;, документ будет проиндексирован после активации.  Возможные ошибки: &#x60;404 knowledgebase_not_found&#x60;, &#x60;404 document_not_found&#x60;.
      * @param id ID базы знаний (required)
      * @param documentId ID документа (required)
      * @return ApiResponse&lt;Void&gt;
@@ -1875,7 +2158,7 @@ public class KnowledgeBasesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Переиндексация документа начата </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Документ поставлен в очередь на индексацию </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -1891,7 +2174,7 @@ public class KnowledgeBasesApi {
 
     /**
      * Переиндексация документа (asynchronously)
-     * Чтобы переиндексировать документ в базе знаний, отправьте POST-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id}/reindex&#x60;.
+     * Чтобы переиндексировать документ, отправьте POST-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id}/reindex&#x60;.  Документ ставится в очередь на индексацию; следите за полем &#x60;status&#x60; документа. Для документа по ссылке содержимое скачивается заново. Если база знаний не в статусе &#x60;active&#x60;, документ будет проиндексирован после активации.  Возможные ошибки: &#x60;404 knowledgebase_not_found&#x60;, &#x60;404 document_not_found&#x60;.
      * @param id ID базы знаний (required)
      * @param documentId ID документа (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -1900,7 +2183,7 @@ public class KnowledgeBasesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Переиндексация документа начата </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Документ поставлен в очередь на индексацию </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -1918,14 +2201,14 @@ public class KnowledgeBasesApi {
     /**
      * Build call for unlinkKnowledgebaseFromAgent
      * @param id ID базы знаний (required)
-     * @param agentId ID агента (required)
+     * @param agentId ID AI агента (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> База знаний успешно отвязана от агента </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> База знаний отвязана от агента </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -1998,14 +2281,14 @@ public class KnowledgeBasesApi {
 
     /**
      * Отвязка базы знаний от агента
-     * Чтобы отвязать базу знаний от AI агента, отправьте DELETE-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/link/{agent_id}&#x60;.
+     * Чтобы отвязать базу знаний от AI агента, отправьте DELETE-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/link/{agent_id}&#x60;.  Возможные ошибки: &#x60;404 knowledgebase_not_found&#x60;, &#x60;404 agent_not_found&#x60;.
      * @param id ID базы знаний (required)
-     * @param agentId ID агента (required)
+     * @param agentId ID AI агента (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> База знаний успешно отвязана от агента </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> База знаний отвязана от агента </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -2020,15 +2303,15 @@ public class KnowledgeBasesApi {
 
     /**
      * Отвязка базы знаний от агента
-     * Чтобы отвязать базу знаний от AI агента, отправьте DELETE-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/link/{agent_id}&#x60;.
+     * Чтобы отвязать базу знаний от AI агента, отправьте DELETE-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/link/{agent_id}&#x60;.  Возможные ошибки: &#x60;404 knowledgebase_not_found&#x60;, &#x60;404 agent_not_found&#x60;.
      * @param id ID базы знаний (required)
-     * @param agentId ID агента (required)
+     * @param agentId ID AI агента (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> База знаний успешно отвязана от агента </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> База знаний отвязана от агента </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -2044,16 +2327,16 @@ public class KnowledgeBasesApi {
 
     /**
      * Отвязка базы знаний от агента (asynchronously)
-     * Чтобы отвязать базу знаний от AI агента, отправьте DELETE-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/link/{agent_id}&#x60;.
+     * Чтобы отвязать базу знаний от AI агента, отправьте DELETE-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/link/{agent_id}&#x60;.  Возможные ошибки: &#x60;404 knowledgebase_not_found&#x60;, &#x60;404 agent_not_found&#x60;.
      * @param id ID базы знаний (required)
-     * @param agentId ID агента (required)
+     * @param agentId ID AI агента (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> База знаний успешно отвязана от агента </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> База знаний отвязана от агента </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -2078,7 +2361,7 @@ public class KnowledgeBasesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;knowledgebase&#x60; </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;knowledge_base&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -2150,8 +2433,8 @@ public class KnowledgeBasesApi {
     }
 
     /**
-     * Обновление базы знаний
-     * Чтобы обновить базу знаний, отправьте PATCH-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}&#x60;.
+     * Изменение базы знаний
+     * Чтобы изменить название или описание базы знаний, отправьте PATCH-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;knowledge_base&#x60;.
      * @param id ID базы знаний (required)
      * @param updateKnowledgebase  (required)
      * @return CreateKnowledgebase201Response
@@ -2159,7 +2442,7 @@ public class KnowledgeBasesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;knowledgebase&#x60; </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;knowledge_base&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -2174,8 +2457,8 @@ public class KnowledgeBasesApi {
     }
 
     /**
-     * Обновление базы знаний
-     * Чтобы обновить базу знаний, отправьте PATCH-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}&#x60;.
+     * Изменение базы знаний
+     * Чтобы изменить название или описание базы знаний, отправьте PATCH-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;knowledge_base&#x60;.
      * @param id ID базы знаний (required)
      * @param updateKnowledgebase  (required)
      * @return ApiResponse&lt;CreateKnowledgebase201Response&gt;
@@ -2183,7 +2466,7 @@ public class KnowledgeBasesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;knowledgebase&#x60; </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;knowledge_base&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -2199,8 +2482,8 @@ public class KnowledgeBasesApi {
     }
 
     /**
-     * Обновление базы знаний (asynchronously)
-     * Чтобы обновить базу знаний, отправьте PATCH-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}&#x60;.
+     * Изменение базы знаний (asynchronously)
+     * Чтобы изменить название или описание базы знаний, отправьте PATCH-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}&#x60;.  Тело ответа будет представлять собой объект JSON с ключом &#x60;knowledge_base&#x60;.
      * @param id ID базы знаний (required)
      * @param updateKnowledgebase  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -2209,7 +2492,7 @@ public class KnowledgeBasesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;knowledgebase&#x60; </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;knowledge_base&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -2226,16 +2509,341 @@ public class KnowledgeBasesApi {
         return localVarCall;
     }
     /**
-     * Build call for uploadFilesToKnowledgebase
+     * Build call for updateKnowledgebaseAgentLink
      * @param id ID базы знаний (required)
-     * @param files Файлы для загрузки (максимум 10 файлов, 10 МБ каждый) (required)
+     * @param agentId ID AI агента (required)
+     * @param linkKnowledgebase  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;uploaded_files&#x60; </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Режим поиска изменён </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateKnowledgebaseAgentLinkCall(Integer id, Integer agentId, LinkKnowledgebase linkKnowledgebase, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = linkKnowledgebase;
+
+        // create path and map variables
+        String localVarPath = "/api/v1/cloud-ai/knowledge-bases/{id}/link/{agent_id}"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()))
+            .replace("{" + "agent_id" + "}", localVarApiClient.escapeString(agentId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "Bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call updateKnowledgebaseAgentLinkValidateBeforeCall(Integer id, Integer agentId, LinkKnowledgebase linkKnowledgebase, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling updateKnowledgebaseAgentLink(Async)");
+        }
+
+        // verify the required parameter 'agentId' is set
+        if (agentId == null) {
+            throw new ApiException("Missing the required parameter 'agentId' when calling updateKnowledgebaseAgentLink(Async)");
+        }
+
+        return updateKnowledgebaseAgentLinkCall(id, agentId, linkKnowledgebase, _callback);
+
+    }
+
+    /**
+     * Изменение режима поиска по базе знаний для агента
+     * Чтобы изменить режим поиска по привязанной базе знаний для AI агента, отправьте PATCH-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/link/{agent_id}&#x60;.  Если &#x60;retrievalMode&#x60; не передан, устанавливается &#x60;agentic&#x60;. Если база знаний не привязана к агенту, запрос ничего не меняет и также возвращает &#x60;204&#x60;.  Возможные ошибки: &#x60;404 knowledgebase_not_found&#x60;, &#x60;404 agent_not_found&#x60;.
+     * @param id ID базы знаний (required)
+     * @param agentId ID AI агента (required)
+     * @param linkKnowledgebase  (optional)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Режим поиска изменён </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public void updateKnowledgebaseAgentLink(Integer id, Integer agentId, LinkKnowledgebase linkKnowledgebase) throws ApiException {
+        updateKnowledgebaseAgentLinkWithHttpInfo(id, agentId, linkKnowledgebase);
+    }
+
+    /**
+     * Изменение режима поиска по базе знаний для агента
+     * Чтобы изменить режим поиска по привязанной базе знаний для AI агента, отправьте PATCH-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/link/{agent_id}&#x60;.  Если &#x60;retrievalMode&#x60; не передан, устанавливается &#x60;agentic&#x60;. Если база знаний не привязана к агенту, запрос ничего не меняет и также возвращает &#x60;204&#x60;.  Возможные ошибки: &#x60;404 knowledgebase_not_found&#x60;, &#x60;404 agent_not_found&#x60;.
+     * @param id ID базы знаний (required)
+     * @param agentId ID AI агента (required)
+     * @param linkKnowledgebase  (optional)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Режим поиска изменён </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> updateKnowledgebaseAgentLinkWithHttpInfo(Integer id, Integer agentId, LinkKnowledgebase linkKnowledgebase) throws ApiException {
+        okhttp3.Call localVarCall = updateKnowledgebaseAgentLinkValidateBeforeCall(id, agentId, linkKnowledgebase, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Изменение режима поиска по базе знаний для агента (asynchronously)
+     * Чтобы изменить режим поиска по привязанной базе знаний для AI агента, отправьте PATCH-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/link/{agent_id}&#x60;.  Если &#x60;retrievalMode&#x60; не передан, устанавливается &#x60;agentic&#x60;. Если база знаний не привязана к агенту, запрос ничего не меняет и также возвращает &#x60;204&#x60;.  Возможные ошибки: &#x60;404 knowledgebase_not_found&#x60;, &#x60;404 agent_not_found&#x60;.
+     * @param id ID базы знаний (required)
+     * @param agentId ID AI агента (required)
+     * @param linkKnowledgebase  (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Режим поиска изменён </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateKnowledgebaseAgentLinkAsync(Integer id, Integer agentId, LinkKnowledgebase linkKnowledgebase, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updateKnowledgebaseAgentLinkValidateBeforeCall(id, agentId, linkKnowledgebase, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for updateKnowledgebaseDocument
+     * @param id ID базы знаний (required)
+     * @param documentId ID документа (required)
+     * @param updateDocument  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;document&#x60; </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateKnowledgebaseDocumentCall(Integer id, Integer documentId, UpdateDocument updateDocument, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = updateDocument;
+
+        // create path and map variables
+        String localVarPath = "/api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id}"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()))
+            .replace("{" + "document_id" + "}", localVarApiClient.escapeString(documentId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "Bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call updateKnowledgebaseDocumentValidateBeforeCall(Integer id, Integer documentId, UpdateDocument updateDocument, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling updateKnowledgebaseDocument(Async)");
+        }
+
+        // verify the required parameter 'documentId' is set
+        if (documentId == null) {
+            throw new ApiException("Missing the required parameter 'documentId' when calling updateKnowledgebaseDocument(Async)");
+        }
+
+        // verify the required parameter 'updateDocument' is set
+        if (updateDocument == null) {
+            throw new ApiException("Missing the required parameter 'updateDocument' when calling updateKnowledgebaseDocument(Async)");
+        }
+
+        return updateKnowledgebaseDocumentCall(id, documentId, updateDocument, _callback);
+
+    }
+
+    /**
+     * Изменение документа
+     * Чтобы изменить документ базы знаний, отправьте PATCH-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id}&#x60;.  Можно изменить название, расписание переиндексации и — только для документов типа &#x60;link&#x60; — адрес. После смены адреса документ переиндексируется; изменение названия и расписания переиндексацию не запускает. Новый адрес проверяется так же, как при добавлении документа.  Тело ответа будет представлять собой объект JSON с ключом &#x60;document&#x60;.
+     * @param id ID базы знаний (required)
+     * @param documentId ID документа (required)
+     * @param updateDocument  (required)
+     * @return CreateKnowledgebaseDocument201Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;document&#x60; </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateKnowledgebaseDocument201Response updateKnowledgebaseDocument(Integer id, Integer documentId, UpdateDocument updateDocument) throws ApiException {
+        ApiResponse<CreateKnowledgebaseDocument201Response> localVarResp = updateKnowledgebaseDocumentWithHttpInfo(id, documentId, updateDocument);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Изменение документа
+     * Чтобы изменить документ базы знаний, отправьте PATCH-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id}&#x60;.  Можно изменить название, расписание переиндексации и — только для документов типа &#x60;link&#x60; — адрес. После смены адреса документ переиндексируется; изменение названия и расписания переиндексацию не запускает. Новый адрес проверяется так же, как при добавлении документа.  Тело ответа будет представлять собой объект JSON с ключом &#x60;document&#x60;.
+     * @param id ID базы знаний (required)
+     * @param documentId ID документа (required)
+     * @param updateDocument  (required)
+     * @return ApiResponse&lt;CreateKnowledgebaseDocument201Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;document&#x60; </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateKnowledgebaseDocument201Response> updateKnowledgebaseDocumentWithHttpInfo(Integer id, Integer documentId, UpdateDocument updateDocument) throws ApiException {
+        okhttp3.Call localVarCall = updateKnowledgebaseDocumentValidateBeforeCall(id, documentId, updateDocument, null);
+        Type localVarReturnType = new TypeToken<CreateKnowledgebaseDocument201Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Изменение документа (asynchronously)
+     * Чтобы изменить документ базы знаний, отправьте PATCH-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/documents/{document_id}&#x60;.  Можно изменить название, расписание переиндексации и — только для документов типа &#x60;link&#x60; — адрес. После смены адреса документ переиндексируется; изменение названия и расписания переиндексацию не запускает. Новый адрес проверяется так же, как при добавлении документа.  Тело ответа будет представлять собой объект JSON с ключом &#x60;document&#x60;.
+     * @param id ID базы знаний (required)
+     * @param documentId ID документа (required)
+     * @param updateDocument  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;document&#x60; </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateKnowledgebaseDocumentAsync(Integer id, Integer documentId, UpdateDocument updateDocument, final ApiCallback<CreateKnowledgebaseDocument201Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updateKnowledgebaseDocumentValidateBeforeCall(id, documentId, updateDocument, _callback);
+        Type localVarReturnType = new TypeToken<CreateKnowledgebaseDocument201Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for uploadFilesToKnowledgebase
+     * @param id ID базы знаний (required)
+     * @param files Файлы для загрузки (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключами &#x60;uploadedFiles&#x60; и &#x60;documents&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -2312,15 +2920,15 @@ public class KnowledgeBasesApi {
 
     /**
      * Загрузка файлов в базу знаний
-     * Чтобы загрузить файлы в базу знаний, отправьте POST-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/upload&#x60; с файлами в формате multipart/form-data.  Поддерживаемые форматы: CSV, XML, Markdown (md), HTML, TXT. JSON не поддерживается. Максимум 10 файлов, до 10 МБ каждый.
+     * Чтобы загрузить файлы в базу знаний, отправьте POST-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/upload&#x60; с файлами в поле &#x60;files&#x60; формата &#x60;multipart/form-data&#x60;. Для каждого файла создаётся документ типа &#x60;file&#x60;, после загрузки документы ставятся в очередь на индексацию (если база знаний в статусе &#x60;active&#x60;; иначе — после активации).  Поддерживаемые форматы: TXT, Markdown (&#x60;md&#x60;, &#x60;markdown&#x60;), HTML (&#x60;html&#x60;, &#x60;htm&#x60;), XML, CSV, PDF, DOC, DOCX, XLS, XLSX, а также другие файлы с MIME-типом &#x60;text/_*&#x60;. JSON (&#x60;json&#x60;, &#x60;jsonl&#x60;, &#x60;ndjson&#x60;) не поддерживается. Размер одного файла — не более 50 МБ.  Если хотя бы один файл неподдерживаемого формата, запрос завершается ошибкой.  Тело ответа будет представлять собой объект JSON с ключами &#x60;uploadedFiles&#x60; и &#x60;documents&#x60;.
      * @param id ID базы знаний (required)
-     * @param files Файлы для загрузки (максимум 10 файлов, 10 МБ каждый) (required)
-     * @return UploadFilesToKnowledgebase200Response
+     * @param files Файлы для загрузки (required)
+     * @return UploadResult
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;uploaded_files&#x60; </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключами &#x60;uploadedFiles&#x60; и &#x60;documents&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -2329,22 +2937,22 @@ public class KnowledgeBasesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public UploadFilesToKnowledgebase200Response uploadFilesToKnowledgebase(Integer id, List<File> files) throws ApiException {
-        ApiResponse<UploadFilesToKnowledgebase200Response> localVarResp = uploadFilesToKnowledgebaseWithHttpInfo(id, files);
+    public UploadResult uploadFilesToKnowledgebase(Integer id, List<File> files) throws ApiException {
+        ApiResponse<UploadResult> localVarResp = uploadFilesToKnowledgebaseWithHttpInfo(id, files);
         return localVarResp.getData();
     }
 
     /**
      * Загрузка файлов в базу знаний
-     * Чтобы загрузить файлы в базу знаний, отправьте POST-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/upload&#x60; с файлами в формате multipart/form-data.  Поддерживаемые форматы: CSV, XML, Markdown (md), HTML, TXT. JSON не поддерживается. Максимум 10 файлов, до 10 МБ каждый.
+     * Чтобы загрузить файлы в базу знаний, отправьте POST-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/upload&#x60; с файлами в поле &#x60;files&#x60; формата &#x60;multipart/form-data&#x60;. Для каждого файла создаётся документ типа &#x60;file&#x60;, после загрузки документы ставятся в очередь на индексацию (если база знаний в статусе &#x60;active&#x60;; иначе — после активации).  Поддерживаемые форматы: TXT, Markdown (&#x60;md&#x60;, &#x60;markdown&#x60;), HTML (&#x60;html&#x60;, &#x60;htm&#x60;), XML, CSV, PDF, DOC, DOCX, XLS, XLSX, а также другие файлы с MIME-типом &#x60;text/_*&#x60;. JSON (&#x60;json&#x60;, &#x60;jsonl&#x60;, &#x60;ndjson&#x60;) не поддерживается. Размер одного файла — не более 50 МБ.  Если хотя бы один файл неподдерживаемого формата, запрос завершается ошибкой.  Тело ответа будет представлять собой объект JSON с ключами &#x60;uploadedFiles&#x60; и &#x60;documents&#x60;.
      * @param id ID базы знаний (required)
-     * @param files Файлы для загрузки (максимум 10 файлов, 10 МБ каждый) (required)
-     * @return ApiResponse&lt;UploadFilesToKnowledgebase200Response&gt;
+     * @param files Файлы для загрузки (required)
+     * @return ApiResponse&lt;UploadResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;uploaded_files&#x60; </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключами &#x60;uploadedFiles&#x60; и &#x60;documents&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -2353,24 +2961,24 @@ public class KnowledgeBasesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<UploadFilesToKnowledgebase200Response> uploadFilesToKnowledgebaseWithHttpInfo(Integer id, List<File> files) throws ApiException {
+    public ApiResponse<UploadResult> uploadFilesToKnowledgebaseWithHttpInfo(Integer id, List<File> files) throws ApiException {
         okhttp3.Call localVarCall = uploadFilesToKnowledgebaseValidateBeforeCall(id, files, null);
-        Type localVarReturnType = new TypeToken<UploadFilesToKnowledgebase200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<UploadResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Загрузка файлов в базу знаний (asynchronously)
-     * Чтобы загрузить файлы в базу знаний, отправьте POST-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/upload&#x60; с файлами в формате multipart/form-data.  Поддерживаемые форматы: CSV, XML, Markdown (md), HTML, TXT. JSON не поддерживается. Максимум 10 файлов, до 10 МБ каждый.
+     * Чтобы загрузить файлы в базу знаний, отправьте POST-запрос на &#x60;/api/v1/cloud-ai/knowledge-bases/{id}/upload&#x60; с файлами в поле &#x60;files&#x60; формата &#x60;multipart/form-data&#x60;. Для каждого файла создаётся документ типа &#x60;file&#x60;, после загрузки документы ставятся в очередь на индексацию (если база знаний в статусе &#x60;active&#x60;; иначе — после активации).  Поддерживаемые форматы: TXT, Markdown (&#x60;md&#x60;, &#x60;markdown&#x60;), HTML (&#x60;html&#x60;, &#x60;htm&#x60;), XML, CSV, PDF, DOC, DOCX, XLS, XLSX, а также другие файлы с MIME-типом &#x60;text/_*&#x60;. JSON (&#x60;json&#x60;, &#x60;jsonl&#x60;, &#x60;ndjson&#x60;) не поддерживается. Размер одного файла — не более 50 МБ.  Если хотя бы один файл неподдерживаемого формата, запрос завершается ошибкой.  Тело ответа будет представлять собой объект JSON с ключами &#x60;uploadedFiles&#x60; и &#x60;documents&#x60;.
      * @param id ID базы знаний (required)
-     * @param files Файлы для загрузки (максимум 10 файлов, 10 МБ каждый) (required)
+     * @param files Файлы для загрузки (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Объект JSON c ключом &#x60;uploaded_files&#x60; </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Объект JSON c ключами &#x60;uploadedFiles&#x60; и &#x60;documents&#x60; </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
@@ -2379,10 +2987,10 @@ public class KnowledgeBasesApi {
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call uploadFilesToKnowledgebaseAsync(Integer id, List<File> files, final ApiCallback<UploadFilesToKnowledgebase200Response> _callback) throws ApiException {
+    public okhttp3.Call uploadFilesToKnowledgebaseAsync(Integer id, List<File> files, final ApiCallback<UploadResult> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = uploadFilesToKnowledgebaseValidateBeforeCall(id, files, _callback);
-        Type localVarReturnType = new TypeToken<UploadFilesToKnowledgebase200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<UploadResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

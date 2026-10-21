@@ -21,10 +21,9 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import org.openapitools.client.model.DocumentStatusInfo;
-import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.client.model.IndexingSchedule;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -52,13 +51,13 @@ import java.util.Set;
 import org.openapitools.client.JSON;
 
 /**
- * Документ в базе знаний
+ * Документ базы знаний
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-31T10:55:12.417047Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-21T20:10:29.240516Z[Etc/UTC]")
 public class Document {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private BigDecimal id;
+  private Integer id;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -66,18 +65,18 @@ public class Document {
 
   public static final String SERIALIZED_NAME_SIZE = "size";
   @SerializedName(SERIALIZED_NAME_SIZE)
-  private BigDecimal size;
+  private Integer size;
 
   /**
-   * Статус индексации документа
+   * Статус индексации: - &#x60;new&#x60; — документ добавлен и ждёт индексации - &#x60;indexing&#x60; — индексируется - &#x60;indexed&#x60; — проиндексирован, используется в поиске - &#x60;error&#x60; — ошибка индексации, подробности в &#x60;status_info&#x60;
    */
   @JsonAdapter(StatusEnum.Adapter.class)
   public enum StatusEnum {
     NEW("new"),
     
-    INDEXED("indexed"),
-    
     INDEXING("indexing"),
+    
+    INDEXED("indexed"),
     
     ERROR("error");
 
@@ -123,6 +122,61 @@ public class Document {
   @SerializedName(SERIALIZED_NAME_STATUS)
   private StatusEnum status;
 
+  /**
+   * Тип документа: &#x60;file&#x60; — загруженный файл, &#x60;link&#x60; — документ по ссылке
+   */
+  @JsonAdapter(TypeEnum.Adapter.class)
+  public enum TypeEnum {
+    FILE("file"),
+    
+    LINK("link");
+
+    private String value;
+
+    TypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static TypeEnum fromValue(String value) {
+      for (TypeEnum b : TypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<TypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public TypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return TypeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  private TypeEnum type;
+
+  public static final String SERIALIZED_NAME_INDEXING_SCHEDULE = "indexing_schedule";
+  @SerializedName(SERIALIZED_NAME_INDEXING_SCHEDULE)
+  private IndexingSchedule indexingSchedule;
+
   public static final String SERIALIZED_NAME_INDEXING_VERSION = "indexing_version";
   @SerializedName(SERIALIZED_NAME_INDEXING_VERSION)
   private String indexingVersion;
@@ -130,6 +184,10 @@ public class Document {
   public static final String SERIALIZED_NAME_STATUS_INFO = "status_info";
   @SerializedName(SERIALIZED_NAME_STATUS_INFO)
   private DocumentStatusInfo statusInfo;
+
+  public static final String SERIALIZED_NAME_LINK = "link";
+  @SerializedName(SERIALIZED_NAME_LINK)
+  private String link;
 
   public static final String SERIALIZED_NAME_CREATED_AT = "created_at";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
@@ -142,23 +200,23 @@ public class Document {
   public Document() {
   }
 
-  public Document id(BigDecimal id) {
+  public Document id(Integer id) {
     
     this.id = id;
     return this;
   }
 
    /**
-   * Уникальный идентификатор документа
+   * ID документа
    * @return id
   **/
   @javax.annotation.Nonnull
-  public BigDecimal getId() {
+  public Integer getId() {
     return id;
   }
 
 
-  public void setId(BigDecimal id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
@@ -184,23 +242,23 @@ public class Document {
   }
 
 
-  public Document size(BigDecimal size) {
+  public Document size(Integer size) {
     
     this.size = size;
     return this;
   }
 
    /**
-   * Размер документа в байтах
+   * Размер в байтах. Для документа по ссылке — значение заголовка &#x60;Content-Length&#x60; на момент добавления, &#x60;0&#x60;, если сервер его не вернул
    * @return size
   **/
   @javax.annotation.Nonnull
-  public BigDecimal getSize() {
+  public Integer getSize() {
     return size;
   }
 
 
-  public void setSize(BigDecimal size) {
+  public void setSize(Integer size) {
     this.size = size;
   }
 
@@ -212,7 +270,7 @@ public class Document {
   }
 
    /**
-   * Статус индексации документа
+   * Статус индексации: - &#x60;new&#x60; — документ добавлен и ждёт индексации - &#x60;indexing&#x60; — индексируется - &#x60;indexed&#x60; — проиндексирован, используется в поиске - &#x60;error&#x60; — ошибка индексации, подробности в &#x60;status_info&#x60;
    * @return status
   **/
   @javax.annotation.Nonnull
@@ -226,6 +284,48 @@ public class Document {
   }
 
 
+  public Document type(TypeEnum type) {
+    
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * Тип документа: &#x60;file&#x60; — загруженный файл, &#x60;link&#x60; — документ по ссылке
+   * @return type
+  **/
+  @javax.annotation.Nonnull
+  public TypeEnum getType() {
+    return type;
+  }
+
+
+  public void setType(TypeEnum type) {
+    this.type = type;
+  }
+
+
+  public Document indexingSchedule(IndexingSchedule indexingSchedule) {
+    
+    this.indexingSchedule = indexingSchedule;
+    return this;
+  }
+
+   /**
+   * Get indexingSchedule
+   * @return indexingSchedule
+  **/
+  @javax.annotation.Nonnull
+  public IndexingSchedule getIndexingSchedule() {
+    return indexingSchedule;
+  }
+
+
+  public void setIndexingSchedule(IndexingSchedule indexingSchedule) {
+    this.indexingSchedule = indexingSchedule;
+  }
+
+
   public Document indexingVersion(String indexingVersion) {
     
     this.indexingVersion = indexingVersion;
@@ -233,7 +333,7 @@ public class Document {
   }
 
    /**
-   * Версия индексации
+   * Версия индексации документа
    * @return indexingVersion
   **/
   @javax.annotation.Nullable
@@ -268,6 +368,27 @@ public class Document {
   }
 
 
+  public Document link(String link) {
+    
+    this.link = link;
+    return this;
+  }
+
+   /**
+   * URL документа. Только для документов типа &#x60;link&#x60;
+   * @return link
+  **/
+  @javax.annotation.Nullable
+  public String getLink() {
+    return link;
+  }
+
+
+  public void setLink(String link) {
+    this.link = link;
+  }
+
+
   public Document createdAt(OffsetDateTime createdAt) {
     
     this.createdAt = createdAt;
@@ -275,7 +396,7 @@ public class Document {
   }
 
    /**
-   * Дата создания документа
+   * Дата и время добавления документа
    * @return createdAt
   **/
   @javax.annotation.Nonnull
@@ -296,7 +417,7 @@ public class Document {
   }
 
    /**
-   * Дата обновления документа
+   * Дата и время последнего изменения документа
    * @return updatedAt
   **/
   @javax.annotation.Nonnull
@@ -324,26 +445,18 @@ public class Document {
         Objects.equals(this.name, document.name) &&
         Objects.equals(this.size, document.size) &&
         Objects.equals(this.status, document.status) &&
+        Objects.equals(this.type, document.type) &&
+        Objects.equals(this.indexingSchedule, document.indexingSchedule) &&
         Objects.equals(this.indexingVersion, document.indexingVersion) &&
         Objects.equals(this.statusInfo, document.statusInfo) &&
+        Objects.equals(this.link, document.link) &&
         Objects.equals(this.createdAt, document.createdAt) &&
         Objects.equals(this.updatedAt, document.updatedAt);
   }
 
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
-  }
-
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, size, status, indexingVersion, statusInfo, createdAt, updatedAt);
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
+    return Objects.hash(id, name, size, status, type, indexingSchedule, indexingVersion, statusInfo, link, createdAt, updatedAt);
   }
 
   @Override
@@ -354,8 +467,11 @@ public class Document {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    size: ").append(toIndentedString(size)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    indexingSchedule: ").append(toIndentedString(indexingSchedule)).append("\n");
     sb.append("    indexingVersion: ").append(toIndentedString(indexingVersion)).append("\n");
     sb.append("    statusInfo: ").append(toIndentedString(statusInfo)).append("\n");
+    sb.append("    link: ").append(toIndentedString(link)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("}");
@@ -384,8 +500,11 @@ public class Document {
     openapiFields.add("name");
     openapiFields.add("size");
     openapiFields.add("status");
+    openapiFields.add("type");
+    openapiFields.add("indexing_schedule");
     openapiFields.add("indexing_version");
     openapiFields.add("status_info");
+    openapiFields.add("link");
     openapiFields.add("created_at");
     openapiFields.add("updated_at");
 
@@ -395,6 +514,10 @@ public class Document {
     openapiRequiredFields.add("name");
     openapiRequiredFields.add("size");
     openapiRequiredFields.add("status");
+    openapiRequiredFields.add("type");
+    openapiRequiredFields.add("indexing_schedule");
+    openapiRequiredFields.add("indexing_version");
+    openapiRequiredFields.add("status_info");
     openapiRequiredFields.add("created_at");
     openapiRequiredFields.add("updated_at");
   }
@@ -433,12 +556,18 @@ public class Document {
       if (!jsonObj.get("status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
       }
+      if (!jsonObj.get("type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+      }
+      // validate the required field `indexing_schedule`
+      IndexingSchedule.validateJsonElement(jsonObj.get("indexing_schedule"));
       if ((jsonObj.get("indexing_version") != null && !jsonObj.get("indexing_version").isJsonNull()) && !jsonObj.get("indexing_version").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `indexing_version` to be a primitive type in the JSON string but got `%s`", jsonObj.get("indexing_version").toString()));
       }
-      // validate the optional field `status_info`
-      if (jsonObj.get("status_info") != null && !jsonObj.get("status_info").isJsonNull()) {
-        DocumentStatusInfo.validateJsonElement(jsonObj.get("status_info"));
+      // validate the required field `status_info`
+      DocumentStatusInfo.validateJsonElement(jsonObj.get("status_info"));
+      if ((jsonObj.get("link") != null && !jsonObj.get("link").isJsonNull()) && !jsonObj.get("link").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `link` to be a primitive type in the JSON string but got `%s`", jsonObj.get("link").toString()));
       }
   }
 

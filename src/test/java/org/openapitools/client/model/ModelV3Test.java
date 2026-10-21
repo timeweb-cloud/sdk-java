@@ -21,9 +21,13 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.client.model.ModelBatch;
+import org.openapitools.client.model.ModelParamInfo;
+import org.openapitools.client.model.ModelPriceTier;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -151,6 +155,22 @@ public class ModelV3Test {
     @Test
     public void parameterValuesTest() {
         // TODO: test parameterValues
+    }
+
+    /**
+     * Test the property 'priceTiers'
+     */
+    @Test
+    public void priceTiersTest() {
+        // TODO: test priceTiers
+    }
+
+    /**
+     * Test the property 'batch'
+     */
+    @Test
+    public void batchTest() {
+        // TODO: test batch
     }
 
 }
