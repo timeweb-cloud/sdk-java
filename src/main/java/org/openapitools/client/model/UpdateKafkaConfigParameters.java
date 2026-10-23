@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * Настройки топика Kafka. Передаются только для кластеров Kafka: для кластеров других типов запрос вернется с ошибкой &#x60;forbidden_change_configuration&#x60;. Не переданные параметры получают значения по умолчанию. Числовые значения можно передавать как числом, так и строкой.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-21T20:10:29.240516Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-23T14:06:46.753006Z[Etc/UTC]")
 public class UpdateKafkaConfigParameters {
   public static final String SERIALIZED_NAME_PARTITIONS = "partitions";
   @SerializedName(SERIALIZED_NAME_PARTITIONS)

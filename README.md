@@ -2,7 +2,7 @@
 
 Timeweb Cloud API
 - API version: 1.0.0
-  - Build date: 2026-10-21T20:10:29.240516Z[Etc/UTC]
+  - Build date: 2026-10-23T14:06:46.753006Z[Etc/UTC]
 
 # Введение
 API Timeweb Cloud позволяет вам управлять ресурсами в облаке программным способом с использованием обычных HTTP-запросов.
@@ -725,6 +725,7 @@ Class | Method | HTTP request | Description
 *ServersApi* | [**createServer**](docs/ServersApi.md#createServer) | **POST** /api/v1/servers | Создание сервера
 *ServersApi* | [**createServerDisk**](docs/ServersApi.md#createServerDisk) | **POST** /api/v1/servers/{server_id}/disks | Создание диска сервера
 *ServersApi* | [**createServerDiskBackup**](docs/ServersApi.md#createServerDiskBackup) | **POST** /api/v1/servers/{server_id}/disks/{disk_id}/backups | Создание бэкапа диска сервера
+*ServersApi* | [**createServerDiskBackupDownloadUrl**](docs/ServersApi.md#createServerDiskBackupDownloadUrl) | **POST** /api/v1/servers/{server_id}/disks/{disk_id}/backups/{backup_id}/download-url | Получение ссылки для скачивания бэкапа диска сервера
 *ServersApi* | [**deleteServer**](docs/ServersApi.md#deleteServer) | **DELETE** /api/v1/servers/{server_id} | Удаление сервера
 *ServersApi* | [**deleteServerDisk**](docs/ServersApi.md#deleteServerDisk) | **DELETE** /api/v1/servers/{server_id}/disks/{disk_id} | Удаление диска сервера
 *ServersApi* | [**deleteServerDiskBackup**](docs/ServersApi.md#deleteServerDiskBackup) | **DELETE** /api/v1/servers/{server_id}/disks/{disk_id}/backups/{backup_id} | Удаление бэкапа диска сервера
@@ -1055,6 +1056,7 @@ Class | Method | HTTP request | Description
  - [CreateServerConfiguration](docs/CreateServerConfiguration.md)
  - [CreateServerDisk201Response](docs/CreateServerDisk201Response.md)
  - [CreateServerDiskBackup201Response](docs/CreateServerDiskBackup201Response.md)
+ - [CreateServerDiskBackupDownloadUrl201Response](docs/CreateServerDiskBackupDownloadUrl201Response.md)
  - [CreateServerDiskBackupRequest](docs/CreateServerDiskBackupRequest.md)
  - [CreateServerDiskRequest](docs/CreateServerDiskRequest.md)
  - [CreateServerNetwork](docs/CreateServerNetwork.md)
@@ -1520,6 +1522,8 @@ Class | Method | HTTP request | Description
  - [SendAiSolutionMessage](docs/SendAiSolutionMessage.md)
  - [SendAiSolutionMessage200Response](docs/SendAiSolutionMessage200Response.md)
  - [ServerBackup](docs/ServerBackup.md)
+ - [ServerBackupDownloadUrl](docs/ServerBackupDownloadUrl.md)
+ - [ServerBackupDownloadUrlRequest](docs/ServerBackupDownloadUrlRequest.md)
  - [ServerDisk](docs/ServerDisk.md)
  - [ServerIp](docs/ServerIp.md)
  - [ServerLog](docs/ServerLog.md)

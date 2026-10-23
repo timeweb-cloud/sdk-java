@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * Настройки топика Kafka. Все значения возвращаются в виде строк. Не заданные явно параметры возвращаются со значениями по умолчанию.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-21T20:10:29.240516Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-23T14:06:46.753006Z[Etc/UTC]")
 public class KafkaConfigParameters {
   public static final String SERIALIZED_NAME_PARTITIONS = "partitions";
   @SerializedName(SERIALIZED_NAME_PARTITIONS)

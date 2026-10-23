@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * Успешный ответ JSON-RPC 2.0. Приходит в поле &#x60;data&#x60; события &#x60;message&#x60; потока &#x60;text/event-stream&#x60;
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-21T20:10:29.240516Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-23T14:06:46.753006Z[Etc/UTC]")
 public class JsonRpcResultResponse {
   /**
    * Версия протокола JSON-RPC, всегда &#x60;2.0&#x60;

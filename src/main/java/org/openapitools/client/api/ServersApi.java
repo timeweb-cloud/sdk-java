@@ -34,6 +34,7 @@ import org.openapitools.client.model.CreateServer;
 import org.openapitools.client.model.CreateServer201Response;
 import org.openapitools.client.model.CreateServerDisk201Response;
 import org.openapitools.client.model.CreateServerDiskBackup201Response;
+import org.openapitools.client.model.CreateServerDiskBackupDownloadUrl201Response;
 import org.openapitools.client.model.CreateServerDiskBackupRequest;
 import org.openapitools.client.model.CreateServerDiskRequest;
 import org.openapitools.client.model.DeleteServer200Response;
@@ -61,6 +62,7 @@ import org.openapitools.client.model.GetServersPresets200Response;
 import org.openapitools.client.model.GetSoftware200Response;
 import org.openapitools.client.model.PerformActionOnBackupRequest;
 import org.openapitools.client.model.PerformActionOnServerRequest;
+import org.openapitools.client.model.ServerBackupDownloadUrlRequest;
 import org.openapitools.client.model.UpdateDatabaseInstance409Response;
 import org.openapitools.client.model.UpdateServer;
 import org.openapitools.client.model.UpdateServerDiskBackupRequest;
@@ -1172,6 +1174,187 @@ public class ServersApi {
 
         okhttp3.Call localVarCall = createServerDiskBackupValidateBeforeCall(serverId, diskId, createServerDiskBackupRequest, _callback);
         Type localVarReturnType = new TypeToken<CreateServerDiskBackup201Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createServerDiskBackupDownloadUrl
+     * @param serverId ID облачного сервера. (required)
+     * @param diskId ID диска сервера. (required)
+     * @param backupId ID бэкапа сервера. (required)
+     * @param serverBackupDownloadUrlRequest  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Ответ будет представлять собой объект JSON с ключом &#x60;backup_url&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createServerDiskBackupDownloadUrlCall(Integer serverId, Integer diskId, Integer backupId, ServerBackupDownloadUrlRequest serverBackupDownloadUrlRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = serverBackupDownloadUrlRequest;
+
+        // create path and map variables
+        String localVarPath = "/api/v1/servers/{server_id}/disks/{disk_id}/backups/{backup_id}/download-url"
+            .replace("{" + "server_id" + "}", localVarApiClient.escapeString(serverId.toString()))
+            .replace("{" + "disk_id" + "}", localVarApiClient.escapeString(diskId.toString()))
+            .replace("{" + "backup_id" + "}", localVarApiClient.escapeString(backupId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "Bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createServerDiskBackupDownloadUrlValidateBeforeCall(Integer serverId, Integer diskId, Integer backupId, ServerBackupDownloadUrlRequest serverBackupDownloadUrlRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'serverId' is set
+        if (serverId == null) {
+            throw new ApiException("Missing the required parameter 'serverId' when calling createServerDiskBackupDownloadUrl(Async)");
+        }
+
+        // verify the required parameter 'diskId' is set
+        if (diskId == null) {
+            throw new ApiException("Missing the required parameter 'diskId' when calling createServerDiskBackupDownloadUrl(Async)");
+        }
+
+        // verify the required parameter 'backupId' is set
+        if (backupId == null) {
+            throw new ApiException("Missing the required parameter 'backupId' when calling createServerDiskBackupDownloadUrl(Async)");
+        }
+
+        // verify the required parameter 'serverBackupDownloadUrlRequest' is set
+        if (serverBackupDownloadUrlRequest == null) {
+            throw new ApiException("Missing the required parameter 'serverBackupDownloadUrlRequest' when calling createServerDiskBackupDownloadUrl(Async)");
+        }
+
+        return createServerDiskBackupDownloadUrlCall(serverId, diskId, backupId, serverBackupDownloadUrlRequest, _callback);
+
+    }
+
+    /**
+     * Получение ссылки для скачивания бэкапа диска сервера
+     * Чтобы получить ссылку для скачивания бэкапа диска сервера, отправьте POST-запрос на &#x60;/api/v1/servers/{server_id}/disks/{disk_id}/backups/{backup_id}/download-url&#x60;.   Скачивание бэкапов доступно для серверов в локациях &#x60;ru-1&#x60; (Санкт-Петербург) и &#x60;ru-3&#x60; (Москва). Для серверов в других локациях метод вернет ошибку со статусом &#x60;400&#x60;.   Ссылка действует 7 дней. Скачать бэкап по ней может любой, у кого она есть, поэтому не передавайте ее третьим лицам.   Тело ответа будет представлять собой объект JSON с ключом &#x60;backup_url&#x60;.
+     * @param serverId ID облачного сервера. (required)
+     * @param diskId ID диска сервера. (required)
+     * @param backupId ID бэкапа сервера. (required)
+     * @param serverBackupDownloadUrlRequest  (required)
+     * @return CreateServerDiskBackupDownloadUrl201Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Ответ будет представлять собой объект JSON с ключом &#x60;backup_url&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateServerDiskBackupDownloadUrl201Response createServerDiskBackupDownloadUrl(Integer serverId, Integer diskId, Integer backupId, ServerBackupDownloadUrlRequest serverBackupDownloadUrlRequest) throws ApiException {
+        ApiResponse<CreateServerDiskBackupDownloadUrl201Response> localVarResp = createServerDiskBackupDownloadUrlWithHttpInfo(serverId, diskId, backupId, serverBackupDownloadUrlRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Получение ссылки для скачивания бэкапа диска сервера
+     * Чтобы получить ссылку для скачивания бэкапа диска сервера, отправьте POST-запрос на &#x60;/api/v1/servers/{server_id}/disks/{disk_id}/backups/{backup_id}/download-url&#x60;.   Скачивание бэкапов доступно для серверов в локациях &#x60;ru-1&#x60; (Санкт-Петербург) и &#x60;ru-3&#x60; (Москва). Для серверов в других локациях метод вернет ошибку со статусом &#x60;400&#x60;.   Ссылка действует 7 дней. Скачать бэкап по ней может любой, у кого она есть, поэтому не передавайте ее третьим лицам.   Тело ответа будет представлять собой объект JSON с ключом &#x60;backup_url&#x60;.
+     * @param serverId ID облачного сервера. (required)
+     * @param diskId ID диска сервера. (required)
+     * @param backupId ID бэкапа сервера. (required)
+     * @param serverBackupDownloadUrlRequest  (required)
+     * @return ApiResponse&lt;CreateServerDiskBackupDownloadUrl201Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Ответ будет представлять собой объект JSON с ключом &#x60;backup_url&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateServerDiskBackupDownloadUrl201Response> createServerDiskBackupDownloadUrlWithHttpInfo(Integer serverId, Integer diskId, Integer backupId, ServerBackupDownloadUrlRequest serverBackupDownloadUrlRequest) throws ApiException {
+        okhttp3.Call localVarCall = createServerDiskBackupDownloadUrlValidateBeforeCall(serverId, diskId, backupId, serverBackupDownloadUrlRequest, null);
+        Type localVarReturnType = new TypeToken<CreateServerDiskBackupDownloadUrl201Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Получение ссылки для скачивания бэкапа диска сервера (asynchronously)
+     * Чтобы получить ссылку для скачивания бэкапа диска сервера, отправьте POST-запрос на &#x60;/api/v1/servers/{server_id}/disks/{disk_id}/backups/{backup_id}/download-url&#x60;.   Скачивание бэкапов доступно для серверов в локациях &#x60;ru-1&#x60; (Санкт-Петербург) и &#x60;ru-3&#x60; (Москва). Для серверов в других локациях метод вернет ошибку со статусом &#x60;400&#x60;.   Ссылка действует 7 дней. Скачать бэкап по ней может любой, у кого она есть, поэтому не передавайте ее третьим лицам.   Тело ответа будет представлять собой объект JSON с ключом &#x60;backup_url&#x60;.
+     * @param serverId ID облачного сервера. (required)
+     * @param diskId ID диска сервера. (required)
+     * @param backupId ID бэкапа сервера. (required)
+     * @param serverBackupDownloadUrlRequest  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Ответ будет представлять собой объект JSON с ключом &#x60;backup_url&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createServerDiskBackupDownloadUrlAsync(Integer serverId, Integer diskId, Integer backupId, ServerBackupDownloadUrlRequest serverBackupDownloadUrlRequest, final ApiCallback<CreateServerDiskBackupDownloadUrl201Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createServerDiskBackupDownloadUrlValidateBeforeCall(serverId, diskId, backupId, serverBackupDownloadUrlRequest, _callback);
+        Type localVarReturnType = new TypeToken<CreateServerDiskBackupDownloadUrl201Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

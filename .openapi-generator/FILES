@@ -293,6 +293,7 @@ docs/CreateServer201Response.md
 docs/CreateServerConfiguration.md
 docs/CreateServerDisk201Response.md
 docs/CreateServerDiskBackup201Response.md
+docs/CreateServerDiskBackupDownloadUrl201Response.md
 docs/CreateServerDiskBackupRequest.md
 docs/CreateServerDiskRequest.md
 docs/CreateServerNetwork.md
@@ -774,6 +775,8 @@ docs/SchemasPresetsResponse.md
 docs/SendAiSolutionMessage.md
 docs/SendAiSolutionMessage200Response.md
 docs/ServerBackup.md
+docs/ServerBackupDownloadUrl.md
+docs/ServerBackupDownloadUrlRequest.md
 docs/ServerDisk.md
 docs/ServerIp.md
 docs/ServerLog.md
@@ -1267,6 +1270,7 @@ src/main/java/org/openapitools/client/model/CreateServer201Response.java
 src/main/java/org/openapitools/client/model/CreateServerConfiguration.java
 src/main/java/org/openapitools/client/model/CreateServerDisk201Response.java
 src/main/java/org/openapitools/client/model/CreateServerDiskBackup201Response.java
+src/main/java/org/openapitools/client/model/CreateServerDiskBackupDownloadUrl201Response.java
 src/main/java/org/openapitools/client/model/CreateServerDiskBackupRequest.java
 src/main/java/org/openapitools/client/model/CreateServerDiskRequest.java
 src/main/java/org/openapitools/client/model/CreateServerNetwork.java
@@ -1732,6 +1736,8 @@ src/main/java/org/openapitools/client/model/SchemasPresetsResponse.java
 src/main/java/org/openapitools/client/model/SendAiSolutionMessage.java
 src/main/java/org/openapitools/client/model/SendAiSolutionMessage200Response.java
 src/main/java/org/openapitools/client/model/ServerBackup.java
+src/main/java/org/openapitools/client/model/ServerBackupDownloadUrl.java
+src/main/java/org/openapitools/client/model/ServerBackupDownloadUrlRequest.java
 src/main/java/org/openapitools/client/model/ServerDisk.java
 src/main/java/org/openapitools/client/model/ServerIp.java
 src/main/java/org/openapitools/client/model/ServerLog.java
@@ -2194,6 +2200,7 @@ src/test/java/org/openapitools/client/model/CreateServer201ResponseTest.java
 src/test/java/org/openapitools/client/model/CreateServerConfigurationTest.java
 src/test/java/org/openapitools/client/model/CreateServerDisk201ResponseTest.java
 src/test/java/org/openapitools/client/model/CreateServerDiskBackup201ResponseTest.java
+src/test/java/org/openapitools/client/model/CreateServerDiskBackupDownloadUrl201ResponseTest.java
 src/test/java/org/openapitools/client/model/CreateServerDiskBackupRequestTest.java
 src/test/java/org/openapitools/client/model/CreateServerDiskRequestTest.java
 src/test/java/org/openapitools/client/model/CreateServerNetworkTest.java
@@ -2659,6 +2666,8 @@ src/test/java/org/openapitools/client/model/SchemasMetaTest.java
 src/test/java/org/openapitools/client/model/SchemasPresetsResponseTest.java
 src/test/java/org/openapitools/client/model/SendAiSolutionMessage200ResponseTest.java
 src/test/java/org/openapitools/client/model/SendAiSolutionMessageTest.java
+src/test/java/org/openapitools/client/model/ServerBackupDownloadUrlRequestTest.java
+src/test/java/org/openapitools/client/model/ServerBackupDownloadUrlTest.java
 src/test/java/org/openapitools/client/model/ServerBackupTest.java
 src/test/java/org/openapitools/client/model/ServerDiskTest.java
 src/test/java/org/openapitools/client/model/ServerIpTest.java

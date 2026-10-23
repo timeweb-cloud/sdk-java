@@ -11,6 +11,7 @@ All URIs are relative to *https://api.timeweb.cloud*
 | [**createServer**](ServersApi.md#createServer) | **POST** /api/v1/servers | Создание сервера |
 | [**createServerDisk**](ServersApi.md#createServerDisk) | **POST** /api/v1/servers/{server_id}/disks | Создание диска сервера |
 | [**createServerDiskBackup**](ServersApi.md#createServerDiskBackup) | **POST** /api/v1/servers/{server_id}/disks/{disk_id}/backups | Создание бэкапа диска сервера |
+| [**createServerDiskBackupDownloadUrl**](ServersApi.md#createServerDiskBackupDownloadUrl) | **POST** /api/v1/servers/{server_id}/disks/{disk_id}/backups/{backup_id}/download-url | Получение ссылки для скачивания бэкапа диска сервера |
 | [**deleteServer**](ServersApi.md#deleteServer) | **DELETE** /api/v1/servers/{server_id} | Удаление сервера |
 | [**deleteServerDisk**](ServersApi.md#deleteServerDisk) | **DELETE** /api/v1/servers/{server_id}/disks/{disk_id} | Удаление диска сервера |
 | [**deleteServerDiskBackup**](ServersApi.md#deleteServerDiskBackup) | **DELETE** /api/v1/servers/{server_id}/disks/{disk_id}/backups/{backup_id} | Удаление бэкапа диска сервера |
@@ -568,6 +569,86 @@ public class Example {
 | **401** | Не авторизован |  -  |
 | **403** | Запрещено |  -  |
 | **404** | Не найдено |  -  |
+| **429** | Слишком много запросов |  -  |
+| **500** | Внутренняя ошибка сервера |  -  |
+
+<a id="createServerDiskBackupDownloadUrl"></a>
+# **createServerDiskBackupDownloadUrl**
+> CreateServerDiskBackupDownloadUrl201Response createServerDiskBackupDownloadUrl(serverId, diskId, backupId, serverBackupDownloadUrlRequest)
+
+Получение ссылки для скачивания бэкапа диска сервера
+
+Чтобы получить ссылку для скачивания бэкапа диска сервера, отправьте POST-запрос на &#x60;/api/v1/servers/{server_id}/disks/{disk_id}/backups/{backup_id}/download-url&#x60;.   Скачивание бэкапов доступно для серверов в локациях &#x60;ru-1&#x60; (Санкт-Петербург) и &#x60;ru-3&#x60; (Москва). Для серверов в других локациях метод вернет ошибку со статусом &#x60;400&#x60;.   Ссылка действует 7 дней. Скачать бэкап по ней может любой, у кого она есть, поэтому не передавайте ее третьим лицам.   Тело ответа будет представлять собой объект JSON с ключом &#x60;backup_url&#x60;.
+
+### Example
+```java
+// Import classes:
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.ServersApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.timeweb.cloud");
+    
+    // Configure HTTP bearer authorization: Bearer
+    HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
+    Bearer.setBearerToken("BEARER TOKEN");
+
+    ServersApi apiInstance = new ServersApi(defaultClient);
+    Integer serverId = 1051; // Integer | ID облачного сервера.
+    Integer diskId = 1051; // Integer | ID диска сервера.
+    Integer backupId = 1051; // Integer | ID бэкапа сервера.
+    ServerBackupDownloadUrlRequest serverBackupDownloadUrlRequest = new ServerBackupDownloadUrlRequest(); // ServerBackupDownloadUrlRequest | 
+    try {
+      CreateServerDiskBackupDownloadUrl201Response result = apiInstance.createServerDiskBackupDownloadUrl(serverId, diskId, backupId, serverBackupDownloadUrlRequest);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ServersApi#createServerDiskBackupDownloadUrl");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **serverId** | **Integer**| ID облачного сервера. | |
+| **diskId** | **Integer**| ID диска сервера. | |
+| **backupId** | **Integer**| ID бэкапа сервера. | |
+| **serverBackupDownloadUrlRequest** | [**ServerBackupDownloadUrlRequest**](ServerBackupDownloadUrlRequest.md)|  | |
+
+### Return type
+
+[**CreateServerDiskBackupDownloadUrl201Response**](CreateServerDiskBackupDownloadUrl201Response.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Ответ будет представлять собой объект JSON с ключом &#x60;backup_url&#x60;. |  -  |
+| **400** | Некорректный запрос |  -  |
+| **401** | Не авторизован |  -  |
+| **403** | Запрещено |  -  |
+| **404** | Не найдено |  -  |
+| **409** | Конфликт |  -  |
 | **429** | Слишком много запросов |  -  |
 | **500** | Внутренняя ошибка сервера |  -  |
 

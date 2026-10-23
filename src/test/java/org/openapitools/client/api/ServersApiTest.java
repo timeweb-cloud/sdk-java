@@ -21,6 +21,7 @@ import org.openapitools.client.model.CreateServer;
 import org.openapitools.client.model.CreateServer201Response;
 import org.openapitools.client.model.CreateServerDisk201Response;
 import org.openapitools.client.model.CreateServerDiskBackup201Response;
+import org.openapitools.client.model.CreateServerDiskBackupDownloadUrl201Response;
 import org.openapitools.client.model.CreateServerDiskBackupRequest;
 import org.openapitools.client.model.CreateServerDiskRequest;
 import org.openapitools.client.model.DeleteServer200Response;
@@ -48,6 +49,7 @@ import org.openapitools.client.model.GetServersPresets200Response;
 import org.openapitools.client.model.GetSoftware200Response;
 import org.openapitools.client.model.PerformActionOnBackupRequest;
 import org.openapitools.client.model.PerformActionOnServerRequest;
+import org.openapitools.client.model.ServerBackupDownloadUrlRequest;
 import org.openapitools.client.model.UpdateDatabaseInstance409Response;
 import org.openapitools.client.model.UpdateServer;
 import org.openapitools.client.model.UpdateServerDiskBackupRequest;
@@ -170,6 +172,23 @@ public class ServersApiTest {
         Integer diskId = null;
         CreateServerDiskBackupRequest createServerDiskBackupRequest = null;
         CreateServerDiskBackup201Response response = api.createServerDiskBackup(serverId, diskId, createServerDiskBackupRequest);
+        // TODO: test validations
+    }
+
+    /**
+     * Получение ссылки для скачивания бэкапа диска сервера
+     *
+     * Чтобы получить ссылку для скачивания бэкапа диска сервера, отправьте POST-запрос на &#x60;/api/v1/servers/{server_id}/disks/{disk_id}/backups/{backup_id}/download-url&#x60;.   Скачивание бэкапов доступно для серверов в локациях &#x60;ru-1&#x60; (Санкт-Петербург) и &#x60;ru-3&#x60; (Москва). Для серверов в других локациях метод вернет ошибку со статусом &#x60;400&#x60;.   Ссылка действует 7 дней. Скачать бэкап по ней может любой, у кого она есть, поэтому не передавайте ее третьим лицам.   Тело ответа будет представлять собой объект JSON с ключом &#x60;backup_url&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void createServerDiskBackupDownloadUrlTest() throws ApiException {
+        Integer serverId = null;
+        Integer diskId = null;
+        Integer backupId = null;
+        ServerBackupDownloadUrlRequest serverBackupDownloadUrlRequest = null;
+        CreateServerDiskBackupDownloadUrl201Response response = api.createServerDiskBackupDownloadUrl(serverId, diskId, backupId, serverBackupDownloadUrlRequest);
         // TODO: test validations
     }
 
