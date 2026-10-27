@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * Ступень цены по размеру входного контекста. Действует, когда входной контекст запроса строго больше &#x60;above_context_tokens&#x60;; при этом по ступени тарифицируются и входные, и выходные токены запроса
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-23T14:06:46.753006Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-27T09:28:31.074093Z[Etc/UTC]")
 public class ModelPriceTier {
   public static final String SERIALIZED_NAME_ABOVE_CONTEXT_TOKENS = "above_context_tokens";
   @SerializedName(SERIALIZED_NAME_ABOVE_CONTEXT_TOKENS)

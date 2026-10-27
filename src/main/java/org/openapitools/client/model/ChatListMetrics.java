@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * Сводка по чатам агента с учётом фильтра по периоду (&#x60;from&#x60;/&#x60;to&#x60;)
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-23T14:06:46.753006Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-27T09:28:31.074093Z[Etc/UTC]")
 public class ChatListMetrics {
   public static final String SERIALIZED_NAME_TOTAL_REACTIONS = "total_reactions";
   @SerializedName(SERIALIZED_NAME_TOTAL_REACTIONS)

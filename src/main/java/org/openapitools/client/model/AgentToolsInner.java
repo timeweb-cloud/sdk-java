@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * AgentToolsInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-23T14:06:46.753006Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-27T09:28:31.074093Z[Etc/UTC]")
 public class AgentToolsInner {
   public static final String SERIALIZED_NAME_TOOL_ID = "tool_id";
   @SerializedName(SERIALIZED_NAME_TOOL_ID)

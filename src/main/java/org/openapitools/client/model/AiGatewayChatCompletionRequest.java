@@ -57,7 +57,7 @@ import org.openapitools.client.JSON;
 /**
  * Запрос Chat Completions в формате OpenAI. Перечислены основные поля, остальные параметры OpenAI передаются модели как есть. Параметры, которые модель не поддерживает, могут быть отклонены с ошибкой 400
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-23T14:06:46.753006Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-27T09:28:31.074093Z[Etc/UTC]")
 public class AiGatewayChatCompletionRequest {
   public static final String SERIALIZED_NAME_MODEL = "model";
   @SerializedName(SERIALIZED_NAME_MODEL)

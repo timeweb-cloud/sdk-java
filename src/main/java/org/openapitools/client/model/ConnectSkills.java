@@ -53,7 +53,7 @@ import org.openapitools.client.JSON;
 /**
  * Навыки для подключения. Нужно передать &#x60;skills&#x60; или &#x60;skill_ids&#x60;
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-23T14:06:46.753006Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-27T09:28:31.074093Z[Etc/UTC]")
 public class ConnectSkills {
   public static final String SERIALIZED_NAME_SKILL_IDS = "skill_ids";
   @SerializedName(SERIALIZED_NAME_SKILL_IDS)

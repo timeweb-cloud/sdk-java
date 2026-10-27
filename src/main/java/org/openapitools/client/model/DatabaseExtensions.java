@@ -53,7 +53,7 @@ import org.openapitools.client.JSON;
 /**
  * Расширения (плагины) базы данных. Поддерживаются только кластерами PostgreSQL и RabbitMQ.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-23T14:06:46.753006Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-27T09:28:31.074093Z[Etc/UTC]")
 public class DatabaseExtensions {
   public static final String SERIALIZED_NAME_EXTENSION_LIST = "extension_list";
   @SerializedName(SERIALIZED_NAME_EXTENSION_LIST)

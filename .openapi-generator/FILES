@@ -55,7 +55,6 @@ docs/AgentV3KnowledgeBasesInner.md
 docs/AgentWidgetSettings.md
 docs/AiAgentIntegrationsApi.md
 docs/AiAgentSkillsApi.md
-docs/AiAgentToolsApi.md
 docs/AiAgentsApi.md
 docs/AiGatewayApi.md
 docs/AiGatewayBatch.md
@@ -962,7 +961,6 @@ src/main/java/org/openapitools/client/StringUtil.java
 src/main/java/org/openapitools/client/api/AccountApi.java
 src/main/java/org/openapitools/client/api/AiAgentIntegrationsApi.java
 src/main/java/org/openapitools/client/api/AiAgentSkillsApi.java
-src/main/java/org/openapitools/client/api/AiAgentToolsApi.java
 src/main/java/org/openapitools/client/api/AiAgentsApi.java
 src/main/java/org/openapitools/client/api/AiGatewayApi.java
 src/main/java/org/openapitools/client/api/AiGatewayInferenceApi.java
@@ -1898,7 +1896,6 @@ src/main/java/org/openapitools/client/model/WorkerPresetOutApi.java
 src/test/java/org/openapitools/client/api/AccountApiTest.java
 src/test/java/org/openapitools/client/api/AiAgentIntegrationsApiTest.java
 src/test/java/org/openapitools/client/api/AiAgentSkillsApiTest.java
-src/test/java/org/openapitools/client/api/AiAgentToolsApiTest.java
 src/test/java/org/openapitools/client/api/AiAgentsApiTest.java
 src/test/java/org/openapitools/client/api/AiGatewayApiTest.java
 src/test/java/org/openapitools/client/api/AiGatewayInferenceApiTest.java

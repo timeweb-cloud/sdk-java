@@ -14,10 +14,26 @@
 package org.openapitools.client.api;
 
 import org.openapitools.client.ApiException;
+import org.openapitools.client.model.AuthorizeUrl;
+import org.openapitools.client.model.ConnectAgentTool;
+import org.openapitools.client.model.CreateAgentTool201Response;
+import org.openapitools.client.model.CreateTool;
+import org.openapitools.client.model.GetAccountStatus403Response;
+import org.openapitools.client.model.GetAgentToolTemplatePrices200Response;
+import org.openapitools.client.model.GetAgentToolTemplates200Response;
+import org.openapitools.client.model.GetAgentTools200Response;
+import org.openapitools.client.model.GetAgentToolsByAgent200Response;
+import org.openapitools.client.model.GetFinances400Response;
 import org.openapitools.client.model.GetFinances401Response;
+import org.openapitools.client.model.GetFinances429Response;
+import org.openapitools.client.model.GetFinances500Response;
+import org.openapitools.client.model.GetImage404Response;
+import org.openapitools.client.model.InstallTool;
 import org.openapitools.client.model.JsonRpcErrorResponse;
 import org.openapitools.client.model.JsonRpcRequest;
 import org.openapitools.client.model.JsonRpcResultResponse;
+import org.openapitools.client.model.UpdateAgentTool;
+import org.openapitools.client.model.UpdateTool;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -33,6 +49,49 @@ import java.util.Map;
 public class McpApiTest {
 
     private final McpApi api = new McpApi();
+
+    /**
+     * Подключение MCP-инструмента к агенту
+     *
+     * Чтобы подключить MCP-инструмент к агенту, отправьте POST-запрос на &#x60;/api/v1/cloud-ai/agents/{agent_id}/tools&#x60;.  В &#x60;allowed_methods&#x60; перечислите методы, которые агенту разрешено вызывать. Подходят только имена из &#x60;methods[].name&#x60; инструмента, иначе вернётся 400 с &#x60;error_code&#x60; &#x60;invalid_methods_provided&#x60;. Повторно подключить уже подключённый инструмент нельзя. Чтобы изменить список методов, используйте PUT-запрос.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void connectAgentToolToAgentTest() throws ApiException {
+        Integer agentId = null;
+        ConnectAgentTool connectAgentTool = null;
+        api.connectAgentToolToAgent(agentId, connectAgentTool);
+        // TODO: test validations
+    }
+
+    /**
+     * Подключение собственного MCP-сервера
+     *
+     * Чтобы подключить собственный MCP-сервер, отправьте POST-запрос на &#x60;/api/v1/cloud-ai/tools&#x60;.  Платформа сразу подключается к серверу и сохраняет список его методов. Если сервер недоступен или отвечает ошибкой, инструмент не создаётся: вернётся 400 с &#x60;error_code&#x60; &#x60;invalid_methods_provided&#x60;. Адреса частных сетей и localhost отклоняются с ошибкой 400.  Для &#x60;auth_data.type &#x3D; oauth2&#x60; подключение к серверу при создании не проверяется. Инструмент создаётся в статусе &#x60;pending_auth&#x60; с пустым списком методов, а методы загружаются после авторизации пользователя: см. «Получение ссылки на OAuth2-авторизацию инструмента». Если не удалось определить адреса авторизации или зарегистрировать клиента, вернётся 401 с &#x60;error_code&#x60; &#x60;tool_authentication_failed&#x60;.  Чтобы агент мог пользоваться инструментом, подключите его к агенту.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void createAgentToolTest() throws ApiException {
+        CreateTool createTool = null;
+        CreateAgentTool201Response response = api.createAgentTool(createTool);
+        // TODO: test validations
+    }
+
+    /**
+     * Удаление MCP-инструмента
+     *
+     * Чтобы удалить MCP-инструмент, отправьте DELETE-запрос на &#x60;/api/v1/cloud-ai/tools/{id}&#x60;.  Инструмент автоматически отключается от всех агентов.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void deleteAgentToolTest() throws ApiException {
+        Integer id = null;
+        api.deleteAgentTool(id);
+        // TODO: test validations
+    }
 
     /**
      * Завершение сессии сервера MCP с поиском инструментов
@@ -57,6 +116,118 @@ public class McpApiTest {
     @Test
     public void deleteMcpSessionTest() throws ApiException {
         api.deleteMcpSession();
+        // TODO: test validations
+    }
+
+    /**
+     * Отключение MCP-инструмента от агента
+     *
+     * Чтобы отключить MCP-инструмент от агента, отправьте DELETE-запрос на &#x60;/api/v1/cloud-ai/agents/{agent_id}/tools/{tool_id}&#x60;.  Сам инструмент остаётся в аккаунте и у других агентов.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void disconnectAgentToolFromAgentTest() throws ApiException {
+        Integer agentId = null;
+        Integer toolId = null;
+        api.disconnectAgentToolFromAgent(agentId, toolId);
+        // TODO: test validations
+    }
+
+    /**
+     * Получение MCP-инструмента
+     *
+     * Чтобы получить MCP-инструмент, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/tools/{id}&#x60;.  По полю &#x60;status&#x60; можно отследить завершение OAuth2-авторизации: после неё статус меняется с &#x60;pending_auth&#x60; на &#x60;active&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void getAgentToolTest() throws ApiException {
+        Integer id = null;
+        CreateAgentTool201Response response = api.getAgentTool(id);
+        // TODO: test validations
+    }
+
+    /**
+     * Получение ссылки на OAuth2-авторизацию инструмента
+     *
+     * Чтобы получить ссылку на OAuth2-авторизацию MCP-инструмента, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/tools/oauth2/authorize-url/{tool_id}&#x60;.  Откройте &#x60;authorize_url&#x60; в браузере пользователя. Ссылка действует 30 минут. После входа и согласия провайдер вернёт пользователя на адрес возврата платформы &#x60;https://api.timeweb.cloud/api/v1/cloud-ai/oauth2/callback&#x60;. Платформа обменяет код на токены, переведёт инструмент в статус &#x60;active&#x60; и загрузит список методов.  Чтобы узнать результат, запрашивайте инструмент, пока его статус не сменится с &#x60;pending_auth&#x60; на &#x60;active&#x60;. Этим же запросом можно повторно авторизовать уже активный инструмент.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void getAgentToolOAuth2AuthorizeUrlTest() throws ApiException {
+        Integer toolId = null;
+        String redirectUrl = null;
+        AuthorizeUrl response = api.getAgentToolOAuth2AuthorizeUrl(toolId, redirectUrl);
+        // TODO: test validations
+    }
+
+    /**
+     * Получение цен системных инструментов
+     *
+     * Чтобы получить цены системных инструментов платформы, например веб-поиска, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/tools/templates/prices&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void getAgentToolTemplatePricesTest() throws ApiException {
+        String locale = null;
+        GetAgentToolTemplatePrices200Response response = api.getAgentToolTemplatePrices(locale);
+        // TODO: test validations
+    }
+
+    /**
+     * Получение шаблонов MCP-инструментов из маркетплейса
+     *
+     * Чтобы получить готовые интеграции маркетплейса, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/tools/templates/marketplace&#x60;.  Сначала идут самые популярные шаблоны. Поле &#x60;config_schema&#x60; описывает, что нужно передать в &#x60;config_values&#x60; при установке.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void getAgentToolTemplatesTest() throws ApiException {
+        GetAgentToolTemplates200Response response = api.getAgentToolTemplates();
+        // TODO: test validations
+    }
+
+    /**
+     * Получение списка MCP-инструментов
+     *
+     * Чтобы получить список MCP-инструментов аккаунта, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/tools&#x60;.  В списке есть и собственные MCP-серверы, и инструменты, установленные из маркетплейса. Сначала идут новые. Удалённые инструменты не возвращаются. Секреты в &#x60;auth_data&#x60; заменены на &#x60;********&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void getAgentToolsTest() throws ApiException {
+        GetAgentTools200Response response = api.getAgentTools();
+        // TODO: test validations
+    }
+
+    /**
+     * Получение MCP-инструментов агента
+     *
+     * Чтобы получить MCP-инструменты, подключённые к агенту, отправьте GET-запрос на &#x60;/api/v1/cloud-ai/agents/{agent_id}/tools&#x60;.  В ответе — инструменты целиком, в том же виде, что и в списке инструментов аккаунта. Списка разрешённых агенту методов в ответе нет.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void getAgentToolsByAgentTest() throws ApiException {
+        Integer agentId = null;
+        GetAgentToolsByAgent200Response response = api.getAgentToolsByAgent(agentId);
+        // TODO: test validations
+    }
+
+    /**
+     * Установка MCP-инструмента из маркетплейса
+     *
+     * Чтобы установить MCP-инструмент из шаблона маркетплейса, отправьте POST-запрос на &#x60;/api/v1/cloud-ai/tools/install&#x60;.  Значения полей из &#x60;config_schema&#x60; шаблона передайте в &#x60;config_values&#x60;. Платформа соберёт из них заголовки авторизации, подключится к MCP-серверу и сохранит список методов. Если у шаблона есть &#x60;config_schema&#x60;, поле &#x60;auth_data&#x60; не используется. Если подключиться к серверу не удалось, вернётся 400 с &#x60;error_code&#x60; &#x60;invalid_methods_provided&#x60;.  Один шаблон можно установить несколько раз, например с разными ключами.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void installAgentToolFromTemplateTest() throws ApiException {
+        InstallTool installTool = null;
+        CreateAgentTool201Response response = api.installAgentToolFromTemplate(installTool);
         // TODO: test validations
     }
 
@@ -87,6 +258,20 @@ public class McpApiTest {
         String accept = null;
         String mcPProtocolVersion = null;
         String response = api.openMcpStream(accept, mcPProtocolVersion);
+        // TODO: test validations
+    }
+
+    /**
+     * Обновление списка методов MCP-инструмента
+     *
+     * Чтобы заново получить список методов с MCP-сервера, отправьте POST-запрос на &#x60;/api/v1/cloud-ai/tools/{id}/refresh-methods&#x60;.  Список &#x60;methods&#x60; заменяется полученным с сервера, а методы, которых больше нет, убираются из разрешённых у всех агентов. Если обновление прошло успешно, инструмент переходит в статус &#x60;active&#x60;. Если сервер недоступен, инструмент переходит в статус &#x60;error&#x60; с причиной в &#x60;status_info&#x60;, а запрос возвращает 400 с &#x60;error_code&#x60; &#x60;invalid_methods_provided&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void refreshAgentToolMethodsTest() throws ApiException {
+        Integer id = null;
+        CreateAgentTool201Response response = api.refreshAgentToolMethods(id);
         // TODO: test validations
     }
 
@@ -123,6 +308,37 @@ public class McpApiTest {
         String xAllowedTools = null;
         String xMcpConfirmationUi = null;
         JsonRpcResultResponse response = api.sendMcpSearchMessage(accept, jsonRpcRequest, mcPProtocolVersion, xToolAccess, xAllowedTools, xMcpConfirmationUi);
+        // TODO: test validations
+    }
+
+    /**
+     * Изменение MCP-инструмента
+     *
+     * Чтобы изменить MCP-инструмент, отправьте PUT-запрос на &#x60;/api/v1/cloud-ai/tools/{id}&#x60;, передав только изменяемые поля.  Если передать в &#x60;auth_data&#x60; секрет &#x60;********&#x60; из ответа API, сохранённый секрет не изменится. Изменение адреса или авторизации не обновляет список методов: после него вызовите обновление методов. Статус &#x60;inactive&#x60; выключает инструмент у всех агентов, к которым он подключён.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void updateAgentToolTest() throws ApiException {
+        Integer id = null;
+        UpdateTool updateTool = null;
+        CreateAgentTool201Response response = api.updateAgentTool(id, updateTool);
+        // TODO: test validations
+    }
+
+    /**
+     * Изменение разрешённых методов MCP-инструмента у агента
+     *
+     * Чтобы изменить список методов, которые агенту разрешено вызывать, отправьте PUT-запрос на &#x60;/api/v1/cloud-ai/agents/{agent_id}/tools/{tool_id}&#x60;.  Список заменяется целиком. Подходят только имена из &#x60;methods[].name&#x60; инструмента, иначе вернётся 400 с &#x60;error_code&#x60; &#x60;invalid_methods_provided&#x60;. Если инструмент не подключён к агенту, вернётся 404 с &#x60;error_code&#x60; &#x60;agent-tool_link_not_found&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void updateAgentToolConnectionTest() throws ApiException {
+        Integer agentId = null;
+        Integer toolId = null;
+        UpdateAgentTool updateAgentTool = null;
+        api.updateAgentToolConnection(agentId, toolId, updateAgentTool);
         // TODO: test validations
     }
 

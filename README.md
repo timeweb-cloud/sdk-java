@@ -2,7 +2,7 @@
 
 Timeweb Cloud API
 - API version: 1.0.0
-  - Build date: 2026-10-23T14:06:46.753006Z[Etc/UTC]
+  - Build date: 2026-10-27T09:28:31.074093Z[Etc/UTC]
 
 # Введение
 API Timeweb Cloud позволяет вам управлять ресурсами в облаке программным способом с использованием обычных HTTP-запросов.
@@ -314,20 +314,6 @@ Class | Method | HTTP request | Description
 *AiAgentSkillsApi* | [**syncAgentSkillVersionsForAgent**](docs/AiAgentSkillsApi.md#syncAgentSkillVersionsForAgent) | **POST** /api/v1/cloud-ai/agents/{agent_id}/skills/sync-versions | Перевод всех навыков агента на текущие версии
 *AiAgentSkillsApi* | [**updateAgentSkill**](docs/AiAgentSkillsApi.md#updateAgentSkill) | **PATCH** /api/v1/cloud-ai/skills/{skill_id} | Изменение навыка
 *AiAgentSkillsApi* | [**updateAgentSkillVersionForAgent**](docs/AiAgentSkillsApi.md#updateAgentSkillVersionForAgent) | **POST** /api/v1/cloud-ai/agents/{agent_id}/skills/{skill_id}/update-version | Перевод агента на текущую версию навыка
-*AiAgentToolsApi* | [**connectAgentToolToAgent**](docs/AiAgentToolsApi.md#connectAgentToolToAgent) | **POST** /api/v1/cloud-ai/agents/{agent_id}/tools | Подключение MCP-инструмента к агенту
-*AiAgentToolsApi* | [**createAgentTool**](docs/AiAgentToolsApi.md#createAgentTool) | **POST** /api/v1/cloud-ai/tools | Подключение собственного MCP-сервера
-*AiAgentToolsApi* | [**deleteAgentTool**](docs/AiAgentToolsApi.md#deleteAgentTool) | **DELETE** /api/v1/cloud-ai/tools/{id} | Удаление MCP-инструмента
-*AiAgentToolsApi* | [**disconnectAgentToolFromAgent**](docs/AiAgentToolsApi.md#disconnectAgentToolFromAgent) | **DELETE** /api/v1/cloud-ai/agents/{agent_id}/tools/{tool_id} | Отключение MCP-инструмента от агента
-*AiAgentToolsApi* | [**getAgentTool**](docs/AiAgentToolsApi.md#getAgentTool) | **GET** /api/v1/cloud-ai/tools/{id} | Получение MCP-инструмента
-*AiAgentToolsApi* | [**getAgentToolOAuth2AuthorizeUrl**](docs/AiAgentToolsApi.md#getAgentToolOAuth2AuthorizeUrl) | **GET** /api/v1/cloud-ai/tools/oauth2/authorize-url/{tool_id} | Получение ссылки на OAuth2-авторизацию инструмента
-*AiAgentToolsApi* | [**getAgentToolTemplatePrices**](docs/AiAgentToolsApi.md#getAgentToolTemplatePrices) | **GET** /api/v1/cloud-ai/tools/templates/prices | Получение цен системных инструментов
-*AiAgentToolsApi* | [**getAgentToolTemplates**](docs/AiAgentToolsApi.md#getAgentToolTemplates) | **GET** /api/v1/cloud-ai/tools/templates/marketplace | Получение шаблонов MCP-инструментов из маркетплейса
-*AiAgentToolsApi* | [**getAgentTools**](docs/AiAgentToolsApi.md#getAgentTools) | **GET** /api/v1/cloud-ai/tools | Получение списка MCP-инструментов
-*AiAgentToolsApi* | [**getAgentToolsByAgent**](docs/AiAgentToolsApi.md#getAgentToolsByAgent) | **GET** /api/v1/cloud-ai/agents/{agent_id}/tools | Получение MCP-инструментов агента
-*AiAgentToolsApi* | [**installAgentToolFromTemplate**](docs/AiAgentToolsApi.md#installAgentToolFromTemplate) | **POST** /api/v1/cloud-ai/tools/install | Установка MCP-инструмента из маркетплейса
-*AiAgentToolsApi* | [**refreshAgentToolMethods**](docs/AiAgentToolsApi.md#refreshAgentToolMethods) | **POST** /api/v1/cloud-ai/tools/{id}/refresh-methods | Обновление списка методов MCP-инструмента
-*AiAgentToolsApi* | [**updateAgentTool**](docs/AiAgentToolsApi.md#updateAgentTool) | **PUT** /api/v1/cloud-ai/tools/{id} | Изменение MCP-инструмента
-*AiAgentToolsApi* | [**updateAgentToolConnection**](docs/AiAgentToolsApi.md#updateAgentToolConnection) | **PUT** /api/v1/cloud-ai/agents/{agent_id}/tools/{tool_id} | Изменение разрешённых методов MCP-инструмента у агента
 *AiAgentsApi* | [**addAdditionalTokenPackage**](docs/AiAgentsApi.md#addAdditionalTokenPackage) | **POST** /api/v1/cloud-ai/agents/{id}/add-additional-token-package | Добавление дополнительного пакета токенов
 *AiAgentsApi* | [**changeAgentModel**](docs/AiAgentsApi.md#changeAgentModel) | **PATCH** /api/v1/cloud-ai/agents/{id}/model | Смена модели AI агента
 *AiAgentsApi* | [**createAgent**](docs/AiAgentsApi.md#createAgent) | **POST** /api/v1/cloud-ai/agents | Создание AI агента
@@ -639,12 +625,26 @@ Class | Method | HTTP request | Description
 *MailApi* | [**updateDomainMailInfo**](docs/MailApi.md#updateDomainMailInfo) | **PATCH** /api/v1/mail/domains/{domain}/info | Изменение почтовой информации о домене
 *MailApi* | [**updateMailbox**](docs/MailApi.md#updateMailbox) | **PATCH** /api/v1/mail/domains/{domain}/mailboxes/{mailbox} | Изменение почтового ящика
 *MailApi* | [**updateMailboxV2**](docs/MailApi.md#updateMailboxV2) | **PATCH** /api/v2/mail/domains/{domain}/mailboxes/{mailbox} | Изменение почтового ящика
+*McpApi* | [**connectAgentToolToAgent**](docs/McpApi.md#connectAgentToolToAgent) | **POST** /api/v1/cloud-ai/agents/{agent_id}/tools | Подключение MCP-инструмента к агенту
+*McpApi* | [**createAgentTool**](docs/McpApi.md#createAgentTool) | **POST** /api/v1/cloud-ai/tools | Подключение собственного MCP-сервера
+*McpApi* | [**deleteAgentTool**](docs/McpApi.md#deleteAgentTool) | **DELETE** /api/v1/cloud-ai/tools/{id} | Удаление MCP-инструмента
 *McpApi* | [**deleteMcpSearchSession**](docs/McpApi.md#deleteMcpSearchSession) | **DELETE** /api/v1/mcp/search | Завершение сессии сервера MCP с поиском инструментов
 *McpApi* | [**deleteMcpSession**](docs/McpApi.md#deleteMcpSession) | **DELETE** /api/v1/mcp | Завершение сессии сервера MCP
+*McpApi* | [**disconnectAgentToolFromAgent**](docs/McpApi.md#disconnectAgentToolFromAgent) | **DELETE** /api/v1/cloud-ai/agents/{agent_id}/tools/{tool_id} | Отключение MCP-инструмента от агента
+*McpApi* | [**getAgentTool**](docs/McpApi.md#getAgentTool) | **GET** /api/v1/cloud-ai/tools/{id} | Получение MCP-инструмента
+*McpApi* | [**getAgentToolOAuth2AuthorizeUrl**](docs/McpApi.md#getAgentToolOAuth2AuthorizeUrl) | **GET** /api/v1/cloud-ai/tools/oauth2/authorize-url/{tool_id} | Получение ссылки на OAuth2-авторизацию инструмента
+*McpApi* | [**getAgentToolTemplatePrices**](docs/McpApi.md#getAgentToolTemplatePrices) | **GET** /api/v1/cloud-ai/tools/templates/prices | Получение цен системных инструментов
+*McpApi* | [**getAgentToolTemplates**](docs/McpApi.md#getAgentToolTemplates) | **GET** /api/v1/cloud-ai/tools/templates/marketplace | Получение шаблонов MCP-инструментов из маркетплейса
+*McpApi* | [**getAgentTools**](docs/McpApi.md#getAgentTools) | **GET** /api/v1/cloud-ai/tools | Получение списка MCP-инструментов
+*McpApi* | [**getAgentToolsByAgent**](docs/McpApi.md#getAgentToolsByAgent) | **GET** /api/v1/cloud-ai/agents/{agent_id}/tools | Получение MCP-инструментов агента
+*McpApi* | [**installAgentToolFromTemplate**](docs/McpApi.md#installAgentToolFromTemplate) | **POST** /api/v1/cloud-ai/tools/install | Установка MCP-инструмента из маркетплейса
 *McpApi* | [**openMcpSearchStream**](docs/McpApi.md#openMcpSearchStream) | **GET** /api/v1/mcp/search | Открытие потока событий сервера MCP с поиском инструментов
 *McpApi* | [**openMcpStream**](docs/McpApi.md#openMcpStream) | **GET** /api/v1/mcp | Открытие потока событий сервера MCP
+*McpApi* | [**refreshAgentToolMethods**](docs/McpApi.md#refreshAgentToolMethods) | **POST** /api/v1/cloud-ai/tools/{id}/refresh-methods | Обновление списка методов MCP-инструмента
 *McpApi* | [**sendMcpMessage**](docs/McpApi.md#sendMcpMessage) | **POST** /api/v1/mcp | Отправка JSON-RPC-сообщения серверу MCP
 *McpApi* | [**sendMcpSearchMessage**](docs/McpApi.md#sendMcpSearchMessage) | **POST** /api/v1/mcp/search | Отправка JSON-RPC-сообщения серверу MCP с поиском инструментов
+*McpApi* | [**updateAgentTool**](docs/McpApi.md#updateAgentTool) | **PUT** /api/v1/cloud-ai/tools/{id} | Изменение MCP-инструмента
+*McpApi* | [**updateAgentToolConnection**](docs/McpApi.md#updateAgentToolConnection) | **PUT** /api/v1/cloud-ai/agents/{agent_id}/tools/{tool_id} | Изменение разрешённых методов MCP-инструмента у агента
 *NetworkDrivesApi* | [**createNetworkDrive**](docs/NetworkDrivesApi.md#createNetworkDrive) | **POST** /api/v1/network-drives | Создание сетевого диска
 *NetworkDrivesApi* | [**deleteNetworkDrive**](docs/NetworkDrivesApi.md#deleteNetworkDrive) | **DELETE** /api/v1/network-drives/{network_drive_id} | Удаление сетевого диска по идентификатору
 *NetworkDrivesApi* | [**getNetworkDrive**](docs/NetworkDrivesApi.md#getNetworkDrive) | **GET** /api/v1/network-drives/{network_drive_id} | Получение сетевого диска

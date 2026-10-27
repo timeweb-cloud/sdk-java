@@ -53,7 +53,7 @@ import org.openapitools.client.JSON;
 /**
  * Настраиваемый параметр генерации
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-23T14:06:46.753006Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-27T09:28:31.074093Z[Etc/UTC]")
 public class ModelParamInfo {
   /**
    * Тип значения параметра
