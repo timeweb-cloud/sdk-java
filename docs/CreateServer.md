@@ -20,7 +20,7 @@
 |**sshKeysIds** | **List&lt;BigDecimal&gt;** | Список SSH-ключей. |  [optional] |
 |**isLocalNetwork** | **Boolean** | Локальная сеть. |  [optional] |
 |**network** | [**CreateServerNetwork**](CreateServerNetwork.md) |  |  [optional] |
-|**cloudInit** | **String** | Cloud-init скрипт |  [optional] |
+|**cloudInit** | **String** | Cloud-init скрипт. Максимальный размер — 65 535 байт в UTF-8. |  [optional] |
 |**availabilityZone** | **AvailabilityZone** |  |  [optional] |
 |**projectId** | **BigDecimal** | ID проекта. |  [optional] |
 |**hostname** | **String** | Сетевое имя сервера |  [optional] |

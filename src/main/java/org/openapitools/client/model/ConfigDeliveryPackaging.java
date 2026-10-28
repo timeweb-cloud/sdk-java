@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * Упаковка видео в потоковые форматы. &#x60;null&#x60; — отключить упаковку.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-27T09:28:31.074093Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-28T15:56:17.696691Z[Etc/UTC]")
 public class ConfigDeliveryPackaging {
   public static final String SERIALIZED_NAME_MP4 = "mp4";
   @SerializedName(SERIALIZED_NAME_MP4)

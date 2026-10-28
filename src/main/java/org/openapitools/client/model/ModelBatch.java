@@ -53,7 +53,7 @@ import org.openapitools.client.JSON;
 /**
  * Условия Batch API для модели. Цена в batch &#x3D; обычная цена × множитель
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-27T09:28:31.074093Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-28T15:56:17.696691Z[Etc/UTC]")
 public class ModelBatch {
   public static final String SERIALIZED_NAME_MULTIPLIER_IN = "multiplier_in";
   @SerializedName(SERIALIZED_NAME_MULTIPLIER_IN)

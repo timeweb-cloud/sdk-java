@@ -53,7 +53,7 @@ import org.openapitools.client.JSON;
 /**
  * UpdateServer
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-27T09:28:31.074093Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-28T15:56:17.696691Z[Etc/UTC]")
 public class UpdateServer {
   public static final String SERIALIZED_NAME_CONFIGURATOR = "configurator";
   @SerializedName(SERIALIZED_NAME_CONFIGURATOR)
@@ -294,7 +294,7 @@ public class UpdateServer {
   }
 
    /**
-   * Cloud-init скрипт
+   * Cloud-init скрипт. Максимальный размер — 65 535 байт в UTF-8.
    * @return cloudInit
   **/
   @javax.annotation.Nullable

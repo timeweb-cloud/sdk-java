@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * Выгрузка чатов агента в CSV
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-27T09:28:31.074093Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-28T15:56:17.696691Z[Etc/UTC]")
 public class ChatsCsv {
   public static final String SERIALIZED_NAME_CSV = "csv";
   @SerializedName(SERIALIZED_NAME_CSV)

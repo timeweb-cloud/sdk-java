@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * Параметры создания CDN-ресурса. Источник контента задается ровно одним из полей: &#x60;storage_id&#x60; или &#x60;server&#x60;.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-27T09:28:31.074093Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-28T15:56:17.696691Z[Etc/UTC]")
 public class CreateHttpResource {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
