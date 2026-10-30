@@ -33,6 +33,8 @@ import org.openapitools.client.model.AppsPresets;
 import org.openapitools.client.model.AvailableFrameworks;
 import org.openapitools.client.model.CreateApp;
 import org.openapitools.client.model.CreateApp201Response;
+import org.openapitools.client.model.CreateAppV2;
+import org.openapitools.client.model.CreateAppV2201Response;
 import org.openapitools.client.model.CreateDeploy201Response;
 import org.openapitools.client.model.CreateDeployRequest;
 import org.openapitools.client.model.GetAccountStatus403Response;
@@ -262,7 +264,9 @@ public class AppsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call createAppCall(CreateApp createApp, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -308,6 +312,7 @@ public class AppsApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createAppValidateBeforeCall(CreateApp createApp, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'createApp' is set
@@ -321,7 +326,7 @@ public class AppsApi {
 
     /**
      * Создание приложения
-     * Чтобы создать приложение, отправьте POST-запрос в &#x60;/api/v1/apps&#x60;, задав необходимые атрибуты.
+     * Метод устарел. Используйте [POST /api/v2/apps](#operation/createAppV2).  Чтобы создать приложение, отправьте POST-запрос в &#x60;/api/v1/apps&#x60;, задав необходимые атрибуты.
      * @param createApp  (required)
      * @return CreateApp201Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -336,7 +341,9 @@ public class AppsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public CreateApp201Response createApp(CreateApp createApp) throws ApiException {
         ApiResponse<CreateApp201Response> localVarResp = createAppWithHttpInfo(createApp);
         return localVarResp.getData();
@@ -344,7 +351,7 @@ public class AppsApi {
 
     /**
      * Создание приложения
-     * Чтобы создать приложение, отправьте POST-запрос в &#x60;/api/v1/apps&#x60;, задав необходимые атрибуты.
+     * Метод устарел. Используйте [POST /api/v2/apps](#operation/createAppV2).  Чтобы создать приложение, отправьте POST-запрос в &#x60;/api/v1/apps&#x60;, задав необходимые атрибуты.
      * @param createApp  (required)
      * @return ApiResponse&lt;CreateApp201Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -359,7 +366,9 @@ public class AppsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<CreateApp201Response> createAppWithHttpInfo(CreateApp createApp) throws ApiException {
         okhttp3.Call localVarCall = createAppValidateBeforeCall(createApp, null);
         Type localVarReturnType = new TypeToken<CreateApp201Response>(){}.getType();
@@ -368,7 +377,7 @@ public class AppsApi {
 
     /**
      * Создание приложения (asynchronously)
-     * Чтобы создать приложение, отправьте POST-запрос в &#x60;/api/v1/apps&#x60;, задав необходимые атрибуты.
+     * Метод устарел. Используйте [POST /api/v2/apps](#operation/createAppV2).  Чтобы создать приложение, отправьте POST-запрос в &#x60;/api/v1/apps&#x60;, задав необходимые атрибуты.
      * @param createApp  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -384,11 +393,164 @@ public class AppsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call createAppAsync(CreateApp createApp, final ApiCallback<CreateApp201Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createAppValidateBeforeCall(createApp, _callback);
         Type localVarReturnType = new TypeToken<CreateApp201Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createAppV2
+     * @param createAppV2  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Запись приложения создана, развёртывание продолжается асинхронно. Объект JSON с ключом app. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createAppV2Call(CreateAppV2 createAppV2, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = createAppV2;
+
+        // create path and map variables
+        String localVarPath = "/api/v2/apps";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "Bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createAppV2ValidateBeforeCall(CreateAppV2 createAppV2, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'createAppV2' is set
+        if (createAppV2 == null) {
+            throw new ApiException("Missing the required parameter 'createAppV2' when calling createAppV2(Async)");
+        }
+
+        return createAppV2Call(createAppV2, _callback);
+
+    }
+
+    /**
+     * Создание приложения (v2)
+     * Чтобы создать приложение, отправьте POST-запрос в &#x60;/api/v2/apps&#x60;.  Создание сервера, настройка окружения и первый деплой выполняются асинхронно. Ответ &#x60;201 Created&#x60; содержит запись приложения в статусе &#x60;new&#x60; и не означает, что приложение уже готово к работе. До создания инфраструктуры в ответе могут отсутствовать &#x60;ip&#x60;, &#x60;location&#x60;, &#x60;configuration&#x60;, &#x60;disk_status&#x60;, &#x60;language&#x60;, &#x60;framework&#x60;, &#x60;envs&#x60;, &#x60;env_version&#x60;, &#x60;build_cmd&#x60;, &#x60;run_cmd&#x60; и &#x60;index_dir&#x60;. Состояние приложения можно проверять через &#x60;GET /api/v2/apps/{app_id}&#x60;.  В v2 обязательно поле &#x60;language&#x60;, а в ответе ветка репозитория называется &#x60;branch&#x60;. Для Git-репозитория передайте параметры провайдера, репозитория, ветки, коммита и сборки. Для готового Docker-образа используйте &#x60;type: backend&#x60;, &#x60;language: custom-image&#x60;, &#x60;docker_image&#x60; и &#x60;docker_image_tag&#x60;. Для frontend обязателен &#x60;preset_id&#x60;, для backend — либо &#x60;preset_id&#x60;, либо &#x60;configuration&#x60;. ID тарифа можно получить через &#x60;GET /api/v1/presets/apps&#x60;.
+     * @param createAppV2  (required)
+     * @return CreateAppV2201Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Запись приложения создана, развёртывание продолжается асинхронно. Объект JSON с ключом app. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateAppV2201Response createAppV2(CreateAppV2 createAppV2) throws ApiException {
+        ApiResponse<CreateAppV2201Response> localVarResp = createAppV2WithHttpInfo(createAppV2);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Создание приложения (v2)
+     * Чтобы создать приложение, отправьте POST-запрос в &#x60;/api/v2/apps&#x60;.  Создание сервера, настройка окружения и первый деплой выполняются асинхронно. Ответ &#x60;201 Created&#x60; содержит запись приложения в статусе &#x60;new&#x60; и не означает, что приложение уже готово к работе. До создания инфраструктуры в ответе могут отсутствовать &#x60;ip&#x60;, &#x60;location&#x60;, &#x60;configuration&#x60;, &#x60;disk_status&#x60;, &#x60;language&#x60;, &#x60;framework&#x60;, &#x60;envs&#x60;, &#x60;env_version&#x60;, &#x60;build_cmd&#x60;, &#x60;run_cmd&#x60; и &#x60;index_dir&#x60;. Состояние приложения можно проверять через &#x60;GET /api/v2/apps/{app_id}&#x60;.  В v2 обязательно поле &#x60;language&#x60;, а в ответе ветка репозитория называется &#x60;branch&#x60;. Для Git-репозитория передайте параметры провайдера, репозитория, ветки, коммита и сборки. Для готового Docker-образа используйте &#x60;type: backend&#x60;, &#x60;language: custom-image&#x60;, &#x60;docker_image&#x60; и &#x60;docker_image_tag&#x60;. Для frontend обязателен &#x60;preset_id&#x60;, для backend — либо &#x60;preset_id&#x60;, либо &#x60;configuration&#x60;. ID тарифа можно получить через &#x60;GET /api/v1/presets/apps&#x60;.
+     * @param createAppV2  (required)
+     * @return ApiResponse&lt;CreateAppV2201Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Запись приложения создана, развёртывание продолжается асинхронно. Объект JSON с ключом app. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateAppV2201Response> createAppV2WithHttpInfo(CreateAppV2 createAppV2) throws ApiException {
+        okhttp3.Call localVarCall = createAppV2ValidateBeforeCall(createAppV2, null);
+        Type localVarReturnType = new TypeToken<CreateAppV2201Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Создание приложения (v2) (asynchronously)
+     * Чтобы создать приложение, отправьте POST-запрос в &#x60;/api/v2/apps&#x60;.  Создание сервера, настройка окружения и первый деплой выполняются асинхронно. Ответ &#x60;201 Created&#x60; содержит запись приложения в статусе &#x60;new&#x60; и не означает, что приложение уже готово к работе. До создания инфраструктуры в ответе могут отсутствовать &#x60;ip&#x60;, &#x60;location&#x60;, &#x60;configuration&#x60;, &#x60;disk_status&#x60;, &#x60;language&#x60;, &#x60;framework&#x60;, &#x60;envs&#x60;, &#x60;env_version&#x60;, &#x60;build_cmd&#x60;, &#x60;run_cmd&#x60; и &#x60;index_dir&#x60;. Состояние приложения можно проверять через &#x60;GET /api/v2/apps/{app_id}&#x60;.  В v2 обязательно поле &#x60;language&#x60;, а в ответе ветка репозитория называется &#x60;branch&#x60;. Для Git-репозитория передайте параметры провайдера, репозитория, ветки, коммита и сборки. Для готового Docker-образа используйте &#x60;type: backend&#x60;, &#x60;language: custom-image&#x60;, &#x60;docker_image&#x60; и &#x60;docker_image_tag&#x60;. Для frontend обязателен &#x60;preset_id&#x60;, для backend — либо &#x60;preset_id&#x60;, либо &#x60;configuration&#x60;. ID тарифа можно получить через &#x60;GET /api/v1/presets/apps&#x60;.
+     * @param createAppV2  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Запись приложения создана, развёртывание продолжается асинхронно. Объект JSON с ключом app. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Запрещено </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Конфликт </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createAppV2Async(CreateAppV2 createAppV2, final ApiCallback<CreateAppV2201Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createAppV2ValidateBeforeCall(createAppV2, _callback);
+        Type localVarReturnType = new TypeToken<CreateAppV2201Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

@@ -2,7 +2,7 @@
 
 Timeweb Cloud API
 - API version: 1.0.0
-  - Build date: 2026-10-28T15:56:17.696691Z[Etc/UTC]
+  - Build date: 2026-10-30T15:03:29.616934Z[Etc/UTC]
 
 # Введение
 API Timeweb Cloud позволяет вам управлять ресурсами в облаке программным способом с использованием обычных HTTP-запросов.
@@ -400,6 +400,7 @@ Class | Method | HTTP request | Description
 *AiSolutionsApi* | [**updateAiSolution**](docs/AiSolutionsApi.md#updateAiSolution) | **PATCH** /api/v1/cloud-ai/solutions/{solution_id} | Изменение AI-решения
 *AppsApi* | [**addProvider**](docs/AppsApi.md#addProvider) | **POST** /api/v1/vcs-provider | Привязка vcs провайдера
 *AppsApi* | [**createApp**](docs/AppsApi.md#createApp) | **POST** /api/v1/apps | Создание приложения
+*AppsApi* | [**createAppV2**](docs/AppsApi.md#createAppV2) | **POST** /api/v2/apps | Создание приложения (v2)
 *AppsApi* | [**createDeploy**](docs/AppsApi.md#createDeploy) | **POST** /api/v1/apps/{app_id}/deploy | Запуск деплоя приложения
 *AppsApi* | [**deleteApp**](docs/AppsApi.md#deleteApp) | **DELETE** /api/v1/apps/{app_id} | Удаление приложения
 *AppsApi* | [**deleteProvider**](docs/AppsApi.md#deleteProvider) | **DELETE** /api/v1/vcs-provider/{provider_id} | Отвязка vcs провайдера от аккаунта
@@ -888,6 +889,11 @@ Class | Method | HTTP request | Description
  - [AppDiskStatus](docs/AppDiskStatus.md)
  - [AppDomainsInner](docs/AppDomainsInner.md)
  - [AppProvider](docs/AppProvider.md)
+ - [AppV2](docs/AppV2.md)
+ - [AppV2Configuration](docs/AppV2Configuration.md)
+ - [AppV2DiskStatus](docs/AppV2DiskStatus.md)
+ - [AppV2DomainsInner](docs/AppV2DomainsInner.md)
+ - [AppV2Provider](docs/AppV2Provider.md)
  - [ApproveTelegramPairing](docs/ApproveTelegramPairing.md)
  - [AppsPresets](docs/AppsPresets.md)
  - [AppsPresetsBackendPresetsInner](docs/AppsPresetsBackendPresetsInner.md)
@@ -993,6 +999,10 @@ Class | Method | HTTP request | Description
  - [CreateAiSolution201Response](docs/CreateAiSolution201Response.md)
  - [CreateApp](docs/CreateApp.md)
  - [CreateApp201Response](docs/CreateApp201Response.md)
+ - [CreateAppV2](docs/CreateAppV2.md)
+ - [CreateAppV2201Response](docs/CreateAppV2201Response.md)
+ - [CreateAppV2Configuration](docs/CreateAppV2Configuration.md)
+ - [CreateAppV2Network](docs/CreateAppV2Network.md)
  - [CreateBalancer](docs/CreateBalancer.md)
  - [CreateBalancer200Response](docs/CreateBalancer200Response.md)
  - [CreateBalancerCertificates](docs/CreateBalancerCertificates.md)

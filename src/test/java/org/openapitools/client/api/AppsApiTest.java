@@ -20,6 +20,8 @@ import org.openapitools.client.model.AppsPresets;
 import org.openapitools.client.model.AvailableFrameworks;
 import org.openapitools.client.model.CreateApp;
 import org.openapitools.client.model.CreateApp201Response;
+import org.openapitools.client.model.CreateAppV2;
+import org.openapitools.client.model.CreateAppV2201Response;
 import org.openapitools.client.model.CreateDeploy201Response;
 import org.openapitools.client.model.CreateDeployRequest;
 import org.openapitools.client.model.GetAccountStatus403Response;
@@ -74,7 +76,7 @@ public class AppsApiTest {
     /**
      * Создание приложения
      *
-     * Чтобы создать приложение, отправьте POST-запрос в &#x60;/api/v1/apps&#x60;, задав необходимые атрибуты.
+     * Метод устарел. Используйте [POST /api/v2/apps](#operation/createAppV2).  Чтобы создать приложение, отправьте POST-запрос в &#x60;/api/v1/apps&#x60;, задав необходимые атрибуты.
      *
      * @throws ApiException if the Api call fails
      */
@@ -82,6 +84,20 @@ public class AppsApiTest {
     public void createAppTest() throws ApiException {
         CreateApp createApp = null;
         CreateApp201Response response = api.createApp(createApp);
+        // TODO: test validations
+    }
+
+    /**
+     * Создание приложения (v2)
+     *
+     * Чтобы создать приложение, отправьте POST-запрос в &#x60;/api/v2/apps&#x60;.  Создание сервера, настройка окружения и первый деплой выполняются асинхронно. Ответ &#x60;201 Created&#x60; содержит запись приложения в статусе &#x60;new&#x60; и не означает, что приложение уже готово к работе. До создания инфраструктуры в ответе могут отсутствовать &#x60;ip&#x60;, &#x60;location&#x60;, &#x60;configuration&#x60;, &#x60;disk_status&#x60;, &#x60;language&#x60;, &#x60;framework&#x60;, &#x60;envs&#x60;, &#x60;env_version&#x60;, &#x60;build_cmd&#x60;, &#x60;run_cmd&#x60; и &#x60;index_dir&#x60;. Состояние приложения можно проверять через &#x60;GET /api/v2/apps/{app_id}&#x60;.  В v2 обязательно поле &#x60;language&#x60;, а в ответе ветка репозитория называется &#x60;branch&#x60;. Для Git-репозитория передайте параметры провайдера, репозитория, ветки, коммита и сборки. Для готового Docker-образа используйте &#x60;type: backend&#x60;, &#x60;language: custom-image&#x60;, &#x60;docker_image&#x60; и &#x60;docker_image_tag&#x60;. Для frontend обязателен &#x60;preset_id&#x60;, для backend — либо &#x60;preset_id&#x60;, либо &#x60;configuration&#x60;. ID тарифа можно получить через &#x60;GET /api/v1/presets/apps&#x60;.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void createAppV2Test() throws ApiException {
+        CreateAppV2 createAppV2 = null;
+        CreateAppV2201Response response = api.createAppV2(createAppV2);
         // TODO: test validations
     }
 

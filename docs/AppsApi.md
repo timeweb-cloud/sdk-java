@@ -6,6 +6,7 @@ All URIs are relative to *https://api.timeweb.cloud*
 |------------- | ------------- | -------------|
 | [**addProvider**](AppsApi.md#addProvider) | **POST** /api/v1/vcs-provider | Привязка vcs провайдера |
 | [**createApp**](AppsApi.md#createApp) | **POST** /api/v1/apps | Создание приложения |
+| [**createAppV2**](AppsApi.md#createAppV2) | **POST** /api/v2/apps | Создание приложения (v2) |
 | [**createDeploy**](AppsApi.md#createDeploy) | **POST** /api/v1/apps/{app_id}/deploy | Запуск деплоя приложения |
 | [**deleteApp**](AppsApi.md#deleteApp) | **DELETE** /api/v1/apps/{app_id} | Удаление приложения |
 | [**deleteProvider**](AppsApi.md#deleteProvider) | **DELETE** /api/v1/vcs-provider/{provider_id} | Отвязка vcs провайдера от аккаунта |
@@ -106,7 +107,7 @@ public class Example {
 
 Создание приложения
 
-Чтобы создать приложение, отправьте POST-запрос в &#x60;/api/v1/apps&#x60;, задав необходимые атрибуты.
+Метод устарел. Используйте [POST /api/v2/apps](#operation/createAppV2).  Чтобы создать приложение, отправьте POST-запрос в &#x60;/api/v1/apps&#x60;, задав необходимые атрибуты.
 
 ### Example
 ```java
@@ -169,6 +170,80 @@ public class Example {
 | **400** | Некорректный запрос |  -  |
 | **401** | Не авторизован |  -  |
 | **403** | Запрещено |  -  |
+| **409** | Конфликт |  -  |
+| **429** | Слишком много запросов |  -  |
+| **500** | Внутренняя ошибка сервера |  -  |
+
+<a id="createAppV2"></a>
+# **createAppV2**
+> CreateAppV2201Response createAppV2(createAppV2)
+
+Создание приложения (v2)
+
+Чтобы создать приложение, отправьте POST-запрос в &#x60;/api/v2/apps&#x60;.  Создание сервера, настройка окружения и первый деплой выполняются асинхронно. Ответ &#x60;201 Created&#x60; содержит запись приложения в статусе &#x60;new&#x60; и не означает, что приложение уже готово к работе. До создания инфраструктуры в ответе могут отсутствовать &#x60;ip&#x60;, &#x60;location&#x60;, &#x60;configuration&#x60;, &#x60;disk_status&#x60;, &#x60;language&#x60;, &#x60;framework&#x60;, &#x60;envs&#x60;, &#x60;env_version&#x60;, &#x60;build_cmd&#x60;, &#x60;run_cmd&#x60; и &#x60;index_dir&#x60;. Состояние приложения можно проверять через &#x60;GET /api/v2/apps/{app_id}&#x60;.  В v2 обязательно поле &#x60;language&#x60;, а в ответе ветка репозитория называется &#x60;branch&#x60;. Для Git-репозитория передайте параметры провайдера, репозитория, ветки, коммита и сборки. Для готового Docker-образа используйте &#x60;type: backend&#x60;, &#x60;language: custom-image&#x60;, &#x60;docker_image&#x60; и &#x60;docker_image_tag&#x60;. Для frontend обязателен &#x60;preset_id&#x60;, для backend — либо &#x60;preset_id&#x60;, либо &#x60;configuration&#x60;. ID тарифа можно получить через &#x60;GET /api/v1/presets/apps&#x60;.
+
+### Example
+```java
+// Import classes:
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.AppsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.timeweb.cloud");
+    
+    // Configure HTTP bearer authorization: Bearer
+    HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
+    Bearer.setBearerToken("BEARER TOKEN");
+
+    AppsApi apiInstance = new AppsApi(defaultClient);
+    CreateAppV2 createAppV2 = new CreateAppV2(); // CreateAppV2 | 
+    try {
+      CreateAppV2201Response result = apiInstance.createAppV2(createAppV2);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling AppsApi#createAppV2");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **createAppV2** | [**CreateAppV2**](CreateAppV2.md)|  | |
+
+### Return type
+
+[**CreateAppV2201Response**](CreateAppV2201Response.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Запись приложения создана, развёртывание продолжается асинхронно. Объект JSON с ключом app. |  -  |
+| **400** | Некорректный запрос |  -  |
+| **401** | Не авторизован |  -  |
+| **403** | Запрещено |  -  |
+| **404** | Не найдено |  -  |
 | **409** | Конфликт |  -  |
 | **429** | Слишком много запросов |  -  |
 | **500** | Внутренняя ошибка сервера |  -  |
