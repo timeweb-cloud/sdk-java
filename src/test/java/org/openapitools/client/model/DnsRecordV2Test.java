@@ -21,7 +21,6 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
 import org.openapitools.client.model.DnsRecordV2Data;
-import org.openapitools.jackson.nullable.JsonNullable;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -40,14 +39,6 @@ public class DnsRecordV2Test {
     }
 
     /**
-     * Test the property 'type'
-     */
-    @Test
-    public void typeTest() {
-        // TODO: test type
-    }
-
-    /**
      * Test the property 'id'
      */
     @Test
@@ -56,11 +47,11 @@ public class DnsRecordV2Test {
     }
 
     /**
-     * Test the property 'fqdn'
+     * Test the property 'type'
      */
     @Test
-    public void fqdnTest() {
-        // TODO: test fqdn
+    public void typeTest() {
+        // TODO: test type
     }
 
     /**
@@ -69,6 +60,14 @@ public class DnsRecordV2Test {
     @Test
     public void dataTest() {
         // TODO: test data
+    }
+
+    /**
+     * Test the property 'fqdn'
+     */
+    @Test
+    public void fqdnTest() {
+        // TODO: test fqdn
     }
 
     /**

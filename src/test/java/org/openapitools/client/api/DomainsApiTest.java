@@ -25,6 +25,7 @@ import org.openapitools.client.model.CreatePerson201Response;
 import org.openapitools.client.model.DomainRegister;
 import org.openapitools.client.model.GetDomain200Response;
 import org.openapitools.client.model.GetDomainDNSRecords200Response;
+import org.openapitools.client.model.GetDomainDNSRecordsV2200Response;
 import org.openapitools.client.model.GetDomainNameServers200Response;
 import org.openapitools.client.model.GetDomainRequests200Response;
 import org.openapitools.client.model.GetDomains200Response;
@@ -250,7 +251,7 @@ public class DomainsApiTest {
     /**
      * Получить информацию обо всех пользовательских DNS-записях домена или поддомена
      *
-     * Чтобы получить информацию обо всех пользовательских DNS-записях домена или поддомена, отправьте запрос GET на &#x60;/api/v1/domains/{fqdn}/dns-records&#x60;.
+     * Метод устарел. Используйте [GET /api/v2/domains/{fqdn}/dns-records](#operation/getDomainDNSRecordsV2).  Чтобы получить информацию обо всех пользовательских DNS-записях домена или поддомена, отправьте запрос GET на &#x60;/api/v1/domains/{fqdn}/dns-records&#x60;.
      *
      * @throws ApiException if the Api call fails
      */
@@ -260,6 +261,20 @@ public class DomainsApiTest {
         Integer limit = null;
         Integer offset = null;
         GetDomainDNSRecords200Response response = api.getDomainDNSRecords(fqdn, limit, offset);
+        // TODO: test validations
+    }
+
+    /**
+     * Получить информацию обо всех пользовательских DNS-записях домена или поддомена
+     *
+     * Чтобы получить информацию обо всех пользовательских DNS-записях домена или поддомена, отправьте запрос GET на &#x60;/api/v2/domains/{fqdn}/dns-records&#x60;.  По основному домену возвращаются записи всей зоны, включая записи поддоменов: у них &#x60;fqdn&#x60; — основной домен, а &#x60;data.subdomain&#x60; — имя поддомена. По поддомену возвращаются только записи этого поддомена, без вложенных поддоменов: у них &#x60;fqdn&#x60; — сам поддомен, а поля &#x60;data.subdomain&#x60; нет. Полное имя записи — &#x60;data.subdomain&#x60; + &#x60;.&#x60; + &#x60;fqdn&#x60;.  Возвращаются все записи сразу, без пагинации.  Заменяет устаревший &#x60;GET /api/v1/domains/{fqdn}/dns-records&#x60;: тот по поддомену не возвращает его TXT-записи.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void getDomainDNSRecordsV2Test() throws ApiException {
+        String fqdn = null;
+        GetDomainDNSRecordsV2200Response response = api.getDomainDNSRecordsV2(fqdn);
         // TODO: test validations
     }
 

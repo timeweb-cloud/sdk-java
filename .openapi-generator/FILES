@@ -524,6 +524,7 @@ docs/GetDeployLogs200Response.md
 docs/GetDeploySettings200Response.md
 docs/GetDomain200Response.md
 docs/GetDomainDNSRecords200Response.md
+docs/GetDomainDNSRecordsV2200Response.md
 docs/GetDomainMailInfo200Response.md
 docs/GetDomainNameServers200Response.md
 docs/GetDomainRequests200Response.md
@@ -1504,6 +1505,7 @@ src/main/java/org/openapitools/client/model/GetDeployLogs200Response.java
 src/main/java/org/openapitools/client/model/GetDeploySettings200Response.java
 src/main/java/org/openapitools/client/model/GetDomain200Response.java
 src/main/java/org/openapitools/client/model/GetDomainDNSRecords200Response.java
+src/main/java/org/openapitools/client/model/GetDomainDNSRecordsV2200Response.java
 src/main/java/org/openapitools/client/model/GetDomainMailInfo200Response.java
 src/main/java/org/openapitools/client/model/GetDomainNameServers200Response.java
 src/main/java/org/openapitools/client/model/GetDomainRequests200Response.java
@@ -2443,6 +2445,7 @@ src/test/java/org/openapitools/client/model/GetDeployLogs200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetDeploySettings200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetDomain200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetDomainDNSRecords200ResponseTest.java
+src/test/java/org/openapitools/client/model/GetDomainDNSRecordsV2200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetDomainMailInfo200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetDomainNameServers200ResponseTest.java
 src/test/java/org/openapitools/client/model/GetDomainRequests200ResponseTest.java

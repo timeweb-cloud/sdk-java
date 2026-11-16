@@ -53,7 +53,7 @@ import org.openapitools.client.JSON;
 /**
  * Настройки доступа к ресурсу. Секция доступна только для чтения — изменить ее через API нельзя.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-30T15:03:29.616934Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-16T11:50:41.434402Z[Etc/UTC]")
 public class ConfigAccess {
   /**
    * Gets or Sets allowedMethods

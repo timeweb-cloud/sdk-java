@@ -22,7 +22,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
-import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -52,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * Данные DNS-записи. Состав полей зависит от типа записи.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-30T15:03:29.616934Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-16T11:50:41.434402Z[Etc/UTC]")
 public class DnsRecordV2Data {
   public static final String SERIALIZED_NAME_PRIORITY = "priority";
   @SerializedName(SERIALIZED_NAME_PRIORITY)
@@ -92,7 +91,7 @@ public class DnsRecordV2Data {
   }
 
    /**
-   * Приоритет DNS-записи (для MX и SRV записей).
+   * Приоритет DNS-записи (для MX, SRV, HTTPS и SVCB записей).
    * @return priority
   **/
   @javax.annotation.Nullable
@@ -113,7 +112,7 @@ public class DnsRecordV2Data {
   }
 
    /**
-   * Имя поддомена (только поддомен без основного домена, например &#x60;sub&#x60; для &#x60;sub.example.com&#x60;). Для записей на основном домене это поле отсутствует в ответе.
+   * Имя записи относительно &#x60;fqdn&#x60;, например &#x60;sub&#x60; для &#x60;sub.example.com&#x60; или &#x60;mail._domainkey&#x60;. Для записей самого &#x60;fqdn&#x60; это поле отсутствует в ответе.
    * @return subdomain
   **/
   @javax.annotation.Nullable
@@ -134,7 +133,7 @@ public class DnsRecordV2Data {
   }
 
    /**
-   * Значение DNS-записи (для A, AAAA, TXT, CNAME, MX записей).
+   * Значение DNS-записи (для всех типов, кроме SRV: у SRV цель записи в поле &#x60;host&#x60;).
    * @return value
   **/
   @javax.annotation.Nullable
@@ -251,20 +250,9 @@ public class DnsRecordV2Data {
         Objects.equals(this.protocol, dnsRecordV2Data.protocol);
   }
 
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
-  }
-
   @Override
   public int hashCode() {
     return Objects.hash(priority, subdomain, value, host, port, service, protocol);
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

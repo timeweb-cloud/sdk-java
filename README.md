@@ -2,7 +2,7 @@
 
 Timeweb Cloud API
 - API version: 1.0.0
-  - Build date: 2026-10-30T15:03:29.616934Z[Etc/UTC]
+  - Build date: 2026-11-16T11:50:41.434402Z[Etc/UTC]
 
 # Введение
 API Timeweb Cloud позволяет вам управлять ресурсами в облаке программным способом с использованием обычных HTTP-запросов.
@@ -521,6 +521,7 @@ Class | Method | HTTP request | Description
 *DomainsApi* | [**deleteSubdomain**](docs/DomainsApi.md#deleteSubdomain) | **DELETE** /api/v1/domains/{fqdn}/subdomains/{subdomain} | Удаление поддомена
 *DomainsApi* | [**getDomain**](docs/DomainsApi.md#getDomain) | **GET** /api/v1/domains/{fqdn} | Получение информации о домене
 *DomainsApi* | [**getDomainDNSRecords**](docs/DomainsApi.md#getDomainDNSRecords) | **GET** /api/v1/domains/{fqdn}/dns-records | Получить информацию обо всех пользовательских DNS-записях домена или поддомена
+*DomainsApi* | [**getDomainDNSRecordsV2**](docs/DomainsApi.md#getDomainDNSRecordsV2) | **GET** /api/v2/domains/{fqdn}/dns-records | Получить информацию обо всех пользовательских DNS-записях домена или поддомена
 *DomainsApi* | [**getDomainDefaultDNSRecords**](docs/DomainsApi.md#getDomainDefaultDNSRecords) | **GET** /api/v1/domains/{fqdn}/default-dns-records | Получить информацию обо всех DNS-записях по умолчанию домена или поддомена
 *DomainsApi* | [**getDomainNameServers**](docs/DomainsApi.md#getDomainNameServers) | **GET** /api/v1/domains/{fqdn}/name-servers | Получение списка name-серверов домена
 *DomainsApi* | [**getDomainRequest**](docs/DomainsApi.md#getDomainRequest) | **GET** /api/v1/domains-requests/{request_id} | Получение заявки на регистрацию/продление/трансфер домена
@@ -1284,6 +1285,7 @@ Class | Method | HTTP request | Description
  - [GetDeploySettings200Response](docs/GetDeploySettings200Response.md)
  - [GetDomain200Response](docs/GetDomain200Response.md)
  - [GetDomainDNSRecords200Response](docs/GetDomainDNSRecords200Response.md)
+ - [GetDomainDNSRecordsV2200Response](docs/GetDomainDNSRecordsV2200Response.md)
  - [GetDomainMailInfo200Response](docs/GetDomainMailInfo200Response.md)
  - [GetDomainNameServers200Response](docs/GetDomainNameServers200Response.md)
  - [GetDomainRequests200Response](docs/GetDomainRequests200Response.md)

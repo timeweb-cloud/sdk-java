@@ -38,6 +38,7 @@ import org.openapitools.client.model.CreatePerson201Response;
 import org.openapitools.client.model.DomainRegister;
 import org.openapitools.client.model.GetDomain200Response;
 import org.openapitools.client.model.GetDomainDNSRecords200Response;
+import org.openapitools.client.model.GetDomainDNSRecordsV2200Response;
 import org.openapitools.client.model.GetDomainNameServers200Response;
 import org.openapitools.client.model.GetDomainRequests200Response;
 import org.openapitools.client.model.GetDomains200Response;
@@ -2035,7 +2036,9 @@ public class DomainsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call getDomainDNSRecordsCall(String fqdn, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -2089,6 +2092,7 @@ public class DomainsApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getDomainDNSRecordsValidateBeforeCall(String fqdn, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'fqdn' is set
@@ -2102,7 +2106,7 @@ public class DomainsApi {
 
     /**
      * Получить информацию обо всех пользовательских DNS-записях домена или поддомена
-     * Чтобы получить информацию обо всех пользовательских DNS-записях домена или поддомена, отправьте запрос GET на &#x60;/api/v1/domains/{fqdn}/dns-records&#x60;.
+     * Метод устарел. Используйте [GET /api/v2/domains/{fqdn}/dns-records](#operation/getDomainDNSRecordsV2).  Чтобы получить информацию обо всех пользовательских DNS-записях домена или поддомена, отправьте запрос GET на &#x60;/api/v1/domains/{fqdn}/dns-records&#x60;.
      * @param fqdn Полное имя домена или поддомена. (required)
      * @param limit Обозначает количество записей, которое необходимо вернуть. (optional, default to 100)
      * @param offset Указывает на смещение относительно начала списка. (optional, default to 0)
@@ -2118,7 +2122,9 @@ public class DomainsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public GetDomainDNSRecords200Response getDomainDNSRecords(String fqdn, Integer limit, Integer offset) throws ApiException {
         ApiResponse<GetDomainDNSRecords200Response> localVarResp = getDomainDNSRecordsWithHttpInfo(fqdn, limit, offset);
         return localVarResp.getData();
@@ -2126,7 +2132,7 @@ public class DomainsApi {
 
     /**
      * Получить информацию обо всех пользовательских DNS-записях домена или поддомена
-     * Чтобы получить информацию обо всех пользовательских DNS-записях домена или поддомена, отправьте запрос GET на &#x60;/api/v1/domains/{fqdn}/dns-records&#x60;.
+     * Метод устарел. Используйте [GET /api/v2/domains/{fqdn}/dns-records](#operation/getDomainDNSRecordsV2).  Чтобы получить информацию обо всех пользовательских DNS-записях домена или поддомена, отправьте запрос GET на &#x60;/api/v1/domains/{fqdn}/dns-records&#x60;.
      * @param fqdn Полное имя домена или поддомена. (required)
      * @param limit Обозначает количество записей, которое необходимо вернуть. (optional, default to 100)
      * @param offset Указывает на смещение относительно начала списка. (optional, default to 0)
@@ -2142,7 +2148,9 @@ public class DomainsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<GetDomainDNSRecords200Response> getDomainDNSRecordsWithHttpInfo(String fqdn, Integer limit, Integer offset) throws ApiException {
         okhttp3.Call localVarCall = getDomainDNSRecordsValidateBeforeCall(fqdn, limit, offset, null);
         Type localVarReturnType = new TypeToken<GetDomainDNSRecords200Response>(){}.getType();
@@ -2151,7 +2159,7 @@ public class DomainsApi {
 
     /**
      * Получить информацию обо всех пользовательских DNS-записях домена или поддомена (asynchronously)
-     * Чтобы получить информацию обо всех пользовательских DNS-записях домена или поддомена, отправьте запрос GET на &#x60;/api/v1/domains/{fqdn}/dns-records&#x60;.
+     * Метод устарел. Используйте [GET /api/v2/domains/{fqdn}/dns-records](#operation/getDomainDNSRecordsV2).  Чтобы получить информацию обо всех пользовательских DNS-записях домена или поддомена, отправьте запрос GET на &#x60;/api/v1/domains/{fqdn}/dns-records&#x60;.
      * @param fqdn Полное имя домена или поддомена. (required)
      * @param limit Обозначает количество записей, которое необходимо вернуть. (optional, default to 100)
      * @param offset Указывает на смещение относительно начала списка. (optional, default to 0)
@@ -2168,11 +2176,156 @@ public class DomainsApi {
         <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call getDomainDNSRecordsAsync(String fqdn, Integer limit, Integer offset, final ApiCallback<GetDomainDNSRecords200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getDomainDNSRecordsValidateBeforeCall(fqdn, limit, offset, _callback);
         Type localVarReturnType = new TypeToken<GetDomainDNSRecords200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getDomainDNSRecordsV2
+     * @param fqdn Полное имя домена или поддомена. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;dns_records&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getDomainDNSRecordsV2Call(String fqdn, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/v2/domains/{fqdn}/dns-records"
+            .replace("{" + "fqdn" + "}", localVarApiClient.escapeString(fqdn.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "Bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getDomainDNSRecordsV2ValidateBeforeCall(String fqdn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'fqdn' is set
+        if (fqdn == null) {
+            throw new ApiException("Missing the required parameter 'fqdn' when calling getDomainDNSRecordsV2(Async)");
+        }
+
+        return getDomainDNSRecordsV2Call(fqdn, _callback);
+
+    }
+
+    /**
+     * Получить информацию обо всех пользовательских DNS-записях домена или поддомена
+     * Чтобы получить информацию обо всех пользовательских DNS-записях домена или поддомена, отправьте запрос GET на &#x60;/api/v2/domains/{fqdn}/dns-records&#x60;.  По основному домену возвращаются записи всей зоны, включая записи поддоменов: у них &#x60;fqdn&#x60; — основной домен, а &#x60;data.subdomain&#x60; — имя поддомена. По поддомену возвращаются только записи этого поддомена, без вложенных поддоменов: у них &#x60;fqdn&#x60; — сам поддомен, а поля &#x60;data.subdomain&#x60; нет. Полное имя записи — &#x60;data.subdomain&#x60; + &#x60;.&#x60; + &#x60;fqdn&#x60;.  Возвращаются все записи сразу, без пагинации.  Заменяет устаревший &#x60;GET /api/v1/domains/{fqdn}/dns-records&#x60;: тот по поддомену не возвращает его TXT-записи.
+     * @param fqdn Полное имя домена или поддомена. (required)
+     * @return GetDomainDNSRecordsV2200Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;dns_records&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetDomainDNSRecordsV2200Response getDomainDNSRecordsV2(String fqdn) throws ApiException {
+        ApiResponse<GetDomainDNSRecordsV2200Response> localVarResp = getDomainDNSRecordsV2WithHttpInfo(fqdn);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Получить информацию обо всех пользовательских DNS-записях домена или поддомена
+     * Чтобы получить информацию обо всех пользовательских DNS-записях домена или поддомена, отправьте запрос GET на &#x60;/api/v2/domains/{fqdn}/dns-records&#x60;.  По основному домену возвращаются записи всей зоны, включая записи поддоменов: у них &#x60;fqdn&#x60; — основной домен, а &#x60;data.subdomain&#x60; — имя поддомена. По поддомену возвращаются только записи этого поддомена, без вложенных поддоменов: у них &#x60;fqdn&#x60; — сам поддомен, а поля &#x60;data.subdomain&#x60; нет. Полное имя записи — &#x60;data.subdomain&#x60; + &#x60;.&#x60; + &#x60;fqdn&#x60;.  Возвращаются все записи сразу, без пагинации.  Заменяет устаревший &#x60;GET /api/v1/domains/{fqdn}/dns-records&#x60;: тот по поддомену не возвращает его TXT-записи.
+     * @param fqdn Полное имя домена или поддомена. (required)
+     * @return ApiResponse&lt;GetDomainDNSRecordsV2200Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;dns_records&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetDomainDNSRecordsV2200Response> getDomainDNSRecordsV2WithHttpInfo(String fqdn) throws ApiException {
+        okhttp3.Call localVarCall = getDomainDNSRecordsV2ValidateBeforeCall(fqdn, null);
+        Type localVarReturnType = new TypeToken<GetDomainDNSRecordsV2200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Получить информацию обо всех пользовательских DNS-записях домена или поддомена (asynchronously)
+     * Чтобы получить информацию обо всех пользовательских DNS-записях домена или поддомена, отправьте запрос GET на &#x60;/api/v2/domains/{fqdn}/dns-records&#x60;.  По основному домену возвращаются записи всей зоны, включая записи поддоменов: у них &#x60;fqdn&#x60; — основной домен, а &#x60;data.subdomain&#x60; — имя поддомена. По поддомену возвращаются только записи этого поддомена, без вложенных поддоменов: у них &#x60;fqdn&#x60; — сам поддомен, а поля &#x60;data.subdomain&#x60; нет. Полное имя записи — &#x60;data.subdomain&#x60; + &#x60;.&#x60; + &#x60;fqdn&#x60;.  Возвращаются все записи сразу, без пагинации.  Заменяет устаревший &#x60;GET /api/v1/domains/{fqdn}/dns-records&#x60;: тот по поддомену не возвращает его TXT-записи.
+     * @param fqdn Полное имя домена или поддомена. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ответ будет представлять собой объект JSON c ключом &#x60;dns_records&#x60;. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Некорректный запрос </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Не авторизован </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Не найдено </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Слишком много запросов </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Внутренняя ошибка сервера </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getDomainDNSRecordsV2Async(String fqdn, final ApiCallback<GetDomainDNSRecordsV2200Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getDomainDNSRecordsV2ValidateBeforeCall(fqdn, _callback);
+        Type localVarReturnType = new TypeToken<GetDomainDNSRecordsV2200Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

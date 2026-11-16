@@ -53,7 +53,7 @@ import org.openapitools.client.JSON;
 /**
  * Поля, которые нужно заполнить при установке. &#x60;null&#x60; — настройка не требуется
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-30T15:03:29.616934Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-16T11:50:41.434402Z[Etc/UTC]")
 public class ToolTemplateConfigSchema {
   public static final String SERIALIZED_NAME_FIELDS = "fields";
   @SerializedName(SERIALIZED_NAME_FIELDS)

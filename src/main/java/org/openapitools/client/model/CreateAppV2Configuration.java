@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * Произвольная конфигурация backend-приложения вместо preset_id. Все вложенные поля обязательны. Нельзя передавать вместе с preset_id.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-30T15:03:29.616934Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-16T11:50:41.434402Z[Etc/UTC]")
 public class CreateAppV2Configuration {
   public static final String SERIALIZED_NAME_CONFIGURATOR_ID = "configurator_id";
   @SerializedName(SERIALIZED_NAME_CONFIGURATOR_ID)

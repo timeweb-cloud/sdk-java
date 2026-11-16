@@ -23,7 +23,6 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
 import org.openapitools.client.model.DnsRecordV2Data;
-import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -53,8 +52,12 @@ import org.openapitools.client.JSON;
 /**
  * DNS-запись.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-30T15:03:29.616934Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-16T11:50:41.434402Z[Etc/UTC]")
 public class DnsRecordV2 {
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  private BigDecimal id;
+
   /**
    * Тип DNS-записи.
    */
@@ -70,7 +73,15 @@ public class DnsRecordV2 {
     
     MX("MX"),
     
-    A("A");
+    A("A"),
+    
+    PTR("PTR"),
+    
+    HTTPS("HTTPS"),
+    
+    SVCB("SVCB"),
+    
+    CAA("CAA");
 
     private String value;
 
@@ -114,17 +125,13 @@ public class DnsRecordV2 {
   @SerializedName(SERIALIZED_NAME_TYPE)
   private TypeEnum type;
 
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
-  private BigDecimal id;
+  public static final String SERIALIZED_NAME_DATA = "data";
+  @SerializedName(SERIALIZED_NAME_DATA)
+  private DnsRecordV2Data data;
 
   public static final String SERIALIZED_NAME_FQDN = "fqdn";
   @SerializedName(SERIALIZED_NAME_FQDN)
   private String fqdn;
-
-  public static final String SERIALIZED_NAME_DATA = "data";
-  @SerializedName(SERIALIZED_NAME_DATA)
-  private DnsRecordV2Data data;
 
   public static final String SERIALIZED_NAME_TTL = "ttl";
   @SerializedName(SERIALIZED_NAME_TTL)
@@ -132,6 +139,27 @@ public class DnsRecordV2 {
 
   public DnsRecordV2() {
   }
+
+  public DnsRecordV2 id(BigDecimal id) {
+    
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * ID DNS-записи.
+   * @return id
+  **/
+  @javax.annotation.Nonnull
+  public BigDecimal getId() {
+    return id;
+  }
+
+
+  public void setId(BigDecimal id) {
+    this.id = id;
+  }
+
 
   public DnsRecordV2 type(TypeEnum type) {
     
@@ -151,48 +179,6 @@ public class DnsRecordV2 {
 
   public void setType(TypeEnum type) {
     this.type = type;
-  }
-
-
-  public DnsRecordV2 id(BigDecimal id) {
-    
-    this.id = id;
-    return this;
-  }
-
-   /**
-   * ID DNS-записи.
-   * @return id
-  **/
-  @javax.annotation.Nullable
-  public BigDecimal getId() {
-    return id;
-  }
-
-
-  public void setId(BigDecimal id) {
-    this.id = id;
-  }
-
-
-  public DnsRecordV2 fqdn(String fqdn) {
-    
-    this.fqdn = fqdn;
-    return this;
-  }
-
-   /**
-   * Полное имя основного домена.
-   * @return fqdn
-  **/
-  @javax.annotation.Nullable
-  public String getFqdn() {
-    return fqdn;
-  }
-
-
-  public void setFqdn(String fqdn) {
-    this.fqdn = fqdn;
   }
 
 
@@ -217,6 +203,27 @@ public class DnsRecordV2 {
   }
 
 
+  public DnsRecordV2 fqdn(String fqdn) {
+    
+    this.fqdn = fqdn;
+    return this;
+  }
+
+   /**
+   * Домен, относительно которого указано &#x60;data.subdomain&#x60;. Полное имя записи — &#x60;data.subdomain&#x60; + &#x60;.&#x60; + &#x60;fqdn&#x60;, а если &#x60;data.subdomain&#x60; нет — &#x60;fqdn&#x60;.
+   * @return fqdn
+  **/
+  @javax.annotation.Nonnull
+  public String getFqdn() {
+    return fqdn;
+  }
+
+
+  public void setFqdn(String fqdn) {
+    this.fqdn = fqdn;
+  }
+
+
   public DnsRecordV2 ttl(BigDecimal ttl) {
     
     this.ttl = ttl;
@@ -224,7 +231,7 @@ public class DnsRecordV2 {
   }
 
    /**
-   * Время жизни DNS-записи.
+   * Время жизни DNS-записи в секундах.
    * @return ttl
   **/
   @javax.annotation.Nullable
@@ -248,37 +255,26 @@ public class DnsRecordV2 {
       return false;
     }
     DnsRecordV2 dnsRecordV2 = (DnsRecordV2) o;
-    return Objects.equals(this.type, dnsRecordV2.type) &&
-        Objects.equals(this.id, dnsRecordV2.id) &&
-        Objects.equals(this.fqdn, dnsRecordV2.fqdn) &&
+    return Objects.equals(this.id, dnsRecordV2.id) &&
+        Objects.equals(this.type, dnsRecordV2.type) &&
         Objects.equals(this.data, dnsRecordV2.data) &&
+        Objects.equals(this.fqdn, dnsRecordV2.fqdn) &&
         Objects.equals(this.ttl, dnsRecordV2.ttl);
-  }
-
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, id, fqdn, data, ttl);
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
+    return Objects.hash(id, type, data, fqdn, ttl);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class DnsRecordV2 {\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    fqdn: ").append(toIndentedString(fqdn)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("    fqdn: ").append(toIndentedString(fqdn)).append("\n");
     sb.append("    ttl: ").append(toIndentedString(ttl)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -302,16 +298,19 @@ public class DnsRecordV2 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("type");
     openapiFields.add("id");
-    openapiFields.add("fqdn");
+    openapiFields.add("type");
     openapiFields.add("data");
+    openapiFields.add("fqdn");
     openapiFields.add("ttl");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("id");
     openapiRequiredFields.add("type");
     openapiRequiredFields.add("data");
+    openapiRequiredFields.add("fqdn");
+    openapiRequiredFields.add("ttl");
   }
 
  /**
@@ -345,11 +344,11 @@ public class DnsRecordV2 {
       if (!jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
-      if ((jsonObj.get("fqdn") != null && !jsonObj.get("fqdn").isJsonNull()) && !jsonObj.get("fqdn").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `fqdn` to be a primitive type in the JSON string but got `%s`", jsonObj.get("fqdn").toString()));
-      }
       // validate the required field `data`
       DnsRecordV2Data.validateJsonElement(jsonObj.get("data"));
+      if (!jsonObj.get("fqdn").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `fqdn` to be a primitive type in the JSON string but got `%s`", jsonObj.get("fqdn").toString()));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

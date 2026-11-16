@@ -8,11 +8,11 @@ DNS-запись.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+|**id** | **BigDecimal** | ID DNS-записи. |  |
 |**type** | [**TypeEnum**](#TypeEnum) | Тип DNS-записи. |  |
-|**id** | **BigDecimal** | ID DNS-записи. |  [optional] |
-|**fqdn** | **String** | Полное имя основного домена. |  [optional] |
 |**data** | [**DnsRecordV2Data**](DnsRecordV2Data.md) |  |  |
-|**ttl** | **BigDecimal** | Время жизни DNS-записи. |  [optional] |
+|**fqdn** | **String** | Домен, относительно которого указано &#x60;data.subdomain&#x60;. Полное имя записи — &#x60;data.subdomain&#x60; + &#x60;.&#x60; + &#x60;fqdn&#x60;, а если &#x60;data.subdomain&#x60; нет — &#x60;fqdn&#x60;. |  |
+|**ttl** | **BigDecimal** | Время жизни DNS-записи в секундах. |  |
 
 
 
@@ -26,6 +26,10 @@ DNS-запись.
 | AAAA | &quot;AAAA&quot; |
 | MX | &quot;MX&quot; |
 | A | &quot;A&quot; |
+| PTR | &quot;PTR&quot; |
+| HTTPS | &quot;HTTPS&quot; |
+| SVCB | &quot;SVCB&quot; |
+| CAA | &quot;CAA&quot; |
 
 
 
