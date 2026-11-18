@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * GetTLD200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-16T11:50:41.434402Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-18T14:55:45.877211Z[Etc/UTC]")
 public class GetTLD200Response {
   public static final String SERIALIZED_NAME_TOP_LEVEL_DOMAIN = "top_level_domain";
   @SerializedName(SERIALIZED_NAME_TOP_LEVEL_DOMAIN)

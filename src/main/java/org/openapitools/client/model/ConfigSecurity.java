@@ -21,6 +21,8 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.LinkedHashSet;
+import java.util.Set;
 import org.openapitools.client.model.ConfigSecuritySecureToken;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -52,7 +54,7 @@ import org.openapitools.client.JSON;
 /**
  * Настройки безопасности
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-16T11:50:41.434402Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-18T14:55:45.877211Z[Etc/UTC]")
 public class ConfigSecurity {
   public static final String SERIALIZED_NAME_REDIRECT = "redirect";
   @SerializedName(SERIALIZED_NAME_REDIRECT)
@@ -61,6 +63,63 @@ public class ConfigSecurity {
   public static final String SERIALIZED_NAME_CERTIFICATE_ID = "certificate_id";
   @SerializedName(SERIALIZED_NAME_CERTIFICATE_ID)
   private Integer certificateId;
+
+  /**
+   * Gets or Sets sslProtocols
+   */
+  @JsonAdapter(SslProtocolsEnum.Adapter.class)
+  public enum SslProtocolsEnum {
+    TLSV1("TLSv1"),
+    
+    TLSV1_1("TLSv1.1"),
+    
+    TLSV1_2("TLSv1.2"),
+    
+    TLSV1_3("TLSv1.3"),
+    
+    SSLV3("SSLv3");
+
+    private String value;
+
+    SslProtocolsEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static SslProtocolsEnum fromValue(String value) {
+      for (SslProtocolsEnum b : SslProtocolsEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<SslProtocolsEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final SslProtocolsEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public SslProtocolsEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return SslProtocolsEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_SSL_PROTOCOLS = "ssl_protocols";
+  @SerializedName(SERIALIZED_NAME_SSL_PROTOCOLS)
+  private Set<SslProtocolsEnum> sslProtocols;
 
   public static final String SERIALIZED_NAME_SECURE_TOKEN = "secure_token";
   @SerializedName(SERIALIZED_NAME_SECURE_TOKEN)
@@ -111,6 +170,35 @@ public class ConfigSecurity {
   }
 
 
+  public ConfigSecurity sslProtocols(Set<SslProtocolsEnum> sslProtocols) {
+    
+    this.sslProtocols = sslProtocols;
+    return this;
+  }
+
+  public ConfigSecurity addSslProtocolsItem(SslProtocolsEnum sslProtocolsItem) {
+    if (this.sslProtocols == null) {
+      this.sslProtocols = new LinkedHashSet<>();
+    }
+    this.sslProtocols.add(sslProtocolsItem);
+    return this;
+  }
+
+   /**
+   * Версии SSL/TLS, по которым CDN принимает HTTPS-подключения. &#x60;null&#x60; — принимать все версии.
+   * @return sslProtocols
+  **/
+  @javax.annotation.Nullable
+  public Set<SslProtocolsEnum> getSslProtocols() {
+    return sslProtocols;
+  }
+
+
+  public void setSslProtocols(Set<SslProtocolsEnum> sslProtocols) {
+    this.sslProtocols = sslProtocols;
+  }
+
+
   public ConfigSecurity secureToken(ConfigSecuritySecureToken secureToken) {
     
     this.secureToken = secureToken;
@@ -144,6 +232,7 @@ public class ConfigSecurity {
     ConfigSecurity configSecurity = (ConfigSecurity) o;
     return Objects.equals(this.redirect, configSecurity.redirect) &&
         Objects.equals(this.certificateId, configSecurity.certificateId) &&
+        Objects.equals(this.sslProtocols, configSecurity.sslProtocols) &&
         Objects.equals(this.secureToken, configSecurity.secureToken);
   }
 
@@ -153,7 +242,7 @@ public class ConfigSecurity {
 
   @Override
   public int hashCode() {
-    return Objects.hash(redirect, certificateId, secureToken);
+    return Objects.hash(redirect, certificateId, sslProtocols, secureToken);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -169,6 +258,7 @@ public class ConfigSecurity {
     sb.append("class ConfigSecurity {\n");
     sb.append("    redirect: ").append(toIndentedString(redirect)).append("\n");
     sb.append("    certificateId: ").append(toIndentedString(certificateId)).append("\n");
+    sb.append("    sslProtocols: ").append(toIndentedString(sslProtocols)).append("\n");
     sb.append("    secureToken: ").append(toIndentedString(secureToken)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -194,6 +284,7 @@ public class ConfigSecurity {
     openapiFields = new HashSet<String>();
     openapiFields.add("redirect");
     openapiFields.add("certificate_id");
+    openapiFields.add("ssl_protocols");
     openapiFields.add("secure_token");
 
     // a set of required properties/fields (JSON key names)
@@ -221,6 +312,10 @@ public class ConfigSecurity {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("ssl_protocols") != null && !jsonObj.get("ssl_protocols").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ssl_protocols` to be an array in the JSON string but got `%s`", jsonObj.get("ssl_protocols").toString()));
+      }
       // validate the optional field `secure_token`
       if (jsonObj.get("secure_token") != null && !jsonObj.get("secure_token").isJsonNull()) {
         ConfigSecuritySecureToken.validateJsonElement(jsonObj.get("secure_token"));

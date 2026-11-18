@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * Настройки CORS. &#x60;null&#x60; — отключить CORS.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-16T11:50:41.434402Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-18T14:55:45.877211Z[Etc/UTC]")
 public class ConfigHttpHeadersCors {
   public static final String SERIALIZED_NAME_DOMAINS = "domains";
   @SerializedName(SERIALIZED_NAME_DOMAINS)

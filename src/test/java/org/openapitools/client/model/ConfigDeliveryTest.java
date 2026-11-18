@@ -47,6 +47,14 @@ public class ConfigDeliveryTest {
     }
 
     /**
+     * Test the property 'http2'
+     */
+    @Test
+    public void http2Test() {
+        // TODO: test http2
+    }
+
+    /**
      * Test the property 'gzip'
      */
     @Test

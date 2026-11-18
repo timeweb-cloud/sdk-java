@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * SendAiSolutionMessage200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-16T11:50:41.434402Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-18T14:55:45.877211Z[Etc/UTC]")
 public class SendAiSolutionMessage200Response {
   public static final String SERIALIZED_NAME_AI_SOLUTION_CHAT_REPLY = "ai_solution_chat_reply";
   @SerializedName(SERIALIZED_NAME_AI_SOLUTION_CHAT_REPLY)

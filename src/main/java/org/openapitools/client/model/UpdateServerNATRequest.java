@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * UpdateServerNATRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-16T11:50:41.434402Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-18T14:55:45.877211Z[Etc/UTC]")
 public class UpdateServerNATRequest {
   /**
    * Правило для маршрутизации трафика. \\  Досутпные правила: &#x60;dnat_and_snat&#x60; – разрешен входящий и исходящий трафик, &#x60;snat&#x60; – разрешен только исходящий трафик, &#x60;no_nat&#x60; – разрешен трафик только в локальной сети.

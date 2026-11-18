@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * Период технического обслуживания кластера базы данных. Если период не задан, возвращается &#x60;any_time&#x60;.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-16T11:50:41.434402Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-18T14:55:45.877211Z[Etc/UTC]")
 public class DatabaseClusterMaintenanceSlot {
   /**
    * Gets or Sets type

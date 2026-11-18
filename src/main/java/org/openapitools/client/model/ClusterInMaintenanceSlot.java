@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * Окно обслуживания кластера
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-16T11:50:41.434402Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-18T14:55:45.877211Z[Etc/UTC]")
 public class ClusterInMaintenanceSlot {
   /**
    * В любое время или в заданное время. При значении &#x60;fixed_time&#x60; поля &#x60;from&#x60; и &#x60;to&#x60; являются обязательными. Минимально допустимый временной интервал — 3 часа. Время задается в часовом поясе UTC.

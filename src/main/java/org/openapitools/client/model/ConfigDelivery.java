@@ -52,11 +52,15 @@ import org.openapitools.client.JSON;
 /**
  * Настройки раздачи контента
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-16T11:50:41.434402Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-18T14:55:45.877211Z[Etc/UTC]")
 public class ConfigDelivery {
   public static final String SERIALIZED_NAME_HTTP3 = "http3";
   @SerializedName(SERIALIZED_NAME_HTTP3)
   private Boolean http3;
+
+  public static final String SERIALIZED_NAME_HTTP2 = "http2";
+  @SerializedName(SERIALIZED_NAME_HTTP2)
+  private Boolean http2;
 
   public static final String SERIALIZED_NAME_GZIP = "gzip";
   @SerializedName(SERIALIZED_NAME_GZIP)
@@ -99,6 +103,27 @@ public class ConfigDelivery {
 
   public void setHttp3(Boolean http3) {
     this.http3 = http3;
+  }
+
+
+  public ConfigDelivery http2(Boolean http2) {
+    
+    this.http2 = http2;
+    return this;
+  }
+
+   /**
+   * Раздавать контент по HTTP/2.
+   * @return http2
+  **/
+  @javax.annotation.Nullable
+  public Boolean getHttp2() {
+    return http2;
+  }
+
+
+  public void setHttp2(Boolean http2) {
+    this.http2 = http2;
   }
 
 
@@ -220,6 +245,7 @@ public class ConfigDelivery {
     }
     ConfigDelivery configDelivery = (ConfigDelivery) o;
     return Objects.equals(this.http3, configDelivery.http3) &&
+        Objects.equals(this.http2, configDelivery.http2) &&
         Objects.equals(this.gzip, configDelivery.gzip) &&
         Objects.equals(this.largeFiles, configDelivery.largeFiles) &&
         Objects.equals(this.sliceSize, configDelivery.sliceSize) &&
@@ -233,7 +259,7 @@ public class ConfigDelivery {
 
   @Override
   public int hashCode() {
-    return Objects.hash(http3, gzip, largeFiles, sliceSize, imageOptimization, packaging);
+    return Objects.hash(http3, http2, gzip, largeFiles, sliceSize, imageOptimization, packaging);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -248,6 +274,7 @@ public class ConfigDelivery {
     StringBuilder sb = new StringBuilder();
     sb.append("class ConfigDelivery {\n");
     sb.append("    http3: ").append(toIndentedString(http3)).append("\n");
+    sb.append("    http2: ").append(toIndentedString(http2)).append("\n");
     sb.append("    gzip: ").append(toIndentedString(gzip)).append("\n");
     sb.append("    largeFiles: ").append(toIndentedString(largeFiles)).append("\n");
     sb.append("    sliceSize: ").append(toIndentedString(sliceSize)).append("\n");
@@ -276,6 +303,7 @@ public class ConfigDelivery {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("http3");
+    openapiFields.add("http2");
     openapiFields.add("gzip");
     openapiFields.add("large_files");
     openapiFields.add("slice_size");

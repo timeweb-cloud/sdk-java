@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * Новые настройки автобэкапов базы данных. При значении &#x60;is_enabled&#x60;: &#x60;true&#x60; поля &#x60;copy_count&#x60;, &#x60;creation_start_at&#x60;, &#x60;interval&#x60; и &#x60;day_of_week&#x60; являются обязательными.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-16T11:50:41.434402Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-18T14:55:45.877211Z[Etc/UTC]")
 public class UpdateAutoBackup {
   public static final String SERIALIZED_NAME_IS_ENABLED = "is_enabled";
   @SerializedName(SERIALIZED_NAME_IS_ENABLED)

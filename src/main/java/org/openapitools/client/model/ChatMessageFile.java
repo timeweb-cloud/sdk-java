@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * Файл, приложенный к сообщению; &#x60;null&#x60; — файла нет
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-16T11:50:41.434402Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-18T14:55:45.877211Z[Etc/UTC]")
 public class ChatMessageFile {
   public static final String SERIALIZED_NAME_FILENAME = "filename";
   @SerializedName(SERIALIZED_NAME_FILENAME)

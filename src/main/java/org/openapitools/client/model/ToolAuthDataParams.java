@@ -54,7 +54,7 @@ import org.openapitools.client.JSON;
 /**
  * Параметры авторизации. Набор полей зависит от &#x60;type&#x60;: для &#x60;none&#x60; — пустой объект, для &#x60;bearer&#x60; — &#x60;token&#x60;, для &#x60;custom_headers&#x60; — &#x60;headers&#x60;, для &#x60;oauth2&#x60; — поля OAuth2-клиента.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-16T11:50:41.434402Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-18T14:55:45.877211Z[Etc/UTC]")
 public class ToolAuthDataParams {
   public static final String SERIALIZED_NAME_TOKEN = "token";
   @SerializedName(SERIALIZED_NAME_TOKEN)

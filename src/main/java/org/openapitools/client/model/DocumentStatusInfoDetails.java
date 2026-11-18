@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * Подробности, набор полей зависит от состояния. Могут присутствовать и другие поля
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-16T11:50:41.434402Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-18T14:55:45.877211Z[Etc/UTC]")
 public class DocumentStatusInfoDetails {
   public static final String SERIALIZED_NAME_STARTED_AT = "started_at";
   @SerializedName(SERIALIZED_NAME_STARTED_AT)

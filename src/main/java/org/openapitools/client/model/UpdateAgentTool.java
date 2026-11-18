@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * Новый список разрешённых методов
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-16T11:50:41.434402Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-18T14:55:45.877211Z[Etc/UTC]")
 public class UpdateAgentTool {
   public static final String SERIALIZED_NAME_ALLOWED_METHODS = "allowed_methods";
   @SerializedName(SERIALIZED_NAME_ALLOWED_METHODS)

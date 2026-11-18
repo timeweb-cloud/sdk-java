@@ -19,6 +19,8 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.LinkedHashSet;
+import java.util.Set;
 import org.openapitools.client.model.ConfigSecuritySecureToken;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.junit.jupiter.api.Disabled;
@@ -52,6 +54,14 @@ public class ConfigSecurityTest {
     @Test
     public void certificateIdTest() {
         // TODO: test certificateId
+    }
+
+    /**
+     * Test the property 'sslProtocols'
+     */
+    @Test
+    public void sslProtocolsTest() {
+        // TODO: test sslProtocols
     }
 
     /**

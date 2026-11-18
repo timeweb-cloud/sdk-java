@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * Запрос JSON-RPC 2.0. Форма &#x60;params&#x60; зависит от &#x60;method&#x60;
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-16T11:50:41.434402Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-18T14:55:45.877211Z[Etc/UTC]")
 public class JsonRpcRequest {
   /**
    * Версия протокола JSON-RPC, всегда &#x60;2.0&#x60;

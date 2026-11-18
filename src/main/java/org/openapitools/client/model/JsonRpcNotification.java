@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * Уведомление JSON-RPC 2.0: без &#x60;id&#x60;, ответа на него нет. Принимается с HTTP 202
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-16T11:50:41.434402Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-18T14:55:45.877211Z[Etc/UTC]")
 public class JsonRpcNotification {
   /**
    * Версия протокола JSON-RPC, всегда &#x60;2.0&#x60;

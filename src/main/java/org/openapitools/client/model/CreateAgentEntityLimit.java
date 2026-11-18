@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * Новый лимит агента. Нужно передать &#x60;limit&#x60; или &#x60;money_limit&#x60;.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-16T11:50:41.434402Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-18T14:55:45.877211Z[Etc/UTC]")
 public class CreateAgentEntityLimit {
   /**
    * Период лимита

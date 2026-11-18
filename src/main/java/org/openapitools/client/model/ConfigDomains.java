@@ -53,7 +53,7 @@ import org.openapitools.client.JSON;
 /**
  * Домены, с которых раздается контент ресурса
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-16T11:50:41.434402Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-18T14:55:45.877211Z[Etc/UTC]")
 public class ConfigDomains {
   public static final String SERIALIZED_NAME_ALIASES = "aliases";
   @SerializedName(SERIALIZED_NAME_ALIASES)

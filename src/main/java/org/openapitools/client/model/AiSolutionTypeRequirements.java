@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * Минимальные требования к конфигурации сервера
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-16T11:50:41.434402Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-18T14:55:45.877211Z[Etc/UTC]")
 public class AiSolutionTypeRequirements {
   public static final String SERIALIZED_NAME_CPU_MIN = "cpu_min";
   @SerializedName(SERIALIZED_NAME_CPU_MIN)

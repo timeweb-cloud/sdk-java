@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * Потребление ресурса с начала текущего расчетного месяца. Счетчики обнуляются в начале каждого расчетного периода.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-16T11:50:41.434402Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-18T14:55:45.877211Z[Etc/UTC]")
 public class TrafficUsage {
   public static final String SERIALIZED_NAME_REQUESTS = "requests";
   @SerializedName(SERIALIZED_NAME_REQUESTS)
